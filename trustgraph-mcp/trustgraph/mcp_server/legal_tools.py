@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Protocol
+from typing import Any, Callable, Dict, List, Optional, Protocol
 
-from trustgraph_legal.mcp_domain import JsonValue, invoke_tool, list_tools
+from trustgraph_legal.mcp_domain import invoke_tool, list_tools
 
-JsonObject = Dict[str, JsonValue]
+JsonObject = Dict[str, Any]
 TokenResolver = Callable[[], str]
 
 
