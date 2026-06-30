@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import inspect
 import json
 import sys
+from dataclasses import asdict
 from pathlib import Path
 from typing import Callable, Dict, List, Optional
 
@@ -50,8 +52,11 @@ class FakeMcp:
 
 def test_tool_contracts_expose_final_todo_9_surface() -> None:
     tools = list_tools()
+    definition_dicts = [asdict(definition) for definition in TOOL_DEFINITIONS]
 
     assert len(TOOL_DEFINITIONS) == 16
+    assert [definition["tool_name"] for definition in definition_dicts] == EXPECTED_TOOL_NAMES
+    assert all("name" not in definition for definition in definition_dicts)
     assert [tool["tool_name"] for tool in tools] == EXPECTED_TOOL_NAMES
     assert [tool["name"] for tool in tools] == EXPECTED_TOOL_NAMES
     assert {tool["group"] for tool in tools} == EXPECTED_GROUPS
@@ -120,26 +125,56 @@ def test_write_like_tools_are_review_safe_and_non_executing() -> None:
 def test_register_debt_collection_brain_tools_is_fake_mcp_and_auth_safe() -> None:
     sys.path.insert(0, str(TRUSTGRAPH_MCP_PATH))
     try:
-        from trustgraph.mcp_server.legal_tools import register_debt_collection_brain_tools
+        from trustgraph.mcp_server import legal_tools
     finally:
         sys.path.remove(str(TRUSTGRAPH_MCP_PATH))
     fake = FakeMcp()
 
-    registered = register_debt_collection_brain_tools(fake, REPO_ROOT)
+    registered = legal_tools.register_debt_collection_brain_tools(fake, REPO_ROOT)
 
     assert [item["tool_name"] for item in registered] == EXPECTED_TOOL_NAMES
     assert list(fake.registered) == EXPECTED_TOOL_NAMES
     with pytest.raises(PermissionError):
         fake.registered["list_debt_collection_tools"](arguments={})
-    with pytest.raises(PermissionError):
+    assert "authorization" not in inspect.signature(
+        fake.registered["list_debt_collection_tools"]
+    ).parameters
+    with pytest.raises(TypeError):
         fake.registered["list_debt_collection_tools"](
-            authorization="Token should-not-work",
+            authorization="Bearer secret-token",
             arguments={},
         )
-    envelope = fake.registered["list_debt_collection_tools"](
-        authorization="Bearer secret-token",
+
+    context_fake = FakeMcp()
+    legal_tools.register_debt_collection_brain_tools(
+        context_fake,
+        REPO_ROOT,
+        token_resolver=lambda: "context-token",
+    )
+    context_envelope = context_fake.registered["list_debt_collection_tools"](
         arguments={},
     )
-    encoded = json.dumps(envelope, sort_keys=True)
-    assert envelope["tool_name"] == "list_debt_collection_tools"
-    assert "secret-token" not in encoded
+    context_encoded = json.dumps(context_envelope, sort_keys=True)
+    assert context_envelope["tool_name"] == "list_debt_collection_tools"
+    assert "context-token" not in context_encoded
+
+
+def test_path_arguments_cannot_read_outside_repo_root(tmp_path: Path) -> None:
+    secret = "c-review-secret-value"
+    outside_graph = tmp_path / "c-review-secret.json"
+    outside_graph.write_text(
+        json.dumps({"case_packets": [], "secret": secret}),
+        encoding="utf-8",
+    )
+
+    envelope = invoke_tool(
+        "get_case_graph",
+        {"case_graph_path": str(outside_graph)},
+        REPO_ROOT,
+    )
+    encoded = json.dumps(envelope, ensure_ascii=False, sort_keys=True)
+
+    assert envelope["result"] == {"status": "rejected", "reason": "path_outside_repo_root"}
+    assert envelope["warnings"] == ["path_outside_repo_root"]
+    assert secret not in encoded
+    assert str(outside_graph) not in encoded
