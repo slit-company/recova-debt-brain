@@ -16,7 +16,7 @@ The test file targets the authoritative Todo 9 public API:
 - `trustgraph_legal.mcp_domain.list_tools()`
 - `trustgraph_legal.mcp_domain.invoke_tool(tool_name, arguments=None, repo_root=None)`
 - `trustgraph-mcp/trustgraph/mcp_server/legal_tools.py`
-- `register_debt_collection_brain_tools(mcp, repo_root=None)`
+- `register_debt_collection_brain_tools(mcp, repo_root=None, token_resolver=None, require_auth=True)`
 
 ## Isolation Evidence
 
@@ -29,12 +29,19 @@ Initial bound-worktree evidence captured:
 
 Leader later repaired an isolation issue: `tests/integration/legal_ontology/test_mcp_tools.py` had been created in the main checkout by mistake, then moved into B worktree and removed from main. After repair, B status showed `?? tests/integration/legal_ontology/`. This report records that repair as requested.
 
-Current observed status before final B commit:
+Earlier observed status before B report commit `81530024`:
 
 - B worktree: report artifact staged; integration test already committed as `eefbba6e`
 - Main checkout comparison after A fixes: `## master...origin/master [ahead 25]`, `?? .omo/`
 
 Leader later confirmed A source had been written to main, causing B contract failures. Leader moved that source into A worktree and removed the main stray files. B did not pull or copy source changes from main into the B worktree.
+
+Final contract-refresh isolation check before this report update:
+
+- B worktree `pwd`: `/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/worktrees/B`
+- B worktree top level: `/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/worktrees/B`
+- B status before report edit: `## team/debt-collection-ontology-todo-9-20260630/B`
+- Main checkout comparison: `## master...origin/master [ahead 32]` with only `.omo/` paths untracked
 
 ## Canonical Tool List
 
@@ -159,6 +166,20 @@ Observed result:
 - py_compile: passed
 - diff check: passed
 
+After A's final contract confirmation on source commit `588fba0c`, B verified the C-reviewed auth shape again. The source commit was already contained in B via merge `8af913f7` and B's follow-up commit `40857730`.
+
+```bash
+/opt/homebrew/bin/python3 -m pytest tests/integration/legal_ontology/test_mcp_tools.py -q
+/opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_mcp_domain_tools.py -q
+git diff --check
+```
+
+Observed result:
+
+- `tests/integration/legal_ontology/test_mcp_tools.py`: 3 passed
+- `tests/unit/legal_ontology/test_mcp_domain_tools.py`: 5 passed
+- `git diff --check`: passed
+
 ## Final Acceptance
 
 B acceptance is now unblocked. A source matches the strict public contract:
@@ -170,6 +191,7 @@ B acceptance is now unblocked. A source matches the strict public contract:
 - `summarize_case_ledger` is grouped as `read`.
 - `register_debt_collection_brain_tools` uses MCP auth context/token resolver instead of public tool-payload Bearer values.
 - adapter-registered tool callables do not expose an `authorization` parameter.
+- fake-MCP evidence registers `token_resolver=lambda: "todo9-test-token"`, calls registered tools with `arguments=...`, and asserts the token is not echoed.
 - `case_graph_path` and other path arguments cannot read outside `repo_root`; outside paths return `path_outside_repo_root` without leaking path or file content.
 
 B did not edit A-owned source.
@@ -177,6 +199,7 @@ B did not edit A-owned source.
 B integration test file is committed as:
 
 - `eefbba6e test(legal-mcp): add debt collection MCP contract tests`
+- `40857730 test(legal-mcp): verify auth context and path bounds`
 
 B tests remain strict around the leader-requested contract points:
 
