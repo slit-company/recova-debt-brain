@@ -396,7 +396,10 @@ class McpServer:
         self.mcp.tool()(self.load_document)
         self.mcp.tool()(self.remove_document)
         self.mcp.tool()(self.add_processing)
-        register_debt_collection_brain_tools(self.mcp)
+        register_debt_collection_brain_tools(
+            self.mcp,
+            token_resolver=_require_token,
+        )
 
     def run(self):
         """Run the MCP server"""

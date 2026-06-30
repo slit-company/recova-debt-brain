@@ -128,7 +128,7 @@ def invoke_tool(
     repo_root: Optional[Path] = None,
 ) -> JsonObject:
     args = {} if arguments is None else arguments
-    root = Path.cwd() if repo_root is None else repo_root
+    root = _repo_root(repo_root)
     definition = _definition(tool_name)
     if definition is None:
         return _envelope(
@@ -138,7 +138,16 @@ def invoke_tool(
             {"status": "unknown_tool"},
             ["unknown_tool"],
         )
-    result = _redact_json(definition.handler(args, root))
+    try:
+        result = _redact_json(definition.handler(args, root))
+    except PermissionError as exc:
+        return _envelope(
+            definition.tool_name,
+            definition.group,
+            definition.scope,
+            {"status": "rejected", "reason": str(exc)},
+            [str(exc)],
+        )
     source_refs = _source_refs(result)
     return _envelope(definition.tool_name, definition.group, definition.scope, result, [], source_refs)
 
@@ -389,7 +398,17 @@ def _path_arg(args: JsonObject, key: str, root: Path) -> Optional[Path]:
     if not isinstance(value, str) or not value:
         return None
     path = Path(value)
-    return path if path.is_absolute() else root / path
+    candidate = path if path.is_absolute() else root / path
+    resolved = candidate.resolve()
+    try:
+        resolved.relative_to(root)
+    except ValueError:
+        raise PermissionError("path_outside_repo_root")
+    return resolved
+
+
+def _repo_root(repo_root: Optional[Path]) -> Path:
+    return (Path.cwd() if repo_root is None else repo_root).resolve()
 
 
 def _str_arg(args: JsonObject, key: str, default: str) -> str:
