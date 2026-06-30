@@ -1,0 +1,202 @@
+{
+  "schema_version": "legal-ocr-fixture-manifest/v1",
+  "ontology_version": "recova-debt-collection@v0",
+  "prompt_version": "legal-ontology-extraction@v0",
+  "ocr_corpus": {
+    "engine": "MinerU",
+    "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+    "source_archive_local_hint": "/Users/cosmos/dev/ocr/MinerU/work/legal_ocr_20260630/legal_docs_markdown.zip",
+    "corpus_date": "2026-06-30",
+    "markdown_format": "markdown_flat/*.md",
+    "fixture_strategy": "synthetic_minimized"
+  },
+  "pii_policy": {
+    "fixture_strategy": "synthetic_minimized",
+    "disallowed_git_content": [
+      "raw national identity numbers",
+      "addresses",
+      "phone numbers",
+      "bank or account numbers",
+      "full raw OCR documents"
+    ],
+    "required_placeholders": [
+      "[PERSON_OR_ORG_REDACTED]",
+      "[DATE_REDACTED]",
+      "[CLAIM_TOKEN]",
+      "[CASE_PACKET_TOKEN]"
+    ]
+  },
+  "documents": [
+    {
+      "document_id": "legal-ocr-synth-attachment-collection-order-001",
+      "document_type": "attachment_collection_order",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+      "source_hash": "sha256:f79dca9ea2174128cd6b6db4bf5321a421ef4db5788c395f5da5afb8ccaafda1",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "attachment and collection order"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.94,
+      "review_status": "synthetic_reviewed",
+      "source_category": "attachment_collection_order",
+      "notes": "Synthetic minimized fixture for attachment and collection-order extraction; no raw OCR lines copied."
+    },
+    {
+      "document_id": "legal-ocr-synth-judgment-payment-order-001",
+      "document_type": "judgment_payment_order",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+      "source_hash": "sha256:62ebefdec3b8c5ad7b296afd907fb62f55d428cadf7c08e117c4164a962e29f1",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "payment order and judgment"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.93,
+      "review_status": "synthetic_reviewed",
+      "source_category": "judgment_payment_order",
+      "notes": "Synthetic minimized fixture for enforcement-title amount and decision facts."
+    },
+    {
+      "document_id": "legal-ocr-synth-service-finality-execution-001",
+      "document_type": "service_finality_execution_clause",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+      "source_hash": "sha256:667a901ac970c065afcfaec9ae1c3fe363558464329079f50a0b1ac582e77015",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "service finality and execution clause"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.92,
+      "review_status": "synthetic_reviewed",
+      "source_category": "service_finality_execution_clause",
+      "notes": "Synthetic minimized fixture separating service proof, finality proof, and execution authority."
+    },
+    {
+      "document_id": "legal-ocr-synth-identity-evidence-001",
+      "document_type": "identity_evidence",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+      "source_hash": "sha256:c1f4f1afe9365cedbae620d4561682e5b4670ee0c48d9eef81ffec8c2bb9b660",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "identity evidence and registry summary"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.9,
+      "review_status": "synthetic_reviewed",
+      "source_category": "identity_evidence",
+      "notes": "Synthetic minimized fixture for hybrid party identity keys; merge-on-name remains disallowed."
+    },
+    {
+      "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+      "document_type": "insolvency_credit_recovery",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+      "source_hash": "sha256:38b99643f07b04ce71dc7a27a9e54bebd089bf5b3fa3ab24027889301151a164",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "insolvency discharge and credit recovery"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.89,
+      "review_status": "synthetic_reviewed",
+      "source_category": "insolvency_credit_recovery",
+      "notes": "Synthetic minimized fixture for insolvency, discharge, and recovery-plan StopGate facts."
+    },
+    {
+      "document_id": "legal-ocr-synth-assignment-succession-001",
+      "document_type": "assignment_succession",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+      "source_hash": "sha256:fb4487fcff5050525bd4f194f84a912630c0f262646c3ad633cbadde884cac2c",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "assignment and succession"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.91,
+      "review_status": "synthetic_reviewed",
+      "source_category": "assignment_succession",
+      "notes": "Synthetic minimized fixture for assignment chain, notice, and succession authority."
+    },
+    {
+      "document_id": "legal-ocr-synth-operational-ledger-001",
+      "document_type": "operational_ledger",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+      "source_hash": "sha256:321a02f59c9f232d2f31dbbc242430ee767fc91c28682f2da06b1506794211a0",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "collection and recovery ledger"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.88,
+      "review_status": "synthetic_reviewed",
+      "source_category": "operational_ledger",
+      "notes": "Synthetic minimized fixture for operational recovery, cost, and status rows."
+    },
+    {
+      "document_id": "legal-ocr-synth-asset-evidence-001",
+      "document_type": "asset_evidence",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+      "source_hash": "sha256:4da31af254ca9d4e43b47e2f3d8c54bf079b69ffa1c07c623cee5b068487178e",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "asset evidence target and priority"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.87,
+      "review_status": "synthetic_reviewed",
+      "source_category": "asset_evidence",
+      "notes": "Synthetic minimized fixture for asset leads, attachment suitability, exemption, and priority review."
+    },
+    {
+      "document_id": "legal-ocr-synth-amount-interest-001",
+      "document_type": "amount_interest",
+      "source_fixture_path": "tests/fixtures/legal-ocr/snippets/amount_interest.md",
+      "source_hash": "sha256:fe9fc609cb61e691ae6dce78e708d6651520b27ecd37fee3d43d87e6e1e6deb8",
+      "ocr": {
+        "engine": "MinerU",
+        "corpus": "legal_ocr_20260630/legal_docs_markdown.zip",
+        "corpus_date": "2026-06-30",
+        "markdown_format": "markdown_flat/*.md",
+        "source_bucket": "amount and interest calculation"
+      },
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "confidence": 0.9,
+      "review_status": "synthetic_reviewed",
+      "source_category": "amount_interest",
+      "notes": "Synthetic minimized fixture for principal, interest basis, period, claimed total, and mismatch checks."
+    }
+  ]
+}
