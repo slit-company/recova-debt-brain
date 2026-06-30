@@ -19,6 +19,7 @@ from mcp.server.auth.middleware.auth_context import get_access_token
 from trustgraph.base.logging import add_logging_args, setup_logging
 
 from . tg_socket import WebSocketManager, _token_key
+from .legal_tools import register_debt_collection_brain_tools
 
 logger = logging.getLogger(__name__)
 
@@ -395,6 +396,7 @@ class McpServer:
         self.mcp.tool()(self.load_document)
         self.mcp.tool()(self.remove_document)
         self.mcp.tool()(self.add_processing)
+        register_debt_collection_brain_tools(self.mcp)
 
     def run(self):
         """Run the MCP server"""

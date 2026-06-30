@@ -1,3 +1,7 @@
+def run():
+    from .mcp import run as run_server
 
-from . mcp import *
+    return run_server()
 
+
+__all__ = ["run"]
