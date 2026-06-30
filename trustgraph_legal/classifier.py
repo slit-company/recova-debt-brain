@@ -2,29 +2,41 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from dataclasses import dataclass
-from enum import StrEnum, unique
+from enum import Enum, unique
 from pathlib import Path
-from typing import Final, Sequence, TypeAlias
+from typing import Dict, Final, List, Optional, Sequence, Tuple, Union
 
 from trustgraph_legal import __version__
-from trustgraph_legal.registry import ONTOLOGY_VERSION, PROMPT_VERSION
-from trustgraph_legal.pii import redact_text
 
 # allow: SIZE_OK - Todo 5 keeps the classifier API, CLI, JSON contract, and deterministic rule table in one file.
-JsonScalar: TypeAlias = str | int | float | bool | None
-JsonValue: TypeAlias = JsonScalar | list["JsonValue"] | dict[str, "JsonValue"]
-SignalSpec: TypeAlias = tuple[str, str, float]
-RuleSpec: TypeAlias = tuple["FixtureBucket", tuple[SignalSpec, ...]]
+JsonScalar = Union[str, int, float, bool, type(None)]
+JsonValue = Union[JsonScalar, List["JsonValue"], Dict[str, "JsonValue"]]
+SignalSpec = Tuple[str, str, float]
+RuleSpec = Tuple["FixtureBucket", Tuple[SignalSpec, ...]]
 
 SCHEMA_VERSION: Final = "trustgraph-legal-document-classifier/v1"
 EXTRACTOR_VERSION: Final = f"trustgraph_legal.classifier@{__version__}"
+ONTOLOGY_VERSION: Final = "recova-debt-collection@v0"
+PROMPT_VERSION: Final = "legal-ontology-extraction@v0"
 UNKNOWN_CONFIDENCE_CEILING: Final = 0.49
 MIN_CLASSIFICATION_SCORE: Final = 4.0
+_NATIONAL_ID: Final = re.compile(r"\b\d{6}-\d{7}\b")
+_PHONE: Final = re.compile(
+    r"\b(?:\+82[-.\s]?)?0\d{1,2}[-.\s]?\d{3,4}[-.\s]?\d{4}\b"
+)
+_ACCOUNT: Final = re.compile(
+    r"(?i)\b(?:account|bank|계좌|은행|입금|송금)[^\n\r]{0,24}?"
+    r"\d{2,6}[-.\s]\d{2,6}[-.\s]\d{2,8}\b"
+)
+_ADDRESS_HINT: Final = re.compile(
+    r"[가-힣]{2,}(?:시|도)\s+[가-힣0-9\s.-]{2,}(?:로|길)\s*\d+(?:-\d+)?"
+)
 
 
 @unique
-class FixtureBucket(StrEnum):
+class FixtureBucket(str, Enum):
     ATTACHMENT_COLLECTION_ORDER = "attachment_collection_order"
     JUDGMENT_PAYMENT_ORDER = "judgment_payment_order"
     SERVICE_FINALITY_EXECUTION_CLAUSE = "service_finality_execution_clause"
@@ -38,7 +50,7 @@ class FixtureBucket(StrEnum):
 
 
 @unique
-class CanonicalDocumentType(StrEnum):
+class CanonicalDocumentType(str, Enum):
     ATTACHMENT_COLLECTION_ORDER = "attachment-collection-order"
     PAYMENT_ORDER = "payment-order"
     SERVICE_FINALITY_PROOF = "service-finality-proof"
@@ -52,12 +64,12 @@ class CanonicalDocumentType(StrEnum):
 
 
 @unique
-class ReviewStatus(StrEnum):
+class ReviewStatus(str, Enum):
     CLASSIFIED = "classified"
     NEEDS_REVIEW_UNKNOWN_DOC_TYPE = "needs_review_unknown_doc_type"
 
 
-FIXTURE_BUCKET_TO_DOCUMENT_TYPE: Final[dict[FixtureBucket, CanonicalDocumentType]] = {
+FIXTURE_BUCKET_TO_DOCUMENT_TYPE: Final[Dict[FixtureBucket, CanonicalDocumentType]] = {
     FixtureBucket.ATTACHMENT_COLLECTION_ORDER: CanonicalDocumentType.ATTACHMENT_COLLECTION_ORDER,
     FixtureBucket.JUDGMENT_PAYMENT_ORDER: CanonicalDocumentType.PAYMENT_ORDER,
     FixtureBucket.SERVICE_FINALITY_EXECUTION_CLAUSE: CanonicalDocumentType.SERVICE_FINALITY_PROOF,
@@ -71,7 +83,7 @@ FIXTURE_BUCKET_TO_DOCUMENT_TYPE: Final[dict[FixtureBucket, CanonicalDocumentType
 }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class EvidenceSpan:
     source_ref: str
     start: int
@@ -79,7 +91,7 @@ class EvidenceSpan:
     excerpt: str
     signal: str
 
-    def to_json(self) -> dict[str, JsonValue]:
+    def to_json(self) -> Dict[str, JsonValue]:
         return {
             "source_ref": self.source_ref,
             "start": self.start,
@@ -89,18 +101,18 @@ class EvidenceSpan:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class ClassificationResult:
     document_id: str
     document_type: CanonicalDocumentType
     fixture_document_type: FixtureBucket
     confidence: float
     review_status: ReviewStatus
-    evidence_spans: tuple[EvidenceSpan, ...]
-    reason_signals: tuple[str, ...]
-    pii_counts: dict[str, int]
+    evidence_spans: Tuple[EvidenceSpan, ...]
+    reason_signals: Tuple[str, ...]
+    pii_counts: Dict[str, int]
 
-    def to_json(self) -> dict[str, JsonValue]:
+    def to_json(self) -> Dict[str, JsonValue]:
         return {
             "document_id": self.document_id,
             "document_type": self.document_type.value,
@@ -121,11 +133,11 @@ class ClassificationResult:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class ClassificationPayload:
-    records: tuple[ClassificationResult, ...]
+    records: Tuple[ClassificationResult, ...]
 
-    def to_json(self) -> dict[str, JsonValue]:
+    def to_json(self) -> Dict[str, JsonValue]:
         unknown_count = sum(
             1
             for record in self.records
@@ -142,18 +154,24 @@ class ClassificationPayload:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class RuleMatch:
     fixture_bucket: FixtureBucket
     score: float
-    evidence_spans: tuple[EvidenceSpan, ...]
-    reason_signals: tuple[str, ...]
+    evidence_spans: Tuple[EvidenceSpan, ...]
+    reason_signals: Tuple[str, ...]
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class ManifestDocument:
     document_id: str
     source_fixture_path: str
+
+
+@dataclass(frozen=True)
+class RedactionResult:
+    text: str
+    counts: Dict[str, int]
 
 
 class ClassifierInputError(Exception):
@@ -165,7 +183,7 @@ class ClassifierInputError(Exception):
         return self.message
 
 
-RULES: Final[tuple[RuleSpec, ...]] = (
+RULES: Final[Tuple[RuleSpec, ...]] = (
     (
         FixtureBucket.ATTACHMENT_COLLECTION_ORDER,
         (
@@ -260,7 +278,7 @@ RULES: Final[tuple[RuleSpec, ...]] = (
 
 
 def classify_text(document_id: str, source_ref: str, text: str) -> ClassificationResult:
-    redaction = redact_text(text)
+    redaction = _redact_text(text)
     best_match = max((_match_rule(rule, source_ref, text) for rule in RULES), key=_rank)
     if best_match.score < MIN_CLASSIFICATION_SCORE:
         preview = _unknown_span(source_ref, redaction.text)
@@ -288,7 +306,7 @@ def classify_text(document_id: str, source_ref: str, text: str) -> Classificatio
 
 def classify_manifest(manifest_path: Path) -> ClassificationPayload:
     documents = _manifest_documents(manifest_path)
-    records: list[ClassificationResult] = []
+    records: List[ClassificationResult] = []
     for document in documents:
         source_path = _resolve_source_path(manifest_path, document.source_fixture_path)
         records.append(
@@ -311,7 +329,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     manifest_path = Path(args.manifest)
@@ -340,15 +358,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     return 0
 
 
-def _rank(rule_match: RuleMatch) -> tuple[float, int]:
+def _rank(rule_match: RuleMatch) -> Tuple[float, int]:
     return (rule_match.score, -list(FixtureBucket).index(rule_match.fixture_bucket))
 
 
 def _match_rule(rule: RuleSpec, source_ref: str, text: str) -> RuleMatch:
     fixture_bucket, signal_specs = rule
     folded_text = text.casefold()
-    spans: list[EvidenceSpan] = []
-    signals: list[str] = []
+    spans: List[EvidenceSpan] = []
+    signals: List[str] = []
     score = 0.0
     for needle, reason, weight in signal_specs:
         start = folded_text.find(needle.casefold())
@@ -391,17 +409,33 @@ def _unknown_span(source_ref: str, redacted_text: str) -> EvidenceSpan:
 def _redacted_excerpt(text: str, start: int, end: int) -> str:
     window_start = max(0, start - 80)
     window_end = min(len(text), end + 160)
-    return redact_text(text[window_start:window_end].strip()).text
+    return _redact_text(text[window_start:window_end].strip()).text
 
 
-def _manifest_documents(manifest_path: Path) -> tuple[ManifestDocument, ...]:
+def _redact_text(text: str) -> RedactionResult:
+    redacted, national_count = _NATIONAL_ID.subn("[NATIONAL_ID_REDACTED]", text)
+    redacted, phone_count = _PHONE.subn("[PHONE_REDACTED]", redacted)
+    redacted, account_count = _ACCOUNT.subn("[ACCOUNT_REDACTED]", redacted)
+    redacted, address_count = _ADDRESS_HINT.subn("[ADDRESS_REDACTED]", redacted)
+    return RedactionResult(
+        text=redacted,
+        counts={
+            "national_id": national_count,
+            "phone": phone_count,
+            "account": account_count,
+            "address": address_count,
+        },
+    )
+
+
+def _manifest_documents(manifest_path: Path) -> Tuple[ManifestDocument, ...]:
     raw: JsonValue = json.loads(manifest_path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
         raise ClassifierInputError("manifest root must be a JSON object")
     documents = raw.get("documents")
     if not isinstance(documents, list):
         raise ClassifierInputError("manifest must contain documents list")
-    parsed: list[ManifestDocument] = []
+    parsed: List[ManifestDocument] = []
     for index, item in enumerate(documents):
         if not isinstance(item, dict):
             raise ClassifierInputError(f"manifest document {index} must be an object")
