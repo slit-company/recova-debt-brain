@@ -69,10 +69,12 @@ The earlier 15-vs-16 mismatch is treated as a resolved coordination correction, 
 - representative in-process tool calls through `invoke_tool()`
 - response envelope keys: `schema_version`, `tool_name`, `group`, `scope`, `pii_profile`, `redaction`, `source_refs`, `warnings`, `result`
 - StopGate result fields: `case_id`, `decision`, `risk_flags`, `source_refs`
+- path arguments outside `repo_root` are rejected without echoing the attempted path or file content
 - no raw national ID, phone, or account-like values in default responses
 - redacted `source_refs` without `excerpt`, `text`, or raw source markers
 - fake-MCP registration without importing the global MCP SDK package
-- Bearer-token requirement on adapter-registered calls
+- MCP auth-context/token-resolver requirement on adapter-registered calls
+- no public `authorization` tool argument
 - no token echo in tool responses
 
 ## Verification
@@ -143,6 +145,20 @@ Observed result:
 - `tests/integration/legal_ontology/test_mcp_tools.py`: 3 passed
 - `tests/unit/legal_ontology/test_mcp_domain_tools.py`: 4 passed
 
+After C flagged security blockers in A commit `dfa70336`, A landed security follow-up commit `588fba0c` and master merge `8af913f7`. B merged that source into its worktree, updated the integration contract test, and reran:
+
+```bash
+/opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_mcp_domain_tools.py tests/integration/legal_ontology/test_mcp_tools.py -q
+/opt/homebrew/bin/python3 -m py_compile tests/integration/legal_ontology/test_mcp_tools.py trustgraph_legal/mcp_domain.py trustgraph-mcp/trustgraph/mcp_server/legal_tools.py trustgraph-mcp/trustgraph/mcp_server/mcp.py trustgraph-mcp/trustgraph/mcp_server/__init__.py
+git diff --check
+```
+
+Observed result:
+
+- combined unit/integration slice: 8 passed
+- py_compile: passed
+- diff check: passed
+
 ## Final Acceptance
 
 B acceptance is now unblocked. A source matches the strict public contract:
@@ -152,6 +168,9 @@ B acceptance is now unblocked. A source matches the strict public contract:
 - `get_ingest_status` is grouped as `ingest`.
 - `classify_legal_document` is grouped as `graph`.
 - `summarize_case_ledger` is grouped as `read`.
+- `register_debt_collection_brain_tools` uses MCP auth context/token resolver instead of public tool-payload Bearer values.
+- adapter-registered tool callables do not expose an `authorization` parameter.
+- `case_graph_path` and other path arguments cannot read outside `repo_root`; outside paths return `path_outside_repo_root` without leaking path or file content.
 
 B did not edit A-owned source.
 
@@ -166,4 +185,6 @@ B tests remain strict around the leader-requested contract points:
 - per-tool groups matching final canonical `read`, `ingest`, `graph`, `stopgate`, and `governance`
 - `redaction.default`
 - input and output schema fields
-- fake-MCP registered functions accepting `authorization` and `arguments`
+- fake-MCP registered functions accepting `arguments` only
+- context-token auth without token echo
+- repo-bound path rejection

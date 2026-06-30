@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib
 import importlib.util
+import inspect
 import json
 import re
 import sys
@@ -69,10 +70,9 @@ class FakeMcp:
     def call(
         self,
         tool_name: str,
-        authorization: str | None,
         arguments: JsonObject,
     ) -> JsonObject:
-        return self.registered[tool_name](authorization=authorization, arguments=arguments)
+        return self.registered[tool_name](arguments=arguments)
 
 
 def test_todo_9_tools_publish_stable_contracts() -> None:
@@ -103,7 +103,7 @@ def test_todo_9_tools_publish_stable_contracts() -> None:
         assert "callable" not in contract
 
 
-def test_todo_9_tool_calls_return_redacted_source_grounded_json() -> None:
+def test_todo_9_tool_calls_return_redacted_source_grounded_json(tmp_path: Path) -> None:
     # Given: synthetic legal OCR fixtures and a sensitive ad-hoc document.
     mcp_domain = _mcp_domain()
     sensitive_text = "\n".join(
@@ -169,27 +169,59 @@ def test_todo_9_tool_calls_return_redacted_source_grounded_json() -> None:
     assert result["risk_flags"]
     assert result["source_refs"]
 
+    secret = "c-review-secret-value"
+    outside_graph = tmp_path / "c-review-secret.json"
+    outside_graph.write_text(
+        json.dumps({"case_packets": [], "secret": secret}),
+        encoding="utf-8",
+    )
+    rejected = mcp_domain.invoke_tool(
+        "get_case_graph",
+        {"case_graph_path": str(outside_graph)},
+        repo_root=REPO_ROOT,
+    )
+    rejected_encoded = json.dumps(rejected, ensure_ascii=False, sort_keys=True)
+    _assert_stable_envelope(rejected)
+    assert rejected["result"] == {"status": "rejected", "reason": "path_outside_repo_root"}
+    assert rejected["warnings"] == ["path_outside_repo_root"]
+    assert secret not in rejected_encoded
+    assert str(outside_graph) not in rejected_encoded
+
 
 def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
     # Given: a fake MCP object registered through the thin adapter.
     legal_tools = _legal_tools_adapter()
     fake_mcp = FakeMcp()
-    legal_tools.register_debt_collection_brain_tools(fake_mcp, repo_root=REPO_ROOT)
-
-    # When: registered tools are inspected and called with a Bearer header.
-    registered_names = set(fake_mcp.registered)
-    authorized = fake_mcp.call(
-        "list_debt_collection_tools",
-        "Bearer todo9-test-token",
-        {},
+    legal_tools.register_debt_collection_brain_tools(
+        fake_mcp,
+        repo_root=REPO_ROOT,
+        token_resolver=lambda: "todo9-test-token",
     )
 
-    # Then: all tools are registered, auth is enforced, and the token is not echoed.
+    # When: registered tools are inspected and called through MCP context auth.
+    registered_names = set(fake_mcp.registered)
+    authorized = fake_mcp.call("list_debt_collection_tools", {})
+
+    # Then: all tools are registered, auth is context-only, and the token is not echoed.
     assert registered_names == set(EXPECTED_TOOLS)
     assert authorized["tool_name"] == "list_debt_collection_tools"
     assert "todo9-test-token" not in json.dumps(authorized, ensure_ascii=False)
-    with pytest.raises(PermissionError, match="Bearer"):
-        fake_mcp.call("list_debt_collection_tools", None, {})
+    assert "authorization" not in inspect.signature(
+        fake_mcp.registered["list_debt_collection_tools"]
+    ).parameters
+    with pytest.raises(TypeError):
+        fake_mcp.registered["list_debt_collection_tools"](
+            authorization="Bearer should-not-be-a-tool-argument",
+            arguments={},
+        )
+
+    unauthenticated_mcp = FakeMcp()
+    legal_tools.register_debt_collection_brain_tools(
+        unauthenticated_mcp,
+        repo_root=REPO_ROOT,
+    )
+    with pytest.raises(PermissionError, match="MCP auth context"):
+        unauthenticated_mcp.call("list_debt_collection_tools", {})
 
 
 def _mcp_domain() -> ModuleType:
