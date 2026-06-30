@@ -30,7 +30,7 @@ EXPECTED_TOOL_NAMES = [
     "promote_ontology_candidate",
     "reprocess_case",
 ]
-EXPECTED_GROUPS = {"read", "ingest", "graph", "stopgate", "governance", "admin"}
+EXPECTED_GROUPS = {"read", "ingest", "graph", "stopgate", "governance"}
 JsonScalar = str | int | float | bool | None
 JsonValue = JsonScalar | List["JsonValue"] | Dict[str, "JsonValue"]
 JsonObject = Dict[str, JsonValue]
@@ -93,8 +93,8 @@ def test_invoke_tool_returns_redacted_stable_response_envelope() -> None:
 
     assert envelope["schema_version"] == "trustgraph-legal-mcp-tool-response/v1"
     assert envelope["tool_name"] == "classify_legal_document"
-    assert envelope["group"] == "read"
-    assert envelope["scope"] == "read:documents"
+    assert envelope["group"] == "graph"
+    assert envelope["scope"] == "graph:document-classification"
     assert envelope["pii_profile"]["raw_text_included"] is False
     assert envelope["redaction"]["raw_text_included"] is False
     assert "fixture:sensitive.md" in envelope["source_refs"]

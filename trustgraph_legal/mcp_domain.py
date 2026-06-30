@@ -24,17 +24,17 @@ DEFAULT_COLLECTION: Final = "recova-debt-collection"
 DEFAULT_MANIFEST: Final = Path("tests/fixtures/legal-ocr/manifest.json")
 DEFAULT_ONTOLOGY: Final = Path("resources/ontologies/recova-debt-collection.json")
 TOOL_GROUPS: Final[Dict[str, Tuple[str, str]]] = {
-    "list_debt_collection_tools": ("admin", "admin:tools"),
+    "list_debt_collection_tools": ("read", "read:tools"),
     "ingest_legal_document": ("ingest", "ingest:documents"),
     "ingest_ocr_markdown": ("ingest", "ingest:documents"),
-    "get_ingest_status": ("read", "read:ingest-status"),
-    "classify_legal_document": ("read", "read:documents"),
+    "get_ingest_status": ("ingest", "ingest:ingest-status"),
+    "classify_legal_document": ("graph", "graph:document-classification"),
     "extract_case_packet": ("graph", "graph:case"),
     "get_case_graph": ("graph", "graph:case"),
     "check_case_stop_gates": ("stopgate", "stopgate:check"),
     "check_limitation_status": ("stopgate", "stopgate:check"),
     "check_attachment_target_rules": ("stopgate", "stopgate:check"),
-    "summarize_case_ledger": ("graph", "graph:ledger"),
+    "summarize_case_ledger": ("read", "read:ledger"),
     "recommend_next_action": ("stopgate", "stopgate:recommend"),
     "list_unknown_document_types": ("governance", "governance:review"),
     "review_extracted_fact": ("governance", "governance:review"),
@@ -45,7 +45,7 @@ TOOL_GROUPS: Final[Dict[str, Tuple[str, str]]] = {
 
 @dataclass(frozen=True)
 class ToolDefinition:
-    name: str
+    tool_name: str
     group: str
     scope: str
     description: str
@@ -55,8 +55,8 @@ class ToolDefinition:
     def to_json(self) -> JsonObject:
         return {
             "schema_version": TOOL_CONTRACT_SCHEMA_VERSION,
-            "tool_name": self.name,
-            "name": self.name,
+            "tool_name": self.tool_name,
+            "name": self.tool_name,
             "group": self.group,
             "scope": self.scope,
             "description": self.description,
@@ -133,19 +133,19 @@ def invoke_tool(
     if definition is None:
         return _envelope(
             tool_name,
-            "admin",
-            "admin:tools",
+            "read",
+            "read:tools",
             {"status": "unknown_tool"},
             ["unknown_tool"],
         )
     result = _redact_json(definition.handler(args, root))
     source_refs = _source_refs(result)
-    return _envelope(definition.name, definition.group, definition.scope, result, [], source_refs)
+    return _envelope(definition.tool_name, definition.group, definition.scope, result, [], source_refs)
 
 
 def _definition(tool_name: str) -> Optional[ToolDefinition]:
     for definition in TOOL_DEFINITIONS:
-        if definition.name == tool_name:
+        if definition.tool_name == tool_name:
             return definition
     return None
 
@@ -166,6 +166,7 @@ def _envelope(
         "scope": scope,
         "pii_profile": profile,
         "redaction": {
+            "status": "redacted",
             "default": "redacted",
             "raw_text_included": False,
             "source_text_included": False,
@@ -254,9 +255,40 @@ def _case_graph_result(args: JsonObject, root: Path) -> JsonObject:
 def _stopgate_result(args: JsonObject, root: Path, reason_codes: Optional[Tuple[str, ...]]) -> JsonObject:
     payload = evaluate_case_graph(_case_graph(args, root)).to_json()
     if reason_codes is None:
-        return payload
+        return _normalize_stopgate_payload(payload)
     gates = [gate for gate in _object_list(payload.get("stop_gates")) if gate.get("reason_code") in reason_codes]
-    return {"decision": "보류" if gates else "가능", "stop_gates": gates, "all_case_decision": payload["decision"], "rule_refs": payload["rule_refs"]}
+    return {
+        "case_id": _stopgate_case_id(payload),
+        "decision": "보류" if gates else "가능",
+        "risk_flags": _risk_flags(gates),
+        "source_refs": _source_refs(gates),
+        "stop_gates": gates,
+        "all_case_decision": payload["decision"],
+        "rule_refs": payload["rule_refs"],
+    }
+
+
+def _normalize_stopgate_payload(payload: JsonObject) -> JsonObject:
+    gates = _object_list(payload.get("stop_gates"))
+    normalized = dict(payload)
+    normalized["case_id"] = _stopgate_case_id(payload)
+    normalized["risk_flags"] = _risk_flags(gates)
+    normalized["source_refs"] = _source_refs(gates)
+    return normalized
+
+
+def _stopgate_case_id(payload: JsonObject) -> str:
+    value = payload.get("case_id")
+    return value if isinstance(value, str) and value else "case:unknown"
+
+
+def _risk_flags(gates: List[JsonObject]) -> List[JsonValue]:
+    flags = {
+        str(gate.get("reason_code"))
+        for gate in gates
+        if gate.get("reason_code")
+    }
+    return sorted(flags)
 
 
 def _ledger_summary(args: JsonObject, root: Path) -> JsonObject:
