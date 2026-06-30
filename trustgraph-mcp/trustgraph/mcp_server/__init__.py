@@ -4,4 +4,12 @@ def run():
     return run_server()
 
 
-__all__ = ["run"]
+def __getattr__(name):
+    if name == "McpServer":
+        from .mcp import McpServer
+
+        return McpServer
+    raise AttributeError(name)
+
+
+__all__ = ["run", "McpServer"]
