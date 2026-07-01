@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from functools import partial
 from pathlib import Path
 from typing import Any, AsyncIterator, Protocol
+from urllib.parse import urlparse
 
 from .auth import (
     GatewayTokenVerifier,
@@ -41,6 +42,7 @@ class DebtCollectionServerConfig:
     repo_root: Path | None = None
     pubsub_config: dict[str, Any] | None = None
     lab_bearer_token: str = ""
+    allowed_hosts: tuple[str, ...] = ()
 
 
 @asynccontextmanager
@@ -111,6 +113,9 @@ class DebtCollectionMcpServer:
                 authorizer=authorizer,
             ),
             auth=auth_settings,
+            transport_security=_transport_security_settings(
+                _allowed_hosts(resolved_config),
+            ),
         )
         self.registered_tools: list[JsonObject] = register_debt_collection_brain_tools(
             self.mcp,
@@ -189,6 +194,11 @@ def _auth_settings(**kwargs: str) -> Any:
     return importlib.import_module("mcp.server.auth.settings").AuthSettings(**kwargs)
 
 
+def _transport_security_settings(allowed_hosts: list[str]) -> Any:
+    settings = importlib.import_module("mcp.server.transport_security")
+    return settings.TransportSecuritySettings(allowed_hosts=allowed_hosts)
+
+
 def _get_pubsub(config: dict[str, Any]) -> ClosableBackend:
     return importlib.import_module("trustgraph.base.pubsub").get_pubsub(**config)
 
@@ -213,6 +223,16 @@ def _token_verifier(
     if lab_bearer_token:
         return LabBearerTokenVerifier(lab_bearer_token)
     return GatewayTokenVerifier(websocket_url, authorizer)
+
+
+def _allowed_hosts(config: DebtCollectionServerConfig) -> list[str]:
+    hosts = {"127.0.0.1", "localhost", config.host}
+    hosts.update(config.allowed_hosts)
+    for value in (config.auth_issuer, config.auth_resource_url):
+        parsed = urlparse(value)
+        if parsed.hostname:
+            hosts.add(parsed.hostname)
+    return sorted(host for host in hosts if host)
 
 
 if __name__ == "__main__":

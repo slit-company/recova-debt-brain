@@ -14,9 +14,9 @@ services:
       - --websocket-url
       - ${MCP_WEBSOCKET_URL:-ws://api-gateway:8088/api/v1/socket}
       - --auth-issuer
-      - ${AUTH_ISSUER:-https://mcp-lab.recova.slit.company}
+      - ${AUTH_ISSUER:-https://recova-mcp-lab.slit.company}
       - --auth-resource-url
-      - ${AUTH_RESOURCE_URL:-https://mcp-lab.recova.slit.company/mcp}
+      - ${AUTH_RESOURCE_URL:-https://recova-mcp-lab.slit.company/mcp}
       - --repo-root
       - /app
       - --no-loki-enabled

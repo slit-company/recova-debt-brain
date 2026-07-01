@@ -53,6 +53,7 @@ class FakeFastMCP:
     lifespan: Callable[..., object] | None
     token_verifier: object | None
     auth: object | None
+    transport_security: object | None
     registered: dict[str, ToolCallable] = field(default_factory=dict)
     transport: str = ""
 
@@ -72,6 +73,11 @@ class FakeFastMCP:
 class FakeAuthSettings:
     issuer_url: str
     resource_server_url: str
+
+
+@dataclass(frozen=True, slots=True)
+class FakeTransportSecuritySettings:
+    allowed_hosts: list[str]
 
 
 class FakeTokenVerifier:
@@ -96,8 +102,8 @@ def test_debt_only_server_registers_only_recova_tools(monkeypatch: pytest.Monkey
         host="127.0.0.1",
         port=8800,
         websocket_url="ws://gateway.example/socket",
-        auth_issuer="https://mcp-lab.recova.slit.company",
-        auth_resource_url="https://mcp-lab.recova.slit.company/mcp",
+        auth_issuer="https://recova-mcp-lab.slit.company",
+        auth_resource_url="https://recova-mcp-lab.slit.company/mcp",
         repo_root=REPO_ROOT,
     )
     server = legal_only.DebtCollectionMcpServer(
@@ -111,6 +117,8 @@ def test_debt_only_server_registers_only_recova_tools(monkeypatch: pytest.Monkey
     assert GENERIC_TOOL_NAMES.isdisjoint(server.mcp.registered)
     assert server.mcp.name == "Recova Debt Collection Brain"
     assert server.registered_tools[0]["tool_name"] == "list_debt_collection_tools"
+    assert server.mcp.transport_security is not None
+    assert "recova-mcp-lab.slit.company" in server.mcp.transport_security.allowed_hosts
 
     server.run()
     assert server.mcp.transport == "streamable-http"
@@ -207,12 +215,18 @@ def _install_fake_mcp_sdk(monkeypatch: pytest.MonkeyPatch) -> None:
     fastmcp_module = ModuleType("mcp.server.fastmcp")
     auth_module = ModuleType("mcp.server.auth")
     settings_module = ModuleType("mcp.server.auth.settings")
+    transport_security_module = ModuleType("mcp.server.transport_security")
     middleware_module = ModuleType("mcp.server.auth.middleware")
     auth_context_module = ModuleType("mcp.server.auth.middleware.auth_context")
     provider_module = ModuleType("mcp.server.auth.provider")
 
     setattr(fastmcp_module, "FastMCP", FakeFastMCP)
     setattr(settings_module, "AuthSettings", FakeAuthSettings)
+    setattr(
+        transport_security_module,
+        "TransportSecuritySettings",
+        FakeTransportSecuritySettings,
+    )
     setattr(auth_context_module, "get_access_token", lambda: None)
     setattr(provider_module, "AccessToken", FakeAccessToken)
     setattr(provider_module, "TokenVerifier", FakeTokenVerifier)
@@ -222,6 +236,11 @@ def _install_fake_mcp_sdk(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setitem(sys.modules, "mcp.server.fastmcp", fastmcp_module)
     monkeypatch.setitem(sys.modules, "mcp.server.auth", auth_module)
     monkeypatch.setitem(sys.modules, "mcp.server.auth.settings", settings_module)
+    monkeypatch.setitem(
+        sys.modules,
+        "mcp.server.transport_security",
+        transport_security_module,
+    )
     monkeypatch.setitem(sys.modules, "mcp.server.auth.middleware", middleware_module)
     monkeypatch.setitem(
         sys.modules,

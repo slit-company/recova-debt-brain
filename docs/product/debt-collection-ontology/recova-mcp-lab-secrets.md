@@ -12,8 +12,8 @@ Required server variables:
 Optional deployment variables:
 
 - `SUPABASE_ANON_KEY`: used for anonymous/RLS denial smoke checks.
-- `AUTH_ISSUER`: defaults to `https://mcp-lab.recova.slit.company`.
-- `AUTH_RESOURCE_URL`: defaults to `https://mcp-lab.recova.slit.company/mcp`.
+- `AUTH_ISSUER`: defaults to `https://recova-mcp-lab.slit.company`.
+- `AUTH_RESOURCE_URL`: defaults to `https://recova-mcp-lab.slit.company/mcp`.
 - `MCP_WEBSOCKET_URL`: TrustGraph gateway WebSocket URL.
 
 Local check:
