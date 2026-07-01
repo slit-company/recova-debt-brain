@@ -74,6 +74,38 @@ Those fields are not a place to paste `MCP_LAB_BEARER_TOKEN`. To support Claude 
 
 Preferred path: OAuth bridge. It keeps the MCP server's current Bearer-token boundary while giving Claude web the OAuth flow it expects.
 
+## Codex CLI
+
+Codex CLI can connect directly because it supports streamable HTTP MCP plus a bearer-token environment variable.
+
+Register the server once:
+
+```sh
+codex mcp add recova-debt-brain-lab \
+  --url https://recova-mcp-lab.slit.company/mcp \
+  --bearer-token-env-var MCP_LAB_BEARER_TOKEN
+```
+
+Start Codex with the lab env loaded:
+
+```sh
+set -a
+. /Users/cosmos/dev/ontology/trustgraph/deploy/recova-mcp-lab/.env
+set +a
+codex
+```
+
+Verify:
+
+```text
+Use the recova-debt-brain-lab MCP server.
+Call list_debt_collection_tools and tell me how many tools are available.
+```
+
+Expected: `16` tools, matching the canonical tool list below.
+
+The current Codex session may not hot-reload newly added MCP servers. If the server was just added, start a new Codex session or use `codex exec` after loading the env.
+
 ## First Smoke Test
 
 After connecting, ask the client to list the MCP tools from `recova-debt-brain-lab`.
