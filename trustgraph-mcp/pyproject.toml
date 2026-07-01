@@ -24,6 +24,7 @@ Homepage = "https://github.com/trustgraph-ai/trustgraph"
 
 [project.scripts]
 mcp-server = "trustgraph.mcp_server:run"
+mcp-debt-collection-server = "trustgraph.mcp_server.legal_only:run"
 
 [tool.setuptools.packages.find]
 include = ["trustgraph*"]

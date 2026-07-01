@@ -1,0 +1,160 @@
+from __future__ import annotations
+
+import argparse
+import importlib
+import os
+from contextlib import asynccontextmanager
+from functools import partial
+from pathlib import Path
+from typing import Any, AsyncIterator, Protocol
+
+from .auth import GatewayTokenVerifier, IamScopeAuthorizer, require_token
+from .legal_tools import JsonObject, register_debt_collection_brain_tools
+
+
+class McpRegistry(Protocol):
+    def tool(self, name: str | None = None) -> Any:
+        ...
+
+    def run(self, transport: str) -> None:
+        ...
+
+
+class ClosableBackend(Protocol):
+    def close(self) -> None:
+        ...
+
+
+@asynccontextmanager
+async def debt_collection_lifespan(
+    server: McpRegistry,
+    pubsub_backend: ClosableBackend | None = None,
+) -> AsyncIterator[None]:
+    try:
+        yield None
+    finally:
+        if pubsub_backend is not None:
+            pubsub_backend.close()
+
+
+class DebtCollectionMcpServer:
+    def __init__(
+        self,
+        host: str = "0.0.0.0",
+        port: int = 8000,
+        websocket_url: str = "ws://api-gateway:8088/api/v1/socket",
+        auth_issuer: str = "",
+        auth_resource_url: str = "",
+        repo_root: Path | None = None,
+        pubsub_config: dict[str, Any] | None = None,
+        pubsub_backend: ClosableBackend | None = None,
+        scope_authorizer: Any = None,
+    ) -> None:
+        self.host = host
+        self.port = port
+        self.websocket_url = websocket_url
+        self.repo_root = repo_root
+        self.pubsub_backend = (
+            pubsub_backend
+            if pubsub_backend is not None
+            else _get_pubsub(pubsub_config or {})
+        )
+        authorizer = (
+            scope_authorizer
+            if scope_authorizer is not None
+            else IamScopeAuthorizer(self.pubsub_backend)
+        )
+        auth_settings = _auth_settings(
+            issuer_url=auth_issuer or f"http://{host}:{port}",
+            resource_server_url=auth_resource_url or f"http://{host}:{port}",
+        )
+        lifespan = partial(
+            debt_collection_lifespan,
+            pubsub_backend=self.pubsub_backend,
+        )
+        fast_mcp = _fast_mcp_class()
+        self.mcp = fast_mcp(
+            "Recova Debt Collection Brain",
+            dependencies=["trustgraph-base"],
+            host=self.host,
+            port=self.port,
+            lifespan=lifespan,
+            token_verifier=GatewayTokenVerifier(websocket_url, authorizer),
+            auth=auth_settings,
+        )
+        self.registered_tools: list[JsonObject] = register_debt_collection_brain_tools(
+            self.mcp,
+            repo_root=repo_root,
+            token_resolver=require_token,
+        )
+
+    def run(self) -> None:
+        self.mcp.run(transport="streamable-http")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Recova debt-collection-only MCP server",
+    )
+    parser.add_argument("--host", default="0.0.0.0")
+    parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument(
+        "--websocket-url",
+        default="ws://api-gateway:8088/api/v1/socket",
+    )
+    parser.add_argument(
+        "--auth-issuer",
+        default=os.environ.get("AUTH_ISSUER", ""),
+    )
+    parser.add_argument(
+        "--auth-resource-url",
+        default=os.environ.get("AUTH_RESOURCE_URL", ""),
+    )
+    parser.add_argument("--repo-root", default="")
+    _add_pubsub_args(parser)
+    _add_logging_args(parser)
+    args = parser.parse_args()
+    _setup_logging(vars(args))
+    repo_root = Path(args.repo_root) if args.repo_root else None
+    server = DebtCollectionMcpServer(
+        host=args.host,
+        port=args.port,
+        websocket_url=args.websocket_url,
+        auth_issuer=args.auth_issuer,
+        auth_resource_url=args.auth_resource_url,
+        repo_root=repo_root,
+        pubsub_config=vars(args),
+    )
+    server.run()
+
+
+def run() -> None:
+    main()
+
+
+def _fast_mcp_class() -> Any:
+    return importlib.import_module("mcp.server.fastmcp").FastMCP
+
+
+def _auth_settings(**kwargs: str) -> Any:
+    return importlib.import_module("mcp.server.auth.settings").AuthSettings(**kwargs)
+
+
+def _get_pubsub(config: dict[str, Any]) -> ClosableBackend:
+    return importlib.import_module("trustgraph.base.pubsub").get_pubsub(**config)
+
+
+def _add_pubsub_args(parser: argparse.ArgumentParser) -> None:
+    importlib.import_module("trustgraph.base.pubsub").add_pubsub_args(parser)
+
+
+def _add_logging_args(parser: argparse.ArgumentParser) -> None:
+    importlib.import_module("trustgraph.base.logging").add_logging_args(parser)
+
+
+def _setup_logging(config: dict[str, Any]) -> None:
+    importlib.import_module("trustgraph.base.logging").setup_logging(config)
+
+
+if __name__ == "__main__":
+    main()
