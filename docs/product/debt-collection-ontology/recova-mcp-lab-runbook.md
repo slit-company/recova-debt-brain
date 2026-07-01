@@ -34,13 +34,15 @@ For a client-focused quickstart, see
 }
 ```
 
-For Hermes, Claude, OpenAI/ChatGPT-compatible MCP clients, and generic MCP clients, the contract is the same:
+For Hermes, Claude Code or Desktop-style runtimes, OpenAI/ChatGPT-compatible MCP clients with custom header support, and generic MCP clients, the contract is the same:
 
 - transport: streamable HTTP
 - endpoint: `https://recova-mcp-lab.slit.company/mcp`
 - auth: `Authorization: Bearer <lab token>`
 - exposed tools: exactly 16 Recova debt-brain tools
 - blocked surface: generic TrustGraph tools and real-world execution actions
+
+Claude web custom connectors do not currently fit this Bearer-header quickstart because the Claude web UI asks for OAuth client credentials rather than arbitrary HTTP headers. Use an OAuth bridge before connecting Claude web.
 
 Never pass `authorization`, `token`, or `bearer` as a tool argument. Auth belongs in the MCP HTTP context only.
 

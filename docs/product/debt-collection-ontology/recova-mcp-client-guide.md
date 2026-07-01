@@ -2,7 +2,9 @@
 
 Status: lab quickstart
 
-Use this when connecting the Recova debt-brain MCP lab endpoint from an external agent client such as Hermes, Claude, ChatGPT/OpenAI-compatible MCP clients, Cursor-style MCP clients, or any generic streamable HTTP MCP runtime.
+Use this when connecting the Recova debt-brain MCP lab endpoint from an external agent client that can send custom MCP HTTP headers, such as Hermes, Claude Code or Desktop-style MCP runtimes, ChatGPT/OpenAI-compatible MCP clients with header support, Cursor-style MCP clients, or any generic streamable HTTP MCP runtime.
+
+Claude web custom connectors are different: the Claude web UI does not provide a raw header field. It asks for an MCP URL and optional OAuth client credentials. The current Recova lab endpoint is a fixed Bearer-token protected MCP server, not a full OAuth authorization server, so Claude web needs an OAuth bridge before it can connect directly.
 
 ## Connection Values
 
@@ -44,6 +46,33 @@ If the client UI asks for fields instead of JSON, enter:
 - Header value: `Bearer <lab token>`
 
 Do not configure fields named `authorization`, `token`, or `bearer` inside tool arguments.
+
+## Claude Web Status
+
+Claude web custom connectors are blocked until the lab has OAuth-compatible auth in front of the MCP server.
+
+Current lab auth:
+
+```text
+Authorization: Bearer <MCP_LAB_BEARER_TOKEN>
+```
+
+Claude web connector form:
+
+```text
+Name
+MCP URL
+OAuth client ID
+OAuth client secret
+```
+
+Those fields are not a place to paste `MCP_LAB_BEARER_TOKEN`. To support Claude web, add one of these:
+
+1. An OAuth bridge in front of the MCP endpoint that implements discovery, authorize, and token exchange, then forwards a server-side Bearer token to Recova MCP.
+2. Native OAuth support in the Recova MCP server.
+3. A separate no-auth or network-restricted test endpoint, only for disposable demos.
+
+Preferred path: OAuth bridge. It keeps the MCP server's current Bearer-token boundary while giving Claude web the OAuth flow it expects.
 
 ## First Smoke Test
 
