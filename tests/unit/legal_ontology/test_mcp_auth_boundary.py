@@ -4,7 +4,7 @@ import asyncio
 import sys
 import types
 from pathlib import Path
-from typing import List
+from typing import Any, List
 
 import pytest
 
@@ -90,6 +90,23 @@ def test_scope_authorizer_failure_is_not_reported_as_bad_token(monkeypatch: pyte
         )
 
 
+def test_lab_bearer_token_verifier_accepts_only_matching_token(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _install_mcp_auth_stubs(monkeypatch)
+    auth = _mcp_server_module("auth")
+
+    verifier = auth.LabBearerTokenVerifier("lab-token")
+    accepted = asyncio.run(verifier.verify_token("lab-token"))
+    rejected = asyncio.run(verifier.verify_token("wrong-token"))
+
+    assert accepted is not None
+    assert accepted.client_id == "recova-lab-client"
+    assert "trustgraph-legal:mcp-domain" in accepted.scopes
+    assert "stopgate:check" in accepted.scopes
+    assert rejected is None
+
+
 def test_iam_scope_authorizer_uses_internal_authorise_many(monkeypatch: pytest.MonkeyPatch) -> None:
     _install_mcp_auth_stubs(monkeypatch)
     auth = _mcp_server_module("auth")
@@ -147,7 +164,7 @@ def test_iam_scope_authorizer_uses_internal_authorise_many(monkeypatch: pytest.M
     assert {check["capability"] for check in checks} >= {"read:tools", "governance:review"}
 
 
-def _mcp_server_module(name: str) -> object:
+def _mcp_server_module(name: str) -> Any:
     for path in (TRUSTGRAPH_MCP_PATH, TRUSTGRAPH_BASE_PATH):
         sys.path.insert(0, str(path))
     try:
@@ -181,9 +198,13 @@ def _install_mcp_auth_stubs(monkeypatch: pytest.MonkeyPatch) -> None:
         ),
         "mcp.server.auth.provider": types.ModuleType("mcp.server.auth.provider"),
     }
-    modules["mcp.server.auth.middleware.auth_context"].get_access_token = lambda: None
-    modules["mcp.server.auth.provider"].AccessToken = AccessToken
-    modules["mcp.server.auth.provider"].TokenVerifier = TokenVerifier
+    setattr(
+        modules["mcp.server.auth.middleware.auth_context"],
+        "get_access_token",
+        lambda: None,
+    )
+    setattr(modules["mcp.server.auth.provider"], "AccessToken", AccessToken)
+    setattr(modules["mcp.server.auth.provider"], "TokenVerifier", TokenVerifier)
     for name, module in modules.items():
         monkeypatch.setitem(sys.modules, name, module)
     sys.modules.pop("trustgraph.mcp_server.auth", None)

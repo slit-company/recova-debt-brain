@@ -9,7 +9,12 @@ from functools import partial
 from pathlib import Path
 from typing import Any, AsyncIterator, Protocol
 
-from .auth import GatewayTokenVerifier, IamScopeAuthorizer, require_token
+from .auth import (
+    GatewayTokenVerifier,
+    IamScopeAuthorizer,
+    LabBearerTokenVerifier,
+    require_token,
+)
 from .legal_tools import JsonObject, register_debt_collection_brain_tools
 
 
@@ -35,6 +40,7 @@ class DebtCollectionServerConfig:
     auth_resource_url: str = ""
     repo_root: Path | None = None
     pubsub_config: dict[str, Any] | None = None
+    lab_bearer_token: str = ""
 
 
 @asynccontextmanager
@@ -62,8 +68,13 @@ class DebtCollectionMcpServer:
         self.websocket_url = resolved_config.websocket_url
         self.repo_root = resolved_config.repo_root
         self.pubsub_backend = pubsub_backend
+        lab_bearer_token = resolved_config.lab_bearer_token
         lazy_authorizer = None
-        if pubsub_backend is None and scope_authorizer is None:
+        if (
+            not lab_bearer_token
+            and pubsub_backend is None
+            and scope_authorizer is None
+        ):
             lazy_authorizer = _LazyIamScopeAuthorizer(
                 resolved_config.pubsub_config or {}
             )
@@ -94,7 +105,11 @@ class DebtCollectionMcpServer:
             host=self.host,
             port=self.port,
             lifespan=lifespan,
-            token_verifier=GatewayTokenVerifier(self.websocket_url, authorizer),
+            token_verifier=_token_verifier(
+                lab_bearer_token=lab_bearer_token,
+                websocket_url=self.websocket_url,
+                authorizer=authorizer,
+            ),
             auth=auth_settings,
         )
         self.registered_tools: list[JsonObject] = register_debt_collection_brain_tools(
@@ -156,6 +171,7 @@ def main() -> None:
         auth_resource_url=args.auth_resource_url,
         repo_root=repo_root,
         pubsub_config=vars(args),
+        lab_bearer_token=os.environ.get("MCP_LAB_BEARER_TOKEN", ""),
     )
     server = DebtCollectionMcpServer(config=config)
     server.run()
@@ -187,6 +203,16 @@ def _add_logging_args(parser: argparse.ArgumentParser) -> None:
 
 def _setup_logging(config: dict[str, Any]) -> None:
     importlib.import_module("trustgraph.base.logging").setup_logging(config)
+
+
+def _token_verifier(
+    lab_bearer_token: str,
+    websocket_url: str,
+    authorizer: Any,
+) -> Any:
+    if lab_bearer_token:
+        return LabBearerTokenVerifier(lab_bearer_token)
+    return GatewayTokenVerifier(websocket_url, authorizer)
 
 
 if __name__ == "__main__":

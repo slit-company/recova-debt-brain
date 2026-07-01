@@ -166,6 +166,29 @@ def test_debt_only_server_defers_pubsub_until_token_authorization(
     assert list(server.mcp.registered) == EXPECTED_TOOL_NAMES
 
 
+def test_debt_only_server_supports_lab_bearer_without_pubsub(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _install_fake_mcp_sdk(monkeypatch)
+    _install_local_packages()
+    legal_only = importlib.import_module("trustgraph.mcp_server.legal_only")
+    monkeypatch.setattr(
+        legal_only,
+        "_get_pubsub",
+        lambda config: (_ for _ in ()).throw(AssertionError("eager pubsub")),
+    )
+
+    server = legal_only.DebtCollectionMcpServer(
+        config=legal_only.DebtCollectionServerConfig(
+            repo_root=REPO_ROOT,
+            lab_bearer_token="lab-token",
+        ),
+    )
+
+    assert list(server.mcp.registered) == EXPECTED_TOOL_NAMES
+    assert type(server.mcp.token_verifier).__name__ == "LabBearerTokenVerifier"
+
+
 class _ClosableBackend:
     def close(self) -> None:
         return None

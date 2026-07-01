@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import logging
+import hmac
 import uuid
+from hashlib import sha256
 from typing import Any
 
 from mcp.server.auth.middleware.auth_context import get_access_token
@@ -29,6 +31,7 @@ class GatewayTokenVerifier(TokenVerifier):
         websocket_url: str,
         scope_authorizer: Any = None,
     ):
+        super().__init__()
         self.websocket_url = websocket_url
         self.scope_authorizer = scope_authorizer
 
@@ -67,6 +70,24 @@ class GatewayTokenVerifier(TokenVerifier):
             token=token,
             client_id=_identity_client_id(identity),
             scopes=authorised_scopes,
+        )
+
+
+class LabBearerTokenVerifier(TokenVerifier):
+    def __init__(self, bearer_token: str):
+        super().__init__()
+        self.token_sha256 = _token_sha256(bearer_token)
+
+    async def verify_token(self, token: str) -> AccessToken | None:
+        if not token:
+            return None
+        if not hmac.compare_digest(_token_sha256(token), self.token_sha256):
+            return None
+        scopes = sorted({LEGAL_MCP_GATEWAY_SCOPE, *_debt_tool_scopes()})
+        return AccessToken(
+            token=token,
+            client_id="recova-lab-client",
+            scopes=scopes,
         )
 
 
@@ -168,6 +189,10 @@ def _scope_checks(scopes: list[str]) -> list[dict[str, Any]]:
         }
         for scope in scopes
     ]
+
+
+def _token_sha256(token: str) -> str:
+    return sha256(token.encode("utf-8")).hexdigest()
 
 
 async def _authorised_legal_scopes(
