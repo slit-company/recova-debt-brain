@@ -1,0 +1,9 @@
+Command: supabase start
+Result: PASS
+
+Summary:
+- Docker Desktop daemon was started locally.
+- Supabase local stack images were pulled.
+- The local Supabase stack started successfully.
+- Migration 20260701000100_recova_lab_memory.sql was applied during startup.
+- Raw CLI output was not retained because Supabase printed local development keys.
