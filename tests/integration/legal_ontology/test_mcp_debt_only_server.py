@@ -92,13 +92,16 @@ def test_debt_only_server_registers_only_recova_tools(monkeypatch: pytest.Monkey
     legal_only = importlib.import_module("trustgraph.mcp_server.legal_only")
 
     # When: the debt-only server is constructed for the public lab endpoint.
-    server = legal_only.DebtCollectionMcpServer(
+    config = legal_only.DebtCollectionServerConfig(
         host="127.0.0.1",
         port=8800,
         websocket_url="ws://gateway.example/socket",
         auth_issuer="https://mcp-lab.recova.slit.company",
         auth_resource_url="https://mcp-lab.recova.slit.company/mcp",
         repo_root=REPO_ROOT,
+    )
+    server = legal_only.DebtCollectionMcpServer(
+        config=config,
         pubsub_backend=_ClosableBackend(),
         scope_authorizer=lambda identity: ["read:tools"],
     )
@@ -125,8 +128,9 @@ def test_debt_only_registered_tool_uses_context_auth(monkeypatch: pytest.MonkeyP
         scopes=("trustgraph-legal:mcp-domain",),
     )
     monkeypatch.setattr(legal_only, "require_token", lambda scope: auth)
+    config = legal_only.DebtCollectionServerConfig(repo_root=REPO_ROOT)
     server = legal_only.DebtCollectionMcpServer(
-        repo_root=REPO_ROOT,
+        config=config,
         pubsub_backend=_ClosableBackend(),
         scope_authorizer=lambda identity: ["read:tools"],
     )

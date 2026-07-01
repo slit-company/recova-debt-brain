@@ -4,6 +4,7 @@ import argparse
 import importlib
 import os
 from contextlib import asynccontextmanager
+from dataclasses import dataclass
 from functools import partial
 from pathlib import Path
 from typing import Any, AsyncIterator, Protocol
@@ -25,6 +26,17 @@ class ClosableBackend(Protocol):
         ...
 
 
+@dataclass(frozen=True, slots=True)
+class DebtCollectionServerConfig:
+    host: str = "0.0.0.0"
+    port: int = 8000
+    websocket_url: str = "ws://api-gateway:8088/api/v1/socket"
+    auth_issuer: str = ""
+    auth_resource_url: str = ""
+    repo_root: Path | None = None
+    pubsub_config: dict[str, Any] | None = None
+
+
 @asynccontextmanager
 async def debt_collection_lifespan(
     server: McpRegistry,
@@ -40,24 +52,19 @@ async def debt_collection_lifespan(
 class DebtCollectionMcpServer:
     def __init__(
         self,
-        host: str = "0.0.0.0",
-        port: int = 8000,
-        websocket_url: str = "ws://api-gateway:8088/api/v1/socket",
-        auth_issuer: str = "",
-        auth_resource_url: str = "",
-        repo_root: Path | None = None,
-        pubsub_config: dict[str, Any] | None = None,
+        config: DebtCollectionServerConfig | None = None,
         pubsub_backend: ClosableBackend | None = None,
         scope_authorizer: Any = None,
     ) -> None:
-        self.host = host
-        self.port = port
-        self.websocket_url = websocket_url
-        self.repo_root = repo_root
+        resolved_config = config or DebtCollectionServerConfig()
+        self.host = resolved_config.host
+        self.port = resolved_config.port
+        self.websocket_url = resolved_config.websocket_url
+        self.repo_root = resolved_config.repo_root
         self.pubsub_backend = (
             pubsub_backend
             if pubsub_backend is not None
-            else _get_pubsub(pubsub_config or {})
+            else _get_pubsub(resolved_config.pubsub_config or {})
         )
         authorizer = (
             scope_authorizer
@@ -65,8 +72,11 @@ class DebtCollectionMcpServer:
             else IamScopeAuthorizer(self.pubsub_backend)
         )
         auth_settings = _auth_settings(
-            issuer_url=auth_issuer or f"http://{host}:{port}",
-            resource_server_url=auth_resource_url or f"http://{host}:{port}",
+            issuer_url=resolved_config.auth_issuer or f"http://{self.host}:{self.port}",
+            resource_server_url=(
+                resolved_config.auth_resource_url
+                or f"http://{self.host}:{self.port}"
+            ),
         )
         lifespan = partial(
             debt_collection_lifespan,
@@ -79,12 +89,12 @@ class DebtCollectionMcpServer:
             host=self.host,
             port=self.port,
             lifespan=lifespan,
-            token_verifier=GatewayTokenVerifier(websocket_url, authorizer),
+            token_verifier=GatewayTokenVerifier(self.websocket_url, authorizer),
             auth=auth_settings,
         )
         self.registered_tools: list[JsonObject] = register_debt_collection_brain_tools(
             self.mcp,
-            repo_root=repo_root,
+            repo_root=self.repo_root,
             token_resolver=require_token,
         )
 
@@ -116,7 +126,7 @@ def main() -> None:
     args = parser.parse_args()
     _setup_logging(vars(args))
     repo_root = Path(args.repo_root) if args.repo_root else None
-    server = DebtCollectionMcpServer(
+    config = DebtCollectionServerConfig(
         host=args.host,
         port=args.port,
         websocket_url=args.websocket_url,
@@ -125,6 +135,7 @@ def main() -> None:
         repo_root=repo_root,
         pubsub_config=vars(args),
     )
+    server = DebtCollectionMcpServer(config=config)
     server.run()
 
 
