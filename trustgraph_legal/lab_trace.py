@@ -4,8 +4,8 @@ import json
 import os
 import re
 import time
-import urllib.request
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from hashlib import sha256
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
@@ -18,6 +18,8 @@ JsonObject = Dict[str, JsonValue]
 JsonAnyObject = Dict[str, Any]
 JsonRows = List[JsonAnyObject]
 DEFAULT_OWNER_EMAIL = "dev@slit.company"
+DEFAULT_DECISION = "보류"
+VALID_DECISIONS = {"가능", "보류", "불가능"}
 _BLOCKED_DB_TERMS = re.compile(
     r"(?i)(resident[_ -]?id|national[_ -]?id|rrn|"
     r"authorization:[\s]*bearer|service_role|"
@@ -73,6 +75,58 @@ def tool_trace_row(invocation: TraceInvocation) -> JsonAnyObject:
     }
 
 
+def linked_tool_trace_row(
+    invocation: TraceInvocation,
+    evaluation_run_id: str,
+    judgment_run_id: str,
+) -> JsonAnyObject:
+    row = tool_trace_row(invocation)
+    row["evaluation_run_id"] = evaluation_run_id
+    row["judgment_run_id"] = judgment_run_id
+    return row
+
+
+def evaluation_run_row(
+    invocation: TraceInvocation,
+    run_ref: str,
+    tool_count: Optional[int],
+) -> JsonAnyObject:
+    envelope = invocation.envelope
+    result = _object(envelope.get("result"))
+    return {
+        "lab_owner_email": invocation.lab_owner_email,
+        "run_ref": run_ref,
+        "tool_count": tool_count,
+        "completed_at": _utc_now(),
+        "summary_redacted": db_safe_json(
+            {
+                "tool_name": str(envelope.get("tool_name") or invocation.tool_name),
+                "decision": _decision(result),
+                "status": _status(envelope, result),
+                "source_ref_count": len(_list(envelope.get("source_refs"))),
+            }
+        ),
+    }
+
+
+def judgment_run_row(
+    invocation: TraceInvocation,
+    evaluation_run_id: str,
+) -> JsonAnyObject:
+    envelope = invocation.envelope
+    result = _object(envelope.get("result"))
+    return {
+        "lab_owner_email": invocation.lab_owner_email,
+        "evaluation_run_id": evaluation_run_id,
+        "tool_name": str(envelope.get("tool_name") or invocation.tool_name),
+        "decision": _decision(result),
+        "confidence": _confidence(result),
+        "failure_labels": _failure_labels(result),
+        "actual_answer_redacted": db_safe_json(result),
+        "source_refs": _list(envelope.get("source_refs")),
+    }
+
+
 def rows_for_fixture_manifest(
     manifest_path: Path,
     repo_root: Optional[Path] = None,
@@ -112,24 +166,12 @@ def fake_supabase_payload(rows: JsonRows) -> JsonAnyObject:
 def write_rows_to_supabase(rows: JsonRows, config: SupabaseConfig) -> JsonAnyObject:
     if not rows:
         return {"status": "skipped", "row_count": 0}
-    endpoint = "{}/rest/v1/tool_traces".format(config.url.rstrip("/"))
-    request = urllib.request.Request(
-        endpoint,
-        data=json.dumps(rows, ensure_ascii=False).encode("utf-8"),
-        headers={
-            "apikey": config.service_role_key,
-            "authorization": "Bearer {}".format(config.service_role_key),
-            "content-type": "application/json",
-            "prefer": "return=representation",
-        },
-        method="POST",
-    )
-    with urllib.request.urlopen(request, timeout=20) as response:
-        body = response.read().decode("utf-8")
-    inserted = json.loads(body) if body else []
+    from trustgraph_legal.lab_trace_supabase import post_supabase_rows
+
+    inserted = post_supabase_rows("tool_traces", rows, config)
     return {
         "status": "recorded",
-        "row_count": len(inserted) if isinstance(inserted, list) else len(rows),
+        "row_count": len(inserted) if inserted else len(rows),
     }
 
 
@@ -170,6 +212,31 @@ def _status(envelope: JsonAnyObject, result: JsonAnyObject) -> str:
     if status == "error" or "error" in warnings:
         return "error"
     return "ok"
+
+
+def _decision(result: JsonAnyObject) -> str:
+    decision = str(result.get("decision") or "")
+    if decision in VALID_DECISIONS:
+        return decision
+    return DEFAULT_DECISION
+
+
+def _confidence(result: JsonAnyObject) -> float:
+    value = result.get("confidence")
+    if isinstance(value, (int, float)):
+        return max(0.0, min(1.0, round(float(value), 3)))
+    return 0.0
+
+
+def _failure_labels(result: JsonAnyObject) -> List[str]:
+    labels = _list(result.get("failure_labels"))
+    if not labels:
+        labels = _list(result.get("risk_flags"))
+    return [str(item) for item in labels]
+
+
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
 
 
 def _hash_json(value: Any) -> str:

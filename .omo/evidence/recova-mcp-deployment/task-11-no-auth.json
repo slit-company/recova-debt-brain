@@ -1,5 +1,7 @@
 {
   "status": "auth_rejected",
   "auth_failure": true,
-  "error_type": "ExceptionGroup"
+  "error_type": "ExceptionGroup",
+  "error_summary": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception) | HTTPStatusError: Client error '401 Unauthorized' for url 'https://recova-mcp-lab.slit.company/mcp' For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401 | CancelledError: Cancelled via cancel scope 10ac104b0 | WouldBlock: ",
+  "auth_error_detected": true
 }

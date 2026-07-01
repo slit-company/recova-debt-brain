@@ -7,7 +7,6 @@ Required server variables:
 - `MCP_LAB_BEARER_TOKEN`: lab client bearer token.
 - `SUPABASE_URL`: Supabase project URL for `dev@slit.company`.
 - `SUPABASE_SERVICE_ROLE_KEY`: server-only key for redacted trace writes.
-- `CLOUDFLARE_API_TOKEN`: DNS mutation token used only after server target is known.
 
 Optional deployment variables:
 
@@ -15,6 +14,11 @@ Optional deployment variables:
 - `AUTH_ISSUER`: defaults to `https://recova-mcp-lab.slit.company`.
 - `AUTH_RESOURCE_URL`: defaults to `https://recova-mcp-lab.slit.company/mcp`.
 - `MCP_WEBSOCKET_URL`: TrustGraph gateway WebSocket URL.
+
+Operator-only variables:
+
+- `CLOUDFLARE_API_TOKEN`: DNS mutation token. Keep it in the operator shell or
+  Cloudflare CLI context only; never pass it into the MCP server runtime.
 
 Local check:
 

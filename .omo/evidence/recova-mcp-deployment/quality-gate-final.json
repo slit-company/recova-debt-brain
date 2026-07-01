@@ -1,0 +1,184 @@
+{
+  "codeReview": {
+    "by": "lazycodex-code-reviewer",
+    "recommendation": "APPROVE",
+    "codeQualityStatus": "CLEAR",
+    "reportPath": ".omo/evidence/recova-mcp-deployment/final-code-reviewer-2.md",
+    "evidence": "Final code review 2 approved the corrective diff, explicitly applied omo:programming and omo:remove-ai-slops perspectives, verified pure LOC under 250, bounded auth exception handling, trace/evaluation/judgment recording, loopback compose binding, and focused tests.",
+    "blockers": []
+  },
+  "manualQa": {
+    "by": "lazycodex-qa-executor",
+    "status": "passed",
+    "evidence": "Final manual QA 2 approved public/no-auth behavior and artifact consistency without reading secrets.",
+    "surfaceEvidence": [
+      {
+        "id": "surface-live-https-unauth",
+        "criterionRef": "C001",
+        "surface": "http",
+        "invocation": "curl -i --max-time 20 https://recova-mcp-lab.slit.company/mcp",
+        "verdict": "passed",
+        "artifactRefs": [
+          "https-unauth"
+        ]
+      },
+      {
+        "id": "surface-live-http-unauth",
+        "criterionRef": "C002",
+        "surface": "http",
+        "invocation": "curl -i --max-time 20 http://recova-mcp-lab.slit.company/mcp",
+        "verdict": "passed",
+        "artifactRefs": [
+          "http-unauth"
+        ]
+      },
+      {
+        "id": "surface-live-smoke-json",
+        "criterionRef": "C001",
+        "surface": "data",
+        "invocation": "Inspect task-11-mcp-smoke.json for 16 tools and recorded trace/evaluation/judgment statuses.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "mcp-smoke-json"
+        ]
+      },
+      {
+        "id": "surface-supabase-linked-rows",
+        "criterionRef": "C001",
+        "surface": "data",
+        "invocation": "Inspect task-10-trace-count.json for recent evaluation_runs, judgment_runs, and linked tool_traces.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "trace-count-json"
+        ]
+      },
+      {
+        "id": "surface-native-restart",
+        "criterionRef": "C003",
+        "surface": "cli",
+        "invocation": "Restart native mini process and curl local origin /mcp without auth.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "native-restart"
+        ]
+      }
+    ],
+    "adversarialCases": [
+      {
+        "id": "adv-no-auth-client-401",
+        "criterionRef": "C002",
+        "scenario": "MCP client without bearer token must fail for auth reasons, not arbitrary connection reasons.",
+        "expectedBehavior": "task-11-no-auth.json reports auth_rejected, auth_error_detected true, and 401 Unauthorized in error summary.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "mcp-no-auth-json"
+        ]
+      },
+      {
+        "id": "adv-generic-execution-tools-absent",
+        "criterionRef": "C002",
+        "scenario": "Generic TrustGraph and real-world execution tools must not appear in public tool surface.",
+        "expectedBehavior": "Smoke evidence has generic_tools and execution_tools as empty arrays while tool_count remains 16.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "mcp-smoke-json"
+        ]
+      },
+      {
+        "id": "adv-red-first-regression-proof",
+        "criterionRef": "C003",
+        "scenario": "Corrective tests must fail against the previous source before fixes.",
+        "expectedBehavior": "corrective-red-first.txt shows failures on missing trace functions, missing smoke validators, Cloudflare runtime token, and public 8000 exposure.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "red-first"
+        ]
+      }
+    ],
+    "artifactRefs": [
+      {
+        "id": "https-unauth",
+        "kind": "http-dump",
+        "description": "Stored HTTPS no-auth transcript showing HTTP/2 401.",
+        "path": ".omo/evidence/recova-mcp-deployment/final-review-https-unauth.txt"
+      },
+      {
+        "id": "http-unauth",
+        "kind": "http-dump",
+        "description": "Stored HTTP no-auth transcript showing HTTP/1.1 401 Unauthorized.",
+        "path": ".omo/evidence/recova-mcp-deployment/final-review-http-unauth.txt"
+      },
+      {
+        "id": "mcp-smoke-json",
+        "kind": "data-diff",
+        "description": "Authenticated MCP smoke JSON with 16 tools and recorded trace/evaluation/judgment.",
+        "path": ".omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json"
+      },
+      {
+        "id": "mcp-no-auth-json",
+        "kind": "data-diff",
+        "description": "Unauthenticated MCP client smoke JSON with 401 auth evidence.",
+        "path": ".omo/evidence/recova-mcp-deployment/task-11-no-auth.json"
+      },
+      {
+        "id": "trace-count-json",
+        "kind": "data-diff",
+        "description": "Supabase recent row evidence for evaluation, judgment, and linked tool trace records.",
+        "path": ".omo/evidence/recova-mcp-deployment/task-10-trace-count.json"
+      },
+      {
+        "id": "native-restart",
+        "kind": "cli-transcript",
+        "description": "Native mini process restart and local origin 401 proof.",
+        "path": ".omo/evidence/recova-mcp-deployment/task-9-mini-native-restart.txt"
+      },
+      {
+        "id": "red-first",
+        "kind": "cli-transcript",
+        "description": "RED/failing-first reproduction against previous source.",
+        "path": ".omo/evidence/recova-mcp-deployment/corrective-red-first.txt"
+      },
+      {
+        "id": "manual-qa-report",
+        "kind": "log",
+        "description": "Final manual QA reviewer 2 approval report.",
+        "path": ".omo/evidence/recova-mcp-deployment/final-manual-qa-reviewer-2.md"
+      }
+    ]
+  },
+  "gateReview": {
+    "by": "lazycodex-gate-reviewer",
+    "recommendation": "APPROVE",
+    "reportPath": ".omo/evidence/recova-mcp-deployment/final-gate-reviewer-3.md",
+    "evidence": "Final gate reviewer 3 approved after verifying code review, RED-first evidence, live no-auth probes, smoke JSON, Supabase linked rows, native restart, sensitive scan, and full test rerun.",
+    "blockers": []
+  },
+  "iteration": {
+    "fullRerun": true,
+    "status": "passed",
+    "rerunCommands": [
+      "/opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology tests/integration/legal_ontology -q",
+      "/opt/homebrew/bin/python3 -m py_compile scripts/recova_mcp/mcp_lab_smoke.py scripts/recova_mcp/mcp_smoke_auth.py trustgraph_legal/lab_trace.py trustgraph_legal/lab_trace_supabase.py tests/unit/legal_ontology/test_lab_trace.py tests/unit/legal_ontology/test_mcp_lab_smoke.py tests/unit/legal_ontology/test_recova_mcp_deployment_config.py",
+      "git diff --check",
+      "sensitive scan recorded in f4-sensitive-scan.txt"
+    ],
+    "evidence": "Full legal ontology unit/integration suite passed 58 tests; changed Python files compiled; git diff check passed; sensitive scan reported NO_FINDINGS."
+  },
+  "criteriaCoverage": {
+    "totalCriteria": 3,
+    "passCount": 3,
+    "originalIntent": "Complete the Recova debt-brain MCP lab deployment under ULW, with public debt-only MCP endpoint, Supabase redacted experiment memory, DNS/auth/runtime proof, no generic or execution tools, and durable evidence.",
+    "desiredOutcome": "A lab-ready MCP endpoint at https://recova-mcp-lab.slit.company/mcp that rejects missing auth, exposes exactly 16 Recova debt tools, records evaluation/judgment/tool traces in Supabase, and has verified rollback/runbook/evidence.",
+    "userOutcomeReview": "The live lab behavior and evidence bundle meet the requested MCP deployment closure for testing: auth rejection works, authorized smoke succeeded, Supabase linked rows exist, operations restart proof exists, and final reviewers approved.",
+    "adversarialClassesCovered": [
+      "missing bearer token",
+      "generic TrustGraph tool exposure",
+      "real-world execution tool exposure",
+      "PII-shaped input rejection or redaction",
+      "trace persistence missing",
+      "runtime credential leakage",
+      "public origin port exposure",
+      "regression against previous source"
+    ]
+  }
+}

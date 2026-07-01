@@ -1,0 +1,14 @@
+HTTP/1.1 401 Unauthorized
+Date: Wed, 01 Jul 2026 16:56:51 GMT
+Content-Type: application/json
+Content-Length: 74
+Connection: keep-alive
+Server: cloudflare
+Www-Authenticate: Bearer error="invalid_token", error_description="Authentication required", resource_metadata="https://recova-mcp-lab.slit.company/.well-known/oauth-protected-resource/mcp"
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Cf-Cache-Status: DYNAMIC
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=im4OE6RcUZn5ba4RJlLta%2FAbJg2KbMACQAZGpR8lsb3uvfDc2KOCXLigt4W2XQ1SgeMJixJP%2BldJejwVUzG%2BNjUoVRj6l%2BHEZpJES4E%2BCq7QY5Erb1XiVBmdw%2FTl%2FIpvuuc1FlmKgGTMYscmEZs%3D"}]}
+CF-RAY: a146f2440fc4091a-LAX
+alt-svc: h3=":443"; ma=86400
+
+{"error": "invalid_token", "error_description": "Authentication required"}

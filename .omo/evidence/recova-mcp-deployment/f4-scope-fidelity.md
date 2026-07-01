@@ -11,7 +11,9 @@ Scope promises checked:
 - Supabase is used for memory/evaluation traces, not as the MCP runtime.
 - The MCP runtime is Python FastMCP on `mini` behind Cloudflare Tunnel.
 - Missing auth is rejected.
-- Trace rows are redacted and recorded in Supabase.
+- Evaluation, judgment, and tool trace rows are redacted and recorded in Supabase.
+- Docker/Caddy packaging keeps the MCP origin bound to loopback and does not inject Cloudflare DNS credentials into the MCP runtime.
+- Live restart proof is native Python plus Cloudflare Tunnel, matching the current `mini` deployment rather than pretending the host runs Docker/Caddy.
 - The runbook states lab-ready, not production-ready.
 
 Secret/PII review:

@@ -48,18 +48,17 @@ services:
       - --websocket-url
       - ws://api-gateway:8088/api/v1/socket
       - --auth-issuer
-      - https://mcp-lab.recova.slit.company
+      - https://recova-mcp-lab.slit.company
       - --auth-resource-url
-      - https://mcp-lab.recova.slit.company/mcp
+      - https://recova-mcp-lab.slit.company/mcp
       - --repo-root
       - /app
       - --no-loki-enabled
     environment:
-      CLOUDFLARE_API_TOKEN: ""
-      MCP_LAB_BEARER_TOKEN: ""
-      SUPABASE_ANON_KEY: ""
-      SUPABASE_SERVICE_ROLE_KEY: ""
-      SUPABASE_URL: ""
+      MCP_LAB_BEARER_TOKEN: replace-with-lab-token
+      SUPABASE_ANON_KEY: replace-with-anon-key
+      SUPABASE_SERVICE_ROLE_KEY: replace-with-service-role-key
+      SUPABASE_URL: https://replace-with-project-ref.supabase.co
     healthcheck:
       test:
         - CMD
@@ -72,6 +71,7 @@ services:
       default: null
     ports:
       - mode: ingress
+        host_ip: 127.0.0.1
         target: 8000
         published: "8000"
         protocol: tcp

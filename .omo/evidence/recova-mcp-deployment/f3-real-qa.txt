@@ -23,6 +23,8 @@ Observed:
 - execution_tools: []
 - decision: 보류
 - trace_status: recorded
+- evaluation_status: recorded
+- judgment_status: recorded
 
 Unauthenticated MCP client smoke:
 See task-11-no-auth.json.
@@ -30,6 +32,11 @@ See task-11-no-auth.json.
 Observed:
 - status: auth_rejected
 - auth_failure: true
+- auth_error_detected: true
+- error_summary includes HTTP 401 Unauthorized
+
+Native restart:
+See task-9-mini-native-restart.txt. The live `mini` native Python MCP process restarted from old PID to new PID, and the local origin returned 401 without auth.
 
 Supabase trace:
-See task-10-trace-count.json. Recent tool trace rows include live check_case_stop_gates calls.
+See task-10-trace-count.json. Recent Supabase rows include linked evaluation_runs, judgment_runs, and tool_traces for the live check_case_stop_gates smoke.

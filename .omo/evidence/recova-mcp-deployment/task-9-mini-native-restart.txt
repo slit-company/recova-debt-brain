@@ -1,0 +1,4 @@
+old_pid=85097
+new_pid=89515
+local_origin_http_status=401
+{"error": "invalid_token", "error_description": "Authentication required"}

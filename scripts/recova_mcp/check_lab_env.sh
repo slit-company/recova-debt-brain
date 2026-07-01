@@ -7,7 +7,7 @@ if [ "${1:-}" != "--redacted" ]; then
 fi
 
 missing=0
-for key in MCP_LAB_BEARER_TOKEN SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY CLOUDFLARE_API_TOKEN; do
+for key in MCP_LAB_BEARER_TOKEN SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY; do
   value="$(printenv "$key" || true)"
   if [ -z "$value" ]; then
     printf '%s=missing\n' "$key"

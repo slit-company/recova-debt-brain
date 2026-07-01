@@ -1,11 +1,74 @@
 {
   "status": "ok",
-  "recent_count": 5,
-  "recent_tools": [
-    "check_case_stop_gates",
-    "check_case_stop_gates",
-    "check_case_stop_gates",
-    "list_debt_collection_tools",
-    "check_case_stop_gates"
-  ]
+  "tables": {
+    "evaluation_runs": {
+      "recent_count": 1,
+      "recent": [
+        {
+          "id": "d931d7ea-9a06-44ac-b299-baa0be68dc53",
+          "run_ref": "mcp-smoke-1782924938555-eb0f3a3990c4ea8f",
+          "tool_count": 16,
+          "created_at": "2026-07-01T16:55:39.15326+00:00"
+        }
+      ]
+    },
+    "judgment_runs": {
+      "recent_count": 1,
+      "recent": [
+        {
+          "id": "6f8c4c55-aa06-476b-ac82-b9b3fcc4a3b1",
+          "evaluation_run_id": "d931d7ea-9a06-44ac-b299-baa0be68dc53",
+          "tool_name": "check_case_stop_gates",
+          "decision": "보류",
+          "confidence": 0.84,
+          "created_at": "2026-07-01T16:55:39.271405+00:00"
+        }
+      ]
+    },
+    "tool_traces": {
+      "recent_count": 5,
+      "recent": [
+        {
+          "id": "9bdb3983-94e7-42b2-80e2-f17c7da088d1",
+          "evaluation_run_id": "d931d7ea-9a06-44ac-b299-baa0be68dc53",
+          "judgment_run_id": "6f8c4c55-aa06-476b-ac82-b9b3fcc4a3b1",
+          "tool_name": "check_case_stop_gates",
+          "status": "ok",
+          "created_at": "2026-07-01T16:55:39.354339+00:00"
+        },
+        {
+          "id": "28d9b239-f4ef-4258-aae0-ae46deeafd71",
+          "evaluation_run_id": null,
+          "judgment_run_id": null,
+          "tool_name": "check_case_stop_gates",
+          "status": "ok",
+          "created_at": "2026-07-01T16:29:22.565549+00:00"
+        },
+        {
+          "id": "1e5c170a-4ea1-4b85-8356-0fd939c8680f",
+          "evaluation_run_id": null,
+          "judgment_run_id": null,
+          "tool_name": "check_case_stop_gates",
+          "status": "ok",
+          "created_at": "2026-07-01T16:26:59.591232+00:00"
+        },
+        {
+          "id": "3c8e99e4-e9d5-4d7f-b974-2c1c63d5ba9c",
+          "evaluation_run_id": null,
+          "judgment_run_id": null,
+          "tool_name": "check_case_stop_gates",
+          "status": "ok",
+          "created_at": "2026-07-01T16:21:12.878074+00:00"
+        },
+        {
+          "id": "e47cb834-1d5a-492c-8a9a-b8d0c8eda313",
+          "evaluation_run_id": null,
+          "judgment_run_id": null,
+          "tool_name": "list_debt_collection_tools",
+          "status": "ok",
+          "created_at": "2026-07-01T16:19:33.482931+00:00"
+        }
+      ]
+    }
+  }
 }

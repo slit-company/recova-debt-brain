@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-07-01T13:45:35.421Z",
-  "updatedAt": "2026-07-01T16:31:00Z",
+  "updatedAt": "2026-07-01T17:16:49.964Z",
   "briefPath": ".omo/ulw-loop/recova-mcp-deployment-20260701/brief.md",
   "goalsPath": ".omo/ulw-loop/recova-mcp-deployment-20260701/goals.json",
   "ledgerPath": ".omo/ulw-loop/recova-mcp-deployment-20260701/ledger.jsonl",
@@ -11,7 +11,7 @@
       "id": "G001-execute-the-decision-complete-recova",
       "title": "Execute the decision-complete Recova MCP lab deployment plan in .omo/...",
       "objective": "Execute the decision-complete Recova MCP lab deployment plan in .omo/plans/recova-mcp-deployment.md. Outcome: a debt-only MCP lab at https://recova-mcp-lab.slit.company/mcp on VPS/VM Docker+Caddy, Supabase dev@slit.company as redacted experiment memory, Cloudflare/GoDaddy DNS verified, bold judgment traces captured, generic TrustGraph public tools blocked, execution actions closed, and all evidence recorded under .omo/evidence/recova-mcp-deployment/. Tier HEAVY because this includes external integration, auth, DNS, DB schema, deployment, and public MCP surface.",
-      "status": "completed",
+      "status": "complete",
       "successCriteria": [
         {
           "id": "C001",
@@ -19,12 +19,9 @@
           "userModel": "happy",
           "expectedEvidence": ".omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json plus task-10-supabase-remote.txt and f3-real-qa.txt",
           "essential": true,
-          "capturedEvidence": [
-            ".omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json",
-            ".omo/evidence/recova-mcp-deployment/task-10-trace-count.json",
-            ".omo/evidence/recova-mcp-deployment/f3-real-qa.txt"
-          ],
-          "status": "passed"
+          "capturedEvidence": "HTTP/data evidence: task-11-mcp-smoke.json proves 16 tools, Korean decision, no generic/execution tools, trace_status recorded; task-10-trace-count.json proves Supabase recent traces; f3-real-qa.txt summarizes live HTTPS auth rejection and authenticated smoke. cleanup: no local server/browser/tmux spawned in this corrective recording step; live service intentionally remains running.",
+          "status": "pass",
+          "capturedAt": "2026-07-01T16:36:50.831Z"
         },
         {
           "id": "C002",
@@ -32,12 +29,9 @@
           "userModel": "edge",
           "expectedEvidence": ".omo/evidence/recova-mcp-deployment/task-4-generic-block.json, task-6-execution-block.json, task-10-rls-deny.txt, and f4-scope-fidelity.md",
           "essential": true,
-          "capturedEvidence": [
-            ".omo/evidence/recova-mcp-deployment/task-11-no-auth.json",
-            ".omo/evidence/recova-mcp-deployment/task-10-rls-deny.txt",
-            ".omo/evidence/recova-mcp-deployment/f4-scope-fidelity.md"
-          ],
-          "status": "passed"
+          "capturedEvidence": "Edge/adversarial evidence: task-11-no-auth.json proves unauthenticated MCP client rejection; task-10-rls-deny.txt proves PII-shaped insert rejection; f4-scope-fidelity.md proves generic/execution tools absent and secret scan NO_FINDINGS. cleanup: no local server/browser/tmux spawned in this corrective recording step.",
+          "status": "pass",
+          "capturedAt": "2026-07-01T16:36:50.867Z"
         },
         {
           "id": "C003",
@@ -45,19 +39,31 @@
           "userModel": "regression",
           "expectedEvidence": ".omo/evidence/recova-mcp-deployment/task-1-pytest.txt, task-8-local-mcp-http.txt, task-12-rollback-dry-run.txt, f2-code-review.md, and final sensitive-scan output",
           "essential": false,
-          "capturedEvidence": [
-            ".omo/evidence/recova-mcp-deployment/task-1-pytest.txt",
-            ".omo/evidence/recova-mcp-deployment/task-8-local-mcp-http.txt",
-            ".omo/evidence/recova-mcp-deployment/task-12-rollback-dry-run.txt",
-            ".omo/evidence/recova-mcp-deployment/f2-code-review.md"
-          ],
-          "status": "passed"
+          "capturedEvidence": "Regression/operations evidence: task-1-pytest.txt and f2-code-review.md prove targeted test/compile/diff checks; task-8-local-mcp-http.txt proves local packaged MCP auth rejection; task-12-rollback-dry-run.txt proves rollback plan preserving Supabase evidence. cleanup: previous compose QA was torn down in task-8-compose-down.txt; no new local runtime spawned in this corrective recording step.",
+          "status": "pass",
+          "capturedAt": "2026-07-01T16:36:50.902Z"
         }
       ],
       "attempt": 0,
       "createdAt": "2026-07-01T13:45:35.421Z",
-      "updatedAt": "2026-07-01T16:31:00Z"
+      "updatedAt": "2026-07-01T17:16:49.964Z",
+      "completedAt": "2026-07-01T17:16:49.964Z",
+      "evidence": "Final corrective checkpoint: live MCP smoke records trace/evaluation/judgment rows, no-auth client failure proves HTTP 401 auth evidence, Docker Compose origin is loopback-only and excludes Cloudflare runtime token, native mini process restart proof captured, legal ontology unit/integration suite passed 58 tests, py_compile/diff/secret-scan passed, RED-first evidence captured, and final code/QA/gate reviewers approved."
     }
   ],
-  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/recova-mcp-deployment-20260701/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/recova-mcp-deployment-20260701/ledger.jsonl as the audit trail."
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/recova-mcp-deployment-20260701/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/recova-mcp-deployment-20260701/ledger.jsonl as the audit trail.",
+  "aggregateCompletion": {
+    "status": "complete",
+    "completedAt": "2026-07-01T17:16:49.964Z",
+    "evidence": "Final corrective checkpoint: live MCP smoke records trace/evaluation/judgment rows, no-auth client failure proves HTTP 401 auth evidence, Docker Compose origin is loopback-only and excludes Cloudflare runtime token, native mini process restart proof captured, legal ontology unit/integration suite passed 58 tests, py_compile/diff/secret-scan passed, RED-first evidence captured, and final code/QA/gate reviewers approved.",
+    "codexGoal": {
+      "threadId": "019f124c-74e3-76c1-9a67-4c65799f2cd3",
+      "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/recova-mcp-deployment-20260701/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/recova-mcp-deployment-20260701/ledger.jsonl as the audit trail.",
+      "status": "complete",
+      "tokensUsed": 0,
+      "timeUsedSeconds": 3,
+      "createdAt": 1782925997,
+      "updatedAt": 1782926001
+    }
+  }
 }

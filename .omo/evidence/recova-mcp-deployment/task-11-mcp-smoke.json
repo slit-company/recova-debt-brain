@@ -24,5 +24,11 @@
     "reprocess_case"
   ],
   "decision": "보류",
-  "trace_status": "recorded"
+  "trace_required": true,
+  "trace_status": "recorded",
+  "evaluation_status": "recorded",
+  "judgment_status": "recorded",
+  "evaluation_run_id": "d931d7ea-9a06-44ac-b299-baa0be68dc53",
+  "judgment_run_id": "6f8c4c55-aa06-476b-ac82-b9b3fcc4a3b1",
+  "tool_trace_row_count": 1
 }

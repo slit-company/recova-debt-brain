@@ -12,7 +12,7 @@ Status: lab-ready, not production-ready.
 - Origin URL: `http://127.0.0.1:8000/mcp`
 - DNS path: Cloudflare Tunnel route for `recova-mcp-lab.slit.company`
 - Database: Supabase project `recova-mcp-lab`
-- Trace storage: Supabase `tool_traces`
+- Trace storage: Supabase `evaluation_runs`, `judgment_runs`, and `tool_traces`
 
 The earlier candidate hostname `mcp-lab.recova.slit.company` is intentionally not the live endpoint. Cloudflare Universal SSL covers `*.slit.company`, not the deeper `*.recova.slit.company` hostname without an advanced certificate.
 
@@ -131,7 +131,9 @@ Expected:
 - `tool_count=16`
 - `generic_tools=[]`
 - `decision` is one of `가능`, `보류`, `불가능`
-- `trace_status=recorded` when Supabase service credentials are present
+- `trace_status=recorded`
+- `evaluation_status=recorded`
+- `judgment_status=recorded`
 
 No-auth MCP client failure:
 
@@ -151,7 +153,7 @@ Remote migration proof:
 - `.omo/evidence/recova-mcp-deployment/task-10-db-push.txt`
 - `.omo/evidence/recova-mcp-deployment/task-10-table-check.json`
 
-Trace proof:
+Trace and judgment proof:
 
 - `.omo/evidence/recova-mcp-deployment/task-10-trace-insert.json`
 - `.omo/evidence/recova-mcp-deployment/task-10-trace-count.json`
