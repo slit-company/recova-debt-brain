@@ -20,6 +20,9 @@ The earlier candidate hostname `mcp-lab.recova.slit.company` is intentionally no
 
 Use streamable HTTP MCP with bearer auth.
 
+For a client-focused quickstart, see
+`docs/product/debt-collection-ontology/recova-mcp-client-guide.md`.
+
 ```json
 {
   "name": "recova-debt-brain-lab",
