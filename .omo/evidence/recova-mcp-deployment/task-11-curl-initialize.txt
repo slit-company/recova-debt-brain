@@ -1,0 +1,15 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   174  100    19  100   155     19    161  0:00:01 --:--:--  0:00:01   181
+HTTP/1.1 421 Misdirected Request
+Date: Wed, 01 Jul 2026 16:13:45 GMT
+Content-Length: 19
+Connection: keep-alive
+Server: cloudflare
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Cf-Cache-Status: DYNAMIC
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Gr3WESMELSaedbZS90wUUy8NWdMzAHs7QsOK96MXYmuZ0nczAfsLOuJO6NOYMtBZmgFtUJfkGo02iDkZz9s8cbGsQNxpYw5NagFvFDgOrlxkHC0PzkZsVX5R5QGK%2B%2BhuWCHgmCxAN%2B608dKcaeU%3D"}]}
+CF-RAY: a146b3275a3f67f1-SJC
+alt-svc: h3=":443"; ma=86400
+
+Invalid Host headercurl_exit=0

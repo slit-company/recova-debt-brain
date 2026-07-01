@@ -1,0 +1,5 @@
+/Users/slit/.cloudflared/cert.pem
+/Users/slit/.cloudflared/config.yml.bak-gmail-bridge-20260629183400
+/Users/slit/.cloudflared/[TUNNEL_ID_REDACTED].json
+/Users/slit/.cloudflared/config.yml
+       1

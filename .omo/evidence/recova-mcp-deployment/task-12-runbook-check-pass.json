@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "runbook": "docs/product/debt-collection-ontology/recova-mcp-lab-runbook.md",
+  "evidence_root": ".omo/evidence/recova-mcp-deployment",
+  "missing": []
+}

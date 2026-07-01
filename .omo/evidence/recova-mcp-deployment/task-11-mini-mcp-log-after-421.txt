@@ -1,0 +1,18 @@
+2026-07-02 01:12:14,152 - unknown - INFO - Logging configured with level: INFO
+INFO:     Started server process [84723]
+INFO:     Waiting for application startup.
+2026-07-02 01:12:14,172 - unknown - INFO - StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     14.38.17.64:0 - "GET /mcp HTTP/1.1" 401 Unauthorized
+INFO:     14.38.17.64:0 - "GET /mcp HTTP/1.1" 401 Unauthorized
+2026-07-02 01:13:01,640 - unknown - INFO - Created new transport with session ID: 2189d4de42aa4ff28e6476eb2986b27d
+2026-07-02 01:13:01,643 - unknown - WARNING - Invalid Host header: recova-mcp-lab.slit.company
+INFO:     112.216.179.147:0 - "POST /mcp HTTP/1.1" 421 Misdirected Request
+INFO:     112.216.179.147:0 - "GET /mcp HTTP/1.1" 401 Unauthorized
+2026-07-02 01:13:29,389 - unknown - INFO - Created new transport with session ID: 150d98bc7db044a8abc2d99cd0ce1bf8
+2026-07-02 01:13:29,391 - unknown - WARNING - Invalid Host header: recova-mcp-lab.slit.company
+INFO:     112.216.179.147:0 - "POST /mcp HTTP/1.1" 421 Misdirected Request
+2026-07-02 01:13:45,872 - unknown - INFO - Created new transport with session ID: 99c1d0b5e5de4b2982089024cee903a2
+2026-07-02 01:13:45,875 - unknown - WARNING - Invalid Host header: recova-mcp-lab.slit.company
+INFO:     14.38.17.64:0 - "POST /mcp HTTP/1.1" 421 Misdirected Request

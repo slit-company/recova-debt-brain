@@ -1,0 +1,55 @@
+### A
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 19812
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+slit.company.		1720	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
+
+
+### AAAA
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 17996
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+slit.company.		1720	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
+
+
+### CNAME
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 8617
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+slit.company.		1720	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
+
+
+### TXT
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 57671
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+slit.company.		1800	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
+
+
+### TYPE65
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 21427
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+slit.company.		1799	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
+
+

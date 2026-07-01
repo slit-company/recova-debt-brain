@@ -1,0 +1,5 @@
+Do you want to delete project wvgjhgywaumqmgswsxcg? This action is irreversible. [y/N] y
+[?25l[90m│[39m
+[35m◒[39m  Deleting project[1G[J[35m◐[39m  Deleting project[1G[J[35m◓[39m  Deleting project[1G[J[35m◑[39m  Deleting project[1G[J[35m◒[39m  Deleting project[1G[J[35m◐[39m  Deleting project[1G[J[35m◓[39m  Deleting project[1G[J[35m◑[39m  Deleting project[1G[J[35m◒[39m  Deleting project.[1G[J[35m◐[39m  Deleting project.[1G[J[35m◓[39m  Deleting project.[1G[J[35m◑[39m  Deleting project.[1G[J[35m◒[39m  Deleting project.[1G[J[35m◐[39m  Deleting project.[1G[J[35m◓[39m  Deleting project.[1G[J[35m◑[39m  Deleting project.[1G[J[35m◒[39m  Deleting project..[1G[J[35m◐[39m  Deleting project..[1G[J[35m◓[39m  Deleting project..[1G[J[35m◑[39m  Deleting project..[1G[J[?25hDeleted project: recova-mcp-lab
+Creating project:    recova-mcp-lab
+Created a new project at https://supabase.com/dashboard/project/saqztuzguqwbljkosiax

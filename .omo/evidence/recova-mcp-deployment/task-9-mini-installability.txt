@@ -1,0 +1,6 @@
+slit
+ProductName:		macOS
+ProductVersion:		26.2
+BuildVersion:		25C56
+slit
+staff everyone localaccounts _appserverusr admin _appserveradm _appstore _lpadmin _lpoperator _developer _analyticsusers com.apple.access_ftp com.apple.access_screensharing com.apple.access_ssh com.apple.access_remote_ae com.apple.sharepoint.group.1

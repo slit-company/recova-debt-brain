@@ -1,0 +1,1 @@
+FAIL runbook_check missing=task-11-mcp-smoke.json

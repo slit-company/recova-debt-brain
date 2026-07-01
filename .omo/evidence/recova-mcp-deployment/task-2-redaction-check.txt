@@ -1,0 +1,1 @@
+PASS: no concrete bearer tokens, service role strings, Cloudflare token assignments, private keys, or resident-id-shaped values found in Task 2 evidence/artifact files.

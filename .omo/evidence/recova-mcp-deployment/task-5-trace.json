@@ -1,0 +1,1513 @@
+{
+  "mode": "fake_supabase",
+  "row_count": 3,
+  "raw_text_included": false,
+  "records": [
+    {
+      "lab_owner_email": "dev@slit.company",
+      "tool_name": "list_debt_collection_tools",
+      "group_name": "read",
+      "scope": "read:tools",
+      "status": "ok",
+      "arguments_hash_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "envelope_hash_sha256": "88fbe4d43d32b4aefc674e291f9720425f4eba0c2449675c43450448902f03d7",
+      "redacted_arguments": {},
+      "redacted_result": {
+        "tools": [
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "list_debt_collection_tools",
+            "name": "list_debt_collection_tools",
+            "group": "read",
+            "scope": "read:tools",
+            "description": "List debt-collection domain tool contracts.",
+            "parameters": [],
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "ingest_legal_document",
+            "name": "ingest_legal_document",
+            "group": "ingest",
+            "scope": "ingest:documents",
+            "description": "Prepare a legal document for reviewed ingestion without storing raw PII.",
+            "parameters": [
+              "zip_path",
+              "workspace",
+              "collection",
+              "limit"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "zip_path": {
+                  "type": "string"
+                },
+                "workspace": {
+                  "type": "string"
+                },
+                "collection": {
+                  "type": "string"
+                },
+                "limit": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "ingest_ocr_markdown",
+            "name": "ingest_ocr_markdown",
+            "group": "ingest",
+            "scope": "ingest:documents",
+            "description": "Classify and extract OCR markdown into a review-safe queued envelope.",
+            "parameters": [
+              "markdown_text",
+              "document_id",
+              "source_ref",
+              "document_type"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "markdown_text": {
+                  "type": "string"
+                },
+                "document_id": {
+                  "type": "string"
+                },
+                "source_ref": {
+                  "type": "string"
+                },
+                "document_type": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "get_ingest_status",
+            "name": "get_ingest_status",
+            "group": "ingest",
+            "scope": "ingest:ingest-status",
+            "description": "Return deterministic v0 ingest status metadata.",
+            "parameters": [
+              "document_id",
+              "processing_id"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "document_id": {
+                  "type": "string"
+                },
+                "processing_id": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "classify_legal_document",
+            "name": "classify_legal_document",
+            "group": "graph",
+            "scope": "graph:document-classification",
+            "description": "Classify a legal document with redacted evidence spans.",
+            "parameters": [
+              "text",
+              "document_id",
+              "source_ref"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "document_id": {
+                  "type": "string"
+                },
+                "source_ref": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "extract_case_packet",
+            "name": "extract_case_packet",
+            "group": "graph",
+            "scope": "graph:case",
+            "description": "Extract a case-packet projection from text or the fixture manifest.",
+            "parameters": [
+              "text",
+              "manifest_path",
+              "document_id",
+              "document_type"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "manifest_path": {
+                  "type": "string"
+                },
+                "document_id": {
+                  "type": "string"
+                },
+                "document_type": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "get_case_graph",
+            "name": "get_case_graph",
+            "group": "graph",
+            "scope": "graph:case",
+            "description": "Return the deterministic redacted case graph.",
+            "parameters": [
+              "manifest_path",
+              "case_graph"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "manifest_path": {
+                  "type": "string"
+                },
+                "case_graph": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "check_case_stop_gates",
+            "name": "check_case_stop_gates",
+            "group": "stopgate",
+            "scope": "stopgate:check",
+            "description": "Evaluate deterministic legal StopGates for a case graph.",
+            "parameters": [
+              "case_graph",
+              "case_graph_path",
+              "manifest_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "case_graph": {
+                  "type": "string"
+                },
+                "case_graph_path": {
+                  "type": "string"
+                },
+                "manifest_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "check_limitation_status",
+            "name": "check_limitation_status",
+            "group": "stopgate",
+            "scope": "stopgate:check",
+            "description": "Report limitation-risk StopGate status only.",
+            "parameters": [
+              "case_graph",
+              "case_graph_path",
+              "manifest_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "case_graph": {
+                  "type": "string"
+                },
+                "case_graph_path": {
+                  "type": "string"
+                },
+                "manifest_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "check_attachment_target_rules",
+            "name": "check_attachment_target_rules",
+            "group": "stopgate",
+            "scope": "stopgate:check",
+            "description": "Report attachment-target, exemption, and priority review blockers.",
+            "parameters": [
+              "case_graph",
+              "case_graph_path",
+              "manifest_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "case_graph": {
+                  "type": "string"
+                },
+                "case_graph_path": {
+                  "type": "string"
+                },
+                "manifest_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "summarize_case_ledger",
+            "name": "summarize_case_ledger",
+            "group": "read",
+            "scope": "read:ledger",
+            "description": "Summarize redacted ledger facts from the case graph.",
+            "parameters": [
+              "case_graph",
+              "case_graph_path",
+              "manifest_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "case_graph": {
+                  "type": "string"
+                },
+                "case_graph_path": {
+                  "type": "string"
+                },
+                "manifest_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "recommend_next_action",
+            "name": "recommend_next_action",
+            "group": "stopgate",
+            "scope": "stopgate:recommend",
+            "description": "Recommend a non-executing next advisory action from StopGate status.",
+            "parameters": [
+              "case_graph",
+              "case_graph_path",
+              "manifest_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "case_graph": {
+                  "type": "string"
+                },
+                "case_graph_path": {
+                  "type": "string"
+                },
+                "manifest_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "list_unknown_document_types",
+            "name": "list_unknown_document_types",
+            "group": "governance",
+            "scope": "governance:review",
+            "description": "List unknown-type and ontology-gap governance items.",
+            "parameters": [
+              "manifest_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "manifest_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "review_extracted_fact",
+            "name": "review_extracted_fact",
+            "group": "governance",
+            "scope": "governance:review",
+            "description": "Queue or record a reviewed fact decision without mutating production ontology.",
+            "parameters": [
+              "fact_id",
+              "decision",
+              "reviewer",
+              "reason"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "fact_id": {
+                  "type": "string"
+                },
+                "decision": {
+                  "type": "string"
+                },
+                "reviewer": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "promote_ontology_candidate",
+            "name": "promote_ontology_candidate",
+            "group": "governance",
+            "scope": "governance:review",
+            "description": "Evaluate ontology promotion metadata and return accepted/rejected status only.",
+            "parameters": [
+              "candidate_id",
+              "approval_metadata",
+              "ontology_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "candidate_id": {
+                  "type": "string"
+                },
+                "approval_metadata": {
+                  "type": "string"
+                },
+                "ontology_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          },
+          {
+            "schema_version": "trustgraph-legal-mcp-tool-contract/v1",
+            "tool_name": "reprocess_case",
+            "name": "reprocess_case",
+            "group": "governance",
+            "scope": "governance:reprocess",
+            "description": "Return a reviewed reprocess plan; no production job is executed by this tool.",
+            "parameters": [
+              "case_packet_id",
+              "manifest_path"
+            ],
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "case_packet_id": {
+                  "type": "string"
+                },
+                "manifest_path": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "output_schema": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tool_name",
+                "group",
+                "scope",
+                "pii_profile",
+                "redaction",
+                "source_refs",
+                "warnings",
+                "result"
+              ]
+            },
+            "redaction": {
+              "default": "redacted",
+              "raw_text_included": false,
+              "source_text_included": false
+            }
+          }
+        ]
+      },
+      "source_refs": [],
+      "warnings": [],
+      "latency_ms": 1
+    },
+    {
+      "lab_owner_email": "dev@slit.company",
+      "tool_name": "check_case_stop_gates",
+      "group_name": "stopgate",
+      "scope": "stopgate:check",
+      "status": "ok",
+      "arguments_hash_sha256": "a7b3555705f66c1ae037e90755fb739e679c9aba5abc6fee57d50bb4c8084acc",
+      "envelope_hash_sha256": "9a6e1e7d1c937c99177571b9dcef52ce0d2bfead315f2300bce92e3be0cf6b41",
+      "redacted_arguments": {
+        "manifest_path": "tests/fixtures/legal-ocr/manifest.json"
+      },
+      "redacted_result": {
+        "schema_version": "trustgraph-legal-stopgate-check/v1",
+        "decision": "보류",
+        "case_packet_ids": [
+          "case-packet-id-be706068d3a4571b0720"
+        ],
+        "recommended_action": "Hold advisory recommendation until required preconditions and review items are cleared.",
+        "required_preconditions": [
+          "attachment target exemption review",
+          "limitation_cleared",
+          "reconciled amount calculation",
+          "reviewed insolvency or discharge status"
+        ],
+        "blocked_reasons": [
+          "Attachment target or priority material indicates exemption/protection review is required.",
+          "Claim, principal, or calculated total amounts conflict.",
+          "Insolvency, discharge, rehabilitation, or credit recovery material exists and needs legal review.",
+          "Limitation or stale-claim risk is not cleared by source-backed evidence."
+        ],
+        "missing_evidence": [
+          "amount_reconciliation",
+          "exemption_clearance",
+          "insolvency_clearance",
+          "limitation_clearance"
+        ],
+        "risk_flags": [
+          "amount_mismatch",
+          "discharge_proceeding_detected",
+          "exempt_claim_targeted",
+          "limitation_risk"
+        ],
+        "source_refs": [
+          "curated://kr-civil-execution-act/2026-06-30/v0",
+          "curated://kr-debtor-rehabilitation-act/2026-06-30/v0",
+          "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "source_ref=fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md|document_id=legal-ocr-synth-amount-interest-001|chunk_id=line-4",
+          "source_ref=fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md|document_id=legal-ocr-synth-asset-evidence-001|chunk_id=line-12",
+          "source_ref=fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md|document_id=legal-ocr-synth-asset-evidence-001|chunk_id=line-7",
+          "source_ref=fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md|document_id=legal-ocr-synth-attachment-collection-order-001|chunk_id=line-9",
+          "source_ref=fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md|document_id=legal-ocr-synth-insolvency-credit-recovery-001|chunk_id=line-6",
+          "source_ref=fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md|document_id=legal-ocr-synth-insolvency-credit-recovery-001|chunk_id=manifest",
+          "source_ref=fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md|document_id=legal-ocr-synth-judgment-payment-order-001|chunk_id=line-8"
+        ],
+        "rule_refs": [
+          {
+            "rule_id": "dc-stopgate-v0-003",
+            "stopgate_id": "insolvency-or-discharge-risk",
+            "statute_refs": [
+              "Debtor Rehabilitation and Bankruptcy Act: stay and discharge references"
+            ],
+            "effective_date": "2026-06-30",
+            "sources": [
+              {
+                "source_id": "kr-debtor-rehabilitation-act-v0",
+                "statute_ref": "Debtor Rehabilitation and Bankruptcy Act: bankruptcy, rehabilitation, discharge, and stay references",
+                "effective_date": "2026-06-30",
+                "review_status": "approved",
+                "source_ref": "curated://kr-debtor-rehabilitation-act/2026-06-30/v0"
+              }
+            ]
+          },
+          {
+            "rule_id": "dc-stopgate-v0-004",
+            "stopgate_id": "limitation-risk",
+            "statute_refs": [
+              "Civil Act and Civil Execution Act: limitation and enforceability references"
+            ],
+            "effective_date": "2026-06-30",
+            "sources": [
+              {
+                "source_id": "kr-civil-execution-act-v0",
+                "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references",
+                "effective_date": "2026-06-30",
+                "review_status": "approved",
+                "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0"
+              }
+            ]
+          },
+          {
+            "rule_id": "dc-stopgate-v0-005",
+            "stopgate_id": "target-exemption-risk",
+            "statute_refs": [
+              "Civil Execution Act: prohibited and protected attachment target references"
+            ],
+            "effective_date": "2026-06-30",
+            "sources": [
+              {
+                "source_id": "kr-civil-execution-act-v0",
+                "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references",
+                "effective_date": "2026-06-30",
+                "review_status": "approved",
+                "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0"
+              }
+            ]
+          },
+          {
+            "rule_id": "dc-stopgate-v0-007",
+            "stopgate_id": "amount-inconsistent",
+            "statute_refs": [
+              "Civil Execution Act: claim amount and attachment scope references"
+            ],
+            "effective_date": "2026-06-30",
+            "sources": [
+              {
+                "source_id": "kr-civil-execution-act-v0",
+                "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references",
+                "effective_date": "2026-06-30",
+                "review_status": "approved",
+                "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0"
+              }
+            ]
+          }
+        ],
+        "confidence": 0.84,
+        "review_queue_items": [
+          {
+            "review_reason": "discharge_proceeding_detected",
+            "stopgate_id": "insolvency-or-discharge-risk",
+            "required_preconditions": [
+              "reviewed insolvency or discharge status"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "document:legal-ocr-synth-insolvency-credit-recovery-001",
+                "fact_type": "legal-document",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+                "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+                "chunk_id": "manifest",
+                "line_start": 0,
+                "line_end": 0,
+                "confidence": 0.9
+              },
+              {
+                "fact_id": "legal-check:a79c1eae8ab486514643b3a87c9e188a4f6df2f38f20e90564f7666df06323fc",
+                "fact_type": "legal-check",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+                "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+                "chunk_id": "line-6",
+                "line_start": 6,
+                "line_end": 6,
+                "confidence": 0.92
+              }
+            ]
+          },
+          {
+            "review_reason": "limitation_risk",
+            "stopgate_id": "limitation-risk",
+            "required_preconditions": [
+              "limitation_cleared"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "claim-id-4e94637307572ab47d3b",
+                "fact_type": "claim",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              }
+            ]
+          },
+          {
+            "review_reason": "exempt_claim_targeted",
+            "stopgate_id": "target-exemption-risk",
+            "required_preconditions": [
+              "attachment target exemption review"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "legal-check:a35772169343140ef369b9d2d2ca9a70b909896092ecb9c21b40ccdcd0ae0e9f",
+                "fact_type": "legal-check",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+                "document_id": "legal-ocr-synth-asset-evidence-001",
+                "chunk_id": "line-12",
+                "line_start": 12,
+                "line_end": 12,
+                "confidence": 0.84
+              },
+              {
+                "fact_id": "span:9f586e228098a34ad56b2aa778965907378c939c404b50a8900133cb29ed9f3f",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+                "document_id": "legal-ocr-synth-asset-evidence-001",
+                "chunk_id": "line-7",
+                "line_start": 7,
+                "line_end": 7,
+                "confidence": 0.86
+              }
+            ]
+          },
+          {
+            "review_reason": "amount_mismatch",
+            "stopgate_id": "amount-inconsistent",
+            "required_preconditions": [
+              "reconciled amount calculation"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "claim-id-4e94637307572ab47d3b",
+                "fact_type": "claim",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              }
+            ]
+          }
+        ],
+        "stop_gates": [
+          {
+            "stopgate_id": "insolvency-or-discharge-risk",
+            "decision": "보류",
+            "reason_code": "discharge_proceeding_detected",
+            "blocked_reason": "Insolvency, discharge, rehabilitation, or credit recovery material exists and needs legal review.",
+            "recommended_action": "Review proceeding status and protected period before collection recommendations.",
+            "required_preconditions": [
+              "reviewed insolvency or discharge status"
+            ],
+            "missing_evidence": [
+              "insolvency_clearance"
+            ],
+            "risk_flags": [
+              "discharge_proceeding_detected"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "document:legal-ocr-synth-insolvency-credit-recovery-001",
+                "fact_type": "legal-document",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+                "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+                "chunk_id": "manifest",
+                "line_start": 0,
+                "line_end": 0,
+                "confidence": 0.9
+              },
+              {
+                "fact_id": "legal-check:a79c1eae8ab486514643b3a87c9e188a4f6df2f38f20e90564f7666df06323fc",
+                "fact_type": "legal-check",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+                "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+                "chunk_id": "line-6",
+                "line_start": 6,
+                "line_end": 6,
+                "confidence": 0.92
+              }
+            ],
+            "rule_refs": [
+              {
+                "rule_id": "dc-stopgate-v0-003",
+                "stopgate_id": "insolvency-or-discharge-risk",
+                "statute_refs": [
+                  "Debtor Rehabilitation and Bankruptcy Act: stay and discharge references"
+                ],
+                "effective_date": "2026-06-30",
+                "sources": [
+                  {
+                    "source_id": "kr-debtor-rehabilitation-act-v0",
+                    "statute_ref": "Debtor Rehabilitation and Bankruptcy Act: bankruptcy, rehabilitation, discharge, and stay references",
+                    "effective_date": "2026-06-30",
+                    "review_status": "approved",
+                    "source_ref": "curated://kr-debtor-rehabilitation-act/2026-06-30/v0"
+                  }
+                ]
+              }
+            ],
+            "confidence": 0.9
+          },
+          {
+            "stopgate_id": "limitation-risk",
+            "decision": "보류",
+            "reason_code": "limitation_risk",
+            "blocked_reason": "Limitation or stale-claim risk is not cleared by source-backed evidence.",
+            "recommended_action": "Verify limitation period, interruption, and calculation dates before action.",
+            "required_preconditions": [
+              "limitation_cleared"
+            ],
+            "missing_evidence": [
+              "limitation_clearance"
+            ],
+            "risk_flags": [
+              "limitation_risk"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "claim-id-4e94637307572ab47d3b",
+                "fact_type": "claim",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              }
+            ],
+            "rule_refs": [
+              {
+                "rule_id": "dc-stopgate-v0-004",
+                "stopgate_id": "limitation-risk",
+                "statute_refs": [
+                  "Civil Act and Civil Execution Act: limitation and enforceability references"
+                ],
+                "effective_date": "2026-06-30",
+                "sources": [
+                  {
+                    "source_id": "kr-civil-execution-act-v0",
+                    "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references",
+                    "effective_date": "2026-06-30",
+                    "review_status": "approved",
+                    "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0"
+                  }
+                ]
+              }
+            ],
+            "confidence": 0.94
+          },
+          {
+            "stopgate_id": "target-exemption-risk",
+            "decision": "보류",
+            "reason_code": "exempt_claim_targeted",
+            "blocked_reason": "Attachment target or priority material indicates exemption/protection review is required.",
+            "recommended_action": "Review target class, protected amount, and priority before collection recommendations.",
+            "required_preconditions": [
+              "attachment target exemption review"
+            ],
+            "missing_evidence": [
+              "exemption_clearance"
+            ],
+            "risk_flags": [
+              "exempt_claim_targeted"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "legal-check:a35772169343140ef369b9d2d2ca9a70b909896092ecb9c21b40ccdcd0ae0e9f",
+                "fact_type": "legal-check",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+                "document_id": "legal-ocr-synth-asset-evidence-001",
+                "chunk_id": "line-12",
+                "line_start": 12,
+                "line_end": 12,
+                "confidence": 0.84
+              },
+              {
+                "fact_id": "span:9f586e228098a34ad56b2aa778965907378c939c404b50a8900133cb29ed9f3f",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+                "document_id": "legal-ocr-synth-asset-evidence-001",
+                "chunk_id": "line-7",
+                "line_start": 7,
+                "line_end": 7,
+                "confidence": 0.86
+              }
+            ],
+            "rule_refs": [
+              {
+                "rule_id": "dc-stopgate-v0-005",
+                "stopgate_id": "target-exemption-risk",
+                "statute_refs": [
+                  "Civil Execution Act: prohibited and protected attachment target references"
+                ],
+                "effective_date": "2026-06-30",
+                "sources": [
+                  {
+                    "source_id": "kr-civil-execution-act-v0",
+                    "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references",
+                    "effective_date": "2026-06-30",
+                    "review_status": "approved",
+                    "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0"
+                  }
+                ]
+              }
+            ],
+            "confidence": 0.84
+          },
+          {
+            "stopgate_id": "amount-inconsistent",
+            "decision": "보류",
+            "reason_code": "amount_mismatch",
+            "blocked_reason": "Claim, principal, or calculated total amounts conflict.",
+            "recommended_action": "Reconcile ledger and amount-interest calculation before recommending a collection amount.",
+            "required_preconditions": [
+              "reconciled amount calculation"
+            ],
+            "missing_evidence": [
+              "amount_reconciliation"
+            ],
+            "risk_flags": [
+              "amount_mismatch"
+            ],
+            "source_refs": [
+              {
+                "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "amount",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "claim-id-4e94637307572ab47d3b",
+                "fact_type": "claim",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+                "document_id": "legal-ocr-synth-amount-interest-001",
+                "chunk_id": "line-4",
+                "line_start": 4,
+                "line_end": 4,
+                "confidence": 0.95
+              },
+              {
+                "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+                "document_id": "legal-ocr-synth-attachment-collection-order-001",
+                "chunk_id": "line-9",
+                "line_start": 9,
+                "line_end": 9,
+                "confidence": 0.94
+              },
+              {
+                "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+                "fact_type": "source-span",
+                "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+                "document_id": "legal-ocr-synth-judgment-payment-order-001",
+                "chunk_id": "line-8",
+                "line_start": 8,
+                "line_end": 8,
+                "confidence": 0.95
+              }
+            ],
+            "rule_refs": [
+              {
+                "rule_id": "dc-stopgate-v0-007",
+                "stopgate_id": "amount-inconsistent",
+                "statute_refs": [
+                  "Civil Execution Act: claim amount and attachment scope references"
+                ],
+                "effective_date": "2026-06-30",
+                "sources": [
+                  {
+                    "source_id": "kr-civil-execution-act-v0",
+                    "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references",
+                    "effective_date": "2026-06-30",
+                    "review_status": "approved",
+                    "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0"
+                  }
+                ]
+              }
+            ],
+            "confidence": 0.94
+          }
+        ],
+        "rule_source": {
+          "version": "recova-debt-collection-stopgate@v0.1.0",
+          "review_status": "approved",
+          "effective_date": "2026-06-30",
+          "curation_policy": "static-curated-v0-no-live-updates"
+        },
+        "pii_profile": {
+          "raw_text_included": false,
+          "source_text_included": false
+        },
+        "case_id": "case:unknown"
+      },
+      "source_refs": [
+        "curated://kr-civil-execution-act/2026-06-30/v0",
+        "curated://kr-debtor-rehabilitation-act/2026-06-30/v0",
+        "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+        "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+        "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+        "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+        "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+        "source_ref=fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md|document_id=legal-ocr-synth-amount-interest-001|chunk_id=line-4",
+        "source_ref=fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md|document_id=legal-ocr-synth-asset-evidence-001|chunk_id=line-12",
+        "source_ref=fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md|document_id=legal-ocr-synth-asset-evidence-001|chunk_id=line-7",
+        "source_ref=fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md|document_id=legal-ocr-synth-attachment-collection-order-001|chunk_id=line-9",
+        "source_ref=fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md|document_id=legal-ocr-synth-insolvency-credit-recovery-001|chunk_id=line-6",
+        "source_ref=fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md|document_id=legal-ocr-synth-insolvency-credit-recovery-001|chunk_id=manifest",
+        "source_ref=fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md|document_id=legal-ocr-synth-judgment-payment-order-001|chunk_id=line-8"
+      ],
+      "warnings": [],
+      "latency_ms": 6
+    },
+    {
+      "lab_owner_email": "dev@slit.company",
+      "tool_name": "recommend_next_action",
+      "group_name": "stopgate",
+      "scope": "stopgate:recommend",
+      "status": "ok",
+      "arguments_hash_sha256": "a7b3555705f66c1ae037e90755fb739e679c9aba5abc6fee57d50bb4c8084acc",
+      "envelope_hash_sha256": "9a96399be55e412359560932644883f67ddddf006ba35163a061e1da6dd3d8d7",
+      "redacted_arguments": {
+        "manifest_path": "tests/fixtures/legal-ocr/manifest.json"
+      },
+      "redacted_result": {
+        "decision": "보류",
+        "recommended_next_action": "hold_for_review",
+        "blocked_reasons": [
+          "Attachment target or priority material indicates exemption/protection review is required.",
+          "Claim, principal, or calculated total amounts conflict.",
+          "Insolvency, discharge, rehabilitation, or credit recovery material exists and needs legal review.",
+          "Limitation or stale-claim risk is not cleared by source-backed evidence."
+        ],
+        "required_preconditions": [
+          "attachment target exemption review",
+          "limitation_cleared",
+          "reconciled amount calculation",
+          "reviewed insolvency or discharge status"
+        ],
+        "no_direct_filing_contact_or_collection": true
+      },
+      "source_refs": [],
+      "warnings": [],
+      "latency_ms": 3
+    }
+  ],
+  "summary": {
+    "tool_names": [
+      "check_case_stop_gates",
+      "list_debt_collection_tools",
+      "recommend_next_action"
+    ],
+    "statuses": [
+      "ok"
+    ],
+    "source_ref_count": 14
+  }
+}

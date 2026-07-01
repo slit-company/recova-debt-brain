@@ -1,0 +1,16 @@
+.omo/evidence/recova-mcp-deployment/task-2-authoritative-queries.txt
+.omo/evidence/recova-mcp-deployment/task-2-cloudflare-access.txt
+.omo/evidence/recova-mcp-deployment/task-2-cloudflare-token-status.txt
+.omo/evidence/recova-mcp-deployment/task-2-cloudflare-zone-redacted.json
+.omo/evidence/recova-mcp-deployment/task-2-dns-authority.txt
+.omo/evidence/recova-mcp-deployment/task-2-evidence-inventory.txt
+.omo/evidence/recova-mcp-deployment/task-2-existing-record-all-types.txt
+.omo/evidence/recova-mcp-deployment/task-2-existing-record-detail.txt
+.omo/evidence/recova-mcp-deployment/task-2-existing-record.txt
+.omo/evidence/recova-mcp-deployment/task-2-ns-detail.txt
+.omo/evidence/recova-mcp-deployment/task-2-ns.txt
+.omo/evidence/recova-mcp-deployment/task-2-rdap-registrar-redacted.json
+.omo/evidence/recova-mcp-deployment/task-2-redaction-check.txt
+.omo/evidence/recova-mcp-deployment/task-2-rollback-notes.md
+.omo/evidence/recova-mcp-deployment/task-2-soa.txt
+.omo/evidence/recova-mcp-deployment/task-2-worktree.txt

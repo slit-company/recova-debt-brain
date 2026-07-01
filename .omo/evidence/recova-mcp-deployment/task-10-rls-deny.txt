@@ -1,0 +1,2 @@
+PASS rejected_pii_shape
+http_status=400

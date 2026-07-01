@@ -1,0 +1,14 @@
+{
+  "target_kind": "cloudflare_tunnel_on_mini_native_python",
+  "host": "mini",
+  "public_url": "https://recova-mcp-lab.slit.company/mcp",
+  "origin": "http://127.0.0.1:8000/mcp",
+  "runtime_dir": "~/recova-mcp-lab",
+  "process": "native Python FastMCP under pyenv 3.14.3 venv",
+  "dns": "Cloudflare tunnel route DNS for recova-mcp-lab.slit.company",
+  "rollback": [
+    "ssh mini 'kill $(cat ~/recova-mcp-lab/recova-mcp.pid)'",
+    "ssh mini 'restore ~/.cloudflared/config.yml from ~/.cloudflared/config.yml.recova-mcp-backup-* and launchctl kickstart -k gui/$(id -u)/com.slit.cliproxyapi-cloudflared'",
+    "Cloudflare dashboard or cloudflared cleanup: remove recova-mcp-lab.slit.company tunnel DNS route"
+  ]
+}

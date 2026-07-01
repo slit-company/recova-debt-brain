@@ -1,0 +1,64 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 575B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Containerfile.mcp
+#2 transferring dockerfile: 1.21kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/fedora:42
+#3 DONE 0.9s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 163B done
+#4 DONE 0.0s
+
+#5 [ 1/10] FROM docker.io/library/fedora:42@sha256:99e203b80b1c3d8f7e161ec10a68fd02b081ef83a3963553e513c82846b97814
+#5 resolve docker.io/library/fedora:42@sha256:99e203b80b1c3d8f7e161ec10a68fd02b081ef83a3963553e513c82846b97814 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 550.35kB 0.0s done
+#6 DONE 0.0s
+
+#7 [ 2/10] RUN dnf install -y python3.13 python3.13-pip curl &&     alternatives --install /usr/bin/python python /usr/bin/python3.13 1 &&     python -m ensurepip --upgrade &&     pip3 install --no-cache-dir --upgrade 'pip>=26.0' 'setuptools>=78.1.1' &&     pip3 install --no-cache-dir         mcp         websockets         pyyaml         prometheus-client         requests         python-logging-loki         pika         confluent-kafka         pulsar-client &&     dnf clean all &&     rm -rf /var/cache/dnf
+#7 CACHED
+
+#8 [ 3/10] WORKDIR /app
+#8 CACHED
+
+#9 [ 4/10] COPY trustgraph-base/trustgraph/ /app/trustgraph/
+#9 DONE 0.0s
+
+#10 [ 5/10] COPY trustgraph-mcp/trustgraph/mcp_server/ /app/trustgraph/mcp_server/
+#10 DONE 0.0s
+
+#11 [ 6/10] COPY trustgraph_legal/ /app/trustgraph_legal/
+#11 DONE 0.0s
+
+#12 [ 7/10] COPY resources/legal_rules/ /app/resources/legal_rules/
+#12 DONE 0.0s
+
+#13 [ 8/10] COPY resources/ontologies/ /app/resources/ontologies/
+#13 DONE 0.0s
+
+#14 [ 9/10] COPY tests/fixtures/legal-ocr/ /app/tests/fixtures/legal-ocr/
+#14 DONE 0.0s
+
+#15 [10/10] COPY scripts/recova_mcp/ /app/scripts/recova_mcp/
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers 0.1s done
+#16 exporting manifest sha256:b83e493920b4f5e71c8a4d4d155fa59e62864d814776237edfde0ee2989a0bd8
+#16 exporting manifest sha256:b83e493920b4f5e71c8a4d4d155fa59e62864d814776237edfde0ee2989a0bd8 done
+#16 exporting config sha256:0159e6bd0d4a2fd7eb5b6ffe3de81ac7667a04ebae1219009c677e749ded5889 done
+#16 exporting attestation manifest sha256:0e26c58ed7bcfea4576e04b90614f0eda5be421095a3fb4cf54a6a3298585bd5 done
+#16 exporting manifest list sha256:0e4c4d3625b9af12ebdc2137ffb8e4f50b98ced0eccbb684c37ba237dd9000c4 done
+#16 naming to docker.io/library/recova-mcp-lab-recova-mcp:latest done
+#16 unpacking to docker.io/library/recova-mcp-lab-recova-mcp:latest 0.1s done
+#16 DONE 0.2s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ recova-mcp-lab-recova-mcp  Built

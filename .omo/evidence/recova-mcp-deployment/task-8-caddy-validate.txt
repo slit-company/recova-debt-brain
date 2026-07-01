@@ -1,0 +1,8 @@
+{"level":"info","ts":1782920986.058712,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+{"level":"info","ts":1782920986.0608623,"msg":"adapted config to JSON","adapter":"caddyfile"}
+{"level":"info","ts":1782920986.0616693,"logger":"http.auto_https","msg":"server is listening only on the HTTPS port but has no TLS connection policies; adding one to enable TLS","server_name":"srv0","https_port":443}
+{"level":"info","ts":1782920986.0617216,"logger":"http.auto_https","msg":"enabling automatic HTTP->HTTPS redirects","server_name":"srv0"}
+{"level":"info","ts":1782920986.063458,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x1580e6a6d780"}
+{"level":"info","ts":1782920986.06469,"logger":"http","msg":"servers shutting down with eternal grace period"}
+{"level":"info","ts":1782920986.0659575,"logger":"tls.cache.maintenance","msg":"stopped background certificate maintenance","cache":"0x1580e6a6d780"}
+Valid configuration

@@ -1,0 +1,142 @@
+{
+  "direct_file_court_document": {
+    "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+    "tool_name": "direct_file_court_document",
+    "group": "read",
+    "scope": "read:tools",
+    "pii_profile": {
+      "raw_text_included": false,
+      "source_text_included": false,
+      "redacted": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "redaction": {
+      "status": "redacted",
+      "default": "redacted",
+      "raw_text_included": false,
+      "source_text_included": false,
+      "counts": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "source_refs": [],
+    "warnings": [
+      "unknown_tool"
+    ],
+    "result": {
+      "status": "unknown_tool"
+    }
+  },
+  "contact_debtor": {
+    "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+    "tool_name": "contact_debtor",
+    "group": "read",
+    "scope": "read:tools",
+    "pii_profile": {
+      "raw_text_included": false,
+      "source_text_included": false,
+      "redacted": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "redaction": {
+      "status": "redacted",
+      "default": "redacted",
+      "raw_text_included": false,
+      "source_text_included": false,
+      "counts": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "source_refs": [],
+    "warnings": [
+      "unknown_tool"
+    ],
+    "result": {
+      "status": "unknown_tool"
+    }
+  },
+  "initiate_attachment": {
+    "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+    "tool_name": "initiate_attachment",
+    "group": "read",
+    "scope": "read:tools",
+    "pii_profile": {
+      "raw_text_included": false,
+      "source_text_included": false,
+      "redacted": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "redaction": {
+      "status": "redacted",
+      "default": "redacted",
+      "raw_text_included": false,
+      "source_text_included": false,
+      "counts": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "source_refs": [],
+    "warnings": [
+      "unknown_tool"
+    ],
+    "result": {
+      "status": "unknown_tool"
+    }
+  },
+  "collect_payment": {
+    "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+    "tool_name": "collect_payment",
+    "group": "read",
+    "scope": "read:tools",
+    "pii_profile": {
+      "raw_text_included": false,
+      "source_text_included": false,
+      "redacted": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "redaction": {
+      "status": "redacted",
+      "default": "redacted",
+      "raw_text_included": false,
+      "source_text_included": false,
+      "counts": {
+        "national_id": 0,
+        "phone": 0,
+        "account": 0,
+        "address": 0
+      }
+    },
+    "source_refs": [],
+    "warnings": [
+      "unknown_tool"
+    ],
+    "result": {
+      "status": "unknown_tool"
+    }
+  }
+}

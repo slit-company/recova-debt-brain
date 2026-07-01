@@ -1,0 +1,4 @@
+1400 /opt/homebrew/bin/cloudflared --no-autoupdate tunnel --config /Users/slit/.cloudflared/config.yml run cliproxyapi-codex
+1400	0	com.slit.cliproxyapi-cloudflared
+"cloudflared tunnel info" accepts exactly one argument, the ID or name of the tunnel to get info about.
+See 'cloudflared tunnel info --help'.

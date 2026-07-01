@@ -1,0 +1,16 @@
+timestamp_utc=2026-07-01T13:53:21Z
+## Expected deployment artifact paths
+absent: deploy/recova-mcp-lab
+absent: deploy
+absent: docker-compose.yml
+absent: docker-compose.yaml
+absent: Caddyfile
+absent: caddy/Caddyfile
+present: containers/Containerfile.mcp
+absent: scripts/recova_mcp
+absent: supabase
+
+## Matching repository filenames (excluding team worktrees)
+.omo/drafts/recova-mcp-deployment.md
+.omo/plans/recova-mcp-deployment.md
+containers/Containerfile.mcp

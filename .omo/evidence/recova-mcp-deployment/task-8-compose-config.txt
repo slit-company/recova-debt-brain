@@ -1,0 +1,86 @@
+name: recova-mcp-lab
+services:
+  caddy:
+    depends_on:
+      recova-mcp:
+        condition: service_started
+        required: true
+    image: caddy:2
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "80"
+        protocol: tcp
+      - mode: ingress
+        target: 443
+        published: "443"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /Users/cosmos/dev/ontology/trustgraph/deploy/recova-mcp-lab/Caddyfile
+        target: /etc/caddy/Caddyfile
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: volume
+        source: caddy_data
+        target: /data
+        volume: {}
+      - type: volume
+        source: caddy_config
+        target: /config
+        volume: {}
+  recova-mcp:
+    build:
+      context: /Users/cosmos/dev/ontology/trustgraph
+      dockerfile: containers/Containerfile.mcp
+    command:
+      - python
+      - -m
+      - trustgraph.mcp_server.legal_only
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --websocket-url
+      - ws://api-gateway:8088/api/v1/socket
+      - --auth-issuer
+      - https://mcp-lab.recova.slit.company
+      - --auth-resource-url
+      - https://mcp-lab.recova.slit.company/mcp
+      - --repo-root
+      - /app
+      - --no-loki-enabled
+    environment:
+      CLOUDFLARE_API_TOKEN: ""
+      MCP_LAB_BEARER_TOKEN: ""
+      SUPABASE_ANON_KEY: ""
+      SUPABASE_SERVICE_ROLE_KEY: ""
+      SUPABASE_URL: ""
+    healthcheck:
+      test:
+        - CMD
+        - /app/scripts/recova_mcp/healthcheck.sh
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 20s
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8000"
+        protocol: tcp
+    restart: unless-stopped
+networks:
+  default:
+    name: recova-mcp-lab_default
+volumes:
+  caddy_config:
+    name: recova-mcp-lab_caddy_config
+  caddy_data:
+    name: recova-mcp-lab_caddy_data

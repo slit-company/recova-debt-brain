@@ -1,0 +1,19 @@
+[
+  {
+    "created_at": "2026-02-12T07:30:48.840172Z",
+    "database": {
+      "host": "db.bohrexxmpbcumckmgkke.supabase.co",
+      "postgres_engine": "17",
+      "release_channel": "ga",
+      "version": "17.6.1.063"
+    },
+    "id": "bohrexxmpbcumckmgkke",
+    "linked": false,
+    "name": "SPEC",
+    "organization_id": "rvciliyjpvmqkxtfcahp",
+    "organization_slug": "rvciliyjpvmqkxtfcahp",
+    "ref": "bohrexxmpbcumckmgkke",
+    "region": "ap-northeast-2",
+    "status": "ACTIVE_HEALTHY"
+  }
+]

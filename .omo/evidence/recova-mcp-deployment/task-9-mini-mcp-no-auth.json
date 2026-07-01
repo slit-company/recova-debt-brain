@@ -1,0 +1,6 @@
+PASS mcp_lab_smoke auth_rejected
+{
+  "status": "auth_rejected",
+  "auth_failure": true,
+  "error_type": "ExceptionGroup"
+}

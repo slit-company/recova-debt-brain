@@ -1,0 +1,4 @@
+config_has_recova_mcp_lab True
+2026-07-01T16:12:13Z INF Added CNAME recova-mcp-lab.slit.company which will route to this tunnel tunnelID=fee383a8-664b-4dbb-b16c-771f9a2a0837
+84721 /opt/homebrew/bin/cloudflared --no-autoupdate tunnel --config /Users/slit/.cloudflared/config.yml run cliproxyapi-codex
+84723 .venv/bin/python -m trustgraph.mcp_server.legal_only --host 127.0.0.1 --port 8000 --repo-root /Users/slit/recova-mcp-lab/app --auth-issuer https://recova-mcp-lab.slit.company --auth-resource-url https://recova-mcp-lab.slit.company/mcp --no-loki-enabled

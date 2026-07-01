@@ -1,0 +1,3 @@
+NAME                          IMAGE                       COMMAND                  SERVICE      CREATED          STATUS                    PORTS
+recova-mcp-lab-caddy-1        caddy:2                     "caddy run --config …"   caddy        24 seconds ago   Up 22 seconds             0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp
+recova-mcp-lab-recova-mcp-1   recova-mcp-lab-recova-mcp   "python -m trustgrap…"   recova-mcp   24 seconds ago   Up 23 seconds (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp

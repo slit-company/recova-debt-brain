@@ -1,0 +1,1 @@
+84559 /opt/homebrew/bin/cloudflared --no-autoupdate tunnel --config /Users/slit/.cloudflared/config.yml run cliproxyapi-codex

@@ -1,0 +1,13 @@
+config_has_mcp_lab True
+tunnel: [TUNNEL_ID_REDACTED]
+credentials-file: [REDACTED]
+protocol: http2
+
+ingress:
+  - hostname: codex.slit.company
+    service: http://127.0.0.1:8317
+  - hostname: mail-bridge.slit.company
+    service: http://127.0.0.1:3001
+  - hostname: mcp-lab.recova.slit.company
+    service: http://127.0.0.1:8000
+  - service: http_status:404

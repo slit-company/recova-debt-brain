@@ -1,0 +1,46 @@
+[
+  {
+    "description": "Legacy anon API key",
+    "hash": "REDACTED_HASH",
+    "id": "anon",
+    "name": "anon",
+    "prefix": "REDACTED_PREFIX",
+    "type": "legacy",
+    "secret_value": "SET"
+  },
+  {
+    "description": "Legacy service_role API key",
+    "hash": "REDACTED_HASH",
+    "id": "service_role",
+    "name": "service_role",
+    "prefix": "REDACTED_PREFIX",
+    "type": "legacy",
+    "secret_value": "SET"
+  },
+  {
+    "description": null,
+    "hash": "REDACTED_HASH",
+    "id": "eaf46dca-4e95-49a4-8f7a-6c6b387f9044",
+    "inserted_at": "2026-06-30T13:32:15.546654+00:00",
+    "name": "default",
+    "prefix": "REDACTED_PREFIX",
+    "secret_jwt_template": null,
+    "type": "publishable",
+    "updated_at": "2026-06-30T13:32:15.546654+00:00",
+    "secret_value": "SET"
+  },
+  {
+    "description": null,
+    "hash": "REDACTED_HASH",
+    "id": "68051e02-0eda-41bd-82be-ac5634403a63",
+    "inserted_at": "2026-06-30T13:32:15.546654+00:00",
+    "name": "default",
+    "prefix": "REDACTED_PREFIX",
+    "secret_jwt_template": {
+      "role": "service_role"
+    },
+    "type": "secret",
+    "updated_at": "2026-06-30T13:32:15.546654+00:00",
+    "secret_value": "SET"
+  }
+]

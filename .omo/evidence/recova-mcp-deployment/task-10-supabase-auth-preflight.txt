@@ -1,0 +1,9 @@
+2.105.0
+[?25l[90m│[39m
+[35m◒[39m  Fetching projects[1G[J[35m◐[39m  Fetching projects[1G[J[35m◓[39m  Fetching projects[1G[J[35m◑[39m  Fetching projects[1G[J[?25hCannot find project ref. Have you run supabase link?
+
+  
+   LINKED | ORG ID               | REFERENCE ID         | NAME | REGION                 | CREATED AT (UTC)    
+  --------|----------------------|----------------------|------|------------------------|---------------------
+          | rvciliyjpvmqkxtfcahp | bohrexxmpbcumckmgkke | SPEC | Northeast Asia (Seoul) | 2026-02-12 07:30:48 
+

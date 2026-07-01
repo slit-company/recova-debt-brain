@@ -20,3 +20,4 @@ vertexai/
 venv/
 .venv/
 .env
+.omo/teams/*/worktrees/

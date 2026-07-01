@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "runbook": "docs/product/debt-collection-ontology/recova-mcp-lab-runbook.md",
+  "evidence_root": ".omo/evidence/recova-mcp-deployment",
+  "missing": [
+    "task-11-mcp-smoke.json"
+  ]
+}

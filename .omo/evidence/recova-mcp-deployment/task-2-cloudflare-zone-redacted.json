@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-07-01 22:53:01 KST",
+  "api_called": false,
+  "reason": "No local Cloudflare token variable or token-bearing local config was found. No secret values were printed.",
+  "zone_name": "slit.company",
+  "public_authority": {
+    "authoritative_dns_provider": "Cloudflare",
+    "nameservers": [
+      "clarissa.ns.cloudflare.com",
+      "keaton.ns.cloudflare.com"
+    ],
+    "soa": "clarissa.ns.cloudflare.com dns.cloudflare.com"
+  },
+  "registrar": {
+    "name": "GoDaddy.com, LLC",
+    "source": "RDAP public lookup"
+  }
+}

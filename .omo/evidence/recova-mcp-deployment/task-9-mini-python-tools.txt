@@ -1,0 +1,5 @@
+/Users/slit/.local/bin/uv
+/usr/bin/pip3
+pip 26.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)
+pip 25.3 from /Users/slit/.pyenv/versions/3.14.3/lib/python3.14/site-packages/pip (python 3.14)
+pyenv_venv_ok

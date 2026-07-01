@@ -1,0 +1,36 @@
+{
+  "mode": "fake_supabase",
+  "row_count": 1,
+  "raw_text_included": false,
+  "records": [
+    {
+      "lab_owner_email": "dev@slit.company",
+      "tool_name": "evaluate_stop_gates",
+      "group_name": "read",
+      "scope": "read:tools",
+      "status": "unknown_tool",
+      "arguments_hash_sha256": "023eade19da59c6775557bbb009779d8852930a2190f13a7ab3b7cd8040f7e76",
+      "envelope_hash_sha256": "6e07b8fb8b51c42381fd76f229104159e02c5091dcaa0d3610e2a292f236d287",
+      "redacted_arguments": {
+        "memo": "[SENSITIVE_LABEL_REDACTED] [[SENSITIVE_LABEL_REDACTED]_REDACTED] phone [PHONE_REDACTED]"
+      },
+      "redacted_result": {
+        "status": "unknown_tool"
+      },
+      "source_refs": [],
+      "warnings": [
+        "unknown_tool"
+      ],
+      "latency_ms": 0
+    }
+  ],
+  "summary": {
+    "tool_names": [
+      "evaluate_stop_gates"
+    ],
+    "statuses": [
+      "unknown_tool"
+    ],
+    "source_ref_count": 0
+  }
+}

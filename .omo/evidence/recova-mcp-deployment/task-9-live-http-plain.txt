@@ -1,0 +1,17 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74  100    74    0     0     82      0 --:--:-- --:--:-- --:--:--    82
+HTTP/1.1 401 Unauthorized
+Date: Wed, 01 Jul 2026 16:12:29 GMT
+Content-Type: application/json
+Content-Length: 74
+Connection: keep-alive
+Server: cloudflare
+Www-Authenticate: Bearer error="invalid_token", error_description="Authentication required", resource_metadata="https://recova-mcp-lab.slit.company/.well-known/oauth-protected-resource/mcp"
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Cf-Cache-Status: DYNAMIC
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=2cBif5vA6oR%2Fok8U30ON8UwW9zWSAK%2Be%2BrK9QTpfbDZImiVmXFSgTLhjNTEIsL3fqPUmmblIewom5bH44a3NE3Bk8O5sT01ZFcLS9o6IA1r6KNnyHBzt7X6GGs2SUeo09owLOV0yfajbkaMjjeE%3D"}]}
+CF-RAY: a146b14b3f7869b5-LAX
+alt-svc: h3=":443"; ma=86400
+
+{"error": "invalid_token", "error_description": "Authentication required"}curl_exit=0

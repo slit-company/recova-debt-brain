@@ -1,0 +1,5 @@
+MCP_LAB_BEARER_TOKEN=present value=[REDACTED]
+SUPABASE_URL=present value=[REDACTED]
+SUPABASE_SERVICE_ROLE_KEY=present value=[REDACTED]
+CLOUDFLARE_API_TOKEN=present value=[REDACTED]
+recova_mcp_lab_env=ready

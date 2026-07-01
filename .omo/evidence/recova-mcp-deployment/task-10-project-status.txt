@@ -1,0 +1,4 @@
+SUPABASE_PROJECT_REF=saqztuzguqwbljkosiax
+SUPABASE_URL=https://saqztuzguqwbljkosiax.supabase.co
+SUPABASE_DB_PASSWORD=SET
+password_sha256_prefix=a212533c2bde

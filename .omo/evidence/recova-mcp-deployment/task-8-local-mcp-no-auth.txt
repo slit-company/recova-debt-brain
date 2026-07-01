@@ -1,0 +1,11 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74  100    74    0     0  34038      0 --:--:-- --:--:-- --:--:-- 37000
+HTTP/1.1 401 Unauthorized
+date: Wed, 01 Jul 2026 15:53:08 GMT
+server: uvicorn
+content-type: application/json
+content-length: 74
+www-authenticate: Bearer error="invalid_token", error_description="Authentication required", resource_metadata="https://mcp-lab.recova.slit.company/.well-known/oauth-protected-resource/mcp"
+
+{"error": "invalid_token", "error_description": "Authentication required"}curl_exit=0

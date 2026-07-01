@@ -1,0 +1,2 @@
+MCP_LAB_BEARER_TOKEN=SET
+sha256_prefix=33f7d7ba3956

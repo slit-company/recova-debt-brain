@@ -1,0 +1,5 @@
+{
+  "status": "auth_rejected",
+  "auth_failure": true,
+  "error_type": "ExceptionGroup"
+}

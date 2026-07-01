@@ -1,0 +1,85 @@
+/usr/bin/python3
+Python 3.9.6
+zsh:1: command not found: cloudflared
+/usr/bin/git
+/Users/slit
+total 151720
+drwxr-x---+ 256 slit  staff      8192 Jul  1 23:00 .
+drwxr-xr-x    5 root  admin       160 Mar 29 14:32 ..
+-r--------    1 slit  staff         8 Mar 29 14:32 .CFUserTextEncoding
+-rw-r--r--@   1 slit  staff     22532 Jun 29 20:51 .DS_Store
+drwx------+   3 slit  staff        96 Jun 27 16:30 .Trash
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .adal
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .agents
+drwxr-xr-x    6 slit  staff       192 Apr 16 14:14 .android
+drwxr-xr-x@   7 slit  staff       224 Jul  2 01:00 .aside
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .augment
+drwxr-xr-x    4 slit  staff       128 May 14 16:50 .aws
+drwxr-xr-x@   4 slit  staff       128 Jun 11 14:38 .bananatape
+-rw-------    1 slit  staff      1153 Jun  6 23:35 .bash_history
+-rw-r--r--    1 slit  staff       105 Mar 29 15:40 .bash_profile
+-rw-r--r--    1 slit  staff       134 Mar 29 15:40 .bashrc
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .bob
+drwxr-xr-x    5 slit  staff       160 Mar 29 15:24 .bun
+drwxr-xr-x   12 slit  staff       384 Jun 27 16:04 .cache
+drwxr-xr-x   11 slit  staff       352 Jun 20 03:20 .cargo
+drwxr-xr-x   19 slit  staff       608 Jul  1 23:00 .claude
+-rw-------@   1 slit  staff     36479 Jul  1 17:00 .claude.json
+drwx------    9 slit  staff       288 Jun 12 21:02 .cli-proxy-api
+-rw-r--r--    1 slit  staff      1038 May 14 16:45 .cli-tool-env.sh
+drwx------@   6 slit  staff       192 Jun 29 18:34 .cloudflared
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .codebuddy
+lrwx------    1 slit  staff        57 Jun 18 01:24 .codegraph -> /Users/slit/.omo/codegraph/projects/slit-7fa84dbac495623e
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .codeium
+drwxr-xr-x   50 slit  staff      1600 Jul  2 00:49 .codex
+drwxr-xr-x    3 slit  staff        96 Apr 13 16:00 .codex-backups
+drwx------    8 slit  staff       256 Jun  1 15:07 .colima
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .commandcode
+drwxr-xr-x   18 slit  staff       576 Jun 22 11:13 .config
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .continue
+drwxr-xr-x    3 slit  staff        96 Apr 13 15:14 .critique
+drwxr-xr-x    5 slit  staff       160 Jun 25 20:01 .cua-driver
+drwxr-xr-x    3 slit  staff        96 Jun 25 20:27 .cua-driver-rs
+drwxr-xr-x    7 slit  staff       224 Mar 29 15:25 .dev-browser
+drwxr-xr-x    4 slit  staff       128 Jun  1 15:07 .docker
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .factory
+-rw-r--r--    1 slit  staff       258 Jun 12 14:19 .gitconfig
+drwxr-xr-x@   4 slit  staff       128 Jun 29 13:05 .gjc
+drwxr-xr-x    3 slit  staff        96 Apr 29 09:27 .gps-bridge
+drwxr-xr-x    7 slit  staff       224 Jun 18 17:11 .gradle
+drwx------@   7 slit  staff       224 Jul  1 04:00 .gstack
+drwx------@  57 slit  staff      1824 Jul  2 01:01 .hermes
+drwx------    4 slit  staff       128 Jun 21 22:52 .homebrew
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .iflow
+drwxr-xr-x    3 slit  staff        96 Jun 29 15:32 .insane_search
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .junie
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .kilocode
+drwxr-xr-x   14 slit  staff       448 Apr 16 09:39 .kimaki
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .kiro
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .kode
+drwx------@   4 slit  staff       128 Jun  9 15:02 .lazyweb
+drwxr-xr-x    7 slit  staff       224 May 14 16:43 .local
+drwx------    3 slit  staff        96 Jun  6 23:26 .mcp-auth
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .mcpjam
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .mux
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .neovate
+drwxr-xr-x    9 slit  staff       288 Jul  1 05:31 .notcrawl
+drwxr-xr-x    7 slit  staff       224 Jun 18 17:07 .npm
+drwxr-xr-x    4 slit  staff       128 Mar 29 15:16 .npm-global
+-rw-------    1 slit  staff        31 Mar 29 15:16 .npmrc
+drwxr-xr-x@   9 slit  staff       288 Jun 18 01:24 .omo
+drwxr-xr-x    6 slit  staff       192 Jun 11 15:19 .omx-runs
+drwxr-xr-x    8 slit  staff       256 Apr  7 19:19 .opencode
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .openhands
+drwx------   13 slit  staff       416 Jun 30 03:08 .parsec
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .pi
+drwxr-xr-x   34 slit  staff      1088 Apr 13 18:38 .playwright-mcp
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .pochi
+-rw-r--r--    1 slit  staff        21 Mar 29 15:40 .profile
+drwxr-xr-x    5 slit  staff       160 Mar 29 15:45 .pyenv
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .qoder
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .qwen
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .roo
+drwxr-xr-x    7 slit  staff       224 Mar 29 15:40 .rustup
+drwxr-xr-x    6 slit  staff       192 Apr  7 19:31 .sisyphus
+drwxr-xr-x    3 slit  staff        96 Apr 23 18:58 .snowflake

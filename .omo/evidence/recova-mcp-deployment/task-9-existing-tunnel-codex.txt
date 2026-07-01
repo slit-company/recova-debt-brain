@@ -1,0 +1,16 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
+HTTP/2 404 
+date: Wed, 01 Jul 2026 16:11:07 GMT
+access-control-allow-headers: *
+access-control-allow-methods: GET, POST, PUT, PATCH, DELETE, OPTIONS
+access-control-allow-origin: *
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qeddv%2BJZf1qLVGFPFlNoBP5SzjCzn%2BV7WUXMpdpBa6akweLs2e81X5K0gwR%2FVQl2k5HH43cEaKKgRrKoGj5z6UEl2nM7KpfRf1Bt%2BDUgSVle1YYY4UioC5padddadM7OG0ItKE8%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a146af4b5fd2c6ec-SJC
+alt-svc: h3=":443"; ma=86400
+
+curl_exit=0

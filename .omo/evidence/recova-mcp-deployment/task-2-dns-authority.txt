@@ -1,0 +1,29 @@
+Task 2 DNS authority snapshot
+Observed: 2026-07-01 22:53:01 KST
+Thread: codex://threads/019f1def-1a70-7333-a9cd-18d2d60cd79e
+
+PASS: slit.company is delegated to Cloudflare nameservers.
+
+Evidence:
+- task-2-ns.txt: dig +short NS slit.company returned:
+  - clarissa.ns.cloudflare.com.
+  - keaton.ns.cloudflare.com.
+- task-2-ns-detail.txt: recursive NS lookup returned the same Cloudflare nameservers.
+- task-2-soa.txt: SOA is clarissa.ns.cloudflare.com. with dns.cloudflare.com. contact.
+- task-2-authoritative-queries.txt: direct queries to both Cloudflare nameservers returned aa authoritative answers for slit.company NS.
+- task-2-rdap-registrar-redacted.json: RDAP shows registrar GoDaddy.com, LLC, while nameservers remain clarissa.ns.cloudflare.com and keaton.ns.cloudflare.com.
+
+PASS: mcp-lab.recova.slit.company currently has no DNS record.
+
+Evidence:
+- task-2-existing-record.txt: dig +short mcp-lab.recova.slit.company returned no records.
+- task-2-existing-record-detail.txt: A lookup returned NXDOMAIN with slit.company Cloudflare SOA authority.
+- task-2-existing-record-all-types.txt: A, AAAA, CNAME, TXT, and TYPE65 lookups all returned NXDOMAIN.
+- task-2-authoritative-queries.txt: direct A lookups to clarissa.ns.cloudflare.com and keaton.ns.cloudflare.com returned authoritative NXDOMAIN.
+
+Account access:
+- No Cloudflare API call was made because no local Cloudflare token variable or token-bearing local config was found.
+- Aside/browser confirmation was not used because CLI authority proved the active DNS owner: Cloudflare is authoritative for slit.company.
+
+Mutation status:
+- No DNS records were created, updated, or deleted.

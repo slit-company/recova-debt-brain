@@ -1,0 +1,46 @@
+### @clarissa.ns.cloudflare.com NS slit.company
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 4884
+;; flags: qr aa; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+slit.company.		86400	IN	NS	clarissa.ns.cloudflare.com.
+slit.company.		86400	IN	NS	keaton.ns.cloudflare.com.
+
+
+### @clarissa.ns.cloudflare.com A mcp-lab.recova.slit.company
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 64316
+;; flags: qr aa; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+slit.company.		1800	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
+
+
+### @keaton.ns.cloudflare.com NS slit.company
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 11218
+;; flags: qr aa; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+slit.company.		86400	IN	NS	clarissa.ns.cloudflare.com.
+slit.company.		86400	IN	NS	keaton.ns.cloudflare.com.
+
+
+### @keaton.ns.cloudflare.com A mcp-lab.recova.slit.company
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 16249
+;; flags: qr aa; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; AUTHORITY SECTION:
+slit.company.		1800	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
+
+

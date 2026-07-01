@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-01T13:45:35.421Z",
+  "updatedAt": "2026-07-01T16:31:00Z",
+  "briefPath": ".omo/ulw-loop/recova-mcp-deployment-20260701/brief.md",
+  "goalsPath": ".omo/ulw-loop/recova-mcp-deployment-20260701/goals.json",
+  "ledgerPath": ".omo/ulw-loop/recova-mcp-deployment-20260701/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-execute-the-decision-complete-recova",
+      "title": "Execute the decision-complete Recova MCP lab deployment plan in .omo/...",
+      "objective": "Execute the decision-complete Recova MCP lab deployment plan in .omo/plans/recova-mcp-deployment.md. Outcome: a debt-only MCP lab at https://recova-mcp-lab.slit.company/mcp on VPS/VM Docker+Caddy, Supabase dev@slit.company as redacted experiment memory, Cloudflare/GoDaddy DNS verified, bold judgment traces captured, generic TrustGraph public tools blocked, execution actions closed, and all evidence recorded under .omo/evidence/recova-mcp-deployment/. Tier HEAVY because this includes external integration, auth, DNS, DB schema, deployment, and public MCP surface.",
+      "status": "completed",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "HTTP + DB happy path: live https://recova-mcp-lab.slit.company/mcp rejects missing auth, accepts authorized MCP list-tools, returns exactly 16 Recova debt tools, runs one fixture StopGate/judgment smoke, and records a redacted Supabase trace row.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json plus task-10-supabase-remote.txt and f3-real-qa.txt",
+          "essential": true,
+          "capturedEvidence": [
+            ".omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json",
+            ".omo/evidence/recova-mcp-deployment/task-10-trace-count.json",
+            ".omo/evidence/recova-mcp-deployment/f3-real-qa.txt"
+          ],
+          "status": "passed"
+        },
+        {
+          "id": "C002",
+          "scenario": "Adversarial/edge path: unauthenticated MCP request is rejected, generic TrustGraph tools are absent, execution probes for filing/contact/payment/attachment are blocked, and Supabase rejects or redacts PII-shaped input.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/evidence/recova-mcp-deployment/task-4-generic-block.json, task-6-execution-block.json, task-10-rls-deny.txt, and f4-scope-fidelity.md",
+          "essential": true,
+          "capturedEvidence": [
+            ".omo/evidence/recova-mcp-deployment/task-11-no-auth.json",
+            ".omo/evidence/recova-mcp-deployment/task-10-rls-deny.txt",
+            ".omo/evidence/recova-mcp-deployment/f4-scope-fidelity.md"
+          ],
+          "status": "passed"
+        },
+        {
+          "id": "C003",
+          "scenario": "Regression/operations path: existing legal ontology tests still pass, Docker/Caddy restart smoke passes, DNS/TLS rollback is documented, and no evidence contains secrets or raw PII.",
+          "userModel": "regression",
+          "expectedEvidence": ".omo/evidence/recova-mcp-deployment/task-1-pytest.txt, task-8-local-mcp-http.txt, task-12-rollback-dry-run.txt, f2-code-review.md, and final sensitive-scan output",
+          "essential": false,
+          "capturedEvidence": [
+            ".omo/evidence/recova-mcp-deployment/task-1-pytest.txt",
+            ".omo/evidence/recova-mcp-deployment/task-8-local-mcp-http.txt",
+            ".omo/evidence/recova-mcp-deployment/task-12-rollback-dry-run.txt",
+            ".omo/evidence/recova-mcp-deployment/f2-code-review.md"
+          ],
+          "status": "passed"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-01T13:45:35.421Z",
+      "updatedAt": "2026-07-01T16:31:00Z"
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/recova-mcp-deployment-20260701/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/recova-mcp-deployment-20260701/ledger.jsonl as the audit trail."
+}

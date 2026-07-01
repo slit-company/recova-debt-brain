@@ -1,0 +1,131 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 575B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Containerfile.mcp
+#2 transferring dockerfile: 1.21kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/fedora:42
+#3 DONE 0.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 163B done
+#4 DONE 0.0s
+
+#5 [ 1/10] FROM docker.io/library/fedora:42@sha256:99e203b80b1c3d8f7e161ec10a68fd02b081ef83a3963553e513c82846b97814
+#5 resolve docker.io/library/fedora:42@sha256:99e203b80b1c3d8f7e161ec10a68fd02b081ef83a3963553e513c82846b97814 done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 16.45kB 0.0s done
+#6 DONE 0.0s
+
+#7 [ 9/10] COPY tests/fixtures/legal-ocr/ /app/tests/fixtures/legal-ocr/
+#7 CACHED
+
+#8 [ 6/10] COPY trustgraph_legal/ /app/trustgraph_legal/
+#8 CACHED
+
+#9 [ 4/10] COPY trustgraph-base/trustgraph/ /app/trustgraph/
+#9 CACHED
+
+#10 [ 2/10] RUN dnf install -y python3.13 python3.13-pip curl &&     alternatives --install /usr/bin/python python /usr/bin/python3.13 1 &&     python -m ensurepip --upgrade &&     pip3 install --no-cache-dir --upgrade 'pip>=26.0' 'setuptools>=78.1.1' &&     pip3 install --no-cache-dir         mcp         websockets         pyyaml         prometheus-client         requests         python-logging-loki         pika         confluent-kafka         pulsar-client &&     dnf clean all &&     rm -rf /var/cache/dnf
+#10 CACHED
+
+#11 [ 3/10] WORKDIR /app
+#11 CACHED
+
+#12 [ 5/10] COPY trustgraph-mcp/trustgraph/mcp_server/ /app/trustgraph/mcp_server/
+#12 CACHED
+
+#13 [ 7/10] COPY resources/legal_rules/ /app/resources/legal_rules/
+#13 CACHED
+
+#14 [ 8/10] COPY resources/ontologies/ /app/resources/ontologies/
+#14 CACHED
+
+#15 [10/10] COPY scripts/recova_mcp/ /app/scripts/recova_mcp/
+#15 CACHED
+
+#16 exporting to image
+#16 exporting layers done
+#16 exporting manifest sha256:b83e493920b4f5e71c8a4d4d155fa59e62864d814776237edfde0ee2989a0bd8 done
+#16 exporting config sha256:0159e6bd0d4a2fd7eb5b6ffe3de81ac7667a04ebae1219009c677e749ded5889 done
+#16 exporting attestation manifest sha256:05ecf8eb0a1d6080260f5070544593ab527cffe7d62a19508dd2e05f03d9c589 done
+#16 exporting manifest list sha256:db691aa8eb952710002a1889b57c69235ddc1cc33993dcb5cd148f9afe7ee74d done
+#16 naming to docker.io/library/recova-mcp-lab-recova-mcp:latest done
+#16 unpacking to docker.io/library/recova-mcp-lab-recova-mcp:latest done
+#16 DONE 0.1s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ recova-mcp-lab-recova-mcp  Built
+ Network recova-mcp-lab_default  Creating
+ Network recova-mcp-lab_default  Created
+ Volume recova-mcp-lab_caddy_data  Creating
+ Volume recova-mcp-lab_caddy_data  Created
+ Volume recova-mcp-lab_caddy_config  Creating
+ Volume recova-mcp-lab_caddy_config  Created
+ Container recova-mcp-lab-recova-mcp-1  Creating
+ Container recova-mcp-lab-recova-mcp-1  Created
+ Container recova-mcp-lab-caddy-1  Creating
+ Container recova-mcp-lab-caddy-1  Created
+Attaching to caddy-1, recova-mcp-1
+caddy-1  | {"level":"info","ts":1782921166.5722091,"msg":"maxprocs: Leaving GOMAXPROCS=10: CPU quota undefined"}
+caddy-1  | {"level":"info","ts":1782921166.5722706,"msg":"GOMEMLIMIT is updated","GOMEMLIMIT":7395703603,"previous":9223372036854775807}
+caddy-1  | {"level":"info","ts":1782921166.5722752,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+caddy-1  | {"level":"info","ts":1782921166.5722775,"msg":"adapted config to JSON","adapter":"caddyfile"}
+caddy-1  | {"level":"info","ts":1782921166.5772572,"logger":"admin","msg":"admin endpoint started","address":"localhost:2019","enforce_origin":false,"origins":["//localhost:2019","//[::1]:2019","//127.0.0.1:2019"]}
+caddy-1  | {"level":"info","ts":1782921166.5774844,"logger":"http.auto_https","msg":"server is listening only on the HTTPS port but has no TLS connection policies; adding one to enable TLS","server_name":"srv0","https_port":443}
+caddy-1  | {"level":"info","ts":1782921166.5775433,"logger":"http.auto_https","msg":"enabling automatic HTTP->HTTPS redirects","server_name":"srv0"}
+caddy-1  | {"level":"info","ts":1782921166.5776196,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x7c590c486480"}
+caddy-1  | {"level":"info","ts":1782921166.5781894,"logger":"http","msg":"enabling HTTP/3 listener","addr":":443"}
+caddy-1  | {"level":"info","ts":1782921166.5783896,"msg":"failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 7168 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details."}
+caddy-1  | {"level":"info","ts":1782921166.5790644,"logger":"http.log","msg":"server running","name":"srv0","protocols":["h1","h2","h3"]}
+caddy-1  | {"level":"warn","ts":1782921166.5791059,"logger":"http","msg":"HTTP/2 skipped because it requires TLS","network":"tcp","addr":":80"}
+caddy-1  | {"level":"warn","ts":1782921166.5791142,"logger":"http","msg":"HTTP/3 skipped because it requires TLS","network":"tcp","addr":":80"}
+caddy-1  | {"level":"info","ts":1782921166.5791185,"logger":"http.log","msg":"server running","name":"remaining_auto_https_redirects","protocols":["h1","h2","h3"]}
+caddy-1  | {"level":"info","ts":1782921166.579123,"logger":"http","msg":"enabling automatic TLS certificate management","domains":["mcp-lab.recova.slit.company"]}
+caddy-1  | {"level":"info","ts":1782921166.5793586,"msg":"autosaved config (load with --resume flag)","file":"/config/caddy/autosave.json"}
+caddy-1  | {"level":"info","ts":1782921166.579368,"msg":"serving initial configuration"}
+caddy-1  | {"level":"info","ts":1782921166.5814247,"logger":"tls","msg":"cleaning storage unit","storage":"FileStorage:/data/caddy"}
+caddy-1  | {"level":"info","ts":1782921166.582336,"logger":"tls.obtain","msg":"acquiring lock","identifier":"mcp-lab.recova.slit.company"}
+caddy-1  | {"level":"info","ts":1782921166.5840168,"logger":"tls","msg":"finished cleaning storage units"}
+caddy-1  | {"level":"info","ts":1782921166.5852995,"logger":"tls.obtain","msg":"lock acquired","identifier":"mcp-lab.recova.slit.company"}
+caddy-1  | {"level":"info","ts":1782921166.585356,"logger":"tls.obtain","msg":"obtaining certificate","identifier":"mcp-lab.recova.slit.company"}
+caddy-1  | {"level":"info","ts":1782921166.5860465,"logger":"http","msg":"creating new account because no account for configured email is known to us","email":"","ca":"https://acme-v02.api.letsencrypt.org/directory","error":"open /data/caddy/acme/acme-v02.api.letsencrypt.org-directory/users/default/default.json: no such file or directory"}
+caddy-1  | {"level":"info","ts":1782921166.5860918,"logger":"http","msg":"ACME account has empty status; registering account with ACME server","contact":[],"location":""}
+caddy-1  | {"level":"info","ts":1782921166.5877113,"logger":"http","msg":"creating new account because no account for configured email is known to us","email":"","ca":"https://acme-v02.api.letsencrypt.org/directory","error":"open /data/caddy/acme/acme-v02.api.letsencrypt.org-directory/users/default/default.json: no such file or directory"}
+recova-mcp-1  | 2026-07-01 15:52:46,827 - unknown - INFO - Logging configured with level: INFO
+recova-mcp-1  | INFO:     Started server process [1]
+recova-mcp-1  | INFO:     Waiting for application startup.
+recova-mcp-1  | 2026-07-01 15:52:46,853 - unknown - INFO - StreamableHTTP session manager started
+recova-mcp-1  | INFO:     Application startup complete.
+recova-mcp-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+caddy-1       | {"level":"info","ts":1782921167.4949863,"logger":"http","msg":"new ACME account registered","contact":[],"status":"valid"}
+caddy-1       | {"level":"info","ts":1782921167.4984398,"logger":"http","msg":"waiting on internal rate limiter","identifiers":["mcp-lab.recova.slit.company"],"ca":"https://acme-v02.api.letsencrypt.org/directory","account":""}
+caddy-1       | {"level":"info","ts":1782921167.498476,"logger":"http","msg":"done waiting on internal rate limiter","identifiers":["mcp-lab.recova.slit.company"],"ca":"https://acme-v02.api.letsencrypt.org/directory","account":""}
+caddy-1       | {"level":"info","ts":1782921167.4985363,"logger":"http","msg":"using ACME account","account_id":"https://acme-v02.api.letsencrypt.org/acme/acct/3491712246","account_contact":[]}
+caddy-1       | {"level":"info","ts":1782921167.8773365,"logger":"http.acme_client","msg":"trying to solve challenge","identifier":"mcp-lab.recova.slit.company","challenge_type":"tls-alpn-01","ca":"https://acme-v02.api.letsencrypt.org/directory"}
+caddy-1       | {"level":"error","ts":1782921169.0668585,"logger":"http.acme_client","msg":"challenge failed","identifier":"mcp-lab.recova.slit.company","challenge_type":"tls-alpn-01","problem":{"type":"urn:ietf:params:acme:error:dns","title":"","detail":"DNS problem: NXDOMAIN looking up A for mcp-lab.recova.slit.company - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for mcp-lab.recova.slit.company - check that a DNS record exists for this domain","instance":"","subproblems":null}}
+caddy-1       | {"level":"error","ts":1782921169.0669127,"logger":"http.acme_client","msg":"validating authorization","identifier":"mcp-lab.recova.slit.company","problem":{"type":"urn:ietf:params:acme:error:dns","title":"","detail":"DNS problem: NXDOMAIN looking up A for mcp-lab.recova.slit.company - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for mcp-lab.recova.slit.company - check that a DNS record exists for this domain","instance":"","subproblems":null},"order":"https://acme-v02.api.letsencrypt.org/acme/order/3491712246/527509752896","attempt":1,"max_attempts":3}
+caddy-1       | {"level":"info","ts":1782921170.4837348,"logger":"http.acme_client","msg":"trying to solve challenge","identifier":"mcp-lab.recova.slit.company","challenge_type":"http-01","ca":"https://acme-v02.api.letsencrypt.org/directory"}
+caddy-1       | {"level":"error","ts":1782921171.7708273,"logger":"http.acme_client","msg":"challenge failed","identifier":"mcp-lab.recova.slit.company","challenge_type":"http-01","problem":{"type":"urn:ietf:params:acme:error:dns","title":"","detail":"DNS problem: NXDOMAIN looking up A for mcp-lab.recova.slit.company - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for mcp-lab.recova.slit.company - check that a DNS record exists for this domain","instance":"","subproblems":null}}
+caddy-1       | {"level":"error","ts":1782921171.7710054,"logger":"http.acme_client","msg":"validating authorization","identifier":"mcp-lab.recova.slit.company","problem":{"type":"urn:ietf:params:acme:error:dns","title":"","detail":"DNS problem: NXDOMAIN looking up A for mcp-lab.recova.slit.company - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for mcp-lab.recova.slit.company - check that a DNS record exists for this domain","instance":"","subproblems":null},"order":"https://acme-v02.api.letsencrypt.org/acme/order/3491712246/527509762206","attempt":2,"max_attempts":3}
+caddy-1       | {"level":"error","ts":1782921171.7724426,"logger":"tls.obtain","msg":"could not get certificate from issuer","identifier":"mcp-lab.recova.slit.company","issuer":"acme-v02.api.letsencrypt.org-directory","error":"HTTP 400 urn:ietf:params:acme:error:dns - DNS problem: NXDOMAIN looking up A for mcp-lab.recova.slit.company - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for mcp-lab.recova.slit.company - check that a DNS record exists for this domain"}
+caddy-1       | {"level":"error","ts":1782921171.772608,"logger":"tls.obtain","msg":"will retry","error":"[mcp-lab.recova.slit.company] Obtain: [mcp-lab.recova.slit.company] solving challenge: mcp-lab.recova.slit.company: [mcp-lab.recova.slit.company] authorization failed: HTTP 400 urn:ietf:params:acme:error:dns - DNS problem: NXDOMAIN looking up A for mcp-lab.recova.slit.company - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for mcp-lab.recova.slit.company - check that a DNS record exists for this domain (ca=https://acme-v02.api.letsencrypt.org/directory)","attempt":1,"retrying_in":60,"elapsed":5.187290919,"max_duration":2592000}
+recova-mcp-1  | INFO:     172.66.0.243:46691 - "GET /mcp HTTP/1.1" 401 Unauthorized
+recova-mcp-1  | INFO:     172.66.0.243:63463 - "GET /mcp HTTP/1.1" 401 Unauthorized
+caddy-1       | {"level":"info","ts":1782921197.458713,"msg":"shutting down apps, then terminating","signal":"SIGTERM"}
+caddy-1       | {"level":"warn","ts":1782921197.4589202,"msg":"exiting; byeee!! 👋","signal":"SIGTERM"}
+caddy-1       | {"level":"info","ts":1782921197.4594345,"logger":"http","msg":"servers shutting down with eternal grace period"}
+caddy-1       | {"level":"info","ts":1782921197.4609478,"logger":"admin","msg":"stopped previous server","address":"localhost:2019"}
+caddy-1       | {"level":"info","ts":1782921197.4609663,"msg":"shutdown complete","signal":"SIGTERM","exit_code":0}
+[Kcaddy-1 exited with code 0
+recova-mcp-1  | INFO:     Shutting down
+recova-mcp-1  | INFO:     Waiting for application shutdown.
+recova-mcp-1  | 2026-07-01 15:53:17,880 - unknown - INFO - StreamableHTTP session manager shutting down
+recova-mcp-1  | INFO:     Application shutdown complete.
+recova-mcp-1  | INFO:     Finished server process [1]
+[Krecova-mcp-1 exited with code 0

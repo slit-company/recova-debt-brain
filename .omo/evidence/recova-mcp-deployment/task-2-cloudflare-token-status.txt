@@ -1,0 +1,4 @@
+Environment token variables:
+
+Local files mentioning Cloudflare token/API names (filenames only):
+./.omo/plans/recova-mcp-deployment.md

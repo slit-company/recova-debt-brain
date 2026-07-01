@@ -1,0 +1,6 @@
+Validating rules from /Users/slit/.cloudflared/config.yml
+OK
+Using rules from /Users/slit/.cloudflared/config.yml
+Matched rule #2
+	hostname: mcp-lab.recova.slit.company
+	service: http://127.0.0.1:8000

@@ -1,0 +1,23 @@
+{
+  "ldhName": "slit.company",
+  "status": [
+    "client delete prohibited",
+    "client renew prohibited",
+    "client transfer prohibited",
+    "client update prohibited"
+  ],
+  "nameservers": [
+    "clarissa.ns.cloudflare.com",
+    "keaton.ns.cloudflare.com"
+  ],
+  "registrar": {
+    "handle": "146",
+    "publicIds": [
+      {
+        "type": "IANA Registrar ID",
+        "identifier": "146"
+      }
+    ],
+    "name": "GoDaddy.com, LLC"
+  }
+}

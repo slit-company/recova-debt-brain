@@ -1,0 +1,35 @@
+DESCRIPTION
+  Create a project on Supabase.
+
+USAGE
+  supabase projects create [flags] [<name>]
+
+ARGUMENTS
+  name string    Name of the project to create. (optional)
+
+FLAGS
+  --org-id string         Organization ID to create the project in.
+  --db-password string    Database password of the project.
+  --region choice         Select a region close to you for the best performance. (choices: ap-east-1, ap-northeast-1, ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2, ca-central-1, eu-central-1, eu-central-2, eu-north-1, eu-west-1, eu-west-2, eu-west-3, sa-east-1, us-east-1, us-east-2, us-west-1, us-west-2)
+  --size choice           Select a desired instance size for your project. (choices: nano, micro, small, medium, large, xlarge, 2xlarge, 4xlarge, 8xlarge, 12xlarge, 16xlarge, 24xlarge, 24xlarge_high_memory, 24xlarge_optimized_cpu, 24xlarge_optimized_memory, 48xlarge, 48xlarge_high_memory, 48xlarge_optimized_cpu, 48xlarge_optimized_memory)
+
+GLOBAL FLAGS
+  --help, -h                Show help information
+  --version                 Show version information
+  --completions choice      Print shell completion script (choices: bash, zsh, fish, sh)
+  --log-level choice        Sets the minimum log level (choices: all, trace, debug, info, warn, warning, error, fatal, none)
+  --output-format choice    Output format: text (default), json, or stream-json (NDJSON) (choices: text, json, stream-json)
+  --output, -o choice       Output format of status variables. (choices: env, pretty, json, toml, yaml)
+  --profile string          Use a specific profile for connecting to Supabase API.
+  --debug                   Output debug logs to stderr.
+  --workdir string          Path to a Supabase project directory.
+  --experimental            Enable experimental features.
+  --network-id string       Use the specified Docker network instead of a generated one.
+  --yes                     Answer yes to all prompts.
+  --dns-resolver choice     Look up domain names using the specified resolver. (choices: native, https)
+  --create-ticket           Create a support ticket for any CLI error.
+  --agent choice            Override agent detection: yes, no, or auto. (choices: auto, yes, no)
+
+EXAMPLES
+  # Create a new project
+  supabase projects create my-project --org-id cool-green-pqdr0qc --db-password ******** --region us-east-1

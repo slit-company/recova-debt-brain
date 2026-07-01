@@ -1,0 +1,35 @@
+F3 Real Manual QA
+Status: APPROVE
+
+Endpoint:
+https://recova-mcp-lab.slit.company/mcp
+
+DNS:
+See f3-dig.txt. The hostname resolves through Cloudflare.
+
+HTTPS no-auth:
+See f3-live-https-no-auth.txt. The endpoint returns HTTP/2 401 with MCP bearer auth metadata, not TLS failure.
+
+HTTP no-auth:
+See f3-live-http-plain.txt. The endpoint rejects safely with 401.
+
+Authenticated MCP smoke:
+See task-11-mcp-smoke.json.
+
+Observed:
+- status: ok
+- tool_count: 16
+- generic_tools: []
+- execution_tools: []
+- decision: 보류
+- trace_status: recorded
+
+Unauthenticated MCP client smoke:
+See task-11-no-auth.json.
+
+Observed:
+- status: auth_rejected
+- auth_failure: true
+
+Supabase trace:
+See task-10-trace-count.json. Recent tool trace rows include live check_case_stop_gates calls.
