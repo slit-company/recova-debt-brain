@@ -1,0 +1,3 @@
+mcp-lab.recova.slit.company {
+	reverse_proxy recova-mcp:8000
+}

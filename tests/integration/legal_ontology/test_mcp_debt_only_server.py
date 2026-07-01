@@ -144,6 +144,28 @@ def test_debt_only_registered_tool_uses_context_auth(monkeypatch: pytest.MonkeyP
     assert "context-token" not in encoded
 
 
+def test_debt_only_server_defers_pubsub_until_token_authorization(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # Given: a standalone lab server with no injected pubsub backend.
+    _install_fake_mcp_sdk(monkeypatch)
+    _install_local_packages()
+    legal_only = importlib.import_module("trustgraph.mcp_server.legal_only")
+    monkeypatch.setattr(
+        legal_only,
+        "_get_pubsub",
+        lambda config: (_ for _ in ()).throw(AssertionError("eager pubsub")),
+    )
+
+    # When: the server is constructed so the HTTP MCP endpoint can start.
+    server = legal_only.DebtCollectionMcpServer(
+        config=legal_only.DebtCollectionServerConfig(repo_root=REPO_ROOT),
+    )
+
+    # Then: registering tools does not require the gateway pubsub stack yet.
+    assert list(server.mcp.registered) == EXPECTED_TOOL_NAMES
+
+
 class _ClosableBackend:
     def close(self) -> None:
         return None

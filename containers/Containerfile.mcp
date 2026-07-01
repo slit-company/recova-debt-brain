@@ -1,49 +1,34 @@
+FROM docker.io/fedora:42
 
-# ----------------------------------------------------------------------------
-# Build an AI container.  This does the torch install which is huge, and I
-# like to avoid re-doing this.
-# ----------------------------------------------------------------------------
+ENV PIP_BREAK_SYSTEM_PACKAGES=1 \
+    PYTHONPATH=/app \
+    PYTHONUNBUFFERED=1
 
-FROM docker.io/fedora:42 AS base
+RUN dnf install -y python3.13 python3.13-pip curl && \
+    alternatives --install /usr/bin/python python /usr/bin/python3.13 1 && \
+    python -m ensurepip --upgrade && \
+    pip3 install --no-cache-dir --upgrade 'pip>=26.0' 'setuptools>=78.1.1' && \
+    pip3 install --no-cache-dir \
+        mcp \
+        websockets \
+        pyyaml \
+        prometheus-client \
+        requests \
+        python-logging-loki \
+        pika \
+        confluent-kafka \
+        pulsar-client && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf
 
-ENV PIP_BREAK_SYSTEM_PACKAGES=1
+WORKDIR /app
 
-RUN dnf install -y python3.13 && \
-  alternatives --install /usr/bin/python python /usr/bin/python3.13 1 && \
-  python -m ensurepip --upgrade && \
-  pip3 install --no-cache-dir --upgrade 'pip>=26.0' 'setuptools>=78.1.1' && \
-  pip3 install --no-cache-dir mcp websockets && \
-  dnf clean all
+COPY trustgraph-base/trustgraph/ /app/trustgraph/
+COPY trustgraph-mcp/trustgraph/mcp_server/ /app/trustgraph/mcp_server/
+COPY trustgraph_legal/ /app/trustgraph_legal/
+COPY resources/legal_rules/ /app/resources/legal_rules/
+COPY resources/ontologies/ /app/resources/ontologies/
+COPY tests/fixtures/legal-ocr/ /app/tests/fixtures/legal-ocr/
+COPY scripts/recova_mcp/ /app/scripts/recova_mcp/
 
-# ----------------------------------------------------------------------------
-# Build a container which contains the built Python packages.  The build
-# creates a bunch of left-over cruft, a separate phase means this is only
-# needed to support package build
-# ----------------------------------------------------------------------------
-
-FROM base AS build
-
-COPY trustgraph-mcp/ /root/build/trustgraph-mcp/
-
-WORKDIR /root/build/
-
-RUN pip3 install --no-cache-dir build wheel
-
-RUN pip3 wheel -w /root/wheels/ --no-deps ./trustgraph-mcp/
-
-RUN ls /root/wheels
-
-# ----------------------------------------------------------------------------
-# Finally, the target container.  Start with base and add the package.
-# ----------------------------------------------------------------------------
-
-FROM base
-
-COPY --from=build /root/wheels /root/wheels
-
-RUN \
-    pip3 install --no-cache-dir /root/wheels/trustgraph_mcp-* && \
-    rm -rf /root/wheels
-
-WORKDIR /
-
+CMD ["python", "-m", "trustgraph.mcp_server.legal_only", "--host", "0.0.0.0", "--port", "8000", "--repo-root", "/app"]

@@ -61,15 +61,20 @@ class DebtCollectionMcpServer:
         self.port = resolved_config.port
         self.websocket_url = resolved_config.websocket_url
         self.repo_root = resolved_config.repo_root
-        self.pubsub_backend = (
-            pubsub_backend
-            if pubsub_backend is not None
-            else _get_pubsub(resolved_config.pubsub_config or {})
-        )
+        self.pubsub_backend = pubsub_backend
+        lazy_authorizer = None
+        if pubsub_backend is None and scope_authorizer is None:
+            lazy_authorizer = _LazyIamScopeAuthorizer(
+                resolved_config.pubsub_config or {}
+            )
         authorizer = (
             scope_authorizer
             if scope_authorizer is not None
-            else IamScopeAuthorizer(self.pubsub_backend)
+            else (
+                IamScopeAuthorizer(self.pubsub_backend)
+                if self.pubsub_backend is not None
+                else lazy_authorizer
+            )
         )
         auth_settings = _auth_settings(
             issuer_url=resolved_config.auth_issuer or f"http://{self.host}:{self.port}",
@@ -80,7 +85,7 @@ class DebtCollectionMcpServer:
         )
         lifespan = partial(
             debt_collection_lifespan,
-            pubsub_backend=self.pubsub_backend,
+            pubsub_backend=lazy_authorizer or self.pubsub_backend,
         )
         fast_mcp = _fast_mcp_class()
         self.mcp = fast_mcp(
@@ -100,6 +105,23 @@ class DebtCollectionMcpServer:
 
     def run(self) -> None:
         self.mcp.run(transport="streamable-http")
+
+
+class _LazyIamScopeAuthorizer:
+    def __init__(self, pubsub_config: dict[str, Any]):
+        self.pubsub_config = pubsub_config
+        self.pubsub_backend: ClosableBackend | None = None
+        self.authorizer: Any = None
+
+    async def __call__(self, identity: Any) -> list[str]:
+        if self.authorizer is None:
+            self.pubsub_backend = _get_pubsub(self.pubsub_config)
+            self.authorizer = IamScopeAuthorizer(self.pubsub_backend)
+        return list(await self.authorizer(identity))
+
+    def close(self) -> None:
+        if self.pubsub_backend is not None:
+            self.pubsub_backend.close()
 
 
 def main() -> None:
