@@ -1,0 +1,3 @@
+{"decision": "보류", "evaluated_tools": ["get_case_graph", "check_case_stop_gates", "recommend_next_action", "execute_direct_collection_filing"], "failure_probe": "unknown_tool", "issues": [], "recommendation": "hold_for_review", "status": "passed", "tool_count": 16}
+exit_code=0
+-rw-r--r--@ 1 cosmos  wheel  264287 Jun 30 20:32 /tmp/final-review-task10-eval-final.json

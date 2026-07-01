@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "teamId": "ed814cee-7847-4474-a7a3-089a4fe7f3c7",
+  "teamName": "debt-collection-ontology",
+  "sessionName": "Todo 9 MCP domain brain server",
+  "sessionId": "debt-collection-ontology-todo-9-20260630",
+  "threadTitleConvention": "[debt-collection-ontology] <member name>",
+  "status": "archived",
+  "createdAt": "2026-06-30T09:06:42.493Z",
+  "updatedAt": "2026-06-30T10:00:39.408Z",
+  "archivedAt": "2026-06-30T10:00:36.894Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "debt-collection-ontology-todo-9-20260630"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "dev",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "mcp-domain-tools",
+      "focus": "Todo 9 debt-collection-brain-mcp domain tool contracts, stable JSON outputs, and TrustGraph MCP adapter",
+      "lens": "area",
+      "deliverable": "Implement Todo 9 domain MCP wrapper/tools with agent-agnostic tool functions, scopes, redaction, and tests; commit only owned source/test files.",
+      "threadId": "019f17c8-a9d9-7430-b518-22b77e32f64c",
+      "threadTitle": "[debt-collection-ontology] mcp-domain-tools",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-9-20260630/A"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "C",
+      "name": "mcp-contract-review",
+      "focus": "Todo 9 read-only acceptance, security boundary, scope matrix, schema and source_refs review",
+      "lens": "perspective",
+      "deliverable": "Read-only artifact at .omo/teams/debt-collection-ontology-todo-9-20260630/artifacts/C-mcp-contract-review.md with acceptance risks and post-implementation checks.",
+      "threadId": "019f17c9-08bc-7c23-b3db-36a9be9e7ead",
+      "threadTitle": "[debt-collection-ontology] mcp-contract-review",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-9-20260630/C"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "B",
+      "name": "mcp-auth-redaction-tests",
+      "focus": "Todo 9 MCP integration/auth/redaction tests and local HTTP/tool-call evidence",
+      "lens": "ownership",
+      "deliverable": "Add/verify integration tests and QA evidence for Bearer-token behavior, stable schemas, redacted outputs, no raw PII, and MCP tool coverage; commit only owned test/support files unless coordinated.",
+      "threadId": "019f17c8-da17-7852-ba21-3ba16d6ff0d6",
+      "threadTitle": "[debt-collection-ontology] mcp-auth-redaction-tests",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-9-20260630/B"
+      },
+      "status": "archived"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-06-30T09:06:42.493Z",
+      "event": "created",
+      "detail": "team debt-collection-ontology"
+    },
+    {
+      "ts": "2026-06-30T09:06:57.251Z",
+      "event": "add-member",
+      "detail": "member A (area): Todo 9 debt-collection-brain-mcp domain tool contracts, stable JSON outputs, and TrustGraph MCP adapter"
+    },
+    {
+      "ts": "2026-06-30T09:06:57.280Z",
+      "event": "add-member",
+      "detail": "member C (perspective): Todo 9 read-only acceptance, security boundary, scope matrix, schema and source_refs review"
+    },
+    {
+      "ts": "2026-06-30T09:06:57.292Z",
+      "event": "add-member",
+      "detail": "member B (ownership): Todo 9 MCP integration/auth/redaction tests and local HTTP/tool-call evidence"
+    },
+    {
+      "ts": "2026-06-30T09:08:13.392Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f17c8-a9d9-7430-b518-22b77e32f64c"
+    },
+    {
+      "ts": "2026-06-30T09:08:13.513Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f17c8-da17-7852-ba21-3ba16d6ff0d6"
+    },
+    {
+      "ts": "2026-06-30T09:08:55.851Z",
+      "event": "bind-thread",
+      "detail": "member C -> thread 019f17c9-08bc-7c23-b3db-36a9be9e7ead"
+    },
+    {
+      "ts": "2026-06-30T09:08:55.866Z",
+      "event": "set-status",
+      "detail": "member C -> active: Bound to Codex thread; awaiting worktree."
+    },
+    {
+      "ts": "2026-06-30T09:09:05.029Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/worktrees/B (team/debt-collection-ontology-todo-9-20260630/B)"
+    },
+    {
+      "ts": "2026-06-30T09:09:07.897Z",
+      "event": "worktree-add",
+      "detail": "member C -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/worktrees/C (team/debt-collection-ontology-todo-9-20260630/C)"
+    },
+    {
+      "ts": "2026-06-30T09:12:56.379Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-9-20260630/worktrees/A (team/debt-collection-ontology-todo-9-20260630/A)"
+    },
+    {
+      "ts": "2026-06-30T10:00:36.895Z",
+      "event": "archive",
+      "detail": "team archived; all members closed"
+    },
+    {
+      "ts": "2026-06-30T10:00:38.531Z",
+      "event": "worktree-remove",
+      "detail": "member A"
+    },
+    {
+      "ts": "2026-06-30T10:00:38.978Z",
+      "event": "worktree-remove",
+      "detail": "member B"
+    },
+    {
+      "ts": "2026-06-30T10:00:39.408Z",
+      "event": "worktree-remove",
+      "detail": "member C"
+    }
+  ]
+}

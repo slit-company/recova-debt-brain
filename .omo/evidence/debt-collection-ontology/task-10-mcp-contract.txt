@@ -1,0 +1,29 @@
+Todo 10 MCP contract and packet evaluation evidence
+Date: 2026-06-30
+
+Delivered files:
+- docs/product/debt-collection-ontology/mcp-domain-server-contract.md
+- scripts/legal_ontology/evaluate_packet.py
+
+Evaluation command:
+- python3 scripts/legal_ontology/evaluate_packet.py --fixtures tests/fixtures/legal-ocr/manifest.json --out .omo/evidence/debt-collection-ontology/task-10-eval.json
+- /opt/homebrew/bin/python3 scripts/legal_ontology/evaluate_packet.py --fixtures tests/fixtures/legal-ocr/manifest.json --out .omo/evidence/debt-collection-ontology/task-10-eval.json
+
+Evaluation result:
+- status: passed
+- tool_count: 16
+- decision: 보류
+- recommendation: hold_for_review
+- direct execution probe: execute_direct_collection_filing -> unknown_tool
+- issues: []
+
+Additional verification:
+- /opt/homebrew/bin/python3 -m py_compile scripts/legal_ontology/evaluate_packet.py: passed
+- task-10 JSON contract check: PASS task-10 eval contract
+- sensitive-pattern scan over docs/product/debt-collection-ontology, scripts/legal_ontology, task-9/task-10 evidence: no findings
+- git diff --check: passed
+
+Runtime note:
+- The local verification environment can run the domain facade and evaluation CLI.
+- A real streamable HTTP MCP server smoke requires the trustgraph-mcp runtime dependency `mcp`, which is declared in trustgraph-mcp/pyproject.toml but is not globally installed in the current Python environment.
+- The new contract document records the runtime setup command and keeps bearer tokens in HTTP auth context, not tool arguments.

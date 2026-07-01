@@ -1,0 +1,50 @@
+F3 Real Manual QA
+Date: 2026-06-30
+
+Result: APPROVE.
+
+Fixture flow:
+1. Ran packet evaluation:
+   python3 scripts/legal_ontology/evaluate_packet.py --fixtures tests/fixtures/legal-ocr/manifest.json --out .omo/evidence/debt-collection-ontology/task-10-eval.json
+2. Result summary:
+   status=passed
+   tool_count=16
+   decision=보류
+   recommendation=hold_for_review
+   failure_probe=unknown_tool
+   issues=[]
+
+Domain behavior observed:
+- get_case_graph returned a redacted case graph envelope.
+- check_case_stop_gates returned 보류 with source-backed StopGate reasons.
+- recommend_next_action returned hold_for_review and no_direct_filing_contact_or_collection=true.
+- direct execution probe execute_direct_collection_filing returned unknown_tool.
+
+Actual MCP HTTP surface:
+1. Created a temporary venv outside the repo under:
+   /tmp/trustgraph-mcp-gateway-smoke.*
+2. Installed runtime packages needed for local smoke:
+   mcp, websockets, prometheus-client
+3. Started a local fake TrustGraph gateway on 127.0.0.1:9999 that rejects `bad-token` and answers `whoami` for a good token.
+4. Started the existing MCP server:
+   PYTHONPATH=trustgraph-mcp:trustgraph-base:. <tmp-venv>/bin/python -m trustgraph.mcp_server.mcp --host 127.0.0.1 --port 8765 --websocket-url ws://127.0.0.1:9999/api/v1/socket
+5. Called streamable HTTP MCP endpoint with bearer headers:
+   http://127.0.0.1:8765/mcp
+6. Observed:
+   MCP_GATEWAY_HTTP_OK tools=47 debt_tool=true bad_token_rejected=true token_echo=false
+
+Scoped authorization re-check after final auth refactor:
+1. Created a temporary venv outside the repo under:
+   /tmp/debt-mcp-scope-smoke.*
+2. Installed runtime packages needed for local smoke:
+   mcp, websockets, prometheus-client
+3. Started a local fake TrustGraph gateway that rejects `bad-token`, answers `whoami`, and rejects public WebSocket `iam/authorise-many`.
+4. Started the existing MCP server with `PYTHONPATH=trustgraph-mcp:trustgraph-base:.`.
+5. Injected the MCP server's internal scope-authorizer seam for local smoke; production wires that seam to `IamClient.authorise_many`.
+6. Called streamable HTTP MCP endpoint with bearer headers.
+7. Observed:
+   MCP_SCOPE_HTTP_OK tools=47 debt_tool=True bad_token_rejected=True internal_scope_authorizer_used=True public_authorise_many_used=False reader_governance_rejected=True token_echo=False
+
+Server cleanup:
+- Killed the local MCP server and fake gateway after the client session closed.
+- Removed the temporary venv and smoke directory.

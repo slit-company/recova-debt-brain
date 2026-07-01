@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-01T02:24:22.484Z",
+  "updatedAt": "2026-07-01T03:03:52.740Z",
+  "briefPath": ".omo/ulw-loop/debt-collection-ontology-final-20260701/brief.md",
+  "goalsPath": ".omo/ulw-loop/debt-collection-ontology-final-20260701/goals.json",
+  "ledgerPath": ".omo/ulw-loop/debt-collection-ontology-final-20260701/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-finish-the-debt-collection-ontology",
+      "title": "Finish the debt collection ontology implementation from .omo/plans/de...",
+      "objective": "Finish the debt collection ontology implementation from .omo/plans/debt-collection-ontology.md after interruption. Scope: finalize MCP domain server, gateway/IAM authorisation, repo-bound path safety, classifier/MCP refactors, final observable verification, reviewer approval, F1-F4 evidence, ledger/boulder closure, and an atomic commit. Required real-surface evidence includes MCP HTTP streamable smoke with IAM authorise-many scope decisions, focused legal ontology tests, integration MCP contract tests, evaluator CLI output, PII/path/token leak scan, final reviewer reports, and cleanup receipts.",
+      "status": "complete",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "HTTP real-surface MCP smoke: start the MCP server against a fake TrustGraph gateway, validate token through gateway whoami, verify public websocket iam/authorise-many is not used, apply internal IAM scope-authorizer decisions, reject a bad token, allow reader-safe debt tools, and deny governance scope for a reader token.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/debt-collection-ontology/final-mcp-scope-smoke.txt containing MCP_SCOPE_HTTP_OK, internal_scope_authorizer_used=True, public_authorise_many_used=False, bad_token_rejected=True, reader_governance_rejected=True, and cleanup receipt.",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/debt-collection-ontology/final-mcp-scope-smoke.txt: MCP_SCOPE_HTTP_OK tools=47 debt_tool=True bad_token_rejected=True internal_scope_authorizer_used=True public_authorise_many_used=False reader_governance_rejected=True token_echo=False | cleanup: local MCP server/fake gateway killed by smoke script; temp venv/smoke dir removed; close_agent completed for all final reviewers",
+          "status": "pass",
+          "capturedAt": "2026-07-01T02:58:24.186Z"
+        },
+        {
+          "id": "C002",
+          "scenario": "Adversarial boundary proof: repo-root-bounded path input rejects outside paths without reading or echoing server paths, tokens are never passed as tool arguments or echoed, source_refs remain redacted pointers, and PII/sensitive-pattern scans over changed code/docs/tests/evidence return no findings.",
+          "userModel": "edge",
+          "expectedEvidence": "Focused MCP tests plus PII scan stdout; final reviewer report confirms no token/path/raw PII leak.",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/debt-collection-ontology/final-verification-20260701.txt plus final reviewers: repo-root path rejection tests pass; authorization is not a tool argument; source_refs are pointer-normalized; sensitive scan no findings; final security/code reviewers ACCEPT | cleanup: no smoke temp dirs remain; final reviewers closed",
+          "status": "pass",
+          "capturedAt": "2026-07-01T02:58:24.240Z"
+        },
+        {
+          "id": "C003",
+          "scenario": "Regression proof: run legal ontology unit suite, MCP integration tests, py_compile over changed Python files, evaluator CLI over legal OCR fixtures, and git diff whitespace checks.",
+          "userModel": "regression",
+          "expectedEvidence": "CLI stdout from pytest/py_compile/evaluate_packet/diff-check commands plus report artifacts.",
+          "essential": false,
+          "capturedEvidence": ".omo/evidence/debt-collection-ontology/final-verification-20260701.txt: unit legal ontology 42 passed; MCP integration 3 passed; py_compile passed; evaluator CLI passed with tool_count=16 decision=보류; git diff checks passed | cleanup: no temp smoke dirs remain; no open reviewer agents",
+          "status": "pass",
+          "capturedAt": "2026-07-01T02:58:24.282Z"
+        }
+      ],
+      "attempt": 1,
+      "createdAt": "2026-07-01T02:24:22.484Z",
+      "updatedAt": "2026-07-01T03:03:52.740Z",
+      "startedAt": "2026-07-01T03:02:31.762Z",
+      "completedAt": "2026-07-01T03:03:52.740Z",
+      "evidence": "C001 MCP HTTP smoke passed with internal scope authorizer and cleanup; C002 boundary/security proof passed with no token/path/PII leak and reviewer approval; C003 regression suite/evaluator/diff checks passed; final source commit 819e79da created."
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/debt-collection-ontology-final-20260701/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/debt-collection-ontology-final-20260701/ledger.jsonl as the audit trail.",
+  "aggregateCompletion": {
+    "status": "complete",
+    "completedAt": "2026-07-01T03:03:52.740Z",
+    "evidence": "C001 MCP HTTP smoke passed with internal scope authorizer and cleanup; C002 boundary/security proof passed with no token/path/PII leak and reviewer approval; C003 regression suite/evaluator/diff checks passed; final source commit 819e79da created.",
+    "codexGoal": {
+      "threadId": "019f124c-74e3-76c1-9a67-4c65799f2cd3",
+      "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/debt-collection-ontology-final-20260701/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/debt-collection-ontology-final-20260701/ledger.jsonl as the audit trail.",
+      "status": "complete",
+      "tokensUsed": 0,
+      "timeUsedSeconds": 1,
+      "createdAt": 1782874963,
+      "updatedAt": 1782874965
+    }
+  }
+}

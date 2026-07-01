@@ -1,0 +1,36 @@
+Task 2: v0 TrustGraph ontology config
+
+Integrated commits:
+- ff587e66 Merge branch 'team/debt-collection-ontology-todo-2-4-20260630/A'
+- 5655529a feat(ontology): add recova debt collection ontology
+
+Changed files:
+- resources/ontologies/recova-debt-collection.json
+- scripts/legal_ontology/validate_ontology.py
+- tests/unit/legal_ontology/test_validate_ontology.py
+
+Root verification after integration:
+
+$ /opt/homebrew/bin/python3 -m json.tool resources/ontologies/recova-debt-collection.json >/tmp/task-2-ontology-json-tool.json && echo PASS json.tool
+PASS json.tool
+
+$ python3 scripts/legal_ontology/validate_ontology.py resources/ontologies/recova-debt-collection.json
+PASS ontology recova-debt-collection classes=36 objectProperties=41 datatypeProperties=44
+
+$ python3 -m pytest tests/unit/legal_ontology/test_validate_ontology.py tests/unit/legal_ontology/test_ingest.py -q
+4 passed in 0.31s
+
+$ /opt/homebrew/bin/python3 <temp-copy-missing-class-range-check>
+exit=1
+ERROR recova-debt-collection.objectProperties.has-document: unknown range missing-class
+
+$ rg -n "resident|주민등록번호|[0-9]{6}-[0-9]{7}" resources/ontologies scripts/legal_ontology tests/unit/legal_ontology trustgraph_legal .omo/evidence/debt-collection-ontology/task-4-dry-run.json || true
+no findings
+
+$ git diff --check HEAD~2 HEAD
+passed
+
+Notes:
+- The ontology is keyed as recova-debt-collection and contains 36 classes, 41 object properties, and 44 datatype properties.
+- The validator performs standalone structural checks for required sections, kebab-case ids, object-property class domains/ranges, and datatype-property class domains/xsd ranges.
+- No raw OCR text or raw sensitive identifiers were added to the ontology resource.

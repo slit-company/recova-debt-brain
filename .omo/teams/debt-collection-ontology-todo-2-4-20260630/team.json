@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "teamId": "ff3ad5ad-3caa-4826-affd-33701c54c2ea",
+  "teamName": "debt-collection-ontology",
+  "sessionName": "todo-2-4-foundation",
+  "sessionId": "debt-collection-ontology-todo-2-4-20260630",
+  "threadTitleConvention": "[debt-collection-ontology] <member name>",
+  "status": "archived",
+  "createdAt": "2026-06-30T06:30:28.105Z",
+  "updatedAt": "2026-06-30T10:06:38.171Z",
+  "archivedAt": "2026-06-30T06:52:58.456Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "debt-collection-ontology-todo-2-4-20260630"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "ontology-config",
+      "focus": "resources/ontologies/recova-debt-collection.json plus scripts/legal_ontology/validate_ontology.py",
+      "lens": "area",
+      "deliverable": "Implement Todo 2: TrustGraph-shaped recova-debt-collection ontology JSON and validator with happy/failure evidence.",
+      "threadId": "019f1739-c59e-7833-9da6-7de48bdb29d1",
+      "threadTitle": "[debt-collection-ontology] ontology-config",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/worktrees/A",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/worktrees/A",
+        "branch": "team/debt-collection-ontology-todo-2-4-20260630/A"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "B",
+      "name": "ingest-loader",
+      "focus": "trustgraph_legal ingest package, CLI, registry dry-run tests, and PII-safe logging",
+      "lens": "area",
+      "deliverable": "Implement Todo 4: OCR markdown zip dry-run ingest registry loader with hashes, duplicate detection, case_packet_id metadata, and evidence output.",
+      "threadId": "019f1739-d390-7e00-88d2-21adf94f26ba",
+      "threadTitle": "[debt-collection-ontology] ingest-loader",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-2-4-20260630/B"
+      },
+      "status": "archived"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-06-30T06:30:28.105Z",
+      "event": "created",
+      "detail": "team debt-collection-ontology"
+    },
+    {
+      "ts": "2026-06-30T06:30:38.718Z",
+      "event": "add-member",
+      "detail": "member A (area): resources/ontologies/recova-debt-collection.json plus scripts/legal_ontology/validate_ontology.py"
+    },
+    {
+      "ts": "2026-06-30T06:30:38.807Z",
+      "event": "add-member",
+      "detail": "member B (area): trustgraph_legal ingest package, CLI, registry dry-run tests, and PII-safe logging"
+    },
+    {
+      "ts": "2026-06-30T06:30:51.108Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/worktrees/B (team/debt-collection-ontology-todo-2-4-20260630/B)"
+    },
+    {
+      "ts": "2026-06-30T06:32:33.382Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f1739-c59e-7833-9da6-7de48bdb29d1"
+    },
+    {
+      "ts": "2026-06-30T06:34:13.755Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-2-4-20260630/worktrees/A (team/debt-collection-ontology-todo-2-4-20260630/A)"
+    },
+    {
+      "ts": "2026-06-30T06:34:20.009Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f1739-d390-7e00-88d2-21adf94f26ba"
+    },
+    {
+      "ts": "2026-06-30T06:52:58.457Z",
+      "event": "archive",
+      "detail": "Todo 2 and Todo 4 integrated on master with root verification and evidence recorded."
+    },
+    {
+      "ts": "2026-06-30T10:06:38.171Z",
+      "event": "worktree-remove",
+      "detail": "member B"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/cosmos/dev/ontology/trustgraph/tests
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.13.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 3 items
+
+tests/integration/legal_ontology/test_mcp_tools.py ...                   [100%]
+
+============================== 3 passed in 2.08s ===============================
+exit_code=0

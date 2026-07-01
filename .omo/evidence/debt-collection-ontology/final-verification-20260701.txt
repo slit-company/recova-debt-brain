@@ -1,0 +1,52 @@
+Final verification rerun
+Date: 2026-07-01
+
+$ /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology -q
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/cosmos/dev/ontology/trustgraph/tests
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.13.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 42 items
+
+tests/unit/legal_ontology/test_case_graph_builder.py ....                [  9%]
+tests/unit/legal_ontology/test_document_classifier.py ......             [ 23%]
+tests/unit/legal_ontology/test_evaluate_packet.py .                      [ 26%]
+tests/unit/legal_ontology/test_field_extractors.py ....                  [ 35%]
+tests/unit/legal_ontology/test_ingest.py ...                             [ 42%]
+tests/unit/legal_ontology/test_mcp_auth_boundary.py ...                  [ 50%]
+tests/unit/legal_ontology/test_mcp_domain_tools.py ......                [ 64%]
+tests/unit/legal_ontology/test_ontology_governance.py .....              [ 76%]
+tests/unit/legal_ontology/test_stop_gates.py ........                    [ 95%]
+tests/unit/legal_ontology/test_validate_ontology.py ..                   [100%]
+
+============================== 42 passed in 1.09s ==============================
+
+$ /opt/homebrew/bin/python3 -m pytest tests/integration/legal_ontology/test_mcp_tools.py -q
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/cosmos/dev/ontology/trustgraph/tests
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.13.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 3 items
+
+tests/integration/legal_ontology/test_mcp_tools.py ...                   [100%]
+
+============================== 3 passed in 2.09s ===============================
+
+$ /usr/bin/python3 -m py_compile <changed legal ontology and MCP files>
+py_compile passed
+
+$ python3 scripts/legal_ontology/evaluate_packet.py --fixtures tests/fixtures/legal-ocr/manifest.json --out /tmp/final-review-task10-eval-final.json
+{"decision": "보류", "evaluated_tools": ["get_case_graph", "check_case_stop_gates", "recommend_next_action", "execute_direct_collection_filing"], "failure_probe": "unknown_tool", "issues": [], "recommendation": "hold_for_review", "status": "passed", "tool_count": 16}
+
+$ git diff --check origin/master...HEAD && git diff --check
+diff checks passed
+
+$ rg sensitive-pattern scan
+sensitive scan: no findings
+
+$ find /tmp -maxdepth 1 -type d -name 'debt-mcp-scope-smoke.*'
+cleanup: no debt-mcp-scope-smoke temp dirs remain

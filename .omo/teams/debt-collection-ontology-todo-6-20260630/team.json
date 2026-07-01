@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "teamId": "debt-collection-ontology-todo-6-20260630",
+  "teamName": "debt-collection-ontology",
+  "sessionName": "todo-6-case-graph-resolver",
+  "sessionId": "debt-collection-ontology-todo-6-20260630",
+  "threadTitleConvention": "[debt-collection-ontology] <member name>",
+  "status": "archived",
+  "createdAt": "2026-06-30T08:05:44.000Z",
+  "updatedAt": "2026-06-30T08:37:19.708Z",
+  "archivedAt": "2026-06-30T08:36:47.587Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "debt-collection-ontology-todo-6-20260630"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-6-20260630/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-6-20260630",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-6-20260630/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-6-20260630/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-6-20260630/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "case-graph-builder",
+      "focus": "trustgraph_legal/case_graph.py and tests/unit/legal_ontology/test_case_graph_builder.py",
+      "lens": "area",
+      "deliverable": "Implement Todo 6 hybrid case graph resolver with provenance, evidence keys, identity uncertainty, CLI, and focused tests.",
+      "threadId": "019f1791-5d5a-7f72-93c1-8f822e96eed1",
+      "threadTitle": "[debt-collection-ontology] case-graph-builder",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-6-20260630/A"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "B",
+      "name": "case-graph-contract-review",
+      "focus": "Todo 6 acceptance risk audit and A branch review",
+      "lens": "perspective",
+      "deliverable": "Review Todo 6 case graph contract, provenance, identity uncertainty, PII safety, and acceptance checks without editing production files.",
+      "threadId": "019f1791-88b3-7a53-8826-3ce0532d0bf7",
+      "threadTitle": "[debt-collection-ontology] case-graph-contract-review",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-6-20260630/B"
+      },
+      "status": "archived"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-06-30T08:05:44.000Z",
+      "event": "created",
+      "detail": "Todo 6 case graph resolver team created."
+    },
+    {
+      "ts": "2026-06-30T08:05:44.000Z",
+      "event": "worktree-add",
+      "detail": "A/B worktrees created from master."
+    },
+    {
+      "ts": "2026-06-30T08:07:00.000Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f1791-5d5a-7f72-93c1-8f822e96eed1"
+    },
+    {
+      "ts": "2026-06-30T08:07:00.000Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f1791-88b3-7a53-8826-3ce0532d0bf7"
+    },
+    {
+      "ts": "2026-06-30T08:36:47.588Z",
+      "event": "archive",
+      "detail": "team archived; all members closed"
+    },
+    {
+      "ts": "2026-06-30T08:37:19.257Z",
+      "event": "worktree-remove",
+      "detail": "member A"
+    },
+    {
+      "ts": "2026-06-30T08:37:19.708Z",
+      "event": "worktree-remove",
+      "detail": "member B"
+    }
+  ]
+}

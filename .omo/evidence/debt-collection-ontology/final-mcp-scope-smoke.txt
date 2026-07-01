@@ -1,0 +1,26 @@
+MCP scoped auth smoke
+Date: 2026-07-01
+
+Command surface:
+- temporary venv under /tmp/debt-mcp-scope-smoke.*
+- installed runtime packages: mcp, websockets, prometheus-client
+- fake TrustGraph gateway: rejects bad-token; answers whoami; rejects public iam/authorise-many
+- server: injected McpServer with internal scope_authorizer seam; production seam uses IamClient.authorise_many
+- client: MCP SDK streamable HTTP client against /mcp
+
+Observed:
+- bad_token_rejected=true
+- debt_tool_listed=true
+- good_tool_count=47
+- read_call_returned=true
+- internal_scope_authorizer_used=true
+- public_authorise_many_used=false
+- reader_governance_rejected=true
+- token_echo=false
+
+Result:
+MCP_SCOPE_HTTP_OK tools=47 debt_tool=True bad_token_rejected=True internal_scope_authorizer_used=True public_authorise_many_used=False reader_governance_rejected=True token_echo=False
+
+Cleanup:
+- killed local MCP server and fake gateway
+- removed temporary venv and smoke directory

@@ -1,0 +1,229 @@
+{
+  "schema_version": "trustgraph-legal-ingest-dry-run/v1",
+  "dry_run": true,
+  "summary": {
+    "records": 5,
+    "insert_candidates": 5,
+    "duplicates": 0
+  },
+  "records": [
+    {
+      "document_id": "legal-doc-3cac2e66a9841948",
+      "registry_status": "dry_run_insert_candidate",
+      "source_hash": "sha256:3cac2e66a98419482b56fab9cd6991cb1ccf5830f8cce67a9d29bbedd714bda9",
+      "source_path": "markdown_flat/IMG_4699.md",
+      "source_path_ref": "zip-entry:779b64e66a4b4fe56456",
+      "source_size_bytes": 1664,
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.ingest@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "review_status": "pending_registry_review",
+      "confidence": 1.0,
+      "case_packet_id": "casepkt-fea8da443c070a23ce83",
+      "hybrid_evidence_keys": [
+        {
+          "key_type": "document_hash",
+          "key_hash": "sha256:3cac2e66a98419482b56fab9cd6991cb1ccf5830f8cce67a9d29bbedd714bda9"
+        }
+      ],
+      "provenance": {
+        "source_ref": "zip-entry:779b64e66a4b4fe56456",
+        "content_hash": "sha256:3cac2e66a98419482b56fab9cd6991cb1ccf5830f8cce67a9d29bbedd714bda9",
+        "trustgraph_interface": "service/text-load",
+        "workspace": "default",
+        "collection": "recova-debt-collection"
+      },
+      "tags": [
+        "legal-ocr",
+        "recova-debt-collection",
+        "attachment-collection",
+        "enforcement-title",
+        "assignment-succession",
+        "asset-evidence"
+      ],
+      "pii_profile": {
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 4,
+          "phone": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-doc-eaff87b3b2b5147c",
+      "registry_status": "dry_run_insert_candidate",
+      "source_hash": "sha256:eaff87b3b2b5147c02e1da7399df54f13bccdb9d846e0bd6cceec76523323c49",
+      "source_path": "markdown_flat/IMG_4700.md",
+      "source_path_ref": "zip-entry:2dcc8dcf8975f6d75b12",
+      "source_size_bytes": 889,
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.ingest@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "review_status": "pending_registry_review",
+      "confidence": 1.0,
+      "case_packet_id": "casepkt-7cb9cefc66722e96dbec",
+      "hybrid_evidence_keys": [
+        {
+          "key_type": "document_hash",
+          "key_hash": "sha256:eaff87b3b2b5147c02e1da7399df54f13bccdb9d846e0bd6cceec76523323c49"
+        }
+      ],
+      "provenance": {
+        "source_ref": "zip-entry:2dcc8dcf8975f6d75b12",
+        "content_hash": "sha256:eaff87b3b2b5147c02e1da7399df54f13bccdb9d846e0bd6cceec76523323c49",
+        "trustgraph_interface": "service/text-load",
+        "workspace": "default",
+        "collection": "recova-debt-collection"
+      },
+      "tags": [
+        "legal-ocr",
+        "recova-debt-collection",
+        "attachment-collection",
+        "enforcement-title"
+      ],
+      "pii_profile": {
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-doc-0d2a992755f2792d",
+      "registry_status": "dry_run_insert_candidate",
+      "source_hash": "sha256:0d2a992755f2792d5029cbc27d9dbdd920aace8ea746578eaad3ef0708f8d4ee",
+      "source_path": "markdown_flat/IMG_4701.md",
+      "source_path_ref": "zip-entry:4005d917b8467b065897",
+      "source_size_bytes": 3237,
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.ingest@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "review_status": "pending_registry_review",
+      "confidence": 1.0,
+      "case_packet_id": "casepkt-c2be2b56c303988397a7",
+      "hybrid_evidence_keys": [
+        {
+          "key_type": "court_case_number",
+          "key_hash": "sha256:c9aac67f2f8a188fcd0c3e86a83c5bad4444c70d9fb85cdd251aeb6b2cce98bd"
+        }
+      ],
+      "provenance": {
+        "source_ref": "zip-entry:4005d917b8467b065897",
+        "content_hash": "sha256:0d2a992755f2792d5029cbc27d9dbdd920aace8ea746578eaad3ef0708f8d4ee",
+        "trustgraph_interface": "service/text-load",
+        "workspace": "default",
+        "collection": "recova-debt-collection"
+      },
+      "tags": [
+        "legal-ocr",
+        "recova-debt-collection",
+        "attachment-collection",
+        "enforcement-title",
+        "asset-evidence"
+      ],
+      "pii_profile": {
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 1,
+          "phone": 1
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-doc-7e9886f86c36bfa8",
+      "registry_status": "dry_run_insert_candidate",
+      "source_hash": "sha256:7e9886f86c36bfa82bae7e3234b6f16483365d803d9b4f9bd1809ccad931d1f5",
+      "source_path": "markdown_flat/IMG_4702.md",
+      "source_path_ref": "zip-entry:a031ed60b636e698b719",
+      "source_size_bytes": 1048,
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.ingest@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "review_status": "pending_registry_review",
+      "confidence": 1.0,
+      "case_packet_id": "casepkt-9a8e0d99b01d68ede0fb",
+      "hybrid_evidence_keys": [
+        {
+          "key_type": "court_case_number",
+          "key_hash": "sha256:22d658450d18cccd9ea7cddf9da4bebba70be67cda75c90a0c8a373709d3c805"
+        }
+      ],
+      "provenance": {
+        "source_ref": "zip-entry:a031ed60b636e698b719",
+        "content_hash": "sha256:7e9886f86c36bfa82bae7e3234b6f16483365d803d9b4f9bd1809ccad931d1f5",
+        "trustgraph_interface": "service/text-load",
+        "workspace": "default",
+        "collection": "recova-debt-collection"
+      },
+      "tags": [
+        "legal-ocr",
+        "recova-debt-collection",
+        "attachment-collection"
+      ],
+      "pii_profile": {
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-doc-d1f89996e46b43ea",
+      "registry_status": "dry_run_insert_candidate",
+      "source_hash": "sha256:d1f89996e46b43ea2f45779d28c156001c80871d2e5cbe1a17cc9f3e250e6a94",
+      "source_path": "markdown_flat/IMG_4703.md",
+      "source_path_ref": "zip-entry:846eefd2cfb745b8b29d",
+      "source_size_bytes": 2109,
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.ingest@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "review_status": "pending_registry_review",
+      "confidence": 1.0,
+      "case_packet_id": "casepkt-4618ac0e79b820e7456c",
+      "hybrid_evidence_keys": [
+        {
+          "key_type": "document_hash",
+          "key_hash": "sha256:d1f89996e46b43ea2f45779d28c156001c80871d2e5cbe1a17cc9f3e250e6a94"
+        }
+      ],
+      "provenance": {
+        "source_ref": "zip-entry:846eefd2cfb745b8b29d",
+        "content_hash": "sha256:d1f89996e46b43ea2f45779d28c156001c80871d2e5cbe1a17cc9f3e250e6a94",
+        "trustgraph_interface": "service/text-load",
+        "workspace": "default",
+        "collection": "recova-debt-collection"
+      },
+      "tags": [
+        "legal-ocr",
+        "recova-debt-collection",
+        "attachment-collection",
+        "enforcement-title",
+        "asset-evidence"
+      ],
+      "pii_profile": {
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 1,
+          "phone": 1
+        },
+        "raw_text_included": false
+      }
+    }
+  ]
+}

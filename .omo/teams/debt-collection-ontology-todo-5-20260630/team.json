@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 2,
+  "teamId": "6002df19-f718-4245-a4b3-4b323742fb3b",
+  "teamName": "debt-collection-ontology",
+  "sessionName": "todo-5-classifier-extractors",
+  "sessionId": "debt-collection-ontology-todo-5-20260630",
+  "threadTitleConvention": "[debt-collection-ontology] <member name>",
+  "status": "archived",
+  "createdAt": "2026-06-30T07:27:16.146Z",
+  "updatedAt": "2026-06-30T08:04:08.000Z",
+  "archivedAt": "2026-06-30T08:04:08.000Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "debt-collection-ontology-todo-5-20260630"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "document-classifier",
+      "focus": "trustgraph_legal/classifier.py and tests/unit/legal_ontology/test_document_classifier.py",
+      "lens": "area",
+      "deliverable": "Implement Todo 5 document classification contract: deterministic legal document bucket classifier with confidence, evidence/source spans, unknown_doc_type review status, CLI/JSON evidence over fixture manifest, and focused tests.",
+      "threadId": "019f176d-d983-7c50-93d3-9feaac11dd31",
+      "threadTitle": "[debt-collection-ontology] document-classifier",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees/A",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees/A",
+        "branch": "team/debt-collection-ontology-todo-5-20260630/A"
+      },
+      "status": "completed"
+    },
+    {
+      "id": "B",
+      "name": "field-extractors",
+      "focus": "trustgraph_legal/fields.py and tests/unit/legal_ontology/test_field_extractors.py",
+      "lens": "area",
+      "deliverable": "Implement Todo 5 normalized field extraction contract: source-span-backed field extraction for debt collection document fixtures, low-confidence/unknown handling, and focused tests.",
+      "threadId": "019f176d-e954-7970-87e7-0e3b1e474c0d",
+      "threadTitle": "[debt-collection-ontology] field-extractors",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees/B",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees/B",
+        "branch": "team/debt-collection-ontology-todo-5-20260630/B"
+      },
+      "status": "completed"
+    },
+    {
+      "id": "C",
+      "name": "classifier-contract-review",
+      "focus": "Todo 5 acceptance risk audit and post-implementation verification plan",
+      "lens": "perspective",
+      "deliverable": "Review Todo 5 classifier/extractor contracts without editing production files; verify confidence/evidence/source-span requirements, unknown_doc_type failure behavior, fixture coverage, PII safety, and integration risks.",
+      "threadId": "019f176d-f9f7-7d53-bd60-ce679e377bc4",
+      "threadTitle": "[debt-collection-ontology] classifier-contract-review",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees/C",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees/C",
+        "branch": "team/debt-collection-ontology-todo-5-20260630/C"
+      },
+      "status": "completed"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-06-30T07:27:16.146Z",
+      "event": "created",
+      "detail": "team debt-collection-ontology"
+    },
+    {
+      "ts": "2026-06-30T07:27:31.933Z",
+      "event": "add-member",
+      "detail": "member A (area): trustgraph_legal/classifier.py and tests/unit/legal_ontology/test_document_classifier.py"
+    },
+    {
+      "ts": "2026-06-30T07:27:32.020Z",
+      "event": "add-member",
+      "detail": "member B (area): trustgraph_legal/fields.py and tests/unit/legal_ontology/test_field_extractors.py"
+    },
+    {
+      "ts": "2026-06-30T07:27:32.164Z",
+      "event": "add-member",
+      "detail": "member C (perspective): Todo 5 acceptance risk audit and post-implementation verification plan"
+    },
+    {
+      "ts": "2026-06-30T07:27:47.028Z",
+      "event": "worktree-add",
+      "detail": "member C -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-5-20260630/worktrees/C (team/debt-collection-ontology-todo-5-20260630/C)"
+    },
+    {
+      "ts": "2026-06-30T07:29:31.236Z",
+      "event": "bind-thread",
+      "detail": "member C -> thread 019f176d-f9f7-7d53-bd60-ce679e377bc4"
+    },
+    {
+      "ts": "2026-06-30T07:29:31.245Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f176d-e954-7970-87e7-0e3b1e474c0d"
+    },
+    {
+      "ts": "2026-06-30T07:32:31.021Z",
+      "event": "set-status",
+      "detail": "member A -> active: Bound and dispatched Todo 5 document-classifier task."
+    },
+    {
+      "ts": "2026-06-30T08:04:08.000Z",
+      "event": "archive",
+      "detail": "Todo 5 classifier/extractor team archived after A/B integration and root verification."
+    }
+  ]
+}

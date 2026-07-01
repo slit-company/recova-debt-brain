@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "active_work_id": "debt-collection-ontology-20260630",
+  "works": {
+    "debt-collection-ontology-20260630": {
+      "work_id": "debt-collection-ontology-20260630",
+      "active_plan": ".omo/plans/debt-collection-ontology.md",
+      "plan_name": "debt-collection-ontology",
+      "session_ids": [
+        "codex:019f124c-74e3-76c1-9a67-4c65799f2cd3"
+      ],
+      "status": "completed",
+      "worktree_path": null
+    }
+  },
+  "completed_at": "2026-07-01T02:55:00+09:00"
+}

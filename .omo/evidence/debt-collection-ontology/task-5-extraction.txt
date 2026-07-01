@@ -1,0 +1,34 @@
+Todo 5 extraction contract evidence
+
+Integrated on master:
+- d0029817 Merge branch 'team/debt-collection-ontology-todo-5-20260630/A'
+- 2f2f8c87 Merge branch 'team/debt-collection-ontology-todo-5-20260630/B'
+- 3ba6e641 feat(legal-extract): add document classifier
+- dd4a55fa fix(legal-extract): support python 3.8 classifier syntax
+- 806c43b0 feat(legal-extract): add field extractors
+
+Delivered:
+- trustgraph_legal/classifier.py
+- tests/unit/legal_ontology/test_document_classifier.py
+- trustgraph_legal/fields.py
+- tests/unit/legal_ontology/test_field_extractors.py
+
+Root evidence:
+- .omo/evidence/debt-collection-ontology/task-5-classifier.json
+- .omo/evidence/debt-collection-ontology/task-5-fields.json
+
+Verification:
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_document_classifier.py tests/unit/legal_ontology/test_field_extractors.py -q: 10 passed.
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology -q: 14 passed.
+- /usr/bin/python3 -m py_compile trustgraph_legal/classifier.py trustgraph_legal/fields.py tests/unit/legal_ontology/test_document_classifier.py tests/unit/legal_ontology/test_field_extractors.py: passed.
+- Classifier CLI over tests/fixtures/legal-ocr/manifest.json wrote 9 records, 0 unknowns.
+- Field extractor CLI over tests/fixtures/legal-ocr/manifest.json wrote 9 documents and 52 fields.
+- Classifier and field evidence use matching canonical v0 document types.
+- Evidence contract check passed for required IDs, confidence, source spans, and no raw text inclusion.
+- Sensitive-pattern scan over classifier, fields, tests, and task-5 evidence: no findings.
+- git diff --check HEAD~2 HEAD: passed.
+
+Notes:
+- Fixture snake_case document buckets normalize to canonical ontology-boundary document_type values.
+- Fixture bucket labels are preserved only as compatibility/source metadata.
+- Generated member-worktree .omo evidence was not committed in member branches.

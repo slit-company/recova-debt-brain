@@ -1,0 +1,21 @@
+Todo 8 governance QA evidence
+
+Happy path:
+- Command: /opt/homebrew/bin/python3 -m trustgraph_legal.governance --manifest tests/fixtures/legal-ocr/manifest.json --repo-root /Users/cosmos/dev/ontology/trustgraph --ontology resources/ontologies/recova-debt-collection.json --evidence .omo/evidence/debt-collection-ontology/task-8-governance.json
+- Evidence JSON: .omo/evidence/debt-collection-ontology/task-8-governance.json
+- Result: 4 ontology candidates, 4 review items, 4 reprocess plans
+- Unsupported domain-contract types represented: attachment-collection-application, judgment-or-decision, attachment-target-priority, legal-rule-source
+- Production ontology modified: false
+- PII profile: raw_text_included=false, source_text_included=false
+
+Failure path:
+- Evidence JSON: .omo/teams/debt-collection-ontology-todo-7-8-20260630/artifacts/B-governance-failure.json
+- Scenario: promotion attempted without required approval and regression metadata
+- Result: rejected
+- Reason: missing_required_approval_metadata
+- Production ontology modified: false
+
+Root verification:
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_ontology_governance.py -q: 5 passed
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology -q: 31 passed
+- /usr/bin/python3 -m py_compile changed Todo 7/8 Python and test files: passed

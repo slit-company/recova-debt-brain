@@ -1,0 +1,46 @@
+Task 4: legal document ingest registry and OCR markdown loader
+
+Integrated commits:
+- 84e10304 Merge branch 'team/debt-collection-ontology-todo-2-4-20260630/B'
+- 3f417a2d feat(legal-ingest): add OCR markdown registry loader
+
+Changed files:
+- trustgraph_legal/__init__.py
+- trustgraph_legal/ingest.py
+- trustgraph_legal/pii.py
+- trustgraph_legal/registry.py
+- tests/unit/legal_ontology/test_ingest.py
+
+Root verification after integration:
+
+$ python3 -m trustgraph_legal.ingest --zip /Users/cosmos/dev/ocr/MinerU/work/legal_ocr_20260630/legal_docs_markdown.zip --dry-run --limit 5 --evidence .omo/evidence/debt-collection-ontology/task-4-dry-run.json
+{"dry_run": true, "duplicates": 0, "evidence": ".omo/evidence/debt-collection-ontology/task-4-dry-run.json", "insert_candidates": 5, "records": 5}
+
+$ /opt/homebrew/bin/python3 -m json.tool .omo/evidence/debt-collection-ontology/task-4-dry-run.json >/tmp/task-4-dry-run-json-tool.json && echo PASS task-4 evidence json.tool
+PASS task-4 evidence json.tool
+
+$ /opt/homebrew/bin/python3 <task-4-evidence-contract-check>
+records=5
+summary={'records': 5, 'insert_candidates': 5, 'duplicates': 0}
+missing_required=[[], [], [], [], []]
+statuses=['dry_run_insert_candidate', 'dry_run_insert_candidate', 'dry_run_insert_candidate', 'dry_run_insert_candidate', 'dry_run_insert_candidate']
+raw_text_included=[False, False, False, False, False]
+hash_lengths=[64]
+case_packet_prefixes=['casepkt']
+
+$ python3 -m pytest tests/unit/legal_ontology/test_validate_ontology.py tests/unit/legal_ontology/test_ingest.py -q
+4 passed in 0.31s
+
+$ python3 -m py_compile scripts/legal_ontology/validate_ontology.py tests/unit/legal_ontology/test_validate_ontology.py trustgraph_legal/__init__.py trustgraph_legal/ingest.py trustgraph_legal/pii.py trustgraph_legal/registry.py tests/unit/legal_ontology/test_ingest.py
+passed
+
+$ rg -n "010-[0-9]{3,4}-[0-9]{4}|주민등록번호|[0-9]{6}-[0-9]{7}|resident" resources/ontologies scripts/legal_ontology tests/unit/legal_ontology trustgraph_legal .omo/evidence/debt-collection-ontology/task-4-dry-run.json || true
+no findings
+
+$ git diff --check HEAD~2 HEAD
+passed
+
+Notes:
+- The CLI is runnable as python3 -m trustgraph_legal.ingest.
+- The dry-run reads OCR markdown zip entries deterministically, computes sha256 content hashes, writes versioned registry records, derives case_packet_id from evidence keys or document-hash fallback, and keeps raw OCR text out of stdout/evidence.
+- Duplicate handling is covered by tests/unit/legal_ontology/test_ingest.py.

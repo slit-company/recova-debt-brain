@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 2,
+  "teamId": "bb4a51ef-c6b0-4c19-bc5b-1497b86b0196",
+  "teamName": "debt-collection-ontology",
+  "sessionName": "todo-3-prompt-semantics",
+  "sessionId": "debt-collection-ontology-todo-3-20260630",
+  "threadTitleConvention": "[debt-collection-ontology] <member name>",
+  "status": "archived",
+  "createdAt": "2026-06-30T06:54:37.474Z",
+  "updatedAt": "2026-06-30T07:26:25.147Z",
+  "archivedAt": "2026-06-30T07:26:25.146Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "debt-collection-ontology-todo-3-20260630"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "prompt-semantics",
+      "focus": "ontology-prompt.md, prompt semantics tests, and source-reference extraction instructions",
+      "lens": "area",
+      "deliverable": "Implement Todo 3: fix ontology extraction prompt semantics so examples use exact configured ontology IDs, labels are explanatory only, and legal extraction requires source_refs/document chunk evidence.",
+      "threadId": "019f174f-fca5-7e42-857d-9837ebfc4f26",
+      "threadTitle": "[debt-collection-ontology] prompt-semantics",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/worktrees/A",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/worktrees/A",
+        "branch": "team/debt-collection-ontology-todo-3-20260630/A"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "B",
+      "name": "prompt-contract-review",
+      "focus": "Todo 3 acceptance review, prompt/test risk audit, and post-implementation verification plan",
+      "lens": "perspective",
+      "deliverable": "Review Todo 3 prompt semantics work without editing production files; verify exact configured IDs, legal source_refs requirements, parser rejection expectations, and regression commands.",
+      "threadId": "019f1750-0a00-7293-a930-8a1696120cfb",
+      "threadTitle": "[debt-collection-ontology] prompt-contract-review",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-3-20260630/B"
+      },
+      "status": "archived"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-06-30T06:54:37.474Z",
+      "event": "created",
+      "detail": "team debt-collection-ontology"
+    },
+    {
+      "ts": "2026-06-30T06:54:45.038Z",
+      "event": "add-member",
+      "detail": "member A (area): ontology-prompt.md, prompt semantics tests, and source-reference extraction instructions"
+    },
+    {
+      "ts": "2026-06-30T06:54:51.842Z",
+      "event": "add-member",
+      "detail": "member B (perspective): Todo 3 acceptance review, prompt/test risk audit, and post-implementation verification plan"
+    },
+    {
+      "ts": "2026-06-30T06:54:58.362Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/worktrees/A (team/debt-collection-ontology-todo-3-20260630/A)"
+    },
+    {
+      "ts": "2026-06-30T06:55:08.037Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-3-20260630/worktrees/B (team/debt-collection-ontology-todo-3-20260630/B)"
+    },
+    {
+      "ts": "2026-06-30T06:56:01.889Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f174f-fca5-7e42-857d-9837ebfc4f26"
+    },
+    {
+      "ts": "2026-06-30T06:56:07.952Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f1750-0a00-7293-a930-8a1696120cfb"
+    },
+    {
+      "ts": "2026-06-30T07:12:58.447Z",
+      "event": "archive-member",
+      "detail": "member B"
+    },
+    {
+      "ts": "2026-06-30T07:24:28.147Z",
+      "event": "set-status",
+      "detail": "member A -> reported: Todo 3 committed as 5cda329c; leader verification passed before integration."
+    },
+    {
+      "ts": "2026-06-30T07:26:07.465Z",
+      "event": "archive-member",
+      "detail": "member A"
+    },
+    {
+      "ts": "2026-06-30T07:26:18.310Z",
+      "event": "worktree-remove",
+      "detail": "member B"
+    },
+    {
+      "ts": "2026-06-30T07:26:25.147Z",
+      "event": "archive",
+      "detail": "team archived; all members closed"
+    }
+  ]
+}

@@ -1,0 +1,746 @@
+{
+  "schema_version": "trustgraph-legal-field-extraction/v1",
+  "documents": [
+    {
+      "document_id": "legal-ocr-synth-attachment-collection-order-001",
+      "document_type": "attachment-collection-order",
+      "review_status": "accepted",
+      "confidence": 0.92,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "document_type": "attachment-collection-order",
+          "name": "court_identifier",
+          "normalized_value": "[COURT_REDACTED]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Court field"
+        },
+        {
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "document_type": "attachment-collection-order",
+          "name": "court_case_number",
+          "normalized_value": "2024타채0001",
+          "confidence": 0.95,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Case number field"
+        },
+        {
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "document_type": "attachment-collection-order",
+          "name": "creditor_role",
+          "normalized_value": "[CREDITOR_ORG]",
+          "confidence": 0.93,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Creditor field"
+        },
+        {
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "document_type": "attachment-collection-order",
+          "name": "debtor_role",
+          "normalized_value": "[DEBTOR_PERSON]",
+          "confidence": 0.93,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Debtor field"
+        },
+        {
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "document_type": "attachment-collection-order",
+          "name": "third_party_debtor_role",
+          "normalized_value": "[THIRD_PARTY_ORG]",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Third-party debtor field"
+        },
+        {
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "document_type": "attachment-collection-order",
+          "name": "claim_amount",
+          "normalized_value": "KRW 1250000",
+          "confidence": 0.94,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "chunk_id": "line-9",
+          "line_start": 9,
+          "line_end": 9,
+          "reason": "matched Claim amount field"
+        },
+        {
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "document_type": "attachment-collection-order",
+          "name": "attachment_target",
+          "normalized_value": "deposit claim held by [FINANCIAL_INSTITUTION]",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "chunk_id": "line-10",
+          "line_start": 10,
+          "line_end": 10,
+          "reason": "matched Attachment target field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-judgment-payment-order-001",
+      "document_type": "payment-order",
+      "review_status": "accepted",
+      "confidence": 0.92,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "document_type": "payment-order",
+          "name": "court_identifier",
+          "normalized_value": "[COURT_REDACTED]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Court field"
+        },
+        {
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "document_type": "payment-order",
+          "name": "court_case_number",
+          "normalized_value": "2023차전0001",
+          "confidence": 0.95,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Case number field"
+        },
+        {
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "document_type": "payment-order",
+          "name": "creditor_role",
+          "normalized_value": "[CREDITOR_ORG]",
+          "confidence": 0.93,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Claimant field"
+        },
+        {
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "document_type": "payment-order",
+          "name": "debtor_role",
+          "normalized_value": "[DEBTOR_PERSON]",
+          "confidence": 0.93,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Respondent field"
+        },
+        {
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "document_type": "payment-order",
+          "name": "principal_amount",
+          "normalized_value": "KRW 3400000",
+          "confidence": 0.95,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Principal field"
+        },
+        {
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "document_type": "payment-order",
+          "name": "interest_rate",
+          "normalized_value": "12% per_year",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "chunk_id": "line-9",
+          "line_start": 9,
+          "line_end": 9,
+          "reason": "matched Delayed damages field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-service-finality-execution-001",
+      "document_type": "service-finality-proof",
+      "review_status": "accepted",
+      "confidence": 0.93,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-service-finality-execution-001",
+          "document_type": "service-finality-proof",
+          "name": "court_identifier",
+          "normalized_value": "[COURT_REDACTED]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Court field"
+        },
+        {
+          "document_id": "legal-ocr-synth-service-finality-execution-001",
+          "document_type": "service-finality-proof",
+          "name": "linked_title_case_number",
+          "normalized_value": "2023차전0001",
+          "confidence": 0.94,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Linked title field"
+        },
+        {
+          "document_id": "legal-ocr-synth-service-finality-execution-001",
+          "document_type": "service-finality-proof",
+          "name": "served_party_role",
+          "normalized_value": "[DEBTOR_PERSON]",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Served party field"
+        },
+        {
+          "document_id": "legal-ocr-synth-service-finality-execution-001",
+          "document_type": "service-finality-proof",
+          "name": "service_result",
+          "normalized_value": "completed",
+          "confidence": 0.94,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Service result field"
+        },
+        {
+          "document_id": "legal-ocr-synth-service-finality-execution-001",
+          "document_type": "service-finality-proof",
+          "name": "finality_result",
+          "normalized_value": "finalized",
+          "confidence": 0.94,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Finality result field"
+        },
+        {
+          "document_id": "legal-ocr-synth-service-finality-execution-001",
+          "document_type": "service-finality-proof",
+          "name": "execution_clause_status",
+          "normalized_value": "granted to [CREDITOR_ORG]",
+          "confidence": 0.94,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "chunk_id": "line-9",
+          "line_start": 9,
+          "line_end": 9,
+          "reason": "matched Execution clause field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-identity-evidence-001",
+      "document_type": "identity-evidence",
+      "review_status": "accepted",
+      "confidence": 0.89,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-identity-evidence-001",
+          "document_type": "identity-evidence",
+          "name": "identity_subject_role",
+          "normalized_value": "[DEBTOR_PERSON]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Subject field"
+        },
+        {
+          "document_id": "legal-ocr-synth-identity-evidence-001",
+          "document_type": "identity-evidence",
+          "name": "organization_role",
+          "normalized_value": "[DEBTOR_ORG]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Organization field"
+        },
+        {
+          "document_id": "legal-ocr-synth-identity-evidence-001",
+          "document_type": "identity-evidence",
+          "name": "party_identity_key",
+          "normalized_value": "[NAME_TOKEN]",
+          "confidence": 0.91,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Identity token field"
+        },
+        {
+          "document_id": "legal-ocr-synth-identity-evidence-001",
+          "document_type": "identity-evidence",
+          "name": "party_identity_key",
+          "normalized_value": "[DATE_TOKEN]",
+          "confidence": 0.91,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Identity token field"
+        },
+        {
+          "document_id": "legal-ocr-synth-identity-evidence-001",
+          "document_type": "identity-evidence",
+          "name": "organization_status",
+          "normalized_value": "active organization",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "chunk_id": "line-9",
+          "line_start": 9,
+          "line_end": 9,
+          "reason": "matched Registration status field"
+        },
+        {
+          "document_id": "legal-ocr-synth-identity-evidence-001",
+          "document_type": "identity-evidence",
+          "name": "representative_role",
+          "normalized_value": "[ROLE_REDACTED]",
+          "confidence": 0.87,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "chunk_id": "line-10",
+          "line_start": 10,
+          "line_end": 10,
+          "reason": "matched Representative role field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+      "document_type": "insolvency-credit-recovery",
+      "review_status": "accepted",
+      "confidence": 0.9,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "document_type": "insolvency-credit-recovery",
+          "name": "insolvency_subject_role",
+          "normalized_value": "[DEBTOR_PERSON]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Subject field"
+        },
+        {
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "document_type": "insolvency-credit-recovery",
+          "name": "procedure_type",
+          "normalized_value": "personal rehabilitation review",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Procedure type field"
+        },
+        {
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "document_type": "insolvency-credit-recovery",
+          "name": "procedure_status",
+          "normalized_value": "pending confirmation",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Procedure state field"
+        },
+        {
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "document_type": "insolvency-credit-recovery",
+          "name": "authority_ref",
+          "normalized_value": "[AUTHORITY_REDACTED]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Court or agency field"
+        },
+        {
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "document_type": "insolvency-credit-recovery",
+          "name": "linked_claim_token",
+          "normalized_value": "[CLAIM_TOKEN]",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Linked claim field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-assignment-succession-001",
+      "document_type": "assignment-succession",
+      "review_status": "accepted",
+      "confidence": 0.91,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-assignment-succession-001",
+          "document_type": "assignment-succession",
+          "name": "assignor_role",
+          "normalized_value": "[ASSIGNOR_ORG]",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Assignor field"
+        },
+        {
+          "document_id": "legal-ocr-synth-assignment-succession-001",
+          "document_type": "assignment-succession",
+          "name": "assignee_role",
+          "normalized_value": "[ASSIGNEE_ORG]",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Assignee field"
+        },
+        {
+          "document_id": "legal-ocr-synth-assignment-succession-001",
+          "document_type": "assignment-succession",
+          "name": "debtor_role",
+          "normalized_value": "[DEBTOR_PERSON]",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Debtor field"
+        },
+        {
+          "document_id": "legal-ocr-synth-assignment-succession-001",
+          "document_type": "assignment-succession",
+          "name": "assigned_claim_token",
+          "normalized_value": "[CLAIM_TOKEN]",
+          "confidence": 0.94,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Assigned claim field"
+        },
+        {
+          "document_id": "legal-ocr-synth-assignment-succession-001",
+          "document_type": "assignment-succession",
+          "name": "notice_status",
+          "normalized_value": "delivered",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Notice status field"
+        },
+        {
+          "document_id": "legal-ocr-synth-assignment-succession-001",
+          "document_type": "assignment-succession",
+          "name": "succession_authority",
+          "normalized_value": "execution clause requested",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "chunk_id": "line-9",
+          "line_start": 9,
+          "line_end": 9,
+          "reason": "matched Succession authority field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-operational-ledger-001",
+      "document_type": "ledger-recovery",
+      "review_status": "accepted",
+      "confidence": 0.87,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-operational-ledger-001",
+          "document_type": "ledger-recovery",
+          "name": "ledger_event",
+          "normalized_value": "demand letter prepared",
+          "confidence": 0.86,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Ledger event field"
+        },
+        {
+          "document_id": "legal-ocr-synth-operational-ledger-001",
+          "document_type": "ledger-recovery",
+          "name": "ledger_event",
+          "normalized_value": "partial recovery",
+          "confidence": 0.86,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Ledger event field"
+        },
+        {
+          "document_id": "legal-ocr-synth-operational-ledger-001",
+          "document_type": "ledger-recovery",
+          "name": "recovery_amount",
+          "normalized_value": "KRW 250000",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Recovery amount field"
+        },
+        {
+          "document_id": "legal-ocr-synth-operational-ledger-001",
+          "document_type": "ledger-recovery",
+          "name": "ledger_event",
+          "normalized_value": "filing cost",
+          "confidence": 0.86,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Ledger event field"
+        },
+        {
+          "document_id": "legal-ocr-synth-operational-ledger-001",
+          "document_type": "ledger-recovery",
+          "name": "cost_amount",
+          "normalized_value": "KRW 32000",
+          "confidence": 0.87,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Cost amount field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-asset-evidence-001",
+      "document_type": "asset-evidence",
+      "review_status": "accepted",
+      "confidence": 0.87,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "document_type": "asset-evidence",
+          "name": "asset_subject_role",
+          "normalized_value": "[DEBTOR_PERSON]",
+          "confidence": 0.86,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Subject field"
+        },
+        {
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "document_type": "asset-evidence",
+          "name": "asset_class",
+          "normalized_value": "insurance claim and real-property lead",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Asset type field"
+        },
+        {
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "document_type": "asset-evidence",
+          "name": "asset_evidence_source",
+          "normalized_value": "[PUBLIC_RECORD_SUMMARY]",
+          "confidence": 0.88,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Evidence source field"
+        },
+        {
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "document_type": "asset-evidence",
+          "name": "priority_status",
+          "normalized_value": "competing secured party may exist",
+          "confidence": 0.86,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Priority note field"
+        },
+        {
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "document_type": "asset-evidence",
+          "name": "attachment_suitability",
+          "normalized_value": "needs rule review",
+          "confidence": 0.86,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Attachment suitability field"
+        },
+        {
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "document_type": "asset-evidence",
+          "name": "exemption_review_status",
+          "normalized_value": "explicit review required",
+          "confidence": 0.84,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "chunk_id": "line-12",
+          "line_start": 12,
+          "line_end": 12,
+          "reason": "matched Exemption review field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-amount-interest-001",
+      "document_type": "amount-interest-calculation",
+      "review_status": "accepted",
+      "confidence": 0.92,
+      "extractor_version": "trustgraph_legal.fields@0.1.0",
+      "fields": [
+        {
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "document_type": "amount-interest-calculation",
+          "name": "principal_amount",
+          "normalized_value": "KRW 3400000",
+          "confidence": 0.95,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "chunk_id": "line-4",
+          "line_start": 4,
+          "line_end": 4,
+          "reason": "matched Principal field"
+        },
+        {
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "document_type": "amount-interest-calculation",
+          "name": "interest_rate",
+          "normalized_value": "12% per_year",
+          "confidence": 0.92,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "chunk_id": "line-5",
+          "line_start": 5,
+          "line_end": 5,
+          "reason": "matched Interest basis field"
+        },
+        {
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "document_type": "amount-interest-calculation",
+          "name": "calculation_start",
+          "normalized_value": "[DATE_REDACTED]",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "chunk_id": "line-6",
+          "line_start": 6,
+          "line_end": 6,
+          "reason": "matched Calculation start field"
+        },
+        {
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "document_type": "amount-interest-calculation",
+          "name": "calculation_end",
+          "normalized_value": "[DATE_REDACTED]",
+          "confidence": 0.9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "chunk_id": "line-7",
+          "line_start": 7,
+          "line_end": 7,
+          "reason": "matched Calculation end field"
+        },
+        {
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "document_type": "amount-interest-calculation",
+          "name": "claimed_total",
+          "normalized_value": "KRW 3876000",
+          "confidence": 0.94,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "chunk_id": "line-8",
+          "line_start": 8,
+          "line_end": 8,
+          "reason": "matched Claimed total field"
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "redaction_status": "redacted-output"
+      }
+    }
+  ]
+}

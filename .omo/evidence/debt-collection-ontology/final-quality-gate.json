@@ -1,0 +1,106 @@
+{
+  "codeReview": {
+    "by": "lazycodex-code-reviewer",
+    "recommendation": "APPROVE",
+    "codeQualityStatus": "CLEAR",
+    "reportPath": ".omo/evidence/debt-collection-ontology/final-review-code-authz-final.md",
+    "evidence": "Final code reviewer accepted the auth-boundary fix and found no remaining blockers.",
+    "blockers": []
+  },
+  "manualQa": {
+    "by": "lazycodex-qa-executor",
+    "status": "passed",
+    "evidence": "MCP streamable HTTP smoke passed with bad token rejection, internal scope authorization, no public authorise-many websocket use, reader-safe tool access, governance denial, and no token echo.",
+    "surfaceEvidence": [
+      {
+        "id": "surface-mcp-http-smoke",
+        "criterionRef": "C001",
+        "surface": "http",
+        "invocation": "local MCP streamable HTTP smoke against fake TrustGraph gateway and injected internal scope authorizer",
+        "verdict": "passed",
+        "artifactRefs": ["artifact-mcp-scope-smoke"]
+      },
+      {
+        "id": "surface-boundary-scan",
+        "criterionRef": "C002",
+        "surface": "cli",
+        "invocation": "focused MCP boundary tests and sensitive-pattern scan",
+        "verdict": "passed",
+        "artifactRefs": ["artifact-final-verification"]
+      },
+      {
+        "id": "surface-regression-suite",
+        "criterionRef": "C003",
+        "surface": "cli",
+        "invocation": "legal ontology unit tests, MCP integration tests, py_compile, evaluator CLI, and git diff checks",
+        "verdict": "passed",
+        "artifactRefs": ["artifact-final-verification"]
+      }
+    ],
+    "adversarialCases": [
+      {
+        "id": "adv-token-authz-boundary",
+        "criterionRef": "C001",
+        "scenario": "bad token rejected and reader token denied governance operation",
+        "expectedBehavior": "bad token is rejected; reader governance call is denied; no token is echoed",
+        "verdict": "passed",
+        "artifactRefs": ["artifact-mcp-scope-smoke"]
+      },
+      {
+        "id": "adv-path-traversal",
+        "criterionRef": "C002",
+        "scenario": "outside repo-root path input",
+        "expectedBehavior": "request is rejected without reading or echoing the server path",
+        "verdict": "passed",
+        "artifactRefs": ["artifact-final-verification"]
+      }
+    ],
+    "artifactRefs": [
+      {
+        "id": "artifact-mcp-scope-smoke",
+        "kind": "http-dump",
+        "description": "MCP HTTP smoke transcript and cleanup receipt.",
+        "path": ".omo/evidence/debt-collection-ontology/final-mcp-scope-smoke.txt"
+      },
+      {
+        "id": "artifact-final-verification",
+        "kind": "cli-transcript",
+        "description": "Final verification command transcript.",
+        "path": ".omo/evidence/debt-collection-ontology/final-verification-20260701.txt"
+      }
+    ]
+  },
+  "gateReview": {
+    "by": "lazycodex-gate-reviewer",
+    "recommendation": "APPROVE",
+    "reportPath": ".omo/evidence/debt-collection-ontology/final-review-goal-authz-rerun.md",
+    "evidence": "Gate reviewer accepted F1-F4 and the v0 product spine after the auth-boundary rerun.",
+    "blockers": []
+  },
+  "iteration": {
+    "fullRerun": true,
+    "status": "passed",
+    "rerunCommands": [
+      "/opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology -q",
+      "/opt/homebrew/bin/python3 -m pytest tests/integration/legal_ontology/test_mcp_tools.py -q",
+      "/usr/bin/python3 -m py_compile <changed legal/MCP/evaluator/test files>",
+      "python3 scripts/legal_ontology/evaluate_packet.py --fixtures tests/fixtures/legal-ocr/manifest.json --out /tmp/final-review-task10-eval-final.json",
+      "git diff --check origin/master...HEAD && git diff --check"
+    ],
+    "evidence": "42 legal ontology unit tests passed, 3 MCP integration tests passed, py_compile passed, evaluator CLI returned status passed and tool_count 16, and git diff checks passed."
+  },
+  "criteriaCoverage": {
+    "totalCriteria": 3,
+    "passCount": 3,
+    "originalIntent": "Finish the debt collection ontology and MCP brain server after interruption.",
+    "desiredOutcome": "A committed v0 ontology/MCP product spine with verified auth boundaries, evidence-backed StopGate behavior, ingestion/classification/graph tooling, and reviewer approval.",
+    "userOutcomeReview": "The source commit, MCP smoke, tests, evaluator, F1-F4 closure, and final reviewers satisfy the requested ULW completion pass.",
+    "adversarialClassesCovered": [
+      "authz-boundary",
+      "path-traversal",
+      "pii-leak",
+      "stale-state",
+      "misleading-success-output"
+    ]
+  }
+}

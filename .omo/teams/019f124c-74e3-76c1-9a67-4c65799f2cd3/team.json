@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "teamId": "4595528a-1cd2-462c-8a6c-d271fa342f7c",
+  "teamName": "debt-collection-ontology",
+  "sessionName": "todo-1-domain-foundation",
+  "sessionId": "019f124c-74e3-76c1-9a67-4c65799f2cd3",
+  "threadTitleConvention": "[debt-collection-ontology] <member name>",
+  "status": "archived",
+  "createdAt": "2026-06-30T06:06:24.702Z",
+  "updatedAt": "2026-06-30T10:06:38.181Z",
+  "archivedAt": "2026-06-30T06:28:20.559Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "019f124c-74e3-76c1-9a67-4c65799f2cd3"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "domain-contract",
+      "focus": "docs/product/debt-collection-ontology/domain-contract.md and v0 legal domain boundary contract",
+      "lens": "area",
+      "deliverable": "Create the v0 debt-collection ontology domain contract with document types, entity roles, fact categories, StopGate categories, confidence levels, PII handling, MCP scope groups, hybrid case identity, curated rule-source policy, and non-execution boundary. Include source-grounded rationale from plan/evidence without adding raw PII.",
+      "threadId": "019f1724-5918-7143-a531-74caf32f2713",
+      "threadTitle": "[debt-collection-ontology] domain-contract",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/019f124c-74e3-76c1-9a67-4c65799f2cd3/A"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "B",
+      "name": "fixture-manifest",
+      "focus": "tests/fixtures/legal-ocr/manifest.json plus scripts/legal_ontology/check_fixture_manifest.py and minimized/redacted OCR fixture files",
+      "lens": "area",
+      "deliverable": "Create a PII-safe representative fixture manifest and validator for Todo 1. Use only minimized/redacted or synthetic snippets from the OCR markdown corpus; no raw resident IDs, phone numbers, addresses, or account data. The manifest must validate with python3 -m json.tool and the custom check script; include failure-path evidence for missing document_type.",
+      "threadId": "019f1724-6bb7-77d3-970e-c45f1e121b07",
+      "threadTitle": "[debt-collection-ontology] fixture-manifest",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/worktrees/B",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/worktrees/B",
+        "branch": "team/019f124c-74e3-76c1-9a67-4c65799f2cd3/B"
+      },
+      "status": "archived"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-06-30T06:06:24.702Z",
+      "event": "created",
+      "detail": "team debt-collection-ontology"
+    },
+    {
+      "ts": "2026-06-30T06:06:32.363Z",
+      "event": "add-member",
+      "detail": "member A (area): docs/product/debt-collection-ontology/domain-contract.md and v0 legal domain boundary contract"
+    },
+    {
+      "ts": "2026-06-30T06:06:41.846Z",
+      "event": "add-member",
+      "detail": "member B (area): tests/fixtures/legal-ocr/manifest.json plus scripts/legal_ontology/check_fixture_manifest.py and minimized/redacted OCR fixture files"
+    },
+    {
+      "ts": "2026-06-30T06:06:49.059Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/worktrees/A (team/019f124c-74e3-76c1-9a67-4c65799f2cd3/A)"
+    },
+    {
+      "ts": "2026-06-30T06:06:55.108Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/worktrees/B (team/019f124c-74e3-76c1-9a67-4c65799f2cd3/B)"
+    },
+    {
+      "ts": "2026-06-30T06:09:15.396Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f1724-5918-7143-a531-74caf32f2713"
+    },
+    {
+      "ts": "2026-06-30T06:09:26.800Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f1724-6bb7-77d3-970e-c45f1e121b07"
+    },
+    {
+      "ts": "2026-06-30T06:28:20.560Z",
+      "event": "archive",
+      "detail": "Todo 1 integrated and verified on master; evidence recorded at .omo/evidence/debt-collection-ontology/task-1-manifest.txt"
+    },
+    {
+      "ts": "2026-06-30T10:06:38.181Z",
+      "event": "worktree-remove",
+      "detail": "member A"
+    }
+  ]
+}

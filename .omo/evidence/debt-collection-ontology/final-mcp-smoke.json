@@ -1,0 +1,19 @@
+{
+  "bad_token_error": "unhandled errors in a TaskGroup (1 sub-exception)",
+  "bad_token_error_class": "ExceptionGroup",
+  "bad_token_rejected": true,
+  "call_tool_preview": "{\"content\": [{\"annotations\": null, \"meta\": null, \"text\": \"{\\n  \\\"schema_version\\\": \\\"trustgraph-legal-mcp-tool-response/v1\\\",\\n  \\\"tool_name\\\": \\\"list_debt_collection_tools\\\",\\n  \\\"group\\\": \\\"read\\\",\\n  \\\"scope\\\": \\\"read:tools\\\",\\n  \\\"pii_profile\\\": {\\n    \\\"raw_text_included\\\": false,\\n    \\\"source_text_included\\\": false,\\n    \\\"redacted\\\": {\\n      \\\"national_id\\\": 0,\\n      \\\"phone\\\": 0,\\n      \\\"account\\\": 0,\\n      \\\"address\\\": 0\\n    }\\n  },\\n  \\\"redaction\\\": {\\n    \\\"status\\\": \\\"redacted\\\",\\n    \\\"default\\\": \\\"redacted\\\",\\n    \\\"raw_text_included\\\": false,\\n    \\\"source_text_included\\\": false,\\n    \\\"counts\\\": {\\n      \\\"national_id\\\": 0,\\n      \\\"phone\\\": 0,\\n      \\\"account\\\": 0,\\n      \\\"address\\\": 0\\n    }\\n  },\\n  \\\"source_refs\\\": [],\\n  \\\"warnings\\\": [],\\n  \\\"result\\\": {\\n    \\\"tools\\\": [\\n      {\\n        \\\"schema_version\\\": \\\"trustgraph-legal-mcp-tool-contract/v1\\\",\\n        \\\"tool_name\\\": \\\"list_debt_collection_tools\\\",\\n        \\\"name\\\": \\\"list_debt_collection_tools\\\",\\n        \\\"group\\\": \\\"read\\\",\\n        \\\"scope\\\": \\\"read:tools\\\",\\n        \\\"description\\\": \\\"List debt-collection domain tool contracts.\\\",\\n        \\\"parameters\\\": [],\\n        \\\"input_schema\\\": {\\n          \\\"type\\\": \\\"object\\\",\\n          \\\"properties\\\": {},\\n          \\\"additionalProperties\\\": true\\n        },\\n        \\\"output_schema\\\": {\\n          \\\"type\\\": \\\"object\\\",\\n          \\\"required\\\": [\\n            \\\"schema_version\\\",\\n            \\\"tool_name\\\",\\n            \\\"group\\\",\\n            \\\"scope\\\",\\n            \\\"pii_profile\\\",\\n            \\\"redaction\\\",\\n            \\\"source_refs\\\",\\n            \\\"warnings\\\",\\n            \\\"result\\\"\\n          ]\\n        },\\n        \\\"redaction\\\": {\\n          \\\"default\\\": \\\"redacted\\\",\\n          \\\"raw_text_included\\\": false,\\n          \\\"source_text_included\\\": false\\n        }\\n      },\\n      {\\n        \\\"schema_version\\\": \\\"trustgraph-legal-mcp-tool-contract/v1\\\",\\n        \\\"tool_name\\\": \\\"ingest_legal_document\\\",\\n        \\\"name\\\":",
+  "call_tool_returned": true,
+  "debt_tool_listed": true,
+  "debt_tools_sample": [
+    "list_debt_collection_tools",
+    "get_case_graph",
+    "recommend_next_action"
+  ],
+  "good_token_accepted": true,
+  "good_tool_count": 47,
+  "status": "passed",
+  "surface": "MCP streamable HTTP",
+  "token_not_echoed": true,
+  "url": "http://127.0.0.1:18766/mcp"
+}

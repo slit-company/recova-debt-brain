@@ -1,0 +1,61 @@
+Todo 9 MCP domain brain evidence
+Date: 2026-06-30
+
+Integrated commits on master:
+- dfa70336 feat(legal-mcp): add debt collection domain tools
+- 928cf8df fix(legal-mcp): align debt collection tool contract
+- 588fba0c fix(legal-mcp): enforce MCP auth and repo-bound paths
+- eefbba6e test(legal-mcp): add debt collection MCP contract tests
+- 81530024 docs(legal-mcp): add B verification report
+- 40857730 test(legal-mcp): verify auth context and path bounds
+- 2eed4156 Merge branch 'team/debt-collection-ontology-todo-9-20260630/B'
+
+Public source surface:
+- trustgraph_legal.mcp_domain.TOOL_DEFINITIONS
+- trustgraph_legal.mcp_domain.list_tools()
+- trustgraph_legal.mcp_domain.invoke_tool(tool_name, arguments=None, repo_root=None)
+- trustgraph.mcp_server.legal_tools.register_debt_collection_brain_tools(mcp, repo_root=None, token_resolver=None, require_auth=True)
+
+Canonical tool list:
+1. list_debt_collection_tools
+2. ingest_legal_document
+3. ingest_ocr_markdown
+4. get_ingest_status
+5. classify_legal_document
+6. extract_case_packet
+7. get_case_graph
+8. check_case_stop_gates
+9. check_limitation_status
+10. check_attachment_target_rules
+11. summarize_case_ledger
+12. recommend_next_action
+13. list_unknown_document_types
+14. review_extracted_fact
+15. promote_ontology_candidate
+16. reprocess_case
+
+Root verification:
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_mcp_domain_tools.py tests/integration/legal_ontology/test_mcp_tools.py -q
+  Result: 8 passed.
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology -q
+  Result: 36 passed.
+- /opt/homebrew/bin/python3 -m py_compile trustgraph_legal/mcp_domain.py trustgraph-mcp/trustgraph/mcp_server/legal_tools.py trustgraph-mcp/trustgraph/mcp_server/mcp.py trustgraph-mcp/trustgraph/mcp_server/__init__.py tests/unit/legal_ontology/test_mcp_domain_tools.py tests/integration/legal_ontology/test_mcp_tools.py
+  Result: passed.
+- Root smoke with fake MCP registration:
+  Result: PASS todo9 root smoke.
+- git diff --check HEAD~1 HEAD
+  Result: passed.
+
+Security regressions verified:
+- Bearer token is not a public registered tool argument.
+- Adapter calls use MCP auth context/token_resolver and do not echo tokens.
+- Missing token resolver raises MCP auth context error.
+- case_graph_path and other path arguments are resolved under repo_root.
+- Outside-root paths return a redacted rejection envelope: {"status": "rejected", "reason": "path_outside_repo_root"}.
+- Outside-root path and file content are not echoed.
+
+Actual HTTP MCP server smoke:
+- Command attempted: PYTHONPATH=trustgraph-mcp:. /opt/homebrew/bin/python3 -m trustgraph.mcp_server.mcp --help
+- Result: blocked by environment dependency, ModuleNotFoundError: No module named 'mcp'.
+- This matches the Todo 9 test strategy chosen during team execution: no global MCP SDK dependency, no vendoring/global install, and fake-MCP registration plus domain facade tests for hermetic verification.
+- Todo 10 must document the real MCP runtime dependency/setup and provide the final local HTTP runbook.

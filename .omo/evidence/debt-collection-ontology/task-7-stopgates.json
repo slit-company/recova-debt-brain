@@ -1,0 +1,737 @@
+{
+  "blocked_reasons": [
+    "Attachment target or priority material indicates exemption/protection review is required.",
+    "Claim, principal, or calculated total amounts conflict.",
+    "Insolvency, discharge, rehabilitation, or credit recovery material exists and needs legal review.",
+    "Limitation or stale-claim risk is not cleared by source-backed evidence."
+  ],
+  "case_packet_ids": [
+    "case-packet-id-be706068d3a4571b0720"
+  ],
+  "confidence": 0.84,
+  "decision": "보류",
+  "missing_evidence": [
+    "amount_reconciliation",
+    "exemption_clearance",
+    "insolvency_clearance",
+    "limitation_clearance"
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "recommended_action": "Hold advisory recommendation until required preconditions and review items are cleared.",
+  "required_preconditions": [
+    "attachment target exemption review",
+    "limitation_cleared",
+    "reconciled amount calculation",
+    "reviewed insolvency or discharge status"
+  ],
+  "review_queue_items": [
+    {
+      "required_preconditions": [
+        "reviewed insolvency or discharge status"
+      ],
+      "review_reason": "discharge_proceeding_detected",
+      "source_refs": [
+        {
+          "chunk_id": "manifest",
+          "confidence": 0.9,
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "fact_id": "document:legal-ocr-synth-insolvency-credit-recovery-001",
+          "fact_type": "legal-document",
+          "line_end": 0,
+          "line_start": 0,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md"
+        },
+        {
+          "chunk_id": "line-6",
+          "confidence": 0.92,
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "fact_id": "legal-check:a79c1eae8ab486514643b3a87c9e188a4f6df2f38f20e90564f7666df06323fc",
+          "fact_type": "legal-check",
+          "line_end": 6,
+          "line_start": 6,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md"
+        }
+      ],
+      "stopgate_id": "insolvency-or-discharge-risk"
+    },
+    {
+      "required_preconditions": [
+        "limitation_cleared"
+      ],
+      "review_reason": "limitation_risk",
+      "source_refs": [
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "amount",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "amount",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "amount",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "claim-id-4e94637307572ab47d3b",
+          "fact_type": "claim",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "source-span",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "source-span",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "source-span",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        }
+      ],
+      "stopgate_id": "limitation-risk"
+    },
+    {
+      "required_preconditions": [
+        "attachment target exemption review"
+      ],
+      "review_reason": "exempt_claim_targeted",
+      "source_refs": [
+        {
+          "chunk_id": "line-12",
+          "confidence": 0.84,
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "fact_id": "legal-check:a35772169343140ef369b9d2d2ca9a70b909896092ecb9c21b40ccdcd0ae0e9f",
+          "fact_type": "legal-check",
+          "line_end": 12,
+          "line_start": 12,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md"
+        },
+        {
+          "chunk_id": "line-7",
+          "confidence": 0.86,
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "fact_id": "span:9f586e228098a34ad56b2aa778965907378c939c404b50a8900133cb29ed9f3f",
+          "fact_type": "source-span",
+          "line_end": 7,
+          "line_start": 7,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md"
+        }
+      ],
+      "stopgate_id": "target-exemption-risk"
+    },
+    {
+      "required_preconditions": [
+        "reconciled amount calculation"
+      ],
+      "review_reason": "amount_mismatch",
+      "source_refs": [
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "amount",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "amount",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "amount",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "claim-id-4e94637307572ab47d3b",
+          "fact_type": "claim",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "source-span",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "source-span",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "source-span",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        }
+      ],
+      "stopgate_id": "amount-inconsistent"
+    }
+  ],
+  "risk_flags": [
+    "amount_mismatch",
+    "discharge_proceeding_detected",
+    "exempt_claim_targeted",
+    "limitation_risk"
+  ],
+  "rule_refs": [
+    {
+      "effective_date": "2026-06-30",
+      "rule_id": "dc-stopgate-v0-003",
+      "sources": [
+        {
+          "effective_date": "2026-06-30",
+          "review_status": "approved",
+          "source_id": "kr-debtor-rehabilitation-act-v0",
+          "source_ref": "curated://kr-debtor-rehabilitation-act/2026-06-30/v0",
+          "statute_ref": "Debtor Rehabilitation and Bankruptcy Act: bankruptcy, rehabilitation, discharge, and stay references"
+        }
+      ],
+      "statute_refs": [
+        "Debtor Rehabilitation and Bankruptcy Act: stay and discharge references"
+      ],
+      "stopgate_id": "insolvency-or-discharge-risk"
+    },
+    {
+      "effective_date": "2026-06-30",
+      "rule_id": "dc-stopgate-v0-004",
+      "sources": [
+        {
+          "effective_date": "2026-06-30",
+          "review_status": "approved",
+          "source_id": "kr-civil-execution-act-v0",
+          "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
+          "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references"
+        }
+      ],
+      "statute_refs": [
+        "Civil Act and Civil Execution Act: limitation and enforceability references"
+      ],
+      "stopgate_id": "limitation-risk"
+    },
+    {
+      "effective_date": "2026-06-30",
+      "rule_id": "dc-stopgate-v0-005",
+      "sources": [
+        {
+          "effective_date": "2026-06-30",
+          "review_status": "approved",
+          "source_id": "kr-civil-execution-act-v0",
+          "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
+          "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references"
+        }
+      ],
+      "statute_refs": [
+        "Civil Execution Act: prohibited and protected attachment target references"
+      ],
+      "stopgate_id": "target-exemption-risk"
+    },
+    {
+      "effective_date": "2026-06-30",
+      "rule_id": "dc-stopgate-v0-007",
+      "sources": [
+        {
+          "effective_date": "2026-06-30",
+          "review_status": "approved",
+          "source_id": "kr-civil-execution-act-v0",
+          "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
+          "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references"
+        }
+      ],
+      "statute_refs": [
+        "Civil Execution Act: claim amount and attachment scope references"
+      ],
+      "stopgate_id": "amount-inconsistent"
+    }
+  ],
+  "rule_source": {
+    "curation_policy": "static-curated-v0-no-live-updates",
+    "effective_date": "2026-06-30",
+    "review_status": "approved",
+    "version": "recova-debt-collection-stopgate@v0.1.0"
+  },
+  "schema_version": "trustgraph-legal-stopgate-check/v1",
+  "source_refs": [
+    {
+      "chunk_id": "line-4",
+      "confidence": 0.95,
+      "document_id": "legal-ocr-synth-amount-interest-001",
+      "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+      "fact_type": "source-span",
+      "line_end": 4,
+      "line_start": 4,
+      "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+    },
+    {
+      "chunk_id": "line-12",
+      "confidence": 0.84,
+      "document_id": "legal-ocr-synth-asset-evidence-001",
+      "fact_id": "legal-check:a35772169343140ef369b9d2d2ca9a70b909896092ecb9c21b40ccdcd0ae0e9f",
+      "fact_type": "legal-check",
+      "line_end": 12,
+      "line_start": 12,
+      "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md"
+    },
+    {
+      "chunk_id": "line-7",
+      "confidence": 0.86,
+      "document_id": "legal-ocr-synth-asset-evidence-001",
+      "fact_id": "span:9f586e228098a34ad56b2aa778965907378c939c404b50a8900133cb29ed9f3f",
+      "fact_type": "source-span",
+      "line_end": 7,
+      "line_start": 7,
+      "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md"
+    },
+    {
+      "chunk_id": "line-9",
+      "confidence": 0.94,
+      "document_id": "legal-ocr-synth-attachment-collection-order-001",
+      "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+      "fact_type": "source-span",
+      "line_end": 9,
+      "line_start": 9,
+      "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+    },
+    {
+      "chunk_id": "line-6",
+      "confidence": 0.92,
+      "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+      "fact_id": "legal-check:a79c1eae8ab486514643b3a87c9e188a4f6df2f38f20e90564f7666df06323fc",
+      "fact_type": "legal-check",
+      "line_end": 6,
+      "line_start": 6,
+      "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md"
+    },
+    {
+      "chunk_id": "manifest",
+      "confidence": 0.9,
+      "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+      "fact_id": "document:legal-ocr-synth-insolvency-credit-recovery-001",
+      "fact_type": "legal-document",
+      "line_end": 0,
+      "line_start": 0,
+      "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md"
+    },
+    {
+      "chunk_id": "line-8",
+      "confidence": 0.95,
+      "document_id": "legal-ocr-synth-judgment-payment-order-001",
+      "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+      "fact_type": "source-span",
+      "line_end": 8,
+      "line_start": 8,
+      "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+    }
+  ],
+  "stop_gates": [
+    {
+      "blocked_reason": "Insolvency, discharge, rehabilitation, or credit recovery material exists and needs legal review.",
+      "confidence": 0.9,
+      "decision": "보류",
+      "missing_evidence": [
+        "insolvency_clearance"
+      ],
+      "reason_code": "discharge_proceeding_detected",
+      "recommended_action": "Review proceeding status and protected period before collection recommendations.",
+      "required_preconditions": [
+        "reviewed insolvency or discharge status"
+      ],
+      "risk_flags": [
+        "discharge_proceeding_detected"
+      ],
+      "rule_refs": [
+        {
+          "effective_date": "2026-06-30",
+          "rule_id": "dc-stopgate-v0-003",
+          "sources": [
+            {
+              "effective_date": "2026-06-30",
+              "review_status": "approved",
+              "source_id": "kr-debtor-rehabilitation-act-v0",
+              "source_ref": "curated://kr-debtor-rehabilitation-act/2026-06-30/v0",
+              "statute_ref": "Debtor Rehabilitation and Bankruptcy Act: bankruptcy, rehabilitation, discharge, and stay references"
+            }
+          ],
+          "statute_refs": [
+            "Debtor Rehabilitation and Bankruptcy Act: stay and discharge references"
+          ],
+          "stopgate_id": "insolvency-or-discharge-risk"
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "manifest",
+          "confidence": 0.9,
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "fact_id": "document:legal-ocr-synth-insolvency-credit-recovery-001",
+          "fact_type": "legal-document",
+          "line_end": 0,
+          "line_start": 0,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md"
+        },
+        {
+          "chunk_id": "line-6",
+          "confidence": 0.92,
+          "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+          "fact_id": "legal-check:a79c1eae8ab486514643b3a87c9e188a4f6df2f38f20e90564f7666df06323fc",
+          "fact_type": "legal-check",
+          "line_end": 6,
+          "line_start": 6,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md"
+        }
+      ],
+      "stopgate_id": "insolvency-or-discharge-risk"
+    },
+    {
+      "blocked_reason": "Limitation or stale-claim risk is not cleared by source-backed evidence.",
+      "confidence": 0.94,
+      "decision": "보류",
+      "missing_evidence": [
+        "limitation_clearance"
+      ],
+      "reason_code": "limitation_risk",
+      "recommended_action": "Verify limitation period, interruption, and calculation dates before action.",
+      "required_preconditions": [
+        "limitation_cleared"
+      ],
+      "risk_flags": [
+        "limitation_risk"
+      ],
+      "rule_refs": [
+        {
+          "effective_date": "2026-06-30",
+          "rule_id": "dc-stopgate-v0-004",
+          "sources": [
+            {
+              "effective_date": "2026-06-30",
+              "review_status": "approved",
+              "source_id": "kr-civil-execution-act-v0",
+              "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
+              "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references"
+            }
+          ],
+          "statute_refs": [
+            "Civil Act and Civil Execution Act: limitation and enforceability references"
+          ],
+          "stopgate_id": "limitation-risk"
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "amount",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "amount",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "amount",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "claim-id-4e94637307572ab47d3b",
+          "fact_type": "claim",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "source-span",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "source-span",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "source-span",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        }
+      ],
+      "stopgate_id": "limitation-risk"
+    },
+    {
+      "blocked_reason": "Attachment target or priority material indicates exemption/protection review is required.",
+      "confidence": 0.84,
+      "decision": "보류",
+      "missing_evidence": [
+        "exemption_clearance"
+      ],
+      "reason_code": "exempt_claim_targeted",
+      "recommended_action": "Review target class, protected amount, and priority before collection recommendations.",
+      "required_preconditions": [
+        "attachment target exemption review"
+      ],
+      "risk_flags": [
+        "exempt_claim_targeted"
+      ],
+      "rule_refs": [
+        {
+          "effective_date": "2026-06-30",
+          "rule_id": "dc-stopgate-v0-005",
+          "sources": [
+            {
+              "effective_date": "2026-06-30",
+              "review_status": "approved",
+              "source_id": "kr-civil-execution-act-v0",
+              "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
+              "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references"
+            }
+          ],
+          "statute_refs": [
+            "Civil Execution Act: prohibited and protected attachment target references"
+          ],
+          "stopgate_id": "target-exemption-risk"
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "line-12",
+          "confidence": 0.84,
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "fact_id": "legal-check:a35772169343140ef369b9d2d2ca9a70b909896092ecb9c21b40ccdcd0ae0e9f",
+          "fact_type": "legal-check",
+          "line_end": 12,
+          "line_start": 12,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md"
+        },
+        {
+          "chunk_id": "line-7",
+          "confidence": 0.86,
+          "document_id": "legal-ocr-synth-asset-evidence-001",
+          "fact_id": "span:9f586e228098a34ad56b2aa778965907378c939c404b50a8900133cb29ed9f3f",
+          "fact_type": "source-span",
+          "line_end": 7,
+          "line_start": 7,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/asset_evidence.md"
+        }
+      ],
+      "stopgate_id": "target-exemption-risk"
+    },
+    {
+      "blocked_reason": "Claim, principal, or calculated total amounts conflict.",
+      "confidence": 0.94,
+      "decision": "보류",
+      "missing_evidence": [
+        "amount_reconciliation"
+      ],
+      "reason_code": "amount_mismatch",
+      "recommended_action": "Reconcile ledger and amount-interest calculation before recommending a collection amount.",
+      "required_preconditions": [
+        "reconciled amount calculation"
+      ],
+      "risk_flags": [
+        "amount_mismatch"
+      ],
+      "rule_refs": [
+        {
+          "effective_date": "2026-06-30",
+          "rule_id": "dc-stopgate-v0-007",
+          "sources": [
+            {
+              "effective_date": "2026-06-30",
+              "review_status": "approved",
+              "source_id": "kr-civil-execution-act-v0",
+              "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
+              "statute_ref": "Civil Execution Act: enforceable title, execution clause, and attachment restriction references"
+            }
+          ],
+          "statute_refs": [
+            "Civil Execution Act: claim amount and attachment scope references"
+          ],
+          "stopgate_id": "amount-inconsistent"
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "amount:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "amount",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "amount:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "amount",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "amount:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "amount",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "claim-id-4e94637307572ab47d3b",
+          "fact_type": "claim",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-4",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-amount-interest-001",
+          "fact_id": "span:257afca859a5887c4910c9d56614c710dfc492c0b43036627cb78c7e83e61f75",
+          "fact_type": "source-span",
+          "line_end": 4,
+          "line_start": 4,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/amount_interest.md"
+        },
+        {
+          "chunk_id": "line-9",
+          "confidence": 0.94,
+          "document_id": "legal-ocr-synth-attachment-collection-order-001",
+          "fact_id": "span:6b540a7a9871d95a51e0061ace1b12629397ade95ab7be9fbec9496bf4c4cc8b",
+          "fact_type": "source-span",
+          "line_end": 9,
+          "line_start": 9,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+        },
+        {
+          "chunk_id": "line-8",
+          "confidence": 0.95,
+          "document_id": "legal-ocr-synth-judgment-payment-order-001",
+          "fact_id": "span:fa7351a99a911d3f60a059549e8c7fbddb990ebd7ffef68990ac54f3944948be",
+          "fact_type": "source-span",
+          "line_end": 8,
+          "line_start": 8,
+          "source_ref": "fixture:tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+        }
+      ],
+      "stopgate_id": "amount-inconsistent"
+    }
+  ]
+}

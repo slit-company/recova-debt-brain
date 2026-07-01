@@ -1,0 +1,13 @@
+cleanup_command=rm -rf /tmp/final-review-task10-mcp-venv /tmp/final-review-task10-gateway.py /tmp/final-review-task10-client.py /tmp/final-review-task10-gateway.log /tmp/final-review-task10-gateway.stdout /tmp/final-review-task10-server.log /tmp/final-review-task10-smoke.json /tmp/final-review-task10-gateway.pid /tmp/final-review-task10-server.pid /tmp/final-review-task10-health.out /tmp/final-review-task10-pip.log /tmp/final-review-task10-eval-final.json
+removed=/tmp/final-review-task10-mcp-venv
+removed=/tmp/final-review-task10-gateway.py
+removed=/tmp/final-review-task10-client.py
+removed=/tmp/final-review-task10-gateway.log
+removed=/tmp/final-review-task10-gateway.stdout
+removed=/tmp/final-review-task10-server.log
+removed=/tmp/final-review-task10-smoke.json
+removed=/tmp/final-review-task10-gateway.pid
+removed=/tmp/final-review-task10-server.pid
+removed=/tmp/final-review-task10-health.out
+removed=/tmp/final-review-task10-pip.log
+removed=/tmp/final-review-task10-eval-final.json

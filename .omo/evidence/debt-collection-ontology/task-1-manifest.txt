@@ -1,0 +1,42 @@
+Task 1: Lock the domain contract, server boundary, and fixture map
+Recorded: 2026-06-30T15:27:07+09:00
+
+Integrated commits on master:
+- a1f166ff Merge branch 'team/019f124c-74e3-76c1-9a67-4c65799f2cd3/A'
+- a4bb3dd3 Merge branch 'team/019f124c-74e3-76c1-9a67-4c65799f2cd3/B'
+- e48461d0 docs(legal-ontology): define debt collection domain contract
+- f605c28d test(legal-ontology): add fixture manifest validator
+
+Delivered files:
+- docs/product/debt-collection-ontology/domain-contract.md
+- tests/fixtures/legal-ocr/manifest.json
+- tests/fixtures/legal-ocr/snippets/*.md
+- scripts/legal_ontology/check_fixture_manifest.py
+
+Acceptance and QA commands run from the main checkout:
+
+1. python3 -m json.tool tests/fixtures/legal-ocr/manifest.json >/tmp/tg_main_manifest_verify.json
+   Result: PASS
+
+2. python3 scripts/legal_ontology/check_fixture_manifest.py tests/fixtures/legal-ocr/manifest.json
+   Output:
+   PASS manifest
+
+3. python3 -m py_compile scripts/legal_ontology/check_fixture_manifest.py
+   Result: PASS
+
+4. Temp manifest with documents[0].document_type removed:
+   Exit code: 1
+   Output:
+   ERROR documents[0]: missing document_type
+   ERROR documents[0]: document_type must be a non-empty string
+
+5. rg -n "resident|주민등록번호|[0-9]{6}-[0-9]{7}" docs/product/debt-collection-ontology tests/fixtures/legal-ocr scripts/legal_ontology || true
+   Result: no findings
+
+6. git diff --check HEAD~2 HEAD
+   Result: PASS
+
+Member artifact reports:
+- .omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/artifacts/A-domain-contract-report.md
+- .omo/teams/019f124c-74e3-76c1-9a67-4c65799f2cd3/artifacts/B-fixture-manifest-report.md

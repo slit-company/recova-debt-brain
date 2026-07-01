@@ -1,0 +1,316 @@
+{
+  "schema_version": "trustgraph-legal-ontology-governance/v1",
+  "ontology_id": "recova-debt-collection",
+  "ontology_version": "recova-debt-collection@v0",
+  "prompt_version": "legal-ontology-extraction@v0",
+  "extractor_version": "trustgraph_legal.governance@0.1.0",
+  "summary": {
+    "candidates": 4,
+    "review_items": 4,
+    "reprocess_plans": 4,
+    "promotion_results": 1
+  },
+  "production_ontology_hash": "sha256:db47fb579df24645616d1bd97004f427b068b222a9e0c2dfc676f7522ff28e52",
+  "production_ontology_modified": false,
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "candidates": [
+    {
+      "candidate_id": "candidate:7748829a710ee1ea542b",
+      "candidate_type": "document_type",
+      "proposed_id": "attachment-collection-application",
+      "proposed_label": "Attachment Collection Application",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier",
+      "status": "v0-excluded-review-required",
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "provenance": {
+        "source_ref": "docs/product/debt-collection-ontology/domain-contract.md",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "ontology_version": "recova-debt-collection@v0"
+      },
+      "risk_flags": [
+        "ontology-candidate",
+        "classifier-coverage-gap",
+        "no-auto-promotion"
+      ]
+    },
+    {
+      "candidate_id": "candidate:97b808295c7adac952e6",
+      "candidate_type": "document_type",
+      "proposed_id": "judgment-or-decision",
+      "proposed_label": "Judgment Or Decision",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier",
+      "status": "v0-excluded-review-required",
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "provenance": {
+        "source_ref": "docs/product/debt-collection-ontology/domain-contract.md",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "ontology_version": "recova-debt-collection@v0"
+      },
+      "risk_flags": [
+        "ontology-candidate",
+        "classifier-coverage-gap",
+        "no-auto-promotion"
+      ]
+    },
+    {
+      "candidate_id": "candidate:6d70398769ee37c72033",
+      "candidate_type": "document_type",
+      "proposed_id": "attachment-target-priority",
+      "proposed_label": "Attachment Target Priority",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier",
+      "status": "v0-excluded-review-required",
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "provenance": {
+        "source_ref": "docs/product/debt-collection-ontology/domain-contract.md",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "ontology_version": "recova-debt-collection@v0"
+      },
+      "risk_flags": [
+        "ontology-candidate",
+        "classifier-coverage-gap",
+        "no-auto-promotion"
+      ]
+    },
+    {
+      "candidate_id": "candidate:3ec3c85931b88a4130e3",
+      "candidate_type": "document_type",
+      "proposed_id": "legal-rule-source",
+      "proposed_label": "Legal Rule Source",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier",
+      "status": "v0-excluded-review-required",
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "provenance": {
+        "source_ref": "docs/product/debt-collection-ontology/domain-contract.md",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "ontology_version": "recova-debt-collection@v0"
+      },
+      "risk_flags": [
+        "ontology-candidate",
+        "classifier-coverage-gap",
+        "no-auto-promotion"
+      ]
+    }
+  ],
+  "review_items": [
+    {
+      "review_item_id": "review:991d6f05394707025d1e",
+      "queue_id": "ontology-candidate",
+      "case_packet_id": null,
+      "document_id": null,
+      "fact_id": null,
+      "candidate_value": "attachment-collection-application",
+      "current_value": "not-supported-in-v0-classifier",
+      "reason": "domain_contract_type_requires_candidate_or_explicit_v0_exclusion",
+      "risk_flags": [
+        "classifier-coverage-gap",
+        "version-promotion-required"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "redaction_status": "redacted-output",
+      "status": "open",
+      "created_at": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-06-30T00:00:00Z",
+      "assigned_to": null,
+      "resolution": null,
+      "resolution_reason": null,
+      "approved_by": null,
+      "approval_evidence_ref": null
+    },
+    {
+      "review_item_id": "review:977a5fa038dfd3091608",
+      "queue_id": "ontology-candidate",
+      "case_packet_id": null,
+      "document_id": null,
+      "fact_id": null,
+      "candidate_value": "judgment-or-decision",
+      "current_value": "not-supported-in-v0-classifier",
+      "reason": "domain_contract_type_requires_candidate_or_explicit_v0_exclusion",
+      "risk_flags": [
+        "classifier-coverage-gap",
+        "version-promotion-required"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "redaction_status": "redacted-output",
+      "status": "open",
+      "created_at": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-06-30T00:00:00Z",
+      "assigned_to": null,
+      "resolution": null,
+      "resolution_reason": null,
+      "approved_by": null,
+      "approval_evidence_ref": null
+    },
+    {
+      "review_item_id": "review:902ecc66774680ffa46b",
+      "queue_id": "ontology-candidate",
+      "case_packet_id": null,
+      "document_id": null,
+      "fact_id": null,
+      "candidate_value": "attachment-target-priority",
+      "current_value": "not-supported-in-v0-classifier",
+      "reason": "domain_contract_type_requires_candidate_or_explicit_v0_exclusion",
+      "risk_flags": [
+        "classifier-coverage-gap",
+        "version-promotion-required"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "redaction_status": "redacted-output",
+      "status": "open",
+      "created_at": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-06-30T00:00:00Z",
+      "assigned_to": null,
+      "resolution": null,
+      "resolution_reason": null,
+      "approved_by": null,
+      "approval_evidence_ref": null
+    },
+    {
+      "review_item_id": "review:d6ec5bdae61ea0cc5845",
+      "queue_id": "ontology-candidate",
+      "case_packet_id": null,
+      "document_id": null,
+      "fact_id": null,
+      "candidate_value": "legal-rule-source",
+      "current_value": "not-supported-in-v0-classifier",
+      "reason": "domain_contract_type_requires_candidate_or_explicit_v0_exclusion",
+      "risk_flags": [
+        "classifier-coverage-gap",
+        "version-promotion-required"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "redaction_status": "redacted-output",
+      "status": "open",
+      "created_at": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-06-30T00:00:00Z",
+      "assigned_to": null,
+      "resolution": null,
+      "resolution_reason": null,
+      "approved_by": null,
+      "approval_evidence_ref": null
+    }
+  ],
+  "reprocess_plans": [
+    {
+      "reprocess_plan_id": "reprocess:5c3c961707fffdb693e2",
+      "queue_id": "case-reprocess",
+      "trigger": "ontology-candidate",
+      "document_ids": [],
+      "changed_versions": {
+        "ontology_version": "proposed:attachment-collection-application",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "prompt_version": "legal-ontology-extraction@v0"
+      },
+      "required_evidence": [
+        "regression_run_id",
+        "fixture_set_id",
+        "approval_evidence_ref"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "status": "planned",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier"
+    },
+    {
+      "reprocess_plan_id": "reprocess:4fbd3a2c52dc930222e2",
+      "queue_id": "case-reprocess",
+      "trigger": "ontology-candidate",
+      "document_ids": [],
+      "changed_versions": {
+        "ontology_version": "proposed:judgment-or-decision",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "prompt_version": "legal-ontology-extraction@v0"
+      },
+      "required_evidence": [
+        "regression_run_id",
+        "fixture_set_id",
+        "approval_evidence_ref"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "status": "planned",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier"
+    },
+    {
+      "reprocess_plan_id": "reprocess:3d3ea9bdea0de971bb22",
+      "queue_id": "case-reprocess",
+      "trigger": "ontology-candidate",
+      "document_ids": [],
+      "changed_versions": {
+        "ontology_version": "proposed:attachment-target-priority",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "prompt_version": "legal-ontology-extraction@v0"
+      },
+      "required_evidence": [
+        "regression_run_id",
+        "fixture_set_id",
+        "approval_evidence_ref"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "status": "planned",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier"
+    },
+    {
+      "reprocess_plan_id": "reprocess:e39ac7851dfa8989c6ec",
+      "queue_id": "case-reprocess",
+      "trigger": "ontology-candidate",
+      "document_ids": [],
+      "changed_versions": {
+        "ontology_version": "proposed:legal-rule-source",
+        "extractor_version": "trustgraph_legal.governance@0.1.0",
+        "prompt_version": "legal-ontology-extraction@v0"
+      },
+      "required_evidence": [
+        "regression_run_id",
+        "fixture_set_id",
+        "approval_evidence_ref"
+      ],
+      "source_refs": [
+        "docs/product/debt-collection-ontology/domain-contract.md"
+      ],
+      "status": "planned",
+      "reason": "domain_contract_type_not_production_supported_in_v0_classifier"
+    }
+  ],
+  "promotion_results": [
+    {
+      "status": "rejected",
+      "candidate_id": "candidate:7748829a710ee1ea542b",
+      "reason": "missing_required_approval_metadata",
+      "missing_fields": [
+        "approved_by",
+        "approved_at",
+        "approval_evidence_ref",
+        "regression_run_id",
+        "fixture_set_id",
+        "changed_versions",
+        "regression_result",
+        "unresolved_risk_summary"
+      ],
+      "production_ontology_hash": "sha256:db47fb579df24645616d1bd97004f427b068b222a9e0c2dfc676f7522ff28e52",
+      "production_ontology_modified": false
+    }
+  ]
+}

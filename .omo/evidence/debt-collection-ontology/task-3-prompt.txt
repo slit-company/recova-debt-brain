@@ -1,0 +1,34 @@
+Task 3 - ontology extraction prompt semantics for legal IDs
+
+Integrated commits:
+- b7b75409 Merge branch 'team/debt-collection-ontology-todo-3-20260630/A'
+- 5cda329c fix(ontology): make extraction IDs source-safe
+
+Changed files:
+- ontology-prompt.md
+- tests/unit/test_extract/test_ontology/test_legal_prompt_semantics.py
+
+Implementation summary:
+- Replaced the contradictory generic food/triple-array canonical example with simplified JSONL legal examples.
+- Prompt examples now use exact configured IDs such as case-packet, legal-document, source-span, has-document, has-source-span, and source-ref.
+- Labels/comments are explicitly comprehension aids only and must not become output identifiers unless they are exact configured IDs.
+- Legal extraction now requires document_id, chunk_id, and source_refs in the prompt contract.
+- Added focused tests for rendered prompt semantics, simplified parser plus TripleConverter conversion, and rejection of unconfigured legal values.
+
+Worker verification:
+- New legal prompt semantics test: 3 passed.
+- Focused ontology slice: 56 passed.
+- PII scan over existing prompt/test paths: no findings.
+- git diff --check, git diff --cached --check, git diff --check HEAD~1 HEAD: passed.
+- A worktree clean after commit; main checkout had only .omo before integration.
+
+Leader verification after integration on master:
+- env PYTHONPATH=.omo/teams/debt-collection-ontology-todo-3-20260630/tmp/A-todo3-src .omo/teams/debt-collection-ontology-todo-3-20260630/tmp/A-todo3-venv/bin/python -m pytest tests/unit/test_extract/test_ontology/test_legal_prompt_semantics.py tests/unit/test_extract/test_ontology/test_prompt_and_extraction.py tests/unit/test_extract/test_ontology/test_extract_with_simplified_format.py tests/unit/test_extract/test_ontology/test_triple_converter_validation.py -q
+  Result: 56 passed.
+- rg -n "resident|주민등록번호|[0-9]{6}-[0-9]{7}" ontology-prompt.md tests/unit/test_extract/test_ontology || true
+  Result: no findings.
+- git diff --check HEAD~1 HEAD
+  Result: passed.
+
+Limit:
+- Source evidence is mandatory at prompt-contract level in this slice. The simplified parser/converter still ignores extra document_id, chunk_id, and source_refs fields, so persistence of those fields on emitted graph facts remains a later extraction/provenance task.

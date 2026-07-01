@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "teamId": "4de8f167-23d0-4ebf-88e4-71826941d556",
+  "teamName": "debt-collection-ontology",
+  "sessionName": "todo-7-8-20260630",
+  "sessionId": "debt-collection-ontology-todo-7-8-20260630",
+  "threadTitleConvention": "[debt-collection-ontology] <member name>",
+  "status": "archived",
+  "createdAt": "2026-06-30T08:38:03.719Z",
+  "updatedAt": "2026-06-30T09:05:25.778Z",
+  "archivedAt": "2026-06-30T09:05:16.519Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "debt-collection-ontology-todo-7-8-20260630"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "stopgate-engine",
+      "focus": "Todo 7 deterministic legal StopGate engine, curated rule sources, trustgraph_legal check CLI, and tests/unit/legal_ontology/test_stop_gates.py",
+      "lens": "area",
+      "deliverable": "Implement Todo 7 with versioned curated rules, deterministic 가능/불가능/보류 outputs, provenance validation, source refs, risk flags, and focused tests/evidence; commit only owned source/test/rule files.",
+      "threadId": "019f17ae-3155-70e2-bfd1-0c130e8960e1",
+      "threadTitle": "[debt-collection-ontology] stopgate-engine",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees/A",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees/A",
+        "branch": "team/debt-collection-ontology-todo-7-8-20260630/A"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "B",
+      "name": "ontology-governance",
+      "focus": "Todo 8 ontology candidate, review queue, promotion, reprocessing workflow, and tests/unit/legal_ontology/test_ontology_governance.py",
+      "lens": "area",
+      "deliverable": "Implement Todo 8 with candidate/review/reprocess workflow, no auto-promotion, approval metadata enforcement, production ontology safety, focused tests/evidence; commit only owned source/test/config files.",
+      "threadId": "019f17ae-4007-7eb0-944e-f2ef29752577",
+      "threadTitle": "[debt-collection-ontology] ontology-governance",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees/B",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees/B",
+        "branch": "team/debt-collection-ontology-todo-7-8-20260630/B"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "C",
+      "name": "contracts-review",
+      "focus": "Todo 7/8 acceptance, cross-contract risk, PII/provenance/rule-source/governance boundary review",
+      "lens": "perspective",
+      "deliverable": "Read-only review artifact in .omo/teams/debt-collection-ontology-todo-7-8-20260630/artifacts/C-contracts-review.md covering StopGate and governance acceptance risks, label/schema contracts, and post-implementation checks.",
+      "threadId": "019f17ae-4cea-7030-b27f-a47c80a97bc5",
+      "threadTitle": "[debt-collection-ontology] contracts-review",
+      "cwd": null,
+      "worktree": {
+        "path": null,
+        "branch": "team/debt-collection-ontology-todo-7-8-20260630/C"
+      },
+      "status": "archived"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-06-30T08:38:03.719Z",
+      "event": "created",
+      "detail": "team debt-collection-ontology"
+    },
+    {
+      "ts": "2026-06-30T08:38:03.753Z",
+      "event": "add-member",
+      "detail": "member A (area): Todo 7 deterministic legal StopGate engine, curated rule sources, trustgraph_legal check CLI, and tests/unit/legal_ontology/test_stop_gates.py"
+    },
+    {
+      "ts": "2026-06-30T08:38:03.795Z",
+      "event": "add-member",
+      "detail": "member B (area): Todo 8 ontology candidate, review queue, promotion, reprocessing workflow, and tests/unit/legal_ontology/test_ontology_governance.py"
+    },
+    {
+      "ts": "2026-06-30T08:38:03.830Z",
+      "event": "add-member",
+      "detail": "member C (perspective): Todo 7/8 acceptance, cross-contract risk, PII/provenance/rule-source/governance boundary review"
+    },
+    {
+      "ts": "2026-06-30T08:38:04.401Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees/A (team/debt-collection-ontology-todo-7-8-20260630/A)"
+    },
+    {
+      "ts": "2026-06-30T08:38:05.007Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees/B (team/debt-collection-ontology-todo-7-8-20260630/B)"
+    },
+    {
+      "ts": "2026-06-30T08:38:05.580Z",
+      "event": "worktree-add",
+      "detail": "member C -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debt-collection-ontology-todo-7-8-20260630/worktrees/C (team/debt-collection-ontology-todo-7-8-20260630/C)"
+    },
+    {
+      "ts": "2026-06-30T08:40:19.628Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f17ae-3155-70e2-bfd1-0c130e8960e1"
+    },
+    {
+      "ts": "2026-06-30T08:40:19.678Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f17ae-4007-7eb0-944e-f2ef29752577"
+    },
+    {
+      "ts": "2026-06-30T08:40:19.722Z",
+      "event": "bind-thread",
+      "detail": "member C -> thread 019f17ae-4cea-7030-b27f-a47c80a97bc5"
+    },
+    {
+      "ts": "2026-06-30T09:05:16.521Z",
+      "event": "archive",
+      "detail": "Integrated Todo 7 StopGate and Todo 8 governance into master; reports and evidence retained in main .omo."
+    },
+    {
+      "ts": "2026-06-30T09:05:25.778Z",
+      "event": "worktree-remove",
+      "detail": "member C"
+    }
+  ]
+}

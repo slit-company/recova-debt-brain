@@ -1,0 +1,613 @@
+{
+  "schema_version": "trustgraph-legal-document-classifier/v1",
+  "summary": {
+    "records": 9,
+    "classified": 9,
+    "unknown_doc_type": 0
+  },
+  "records": [
+    {
+      "document_id": "legal-ocr-synth-attachment-collection-order-001",
+      "document_type": "attachment-collection-order",
+      "fixture_document_type": "attachment_collection_order",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "attachment_collection_order_marker",
+        "third_party_debtor_present",
+        "court_attachment_order_language",
+        "collection_authority_language",
+        "attachment_target_present"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "start": 71,
+          "end": 82,
+          "excerpt": "# Synthetic Fixture: Attachment and Collection Order\n\nDocument marker: 채권압류 및 추심명령 결정\nCourt: [COURT_REDACTED]\nCase number: 2024타채0001\nCreditor: [CREDITOR_ORG]\nDebtor: [DEBTOR_PERSON]\nThird-party debtor: [THIRD_PARTY_ORG]\nClaim amount: KRW 1,2",
+          "signal": "attachment_collection_order_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "start": 183,
+          "end": 201,
+          "excerpt": "ACTED]\nCase number: 2024타채0001\nCreditor: [CREDITOR_ORG]\nDebtor: [DEBTOR_PERSON]\nThird-party debtor: [THIRD_PARTY_ORG]\nClaim amount: KRW 1,250,000\nAttachment target: deposit claim held by [FINANCIAL_INSTITUTION]\n\nOrder summary:\n- The court orders attachment o",
+          "signal": "third_party_debtor_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "start": 332,
+          "end": 359,
+          "excerpt": "achment target: deposit claim held by [FINANCIAL_INSTITUTION]\n\nOrder summary:\n- The court orders attachment of the listed monetary claim.\n- The creditor may collect from the third-party debtor after service.\n- All personal identifiers, contact data, addresses, and ac",
+          "signal": "court_attachment_order_language"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "start": 405,
+          "end": 444,
+          "excerpt": "ary:\n- The court orders attachment of the listed monetary claim.\n- The creditor may collect from the third-party debtor after service.\n- All personal identifiers, contact data, addresses, and account values are redacted.",
+          "signal": "collection_authority_language"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/attachment_collection_order.md",
+          "start": 249,
+          "end": 266,
+          "excerpt": "EBTOR_PERSON]\nThird-party debtor: [THIRD_PARTY_ORG]\nClaim amount: KRW 1,250,000\nAttachment target: deposit claim held by [FINANCIAL_INSTITUTION]\n\nOrder summary:\n- The court orders attachment of the listed monetary claim.\n- The creditor may collect from the",
+          "signal": "attachment_target_present"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/attachment_collection_order.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-judgment-payment-order-001",
+      "document_type": "payment-order",
+      "fixture_document_type": "judgment_payment_order",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "judgment_payment_order_marker",
+        "delayed_damages_present",
+        "decision_summary_present",
+        "title_amount_language",
+        "appeal_status_language"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "start": 66,
+          "end": 78,
+          "excerpt": "# Synthetic Fixture: Judgment and Payment Order\n\nDocument marker: 지급명령 / 판결 정본\nCourt: [COURT_REDACTED]\nCase number: 2023차전0001\nClaimant: [CREDITOR_ORG]\nRespondent: [DEBTOR_PERSON]\nPrincipal: KRW 3,400,000\nDelayed damages: 12 percent per y",
+          "signal": "judgment_payment_order_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "start": 205,
+          "end": 220,
+          "excerpt": "1\nClaimant: [CREDITOR_ORG]\nRespondent: [DEBTOR_PERSON]\nPrincipal: KRW 3,400,000\nDelayed damages: 12 percent per year from [DATE_REDACTED]\n\nDecision summary:\n- The debtor must pay principal, accrued interest, and procedure costs.\n- Objection and appeal sta",
+          "signal": "delayed_damages_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "start": 264,
+          "end": 280,
+          "excerpt": "cipal: KRW 3,400,000\nDelayed damages: 12 percent per year from [DATE_REDACTED]\n\nDecision summary:\n- The debtor must pay principal, accrued interest, and procedure costs.\n- Objection and appeal status are represented separately in service/finality evidence.",
+          "signal": "decision_summary_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "start": 304,
+          "end": 331,
+          "excerpt": "percent per year from [DATE_REDACTED]\n\nDecision summary:\n- The debtor must pay principal, accrued interest, and procedure costs.\n- Objection and appeal status are represented separately in service/finality evidence.\n- Names are role placeholders and all sensitive va",
+          "signal": "title_amount_language"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/judgment_payment_order.md",
+          "start": 356,
+          "end": 383,
+          "excerpt": "mary:\n- The debtor must pay principal, accrued interest, and procedure costs.\n- Objection and appeal status are represented separately in service/finality evidence.\n- Names are role placeholders and all sensitive values are synthetic.",
+          "signal": "appeal_status_language"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/judgment_payment_order.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-service-finality-execution-001",
+      "document_type": "service-finality-proof",
+      "fixture_document_type": "service_finality_execution_clause",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "service_finality_execution_marker",
+        "service_result_present",
+        "finality_result_present",
+        "execution_clause_present",
+        "execution_authority_language"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "start": 79,
+          "end": 96,
+          "excerpt": "# Synthetic Fixture: Service, Finality, and Execution Clause\n\nDocument marker: 송달증명 / 확정증명 / 집행문\nCourt: [COURT_REDACTED]\nLinked title: 2023차전0001\nServed party: [DEBTOR_PERSON]\nService result: completed\nFinality result: finalized\nExecution clause: granted t",
+          "signal": "service_finality_execution_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "start": 176,
+          "end": 190,
+          "excerpt": "Court: [COURT_REDACTED]\nLinked title: 2023차전0001\nServed party: [DEBTOR_PERSON]\nService result: completed\nFinality result: finalized\nExecution clause: granted to [CREDITOR_ORG]\n\nEvidence summary:\n- Service, finality, and execution authority are separate",
+          "signal": "service_result_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "start": 202,
+          "end": 217,
+          "excerpt": "inked title: 2023차전0001\nServed party: [DEBTOR_PERSON]\nService result: completed\nFinality result: finalized\nExecution clause: granted to [CREDITOR_ORG]\n\nEvidence summary:\n- Service, finality, and execution authority are separate facts.\n- The case graph mus",
+          "signal": "finality_result_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "start": 44,
+          "end": 60,
+          "excerpt": "# Synthetic Fixture: Service, Finality, and Execution Clause\n\nDocument marker: 송달증명 / 확정증명 / 집행문\nCourt: [COURT_REDACTED]\nLinked title: 2023차전0001\nServed party: [DEBTOR_PERSON]\nService result: completed\nFinality result: f",
+          "signal": "execution_clause_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md",
+          "start": 317,
+          "end": 336,
+          "excerpt": "n clause: granted to [CREDITOR_ORG]\n\nEvidence summary:\n- Service, finality, and execution authority are separate facts.\n- The case graph must block enforcement if any proof is missing or low-confidence.\n- Original names, locations, and delivery details are no",
+          "signal": "execution_authority_language"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/service_finality_execution_clause.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-identity-evidence-001",
+      "document_type": "identity-evidence",
+      "fixture_document_type": "identity_evidence",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "identity_evidence_marker",
+        "identity_key_evidence_present",
+        "name_token_present",
+        "registry_status_present",
+        "representative_role_present"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "start": 57,
+          "end": 75,
+          "excerpt": "# Synthetic Fixture: Identity Evidence\n\nDocument marker: 신원 확인 자료 / 법인등기 요약\nSubject: [DEBTOR_PERSON]\nOrganization: [DEBTOR_ORG]\nIdentity key evidence:\n- normalized name token: [NAME_TOKEN]\n- birth date token: [DATE_TOKEN]\n- registratio",
+          "signal": "identity_evidence_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "start": 128,
+          "end": 149,
+          "excerpt": "marker: 신원 확인 자료 / 법인등기 요약\nSubject: [DEBTOR_PERSON]\nOrganization: [DEBTOR_ORG]\nIdentity key evidence:\n- normalized name token: [NAME_TOKEN]\n- birth date token: [DATE_TOKEN]\n- registration status: active organization\n- representative role: [ROLE_REDACTED]\n\nEvid",
+          "signal": "identity_key_evidence_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "start": 153,
+          "end": 174,
+          "excerpt": "요약\nSubject: [DEBTOR_PERSON]\nOrganization: [DEBTOR_ORG]\nIdentity key evidence:\n- normalized name token: [NAME_TOKEN]\n- birth date token: [DATE_TOKEN]\n- registration status: active organization\n- representative role: [ROLE_REDACTED]\n\nEvidence summary:\n- Identity",
+          "signal": "name_token_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "start": 224,
+          "end": 243,
+          "excerpt": "dence:\n- normalized name token: [NAME_TOKEN]\n- birth date token: [DATE_TOKEN]\n- registration status: active organization\n- representative role: [ROLE_REDACTED]\n\nEvidence summary:\n- Identity facts support party resolution but are not enough for case merge alon",
+          "signal": "registry_status_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/identity_evidence.md",
+          "start": 267,
+          "end": 286,
+          "excerpt": "]\n- birth date token: [DATE_TOKEN]\n- registration status: active organization\n- representative role: [ROLE_REDACTED]\n\nEvidence summary:\n- Identity facts support party resolution but are not enough for case merge alone.\n- Raw identity numbers, addresses, phone",
+          "signal": "representative_role_present"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/identity_evidence.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-insolvency-credit-recovery-001",
+      "document_type": "insolvency-credit-recovery",
+      "fixture_document_type": "insolvency_credit_recovery",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "insolvency_credit_recovery_marker",
+        "rehabilitation_present",
+        "procedure_state_present",
+        "discharge_rehabilitation_language",
+        "collection_pause_language"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "start": 70,
+          "end": 84,
+          "excerpt": "# Synthetic Fixture: Insolvency and Credit Recovery\n\nDocument marker: 파산 / 면책 / 신용회복 절차 통지\nSubject: [DEBTOR_PERSON]\nProcedure type: personal rehabilitation review\nProcedure state: pending confirmation\nCourt or agency: [AUTHORITY_REDACTED]\nLinke",
+          "signal": "insolvency_credit_recovery_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "start": 132,
+          "end": 155,
+          "excerpt": "Document marker: 파산 / 면책 / 신용회복 절차 통지\nSubject: [DEBTOR_PERSON]\nProcedure type: personal rehabilitation review\nProcedure state: pending confirmation\nCourt or agency: [AUTHORITY_REDACTED]\nLinked claim: [CLAIM_TOKEN]\n\nRisk summary:\n- Debt collection action must pau",
+          "signal": "rehabilitation_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "start": 163,
+          "end": 178,
+          "excerpt": "복 절차 통지\nSubject: [DEBTOR_PERSON]\nProcedure type: personal rehabilitation review\nProcedure state: pending confirmation\nCourt or agency: [AUTHORITY_REDACTED]\nLinked claim: [CLAIM_TOKEN]\n\nRisk summary:\n- Debt collection action must pause until procedure stat",
+          "signal": "procedure_state_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "start": 355,
+          "end": 380,
+          "excerpt": "mmary:\n- Debt collection action must pause until procedure status is checked.\n- Discharge, rehabilitation, and repayment-plan terms are StopGate facts.\n- Personal details and original notification body are not included.",
+          "signal": "discharge_rehabilitation_language"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md",
+          "start": 284,
+          "end": 317,
+          "excerpt": "rt or agency: [AUTHORITY_REDACTED]\nLinked claim: [CLAIM_TOKEN]\n\nRisk summary:\n- Debt collection action must pause until procedure status is checked.\n- Discharge, rehabilitation, and repayment-plan terms are StopGate facts.\n- Personal details and original notification body",
+          "signal": "collection_pause_language"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/insolvency_credit_recovery.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-assignment-succession-001",
+      "document_type": "assignment-succession",
+      "fixture_document_type": "assignment_succession",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "assignment_succession_marker",
+        "assignor_present",
+        "assignee_present",
+        "notice_status_present",
+        "succession_authority_present"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "start": 65,
+          "end": 80,
+          "excerpt": "# Synthetic Fixture: Assignment and Succession\n\nDocument marker: 채권양도 통지 / 승계집행문\nAssignor: [ASSIGNOR_ORG]\nAssignee: [ASSIGNEE_ORG]\nDebtor: [DEBTOR_PERSON]\nAssigned claim: [CLAIM_TOKEN]\nNotice status: delivered\nSuccession authority: executio",
+          "signal": "assignment_succession_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "start": 81,
+          "end": 89,
+          "excerpt": "Synthetic Fixture: Assignment and Succession\n\nDocument marker: 채권양도 통지 / 승계집행문\nAssignor: [ASSIGNOR_ORG]\nAssignee: [ASSIGNEE_ORG]\nDebtor: [DEBTOR_PERSON]\nAssigned claim: [CLAIM_TOKEN]\nNotice status: delivered\nSuccession authority: execution clause",
+          "signal": "assignor_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "start": 106,
+          "end": 114,
+          "excerpt": "nment and Succession\n\nDocument marker: 채권양도 통지 / 승계집행문\nAssignor: [ASSIGNOR_ORG]\nAssignee: [ASSIGNEE_ORG]\nDebtor: [DEBTOR_PERSON]\nAssigned claim: [CLAIM_TOKEN]\nNotice status: delivered\nSuccession authority: execution clause requested\n\nEvidence summa",
+          "signal": "assignee_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "start": 185,
+          "end": 198,
+          "excerpt": "Assignee: [ASSIGNEE_ORG]\nDebtor: [DEBTOR_PERSON]\nAssigned claim: [CLAIM_TOKEN]\nNotice status: delivered\nSuccession authority: execution clause requested\n\nEvidence summary:\n- Assignment chain, notice, and succession authority must be modeled separately.",
+          "signal": "notice_status_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/assignment_succession.md",
+          "start": 210,
+          "end": 230,
+          "excerpt": "Debtor: [DEBTOR_PERSON]\nAssigned claim: [CLAIM_TOKEN]\nNotice status: delivered\nSuccession authority: execution clause requested\n\nEvidence summary:\n- Assignment chain, notice, and succession authority must be modeled separately.\n- Broken chain or missing notic",
+          "signal": "succession_authority_present"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/assignment_succession.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-operational-ledger-001",
+      "document_type": "ledger-recovery",
+      "fixture_document_type": "operational_ledger",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "operational_ledger_marker",
+        "ledger_rows_present",
+        "partial_recovery_present",
+        "filing_cost_present",
+        "operational_fact_language"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "start": 58,
+          "end": 69,
+          "excerpt": "# Synthetic Fixture: Operational Ledger\n\nDocument marker: 채권보전 및 회수현황\nCase packet: [CASE_PACKET_TOKEN]\nLedger rows:\n- event: demand letter prepared; amount: KRW 0; status: completed\n- event: partial recovery; amount: KRW 250,000;",
+          "signal": "operational_ledger_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "start": 103,
+          "end": 114,
+          "excerpt": "erational Ledger\n\nDocument marker: 채권보전 및 회수현황\nCase packet: [CASE_PACKET_TOKEN]\nLedger rows:\n- event: demand letter prepared; amount: KRW 0; status: completed\n- event: partial recovery; amount: KRW 250,000; status: posted\n- event: filing cost; amount:",
+          "signal": "ledger_rows_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "start": 191,
+          "end": 207,
+          "excerpt": "ows:\n- event: demand letter prepared; amount: KRW 0; status: completed\n- event: partial recovery; amount: KRW 250,000; status: posted\n- event: filing cost; amount: KRW 32,000; status: reimbursable review\n\nEvidence summary:\n- Ledger events are operational f",
+          "signal": "partial_recovery_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "start": 254,
+          "end": 265,
+          "excerpt": "mpleted\n- event: partial recovery; amount: KRW 250,000; status: posted\n- event: filing cost; amount: KRW 32,000; status: reimbursable review\n\nEvidence summary:\n- Ledger events are operational facts, not court orders.\n- Recovery, costs, and next-action",
+          "signal": "filing_cost_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/operational_ledger.md",
+          "start": 354,
+          "end": 371,
+          "excerpt": "KRW 32,000; status: reimbursable review\n\nEvidence summary:\n- Ledger events are operational facts, not court orders.\n- Recovery, costs, and next-action recommendations must cite source rows.\n- Payment channels and account fields are intentionally omitted.",
+          "signal": "operational_fact_language"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/operational_ledger.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-asset-evidence-001",
+      "document_type": "asset-evidence",
+      "fixture_document_type": "asset_evidence",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "asset_evidence_marker",
+        "asset_type_present",
+        "priority_note_present",
+        "attachment_suitability_present",
+        "asset_evidence_language"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "start": 54,
+          "end": 69,
+          "excerpt": "# Synthetic Fixture: Asset Evidence\n\nDocument marker: 자산 증빙 / 압류대상 후보\nSubject: [DEBTOR_PERSON]\nAsset type: insurance claim and real-property lead\nEvidence source: [PUBLIC_RECORD_SUMMARY]\nPriority note: competing secured party may",
+          "signal": "asset_evidence_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "start": 95,
+          "end": 105,
+          "excerpt": "ture: Asset Evidence\n\nDocument marker: 자산 증빙 / 압류대상 후보\nSubject: [DEBTOR_PERSON]\nAsset type: insurance claim and real-property lead\nEvidence source: [PUBLIC_RECORD_SUMMARY]\nPriority note: competing secured party may exist\nAttachment suitability: needs",
+          "signal": "asset_type_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "start": 187,
+          "end": 200,
+          "excerpt": "insurance claim and real-property lead\nEvidence source: [PUBLIC_RECORD_SUMMARY]\nPriority note: competing secured party may exist\nAttachment suitability: needs rule review\n\nEvidence summary:\n- Asset evidence suggests a target but does not authorize execu",
+          "signal": "priority_note_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "start": 236,
+          "end": 258,
+          "excerpt": "ource: [PUBLIC_RECORD_SUMMARY]\nPriority note: competing secured party may exist\nAttachment suitability: needs rule review\n\nEvidence summary:\n- Asset evidence suggests a target but does not authorize execution.\n- Exemption, priority, and ownership uncertainty mus",
+          "signal": "attachment_suitability_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/asset_evidence.md",
+          "start": 299,
+          "end": 322,
+          "excerpt": "party may exist\nAttachment suitability: needs rule review\n\nEvidence summary:\n- Asset evidence suggests a target but does not authorize execution.\n- Exemption, priority, and ownership uncertainty must remain explicit.\n- Full registry pages, addresses, and policy",
+          "signal": "asset_evidence_language"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/asset_evidence.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    },
+    {
+      "document_id": "legal-ocr-synth-amount-interest-001",
+      "document_type": "amount-interest-calculation",
+      "fixture_document_type": "amount_interest",
+      "confidence": 0.97,
+      "review_status": "classified",
+      "reason_signals": [
+        "amount_interest_marker",
+        "interest_basis_present",
+        "calculation_period_present",
+        "claimed_total_present",
+        "amount_interest_language"
+      ],
+      "evidence_spans": [
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "start": 71,
+          "end": 89,
+          "excerpt": "# Synthetic Fixture: Amount and Interest Calculation\n\nDocument marker: 원리금 계산서 / 지연손해금 산정\nPrincipal: KRW 3,400,000\nInterest basis: 12 percent per year\nCalculation start: [DATE_REDACTED]\nCalculation end: [DATE_REDACTED]\nClaimed total: KRW 3,876,000",
+          "signal": "amount_interest_marker"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "start": 115,
+          "end": 129,
+          "excerpt": "erest Calculation\n\nDocument marker: 원리금 계산서 / 지연손해금 산정\nPrincipal: KRW 3,400,000\nInterest basis: 12 percent per year\nCalculation start: [DATE_REDACTED]\nCalculation end: [DATE_REDACTED]\nClaimed total: KRW 3,876,000\n\nEvidence summary:\n- Amount facts include",
+          "signal": "interest_basis_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "start": 151,
+          "end": 168,
+          "excerpt": "원리금 계산서 / 지연손해금 산정\nPrincipal: KRW 3,400,000\nInterest basis: 12 percent per year\nCalculation start: [DATE_REDACTED]\nCalculation end: [DATE_REDACTED]\nClaimed total: KRW 3,876,000\n\nEvidence summary:\n- Amount facts include principal, interest basis, period, tot",
+          "signal": "calculation_period_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "start": 219,
+          "end": 232,
+          "excerpt": "nt per year\nCalculation start: [DATE_REDACTED]\nCalculation end: [DATE_REDACTED]\nClaimed total: KRW 3,876,000\n\nEvidence summary:\n- Amount facts include principal, interest basis, period, total, and source row.\n- Mismatch between title amount and ledger a",
+          "signal": "claimed_total_present"
+        },
+        {
+          "source_ref": "tests/fixtures/legal-ocr/snippets/amount_interest.md",
+          "start": 290,
+          "end": 315,
+          "excerpt": "EDACTED]\nClaimed total: KRW 3,876,000\n\nEvidence summary:\n- Amount facts include principal, interest basis, period, total, and source row.\n- Mismatch between title amount and ledger amount becomes a StopGate risk.\n- Original account or remittance fields are excluded",
+          "signal": "amount_interest_language"
+        }
+      ],
+      "source_refs": [
+        "tests/fixtures/legal-ocr/snippets/amount_interest.md"
+      ],
+      "ocr_version": "MinerU@legal_ocr_20260630",
+      "extractor_version": "trustgraph_legal.classifier@0.1.0",
+      "ontology_version": "recova-debt-collection@v0",
+      "prompt_version": "legal-ontology-extraction@v0",
+      "pii_profile": {
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        },
+        "raw_text_included": false
+      }
+    }
+  ]
+}

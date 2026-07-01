@@ -1,0 +1,44 @@
+Task 6 hybrid case graph resolver evidence
+Date: 2026-06-30
+
+Integrated commits:
+- Member A implementation: 48fc3e9a feat(legal-graph): resolve extracted facts into case graphs
+- Master merge: ffd6dc5e Merge branch 'team/debt-collection-ontology-todo-6-20260630/A'
+
+Changed production/test files:
+- trustgraph_legal/case_graph.py
+- tests/unit/legal_ontology/test_case_graph_builder.py
+
+Root verification after master integration:
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_case_graph_builder.py -q
+  Result: 4 passed.
+- /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology -q
+  Result: 18 passed.
+- /usr/bin/python3 -m py_compile trustgraph_legal/case_graph.py tests/unit/legal_ontology/test_case_graph_builder.py
+  Result: passed.
+- python3 -m trustgraph_legal.case_graph --fixtures tests/fixtures/legal-ocr/manifest.json --out .omo/evidence/debt-collection-ontology/task-6-case-graph.json
+  Result: wrote task-6-case-graph.json.
+- python3 -m json.tool .omo/evidence/debt-collection-ontology/task-6-case-graph.json
+  Result: valid JSON.
+- JSON contract check:
+  Result: PASS task-6 case graph contract {'case_packets': 1, 'documents': 9, 'entities': 116, 'edges': 117, 'unresolved_identities': 0, 'review_items': 2}
+- Sensitive-pattern scan over case_graph.py, test_case_graph_builder.py, and task-6-case-graph.json:
+  Result: no findings.
+- git diff --check HEAD~1 HEAD
+  Result: passed.
+
+Contract checks covered:
+- Primary ontology anchor is CasePacket mapped to case-packet; Case is only a derived projection.
+- Required evidence keys are present: case_packet_id, court_case_number, claim_id, enforcement_title_id, party_identity_key, document_hash.
+- Every non-derived entity and edge has provenance.
+- pii_profile.raw_text_included is false and source_text_included is false.
+- Identity uncertainty behavior is covered by focused negative test test_similar_debtors_without_identity_evidence_remain_unresolved.
+
+Artifacts:
+- .omo/evidence/debt-collection-ontology/task-6-case-graph.json
+- .omo/teams/debt-collection-ontology-todo-6-20260630/artifacts/A-case-graph-builder-report.md
+- .omo/teams/debt-collection-ontology-todo-6-20260630/artifacts/B-case-graph-contract-review.md
+
+Cleanup:
+- No servers, ports, tmux sessions, browsers, or containers were started.
+- Todo 6 team worktrees were left for archive cleanup after evidence recording.

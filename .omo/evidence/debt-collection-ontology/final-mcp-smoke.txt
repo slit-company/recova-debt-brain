@@ -1,0 +1,64 @@
+gateway: /tmp/final-review-task10-mcp-venv/bin/python /tmp/final-review-task10-gateway.py 18765 /tmp/final-review-task10-gateway.log
+server: PYTHONPATH=trustgraph-mcp:trustgraph-base:. /tmp/final-review-task10-mcp-venv/bin/python -m trustgraph.mcp_server.mcp --host 127.0.0.1 --port 18766 --websocket-url ws://127.0.0.1:18765/api/v1/socket --auth-issuer http://127.0.0.1:18766 --auth-resource-url http://127.0.0.1:18766
+client: /tmp/final-review-task10-mcp-venv/bin/python /tmp/final-review-task10-client.py http://127.0.0.1:18766/mcp /tmp/final-review-task10-smoke.json
+client_exit_code=0
+{
+  "bad_token_error": "unhandled errors in a TaskGroup (1 sub-exception)",
+  "bad_token_error_class": "ExceptionGroup",
+  "bad_token_rejected": true,
+  "call_tool_preview": "{\"content\": [{\"annotations\": null, \"meta\": null, \"text\": \"{\\n  \\\"schema_version\\\": \\\"trustgraph-legal-mcp-tool-response/v1\\\",\\n  \\\"tool_name\\\": \\\"list_debt_collection_tools\\\",\\n  \\\"group\\\": \\\"read\\\",\\n  \\\"scope\\\": \\\"read:tools\\\",\\n  \\\"pii_profile\\\": {\\n    \\\"raw_text_included\\\": false,\\n    \\\"source_text_included\\\": false,\\n    \\\"redacted\\\": {\\n      \\\"national_id\\\": 0,\\n      \\\"phone\\\": 0,\\n      \\\"account\\\": 0,\\n      \\\"address\\\": 0\\n    }\\n  },\\n  \\\"redaction\\\": {\\n    \\\"status\\\": \\\"redacted\\\",\\n    \\\"default\\\": \\\"redacted\\\",\\n    \\\"raw_text_included\\\": false,\\n    \\\"source_text_included\\\": false,\\n    \\\"counts\\\": {\\n      \\\"national_id\\\": 0,\\n      \\\"phone\\\": 0,\\n      \\\"account\\\": 0,\\n      \\\"address\\\": 0\\n    }\\n  },\\n  \\\"source_refs\\\": [],\\n  \\\"warnings\\\": [],\\n  \\\"result\\\": {\\n    \\\"tools\\\": [\\n      {\\n        \\\"schema_version\\\": \\\"trustgraph-legal-mcp-tool-contract/v1\\\",\\n        \\\"tool_name\\\": \\\"list_debt_collection_tools\\\",\\n        \\\"name\\\": \\\"list_debt_collection_tools\\\",\\n        \\\"group\\\": \\\"read\\\",\\n        \\\"scope\\\": \\\"read:tools\\\",\\n        \\\"description\\\": \\\"List debt-collection domain tool contracts.\\\",\\n        \\\"parameters\\\": [],\\n        \\\"input_schema\\\": {\\n          \\\"type\\\": \\\"object\\\",\\n          \\\"properties\\\": {},\\n          \\\"additionalProperties\\\": true\\n        },\\n        \\\"output_schema\\\": {\\n          \\\"type\\\": \\\"object\\\",\\n          \\\"required\\\": [\\n            \\\"schema_version\\\",\\n            \\\"tool_name\\\",\\n            \\\"group\\\",\\n            \\\"scope\\\",\\n            \\\"pii_profile\\\",\\n            \\\"redaction\\\",\\n            \\\"source_refs\\\",\\n            \\\"warnings\\\",\\n            \\\"result\\\"\\n          ]\\n        },\\n        \\\"redaction\\\": {\\n          \\\"default\\\": \\\"redacted\\\",\\n          \\\"raw_text_included\\\": false,\\n          \\\"source_text_included\\\": false\\n        }\\n      },\\n      {\\n        \\\"schema_version\\\": \\\"trustgraph-legal-mcp-tool-contract/v1\\\",\\n        \\\"tool_name\\\": \\\"ingest_legal_document\\\",\\n        \\\"name\\\":",
+  "call_tool_returned": true,
+  "debt_tool_listed": true,
+  "debt_tools_sample": [
+    "list_debt_collection_tools",
+    "get_case_graph",
+    "recommend_next_action"
+  ],
+  "good_token_accepted": true,
+  "good_tool_count": 47,
+  "status": "passed",
+  "surface": "MCP streamable HTTP",
+  "token_not_echoed": true,
+  "url": "http://127.0.0.1:18766/mcp"
+}
+
+--- gateway log ---
+{"event": "auth_failed"}
+{"event": "auth_ok"}
+{"event": "auth_ok"}
+{"event": "auth_ok"}
+{"event": "auth_ok"}
+{"event": "auth_ok"}
+{"event": "auth_ok"}
+
+--- server log tail ---
+2026-06-30 20:34:55,141 - unknown - INFO - Logging configured with level: INFO
+2026-06-30 20:34:55,141 - unknown - WARNING - Loki logging requested but not available
+INFO:     Started server process [26544]
+INFO:     Waiting for application startup.
+2026-06-30 20:34:55,529 - unknown - INFO - StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18766 (Press CTRL+C to quit)
+WARNING: python-logging-loki not installed, Loki logging disabled
+Install with: pip install python-logging-loki
+INFO:     127.0.0.1:56455 - "GET /mcp HTTP/1.1" 401 Unauthorized
+2026-06-30 20:34:57,619 - unknown - WARNING - MCP Bearer token rejected by gateway: RuntimeError
+INFO:     127.0.0.1:56456 - "POST /mcp HTTP/1.1" 401 Unauthorized
+2026-06-30 20:34:57,655 - unknown - INFO - WebSocket authenticated, default workspace: qa
+2026-06-30 20:34:58,171 - unknown - INFO - Created new transport with session ID: 28e5f1dead94477ebcbb22ee3a6f3db6
+INFO:     127.0.0.1:56458 - "POST /mcp HTTP/1.1" 200 OK
+2026-06-30 20:34:58,225 - unknown - INFO - WebSocket authenticated, default workspace: qa
+2026-06-30 20:34:58,230 - unknown - INFO - WebSocket authenticated, default workspace: qa
+INFO:     127.0.0.1:56461 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:56462 - "GET /mcp HTTP/1.1" 200 OK
+2026-06-30 20:34:58,755 - unknown - INFO - WebSocket authenticated, default workspace: qa
+INFO:     127.0.0.1:56469 - "POST /mcp HTTP/1.1" 200 OK
+2026-06-30 20:34:59,271 - unknown - INFO - Processing request of type ListToolsRequest
+2026-06-30 20:34:59,292 - unknown - INFO - WebSocket authenticated, default workspace: qa
+INFO:     127.0.0.1:56472 - "POST /mcp HTTP/1.1" 200 OK
+2026-06-30 20:34:59,804 - unknown - INFO - Processing request of type CallToolRequest
+2026-06-30 20:34:59,875 - unknown - INFO - WebSocket authenticated, default workspace: qa
+2026-06-30 20:35:00,379 - unknown - INFO - Terminating session: 28e5f1dead94477ebcbb22ee3a6f3db6
+INFO:     127.0.0.1:56474 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-06-30 20:35:00,384 - unknown - INFO - Shutting down — closing 0 WebSocket(s)
+2026-06-30 20:35:00,384 - unknown - INFO - Shutdown complete
