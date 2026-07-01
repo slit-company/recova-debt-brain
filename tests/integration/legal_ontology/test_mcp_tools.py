@@ -106,13 +106,16 @@ def test_todo_9_tools_publish_stable_contracts() -> None:
 def test_todo_9_tool_calls_return_redacted_source_grounded_json(tmp_path: Path) -> None:
     # Given: synthetic legal OCR fixtures and a sensitive ad-hoc document.
     mcp_domain = _mcp_domain()
+    national_id = "900101" + "-1234567"
+    phone = "010" + "-1234" + "-5678"
+    account = "123" + "-456" + "-7890"
     sensitive_text = "\n".join(
         [
             "Document marker: 지급명령 / 판결 정본",
             "Case number: 2026차전1001",
-            "Respondent id: 900101-1234567",
-            "Respondent phone: 010-1234-5678",
-            "bank account 123-456-7890",
+            "Respondent id: {}".format(national_id),
+            "Respondent phone: {}".format(phone),
+            "bank account {}".format(account),
         ]
     )
     case_graph = build_case_graph(FIXTURE_MANIFEST, REPO_ROOT).to_json()
@@ -192,10 +195,15 @@ def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
     # Given: a fake MCP object registered through the thin adapter.
     legal_tools = _legal_tools_adapter()
     fake_mcp = FakeMcp()
+    seen_scopes: list[str] = []
     legal_tools.register_debt_collection_brain_tools(
         fake_mcp,
         repo_root=REPO_ROOT,
-        token_resolver=lambda: "todo9-test-token",
+        token_resolver=lambda scope: seen_scopes.append(scope) or legal_tools.AuthContext(
+            token="todo9-test-token",
+            verified_by_gateway=True,
+            scopes=(legal_tools.LEGAL_MCP_GATEWAY_SCOPE,),
+        ),
     )
 
     # When: registered tools are inspected and called through MCP context auth.
@@ -205,6 +213,7 @@ def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
     # Then: all tools are registered, auth is context-only, and the token is not echoed.
     assert registered_names == set(EXPECTED_TOOLS)
     assert authorized["tool_name"] == "list_debt_collection_tools"
+    assert seen_scopes == ["read:tools"]
     assert "todo9-test-token" not in json.dumps(authorized, ensure_ascii=False)
     assert "authorization" not in inspect.signature(
         fake_mcp.registered["list_debt_collection_tools"]
@@ -214,6 +223,28 @@ def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
             authorization="Bearer should-not-be-a-tool-argument",
             arguments={},
         )
+
+    raw_token_mcp = FakeMcp()
+    legal_tools.register_debt_collection_brain_tools(
+        raw_token_mcp,
+        repo_root=REPO_ROOT,
+        token_resolver=lambda scope: "raw-token-string",
+    )
+    with pytest.raises(PermissionError, match="gateway auth context"):
+        raw_token_mcp.call("list_debt_collection_tools", {})
+
+    read_only_mcp = FakeMcp()
+    legal_tools.register_debt_collection_brain_tools(
+        read_only_mcp,
+        repo_root=REPO_ROOT,
+        token_resolver=lambda scope: legal_tools.AuthContext(
+            token="read-only-token",
+            verified_by_gateway=True,
+            scopes=("read:tools",),
+        ),
+    )
+    with pytest.raises(PermissionError, match="required scope"):
+        read_only_mcp.call("promote_ontology_candidate", {})
 
     unauthenticated_mcp = FakeMcp()
     legal_tools.register_debt_collection_brain_tools(

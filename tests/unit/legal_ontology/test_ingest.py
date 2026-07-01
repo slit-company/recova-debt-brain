@@ -4,7 +4,7 @@ import json
 import zipfile
 from pathlib import Path
 
-from trustgraph_legal.ingest import main
+from trustgraph_legal.ingest import load_registry_records_to_trustgraph, main
 from trustgraph_legal.registry import RegistryOptions, collect_registry_payload
 
 
@@ -70,3 +70,68 @@ def test_cli_writes_redacted_evidence_when_sensitive_shapes_exist(
     assert sensitive_number not in evidence
     assert sensitive_phone not in evidence
     assert payload["records"][0]["pii_profile"]["raw_text_included"] is False
+
+
+def test_trustgraph_text_load_lane_calls_flow_without_logging_raw_text(
+    tmp_path: Path,
+) -> None:
+    zip_path = tmp_path / "load.zip"
+    content = "문서 표식: 지급명령\n사건: 2024차전1010\n청구: [CLAIM_TOKEN]\n"
+    _write_zip(
+        zip_path,
+        {
+            "markdown_flat/a.md": content,
+            "markdown_flat/b.md": content,
+        },
+    )
+    flow = FakeFlow()
+
+    summary = load_registry_records_to_trustgraph(
+        zip_path,
+        RegistryOptions(limit=10, workspace="legal", collection="recova-debt-collection"),
+        flow,
+    )
+    encoded = json.dumps(summary, ensure_ascii=False, sort_keys=True)
+
+    assert summary["dry_run"] is False
+    assert summary["summary"] == {
+        "records": 2,
+        "load_text_calls": 1,
+        "duplicates_skipped": 1,
+    }
+    assert len(flow.calls) == 1
+    call = flow.calls[0]
+    assert call["id"] == summary["records"][0]["document_id"]
+    assert call["collection"] == "recova-debt-collection"
+    assert call["charset"] == "utf-8"
+    assert call["text"] == content.encode("utf-8")
+    assert call["metadata_triples"]
+    assert content not in encoded
+    assert summary["records"][0]["trustgraph_interface"] == "service/text-load"
+
+
+class FakeFlow:
+    def __init__(self) -> None:
+        self.calls: list[dict[str, object]] = []
+
+    def load_text(
+        self,
+        text: bytes,
+        id: str,
+        metadata: object = None,
+        charset: str = "utf-8",
+        collection: str | None = None,
+    ) -> dict[str, str]:
+        triples: list[object] = []
+        if metadata is not None:
+            metadata.emit(triples.append)
+        self.calls.append(
+            {
+                "text": text,
+                "id": id,
+                "metadata_triples": triples,
+                "charset": charset,
+                "collection": collection,
+            }
+        )
+        return {"status": "queued"}

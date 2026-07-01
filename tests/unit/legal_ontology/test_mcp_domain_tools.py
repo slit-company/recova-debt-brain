@@ -123,11 +123,7 @@ def test_write_like_tools_are_review_safe_and_non_executing() -> None:
 
 
 def test_register_debt_collection_brain_tools_is_fake_mcp_and_auth_safe() -> None:
-    sys.path.insert(0, str(TRUSTGRAPH_MCP_PATH))
-    try:
-        from trustgraph.mcp_server import legal_tools
-    finally:
-        sys.path.remove(str(TRUSTGRAPH_MCP_PATH))
+    legal_tools = _legal_tools_module()
     fake = FakeMcp()
 
     registered = legal_tools.register_debt_collection_brain_tools(fake, REPO_ROOT)
@@ -146,17 +142,32 @@ def test_register_debt_collection_brain_tools_is_fake_mcp_and_auth_safe() -> Non
         )
 
     context_fake = FakeMcp()
+    seen_scopes: List[str] = []
     legal_tools.register_debt_collection_brain_tools(
         context_fake,
         REPO_ROOT,
-        token_resolver=lambda: "context-token",
+        token_resolver=lambda scope: seen_scopes.append(scope) or legal_tools.AuthContext(
+            token="context-token",
+            verified_by_gateway=True,
+            scopes=(legal_tools.LEGAL_MCP_GATEWAY_SCOPE,),
+        ),
     )
     context_envelope = context_fake.registered["list_debt_collection_tools"](
         arguments={},
     )
     context_encoded = json.dumps(context_envelope, sort_keys=True)
     assert context_envelope["tool_name"] == "list_debt_collection_tools"
+    assert seen_scopes == ["read:tools"]
     assert "context-token" not in context_encoded
+
+    raw_token_fake = FakeMcp()
+    legal_tools.register_debt_collection_brain_tools(
+        raw_token_fake,
+        REPO_ROOT,
+        token_resolver=lambda scope: "raw-token-string",
+    )
+    with pytest.raises(PermissionError, match="gateway auth context"):
+        raw_token_fake.registered["list_debt_collection_tools"](arguments={})
 
 
 def test_path_arguments_cannot_read_outside_repo_root(tmp_path: Path) -> None:
@@ -178,3 +189,45 @@ def test_path_arguments_cannot_read_outside_repo_root(tmp_path: Path) -> None:
     assert envelope["warnings"] == ["path_outside_repo_root"]
     assert secret not in encoded
     assert str(outside_graph) not in encoded
+
+
+def test_nested_source_refs_are_normalized_to_pointer_strings() -> None:
+    sensitive_number = "900101" + "-1234567"
+    envelope = invoke_tool(
+        "get_case_graph",
+        {
+            "case_graph": {
+                "case_packets": [
+                    {
+                        "case_packet_id": "casepkt-adversarial",
+                        "entities": [
+                            {
+                                "source_refs": [
+                                    {
+                                        "document_id": "doc-1",
+                                        "chunk_id": "chunk-1",
+                                        "excerpt": sensitive_number,
+                                    }
+                                ]
+                            }
+                        ],
+                    }
+                ]
+            }
+        },
+        REPO_ROOT,
+    )
+    encoded_refs = json.dumps(envelope["source_refs"], ensure_ascii=False)
+
+    assert "document_id=doc-1|chunk_id=chunk-1" in envelope["source_refs"]
+    assert "excerpt" not in encoded_refs
+    assert sensitive_number not in encoded_refs
+
+
+def _legal_tools_module() -> object:
+    sys.path.insert(0, str(TRUSTGRAPH_MCP_PATH))
+    try:
+        module = __import__("trustgraph.mcp_server.legal_tools", fromlist=["legal_tools"])
+    finally:
+        sys.path.remove(str(TRUSTGRAPH_MCP_PATH))
+    return module

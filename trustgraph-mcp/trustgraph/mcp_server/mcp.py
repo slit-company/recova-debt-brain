@@ -13,13 +13,15 @@ from collections.abc import AsyncIterator
 from functools import partial
 
 from mcp.server.fastmcp import FastMCP, Context
-from mcp.server.auth.provider import AccessToken, TokenVerifier
-from mcp.server.auth.middleware.auth_context import get_access_token
 
 from trustgraph.base.logging import add_logging_args, setup_logging
+from trustgraph.base.pubsub import add_pubsub_args, get_pubsub
 
 from . tg_socket import WebSocketManager, _token_key
-from .legal_tools import register_debt_collection_brain_tools
+from .auth import GatewayTokenVerifier, IamScopeAuthorizer, require_token
+from .legal_tools import (
+    register_debt_collection_brain_tools,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -54,40 +56,6 @@ def _make_term(value: str, term_type: str) -> dict:
         return {"t": t, "d": value}
     return {"t": t}
 
-# ── Security boundary: MCP client → MCP server ──
-# The MCP client authenticates to this server via a Bearer token in the
-# HTTP Authorization header.  The SDK's auth middleware extracts and
-# verifies the token before any tool handler runs.
-#
-# We implement a pass-through TokenVerifier: the gateway is the real
-# authority, so we accept any non-empty Bearer token here and forward
-# it to the gateway for validation.  The gateway's in-band auth
-# protocol and IAM regime decide whether the token is valid.
-#
-# This means an invalid token will connect to the MCP server but will
-# fail when the first WebSocket auth frame is sent to the gateway.
-# That is intentional — the gateway is the single source of truth.
-
-
-class PassthroughTokenVerifier(TokenVerifier):
-    """Accept any non-empty Bearer token and forward it downstream.
-
-    The TrustGraph gateway is the authority for token validation, not
-    this MCP server.  We store the raw token in the AccessToken so that
-    tool handlers can retrieve it via ``get_access_token().token`` and
-    forward it to the gateway.
-    """
-
-    async def verify_token(self, token: str) -> AccessToken | None:
-        if not token:
-            return None
-        return AccessToken(
-            token=token,
-            client_id="mcp-caller",
-            scopes=[],
-        )
-
-
 @dataclass
 class AppContext:
     sockets: dict[str, WebSocketManager] = field(default_factory=dict)
@@ -98,6 +66,7 @@ class AppContext:
 async def app_lifespan(
     server: FastMCP,
     websocket_url: str = "ws://api-gateway:8088/api/v1/socket",
+    pubsub_backend: Any = None,
 ) -> AsyncIterator[AppContext]:
     """Manage per-server state: the pool of per-caller WebSocket
     connections to the gateway."""
@@ -116,27 +85,13 @@ async def app_lifespan(
             except Exception as e:
                 logger.warning("Error closing socket %s: %s", key, e)
 
+        if pubsub_backend is not None:
+            try:
+                pubsub_backend.close()
+            except Exception as e:
+                logger.warning("Error closing pubsub backend: %s", e)
+
         logger.info("Shutdown complete")
-
-
-def _require_token() -> str:
-    """Extract the caller's Bearer token from the MCP auth context.
-
-    Raises RuntimeError if no token is present (the caller did not
-    authenticate).
-    """
-    # ── Security boundary: token extraction ──
-    # get_access_token() reads the contextvar set by the SDK's
-    # AuthContextMiddleware.  The token was placed there by
-    # PassthroughTokenVerifier.verify_token() and is the raw Bearer
-    # value from the MCP client's Authorization header.
-    access = get_access_token()
-    if access is None or not access.token:
-        raise RuntimeError(
-            "Authentication required — send a Bearer token in the "
-            "Authorization header"
-        )
-    return access.token
 
 
 async def get_socket_manager(ctx, token):
@@ -326,13 +281,25 @@ class McpServer:
         websocket_url: str = "ws://api-gateway:8088/api/v1/socket",
         auth_issuer: str = "",
         auth_resource_url: str = "",
+        pubsub_config: Optional[dict[str, Any]] = None,
+        pubsub_backend: Any = None,
+        scope_authorizer: Any = None,
     ):
         self.host = host
         self.port = port
         self.websocket_url = websocket_url
+        self.pubsub_backend = (
+            pubsub_backend
+            if pubsub_backend is not None
+            else get_pubsub(**(pubsub_config or {}))
+        )
+        if scope_authorizer is None:
+            scope_authorizer = IamScopeAuthorizer(self.pubsub_backend)
 
         lifespan_with_url = partial(
-            app_lifespan, websocket_url=websocket_url,
+            app_lifespan,
+            websocket_url=websocket_url,
+            pubsub_backend=self.pubsub_backend,
         )
 
         # ── Security: MCP-level auth configuration ──
@@ -341,10 +308,8 @@ class McpServer:
         # tokens; resource_server_url identifies this server in OAuth
         # protected-resource metadata.
         #
-        # The PassthroughTokenVerifier accepts any non-empty Bearer
-        # token — real validation happens at the gateway.  This is
-        # intentional: the gateway is the single source of truth for
-        # identity and capability checks.
+        # GatewayTokenVerifier validates the Bearer token through the
+        # TrustGraph gateway before any MCP tool handler can run.
         from mcp.server.auth.settings import AuthSettings
 
         auth_settings = AuthSettings(
@@ -358,7 +323,7 @@ class McpServer:
             host=self.host,
             port=self.port,
             lifespan=lifespan_with_url,
-            token_verifier=PassthroughTokenVerifier(),
+            token_verifier=GatewayTokenVerifier(websocket_url, scope_authorizer),
             auth=auth_settings,
         )
         self._register_tools()
@@ -398,7 +363,7 @@ class McpServer:
         self.mcp.tool()(self.add_processing)
         register_debt_collection_brain_tools(
             self.mcp,
-            token_resolver=_require_token,
+            token_resolver=require_token,
         )
 
     def run(self):
@@ -411,8 +376,8 @@ class McpServer:
         Extracts the Bearer token from the MCP auth context and returns
         a per-token WebSocket connection to the gateway.
         """
-        token = _require_token()
-        return await get_socket_manager(ctx, token)
+        auth_context = require_token()
+        return await get_socket_manager(ctx, auth_context.token)
 
     async def embeddings(
             self,
@@ -1977,6 +1942,7 @@ def main():
         help='Resource server URL for OAuth protected resource metadata',
     )
 
+    add_pubsub_args(parser)
     add_logging_args(parser)
 
     args = parser.parse_args()
@@ -1989,6 +1955,7 @@ def main():
         websocket_url=args.websocket_url,
         auth_issuer=args.auth_issuer,
         auth_resource_url=args.auth_resource_url,
+        pubsub_config=vars(args),
     )
     server.run()
 

@@ -54,7 +54,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = build_parser().parse_args(argv)
     repo_root = Path.cwd().resolve()
     fixtures = _repo_path(args.fixtures, repo_root)
-    output = _repo_path(args.out, repo_root)
+    output = _output_path(args.out, repo_root)
     payload = evaluate_packet(fixtures, repo_root)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
@@ -176,6 +176,11 @@ def _repo_path(value: str, repo_root: Path) -> Path:
     except ValueError:
         raise SystemExit("path outside repo_root: {}".format(value))
     return resolved
+
+
+def _output_path(value: str, repo_root: Path) -> Path:
+    path = Path(value)
+    return (path if path.is_absolute() else repo_root / path).resolve()
 
 
 if __name__ == "__main__":

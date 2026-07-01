@@ -28,7 +28,7 @@ from trustgraph.mcp_server.legal_tools import register_debt_collection_brain_too
 Production registration passes the existing MCP auth-context resolver:
 
 ```python
-register_debt_collection_brain_tools(self.mcp, token_resolver=_require_token)
+register_debt_collection_brain_tools(self.mcp, token_resolver=require_token)
 ```
 
 Registered tool functions accept `arguments` only. Bearer tokens are not tool arguments and must not appear in model/tool payloads.
@@ -40,13 +40,15 @@ Registered tool functions accept `arguments` only. Bearer tokens are not tool ar
 For a real streamable HTTP MCP server smoke, create a runtime environment that installs `trustgraph-mcp` dependencies, then run:
 
 ```bash
-PYTHONPATH=trustgraph-mcp:. python3 -m trustgraph.mcp_server.mcp \
+PYTHONPATH=trustgraph-mcp:trustgraph-base:. python3 -m trustgraph.mcp_server.mcp \
   --host 127.0.0.1 \
   --port 8000 \
-  --websocket-url ws://api-gateway:8088/api/v1/socket
+  --websocket-url ws://api-gateway:8088/api/v1/socket \
+  --pubsub-backend pulsar \
+  --pulsar-host pulsar://pulsar:6650
 ```
 
-Client requests must send an HTTP `Authorization: Bearer ...` header. The MCP server accepts a non-empty Bearer token locally and forwards it to the TrustGraph gateway, which remains the source of truth for identity and permissions.
+Client requests must send an HTTP `Authorization: Bearer ...` header. The MCP server validates the token through the TrustGraph gateway WebSocket, resolves the caller identity with `whoami`, then asks IAM for debt-collection tool-scope decisions through the internal request/response client. `authorise-many` is not sent through the gateway's public WebSocket operation registry. The gateway remains the source of truth for identity, and IAM remains the source of truth for permissions.
 
 ## Generic MCP Client Config
 
