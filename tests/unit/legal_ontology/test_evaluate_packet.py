@@ -26,3 +26,13 @@ def test_evaluator_can_write_qa_artifact_outside_repo(tmp_path: Path) -> None:
     assert exit_code == 0
     assert payload["summary"]["status"] == "passed"
     assert payload["summary"]["tool_count"] == 16
+    trace = payload["judgment_trace"]
+    assert trace["decision"] in {"가능", "불가능", "보류"}
+    assert isinstance(trace["confidence"], float)
+    assert trace["source_refs"]
+    assert trace["failure_labels"]
+    assert trace["expected_answer"]["decision"] == "보류"
+    assert trace["expected_answer"]["recommendation"] == "hold_for_review"
+    assert trace["actual_answer"]["decision"] == payload["summary"]["decision"]
+    assert trace["actual_answer"]["recommendation"] == payload["summary"]["recommendation"]
+    assert trace["correction_status"] == "pending_human_review"

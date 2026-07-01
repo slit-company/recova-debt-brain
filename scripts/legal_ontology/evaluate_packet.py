@@ -5,16 +5,15 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, Final, List, Optional, Sequence, Tuple, Union
+from typing import Dict, Final, List, Optional, Sequence, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from trustgraph_legal.governance_models import JsonValue
 from trustgraph_legal.mcp_domain import invoke_tool, list_tools
 
-JsonScalar = Optional[Union[str, int, float, bool]]
-JsonValue = Union[JsonScalar, List["JsonValue"], Dict[str, "JsonValue"]]
 JsonObject = Dict[str, JsonValue]
 
 SCHEMA_VERSION: Final = "trustgraph-legal-packet-evaluation/v1"
@@ -61,8 +60,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    print(json.dumps(payload["summary"], ensure_ascii=False, sort_keys=True))
-    return 0 if payload["summary"]["status"] == "passed" else 1
+    summary = _object_or_empty(payload.get("summary"))
+    print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+    return 0 if summary.get("status") == "passed" else 1
 
 
 def evaluate_packet(fixtures: Path, repo_root: Path) -> JsonObject:
@@ -91,6 +91,7 @@ def evaluate_packet(fixtures: Path, repo_root: Path) -> JsonObject:
     )
     responses = [case_graph, stopgates, recommendation, execution_probe]
     checks = _validate_responses(responses)
+    judgment_trace = _judgment_trace(stopgates, recommendation)
     status = "passed" if tool_summary["tool_count"] == 16 and not checks else "failed"
     return {
         "schema_version": SCHEMA_VERSION,
@@ -98,12 +99,13 @@ def evaluate_packet(fixtures: Path, repo_root: Path) -> JsonObject:
         "summary": {
             "status": status,
             "tool_count": tool_summary["tool_count"],
-            "evaluated_tools": [str(item["tool_name"]) for item in responses],
+            "evaluated_tools": _json_strings([str(item["tool_name"]) for item in responses]),
             "decision": _result_object(stopgates).get("decision"),
             "recommendation": _result_object(recommendation).get("recommended_next_action"),
             "failure_probe": _result_object(execution_probe).get("status"),
             "issues": checks,
         },
+        "judgment_trace": judgment_trace,
         "tool_contracts": tool_summary,
         "responses": {
             "get_case_graph": case_graph,
@@ -120,19 +122,23 @@ def _validate_tool_contracts(tools: List[JsonObject]) -> JsonObject:
     names = [str(tool.get("tool_name", "")) for tool in tools]
     return {
         "tool_count": len(tools),
-        "tool_names": names,
-        "groups": groups,
-        "schema_versions": schema_versions,
+        "tool_names": _json_strings(names),
+        "groups": _json_strings(groups),
+        "schema_versions": _json_strings(schema_versions),
         "all_contracts_versioned": schema_versions == [CONTRACT_SCHEMA_VERSION],
     }
 
 
-def _validate_responses(responses: List[JsonObject]) -> List[JsonObject]:
-    issues: List[JsonObject] = []
+def _validate_responses(responses: List[JsonObject]) -> List[JsonValue]:
+    issues: List[JsonValue] = []
     for response in responses:
         missing = sorted(REQUIRED_ENVELOPE_KEYS - set(response))
         if missing:
-            issues.append({"tool_name": response.get("tool_name"), "issue": "missing_envelope_keys", "keys": missing})
+            issues.append({
+                "tool_name": response.get("tool_name"),
+                "issue": "missing_envelope_keys",
+                "keys": _json_strings(missing),
+            })
         if response.get("schema_version") != RESPONSE_SCHEMA_VERSION:
             issues.append({"tool_name": response.get("tool_name"), "issue": "wrong_schema_version"})
         pii_profile = response.get("pii_profile")
@@ -155,6 +161,38 @@ def _validate_responses(responses: List[JsonObject]) -> List[JsonObject]:
     return issues
 
 
+def _judgment_trace(stopgates: JsonObject, recommendation: JsonObject) -> JsonObject:
+    stopgate_result = _result_object(stopgates)
+    recommendation_result = _result_object(recommendation)
+    actual = {
+        "decision": stopgate_result.get("decision"),
+        "recommendation": recommendation_result.get("recommended_next_action"),
+    }
+    return {
+        "decision": actual["decision"],
+        "confidence": _float_or(stopgate_result.get("confidence"), 0.0),
+        "source_refs": _list_or_empty(stopgates.get("source_refs")),
+        "failure_labels": _failure_labels(stopgate_result),
+        "expected_answer": {
+            "decision": "보류",
+            "recommendation": "hold_for_review",
+        },
+        "actual_answer": actual,
+        "correction_status": "pending_human_review",
+    }
+
+
+def _failure_labels(stopgate_result: JsonObject) -> List[JsonValue]:
+    labels = stopgate_result.get("risk_flags")
+    return list(labels) if isinstance(labels, list) else []
+
+
+def _float_or(value: JsonValue, fallback: float) -> float:
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return float(value)
+    return fallback
+
+
 def _response_by_tool(responses: List[JsonObject], tool_name: str) -> JsonObject:
     for response in responses:
         if response.get("tool_name") == tool_name:
@@ -165,6 +203,21 @@ def _response_by_tool(responses: List[JsonObject], tool_name: str) -> JsonObject
 def _result_object(response: JsonObject) -> JsonObject:
     result = response.get("result")
     return result if isinstance(result, dict) else {}
+
+
+def _object_or_empty(value: JsonValue) -> JsonObject:
+    return dict(value) if isinstance(value, dict) else {}
+
+
+def _json_strings(values: Sequence[str]) -> List[JsonValue]:
+    items: List[JsonValue] = []
+    for value in values:
+        items.append(value)
+    return items
+
+
+def _list_or_empty(value: JsonValue) -> List[JsonValue]:
+    return list(value) if isinstance(value, list) else []
 
 
 def _repo_path(value: str, repo_root: Path) -> Path:
