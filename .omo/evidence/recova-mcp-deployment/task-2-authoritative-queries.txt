@@ -42,5 +42,3 @@ slit.company.		86400	IN	NS	keaton.ns.cloudflare.com.
 ; EDNS: version: 0, flags:; udp: 1232
 ;; AUTHORITY SECTION:
 slit.company.		1800	IN	SOA	clarissa.ns.cloudflare.com. dns.cloudflare.com. 2408211328 10000 2400 604800 1800
-
-

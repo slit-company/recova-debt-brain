@@ -12,4 +12,3 @@ branch refs/heads/master
 worktree /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-89938d95/worktrees/C
 HEAD b70767ef7af1c971008367d98e7e0d0f3cfa2428
 branch refs/heads/team/team-89938d95/C
-

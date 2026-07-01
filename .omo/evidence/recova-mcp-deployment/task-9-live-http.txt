@@ -1,7 +1,7 @@
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74  100    74    0     0     75      0 --:--:-- --:--:-- --:--:--    75
-HTTP/2 401 
+HTTP/2 401
 date: Wed, 01 Jul 2026 16:12:29 GMT
 content-type: application/json
 content-length: 74

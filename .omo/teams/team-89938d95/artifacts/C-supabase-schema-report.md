@@ -1,8 +1,8 @@
 # C Supabase Schema Report
 
-Member: C `supabase-schema`  
-Thread: codex://threads/019f1def-26d4-73b0-bbcc-fdb9d999338e  
-Worktree: `/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-89938d95/worktrees/C`  
+Member: C `supabase-schema`
+Thread: codex://threads/019f1def-26d4-73b0-bbcc-fdb9d999338e
+Worktree: `/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-89938d95/worktrees/C`
 Branch: `team/team-89938d95/C`
 
 ## Deliverable

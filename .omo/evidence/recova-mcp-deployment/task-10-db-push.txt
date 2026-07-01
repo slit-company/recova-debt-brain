@@ -2,7 +2,7 @@ Connecting to remote database...
 Do you want to push these migrations to the remote database?
  • 20260701000100_recova_lab_memory.sql
 
- [Y/n] 
+ [Y/n]
 Applying migration 20260701000100_recova_lab_memory.sql...
 NOTICE (42710): extension "pgcrypto" already exists, skipping
 NOTICE (00000): policy "recova_lab_bucket_service_role_all" for relation "storage.objects" does not exist, skipping

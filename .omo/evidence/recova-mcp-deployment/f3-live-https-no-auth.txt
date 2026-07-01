@@ -1,4 +1,4 @@
-HTTP/2 401 
+HTTP/2 401
 date: Wed, 01 Jul 2026 16:29:45 GMT
 content-type: application/json
 content-length: 74

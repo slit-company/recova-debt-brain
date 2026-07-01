@@ -7,4 +7,3 @@
 ;; ANSWER SECTION:
 slit.company.		3600	IN	NS	clarissa.ns.cloudflare.com.
 slit.company.		3600	IN	NS	keaton.ns.cloudflare.com.
-

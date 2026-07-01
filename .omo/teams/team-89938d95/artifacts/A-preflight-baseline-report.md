@@ -1,8 +1,8 @@
 # A Preflight Baseline Report
 
-Member: A / preflight-baseline  
-Thread: codex://threads/019f1def-0dfc-7e23-a9ae-5eec8a8dfe23  
-Scope: Todo 1 from `.omo/plans/recova-mcp-deployment.md`  
+Member: A / preflight-baseline
+Thread: codex://threads/019f1def-0dfc-7e23-a9ae-5eec8a8dfe23
+Scope: Todo 1 from `.omo/plans/recova-mcp-deployment.md`
 Mode: evidence-only; no DNS, Supabase, server, source, or deployment mutation.
 
 ## Result

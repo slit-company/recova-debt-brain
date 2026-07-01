@@ -1,46 +1,46 @@
 # MCP contract doc excerpts
 ## docs/product/debt-collection-ontology/mcp-domain-server-contract.md lines 1-270
      1	# Debt Collection MCP Domain Server Contract
-     2	
+     2
      3	Status: v0 implementation contract
      4	Domain: `recova-debt-collection`
      5	Logical MCP surface: `debt-collection-brain-mcp`
      6	Physical server: existing `trustgraph-mcp` server with debt-collection tools registered into the same FastMCP instance
-     7	
+     7
      8	## Purpose
-     9	
+     9
     10	The debt-collection MCP domain server is an agent-agnostic domain brain. It lets any MCP-capable client ask for source-grounded case structure, legal StopGate status, governance state, and review-safe next-action recommendations without understanding the raw TrustGraph graph shape.
-    11	
+    11
     12	The server is not a user interface and is not an execution system. It returns contracts, source refs, risk states, preconditions, review items, and recommendations. It must not file documents, contact debtors, collect funds, mutate external business systems, or claim final legal representation.
-    13	
+    13
     14	## Public Python Surface
-    15	
+    15
     16	The implementation exposes a domain facade that is importable without the global MCP SDK:
-    17	
+    17
     18	```python
     19	from trustgraph_legal.mcp_domain import TOOL_DEFINITIONS, list_tools, invoke_tool
     20	```
-    21	
+    21
     22	The existing MCP package registers the facade through a thin adapter:
-    23	
+    23
     24	```python
     25	from trustgraph.mcp_server.legal_tools import register_debt_collection_brain_tools
     26	```
-    27	
+    27
     28	Production registration passes the existing MCP auth-context resolver:
-    29	
+    29
     30	```python
     31	register_debt_collection_brain_tools(self.mcp, token_resolver=require_token)
     32	```
-    33	
+    33
     34	Registered tool functions accept `arguments` only. Bearer tokens are not tool arguments and must not appear in model/tool payloads.
-    35	
+    35
     36	## Runtime Dependency
-    37	
+    37
     38	`trustgraph-mcp/pyproject.toml` declares the `mcp` package dependency. The repository verification environment used for v0 does not globally provide that package, so automated Todo 9 and Todo 10 checks exercise the domain facade and fake-MCP adapter without requiring a live MCP SDK import.
-    39	
+    39
     40	For a real streamable HTTP MCP server smoke, create a runtime environment that installs `trustgraph-mcp` dependencies, then run:
-    41	
+    41
     42	```bash
     43	PYTHONPATH=trustgraph-mcp:trustgraph-base:. python3 -m trustgraph.mcp_server.mcp \
     44	  --host 127.0.0.1 \
@@ -49,13 +49,13 @@
     47	  --pubsub-backend pulsar \
     48	  --pulsar-host pulsar://pulsar:6650
     49	```
-    50	
+    50
     51	Client requests must send an HTTP `Authorization: Bearer ...` header. The MCP server validates the token through the TrustGraph gateway WebSocket, resolves the caller identity with `whoami`, then asks IAM for debt-collection tool-scope decisions through the internal request/response client. `authorise-many` is not sent through the gateway's public WebSocket operation registry. The gateway remains the source of truth for identity, and IAM remains the source of truth for permissions.
-    52	
+    52
     53	## Generic MCP Client Config
-    54	
+    54
     55	The exact client syntax depends on the client runtime. A generic streamable HTTP configuration should carry the server URL and bearer header outside the tool arguments:
-    56	
+    56
     57	```json
     58	{
     59	  "mcpServers": {
@@ -69,11 +69,11 @@
     67	  }
     68	}
     69	```
-    70	
+    70
     71	Do not configure any tool argument named `authorization`, `token`, or `bearer`.
-    72	
+    72
     73	## Tool Groups
-    74	
+    74
     75	| Group | Boundary |
     76	| --- | --- |
     77	| `read` | Read-only descriptions and summaries. |
@@ -81,11 +81,11 @@
     79	| `graph` | Classification, extraction projection, and case graph access. |
     80	| `stopgate` | Legal/compliance precondition checks and non-executing recommendations. |
     81	| `governance` | Review-safe fact decisions, ontology candidates, and reprocess plans. |
-    82	
+    82
     83	There is no v0 public `admin` tool group in the corrected 16-tool contract.
-    84	
+    84
     85	## Canonical Tool List
-    86	
+    86
     87	| Tool | Group | Scope | Arguments |
     88	| --- | --- | --- | --- |
     89	| `list_debt_collection_tools` | `read` | `read:tools` | none |
@@ -104,13 +104,13 @@
    102	| `review_extracted_fact` | `governance` | `governance:review` | `fact_id`, `decision`, `reviewer`, `reason` |
    103	| `promote_ontology_candidate` | `governance` | `governance:review` | `candidate_id`, `approval_metadata`, `ontology_path` |
    104	| `reprocess_case` | `governance` | `governance:reprocess` | `case_packet_id`, `manifest_path` |
-   105	
+   105
    106	Tool contract metadata is returned by `list_debt_collection_tools` and `list_tools()` with schema version `trustgraph-legal-mcp-tool-contract/v1`.
-   107	
+   107
    108	## Response Envelope
-   109	
+   109
    110	Every tool response uses schema version `trustgraph-legal-mcp-tool-response/v1` and must include:
-   111	
+   111
    112	```json
    113	{
    114	  "schema_version": "trustgraph-legal-mcp-tool-response/v1",
@@ -138,25 +138,25 @@
    136	  "result": {}
    137	}
    138	```
-   139	
+   139
    140	Clients must read domain payloads from `result`. They must not depend on ad hoc top-level fields outside the envelope.
-   141	
+   141
    142	## Decision Contract
-   143	
+   143
    144	StopGate tools return Korean decision values:
-   145	
+   145
    146	| Decision | Meaning | Client behavior |
    147	| --- | --- | --- |
    148	| `가능` | No current StopGate blocks the advisory path. | Client may prepare a non-executing advisory package and still preserve source refs. |
    149	| `보류` | Evidence is missing, conflicting, or legally risky. | Client must stop execution and request review, evidence, or reprocessing. |
    150	| `불가능` | The curated rules or reviewed facts block the requested legal path. | Client must not recommend action except remediation or legal review. |
-   151	
+   151
    152	`recommend_next_action` is still non-executing. In the fixture evaluation it returns `hold_for_review` because StopGates remain open.
-   153	
+   153
    154	## Source Refs
-   155	
+   155
    156	Material graph facts and StopGate decisions must be source-backed. `source_refs` are pointers, not raw OCR text:
-   157	
+   157
    158	```json
    159	{
    160	  "document_id": "legal-ocr-synth-asset-evidence-001",
@@ -168,61 +168,61 @@
    166	  "fact_type": "legal-check"
    167	}
    168	```
-   169	
+   169
    170	Default source refs must not include raw excerpts, raw OCR text, national identifiers, phone numbers, account numbers, or full addresses.
-   171	
+   171
    172	## Redaction Policy
-   173	
+   173
    174	Default outputs must keep:
-   175	
+   175
    176	- `pii_profile.raw_text_included = false`
    177	- `pii_profile.source_text_included = false`
    178	- `redaction.default = redacted`
    179	- `redaction.status = redacted`
-   180	
+   180
    181	Path inputs are bounded to `repo_root`. Absolute or traversal paths outside that root return:
-   182	
+   182
    183	```json
    184	{
    185	  "status": "rejected",
    186	  "reason": "path_outside_repo_root"
    187	}
    188	```
-   189	
+   189
    190	The rejection must not echo the attempted path or file contents.
-   191	
+   191
    192	## Hybrid Case Identity
-   193	
+   193
    194	The server owns `case_packet_id` resolution. Clients may send hints, but must treat the server response as the packet identity boundary.
-   195	
+   195
    196	Evidence keys include:
-   197	
+   197
    198	- `court_case_number`
    199	- `claim_id`
    200	- `enforcement_title_id`
    201	- `party_identity_key`
    202	- `document_hash`
-   203	
+   203
    204	No client may merge cases or parties on a display name alone. If a client memory entry conflicts with the server case graph, the server graph and its source refs win until governance review changes the graph.
-   205	
+   205
    206	## Curated Rule Sources
-   207	
+   207
    208	StopGate behavior is backed by curated, versioned v0 rule sources under `resources/legal_rules/`. Rule refs must carry rule IDs, statute refs when available, effective dates, and approval status.
-   209	
+   209
    210	Client agents must not treat live web search, native memory, or free-form LLM legal analysis as a production rule source. New or changed legal rules must enter governance review and reprocessing before they affect production recommendations.
-   211	
+   211
    212	## Memory Conflict Policy
-   213	
+   213
    214	If an agent's native memory disagrees with the MCP domain server:
-   215	
+   215
    216	1. Prefer the MCP response when it has source refs and rule refs.
    217	2. If the agent has newer evidence, ingest it or create a review item instead of overriding the graph locally.
    218	3. If the MCP response is missing evidence, use `reprocess_case`, `review_extracted_fact`, or governance tools.
    219	4. Do not clear StopGates from native memory alone.
    220	5. Do not store legal rules only in agent memory.
-   221	
+   221
    222	## Failure States
-   223	
+   223
    224	| State | Meaning |
    225	| --- | --- |
    226	| `unknown_tool` | Requested tool is not in the 16-tool contract. |
@@ -231,31 +231,31 @@
    229	| `queued_for_review` | Write-like request is recorded as review-safe intent, not a production mutation. |
    230	| `planned` | Reprocess plan is returned without starting a production job. |
    231	| `rejected` | Request failed a contract or governance precondition. |
-   232	
+   232
    233	## Non-Execution Boundary
-   234	
+   234
    235	These tools must never:
-   236	
+   236
    237	- file or submit court documents
    238	- contact debtors, guarantors, courts, banks, employers, insurers, or registries
    239	- initiate attachment, seizure, settlement, payment, transfer, or collection
    240	- mark a legal/business action as completed
    241	- claim final legal advice or representation
-   242	
+   242
    243	A direct execution request must be blocked. The v0 evaluation probes a nonexistent direct filing tool and expects `unknown_tool`.
-   244	
+   244
    245	## Evaluation
-   246	
+   246
    247	Run the fixture packet evaluation:
-   248	
+   248
    249	```bash
    250	/opt/homebrew/bin/python3 scripts/legal_ontology/evaluate_packet.py \
    251	  --fixtures tests/fixtures/legal-ocr/manifest.json \
    252	  --out .omo/evidence/debt-collection-ontology/task-10-eval.json
    253	```
-   254	
+   254
    255	Expected summary:
-   256	
+   256
    257	```json
    258	{
    259	  "status": "passed",
@@ -266,16 +266,16 @@
    264	  "issues": []
    265	}
    266	```
-   267	
+   267
    268	This evaluation is the hermetic contract proof for environments where the global MCP SDK is not installed.
 
 # trustgraph_legal/mcp_domain.py lines 1-180
      1	from __future__ import annotations
-     2	
+     2
      3	from dataclasses import dataclass
      4	from pathlib import Path
      5	from typing import Callable, Dict, Final, List, Optional, Tuple
-     6	
+     6
      7	from trustgraph_legal import mcp_handlers
      8	from trustgraph_legal.governance_models import JsonValue
      9	from trustgraph_legal.mcp_envelope import (
@@ -286,10 +286,10 @@
     14	    source_refs,
     15	)
     16	from trustgraph_legal.mcp_inputs import repo_root as resolve_repo_root
-    17	
+    17
     18	JsonObject = Dict[str, JsonValue]
     19	ToolHandler = Callable[[JsonObject, Path], JsonObject]
-    20	
+    20
     21	TOOL_CONTRACT_SCHEMA_VERSION: Final = "trustgraph-legal-mcp-tool-contract/v1"
     22	TOOL_GROUPS: Final[Dict[str, Tuple[str, str]]] = {
     23	    "list_debt_collection_tools": ("read", "read:tools"),
@@ -309,8 +309,8 @@
     37	    "promote_ontology_candidate": ("governance", "governance:review"),
     38	    "reprocess_case": ("governance", "governance:reprocess"),
     39	}
-    40	
-    41	
+    40
+    41
     42	@dataclass(frozen=True)
     43	class ToolDefinition:
     44	    tool_name: str
@@ -319,7 +319,7 @@
     47	    description: str
     48	    parameters: Tuple[str, ...]
     49	    handler: ToolHandler
-    50	
+    50
     51	    def to_json(self) -> JsonObject:
     52	        return {
     53	            "schema_version": TOOL_CONTRACT_SCHEMA_VERSION,
@@ -354,8 +354,8 @@
     82	                "source_text_included": False,
     83	            },
     84	        }
-    85	
-    86	
+    85
+    86
     87	def _tool(
     88	    name: str,
     89	    description: str,
@@ -364,8 +364,8 @@
     92	) -> ToolDefinition:
     93	    group, scope = TOOL_GROUPS[name]
     94	    return ToolDefinition(name, group, scope, description, parameters, handler)
-    95	
-    96	
+    95
+    96
     97	TOOL_DEFINITIONS: Final[Tuple[ToolDefinition, ...]] = (
     98	    _tool("list_debt_collection_tools", "List debt-collection domain tool contracts.", (), lambda args, root: {"tools": list_tools()}),
     99	    _tool("ingest_legal_document", "Prepare a legal document for reviewed ingestion without storing raw PII.", ("zip_path", "workspace", "collection", "limit"), mcp_handlers.ingest_legal_document),
@@ -384,12 +384,12 @@
    112	    _tool("promote_ontology_candidate", "Evaluate ontology promotion metadata and return accepted/rejected status only.", ("candidate_id", "approval_metadata", "ontology_path"), mcp_handlers.promote_candidate),
    113	    _tool("reprocess_case", "Return a reviewed reprocess plan; no production job is executed by this tool.", ("case_packet_id", "manifest_path"), mcp_handlers.reprocess_case),
    114	)
-   115	
-   116	
+   115
+   116
    117	def list_tools() -> List[JsonObject]:
    118	    return [definition.to_json() for definition in TOOL_DEFINITIONS]
-   119	
-   120	
+   119
+   120
    121	def invoke_tool(
    122	    tool_name: str,
    123	    arguments: Optional[JsonObject] = None,
@@ -432,68 +432,68 @@
    160	            source_refs=source_refs(result),
    161	        )
    162	    )
-   163	
-   164	
+   163
+   164
    165	def _definition(tool_name: str) -> Optional[ToolDefinition]:
    166	    for definition in TOOL_DEFINITIONS:
    167	        if definition.tool_name == tool_name:
    168	            return definition
    169	    return None
-   170	
-   171	
+   170
+   171
    172	def repo_root_path(repo_root: Optional[Path]) -> Path:
    173	    return resolve_repo_root(repo_root)
-   174	
-   175	
+   174
+   175
    176	__all__ = ["SCHEMA_VERSION", "TOOL_DEFINITIONS", "invoke_tool", "list_tools"]
 
 # containers/Containerfile.mcp lines 1-120
-     1	
+     1
      2	# ----------------------------------------------------------------------------
      3	# Build an AI container.  This does the torch install which is huge, and I
      4	# like to avoid re-doing this.
      5	# ----------------------------------------------------------------------------
-     6	
+     6
      7	FROM docker.io/fedora:42 AS base
-     8	
+     8
      9	ENV PIP_BREAK_SYSTEM_PACKAGES=1
-    10	
+    10
     11	RUN dnf install -y python3.13 && \
     12	  alternatives --install /usr/bin/python python /usr/bin/python3.13 1 && \
     13	  python -m ensurepip --upgrade && \
     14	  pip3 install --no-cache-dir --upgrade 'pip>=26.0' 'setuptools>=78.1.1' && \
     15	  pip3 install --no-cache-dir mcp websockets && \
     16	  dnf clean all
-    17	
+    17
     18	# ----------------------------------------------------------------------------
     19	# Build a container which contains the built Python packages.  The build
     20	# creates a bunch of left-over cruft, a separate phase means this is only
     21	# needed to support package build
     22	# ----------------------------------------------------------------------------
-    23	
+    23
     24	FROM base AS build
-    25	
+    25
     26	COPY trustgraph-mcp/ /root/build/trustgraph-mcp/
-    27	
+    27
     28	WORKDIR /root/build/
-    29	
+    29
     30	RUN pip3 install --no-cache-dir build wheel
-    31	
+    31
     32	RUN pip3 wheel -w /root/wheels/ --no-deps ./trustgraph-mcp/
-    33	
+    33
     34	RUN ls /root/wheels
-    35	
+    35
     36	# ----------------------------------------------------------------------------
     37	# Finally, the target container.  Start with base and add the package.
     38	# ----------------------------------------------------------------------------
-    39	
+    39
     40	FROM base
-    41	
+    41
     42	COPY --from=build /root/wheels /root/wheels
-    43	
+    43
     44	RUN \
     45	    pip3 install --no-cache-dir /root/wheels/trustgraph_mcp-* && \
     46	    rm -rf /root/wheels
-    47	
+    47
     48	WORKDIR /
-    49	
+    49
