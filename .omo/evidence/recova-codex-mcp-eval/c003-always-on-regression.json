@@ -1,0 +1,22 @@
+{
+  "criterion": "C003",
+  "all_passed": true,
+  "checks": {
+    "config_enabled": true,
+    "transport_http": true,
+    "url_ok": true,
+    "env_var_named": true,
+    "launchd_len": true,
+    "zsh_len": true,
+    "fresh_mcp_call": true,
+    "final_count": true,
+    "secret_safe": true
+  },
+  "artifacts": {
+    "mcp_get": ".omo/evidence/recova-codex-mcp-eval/c003-codex-mcp-get.txt",
+    "env_lengths": ".omo/evidence/recova-codex-mcp-eval/c003-env-lengths.txt",
+    "transcript": ".omo/evidence/recova-codex-mcp-eval/c003-codex-transcript.txt",
+    "final": ".omo/evidence/recova-codex-mcp-eval/c003-codex-final.txt"
+  },
+  "final_excerpt": "16, list_debt_collection_tools, reprocess_case"
+}

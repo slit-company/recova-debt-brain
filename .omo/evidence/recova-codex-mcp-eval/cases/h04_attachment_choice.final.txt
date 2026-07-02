@@ -1,0 +1,3 @@
+Attachment target eligibility or risk: use `check_attachment_target_rules`.
+
+It reports attachment-target, exemption, and priority review blockers from a case graph. It cannot initiate attachment or execute any collection action.

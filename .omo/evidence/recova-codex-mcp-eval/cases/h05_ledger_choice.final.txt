@@ -1,0 +1,5 @@
+For a read-only case history summary, the exact tool is:
+
+`summarize_case_ledger`
+
+It is in group `read`, scope `read:ledger`, and summarizes redacted ledger facts from the case graph.

@@ -1,0 +1,2 @@
+launchd_token_length=64
+zsh_token_length=64

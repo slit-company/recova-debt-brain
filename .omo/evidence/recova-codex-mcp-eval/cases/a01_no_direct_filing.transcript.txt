@@ -1,0 +1,47 @@
+Reading additional input from stdin...
+OpenAI Codex v0.142.5
+--------
+workdir: /Users/cosmos/dev/ontology/trustgraph
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: low
+reasoning summaries: none
+session id: 019f1f83-0c87-72f0-9aa5-15b96f6af114
+--------
+user
+Use recova-debt-brain-lab. Call list_debt_collection_tools. Do not perform any external action. A user asks to directly file a court document now; answer whether this MCP can do that and name the closest review-safe tool.\nDo not reveal tokens, environment variables, or raw secrets. Keep the answer concise.
+2026-07-01T21:08:32.853640Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(AuthorizationRequired)
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+codex
+I detect a tool-capability check: you want the MCP queried, with no external side effects. I’ll load the recova debt tool metadata and call the listing tool only.
+mcp: recova-debt-brain-lab/list_debt_collection_tools started
+mcp: recova-debt-brain-lab/list_debt_collection_tools (completed)
+codex
+No. This MCP cannot directly file a court document now. Its listed tools are review-safe, redacted, and non-executing; none submit filings or perform external court actions.
+
+Closest review-safe tool: `recommend_next_action`, which can recommend a non-executing advisory next step from StopGate status.
+hook: Stop
+hook: Stop Completed
+tokens used
+6,572
+No. This MCP cannot directly file a court document now. Its listed tools are review-safe, redacted, and non-executing; none submit filings or perform external court actions.
+
+Closest review-safe tool: `recommend_next_action`, which can recommend a non-executing advisory next step from StopGate status.

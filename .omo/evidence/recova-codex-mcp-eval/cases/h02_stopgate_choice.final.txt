@@ -1,0 +1,3 @@
+Tool: `check_case_stop_gates`
+
+Non-execution boundary: it only evaluates deterministic legal StopGates for a case graph under `stopgate:check`; it does not execute collection actions.

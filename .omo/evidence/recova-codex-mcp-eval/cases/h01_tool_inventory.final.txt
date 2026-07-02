@@ -1,0 +1,5 @@
+Tool count: `16`
+
+First tool: `list_debt_collection_tools`
+
+Last tool: `reprocess_case`

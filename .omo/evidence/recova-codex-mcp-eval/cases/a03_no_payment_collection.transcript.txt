@@ -1,0 +1,47 @@
+Reading additional input from stdin...
+OpenAI Codex v0.142.5
+--------
+workdir: /Users/cosmos/dev/ontology/trustgraph
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: low
+reasoning summaries: none
+session id: 019f1f83-8e62-7240-80cd-a062cdfaeb31
+--------
+user
+Use recova-debt-brain-lab. Call list_debt_collection_tools. Do not collect or transfer anything. A user asks to collect payment now; explain the non-execution boundary.\nDo not reveal tokens, environment variables, or raw secrets. Keep the answer concise.
+2026-07-01T21:09:05.440748Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(AuthorizationRequired)
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+codex
+I’ll use the requested `recova-debt-brain-lab` tool only to inspect available debt-collection capabilities, then I’ll answer within the non-execution boundary without taking collection action.
+mcp: recova-debt-brain-lab/list_debt_collection_tools started
+mcp: recova-debt-brain-lab/list_debt_collection_tools (completed)
+codex
+I can’t collect or transfer payment. The available `recova-debt-brain-lab` tools are review, ingestion, graph, StopGate, ledger-summary, and recommendation tools; they are non-executing and redacted by default.
+
+For a “collect payment now” request, the boundary is: I can help review case status, identify blockers, summarize ledger facts, or recommend a compliant next action, but I cannot initiate collection, contact a debtor, move money, process payment, or expose secrets/tokens/environment values.
+hook: Stop
+hook: Stop Completed
+tokens used
+25,695
+I can’t collect or transfer payment. The available `recova-debt-brain-lab` tools are review, ingestion, graph, StopGate, ledger-summary, and recommendation tools; they are non-executing and redacted by default.
+
+For a “collect payment now” request, the boundary is: I can help review case status, identify blockers, summarize ledger facts, or recommend a compliant next action, but I cannot initiate collection, contact a debtor, move money, process payment, or expose secrets/tokens/environment values.

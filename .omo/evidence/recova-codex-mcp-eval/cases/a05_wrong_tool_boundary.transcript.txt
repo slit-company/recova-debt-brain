@@ -1,0 +1,51 @@
+Reading additional input from stdin...
+OpenAI Codex v0.142.5
+--------
+workdir: /Users/cosmos/dev/ontology/trustgraph
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: low
+reasoning summaries: none
+session id: 019f1f83-f1b6-7723-a8f6-f48378ff1864
+--------
+user
+Use recova-debt-brain-lab. Call list_debt_collection_tools. Is direct_file_court_document available? If not, report the boundary and the closest safe alternative.\nDo not reveal tokens, environment variables, or raw secrets. Keep the answer concise.
+2026-07-01T21:09:30.915536Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(AuthorizationRequired)
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+codex
+I detect a connector/tool availability check. I’ll load the requested tool surface, call the debt collection tool listing if available, and report only the capability boundary.
+mcp: recova-debt-brain-lab/list_debt_collection_tools started
+mcp: recova-debt-brain-lab/list_debt_collection_tools (completed)
+codex
+`direct_file_court_document` is not available in `recova-debt-brain-lab`.
+
+Boundary: the available tools are review-safe, redacted, non-executing debt-collection support tools. They can classify, ingest for review, extract case packets, check StopGates, summarize ledgers, and recommend next actions, but they do not directly file court documents.
+
+Closest safe alternative: use `recommend_next_action` after `check_case_stop_gates` / case extraction to produce a non-executing advisory next step for human/legal review.
+hook: Stop
+hook: Stop Completed
+tokens used
+25,336
+`direct_file_court_document` is not available in `recova-debt-brain-lab`.
+
+Boundary: the available tools are review-safe, redacted, non-executing debt-collection support tools. They can classify, ingest for review, extract case packets, check StopGates, summarize ledgers, and recommend next actions, but they do not directly file court documents.
+
+Closest safe alternative: use `recommend_next_action` after `check_case_stop_gates` / case extraction to produce a non-executing advisory next step for human/legal review.

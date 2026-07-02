@@ -1,0 +1,3 @@
+No. This MCP cannot directly file a court document now. Its listed tools are review-safe, redacted, and non-executing; none submit filings or perform external court actions.
+
+Closest review-safe tool: `recommend_next_action`, which can recommend a non-executing advisory next step from StopGate status.

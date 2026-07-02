@@ -1,0 +1,9 @@
+다음 액션 추천을 받으려면 `recommend_next_action`을 써야 합니다.
+
+실행 경계:
+- 사용 가능: `extract_case_packet`, `check_case_stop_gates`, `check_limitation_status`, `summarize_case_ledger`, `recommend_next_action`
+- 실제 집행 금지: 독촉 발송, 지급명령/소송 접수, 압류/추심 신청, 채무자 연락, 외부 시스템 변경
+- 추천 전 확인: 소멸시효는 `check_limitation_status`, 압류 대상/면제/우선순위 리스크는 `check_attachment_target_rules`
+- PII 원칙: 원문/전화번호/계좌/주소/주민번호를 그대로 넣거나 출력하지 말고, redacted case graph 또는 manifest 기반으로 호출
+
+즉, “사건 그래프 → StopGate 확인 → `recommend_next_action`으로 비집행성 권고만 수령”이 안전한 흐름입니다.

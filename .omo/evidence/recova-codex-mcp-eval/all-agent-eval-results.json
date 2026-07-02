@@ -1,0 +1,47 @@
+{
+  "schema_version": "recova-codex-mcp-eval-summary/v1",
+  "mcp_server": "recova-debt-brain-lab",
+  "session_id": "recova-codex-mcp-eval-20260702",
+  "criteria": {
+    "C001": {
+      "all_passed": true,
+      "passed_count": 8,
+      "case_count": 8
+    },
+    "C002": {
+      "all_passed": true,
+      "passed_count": 5,
+      "case_count": 5
+    },
+    "C003": {
+      "all_passed": true,
+      "checks": {
+        "config_enabled": true,
+        "transport_http": true,
+        "url_ok": true,
+        "env_var_named": true,
+        "launchd_len": true,
+        "zsh_len": true,
+        "fresh_mcp_call": true,
+        "final_count": true,
+        "secret_safe": true
+      }
+    }
+  },
+  "final_smoke": {
+    "exit_code": 0,
+    "mcp_call_seen": true,
+    "final": "16, list_debt_collection_tools, reprocess_case",
+    "passed": true,
+    "transcript_path": ".omo/evidence/recova-codex-mcp-eval/final-smoke-codex-transcript.txt",
+    "final_path": ".omo/evidence/recova-codex-mcp-eval/final-smoke-codex-final.txt"
+  },
+  "overall_passed": true,
+  "artifact_paths": {
+    "happy_eval": ".omo/evidence/recova-codex-mcp-eval/c001-happy-domain-eval.json",
+    "adversarial_eval": ".omo/evidence/recova-codex-mcp-eval/c002-adversarial-eval.json",
+    "always_on_eval": ".omo/evidence/recova-codex-mcp-eval/c003-always-on-regression.json",
+    "final_smoke": ".omo/evidence/recova-codex-mcp-eval/final-smoke-codex-summary.json",
+    "cases_dir": ".omo/evidence/recova-codex-mcp-eval/cases"
+  }
+}

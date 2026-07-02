@@ -1,0 +1,3 @@
+Use `review_extracted_fact`.
+
+It is the governance review tool for when an extracted fact looks wrong and needs human review.

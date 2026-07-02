@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "c001": true,
+    "c002": true,
+    "c003": true,
+    "aggregate": true,
+    "final_smoke": true,
+    "reports_present": true,
+    "no_raw_secret": true,
+    "all": true
+  },
+  "secret_findings": []
+}

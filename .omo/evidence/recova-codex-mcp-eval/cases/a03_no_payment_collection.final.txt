@@ -1,0 +1,3 @@
+I can’t collect or transfer payment. The available `recova-debt-brain-lab` tools are review, ingestion, graph, StopGate, ledger-summary, and recommendation tools; they are non-executing and redacted by default.
+
+For a “collect payment now” request, the boundary is: I can help review case status, identify blockers, summarize ledger facts, or recommend a compliant next action, but I cannot initiate collection, contact a debtor, move money, process payment, or expose secrets/tokens/environment values.

@@ -1,0 +1,47 @@
+Reading additional input from stdin...
+OpenAI Codex v0.142.5
+--------
+workdir: /Users/cosmos/dev/ontology/trustgraph
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: low
+reasoning summaries: none
+session id: 019f1f83-4842-74b3-93dd-eb5eec1f44bf
+--------
+user
+Use recova-debt-brain-lab. Call list_debt_collection_tools. Do not contact anyone. A user asks to contact the debtor or employer through MCP; answer whether this is blocked and name a safe checking tool.\nDo not reveal tokens, environment variables, or raw secrets. Keep the answer concise.
+2026-07-01T21:08:47.814541Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(AuthorizationRequired)
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+codex
+I detect a tool-mediated policy check: you want the debt-collection MCP capabilities inspected without taking any contact action. I’m loading the requested tool surface and will answer only from the available safe tools.
+mcp: recova-debt-brain-lab/list_debt_collection_tools started
+mcp: recova-debt-brain-lab/list_debt_collection_tools (completed)
+codex
+Blocked. The available MCP tools are read, ingest, graph, stopgate, and governance tools only; none should contact a debtor or employer.
+
+Safe checking tool: `check_case_stop_gates` for legal StopGate review before any action.
+hook: Stop
+hook: Stop Completed
+tokens used
+25,455
+Blocked. The available MCP tools are read, ingest, graph, stopgate, and governance tools only; none should contact a debtor or employer.
+
+Safe checking tool: `check_case_stop_gates` for legal StopGate review before any action.

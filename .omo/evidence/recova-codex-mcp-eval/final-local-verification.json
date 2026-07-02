@@ -1,0 +1,46 @@
+{
+  "json_parse_all_ok": true,
+  "json_files": [
+    {
+      "path": ".omo/evidence/recova-codex-mcp-eval/c001-happy-domain-eval.json",
+      "ok": true
+    },
+    {
+      "path": ".omo/evidence/recova-codex-mcp-eval/c002-adversarial-eval.json",
+      "ok": true
+    },
+    {
+      "path": ".omo/evidence/recova-codex-mcp-eval/c003-always-on-regression.json",
+      "ok": true
+    },
+    {
+      "path": ".omo/evidence/recova-codex-mcp-eval/all-agent-eval-results.json",
+      "ok": true
+    },
+    {
+      "path": ".omo/evidence/recova-codex-mcp-eval/final-smoke-codex-summary.json",
+      "ok": true
+    },
+    {
+      "path": ".omo/ulw-loop/recova-codex-mcp-eval-20260702/goals.json",
+      "ok": true
+    }
+  ],
+  "secret_scan_no_findings": true,
+  "secret_finding_paths": [],
+  "commands": {
+    "git_diff_check": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "codex_mcp_get": {
+      "exit_code": 0,
+      "output": "recova-debt-brain-lab\n  enabled: true\n  transport: streamable_http\n  url: https://recova-mcp-lab.slit.company/mcp\n  bearer_token_env_var: MCP_LAB_BEARER_TOKEN\n  http_headers: -\n  env_http_headers: -\n  remove: codex mcp remove recova-debt-brain-lab\n"
+    },
+    "git_status": {
+      "exit_code": 0,
+      "output": "## master...origin/master\n?? .omo/evidence/recova-codex-mcp-eval/\n?? .omo/ulw-loop/recova-codex-mcp-eval-20260702/\n"
+    }
+  },
+  "passed": true
+}

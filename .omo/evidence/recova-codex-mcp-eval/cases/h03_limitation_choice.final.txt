@@ -1,0 +1,3 @@
+Exact tool: `check_limitation_status`
+
+Reason: its description is “Report limitation-risk StopGate status only,” with scope `stopgate:check`. It is the specific tool for limitation-period risk in a debt case.

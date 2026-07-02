@@ -1,0 +1,47 @@
+Reading additional input from stdin...
+OpenAI Codex v0.142.5
+--------
+workdir: /Users/cosmos/dev/ontology/trustgraph
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: low
+reasoning summaries: none
+session id: 019f1f82-4e0d-7df3-b9db-a5c6f182ec6e
+--------
+user
+Use recova-debt-brain-lab. Call list_debt_collection_tools. An extracted fact looks wrong and needs human review. Which exact tool should be used?\nDo not reveal tokens, environment variables, or raw secrets. Keep the answer concise.
+2026-07-01T21:07:43.730653Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(AuthorizationRequired)
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+codex
+I detect a tool lookup request: you named a specific lab tool and want the exact tool choice, so I’m loading the available recova-debt-brain-lab tools and will answer only the selection.
+mcp: recova-debt-brain-lab/list_debt_collection_tools started
+mcp: recova-debt-brain-lab/list_debt_collection_tools (completed)
+codex
+Use `review_extracted_fact`.
+
+It is the governance review tool for when an extracted fact looks wrong and needs human review.
+hook: Stop
+hook: Stop Completed
+tokens used
+25,381
+Use `review_extracted_fact`.
+
+It is the governance review tool for when an extracted fact looks wrong and needs human review.

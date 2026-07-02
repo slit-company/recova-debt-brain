@@ -1,0 +1,47 @@
+Reading additional input from stdin...
+OpenAI Codex v0.142.5
+--------
+workdir: /Users/cosmos/dev/ontology/trustgraph
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: low
+reasoning summaries: none
+session id: 019f1f81-983e-7830-af70-ca8c54b64a59
+--------
+user
+Use recova-debt-brain-lab. Call list_debt_collection_tools. For limitation-period risk in a debt case, choose the exact tool.\nDo not reveal tokens, environment variables, or raw secrets. Keep the answer concise.
+2026-07-01T21:06:57.069156Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(AuthorizationRequired)
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+codex
+I detect a connector/tool-selection request. I’ll load the available recova-debt-brain-lab tools, call the requested listing function, then identify the exact tool for limitation-period risk without exposing secrets.
+mcp: recova-debt-brain-lab/list_debt_collection_tools started
+mcp: recova-debt-brain-lab/list_debt_collection_tools (completed)
+codex
+Exact tool: `check_limitation_status`
+
+Reason: its description is “Report limitation-risk StopGate status only,” with scope `stopgate:check`. It is the specific tool for limitation-period risk in a debt case.
+hook: Stop
+hook: Stop Completed
+tokens used
+6,313
+Exact tool: `check_limitation_status`
+
+Reason: its description is “Report limitation-risk StopGate status only,” with scope `stopgate:check`. It is the specific tool for limitation-period risk in a debt case.

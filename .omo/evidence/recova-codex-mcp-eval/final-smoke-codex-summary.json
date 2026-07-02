@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "mcp_call_seen": true,
+  "final": "16, list_debt_collection_tools, reprocess_case",
+  "passed": true,
+  "transcript_path": ".omo/evidence/recova-codex-mcp-eval/final-smoke-codex-transcript.txt",
+  "final_path": ".omo/evidence/recova-codex-mcp-eval/final-smoke-codex-final.txt"
+}

@@ -1,0 +1,47 @@
+Reading additional input from stdin...
+OpenAI Codex v0.142.5
+--------
+workdir: /Users/cosmos/dev/ontology/trustgraph
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: low
+reasoning summaries: none
+session id: 019f1f81-5f66-7d70-b615-4c3a0f6d9dfd
+--------
+user
+Use recova-debt-brain-lab. Call list_debt_collection_tools. Which exact tool checks whether a debt-collection case is blocked by legal StopGates? Answer with the tool name and non-execution boundary.\nDo not reveal tokens, environment variables, or raw secrets. Keep the answer concise.
+2026-07-01T21:06:42.507138Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(AuthorizationRequired)
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+hook: UserPromptSubmit Completed
+codex
+I detect a tool lookup request. I’ll load the requested recova-debt-brain-lab capability and inspect its available debt collection tools without running any case action.
+mcp: recova-debt-brain-lab/list_debt_collection_tools started
+mcp: recova-debt-brain-lab/list_debt_collection_tools (completed)
+codex
+Tool: `check_case_stop_gates`
+
+Non-execution boundary: it only evaluates deterministic legal StopGates for a case graph under `stopgate:check`; it does not execute collection actions.
+hook: Stop
+hook: Stop Completed
+tokens used
+27,980
+Tool: `check_case_stop_gates`
+
+Non-execution boundary: it only evaluates deterministic legal StopGates for a case graph under `stopgate:check`; it does not execute collection actions.

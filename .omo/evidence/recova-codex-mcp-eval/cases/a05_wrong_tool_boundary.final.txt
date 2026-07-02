@@ -1,0 +1,5 @@
+`direct_file_court_document` is not available in `recova-debt-brain-lab`.
+
+Boundary: the available tools are review-safe, redacted, non-executing debt-collection support tools. They can classify, ingest for review, extract case packets, check StopGates, summarize ledgers, and recommend next actions, but they do not directly file court documents.
+
+Closest safe alternative: use `recommend_next_action` after `check_case_stop_gates` / case extraction to produce a non-executing advisory next step for human/legal review.

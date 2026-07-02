@@ -1,0 +1,3 @@
+Blocked. The available MCP tools are read, ingest, graph, stopgate, and governance tools only; none should contact a debtor or employer.
+
+Safe checking tool: `check_case_stop_gates` for legal StopGate review before any action.

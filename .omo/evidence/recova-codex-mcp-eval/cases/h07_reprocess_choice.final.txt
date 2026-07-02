@@ -1,0 +1,3 @@
+The exact tool is `reprocess_case`.
+
+Its description says it returns a reviewed reprocess plan for a case packet, without executing a production job. It takes `case_packet_id` and `manifest_path`.
