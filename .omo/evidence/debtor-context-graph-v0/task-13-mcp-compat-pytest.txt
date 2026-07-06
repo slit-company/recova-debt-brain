@@ -1,0 +1,4 @@
+pytest=pass
+collected=19
+passed=19
+scope=task-13-mcp-compat

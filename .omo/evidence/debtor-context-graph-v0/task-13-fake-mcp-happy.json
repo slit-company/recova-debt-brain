@@ -1,0 +1,61 @@
+{
+  "base_tool_names": [
+    "list_debt_collection_tools",
+    "ingest_legal_document",
+    "ingest_ocr_markdown",
+    "get_ingest_status",
+    "classify_legal_document",
+    "extract_case_packet",
+    "get_case_graph",
+    "check_case_stop_gates",
+    "check_limitation_status",
+    "check_attachment_target_rules",
+    "summarize_case_ledger",
+    "recommend_next_action",
+    "list_unknown_document_types",
+    "review_extracted_fact",
+    "promote_ontology_candidate",
+    "reprocess_case"
+  ],
+  "debtor_tool_names": [
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate"
+  ],
+  "fake_mcp_registered_tool_count": 21,
+  "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+  "pii_profile": {
+    "raw_text_included": false,
+    "redacted": {
+      "account": 0,
+      "address": 0,
+      "national_id": 0,
+      "phone": 0
+    },
+    "source_text_included": false
+  },
+  "route_count": 18,
+  "route_explanation_keys": [
+    "blocking_facts",
+    "legal_source_refs",
+    "missing_facts",
+    "no_direct_execution",
+    "required_facts",
+    "review_status",
+    "route_id",
+    "route_label",
+    "source_fact_ids",
+    "status"
+  ],
+  "route_explanation_no_direct_execution": true,
+  "route_explanation_status": "possible",
+  "schema_version": "recova-task-13-fake-mcp-evidence/v1",
+  "sdk_free_adapter_import": true,
+  "seen_scopes": [
+    "debtor_graph:routes"
+  ],
+  "snapshot_replay_id": "snapshot-replay:9ac03810636becb2",
+  "tool_count": 21
+}

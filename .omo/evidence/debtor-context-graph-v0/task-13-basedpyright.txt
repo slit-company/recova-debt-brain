@@ -1,0 +1,2 @@
+basedpyright level error: 0 errors, 1 warning, 0 notes
+warning_note=one reportAny warning remains at the stdlib json.loads boundary in the test JSON helper; no source paths or code lines retained
