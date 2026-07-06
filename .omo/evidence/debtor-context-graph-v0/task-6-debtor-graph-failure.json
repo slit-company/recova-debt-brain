@@ -1,0 +1,317 @@
+{
+  "assertions": {
+    "distinct_debtor_graph_ids": true,
+    "first_identity_status": "identity_unresolved",
+    "first_identity_unresolved_review": true,
+    "second_identity_status": "identity_unresolved",
+    "second_identity_unresolved_review": true
+  },
+  "graphs": [
+    {
+      "asset_hints": [],
+      "case_packets": [
+        {
+          "case_packet_id": "case-packet:e847dcdfa033971a",
+          "document_ids": [
+            "document:weak-alpha"
+          ],
+          "fact_ids": [
+            "fact:enforceable_title:ab663a029f54fadc",
+            "fact:money_payment_enforcement_title:7a794639d65a0be4"
+          ],
+          "identity_status": "identity_unresolved",
+          "source_refs": [
+            "fixture:weak-identity/alpha/pages/payment.md#page=1"
+          ]
+        }
+      ],
+      "claims": [],
+      "debtor_graph_id": "debtor-graph:5e5ca7d32b0eb172",
+      "document_assemblies": [
+        {
+          "assembly_id": "assembly:weak-alpha",
+          "assembly_method": "recova-document-assembly@v0",
+          "canonical_document_type": "payment_order",
+          "confidence": 0.91,
+          "document_id": "document:weak-alpha",
+          "page_ids": [
+            "page:weak-alpha:0001"
+          ],
+          "procedure_episode_id": null,
+          "review_status": "assembled",
+          "source_hashes": [
+            "sha256:41b4edbd57fb2173f291640cbeacab576512e405e8d73d39cee18126c4e4c5ce"
+          ],
+          "source_refs": [
+            "fixture:weak-identity/alpha/pages/payment.md#page=1"
+          ]
+        }
+      ],
+      "document_pages": [
+        {
+          "char_count": 198,
+          "classifier_document_type": "payment_order",
+          "line_count": 6,
+          "page_id": "page:weak-alpha:0001",
+          "page_order": 1,
+          "relative_path": "weak-identity/alpha/pages/payment.md",
+          "review_status": "assembled",
+          "source_hash": "sha256:41b4edbd57fb2173f291640cbeacab576512e405e8d73d39cee18126c4e4c5ce",
+          "source_ref": "fixture:weak-identity/alpha/pages/payment.md#page=1"
+        }
+      ],
+      "enforcement_titles": [],
+      "fact_assertions": [
+        {
+          "chunk_id": "page:weak-alpha:0001#L1-6",
+          "confidence": 0.91,
+          "derived": true,
+          "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+          "fact_id": "fact:enforceable_title:ab663a029f54fadc",
+          "line_end": 6,
+          "line_start": 1,
+          "object_value": {
+            "document_type": "payment-order"
+          },
+          "observed_time": null,
+          "ontology_version": "recova-debt-collection@v0",
+          "predicate": "enforceable_title",
+          "review_status": "accepted",
+          "source_document_id": "document:weak-alpha",
+          "source_hash": "sha256:41b4edbd57fb2173f291640cbeacab576512e405e8d73d39cee18126c4e4c5ce",
+          "source_ref": "fixture:weak-identity/alpha/pages/payment.md#page=1",
+          "source_refs": [
+            "fixture:weak-identity/alpha/pages/payment.md#page=1"
+          ],
+          "subject_id": "document:weak-alpha",
+          "valid_time": null
+        },
+        {
+          "chunk_id": "page:weak-alpha:0001#L1-6",
+          "confidence": 0.91,
+          "derived": true,
+          "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+          "fact_id": "fact:money_payment_enforcement_title:7a794639d65a0be4",
+          "line_end": 6,
+          "line_start": 1,
+          "object_value": {
+            "document_type": "payment-order"
+          },
+          "observed_time": null,
+          "ontology_version": "recova-debt-collection@v0",
+          "predicate": "money_payment_enforcement_title",
+          "review_status": "accepted",
+          "source_document_id": "document:weak-alpha",
+          "source_hash": "sha256:41b4edbd57fb2173f291640cbeacab576512e405e8d73d39cee18126c4e4c5ce",
+          "source_ref": "fixture:weak-identity/alpha/pages/payment.md#page=1",
+          "source_refs": [
+            "fixture:weak-identity/alpha/pages/payment.md#page=1"
+          ],
+          "subject_id": "document:weak-alpha",
+          "valid_time": null
+        }
+      ],
+      "graph_snapshot": {
+        "extractor_versions": [
+          "trustgraph_legal.debtor_context_types@0.1.0"
+        ],
+        "fact_assertion_ids": [
+          "fact:enforceable_title:ab663a029f54fadc",
+          "fact:money_payment_enforcement_title:7a794639d65a0be4"
+        ],
+        "generated_at": "2026-07-06T00:00:00Z",
+        "graph_snapshot_id": "snapshot:5e5ca7d32b0eb172",
+        "legal_rule_source_version": "recova-legal-rule-sources@v0",
+        "ontology_version": "recova-debt-collection@v0",
+        "route_candidate_ids": [],
+        "route_version": "recova-debt-routes@v0",
+        "source_bundle_hash": "sha256:5e5ca7d32b0eb17239079ebeef4e5daebf3643036083916817cccb8c4cb81043"
+      },
+      "graph_snapshot_id": "snapshot:5e5ca7d32b0eb172",
+      "identity_resolution": {
+        "debtor_subject_id": "debtor-graph:5e5ca7d32b0eb172",
+        "method": "source_bundle_hash_fallback",
+        "source_bundle_hash": "sha256:5e5ca7d32b0eb17239079ebeef4e5daebf3643036083916817cccb8c4cb81043",
+        "status": "identity_unresolved"
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "procedure_episodes": [],
+      "review_items": [
+        {
+          "reason_code": "identity_unresolved",
+          "review_item_id": "review:identity-unresolved:5e5ca7d32b0eb172",
+          "review_reason": "identity_unresolved",
+          "source_bundle_hash": "sha256:5e5ca7d32b0eb17239079ebeef4e5daebf3643036083916817cccb8c4cb81043"
+        }
+      ],
+      "route_candidates": [],
+      "schema_version": "recova-debtor-context-graph/v1",
+      "stop_gates": [],
+      "summary": {
+        "case_packets": 1,
+        "document_assemblies": 1,
+        "document_pages": 1,
+        "fact_assertions": 2,
+        "review_items": 1,
+        "route_candidates": 0
+      }
+    },
+    {
+      "asset_hints": [],
+      "case_packets": [
+        {
+          "case_packet_id": "case-packet:7cd64032b3e4754f",
+          "document_ids": [
+            "document:weak-beta"
+          ],
+          "fact_ids": [
+            "fact:enforceable_title:d96ca4714bb6c35b",
+            "fact:money_payment_enforcement_title:325a5d5213b19664"
+          ],
+          "identity_status": "identity_unresolved",
+          "source_refs": [
+            "fixture:weak-identity/beta/pages/payment.md#page=1"
+          ]
+        }
+      ],
+      "claims": [],
+      "debtor_graph_id": "debtor-graph:95c0229049a46291",
+      "document_assemblies": [
+        {
+          "assembly_id": "assembly:weak-beta",
+          "assembly_method": "recova-document-assembly@v0",
+          "canonical_document_type": "payment_order",
+          "confidence": 0.91,
+          "document_id": "document:weak-beta",
+          "page_ids": [
+            "page:weak-beta:0001"
+          ],
+          "procedure_episode_id": null,
+          "review_status": "assembled",
+          "source_hashes": [
+            "sha256:96dbcc41fbc43e23f2052b82af0d648ff99c33584ca1167a5c670b4c8c30667e"
+          ],
+          "source_refs": [
+            "fixture:weak-identity/beta/pages/payment.md#page=1"
+          ]
+        }
+      ],
+      "document_pages": [
+        {
+          "char_count": 197,
+          "classifier_document_type": "payment_order",
+          "line_count": 6,
+          "page_id": "page:weak-beta:0001",
+          "page_order": 1,
+          "relative_path": "weak-identity/beta/pages/payment.md",
+          "review_status": "assembled",
+          "source_hash": "sha256:96dbcc41fbc43e23f2052b82af0d648ff99c33584ca1167a5c670b4c8c30667e",
+          "source_ref": "fixture:weak-identity/beta/pages/payment.md#page=1"
+        }
+      ],
+      "enforcement_titles": [],
+      "fact_assertions": [
+        {
+          "chunk_id": "page:weak-beta:0001#L1-6",
+          "confidence": 0.91,
+          "derived": true,
+          "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+          "fact_id": "fact:enforceable_title:d96ca4714bb6c35b",
+          "line_end": 6,
+          "line_start": 1,
+          "object_value": {
+            "document_type": "payment-order"
+          },
+          "observed_time": null,
+          "ontology_version": "recova-debt-collection@v0",
+          "predicate": "enforceable_title",
+          "review_status": "accepted",
+          "source_document_id": "document:weak-beta",
+          "source_hash": "sha256:96dbcc41fbc43e23f2052b82af0d648ff99c33584ca1167a5c670b4c8c30667e",
+          "source_ref": "fixture:weak-identity/beta/pages/payment.md#page=1",
+          "source_refs": [
+            "fixture:weak-identity/beta/pages/payment.md#page=1"
+          ],
+          "subject_id": "document:weak-beta",
+          "valid_time": null
+        },
+        {
+          "chunk_id": "page:weak-beta:0001#L1-6",
+          "confidence": 0.91,
+          "derived": true,
+          "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+          "fact_id": "fact:money_payment_enforcement_title:325a5d5213b19664",
+          "line_end": 6,
+          "line_start": 1,
+          "object_value": {
+            "document_type": "payment-order"
+          },
+          "observed_time": null,
+          "ontology_version": "recova-debt-collection@v0",
+          "predicate": "money_payment_enforcement_title",
+          "review_status": "accepted",
+          "source_document_id": "document:weak-beta",
+          "source_hash": "sha256:96dbcc41fbc43e23f2052b82af0d648ff99c33584ca1167a5c670b4c8c30667e",
+          "source_ref": "fixture:weak-identity/beta/pages/payment.md#page=1",
+          "source_refs": [
+            "fixture:weak-identity/beta/pages/payment.md#page=1"
+          ],
+          "subject_id": "document:weak-beta",
+          "valid_time": null
+        }
+      ],
+      "graph_snapshot": {
+        "extractor_versions": [
+          "trustgraph_legal.debtor_context_types@0.1.0"
+        ],
+        "fact_assertion_ids": [
+          "fact:enforceable_title:d96ca4714bb6c35b",
+          "fact:money_payment_enforcement_title:325a5d5213b19664"
+        ],
+        "generated_at": "2026-07-06T00:00:00Z",
+        "graph_snapshot_id": "snapshot:95c0229049a46291",
+        "legal_rule_source_version": "recova-legal-rule-sources@v0",
+        "ontology_version": "recova-debt-collection@v0",
+        "route_candidate_ids": [],
+        "route_version": "recova-debt-routes@v0",
+        "source_bundle_hash": "sha256:95c0229049a462911de07e4160da762f3b407c59005878ba3e0d08af8ef93486"
+      },
+      "graph_snapshot_id": "snapshot:95c0229049a46291",
+      "identity_resolution": {
+        "debtor_subject_id": "debtor-graph:95c0229049a46291",
+        "method": "source_bundle_hash_fallback",
+        "source_bundle_hash": "sha256:95c0229049a462911de07e4160da762f3b407c59005878ba3e0d08af8ef93486",
+        "status": "identity_unresolved"
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "procedure_episodes": [],
+      "review_items": [
+        {
+          "reason_code": "identity_unresolved",
+          "review_item_id": "review:identity-unresolved:95c0229049a46291",
+          "review_reason": "identity_unresolved",
+          "source_bundle_hash": "sha256:95c0229049a462911de07e4160da762f3b407c59005878ba3e0d08af8ef93486"
+        }
+      ],
+      "route_candidates": [],
+      "schema_version": "recova-debtor-context-graph/v1",
+      "stop_gates": [],
+      "summary": {
+        "case_packets": 1,
+        "document_assemblies": 1,
+        "document_pages": 1,
+        "fact_assertions": 2,
+        "review_items": 1,
+        "route_candidates": 0
+      }
+    }
+  ],
+  "scenario": "two_similar_debtor_placeholders_without_identity_evidence",
+  "schema_version": "task-6-debtor-graph-failure/v1"
+}
