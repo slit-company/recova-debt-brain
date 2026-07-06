@@ -1,7 +1,7 @@
 {
   "schema_version": "task-13-integration-evidence/v1",
   "task": "Todo 13 integration fixtures and end-to-end domain tests",
-  "generated_at": "2026-07-06T20:08:51.683329+00:00",
+  "generated_at": "2026-07-06T20:11:07.202714+00:00",
   "fixture_bundle": "tests/fixtures/claim-domain-v1/synthetic_claim_states.json",
   "manual_fixture": "tests/fixtures/claim-domain-v1/minimized_manual_v2_scenarios.md",
   "scenario_count": 9,
@@ -201,7 +201,7 @@
   ],
   "focused_pytest_command": "/opt/homebrew/bin/python3 -m pytest tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py -q",
   "focused_pytest_returncode": 0,
-  "focused_pytest_summary": "============================== 6 passed in 2.54s ===============================",
+  "focused_pytest_summary": "============================== 6 passed in 2.93s ===============================",
   "non_execution_fields_absent": true,
   "pii_profile": {
     "raw_text_included": false,
