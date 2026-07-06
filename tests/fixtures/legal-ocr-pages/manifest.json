@@ -1,0 +1,164 @@
+{
+  "schema_version": "legal-ocr-pages-fixture-manifest/v1",
+  "fixture_id": "debtor-context-page-assembly-minimal-v1",
+  "description": "Synthetic minimized page-level OCR fixture set for debtor document assembly.",
+  "pii_profile": {
+    "synthetic_only": true,
+    "real_ocr_text_copied": false,
+    "matched_text_included": false,
+    "source_paths_included": false
+  },
+  "page_file_policy": {
+    "encoding": "utf-8",
+    "format": "markdown",
+    "real_identifiers_allowed": false,
+    "safe_placeholder_style": "UPPER_SNAKE_TOKEN_IN_BRACKETS"
+  },
+  "expected_assemblies": [
+    {
+      "assembly_id": "assembly:synthetic-payment-order",
+      "canonical_document_type": "payment_order",
+      "expected_page_ids": [
+        "page:synthetic-payment-order:001",
+        "page:synthetic-payment-order:002"
+      ],
+      "review_status": "assembled"
+    },
+    {
+      "assembly_id": "assembly:synthetic-service-finality",
+      "canonical_document_type": "service_finality_execution_clause",
+      "expected_page_ids": [
+        "page:synthetic-service-finality:001"
+      ],
+      "review_status": "assembled"
+    },
+    {
+      "assembly_id": "assembly:synthetic-unknown-review",
+      "canonical_document_type": "unknown",
+      "expected_page_ids": [
+        "page:synthetic-unknown-review:001"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "assembly_id": "assembly:synthetic-attachment-order",
+      "canonical_document_type": "attachment_collection_order",
+      "expected_page_ids": [
+        "page:synthetic-attachment-order:001"
+      ],
+      "review_status": "assembled"
+    }
+  ],
+  "pages": [
+    {
+      "page_id": "page:synthetic-payment-order:001",
+      "document_id": "document:synthetic-payment-order",
+      "canonical_document_type": "payment_order",
+      "relative_path": "pages/payment_order_001.md",
+      "page_order": 1,
+      "expected_assembly_id": "assembly:synthetic-payment-order",
+      "expected_document_type": "payment_order",
+      "page_role": "title_and_parties",
+      "source_ref": "fixture:legal-ocr-pages/payment-order#page=1",
+      "source_hash": "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+      "line_count": 12,
+      "char_count": 424,
+      "keyword_signals": {
+        "payment_order": 2,
+        "attachment": 0,
+        "service_finality": 0,
+        "unknown_review": 0
+      },
+      "confidence": 0.94,
+      "review_status": "synthetic_reviewed"
+    },
+    {
+      "page_id": "page:synthetic-payment-order:002",
+      "document_id": "document:synthetic-payment-order",
+      "canonical_document_type": "payment_order",
+      "relative_path": "pages/payment_order_002.md",
+      "page_order": 2,
+      "expected_assembly_id": "assembly:synthetic-payment-order",
+      "expected_document_type": "payment_order",
+      "page_role": "amount_basis",
+      "source_ref": "fixture:legal-ocr-pages/payment-order#page=2",
+      "source_hash": "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9",
+      "line_count": 12,
+      "char_count": 463,
+      "keyword_signals": {
+        "payment_order": 2,
+        "attachment": 0,
+        "service_finality": 0,
+        "unknown_review": 0
+      },
+      "confidence": 0.93,
+      "review_status": "synthetic_reviewed"
+    },
+    {
+      "page_id": "page:synthetic-service-finality:001",
+      "document_id": "document:synthetic-service-finality",
+      "canonical_document_type": "service_finality_execution_clause",
+      "relative_path": "pages/service_finality_001.md",
+      "page_order": 3,
+      "expected_assembly_id": "assembly:synthetic-service-finality",
+      "expected_document_type": "service_finality_execution_clause",
+      "page_role": "service_and_execution_authority",
+      "source_ref": "fixture:legal-ocr-pages/service-finality#page=1",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "line_count": 12,
+      "char_count": 509,
+      "keyword_signals": {
+        "payment_order": 0,
+        "attachment": 0,
+        "service_finality": 3,
+        "unknown_review": 0
+      },
+      "confidence": 0.91,
+      "review_status": "synthetic_reviewed"
+    },
+    {
+      "page_id": "page:synthetic-unknown-review:001",
+      "document_id": "document:synthetic-unknown-review",
+      "canonical_document_type": "unknown",
+      "relative_path": "pages/unknown_review_001.md",
+      "page_order": 4,
+      "expected_assembly_id": "assembly:synthetic-unknown-review",
+      "expected_document_type": "unknown",
+      "page_role": "review_bundle",
+      "source_ref": "fixture:legal-ocr-pages/unknown-review#page=1",
+      "source_hash": "sha256:e53c55fc08a6ae7e6397e4d8ebf3cebd8cbf8afac7938a82c1a9d263b1618286",
+      "line_count": 10,
+      "char_count": 405,
+      "keyword_signals": {
+        "payment_order": 0,
+        "attachment": 0,
+        "service_finality": 0,
+        "unknown_review": 2
+      },
+      "confidence": 0.42,
+      "review_status": "needs_review"
+    },
+    {
+      "page_id": "page:synthetic-attachment-order:001",
+      "document_id": "document:synthetic-attachment-order",
+      "canonical_document_type": "attachment_collection_order",
+      "relative_path": "pages/attachment_order_001.md",
+      "page_order": 5,
+      "expected_assembly_id": "assembly:synthetic-attachment-order",
+      "expected_document_type": "attachment_collection_order",
+      "page_role": "attachment_target",
+      "source_ref": "fixture:legal-ocr-pages/attachment-order#page=1",
+      "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+      "line_count": 12,
+      "char_count": 501,
+      "keyword_signals": {
+        "payment_order": 0,
+        "attachment": 2,
+        "service_finality": 0,
+        "unknown_review": 0
+      },
+      "confidence": 0.9,
+      "review_status": "synthetic_reviewed"
+    }
+  ]
+}

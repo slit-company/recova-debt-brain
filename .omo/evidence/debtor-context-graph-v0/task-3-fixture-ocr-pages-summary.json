@@ -1,0 +1,52 @@
+{
+  "schema_version": "legal-ocr-corpus-summary/v1",
+  "summary_kind": "aggregate_only",
+  "pii_profile": {
+    "raw_text_included": false,
+    "matched_text_included": false,
+    "source_paths_included": false
+  },
+  "corpus": {
+    "root_label": "legal-ocr-pages",
+    "markdown_source": "recursive-md",
+    "manifest_present": false,
+    "manifest_rows": 0,
+    "limit": null,
+    "sample_limited": false
+  },
+  "summary": {
+    "pages": 5,
+    "available_pages": 5,
+    "total_chars": 2302,
+    "total_lines": 58,
+    "empty_pages": 0,
+    "min_chars": 405,
+    "max_chars": 509,
+    "average_chars": 460.4,
+    "corpus_fingerprint": "sha256:c62f7b52dfa5211ed0207a512a6f13857d6856ad9f2a9a2821c4f1156d1dfa47"
+  },
+  "signal_page_counts": {
+    "payment_order": 2,
+    "service_finality": 1,
+    "attachment": 1,
+    "insolvency": 0,
+    "assignment": 0,
+    "asset_evidence": 0,
+    "ledger": 0
+  },
+  "signal_hit_counts": {
+    "payment_order": 5,
+    "service_finality": 10,
+    "attachment": 5,
+    "insolvency": 0,
+    "assignment": 0,
+    "asset_evidence": 0,
+    "ledger": 0
+  },
+  "possible_sensitive_pattern_counts": {
+    "resident_registration": 0,
+    "phone": 0,
+    "financial_identifier": 0,
+    "long_digit_sequence": 0
+  }
+}
