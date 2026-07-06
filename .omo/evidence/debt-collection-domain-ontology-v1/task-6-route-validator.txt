@@ -1,0 +1,1 @@
+PASS routes recova-debt-collection-routes@v1.0.0 sources=recova-debt-collection-domain-sources@v1.0.0 routes=32 legal_sources=21 legal_refs=68

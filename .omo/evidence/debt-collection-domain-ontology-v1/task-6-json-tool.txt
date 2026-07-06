@@ -1,0 +1,1 @@
+PASS json.tool resources/legal_routes/debt_collection_routes_v1.json

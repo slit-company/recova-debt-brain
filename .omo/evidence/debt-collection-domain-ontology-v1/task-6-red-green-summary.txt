@@ -1,0 +1,3 @@
+RED: /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_routes_v1.py -q failed before resources/legal_routes/debt_collection_routes_v1.json existed.
+GREEN: focused test passed after adding v1 catalog and domain-source-aware validator.
+COMPATIBILITY: tests/unit/legal_ontology/test_validate_routes.py also passed for v0 route sources.
