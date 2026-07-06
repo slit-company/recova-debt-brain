@@ -4,7 +4,7 @@ from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-from typing import Final, override
+from typing import Final
 
 from pydantic import JsonValue as PydanticJsonValue, TypeAdapter
 
@@ -28,7 +28,6 @@ class RouteResourceError(Exception):
     location: str
     detail: str
 
-    @override
     def __str__(self) -> str:
         return "{}: {}".format(self.location, self.detail)
 

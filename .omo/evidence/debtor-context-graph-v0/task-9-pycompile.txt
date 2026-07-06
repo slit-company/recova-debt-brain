@@ -1,0 +1,5 @@
+Command:
+/usr/bin/python3 -m py_compile trustgraph_legal/route_candidates.py tests/unit/legal_ontology/test_route_candidates.py
+
+Result:
+PASSED
