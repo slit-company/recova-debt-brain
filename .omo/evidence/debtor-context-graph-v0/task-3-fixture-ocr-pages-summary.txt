@@ -1,0 +1,1 @@
+PASS aggregate OCR summary pages=5 out=.omo/evidence/debtor-context-graph-v0/task-3-fixture-ocr-pages-summary.json

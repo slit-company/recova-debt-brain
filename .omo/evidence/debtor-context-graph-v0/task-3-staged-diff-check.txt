@@ -1,0 +1,1 @@
+PASS git diff --staged --check
