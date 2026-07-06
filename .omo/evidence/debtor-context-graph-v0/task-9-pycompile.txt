@@ -1,0 +1,11 @@
+Command:
+/usr/bin/python3 -c 'import trustgraph_legal.route_candidates; print("import-ok")'
+
+Result:
+import-ok
+
+Command:
+/usr/bin/python3 -m py_compile trustgraph_legal/route_candidates.py tests/unit/legal_ontology/test_route_candidates.py
+
+Result:
+PASSED

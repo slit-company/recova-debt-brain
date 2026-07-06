@@ -1,15 +1,20 @@
 from __future__ import annotations
 
+import json
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-from typing import Final, override
+from typing import TYPE_CHECKING, Dict, Final, List, Optional, Union
 
-from pydantic import JsonValue as PydanticJsonValue, TypeAdapter
-
-from trustgraph_legal.debtor_context_types import DebtorGraphPayload, FactAssertion, JsonObject, JsonValue, RouteCandidate
 from trustgraph_legal.stop_gates import evaluate_case_graph
+
+if TYPE_CHECKING:
+    from trustgraph_legal.debtor_context_types import DebtorGraphPayload, FactAssertion, RouteCandidate
+
+JsonScalar = Optional[Union[str, int, float, bool]]
+JsonValue = Union[JsonScalar, List["JsonValue"], Dict[str, "JsonValue"]]
+JsonObject = Dict[str, JsonValue]
 
 ROUTES_PATH: Final = Path(__file__).resolve().parents[1] / "resources" / "legal_routes" / "debt_collection_routes_v0.json"
 LEGAL_SOURCES_PATH: Final = Path(__file__).resolve().parents[1] / "resources" / "legal_rules" / "debt_collection_route_sources_v0.json"
@@ -20,20 +25,18 @@ APPROVED_LEGAL_STATUSES: Final = frozenset({"approved", "approved-static-v0", "r
 EVALUATION_DATE: Final = date(2026, 7, 6)
 GLOBAL_STOP_GATE_REASON_CODES: Final = frozenset({"invalid_fact_without_provenance", "rule_source_unapproved"})
 REVIEW_REQUIRED_STATUS: Final = "review_required"
-JSON_VALUE_ADAPTER: Final = TypeAdapter[PydanticJsonValue](PydanticJsonValue)
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)  # noqa: SLOTS_OK - Python 3.9 dataclass lacks slots.
 class RouteResourceError(Exception):
     location: str
     detail: str
 
-    @override
     def __str__(self) -> str:
         return "{}: {}".format(self.location, self.detail)
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)  # noqa: SLOTS_OK - Python 3.9 dataclass lacks slots.
 class RouteTemplate:
     route_id: str
     route_label: str
@@ -46,14 +49,14 @@ class RouteTemplate:
     direct_execution_allowed: bool
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)  # noqa: SLOTS_OK - Python 3.9 dataclass lacks slots.
 class FactHit:
     fact_ids: tuple[str, ...]
     confidence: float
     review_required: bool
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)  # noqa: SLOTS_OK - Python 3.9 dataclass lacks slots.
 class RouteEvaluationContext:
     facts: Mapping[str, FactHit]
     review_handles: frozenset[str]
@@ -62,7 +65,7 @@ class RouteEvaluationContext:
 
 
 def load_route_templates(routes_path: Path = ROUTES_PATH) -> tuple[RouteTemplate, ...]:
-    raw = JSON_VALUE_ADAPTER.validate_json(routes_path.read_bytes())
+    raw: JsonValue = json.loads(routes_path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
         raise RouteResourceError(str(routes_path), "resource root must be an object")
 
@@ -79,7 +82,7 @@ def load_route_templates(routes_path: Path = ROUTES_PATH) -> tuple[RouteTemplate
 
 
 def load_legal_source_catalog(sources_path: Path = LEGAL_SOURCES_PATH) -> Mapping[str, JsonObject]:
-    raw = JSON_VALUE_ADAPTER.validate_json(sources_path.read_bytes())
+    raw: JsonValue = json.loads(sources_path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
         raise RouteResourceError(str(sources_path), "legal source root must be an object")
     sources = raw.get("sources")
@@ -119,6 +122,8 @@ def _template(route: JsonObject, index: int) -> RouteTemplate:
 
 
 def _candidate(template: RouteTemplate, context: RouteEvaluationContext) -> RouteCandidate:
+    from trustgraph_legal.debtor_context_types import RouteCandidate
+
     missing = tuple(handle for handle in template.required_fact_handles if handle not in context.facts)
     template_blockers = tuple(
         handle
