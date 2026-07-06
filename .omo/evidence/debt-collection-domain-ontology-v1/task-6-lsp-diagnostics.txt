@@ -1,0 +1,4 @@
+PASS LSP basedpyright diagnostics severity=error
+files:
+- scripts/legal_ontology/validate_routes.py: No diagnostics found
+- tests/unit/legal_ontology/test_routes_v1.py: No diagnostics found

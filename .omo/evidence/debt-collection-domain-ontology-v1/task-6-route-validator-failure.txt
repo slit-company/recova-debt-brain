@@ -1,0 +1,2 @@
+ERROR routes.routes[0]: unknown legal source missing-domain-source
+exit_status=1

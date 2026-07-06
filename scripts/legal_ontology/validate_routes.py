@@ -5,17 +5,30 @@ import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Final, Sequence, TypeAlias
+from typing import Final, Sequence
 
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    __package__ = "scripts.legal_ontology"
 
-JsonScalar: TypeAlias = None | bool | int | float | str
-JsonValue: TypeAlias = JsonScalar | list["JsonValue"] | dict[str, "JsonValue"]
-JsonObject: TypeAlias = dict[str, JsonValue]
+from .domain_sources_v1_common import (
+    DomainSourceIssue,
+    JsonObject,
+    bool_value,
+    load_json,
+    object_list_value,
+    string_list_value,
+    text_value,
+    validate_unique_ids,
+)
+
+RouteIssue = DomainSourceIssue
 
 ROUTES_SCHEMA_VERSION: Final = "trustgraph-legal-routes/v1"
-SOURCES_SCHEMA_VERSION: Final = "trustgraph-legal-route-sources/v1"
+ROUTE_SOURCES_SCHEMA_VERSION: Final = "trustgraph-legal-route-sources/v1"
+DOMAIN_SOURCES_SCHEMA_VERSION: Final = "trustgraph-legal-domain-sources/v1"
 REQUIRED_ROUTE_TEXT_FIELDS: Final = ("route_id", "family", "status", "review_status", "execution_semantics")
-REQUIRED_SOURCE_TEXT_FIELDS: Final = (
+REQUIRED_ROUTE_SOURCE_TEXT_FIELDS: Final = (
     "source_id",
     "law_name",
     "law_id",
@@ -27,16 +40,19 @@ REQUIRED_SOURCE_TEXT_FIELDS: Final = (
     "review_status",
     "graph_use",
 )
+REQUIRED_DOMAIN_SOURCE_TEXT_FIELDS: Final = (
+    "source_id",
+    "law_name",
+    "effective_date",
+    "retrieved_at",
+    "retrieval_status",
+    "review_status",
+    "source_axis",
+    "source_ref",
+    "evaluation_date",
+    "effective_date_decision",
+)
 ADVISORY_EXECUTION_SEMANTICS: Final = "none_advisory_only"
-
-
-@dataclass(frozen=True, slots=True)
-class RouteIssue:
-    location: str
-    message: str
-
-    def format(self) -> str:
-        return f"{self.location}: {self.message}"
 
 
 @dataclass(frozen=True, slots=True)
@@ -48,59 +64,8 @@ class RouteSummary:
     route_legal_ref_count: int
 
 
-def load_json(path: Path) -> JsonObject:
-    with path.open(encoding="utf-8") as handle:
-        raw = json.load(handle)
-
-    if not isinstance(raw, dict):
-        raise TypeError("resource root must be a JSON object")
-    return raw
-
-
-def text_value(entry: JsonObject, field: str) -> str:
-    value = entry.get(field)
-    if isinstance(value, str):
-        return value
-    return ""
-
-
-def bool_value(entry: JsonObject, field: str) -> bool | None:
-    value = entry.get(field)
-    if isinstance(value, bool):
-        return value
-    return None
-
-
-def object_list_value(entry: JsonObject, field: str, location: str) -> tuple[list[JsonObject], list[RouteIssue]]:
-    value = entry.get(field)
-    if not isinstance(value, list):
-        return [], [RouteIssue(location=location, message=f"{field} must be a list")]
-
-    items: list[JsonObject] = []
-    issues: list[RouteIssue] = []
-    for index, item in enumerate(value):
-        item_location = f"{location}.{field}[{index}]"
-        if isinstance(item, dict):
-            items.append(item)
-        else:
-            issues.append(RouteIssue(location=item_location, message="entry must be an object"))
-    return items, issues
-
-
-def string_list_value(entry: JsonObject, field: str, location: str) -> tuple[list[str], list[RouteIssue]]:
-    value = entry.get(field)
-    if not isinstance(value, list):
-        return [], [RouteIssue(location=location, message=f"{field} must be a non-empty string list")]
-
-    strings: list[str] = []
-    issues: list[RouteIssue] = []
-    for index, item in enumerate(value):
-        item_location = f"{location}.{field}[{index}]"
-        if isinstance(item, str) and item:
-            strings.append(item)
-        else:
-            issues.append(RouteIssue(location=item_location, message="entry must be a non-empty string"))
-
+def required_string_list_value(entry: JsonObject, field: str, location: str) -> tuple[list[str], list[RouteIssue]]:
+    strings, issues = string_list_value(entry, field, location)
     if not strings:
         issues.append(RouteIssue(location=location, message=f"{field} must be a non-empty string list"))
     return strings, issues
@@ -117,22 +82,30 @@ def validate_resource_header(root: JsonObject, location: str, expected_schema: s
     return issues
 
 
-def validate_unique_ids(ids: Sequence[str], label: str) -> list[RouteIssue]:
-    issues: list[RouteIssue] = []
-    seen: set[str] = set()
-    for identifier in ids:
-        if identifier in seen:
-            issues.append(RouteIssue(location=label, message=f"duplicate id {identifier}"))
-        seen.add(identifier)
-    return issues
+def validate_sources_header(root: JsonObject) -> tuple[str, list[RouteIssue]]:
+    schema_version = text_value(root, "schema_version")
+    if schema_version not in (ROUTE_SOURCES_SCHEMA_VERSION, DOMAIN_SOURCES_SCHEMA_VERSION):
+        return schema_version, [
+            RouteIssue(
+                location="legal_sources",
+                message=f"schema_version must be {ROUTE_SOURCES_SCHEMA_VERSION} or {DOMAIN_SOURCES_SCHEMA_VERSION}",
+            ),
+        ]
+    return schema_version, validate_resource_header(root, "legal_sources", schema_version)
 
 
-def collect_source_ids(sources: Sequence[JsonObject]) -> tuple[set[str], list[RouteIssue]]:
+def source_text_fields(schema_version: str) -> tuple[str, ...]:
+    if schema_version == DOMAIN_SOURCES_SCHEMA_VERSION:
+        return REQUIRED_DOMAIN_SOURCE_TEXT_FIELDS
+    return REQUIRED_ROUTE_SOURCE_TEXT_FIELDS
+
+
+def collect_source_ids(sources: Sequence[JsonObject], schema_version: str) -> tuple[set[str], list[RouteIssue]]:
     source_ids: list[str] = []
     issues: list[RouteIssue] = []
     for index, source in enumerate(sources):
         location = f"legal_sources.sources[{index}]"
-        for field in REQUIRED_SOURCE_TEXT_FIELDS:
+        for field in source_text_fields(schema_version):
             if not text_value(source, field):
                 issues.append(RouteIssue(location=location, message=f"missing {field}"))
         source_id = text_value(source, "source_id")
@@ -143,13 +116,35 @@ def collect_source_ids(sources: Sequence[JsonObject]) -> tuple[set[str], list[Ro
     return set(source_ids), issues
 
 
+def collect_fact_handles(root: JsonObject) -> tuple[set[str], list[RouteIssue]]:
+    if "fact_handle_catalog" not in root:
+        return set(), []
+    fact_handles, issues = required_string_list_value(root, "fact_handle_catalog", "routes")
+    issues.extend(validate_unique_ids(fact_handles, "routes.fact_handle_catalog"))
+    return set(fact_handles), issues
+
+
+def validate_known_fact_handles(
+    fact_handles: Sequence[str],
+    catalog: set[str],
+    location: str,
+) -> list[RouteIssue]:
+    if not catalog:
+        return []
+    issues: list[RouteIssue] = []
+    for fact_handle in fact_handles:
+        if fact_handle not in catalog:
+            issues.append(RouteIssue(location=location, message=f"unknown fact handle {fact_handle}"))
+    return issues
+
+
 def validate_route_source_refs(
     route: JsonObject,
     location: str,
     legal_source_ids: set[str],
 ) -> tuple[int, list[RouteIssue]]:
-    legal_refs, issues = string_list_value(route, "legal_source_refs", location)
-    compliance_refs, compliance_issues = string_list_value(route, "compliance_source_refs", location)
+    legal_refs, issues = required_string_list_value(route, "legal_source_refs", location)
+    compliance_refs, compliance_issues = required_string_list_value(route, "compliance_source_refs", location)
     issues.extend(compliance_issues)
 
     for source_ref in legal_refs + compliance_refs:
@@ -158,19 +153,25 @@ def validate_route_source_refs(
     return len(legal_refs), issues
 
 
-def validate_route(route: JsonObject, index: int, legal_source_ids: set[str]) -> tuple[int, list[RouteIssue]]:
+def validate_route(
+    route: JsonObject,
+    index: int,
+    legal_source_ids: set[str],
+    fact_handle_catalog: set[str],
+) -> tuple[int, list[RouteIssue]]:
     location = f"routes.routes[{index}]"
     issues: list[RouteIssue] = []
 
     for field in REQUIRED_ROUTE_TEXT_FIELDS:
         if not text_value(route, field):
             issues.append(RouteIssue(location=location, message=f"missing {field}"))
-    required, required_issues = string_list_value(route, "required_fact_handles", location)
-    missing, missing_issues = string_list_value(route, "missing_fact_handles", location)
-    _, blocking_issues = string_list_value(route, "blocking_fact_handles", location)
+    required, required_issues = required_string_list_value(route, "required_fact_handles", location)
+    missing, missing_issues = required_string_list_value(route, "missing_fact_handles", location)
+    blocking, blocking_issues = required_string_list_value(route, "blocking_fact_handles", location)
     issues.extend(required_issues)
     issues.extend(missing_issues)
     issues.extend(blocking_issues)
+    issues.extend(validate_known_fact_handles((*required, *missing, *blocking), fact_handle_catalog, location))
     for required_fact in required:
         if required_fact not in missing:
             issues.append(RouteIssue(location=location, message=f"missing_fact_handles must include {required_fact}"))
@@ -190,22 +191,25 @@ def validate_route(route: JsonObject, index: int, legal_source_ids: set[str]) ->
 def validate_routes(routes_root: JsonObject, sources_root: JsonObject) -> tuple[RouteSummary | None, list[RouteIssue]]:
     issues: list[RouteIssue] = []
     issues.extend(validate_resource_header(routes_root, "routes", ROUTES_SCHEMA_VERSION))
-    issues.extend(validate_resource_header(sources_root, "legal_sources", SOURCES_SCHEMA_VERSION))
+    source_schema_version, source_header_issues = validate_sources_header(sources_root)
+    issues.extend(source_header_issues)
 
     routes, route_section_issues = object_list_value(routes_root, "routes", "routes")
     sources, source_section_issues = object_list_value(sources_root, "sources", "legal_sources")
     issues.extend(route_section_issues)
     issues.extend(source_section_issues)
 
-    legal_source_ids, source_issues = collect_source_ids(sources)
+    legal_source_ids, source_issues = collect_source_ids(sources, source_schema_version)
+    fact_handle_catalog, fact_handle_issues = collect_fact_handles(routes_root)
     issues.extend(source_issues)
+    issues.extend(fact_handle_issues)
 
     route_ids = [text_value(route, "route_id") for route in routes if text_value(route, "route_id")]
     issues.extend(validate_unique_ids(route_ids, "routes.routes"))
 
     route_legal_ref_count = 0
     for index, route in enumerate(routes):
-        legal_ref_count, route_issues = validate_route(route, index, legal_source_ids)
+        legal_ref_count, route_issues = validate_route(route, index, legal_source_ids, fact_handle_catalog)
         route_legal_ref_count += legal_ref_count
         issues.extend(route_issues)
 
