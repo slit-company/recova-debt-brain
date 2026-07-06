@@ -1,0 +1,12 @@
+branch=team/team-8953292e/F
+owned_status_before_commit:
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-5-diff-check.txt
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-5-focused-pytest.txt
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-5-isolation-proof.txt
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-5-json-tool.txt
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-5-py-compile.txt
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-5-size-check.txt
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-5-workflow-validator.txt
+?? resources/workflows/debt_collection_workflow_v1.json
+?? scripts/legal_ontology/validate_workflow_v1.py
+?? tests/unit/legal_ontology/test_workflow_v1.py
