@@ -1,0 +1,5 @@
+Command:
+rg -n --pcre2 '[0-9]{6}-[0-9]{7}|(?:\+82[-.[:space:]]?)?0[0-9]{1,2}[-.[:space:]]?[0-9]{3,4}[-.[:space:]]?[0-9]{4}|(계좌|은행|입금|송금|account|bank).{0,24}[0-9]{2,6}[-.[:space:]][0-9]{2,6}[-.[:space:]][0-9]{2,8}|주민등록번호' trustgraph_legal/route_candidates.py tests/unit/legal_ontology/test_route_candidates.py .omo/evidence/debtor-context-graph-v0/task-9-legal-route-happy.json .omo/evidence/debtor-context-graph-v0/task-9-legal-route-failure.json .omo/evidence/debtor-context-graph-v0/task-9-focused-pytest.txt .omo/evidence/debtor-context-graph-v0/task-9-pycompile.txt .omo/evidence/debtor-context-graph-v0/task-9-diff-check.txt ../../artifacts/K-route-stopgate-integration-report.md
+
+Result:
+NO_FINDINGS
