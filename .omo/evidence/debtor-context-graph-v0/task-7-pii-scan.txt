@@ -1,0 +1,5 @@
+HASH_ONLY_FALSE_POSITIVES
+findings_count=1
+matched_values_printed=false
+reason=only sha256-shaped snapshot metadata matched the generic account/hash-adjacent PII pattern
+paths=.omo/evidence/debtor-context-graph-v0/task-7-snapshot-diff-happy.json

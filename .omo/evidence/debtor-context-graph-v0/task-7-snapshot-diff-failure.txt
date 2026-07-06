@@ -1,0 +1,68 @@
+{
+  "issues": [
+    {
+      "fact_id": "fact:title",
+      "field_name": "source_ref",
+      "reason_code": "missing_source_ref",
+      "source_ref": null
+    },
+    {
+      "fact_id": "fact:title",
+      "field_name": "source_hash",
+      "reason_code": "invalid_source_hash",
+      "source_ref": "not-a-sha256"
+    },
+    {
+      "fact_id": "fact:title",
+      "field_name": "line_start",
+      "reason_code": "invalid_line_span",
+      "source_ref": null
+    },
+    {
+      "fact_id": "fact:bank",
+      "field_name": "source_ref",
+      "reason_code": "placeholder_source_ref",
+      "source_ref": "missing"
+    },
+    {
+      "fact_id": "fact:bank",
+      "field_name": "source_document_id",
+      "reason_code": "placeholder_source_document_id",
+      "source_ref": "placeholder:doc"
+    },
+    {
+      "fact_id": "fact:bank",
+      "field_name": "chunk_id",
+      "reason_code": "placeholder_chunk_id",
+      "source_ref": "todo"
+    },
+    {
+      "fact_id": "fact:bank",
+      "field_name": "extractor_version",
+      "reason_code": "missing_extractor_version",
+      "source_ref": null
+    },
+    {
+      "fact_id": "fact:bank",
+      "field_name": "ontology_version",
+      "reason_code": "placeholder_ontology_version",
+      "source_ref": "todo"
+    },
+    {
+      "fact_id": "fact:bank",
+      "field_name": "review_status",
+      "reason_code": "missing_review_status",
+      "source_ref": null
+    },
+    {
+      "fact_id": "fact:bank",
+      "field_name": "confidence",
+      "reason_code": "invalid_confidence",
+      "source_ref": null
+    }
+  ],
+  "summary": {
+    "issues": 10
+  },
+  "valid": false
+}
