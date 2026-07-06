@@ -10,6 +10,13 @@ from trustgraph_legal.fields import DocumentInput, extract_fields
 from trustgraph_legal.governance import attempt_promotion, build_governance_payload
 from trustgraph_legal.governance_models import JsonValue, OntologyCandidate
 from trustgraph_legal.mcp_envelope import source_refs
+from trustgraph_legal.mcp_debtor_handlers import (
+    assemble_debtor_documents,
+    build_debtor_context_graph,
+    explain_debtor_route_candidate,
+    get_debtor_graph_snapshot,
+    list_debtor_route_candidates,
+)
 from trustgraph_legal.mcp_inputs import (
     DEFAULT_COLLECTION,
     document_id,
@@ -87,7 +94,8 @@ def extract_case_packet(args: JsonObject, root: Path) -> JsonObject:
         return {"document_id": doc_id, "classification": classification.to_json(), "field_extraction": fields.to_json()}
     graph = case_graph(args, root)
     packets = graph.get("case_packets")
-    return packets[0] if isinstance(packets, list) and packets else {"status": "not_found"}
+    first_packet = packets[0] if isinstance(packets, list) and packets else None
+    return first_packet if isinstance(first_packet, dict) else {"status": "not_found"}
 
 
 def case_graph_result(args: JsonObject, root: Path) -> JsonObject:
@@ -103,8 +111,8 @@ def stopgate_result(args: JsonObject, root: Path, reason_codes: Optional[Tuple[s
         "case_id": _stopgate_case_id(payload),
         "decision": "보류" if gates else "가능",
         "risk_flags": _risk_flags(gates),
-        "source_refs": source_refs(gates),
-        "stop_gates": gates,
+        "source_refs": source_refs(_json_list(gates)),
+        "stop_gates": _json_list(gates),
         "all_case_decision": payload["decision"],
         "rule_refs": payload["rule_refs"],
     }
@@ -115,7 +123,7 @@ def ledger_summary(args: JsonObject, root: Path) -> JsonObject:
         entity for entity in packet_entities(case_graph(args, root))
         if entity.get("ontology_class") in {"operational-ledger", "ledger-entry", "recovery-transaction", "cost-entry"}
     ]
-    return {"status": "summarized", "ledger_entries": entries, "entry_count": len(entries)}
+    return {"status": "summarized", "ledger_entries": _json_list(entries), "entry_count": len(entries)}
 
 
 def recommend_next_action(args: JsonObject, root: Path) -> JsonObject:
@@ -189,7 +197,7 @@ def _normalize_stopgate_payload(payload: JsonObject) -> JsonObject:
     normalized = dict(payload)
     normalized["case_id"] = _stopgate_case_id(payload)
     normalized["risk_flags"] = _risk_flags(gates)
-    normalized["source_refs"] = source_refs(gates)
+    normalized["source_refs"] = source_refs(_json_list(gates))
     return normalized
 
 
@@ -204,7 +212,11 @@ def _risk_flags(gates: List[JsonObject]) -> List[JsonValue]:
         for gate in gates
         if gate.get("reason_code")
     }
-    return sorted(flags)
+    return [flag for flag in sorted(flags)]
+
+
+def _json_list(items: List[JsonObject]) -> List[JsonValue]:
+    return [item for item in items]
 
 
 def _candidate(args: JsonObject) -> OntologyCandidate:
@@ -219,3 +231,25 @@ def _candidate(args: JsonObject) -> OntologyCandidate:
         provenance={"source_ref": str_arg(args, "source_ref", "mcp:ontology-candidate")},
         risk_flags=("no-auto-promotion",),
     )
+
+
+__all__ = [
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "case_graph_result",
+    "classify_result",
+    "explain_debtor_route_candidate",
+    "extract_case_packet",
+    "get_debtor_graph_snapshot",
+    "ingest_legal_document",
+    "ingest_ocr_markdown",
+    "ledger_summary",
+    "list_debtor_route_candidates",
+    "promote_candidate",
+    "recommend_next_action",
+    "reprocess_case",
+    "review_fact",
+    "status_result",
+    "stopgate_result",
+    "unknown_document_types",
+]

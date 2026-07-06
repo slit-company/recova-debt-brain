@@ -44,6 +44,11 @@ EXPECTED_TOOLS: Final = {
     "promote_ontology_candidate": "governance",
     "reprocess_case": "governance",
     "list_debt_collection_tools": "read",
+    "assemble_debtor_documents": "debtor_graph",
+    "build_debtor_context_graph": "debtor_graph",
+    "get_debtor_graph_snapshot": "debtor_graph",
+    "list_debtor_route_candidates": "debtor_graph",
+    "explain_debtor_route_candidate": "debtor_graph",
 }
 SENSITIVE_SHAPES: Final = (
     re.compile(r"\b\d{6}-\d{7}\b"),
@@ -88,7 +93,7 @@ def test_todo_9_tools_publish_stable_contracts() -> None:
     # Then: every required tool has stable schema, group, scope, and JSON shapes.
     assert definition_names == set(EXPECTED_TOOLS)
     assert listed_names == set(EXPECTED_TOOLS)
-    assert len(listed_tools) == 16
+    assert len(listed_tools) == 21
     for tool_name, group in EXPECTED_TOOLS.items():
         contract = listed_tools[tool_name]
         assert contract["schema_version"] == "trustgraph-legal-mcp-tool-contract/v1"
@@ -284,7 +289,7 @@ def _legal_tools_adapter() -> ModuleType:
 def _mapping(item: object) -> Mapping[str, object]:
     if isinstance(item, Mapping):
         return item
-    if is_dataclass(item):
+    if is_dataclass(item) and not isinstance(item, type):
         return asdict(item)
     raise AssertionError(f"tool definition is not mapping-like: {item!r}")
 
@@ -300,9 +305,11 @@ def _assert_stable_envelope(response: JsonObject) -> None:
     assert response["group"] == EXPECTED_TOOLS[str(response["tool_name"])]
     assert isinstance(response["scope"], str)
     assert response["scope"].startswith(str(response["group"]))
-    assert response["pii_profile"]["raw_text_included"] is False
-    assert response["pii_profile"]["source_text_included"] is False
-    assert response["redaction"]["status"] == "redacted"
+    pii_profile = _json_object(response["pii_profile"])
+    redaction = _json_object(response["redaction"])
+    assert pii_profile["raw_text_included"] is False
+    assert pii_profile["source_text_included"] is False
+    assert redaction["status"] == "redacted"
     assert isinstance(response["source_refs"], list)
     assert isinstance(response["warnings"], list)
     assert "result" in response
@@ -332,3 +339,8 @@ def _result_object(response: JsonObject) -> JsonObject:
     result = response["result"]
     assert isinstance(result, dict)
     return result
+
+
+def _json_object(value: JsonValue) -> JsonObject:
+    assert isinstance(value, dict)
+    return value
