@@ -1,0 +1,28 @@
+{
+  "assemblies": 1,
+  "case_packets": 1,
+  "corpus_alias": "real_ocr_corpus",
+  "debtor_graph_mcp_tools_appended": true,
+  "debtor_graph_tool_count": 5,
+  "document_pages": 208,
+  "existing_16_mcp_tools_first": true,
+  "graph_snapshot_id": "snapshot:2e5d69b6403f8072",
+  "mcp_fixture_route_count": 18,
+  "mcp_path_probe_reason": "path_outside_repo_root",
+  "mcp_path_probe_status": "rejected",
+  "mcp_tool_count": 21,
+  "pages": 208,
+  "raw_text_included": false,
+  "real_ocr_root_included": false,
+  "review_items": 1,
+  "route_candidates": 18,
+  "route_status_counts": {
+    "missing_facts": 18
+  },
+  "schema_version": "recova-debtor-context-graph/final-eval-v1",
+  "snapshot_replay_id": "snapshot-replay:4f9c2e0e9544205b",
+  "snapshots": 1,
+  "source_paths_included": false,
+  "source_text_included": false,
+  "unknown_assemblies": 1
+}

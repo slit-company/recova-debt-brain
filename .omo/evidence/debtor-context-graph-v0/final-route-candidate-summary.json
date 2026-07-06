@@ -1,0 +1,13 @@
+{
+  "corpus_alias": "real_ocr_corpus",
+  "raw_text_included": false,
+  "review_items": 1,
+  "route_candidates": 18,
+  "route_status_counts": {
+    "missing_facts": 18
+  },
+  "schema_version": "recova-debtor-context-graph/final-route-summary-v1",
+  "source_paths_included": false,
+  "source_text_included": false,
+  "unknown_assemblies": 1
+}

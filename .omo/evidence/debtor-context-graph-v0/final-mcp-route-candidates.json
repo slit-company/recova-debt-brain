@@ -1,0 +1,14 @@
+{
+  "group": "debtor_graph",
+  "raw_text_included": false,
+  "route_count": 18,
+  "route_status_counts": {
+    "missing_facts": 18
+  },
+  "schema_version": "recova-debtor-context-graph/final-mcp-route-check-v1",
+  "scope": "debtor_graph:routes",
+  "source_paths_included": false,
+  "source_text_included": false,
+  "tool_name": "list_debtor_route_candidates",
+  "warnings": []
+}
