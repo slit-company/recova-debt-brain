@@ -47,6 +47,7 @@ def test_builds_stable_debtor_graph_with_source_grounded_review_item() -> None:
     predicates = {fact.predicate for fact in first.fact_assertions}
     assert {"enforceable_title", "third_party_debtor_bank_hint"} <= predicates
     bank_route = next(candidate for candidate in evaluate_route_candidates(first) if candidate.route_id == "bank_account_attachment")
+    assert bank_route.status == "possible"
     assert "enforceable_title" not in bank_route.missing_facts
     assert "third_party_debtor_bank_hint" not in bank_route.missing_facts
 
@@ -107,7 +108,7 @@ def _assert_material_fact(fact: FactAssertion) -> None:
     assert fact.extractor_version
     assert fact.ontology_version
     assert 0.0 <= fact.confidence <= 1.0
-    assert fact.review_status in {"accepted", "needs_review"}
+    assert fact.review_status in {"verified", "needs_review"}
     assert all(not _placeholder_source_ref(source_ref) for source_ref in fact.source_refs)
 
 
