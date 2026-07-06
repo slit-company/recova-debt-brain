@@ -1,0 +1,149 @@
+{
+  "debtor_graph_id": "debtor-graph:governance",
+  "graph_snapshot_id": "snapshot:governance",
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "production_legal_sources_modified": false,
+  "production_ontology_modified": false,
+  "production_resources_modified": false,
+  "production_routes_modified": false,
+  "records": [
+    {
+      "audit": {
+        "actor_ref": "",
+        "created_at": "2026-07-06T00:00:00Z",
+        "no_direct_execution": true,
+        "production_legal_sources_modified": false,
+        "production_ontology_modified": false,
+        "production_routes_modified": false,
+        "resource_mutation": false,
+        "updated_at": "2026-07-06T00:00:00Z"
+      },
+      "kind": "blocked_route",
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "reason_code": "route_blocked",
+      "record_id": "governance:blocked_route:574e7c619cfdea9b1b48",
+      "review_status": "review_required",
+      "severity": "high",
+      "source_fact_ids": [
+        "fact:identity-a"
+      ],
+      "source_refs": [
+        "kr-law-ok|retrieval_status=retrieved|review_status=approved_static_v0|effective_date=2026-01-01"
+      ],
+      "subject_ref": "bank_account_attachment",
+      "suggested_action": "Keep route advisory-only until blockers and legal-source review states clear."
+    },
+    {
+      "audit": {
+        "actor_ref": "",
+        "created_at": "2026-07-06T00:00:00Z",
+        "no_direct_execution": true,
+        "production_legal_sources_modified": false,
+        "production_ontology_modified": false,
+        "production_routes_modified": false,
+        "resource_mutation": false,
+        "updated_at": "2026-07-06T00:00:00Z"
+      },
+      "kind": "conflicting_fact_signal",
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "reason_code": "conflicting_fact_values",
+      "record_id": "governance:conflicting_fact_signal:dc5b645b3101d3aa5447",
+      "review_status": "review_required",
+      "severity": "high",
+      "source_fact_ids": [
+        "fact:identity-a",
+        "fact:identity-b"
+      ],
+      "source_refs": [
+        "fixture:contact-token-a.md#L1",
+        "fixture:contact-token-b.md#L2"
+      ],
+      "subject_ref": "predicate:debtor_identity",
+      "suggested_action": "Review source-backed fact values and accept one value before route use."
+    },
+    {
+      "audit": {
+        "actor_ref": "",
+        "created_at": "2026-07-06T00:00:00Z",
+        "no_direct_execution": true,
+        "production_legal_sources_modified": false,
+        "production_ontology_modified": false,
+        "production_routes_modified": false,
+        "resource_mutation": false,
+        "updated_at": "2026-07-06T00:00:00Z"
+      },
+      "kind": "identity_unresolved",
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "reason_code": "identity_unresolved",
+      "record_id": "governance:identity_unresolved:2948d5dafd6872548aa1",
+      "review_status": "review_required",
+      "severity": "high",
+      "source_fact_ids": [
+        "fact:identity-a",
+        "fact:identity-b"
+      ],
+      "source_refs": [
+        "fixture:case.md#L1",
+        "fixture:unknown-contact-token.md#L1"
+      ],
+      "subject_ref": "debtor-graph:governance",
+      "suggested_action": "Require identity evidence before merging debtor context across source bundles."
+    },
+    {
+      "audit": {
+        "actor_ref": "",
+        "created_at": "2026-07-06T00:00:00Z",
+        "no_direct_execution": true,
+        "production_legal_sources_modified": false,
+        "production_ontology_modified": false,
+        "production_routes_modified": false,
+        "resource_mutation": false,
+        "updated_at": "2026-07-06T00:00:00Z"
+      },
+      "kind": "unknown_assembly",
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "reason_code": "unknown_assembly",
+      "record_id": "governance:unknown_assembly:534ebf896eecbca1b471",
+      "review_status": "review_required",
+      "severity": "medium",
+      "source_fact_ids": [],
+      "source_refs": [
+        "fixture:unknown-contact-token.md#L1"
+      ],
+      "subject_ref": "assembly:unknown",
+      "suggested_action": "Route assembly to document-type governance review before legal-risk use."
+    }
+  ],
+  "schema_version": "recova-debtor-governance/v1",
+  "summary": {
+    "by_kind": {
+      "blocked_route": 1,
+      "conflicting_fact_signal": 1,
+      "identity_unresolved": 1,
+      "unknown_assembly": 1
+    },
+    "by_review_status": {
+      "review_required": 4
+    },
+    "by_severity": {
+      "high": 3,
+      "medium": 1
+    },
+    "records": 4
+  }
+}

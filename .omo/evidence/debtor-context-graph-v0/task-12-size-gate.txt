@@ -1,0 +1,4 @@
+trustgraph_legal/debtor_governance.py      180
+trustgraph_legal/debtor_governance_models.py      125
+trustgraph_legal/debtor_governance_sources.py       42
+tests/unit/legal_ontology/test_debtor_governance.py      204
