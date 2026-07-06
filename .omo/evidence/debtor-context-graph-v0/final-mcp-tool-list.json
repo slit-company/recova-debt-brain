@@ -1,0 +1,47 @@
+{
+  "debtor_graph_appended": true,
+  "debtor_graph_tool_count": 5,
+  "debtor_graph_tool_names": [
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate"
+  ],
+  "existing_16_first": true,
+  "existing_tool_count": 16,
+  "expected_debtor_graph_tool_names": [
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate"
+  ],
+  "raw_text_included": false,
+  "schema_version": "recova-debtor-context-graph/final-mcp-tools-v1",
+  "source_paths_included": false,
+  "tool_count": 21,
+  "tool_names": [
+    "list_debt_collection_tools",
+    "ingest_legal_document",
+    "ingest_ocr_markdown",
+    "get_ingest_status",
+    "classify_legal_document",
+    "extract_case_packet",
+    "get_case_graph",
+    "check_case_stop_gates",
+    "check_limitation_status",
+    "check_attachment_target_rules",
+    "summarize_case_ledger",
+    "recommend_next_action",
+    "list_unknown_document_types",
+    "review_extracted_fact",
+    "promote_ontology_candidate",
+    "reprocess_case",
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate"
+  ]
+}

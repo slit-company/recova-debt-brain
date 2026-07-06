@@ -1,0 +1,17 @@
+{
+  "blocking_fact_count": 0,
+  "group": "debtor_graph",
+  "legal_source_ref_count": 3,
+  "missing_fact_count": 2,
+  "no_direct_execution": true,
+  "raw_text_included": false,
+  "review_status": "review_required",
+  "route_id": "bank_account_attachment",
+  "schema_version": "recova-debtor-context-graph/final-mcp-route-explain-v1",
+  "scope": "debtor_graph:routes",
+  "source_paths_included": false,
+  "source_text_included": false,
+  "status": "missing_facts",
+  "tool_name": "explain_debtor_route_candidate",
+  "warnings": []
+}

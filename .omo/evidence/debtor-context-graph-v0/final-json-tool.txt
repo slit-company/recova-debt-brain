@@ -1,0 +1,8 @@
+VALID .omo/evidence/debtor-context-graph-v0/final-mcp-path-failure.json
+VALID .omo/evidence/debtor-context-graph-v0/final-mcp-route-candidates.json
+VALID .omo/evidence/debtor-context-graph-v0/final-mcp-route-explain.json
+VALID .omo/evidence/debtor-context-graph-v0/final-mcp-tool-list.json
+VALID .omo/evidence/debtor-context-graph-v0/final-real-ocr-assembly-summary.json
+VALID .omo/evidence/debtor-context-graph-v0/final-real-ocr-debtor-summary.json
+VALID .omo/evidence/debtor-context-graph-v0/final-real-ocr-eval.json
+VALID .omo/evidence/debtor-context-graph-v0/final-route-candidate-summary.json

@@ -1,0 +1,4 @@
+NO_FINDINGS
+scanned_scope=final-* evidence files
+checks=sensitive-identifiers,absolute-real-ocr-root,absolute-user-paths
+matched_source_lines_included=false

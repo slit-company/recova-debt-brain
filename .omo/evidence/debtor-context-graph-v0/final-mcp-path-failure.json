@@ -1,0 +1,36 @@
+{
+  "group": "debtor_graph",
+  "pii_profile": {
+    "raw_text_included": false,
+    "redacted": {
+      "account": 0,
+      "address": 0,
+      "national_id": 0,
+      "phone": 0
+    },
+    "source_text_included": false
+  },
+  "redaction": {
+    "counts": {
+      "account": 0,
+      "address": 0,
+      "national_id": 0,
+      "phone": 0
+    },
+    "default": "redacted",
+    "raw_text_included": false,
+    "source_text_included": false,
+    "status": "redacted"
+  },
+  "result": {
+    "reason": "path_outside_repo_root",
+    "status": "rejected"
+  },
+  "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+  "scope": "debtor_graph:read",
+  "source_refs": [],
+  "tool_name": "get_debtor_graph_snapshot",
+  "warnings": [
+    "path_outside_repo_root"
+  ]
+}
