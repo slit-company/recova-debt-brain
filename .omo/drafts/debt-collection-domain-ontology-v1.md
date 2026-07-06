@@ -1,9 +1,9 @@
 ---
 slug: debt-collection-domain-ontology-v1
-status: drafting
+status: plan-written
 intent: clear
 pending-action: write .omo/plans/debt-collection-domain-ontology-v1.md
-approach: integrated legal + finance + workflow domain ontology v1, grounded in the v2 practical manual and Korean-law MCP curated source evidence
+approach: claim-centered integrated legal + finance + workflow domain ontology v1, grounded in the v2 practical manual and Korean-law MCP curated source evidence
 ---
 
 # Draft: debt-collection-domain-ontology-v1
@@ -23,10 +23,12 @@ approach: integrated legal + finance + workflow domain ontology v1, grounded in 
 <!-- Record any default you adopt instead of asking, so the user can veto it at the gate. -->
 <!-- assumption | adopted default | rationale | reversible? -->
 | ontology shape | Plan one integrated, claim-centered domain ontology with separate cross-linked layers: legal, finance, workflow, evidence, route, StopGate/compliance, scoring, and action packet schemas. | User explicitly chose a bold integrated direction; v2 manual is structured as an integrated practice workflow. | reversible before implementation |
+| root boundary | `Claim` / `Receivable` is the v1 ontology root; `DebtorContextGraph` remains the runtime memory graph root. | Preserves completed debtor-context graph v0 while making the new domain brain claim-centered. | reversible only through explicit migration plan |
 | Korean-law MCP role | Use Korean-law MCP for source discovery/verification, then commit curated JSON sources; do not make deterministic tests call live law MCP. | Keeps judgments reproducible and matches current resource pattern. | reversible only with broader runtime-dependency decision |
 | execution boundary | Model draftable action packet schemas for future human review, but keep v1 non-executing: no court filing, debtor contact, payment demand, or direct collection action. | User wants the bold direction; action packet shape is useful for future agents, but execution would exceed the safe v1 boundary. | reversible in later product phase |
 | first depth target | Optimize v1 for a claim-centered domain brain: route decisions, end-to-end workflow states, evidence requirements, legal/financial blockers, priority scoring, and next-best-action guidance. | This matches the user's "채권 중심 도메인" framing and the v2 manual's practical scope. | reversible |
-| accounting depth | Include finance/accounting entities, calculation contracts, and deterministic validation fixtures where feasible; defer production-grade ledger reconciliation unless the plan review proves it is small enough. | Bold enough to shape the ontology correctly without hiding a full accounting engine inside a route-resource task. | reversible |
+| accounting depth | Include finance/accounting entities, calculation contracts, deterministic validation fixtures, and a minimal fixture calculator for explicit amount/rate/period/payment/allocation cases. | Bold enough to shape the ontology correctly without hiding production ledger mutation inside route-resource work. | reversible |
+| v1 resource versioning | Create new v1 resource files; treat v0 resources as read-only inputs, compatibility fixtures, and regression references. | Prevents accidental breakage of accepted debtor graph and MCP surfaces. | reversible only with migration plan |
 
 ## Findings (cited - path:lines)
 - The v2 manual is 2,125 lines and covers end-to-end long-term debt collection practice, from legal baseline through route catalog and Recova recommendation engine fields.
@@ -42,8 +44,10 @@ approach: integrated legal + finance + workflow domain ontology v1, grounded in 
 - Keep all outputs PII-safe and advisory-only in v1.
 - Preserve existing DebtorContextGraph and MCP contracts; v1 should extend domain reasoning without breaking the 21-tool surface.
 - User chose the bold direction: v1 should be a claim-centered Recova domain brain, not merely a narrow route recommendation expansion.
+- Root boundary is resolved: `Claim` / `Receivable` is the ontology root, while `DebtorContextGraph` remains the runtime graph root. The implementation must add a compatibility adapter instead of rewriting debtor identity/snapshot behavior.
 - Include action packet schemas as modeled future review artifacts, but do not execute them.
-- Include finance/accounting calculation contracts and fixtures where feasible, but keep production ledger mutation out of scope.
+- Include finance/accounting calculation contracts, fixtures, and minimal deterministic calculations for explicit test cases, but keep production ledger mutation out of scope.
+- Add four read-only MCP tools for claim-domain reasoning after the existing 21 tools unless a security review blocks one with an explicit deferral.
 
 ## Scope IN
 - Integrated debt-collection domain ontology v1.
@@ -68,20 +72,17 @@ approach: integrated legal + finance + workflow domain ontology v1, grounded in 
 - No production-grade accounting ledger mutation or authoritative balance recalculation unless explicitly scoped as a separate execution task.
 
 ## Open questions
-Resolved by user direction:
+Resolved by user direction and adopted recommendation:
 
 - Primary optimization target: bold claim-centered domain brain, including route decisions and end-to-end workflow states.
 - High-risk action modeling: include draftable action packet schemas for future human review, but keep execution disabled.
-- Accounting depth: include finance/accounting entities and calculation contracts; decide during plan review whether to implement a minimal deterministic calculator in v1 or leave it as schema/validator only.
+- Accounting depth: include finance/accounting entities, calculation contracts, fixtures, and a minimal deterministic fixture calculator; production ledger mutation remains out of scope.
+- Claim-centered identity boundary: model `Claim` / `Receivable` as the v1 ontology root, with Debtor, CasePacket, DocumentAssembly, LegalStatus, LedgerFacts, AssetHints, WorkflowState, and RouteCandidates as connected children. Keep `DebtorContextGraph` as the runtime memory graph root and add an adapter.
+- MCP exposure: add read-only claim-domain tools after the existing 21 tools, with the existing tool order preserved.
 
-Remaining interview question:
-
-1. Claim-centered identity boundary:
-   - Recommended: model `Claim` / `Receivable` as the primary root, with Debtor, CasePacket, DocumentAssembly, LegalStatus, LedgerFacts, AssetHints, WorkflowState, and RouteCandidates as connected children.
-   - Alternative: keep `DebtorGraph` as the root and attach one or more Claim nodes under it.
-   - Why it matters: this affects IDs, graph merge rules, MCP query shape, and how Recova handles one debtor with multiple claims.
+No blocking product questions remain for the plan.
 
 ## Approval gate
-status: interviewing
-<!-- When exploration is exhausted and unknowns are answered, set status: awaiting-approval. -->
-<!-- That durable record is the loop guard: on a later turn read it and resume at the gate instead of re-running exploration. -->
+status: plan-written
+plan: `.omo/plans/debt-collection-domain-ontology-v1.md`
+metis-review: completed; required fixes folded into plan and draft.

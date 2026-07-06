@@ -243,6 +243,43 @@ Current default recommendation after the bold-direction decision:
 - include finance/accounting entities and calculation contracts, with deterministic validation fixtures where feasible;
 - keep all real-world court filing, debtor contact, payment demand, and production mutation out of scope.
 
+### 2026-07-07 - Domain Ontology v1 plan written
+
+Plan:
+
+- `.omo/plans/debt-collection-domain-ontology-v1.md`
+
+Final planning decisions:
+
+- `Claim` / `Receivable` is the root of Domain Ontology v1.
+- `DebtorContextGraph` remains the runtime memory graph root.
+- The implementation must connect the two through a compatibility adapter instead of rewriting debtor graph identity or snapshot behavior.
+- v1 creates new resource files; v0 resources remain read-only inputs, compatibility fixtures, and regression references.
+- Legal, finance, workflow, evidence, route decision, StopGate, scoring, and action packet layers are designed together.
+- Finance/accounting includes schemas, fixtures, and minimal deterministic calculations for explicit test cases, but not production ledger mutation.
+- Action packets are modeled as `draft_only` / `human_review_required` / `execution_forbidden` style artifacts, not executable actions.
+- The MCP surface may be extended with read-only claim-domain tools after the existing 21 tools. Existing tool order must remain unchanged.
+
+Planned v1 implementation todos:
+
+1. PII-safe v2 manual inventory and candidate extractor.
+2. Claim-centered ontology v1 resource and validator.
+3. Korean-law MCP source discovery and curated legal source v1 resource.
+4. Finance and claim accounting model.
+5. Collection workflow state resource.
+6. Expanded legal route catalog v1.
+7. Route decision table and priority scoring.
+8. Advisory action packet schemas.
+9. Domain StopGate/compliance expansion.
+10. DebtorContextGraph to claim-domain adapter.
+11. Domain decision engine.
+12. Additive read-only MCP claim-domain tools.
+13. Integration fixtures and end-to-end tests.
+14. Operator/developer docs.
+15. Final eval pack and contract review.
+
+This log should continue to be updated whenever the user answers interview questions, changes product direction, or completes/accepts a major implementation slice.
+
 ## Working Rules For Future Updates
 
 - Update this file whenever the user answers an interview question.
