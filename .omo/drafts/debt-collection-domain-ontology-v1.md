@@ -22,11 +22,11 @@ approach: integrated legal + finance + workflow domain ontology v1, grounded in 
 ## Open assumptions (announced defaults)
 <!-- Record any default you adopt instead of asking, so the user can veto it at the gate. -->
 <!-- assumption | adopted default | rationale | reversible? -->
-| ontology shape | Plan one integrated domain ontology with separate cross-linked layers: legal, finance, workflow, evidence, route, StopGate/compliance. | User explicitly noted these are connected; v2 manual is structured as an integrated practice workflow. | reversible before implementation |
+| ontology shape | Plan one integrated, claim-centered domain ontology with separate cross-linked layers: legal, finance, workflow, evidence, route, StopGate/compliance, scoring, and action packet schemas. | User explicitly chose a bold integrated direction; v2 manual is structured as an integrated practice workflow. | reversible before implementation |
 | Korean-law MCP role | Use Korean-law MCP for source discovery/verification, then commit curated JSON sources; do not make deterministic tests call live law MCP. | Keeps judgments reproducible and matches current resource pattern. | reversible only with broader runtime-dependency decision |
-| execution boundary | Keep v1 advisory-only: no court filing, debtor contact, payment demand, or direct collection execution. | Existing v0 MCP and route contracts enforce no direct execution; safer and compatible. | reversible in later product phase |
-| first depth target | Optimize v1 for route recommendation, evidence requirements, legal/financial blockers, and next-step guidance; defer full automation. | Highest leverage for agent "brain" quality. | reversible |
-| accounting depth | Include finance concepts and validation hooks, but defer full ledger-calculation engine unless user explicitly prioritizes it. | Full accounting engine is a large separate subsystem. | reversible |
+| execution boundary | Model draftable action packet schemas for future human review, but keep v1 non-executing: no court filing, debtor contact, payment demand, or direct collection action. | User wants the bold direction; action packet shape is useful for future agents, but execution would exceed the safe v1 boundary. | reversible in later product phase |
+| first depth target | Optimize v1 for a claim-centered domain brain: route decisions, end-to-end workflow states, evidence requirements, legal/financial blockers, priority scoring, and next-best-action guidance. | This matches the user's "채권 중심 도메인" framing and the v2 manual's practical scope. | reversible |
+| accounting depth | Include finance/accounting entities, calculation contracts, and deterministic validation fixtures where feasible; defer production-grade ledger reconciliation unless the plan review proves it is small enough. | Bold enough to shape the ontology correctly without hiding a full accounting engine inside a route-resource task. | reversible |
 
 ## Findings (cited - path:lines)
 - The v2 manual is 2,125 lines and covers end-to-end long-term debt collection practice, from legal baseline through route catalog and Recova recommendation engine fields.
@@ -41,14 +41,20 @@ approach: integrated legal + finance + workflow domain ontology v1, grounded in 
 - Use the v2 manual as the practical workflow seed and Korean-law MCP as the legal source verification tool.
 - Keep all outputs PII-safe and advisory-only in v1.
 - Preserve existing DebtorContextGraph and MCP contracts; v1 should extend domain reasoning without breaking the 21-tool surface.
+- User chose the bold direction: v1 should be a claim-centered Recova domain brain, not merely a narrow route recommendation expansion.
+- Include action packet schemas as modeled future review artifacts, but do not execute them.
+- Include finance/accounting calculation contracts and fixtures where feasible, but keep production ledger mutation out of scope.
 
 ## Scope IN
 - Integrated debt-collection domain ontology v1.
+- Claim-centered ontology model: claim/receivable lifecycle as the main organizing axis, connected to debtors, documents, evidence, legal status, assets, workflows, routes, and review decisions.
 - Legal source expansion with Korean-law MCP evidence captured into curated JSON.
 - Finance/claim/accounting concepts needed for route judgment.
+- Finance/accounting calculation contracts for principal, interest, late damages, costs, payments, allocation, and remaining balance where feasible.
 - Practical workflow states and first-case intake classification.
 - Route catalog expansion from the v2 manual.
 - Route decision table with required facts, missing facts, blockers, StopGates, legal refs, evidence refs, and priority/scoring metadata.
+- Draftable action packet schemas for later human review, including legal-action packet, evidence-request packet, contact-review packet, and monitoring packet concepts.
 - DebtorContextGraph integration through stable fact handles and route handles.
 - Validators, tests, PII-safe evidence, and docs.
 
@@ -59,20 +65,21 @@ approach: integrated legal + finance + workflow domain ontology v1, grounded in 
 - No Supabase/remote storage/deployment work unless the user explicitly changes scope.
 - No breaking or removing existing 21 MCP tools.
 - No unrelated deployment/runbook dirty-file edits.
+- No production-grade accounting ledger mutation or authoritative balance recalculation unless explicitly scoped as a separate execution task.
 
 ## Open questions
-1. Primary optimization target for v1:
-   - Recommended: route recommendation + evidence requirements + legal/financial blockers.
-   - Alternative: full end-to-end collector operating workflow from intake to monitoring.
-   - Why it matters: this decides whether v1 prioritizes decision tables and route eligibility, or broader work-queue/orchestration states.
-2. High-risk action modeling:
-   - Recommended: advisory-only route/action candidates with human-review notes.
-   - Alternative: model draftable action packets for future human review, while still not executing.
-   - Why it matters: this affects schemas for future documents, court packets, contact packets, and approval workflow.
-3. Accounting depth:
-   - Recommended: finance concepts and evidence validation hooks only in v1.
-   - Alternative: include a full calculation engine for principal, interest, late damages, costs, payments, allocation, and remaining balance.
-   - Why it matters: full calculations require different tests, fixtures, and legal/financial edge-case coverage.
+Resolved by user direction:
+
+- Primary optimization target: bold claim-centered domain brain, including route decisions and end-to-end workflow states.
+- High-risk action modeling: include draftable action packet schemas for future human review, but keep execution disabled.
+- Accounting depth: include finance/accounting entities and calculation contracts; decide during plan review whether to implement a minimal deterministic calculator in v1 or leave it as schema/validator only.
+
+Remaining interview question:
+
+1. Claim-centered identity boundary:
+   - Recommended: model `Claim` / `Receivable` as the primary root, with Debtor, CasePacket, DocumentAssembly, LegalStatus, LedgerFacts, AssetHints, WorkflowState, and RouteCandidates as connected children.
+   - Alternative: keep `DebtorGraph` as the root and attach one or more Claim nodes under it.
+   - Why it matters: this affects IDs, graph merge rules, MCP query shape, and how Recova handles one debtor with multiple claims.
 
 ## Approval gate
 status: interviewing

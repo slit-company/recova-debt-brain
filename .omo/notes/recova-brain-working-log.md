@@ -178,6 +178,45 @@ Proceed with an integrated ontology plan.
 
 Do not split legal, finance, and workflow into unrelated projects. Plan them together, but implement them as separate resource layers with cross references.
 
+## Decision Log
+
+### 2026-07-07 - Choose the bold integrated direction
+
+User direction:
+
+- Go bold.
+- Treat this as a creditor/claim-centered debt-collection domain ontology, not merely a narrow route recommendation module.
+- Legal knowledge, finance knowledge, and collection workflow should be designed together because their links are the actual product intelligence.
+
+Updated recommendation:
+
+- Build `debt-collection-domain-ontology-v1` as a claim-centered Recova domain brain.
+- The ontology should model the collection domain around the claim/receivable first, then connect debtor identity, case packets, documents, assets, legal status, financial ledger facts, workflow stages, and route decisions.
+- v1 should include route recommendation, evidence requirements, legal/financial blockers, workflow state transitions, risk/priority scoring, and draftable action packet schemas for later human approval.
+- v1 should still remain non-executing: no actual court filing, debtor contact, payment demand, or production collection action.
+
+Working distinction:
+
+```text
+Domain Ontology v1 = what Recova knows about debt collection as a professional domain
+DebtorContextGraph = what Recova knows about one debtor/claim packet at a point in time
+MCP tools = how an agent asks the brain questions
+```
+
+This means the next plan should be more ambitious than a route catalog. It should create a connected ontology of:
+
+- claim / receivable lifecycle,
+- legal enforceability,
+- limitation and interruption,
+- financial balance and payment facts,
+- evidence package requirements,
+- debtor identity and third-party debtor hints,
+- collection workflow stages,
+- route eligibility and blockers,
+- compliance StopGates,
+- scoring and next-best-action recommendations,
+- and review/action packet boundaries.
+
 Recommended first implementation wave:
 
 1. Parse and structure the v2 manual into candidate route/workflow/fact/legal-source entries.
@@ -196,11 +235,13 @@ These are user-owned questions that affect product shape:
 2. Should high-risk actions remain advisory-only in v1, or should the ontology already model draftable action packets for later human review?
 3. Should financial accounting be lightweight in v1, or should v1 include full principal/interest/late-damages/payment-allocation logic?
 
-Current default recommendation:
+Current default recommendation after the bold-direction decision:
 
-- optimize v1 for route recommendation plus evidence requirements,
-- keep all execution/adverse-contact actions advisory-only,
-- include accounting concepts and validation hooks, but defer full ledger-calculation engine.
+- optimize v1 for a claim-centered domain brain, not just route recommendation;
+- include end-to-end workflow states from intake through monitoring;
+- include action packet schemas for later human review, but keep execution disabled;
+- include finance/accounting entities and calculation contracts, with deterministic validation fixtures where feasible;
+- keep all real-world court filing, debtor contact, payment demand, and production mutation out of scope.
 
 ## Working Rules For Future Updates
 
