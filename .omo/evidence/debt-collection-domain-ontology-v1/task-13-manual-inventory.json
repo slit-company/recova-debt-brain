@@ -1,0 +1,471 @@
+{
+  "schema_version": "domain-manual-inventory/v2",
+  "summary_kind": "manual_candidate_inventory",
+  "source": {
+    "manual_kind": "debt_collection_practical_manual_v2",
+    "structure_fingerprint": "sha256-alpha:baiicajbdfeaebhbafaecddcbccbhaaggaabedgdaaccbeceabjbbdcaeiafacci",
+    "source_paths_included": false
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "matched_text_included": false,
+    "source_paths_included": false,
+    "sensitive_counts_only": true,
+    "possible_sensitive_pattern_counts": {
+      "resident_registration": 0,
+      "phone": 0,
+      "financial_identifier": 0,
+      "long_digit_sequence": 0
+    }
+  },
+  "counts": {
+    "headings": 18,
+    "route_candidates": 9,
+    "workflow_candidates": 7,
+    "fact_handles": 9,
+    "risk_blocker_candidates": 6,
+    "legal_source_candidates": 1,
+    "finance_candidates": 5,
+    "scoring_fields": 5,
+    "action_packet_candidates": 6
+  },
+  "headings": [
+    {
+      "heading_id": "heading:unumbered-1",
+      "level": 1,
+      "number": "unumbered-1",
+      "title": "장기채권 추심 실무 루트 총정리 v2 합성 축약본",
+      "parent_number": ""
+    },
+    {
+      "heading_id": "heading:5",
+      "level": 2,
+      "number": "5",
+      "title": "임의회수와 채무승인 흐름",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:5-1",
+      "level": 3,
+      "number": "5.1",
+      "title": "임의변제 협의 루트",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:5-2",
+      "level": 3,
+      "number": "5.2",
+      "title": "일부변제 및 채무승인 루트",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:7",
+      "level": 2,
+      "number": "7",
+      "title": "지급명령과 집행권원 준비",
+      "parent_number": "7"
+    },
+    {
+      "heading_id": "heading:7-1",
+      "level": 3,
+      "number": "7.1",
+      "title": "지급명령 집행권원 루트",
+      "parent_number": "7"
+    },
+    {
+      "heading_id": "heading:8",
+      "level": 2,
+      "number": "8",
+      "title": "은행과 금융자산 집행",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:8-1",
+      "level": 3,
+      "number": "8.1",
+      "title": "은행 예금채권 압류 루트",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:8-2",
+      "level": 3,
+      "number": "8.2",
+      "title": "계좌 단서가 없는 금융자산 루트",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:9",
+      "level": 2,
+      "number": "9",
+      "title": "임금과 소득 집행",
+      "parent_number": "9"
+    },
+    {
+      "heading_id": "heading:9-1",
+      "level": 3,
+      "number": "9.1",
+      "title": "급여채권 압류 루트",
+      "parent_number": "9"
+    },
+    {
+      "heading_id": "heading:11",
+      "level": 2,
+      "number": "11",
+      "title": "재산명시와 재산조회",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:11-1",
+      "level": 3,
+      "number": "11.1",
+      "title": "송달 확정 집행문 증명 보강 루트",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:18",
+      "level": 2,
+      "number": "18",
+      "title": "복지와 공익급여 제외",
+      "parent_number": "18"
+    },
+    {
+      "heading_id": "heading:18-1",
+      "level": 3,
+      "number": "18.1",
+      "title": "복지 공익급여 보호 검토 루트",
+      "parent_number": "18"
+    },
+    {
+      "heading_id": "heading:21",
+      "level": 2,
+      "number": "21",
+      "title": "회생 파산 면책 필터",
+      "parent_number": "21"
+    },
+    {
+      "heading_id": "heading:21-1",
+      "level": 3,
+      "number": "21.1",
+      "title": "회생 파산 면책 보류 루트",
+      "parent_number": "21"
+    },
+    {
+      "heading_id": "heading:23",
+      "level": 2,
+      "number": "23",
+      "title": "추천 엔진 점수와 액션 패킷",
+      "parent_number": "23"
+    }
+  ],
+  "route_candidates": [
+    {
+      "candidate_id": "route:5-1",
+      "name": "임의변제 협의 루트",
+      "source_heading_id": "heading:5-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:5-2",
+      "name": "일부변제 및 채무승인 루트",
+      "source_heading_id": "heading:5-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:7-1",
+      "name": "지급명령 집행권원 루트",
+      "source_heading_id": "heading:7-1",
+      "route_family": "title_acquisition",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:8-1",
+      "name": "은행 예금채권 압류 루트",
+      "source_heading_id": "heading:8-1",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:8-2",
+      "name": "계좌 단서가 없는 금융자산 루트",
+      "source_heading_id": "heading:8-2",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:9-1",
+      "name": "급여채권 압류 루트",
+      "source_heading_id": "heading:9-1",
+      "route_family": "income",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:11-1",
+      "name": "송달 확정 집행문 증명 보강 루트",
+      "source_heading_id": "heading:11-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:18-1",
+      "name": "복지 공익급여 보호 검토 루트",
+      "source_heading_id": "heading:18-1",
+      "route_family": "income",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:21-1",
+      "name": "회생 파산 면책 보류 루트",
+      "source_heading_id": "heading:21-1",
+      "route_family": "insolvency_review",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    }
+  ],
+  "workflow_candidates": [
+    {
+      "candidate_id": "workflow:limitation_review",
+      "name": "limitation_review",
+      "signal_count": 2
+    },
+    {
+      "candidate_id": "workflow:title_acquisition",
+      "name": "title_acquisition",
+      "signal_count": 7
+    },
+    {
+      "candidate_id": "workflow:service_finality_execution_clause",
+      "name": "service_finality_execution_clause",
+      "signal_count": 9
+    },
+    {
+      "candidate_id": "workflow:voluntary_recovery",
+      "name": "voluntary_recovery",
+      "signal_count": 5
+    },
+    {
+      "candidate_id": "workflow:asset_discovery",
+      "name": "asset_discovery",
+      "signal_count": 2
+    },
+    {
+      "candidate_id": "workflow:execution_route_selection",
+      "name": "execution_route_selection",
+      "signal_count": 5
+    },
+    {
+      "candidate_id": "workflow:insolvency_discharge_review",
+      "name": "insolvency_discharge_review",
+      "signal_count": 12
+    }
+  ],
+  "fact_handles": [
+    {
+      "candidate_id": "fact:claim.basic_info",
+      "name": "claim.basic_info",
+      "signal_count": 1
+    },
+    {
+      "candidate_id": "fact:claim.evidence_package",
+      "name": "claim.evidence_package",
+      "signal_count": 2
+    },
+    {
+      "candidate_id": "fact:claim.limitation.dates",
+      "name": "claim.limitation.dates",
+      "signal_count": 1
+    },
+    {
+      "candidate_id": "fact:claim.enforcement_title.status",
+      "name": "claim.enforcement_title.status",
+      "signal_count": 7
+    },
+    {
+      "candidate_id": "fact:claim.service_finality_execution_clause",
+      "name": "claim.service_finality_execution_clause",
+      "signal_count": 9
+    },
+    {
+      "candidate_id": "fact:claim.ledger.amounts",
+      "name": "claim.ledger.amounts",
+      "signal_count": 7
+    },
+    {
+      "candidate_id": "fact:debtor.asset_hints",
+      "name": "debtor.asset_hints",
+      "signal_count": 6
+    },
+    {
+      "candidate_id": "fact:debtor.insolvency_status",
+      "name": "debtor.insolvency_status",
+      "signal_count": 12
+    },
+    {
+      "candidate_id": "fact:governance.stopgate_status",
+      "name": "governance.stopgate_status",
+      "signal_count": 7
+    }
+  ],
+  "risk_blocker_candidates": [
+    {
+      "candidate_id": "risk:limitation_risk",
+      "name": "limitation_risk",
+      "signal_count": 1
+    },
+    {
+      "candidate_id": "risk:exempt_property",
+      "name": "exempt_property",
+      "signal_count": 4
+    },
+    {
+      "candidate_id": "risk:insolvency_discharge",
+      "name": "insolvency_discharge",
+      "signal_count": 7
+    },
+    {
+      "candidate_id": "risk:missing_title_or_service",
+      "name": "missing_title_or_service",
+      "signal_count": 9
+    },
+    {
+      "candidate_id": "risk:ambiguous_balance",
+      "name": "ambiguous_balance",
+      "signal_count": 3
+    },
+    {
+      "candidate_id": "risk:unsupported_contact",
+      "name": "unsupported_contact",
+      "signal_count": 1
+    }
+  ],
+  "legal_source_candidates": [
+    {
+      "candidate_id": "legal-source:046edb28b3",
+      "law_name": "민법",
+      "article_refs": [
+        "제168조"
+      ],
+      "signal_count": 1,
+      "review_status": "candidate_requires_legal_review"
+    }
+  ],
+  "finance_candidates": [
+    {
+      "candidate_id": "finance:interest",
+      "name": "interest",
+      "signal_count": 1
+    },
+    {
+      "candidate_id": "finance:enforcement_costs",
+      "name": "enforcement_costs",
+      "signal_count": 1
+    },
+    {
+      "candidate_id": "finance:payments",
+      "name": "payments",
+      "signal_count": 6
+    },
+    {
+      "candidate_id": "finance:payment_allocation",
+      "name": "payment_allocation",
+      "signal_count": 2
+    },
+    {
+      "candidate_id": "finance:remaining_balance",
+      "name": "remaining_balance",
+      "signal_count": 1
+    }
+  ],
+  "scoring_fields": [
+    {
+      "candidate_id": "score:legal_readiness",
+      "name": "legal_readiness",
+      "signal_count": 14
+    },
+    {
+      "candidate_id": "score:asset_signal_strength",
+      "name": "asset_signal_strength",
+      "signal_count": 4
+    },
+    {
+      "candidate_id": "score:recovery_expected_value",
+      "name": "recovery_expected_value",
+      "signal_count": 1
+    },
+    {
+      "candidate_id": "score:risk_penalty",
+      "name": "risk_penalty",
+      "signal_count": 7
+    },
+    {
+      "candidate_id": "score:time_to_action",
+      "name": "time_to_action",
+      "signal_count": 1
+    }
+  ],
+  "action_packet_candidates": [
+    {
+      "candidate_id": "action-packet:evidence_request",
+      "name": "evidence_request",
+      "signal_count": 4,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:legal_action_review",
+      "name": "legal_action_review",
+      "signal_count": 7,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:finance_review",
+      "name": "finance_review",
+      "signal_count": 7,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:contact_review",
+      "name": "contact_review",
+      "signal_count": 4,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:monitoring_retry",
+      "name": "monitoring_retry",
+      "signal_count": 2,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:insolvency_recovery_review",
+      "name": "insolvency_recovery_review",
+      "signal_count": 12,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    }
+  ],
+  "non_execution_semantics": {
+    "inventory_only": true,
+    "direct_execution_allowed": false,
+    "human_review_required": true
+  }
+}

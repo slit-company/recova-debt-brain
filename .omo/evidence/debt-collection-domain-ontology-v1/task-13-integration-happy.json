@@ -1,0 +1,212 @@
+{
+  "schema_version": "task-13-integration-evidence/v1",
+  "task": "Todo 13 integration fixtures and end-to-end domain tests",
+  "generated_at": "2026-07-06T20:08:51.683329+00:00",
+  "fixture_bundle": "tests/fixtures/claim-domain-v1/synthetic_claim_states.json",
+  "manual_fixture": "tests/fixtures/claim-domain-v1/minimized_manual_v2_scenarios.md",
+  "scenario_count": 9,
+  "manual_inventory_returncode": 0,
+  "manual_inventory_counts": {
+    "headings": 18,
+    "route_candidates": 9,
+    "workflow_candidates": 7,
+    "fact_handles": 9,
+    "risk_blocker_candidates": 6,
+    "legal_source_candidates": 1,
+    "finance_candidates": 5,
+    "scoring_fields": 5,
+    "action_packet_candidates": 6
+  },
+  "route_status_counts": {
+    "blocked": 3,
+    "missing_facts": 3,
+    "possible": 1,
+    "review_required": 2
+  },
+  "action_packet_type_counts": {
+    "contact_review": 2,
+    "insolvency_recovery_review": 1,
+    "legal_action_review": 6
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "clean-title-bank-route",
+      "route_id": "bank_account_attachment",
+      "route_status": "possible",
+      "expected_status": "possible",
+      "packet_type": "legal_action_review",
+      "expected_packet_type": "legal_action_review",
+      "review_codes": [],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "missing-service-finality-proof",
+      "route_id": "property_disclosure_inquiry_registry",
+      "route_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "expected_packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "limitation-risk-acknowledgment-missing",
+      "route_id": "partial_payment_acknowledgment",
+      "route_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "contact_review",
+      "expected_packet_type": "contact_review",
+      "review_codes": [
+        "missing_route_fact"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "wage-route-missing-employer-signal",
+      "route_id": "wage_attachment",
+      "route_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "legal_action_review",
+      "expected_packet_type": "legal_action_review",
+      "review_codes": [
+        "missing_route_fact"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "bank-route-missing-account-hint",
+      "route_id": "bank_account_attachment",
+      "route_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "legal_action_review",
+      "expected_packet_type": "legal_action_review",
+      "review_codes": [
+        "missing_route_fact"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "insolvency-blocker-bank-route",
+      "route_id": "bank_account_attachment",
+      "route_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "expected_packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "exempt-public-benefit-risk",
+      "route_id": "welfare_public_benefit_exclusion_review",
+      "route_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "insolvency_recovery_review",
+      "expected_packet_type": "insolvency_recovery_review",
+      "review_codes": [
+        "route_blocked"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "voluntary-repayment-acknowledgment-path",
+      "route_id": "partial_payment_acknowledgment",
+      "route_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "contact_review",
+      "expected_packet_type": "contact_review",
+      "review_codes": [
+        "domain_legal_source_unapproved"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    },
+    {
+      "scenario_id": "finance-ambiguity-bank-route",
+      "route_id": "bank_account_attachment",
+      "route_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "legal_action_review",
+      "expected_packet_type": "legal_action_review",
+      "review_codes": [
+        "payment_allocation_conflict"
+      ],
+      "mcp_status": "trustgraph-claim-domain-decision/v1",
+      "no_execution_fields": true,
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      }
+    }
+  ],
+  "focused_pytest_command": "/opt/homebrew/bin/python3 -m pytest tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py -q",
+  "focused_pytest_returncode": 0,
+  "focused_pytest_summary": "============================== 6 passed in 2.54s ===============================",
+  "non_execution_fields_absent": true,
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "debtor_contact_payload_included": false,
+    "filing_destination_included": false
+  }
+}

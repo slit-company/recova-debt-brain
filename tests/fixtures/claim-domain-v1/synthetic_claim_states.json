@@ -1,0 +1,220 @@
+{
+  "schema_version": "trustgraph-claim-domain-integration-fixtures/v1",
+  "fixture_bundle_id": "claim-domain-v1-synthetic-minimized-states",
+  "domain_ontology_version": "recova-debt-collection-v1@1.0.0",
+  "manual_basis": "synthetic_minimized_v2_operational_scenarios",
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "debtor_contact_payload_included": false,
+    "filing_destination_included": false
+  },
+  "non_execution_semantics": "fixture_only_advisory_domain_test_no_collection_action",
+  "scenarios": [
+    {
+      "scenario_id": "clean-title-bank-route",
+      "manual_state": "clean title route",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "financial_account_hint"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "possible",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": []
+    },
+    {
+      "scenario_id": "missing-service-finality-proof",
+      "manual_state": "missing service finality proof",
+      "route_id": "property_disclosure_inquiry_registry",
+      "workflow_state": "asset_discovery",
+      "fact_handles": [
+        "enforceable_title",
+        "asset_disclosure_preconditions",
+        "asset_inquiry_preconditions",
+        "default_registry_preconditions",
+        "service_finality_unproven"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a74",
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a12",
+        "recova-privacy-purpose-v0"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "limitation-risk-acknowledgment-missing",
+      "manual_state": "limitation risk",
+      "route_id": "partial_payment_acknowledgment",
+      "workflow_state": "limitation_review",
+      "fact_handles": [
+        "claim_basis",
+        "payment_history"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a168",
+        "kr-law-l010910-m268669-a11",
+        "recova-privacy-purpose-v0"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "contact_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "wage-route-missing-employer-signal",
+      "manual_state": "wage route with missing employer signal",
+      "route_id": "wage_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "bank-route-missing-account-hint",
+      "manual_state": "bank route with missing account hint",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "insolvency-blocker-bank-route",
+      "manual_state": "insolvency blocker",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "financial_account_hint",
+        "insolvency_stay"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "exempt-public-benefit-risk",
+      "manual_state": "exempt public benefit risk",
+      "route_id": "welfare_public_benefit_exclusion_review",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "welfare_benefit_signal",
+        "exempt_property_signal",
+        "welfare_public_benefit_exemption"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12",
+        "recova-privacy-purpose-v0"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "insolvency_recovery_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "voluntary-repayment-acknowledgment-path",
+      "manual_state": "voluntary repayment acknowledgment path",
+      "route_id": "partial_payment_acknowledgment",
+      "workflow_state": "voluntary_recovery",
+      "fact_handles": [
+        "claim_basis",
+        "payment_history",
+        "acknowledgment_evidence"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a168",
+        "kr-law-l010910-m268669-a11",
+        "recova-privacy-purpose-v0"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "contact_review",
+      "expected_review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "finance-ambiguity-bank-route",
+      "manual_state": "finance ambiguity",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "financial_account_hint"
+      ],
+      "finance_review_codes": [
+        "payment_allocation_conflict"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "payment_allocation_conflict"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "task-13-integration-failure-evidence/v1",
+  "task": "Todo 13 negative fixture gate",
+  "generated_at": "2026-07-06T20:05:09.640489+00:00",
+  "invalid_fixture_kind": "raw_unsafe_field_and_unknown_legal_source",
+  "rejected": true,
+  "unsafe_keys": [
+    "raw_text"
+  ],
+  "unknown_legal_sources": [
+    "unknown-legal-source"
+  ],
+  "no_real_pii_used": true,
+  "raw_ocr_body_included": false
+}
