@@ -1,0 +1,150 @@
+{
+  "schema_version": "recova-document-assembly/v0",
+  "extractor_version": "trustgraph_legal.document_assembly@0.1.0",
+  "summary": {
+    "pages": 5,
+    "assemblies": 4,
+    "document_pages": 5,
+    "document_assemblies": 4,
+    "needs_review": 1
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "sensitive_shape_pages": 0
+  },
+  "document_pages": [
+    {
+      "page_id": "page:synthetic-attachment-order:0005",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+      "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md",
+      "page_order": 5,
+      "classifier_document_type": "attachment_collection_order",
+      "review_status": "synthetic_reviewed",
+      "line_count": 12,
+      "char_count": 501
+    },
+    {
+      "page_id": "page:synthetic-payment-order:0001",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+      "source_hash": "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/payment_order_001.md",
+      "page_order": 1,
+      "classifier_document_type": "payment_order",
+      "review_status": "synthetic_reviewed",
+      "line_count": 12,
+      "char_count": 424
+    },
+    {
+      "page_id": "page:synthetic-payment-order:0002",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+      "source_hash": "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9",
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/payment_order_002.md",
+      "page_order": 2,
+      "classifier_document_type": "payment_order",
+      "review_status": "synthetic_reviewed",
+      "line_count": 12,
+      "char_count": 463
+    },
+    {
+      "page_id": "page:synthetic-service-finality:0003",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/service_finality_001.md",
+      "page_order": 3,
+      "classifier_document_type": "service_finality_execution_clause",
+      "review_status": "synthetic_reviewed",
+      "line_count": 12,
+      "char_count": 509
+    },
+    {
+      "page_id": "page:synthetic-unknown-review:0004",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4",
+      "source_hash": "sha256:e53c55fc08a6ae7e6397e4d8ebf3cebd8cbf8afac7938a82c1a9d263b1618286",
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md",
+      "page_order": 4,
+      "classifier_document_type": "unknown",
+      "review_status": "needs_review",
+      "line_count": 10,
+      "char_count": 405
+    }
+  ],
+  "document_assemblies": [
+    {
+      "assembly_id": "assembly:synthetic-attachment-order",
+      "document_id": "document:synthetic-attachment-order",
+      "canonical_document_type": "attachment_collection_order",
+      "page_ids": [
+        "page:synthetic-attachment-order:0005"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+      ],
+      "source_hashes": [
+        "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1"
+      ],
+      "confidence": 0.9,
+      "review_status": "assembled",
+      "assembly_method": "recova-document-assembly@v0",
+      "procedure_episode_id": null
+    },
+    {
+      "assembly_id": "assembly:synthetic-payment-order",
+      "document_id": "document:synthetic-payment-order",
+      "canonical_document_type": "payment_order",
+      "page_ids": [
+        "page:synthetic-payment-order:0001",
+        "page:synthetic-payment-order:0002"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+      ],
+      "source_hashes": [
+        "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+        "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9"
+      ],
+      "confidence": 0.94,
+      "review_status": "assembled",
+      "assembly_method": "recova-document-assembly@v0",
+      "procedure_episode_id": null
+    },
+    {
+      "assembly_id": "assembly:synthetic-service-finality",
+      "document_id": "document:synthetic-service-finality",
+      "canonical_document_type": "service_finality_execution_clause",
+      "page_ids": [
+        "page:synthetic-service-finality:0003"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+      ],
+      "source_hashes": [
+        "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437"
+      ],
+      "confidence": 0.91,
+      "review_status": "assembled",
+      "assembly_method": "recova-document-assembly@v0",
+      "procedure_episode_id": null
+    },
+    {
+      "assembly_id": "assembly:synthetic-unknown-review",
+      "document_id": "document:synthetic-unknown-review",
+      "canonical_document_type": "unknown",
+      "page_ids": [
+        "page:synthetic-unknown-review:0004"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+      ],
+      "source_hashes": [
+        "sha256:e53c55fc08a6ae7e6397e4d8ebf3cebd8cbf8afac7938a82c1a9d263b1618286"
+      ],
+      "confidence": 0.42,
+      "review_status": "needs_review",
+      "assembly_method": "recova-document-assembly@v0",
+      "procedure_episode_id": null
+    }
+  ]
+}

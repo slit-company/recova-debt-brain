@@ -1,0 +1,953 @@
+{
+  "asset_hints": [],
+  "case_packets": [
+    {
+      "case_packet_id": "case-packet:8b8a500420abb1b3",
+      "document_ids": [
+        "document:synthetic-attachment-order",
+        "document:synthetic-payment-order",
+        "document:synthetic-service-finality",
+        "document:synthetic-unknown-review"
+      ],
+      "fact_ids": [
+        "fact:enforceable_title:275e68916f9e3c33",
+        "fact:enforceable_title:36206adf67121b84",
+        "fact:executable_copy:c5fe57a823e77567",
+        "fact:final_title_or_written_title:14db3c97b50e3847",
+        "fact:final_title_or_written_title:e89b715fa1671f99",
+        "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+        "fact:money_payment_enforcement_title:807908eb98bf1224",
+        "fact:service_path:a95f96215d8fcc1b",
+        "fact:service_path:ef6cd79d462770d7",
+        "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+        "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+        "fact:third_party_debtor_hint:a1ddb15579b54f35"
+      ],
+      "identity_status": "identity_unresolved",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+      ]
+    }
+  ],
+  "claims": [],
+  "debtor_graph_id": "debtor-graph:d75ca859621e3d19",
+  "document_assemblies": [
+    {
+      "assembly_id": "assembly:synthetic-attachment-order",
+      "assembly_method": "recova-document-assembly@v0",
+      "canonical_document_type": "attachment_collection_order",
+      "confidence": 0.9,
+      "document_id": "document:synthetic-attachment-order",
+      "page_ids": [
+        "page:synthetic-attachment-order:0005"
+      ],
+      "procedure_episode_id": null,
+      "review_status": "assembled",
+      "source_hashes": [
+        "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+      ]
+    },
+    {
+      "assembly_id": "assembly:synthetic-payment-order",
+      "assembly_method": "recova-document-assembly@v0",
+      "canonical_document_type": "payment_order",
+      "confidence": 0.94,
+      "document_id": "document:synthetic-payment-order",
+      "page_ids": [
+        "page:synthetic-payment-order:0001",
+        "page:synthetic-payment-order:0002"
+      ],
+      "procedure_episode_id": null,
+      "review_status": "assembled",
+      "source_hashes": [
+        "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+        "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+      ]
+    },
+    {
+      "assembly_id": "assembly:synthetic-service-finality",
+      "assembly_method": "recova-document-assembly@v0",
+      "canonical_document_type": "service_finality_execution_clause",
+      "confidence": 0.91,
+      "document_id": "document:synthetic-service-finality",
+      "page_ids": [
+        "page:synthetic-service-finality:0003"
+      ],
+      "procedure_episode_id": null,
+      "review_status": "assembled",
+      "source_hashes": [
+        "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+      ]
+    },
+    {
+      "assembly_id": "assembly:synthetic-unknown-review",
+      "assembly_method": "recova-document-assembly@v0",
+      "canonical_document_type": "unknown",
+      "confidence": 0.42,
+      "document_id": "document:synthetic-unknown-review",
+      "page_ids": [
+        "page:synthetic-unknown-review:0004"
+      ],
+      "procedure_episode_id": null,
+      "review_status": "needs_review",
+      "source_hashes": [
+        "sha256:e53c55fc08a6ae7e6397e4d8ebf3cebd8cbf8afac7938a82c1a9d263b1618286"
+      ],
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+      ]
+    }
+  ],
+  "document_pages": [
+    {
+      "char_count": 501,
+      "classifier_document_type": "attachment_collection_order",
+      "line_count": 12,
+      "page_id": "page:synthetic-attachment-order:0005",
+      "page_order": 5,
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md",
+      "review_status": "synthetic_reviewed",
+      "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+    },
+    {
+      "char_count": 424,
+      "classifier_document_type": "payment_order",
+      "line_count": 12,
+      "page_id": "page:synthetic-payment-order:0001",
+      "page_order": 1,
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/payment_order_001.md",
+      "review_status": "synthetic_reviewed",
+      "source_hash": "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1"
+    },
+    {
+      "char_count": 463,
+      "classifier_document_type": "payment_order",
+      "line_count": 12,
+      "page_id": "page:synthetic-payment-order:0002",
+      "page_order": 2,
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/payment_order_002.md",
+      "review_status": "synthetic_reviewed",
+      "source_hash": "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+    },
+    {
+      "char_count": 509,
+      "classifier_document_type": "service_finality_execution_clause",
+      "line_count": 12,
+      "page_id": "page:synthetic-service-finality:0003",
+      "page_order": 3,
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/service_finality_001.md",
+      "review_status": "synthetic_reviewed",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+    },
+    {
+      "char_count": 405,
+      "classifier_document_type": "unknown",
+      "line_count": 10,
+      "page_id": "page:synthetic-unknown-review:0004",
+      "page_order": 4,
+      "relative_path": "tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md",
+      "review_status": "needs_review",
+      "source_hash": "sha256:e53c55fc08a6ae7e6397e4d8ebf3cebd8cbf8afac7938a82c1a9d263b1618286",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+    }
+  ],
+  "enforcement_titles": [],
+  "fact_assertions": [
+    {
+      "chunk_id": "page:synthetic-payment-order:0002#L1-12",
+      "confidence": 0.94,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:enforceable_title:275e68916f9e3c33",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "payment-order"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "enforceable_title",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-payment-order",
+      "source_hash": "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+      ],
+      "subject_id": "document:synthetic-payment-order",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-payment-order:0001#L1-12",
+      "confidence": 0.94,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:enforceable_title:36206adf67121b84",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "payment-order"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "enforceable_title",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-payment-order",
+      "source_hash": "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1"
+      ],
+      "subject_id": "document:synthetic-payment-order",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-service-finality:0003#L1-12",
+      "confidence": 0.91,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:executable_copy:c5fe57a823e77567",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "service-finality-proof"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "executable_copy",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-service-finality",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+      ],
+      "subject_id": "document:synthetic-service-finality",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-service-finality:0003#L7-7",
+      "confidence": 0.94,
+      "derived": false,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:final_title_or_written_title:14db3c97b50e3847",
+      "line_end": 7,
+      "line_start": 7,
+      "object_value": "[FINALITY_RESULT_TOKEN]",
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "final_title_or_written_title",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-service-finality",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+      ],
+      "subject_id": "document:synthetic-service-finality",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-service-finality:0003#L1-12",
+      "confidence": 0.91,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:final_title_or_written_title:e89b715fa1671f99",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "service-finality-proof"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "final_title_or_written_title",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-service-finality",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+      ],
+      "subject_id": "document:synthetic-service-finality",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-payment-order:0001#L1-12",
+      "confidence": 0.94,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "payment-order"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "money_payment_enforcement_title",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-payment-order",
+      "source_hash": "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1"
+      ],
+      "subject_id": "document:synthetic-payment-order",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-payment-order:0002#L1-12",
+      "confidence": 0.94,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:money_payment_enforcement_title:807908eb98bf1224",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "payment-order"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "money_payment_enforcement_title",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-payment-order",
+      "source_hash": "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+      ],
+      "subject_id": "document:synthetic-payment-order",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-service-finality:0003#L6-6",
+      "confidence": 0.94,
+      "derived": false,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:service_path:a95f96215d8fcc1b",
+      "line_end": 6,
+      "line_start": 6,
+      "object_value": "[SERVICE_RESULT_TOKEN]",
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "service_path",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-service-finality",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+      ],
+      "subject_id": "document:synthetic-service-finality",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-service-finality:0003#L1-12",
+      "confidence": 0.91,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:service_path:ef6cd79d462770d7",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "service-finality-proof"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "service_path",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-service-finality",
+      "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+      ],
+      "subject_id": "document:synthetic-service-finality",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-attachment-order:0005#L1-12",
+      "confidence": 0.9,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "attachment-collection-order"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "third_party_debtor_bank_hint",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-attachment-order",
+      "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+      ],
+      "subject_id": "document:synthetic-attachment-order",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-attachment-order:0005#L6-6",
+      "confidence": 0.9,
+      "derived": false,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+      "line_end": 6,
+      "line_start": 6,
+      "object_value": "[MONETARY_CLAIM_TOKEN]",
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "third_party_debtor_bank_hint",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-attachment-order",
+      "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+      ],
+      "subject_id": "document:synthetic-attachment-order",
+      "valid_time": null
+    },
+    {
+      "chunk_id": "page:synthetic-attachment-order:0005#L1-12",
+      "confidence": 0.9,
+      "derived": true,
+      "extractor_version": "trustgraph_legal.debtor_context_types@0.1.0",
+      "fact_id": "fact:third_party_debtor_hint:a1ddb15579b54f35",
+      "line_end": 12,
+      "line_start": 1,
+      "object_value": {
+        "document_type": "attachment-collection-order"
+      },
+      "observed_time": null,
+      "ontology_version": "recova-debt-collection@v0",
+      "predicate": "third_party_debtor_hint",
+      "review_status": "verified",
+      "source_document_id": "document:synthetic-attachment-order",
+      "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+      "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+      "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+      ],
+      "subject_id": "document:synthetic-attachment-order",
+      "valid_time": null
+    }
+  ],
+  "graph_snapshot": {
+    "extractor_versions": [
+      "trustgraph_legal.debtor_context_types@0.1.0"
+    ],
+    "fact_assertion_ids": [
+      "fact:enforceable_title:275e68916f9e3c33",
+      "fact:enforceable_title:36206adf67121b84",
+      "fact:executable_copy:c5fe57a823e77567",
+      "fact:final_title_or_written_title:14db3c97b50e3847",
+      "fact:final_title_or_written_title:e89b715fa1671f99",
+      "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+      "fact:money_payment_enforcement_title:807908eb98bf1224",
+      "fact:service_path:a95f96215d8fcc1b",
+      "fact:service_path:ef6cd79d462770d7",
+      "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+      "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+      "fact:third_party_debtor_hint:a1ddb15579b54f35"
+    ],
+    "generated_at": "2026-07-06T00:00:00Z",
+    "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+    "legal_rule_source_version": "recova-legal-rule-sources@v0",
+    "ontology_version": "recova-debt-collection@v0",
+    "route_candidate_ids": [
+      "title_acquisition_payment_order",
+      "limitation_extension_lawsuit",
+      "bank_account_attachment",
+      "wage_attachment",
+      "severance_attachment",
+      "lease_deposit_attachment",
+      "real_estate_auction",
+      "vehicle_attachment",
+      "business_receivable_attachment",
+      "card_pg_platform_settlement_attachment",
+      "insurance_refund_or_claim_attachment",
+      "tax_refund_or_public_receivable_attachment",
+      "inheritance_review_and_share_attachment",
+      "fraudulent_transfer_lawsuit",
+      "property_disclosure",
+      "property_inquiry",
+      "debtor_default_registry",
+      "insolvency_review_or_cease_collection"
+    ],
+    "route_version": "recova-debt-routes@v0",
+    "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13"
+  },
+  "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+  "identity_resolution": {
+    "debtor_subject_id": "debtor-graph:d75ca859621e3d19",
+    "method": "source_bundle_hash_fallback",
+    "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13",
+    "status": "identity_unresolved"
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "procedure_episodes": [],
+  "review_items": [
+    {
+      "reason_code": "identity_unresolved",
+      "review_item_id": "review:identity-unresolved:d75ca859621e3d19",
+      "review_reason": "identity_unresolved",
+      "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13"
+    }
+  ],
+  "route_candidates": [
+    {
+      "blocking_facts": [],
+      "confidence": 0.5,
+      "legal_source_refs": [
+        "kr-law-l001700-m252393-a474|lawId=001700|MST=252393|article=제474조|effective_date=2025-07-12|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "claim_basis",
+        "debtor_identity"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "claim_basis",
+        "debtor_identity",
+        "service_path"
+      ],
+      "review_status": "review_required",
+      "route_id": "title_acquisition_payment_order",
+      "route_label": "Title acquisition payment order",
+      "source_fact_ids": [
+        "fact:service_path:a95f96215d8fcc1b",
+        "fact:service_path:ef6cd79d462770d7"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a165|lawId=001706|MST=284415|article=제165조|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l001706-m284415-a168|lawId=001706|MST=284415|article=제168조|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "limitation_clock",
+        "claim_balance"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "limitation_clock",
+        "claim_balance"
+      ],
+      "review_status": "review_required",
+      "route_id": "limitation_extension_lawsuit",
+      "route_label": "Limitation extension lawsuit",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.9,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [],
+      "no_direct_execution": true,
+      "required_facts": [
+        "enforceable_title",
+        "third_party_debtor_bank_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "bank_account_attachment",
+      "route_label": "Bank account attachment",
+      "source_fact_ids": [
+        "fact:enforceable_title:275e68916f9e3c33",
+        "fact:enforceable_title:36206adf67121b84",
+        "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+        "fact:third_party_debtor_bank_hint:62999d7fbab13aaf"
+      ],
+      "status": "possible"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.57,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "employer_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "enforceable_title",
+        "employer_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "wage_attachment",
+      "route_label": "Wage attachment",
+      "source_fact_ids": [
+        "fact:enforceable_title:275e68916f9e3c33",
+        "fact:enforceable_title:36206adf67121b84"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.57,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "employment_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "enforceable_title",
+        "employment_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "severance_attachment",
+      "route_label": "Severance attachment",
+      "source_fact_ids": [
+        "fact:enforceable_title:275e68916f9e3c33",
+        "fact:enforceable_title:36206adf67121b84"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.57,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "lease_deposit_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "enforceable_title",
+        "lease_deposit_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "lease_deposit_attachment",
+      "route_label": "Lease deposit attachment",
+      "source_fact_ids": [
+        "fact:enforceable_title:275e68916f9e3c33",
+        "fact:enforceable_title:36206adf67121b84"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.57,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "real_estate_registry_asset"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "real_estate_registry_asset",
+        "enforceable_title"
+      ],
+      "review_status": "review_required",
+      "route_id": "real_estate_auction",
+      "route_label": "Real estate auction",
+      "source_fact_ids": [
+        "fact:enforceable_title:275e68916f9e3c33",
+        "fact:enforceable_title:36206adf67121b84"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.57,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "vehicle_registration_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "vehicle_registration_hint",
+        "enforceable_title"
+      ],
+      "review_status": "review_required",
+      "route_id": "vehicle_attachment",
+      "route_label": "Vehicle attachment",
+      "source_fact_ids": [
+        "fact:enforceable_title:275e68916f9e3c33",
+        "fact:enforceable_title:36206adf67121b84"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.57,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "business_activity_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "business_activity_hint",
+        "third_party_debtor_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "business_receivable_attachment",
+      "route_label": "Business receivable attachment",
+      "source_fact_ids": [
+        "fact:third_party_debtor_hint:a1ddb15579b54f35"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "merchant_or_platform_hint",
+        "settlement_counterparty"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "merchant_or_platform_hint",
+        "settlement_counterparty"
+      ],
+      "review_status": "review_required",
+      "route_id": "card_pg_platform_settlement_attachment",
+      "route_label": "Card pg platform settlement attachment",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "insurance_policy_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "insurance_policy_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "insurance_refund_or_claim_attachment",
+      "route_label": "Insurance refund or claim attachment",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "refund_or_compensation_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "refund_or_compensation_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "tax_refund_or_public_receivable_attachment",
+      "route_label": "Tax refund or public receivable attachment",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "death_or_family_relation_hint",
+        "estate_asset_hint"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "death_or_family_relation_hint",
+        "estate_asset_hint"
+      ],
+      "review_status": "review_required",
+      "route_id": "inheritance_review_and_share_attachment",
+      "route_label": "Inheritance review and share attachment",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a406|lawId=001706|MST=284415|article=제406조|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "suspicious_transfer",
+        "claim_before_transfer",
+        "deadline_clock"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "suspicious_transfer",
+        "claim_before_transfer",
+        "deadline_clock"
+      ],
+      "review_status": "review_required",
+      "route_id": "fraudulent_transfer_lawsuit",
+      "route_label": "Fraudulent transfer lawsuit",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.91,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a61|lawId=009290|MST=268837|article=제61조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [],
+      "no_direct_execution": true,
+      "required_facts": [
+        "money_payment_enforcement_title",
+        "executable_copy"
+      ],
+      "review_status": "review_required",
+      "route_id": "property_disclosure",
+      "route_label": "Property disclosure",
+      "source_fact_ids": [
+        "fact:executable_copy:c5fe57a823e77567",
+        "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+        "fact:money_payment_enforcement_title:807908eb98bf1224"
+      ],
+      "status": "possible"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a74|lawId=009290|MST=268837|article=제74조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "property_disclosure_episode",
+        "statutory_failure_condition"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "property_disclosure_episode",
+        "statutory_failure_condition"
+      ],
+      "review_status": "review_required",
+      "route_id": "property_inquiry",
+      "route_label": "Property inquiry",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.57,
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a70|lawId=009290|MST=268837|article=제70조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "six_month_nonpayment_or_property_disclosure_failure"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "final_title_or_written_title",
+        "six_month_nonpayment_or_property_disclosure_failure"
+      ],
+      "review_status": "review_required",
+      "route_id": "debtor_default_registry",
+      "route_label": "Debtor default registry",
+      "source_fact_ids": [
+        "fact:final_title_or_written_title:14db3c97b50e3847",
+        "fact:final_title_or_written_title:e89b715fa1671f99"
+      ],
+      "status": "missing_facts"
+    },
+    {
+      "blocking_facts": [],
+      "confidence": 0.35,
+      "legal_source_refs": [
+        "kr-law-l009930-m267359-a593|lawId=009930|MST=267359|article=제593조|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009930-m267359-a600|lawId=009930|MST=267359|article=제600조|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+        "kr-law-l009930-m267359-a566|lawId=009930|MST=267359|article=제566조|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0"
+      ],
+      "missing_facts": [
+        "insolvency_signal"
+      ],
+      "no_direct_execution": true,
+      "required_facts": [
+        "insolvency_signal"
+      ],
+      "review_status": "review_required",
+      "route_id": "insolvency_review_or_cease_collection",
+      "route_label": "Insolvency review or cease collection",
+      "source_fact_ids": [],
+      "status": "missing_facts"
+    }
+  ],
+  "schema_version": "recova-debtor-context-graph/v1",
+  "stop_gates": [],
+  "summary": {
+    "case_packets": 1,
+    "document_assemblies": 4,
+    "document_pages": 5,
+    "fact_assertions": 12,
+    "provenance_issues": 0,
+    "provenance_valid": true,
+    "review_items": 1,
+    "route_candidates": 18,
+    "route_status_counts": {
+      "missing_facts": 16,
+      "possible": 2
+    },
+    "snapshot_replay_id": "snapshot-replay:9ac03810636becb2",
+    "unknown_assemblies": 1
+  }
+}

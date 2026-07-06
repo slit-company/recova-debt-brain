@@ -1,0 +1,25 @@
+cwd: <repo-root>
+branch: team/debtor-context-graph-v0-20260706/R
+
+$ python3 -m trustgraph_legal.document_assembly --ocr-root tests/fixtures/legal-ocr-pages --repo-root . --out .omo/evidence/debtor-context-graph-v0/task-14-document-assembly.json
+{"document_assemblies": 4, "document_pages": 5, "evidence": ".omo/evidence/debtor-context-graph-v0/task-14-document-assembly.json"}
+
+$ python3 -m trustgraph_legal.debtor_context --assembly .omo/evidence/debtor-context-graph-v0/task-14-document-assembly.json --repo-root . --route-resources resources/legal_routes/debt_collection_routes_v0.json --legal-sources resources/legal_rules/debt_collection_route_sources_v0.json --out .omo/evidence/debtor-context-graph-v0/task-14-synthetic-from-assembly.json
+{"debtor_graph_id": "debtor-graph:d75ca859621e3d19", "evidence": ".omo/evidence/debtor-context-graph-v0/task-14-synthetic-from-assembly.json", "route_candidates": 18, "summary_only": false}
+
+$ python3 -m trustgraph_legal.debtor_context --ocr-root tests/fixtures/legal-ocr-pages --repo-root . --route-resources resources/legal_routes/debt_collection_routes_v0.json --legal-sources resources/legal_rules/debt_collection_route_sources_v0.json --out .omo/evidence/debtor-context-graph-v0/task-14-synthetic-full-graph.json
+{"debtor_graph_id": "debtor-graph:d75ca859621e3d19", "evidence": ".omo/evidence/debtor-context-graph-v0/task-14-synthetic-full-graph.json", "route_candidates": 18, "summary_only": false}
+
+$ python3 - <<PY  # MCP debtor_graph smoke
+{'tool_name': 'list_debtor_route_candidates', 'route_count': 18, 'bank_route_status': 'possible', 'raw_text_included': False, 'source_text_included': False}
+
+$ rg -n "DebtorContextGraph|assemble_debtor_documents|list_debtor_route_candidates|raw_text_included" docs/product/debt-collection-ontology/debtor-context-graph-v0.md
+15:The logical `DebtorContextGraph` is implemented as `DebtorGraphPayload`.
+124:| `assemble_debtor_documents` | `debtor_graph:assembly` | `ocr_root`, `summary_only` | Build DocumentAssembly JSON from OCR pages. |
+127:| `list_debtor_route_candidates` | `debtor_graph:routes` | `graph`, `graph_path`, `ocr_root`, `assembly_path` | List route candidates already attached to a graph. |
+143:routes = invoke_tool("list_debtor_route_candidates", {"graph": graph["result"]}, root)
+152:print(graph["pii_profile"]["raw_text_included"])
+213:    "raw_text_included": false,
+225:  "raw_text_included": false,
+235:    "raw_text_included": false,
+241:    "raw_text_included": false,
