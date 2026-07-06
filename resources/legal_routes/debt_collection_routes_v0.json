@@ -1,0 +1,513 @@
+{
+  "schema_version": "trustgraph-legal-routes/v1",
+  "route_source_version": "recova-debt-collection-routes@v0.1.0",
+  "review_status": "approved_static_v0",
+  "curation_policy": "static-curated-v0-no-live-law-calls",
+  "derived_from": ".omo/evidence/debtor-context-graph/route-manual-summary.json",
+  "source_route_count": 18,
+  "no_direct_execution": true,
+  "direct_execution_policy": "advisory_route_candidate_only_no_court_filing_no_debtor_contact_no_payment_collection",
+  "default_route_review": {
+    "status": "candidate_template",
+    "requires_human_legal_review": true,
+    "review_note": "Route resources describe fact requirements and blockers only; they do not authorize direct execution."
+  },
+  "routes": [
+    {
+      "route_id": "title_acquisition_payment_order",
+      "family": "title",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "claim_basis",
+        "debtor_identity",
+        "service_path"
+      ],
+      "missing_fact_handles": [
+        "claim_basis",
+        "debtor_identity",
+        "service_path"
+      ],
+      "blocking_fact_handles": [
+        "dispute_high",
+        "identity_uncertain"
+      ],
+      "legal_source_refs": [
+        "kr-law-l001700-m252393-a474"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a11"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "limitation_extension_lawsuit",
+      "family": "title",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "limitation_clock",
+        "claim_balance"
+      ],
+      "missing_fact_handles": [
+        "limitation_clock",
+        "claim_balance"
+      ],
+      "blocking_fact_handles": [
+        "already_time_barred_without_interruption"
+      ],
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a11"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "bank_account_attachment",
+      "family": "financial_asset",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "enforceable_title",
+        "third_party_debtor_bank_hint"
+      ],
+      "missing_fact_handles": [
+        "enforceable_title",
+        "third_party_debtor_bank_hint"
+      ],
+      "blocking_fact_handles": [
+        "exempt_deposit_risk",
+        "insolvency_stay"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "wage_attachment",
+      "family": "income",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "enforceable_title",
+        "employer_hint"
+      ],
+      "missing_fact_handles": [
+        "enforceable_title",
+        "employer_hint"
+      ],
+      "blocking_fact_handles": [
+        "wage_exemption_review"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "severance_attachment",
+      "family": "income",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "enforceable_title",
+        "employment_hint"
+      ],
+      "missing_fact_handles": [
+        "enforceable_title",
+        "employment_hint"
+      ],
+      "blocking_fact_handles": [
+        "severance_half_exemption_review"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "lease_deposit_attachment",
+      "family": "housing",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "enforceable_title",
+        "lease_deposit_hint"
+      ],
+      "missing_fact_handles": [
+        "enforceable_title",
+        "lease_deposit_hint"
+      ],
+      "blocking_fact_handles": [
+        "priority_small_deposit_exemption"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "real_estate_auction",
+      "family": "real_estate",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "real_estate_registry_asset",
+        "enforceable_title"
+      ],
+      "missing_fact_handles": [
+        "real_estate_registry_asset",
+        "enforceable_title"
+      ],
+      "blocking_fact_handles": [
+        "priority_claims_unknown"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "vehicle_attachment",
+      "family": "movable_asset",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "vehicle_registration_hint",
+        "enforceable_title"
+      ],
+      "missing_fact_handles": [
+        "vehicle_registration_hint",
+        "enforceable_title"
+      ],
+      "blocking_fact_handles": [
+        "asset_value_low_or_priority_unclear"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "business_receivable_attachment",
+      "family": "business_revenue",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "business_activity_hint",
+        "third_party_debtor_hint"
+      ],
+      "missing_fact_handles": [
+        "business_activity_hint",
+        "third_party_debtor_hint"
+      ],
+      "blocking_fact_handles": [
+        "receivable_specificity_low"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "card_pg_platform_settlement_attachment",
+      "family": "business_revenue",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "merchant_or_platform_hint",
+        "settlement_counterparty"
+      ],
+      "missing_fact_handles": [
+        "merchant_or_platform_hint",
+        "settlement_counterparty"
+      ],
+      "blocking_fact_handles": [
+        "third_party_debtor_uncertain"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l001540-m260423-a32",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "insurance_refund_or_claim_attachment",
+      "family": "insurance",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "insurance_policy_hint"
+      ],
+      "missing_fact_handles": [
+        "insurance_policy_hint"
+      ],
+      "blocking_fact_handles": [
+        "protection_or_exemption_review"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "tax_refund_or_public_receivable_attachment",
+      "family": "public_receivable",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "refund_or_compensation_hint"
+      ],
+      "missing_fact_handles": [
+        "refund_or_compensation_hint"
+      ],
+      "blocking_fact_handles": [
+        "public_law_priority_unclear"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "inheritance_review_and_share_attachment",
+      "family": "inheritance",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "death_or_family_relation_hint",
+        "estate_asset_hint"
+      ],
+      "missing_fact_handles": [
+        "death_or_family_relation_hint",
+        "estate_asset_hint"
+      ],
+      "blocking_fact_handles": [
+        "renunciation_or_limited_acceptance_unknown"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "fraudulent_transfer_lawsuit",
+      "family": "asset_recovery",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "suspicious_transfer",
+        "claim_before_transfer",
+        "deadline_clock"
+      ],
+      "missing_fact_handles": [
+        "suspicious_transfer",
+        "claim_before_transfer",
+        "deadline_clock"
+      ],
+      "blocking_fact_handles": [
+        "knowledge_date_or_transfer_date_missing"
+      ],
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a406"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "property_disclosure",
+      "family": "court_auxiliary",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "money_payment_enforcement_title",
+        "executable_copy"
+      ],
+      "missing_fact_handles": [
+        "money_payment_enforcement_title",
+        "executable_copy"
+      ],
+      "blocking_fact_handles": [
+        "nonfinal_or_provisional_title"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a61"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "property_inquiry",
+      "family": "court_auxiliary",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "property_disclosure_episode",
+        "statutory_failure_condition"
+      ],
+      "missing_fact_handles": [
+        "property_disclosure_episode",
+        "statutory_failure_condition"
+      ],
+      "blocking_fact_handles": [
+        "institution_scope_missing"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a74"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "debtor_default_registry",
+      "family": "pressure_legal",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "final_title_or_written_title",
+        "six_month_nonpayment_or_property_disclosure_failure"
+      ],
+      "missing_fact_handles": [
+        "final_title_or_written_title",
+        "six_month_nonpayment_or_property_disclosure_failure"
+      ],
+      "blocking_fact_handles": [
+        "proof_missing"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a70"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    },
+    {
+      "route_id": "insolvency_review_or_cease_collection",
+      "family": "stopgate",
+      "status": "candidate_template",
+      "review_status": "approved_static_v0",
+      "required_fact_handles": [
+        "insolvency_signal"
+      ],
+      "missing_fact_handles": [
+        "insolvency_signal"
+      ],
+      "blocking_fact_handles": [
+        "stay_or_discharge_detected"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566"
+      ],
+      "compliance_source_refs": [
+        "kr-law-l010910-m268669-a12"
+      ],
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "execution_semantics": "none_advisory_only"
+    }
+  ]
+}
