@@ -1,0 +1,71 @@
+{
+  "schema_version": "trustgraph-claim-finance-calculation/v1",
+  "model_version": "recova-claim-finance-model@v1.0.0",
+  "claim_id": "claim:finance-fixture-001",
+  "evaluation_date": "2026-07-07",
+  "balance_review_status": "needs_finance_review",
+  "review_items": [
+    {
+      "code": "missing_source_ref",
+      "message": "finance facts require non-placeholder source refs",
+      "source_refs": []
+    },
+    {
+      "code": "statutory_or_complex_interest",
+      "message": "interest basis is not an explicit fixture rate",
+      "source_refs": [
+        "fixture:finance#interest",
+        "fixture:finance#late-damages"
+      ]
+    },
+    {
+      "code": "payment_allocation_conflict",
+      "message": "payment allocation is missing or disputed",
+      "source_refs": [
+        "fixture:finance#allocation"
+      ]
+    },
+    {
+      "code": "disputed_amount",
+      "message": "disputed amount requires finance review",
+      "source_refs": [
+        "fixture:finance#dispute"
+      ]
+    }
+  ],
+  "assignment_succession": {
+    "relationship_type": "assignment_succession",
+    "status": "successor_claimant_reviewed",
+    "source_refs": [
+      "fixture:finance#assignment"
+    ]
+  },
+  "guarantee_surety": {
+    "relationship_type": "guarantee_surety",
+    "status": "surety_claim_preserved",
+    "source_refs": [
+      "fixture:finance#surety"
+    ]
+  },
+  "reimbursement_subrogation_candidate": {
+    "relationship_type": "reimbursement_subrogation_candidate",
+    "status": "candidate_preserved_for_review",
+    "source_refs": [
+      "fixture:finance#subrogation"
+    ]
+  },
+  "non_execution_semantics": "fixture_calculation_only_not_authoritative_balance",
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "disputed_amount": {
+    "component_id": "component:disputed",
+    "component_type": "disputed_amount",
+    "currency": "KRW",
+    "amount": 125000,
+    "source_refs": [
+      "fixture:finance#dispute"
+    ]
+  }
+}
