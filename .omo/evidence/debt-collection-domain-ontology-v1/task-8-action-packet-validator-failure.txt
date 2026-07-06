@@ -1,0 +1,8 @@
+returncode=1
+STDOUT:
+
+STDERR:
+ERROR action_packets: direct_execution_allowed must be false
+ERROR action_packets.packet_schemas[0]: non_execution_semantics must be advisory_only_human_review_required
+ERROR action_packets.packet_schemas[0]: forbidden output field filing_destination
+ERROR action_packets.packet_schemas[0]: forbidden output field debtor_contact_payload

@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-8953292e/worktrees/L/tests
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.13.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 36 items
+
+tests/unit/legal_ontology/test_domain_ontology_v1.py ...                 [  8%]
+tests/unit/legal_ontology/test_domain_sources_v1.py ...                  [ 16%]
+tests/unit/legal_ontology/test_finance_claim_model_v1.py ....            [ 27%]
+tests/unit/legal_ontology/test_workflow_v1.py ...                        [ 36%]
+tests/unit/legal_ontology/test_route_decisions_v1.py .....               [ 50%]
+tests/unit/legal_ontology/test_action_packets_v1.py ....                 [ 61%]
+tests/unit/legal_ontology/test_stop_gates_domain_v1.py ....              [ 72%]
+tests/unit/legal_ontology/test_mcp_debtor_context_tools.py .....         [ 86%]
+tests/integration/legal_ontology/test_debtor_context_pipeline.py .....   [100%]
+
+============================== 36 passed in 3.40s ==============================
