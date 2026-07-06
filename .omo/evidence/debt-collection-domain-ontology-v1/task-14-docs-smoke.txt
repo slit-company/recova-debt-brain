@@ -1,0 +1,27 @@
+Docs anchor smoke
+Command: rg -n "Claim-centered|DebtorContextGraph|evaluate_claim_domain_decision|non-executing|raw_text_included" docs/product/debt-collection-ontology/claim-domain-ontology-v1.md
+
+13:The system is non-executing. It does not file court documents, contact debtors, send payment demands, mutate production ledgers, initiate seizure, or treat fixture finance calculations as authoritative balances.
+22:| DebtorContextGraph | debtor/packet runtime graph | Records what Recova knows about one debtor or receivables packet at a point in time, including source refs, snapshots, fact handles, and v0 route candidates. |
+25:`DebtorContextGraph` remains the runtime memory graph. Claim Domain Ontology v1 consumes graph facts through a compatibility adapter; it does not replace debtor identity, graph snapshots, or v0 route matching.
+29:  -> DebtorContextGraph
+40:| `resources/ontologies/recova-debt-collection-v1.json` | Claim-centered ontology with 22 classes, 20 object properties, and 11 datatype properties. |
+102:Finance payloads and action candidates keep `raw_text_included: false` and `source_text_included: false`.
+138:Action packets are schemas for human review, not commands. Every packet candidate remains non-executing with `non_execution_semantics: advisory_only_human_review_required` and `direct_execution_allowed: false`.
+176:| `evaluate_claim_domain_decision` | Evaluate deterministic claim-domain route decisions from an adapter payload and frozen v1 resources. |
+202:    "raw_text_included": false,
+207:    "raw_text_included": false,
+217:1. Build or load a `DebtorContextGraph` from redacted OCR pages or reviewed graph facts.
+221:5. Ask `evaluate_claim_domain_decision` with the adapter payload, workflow state, candidate route IDs, and any finance review codes.
+246:- preserve `DebtorContextGraph` identity and snapshot semantics;
+248:- keep `raw_text_included: false` and avoid source text or local paths in evidence;
+
+MCP read-only smoke
+tool_count: 25
+last_four: list_claim_domain_routes, explain_collection_workflow_state, evaluate_claim_domain_decision, explain_claim_action_packet
+route_count_for_financial_asset_execution: 3
+workflow_state: execution_route_selection
+workflow_non_execution_semantics: advisory_only_human_review_required
+packet_type: legal_action_review
+packet_direct_execution_allowed: False
+packet_raw_text_included: False
