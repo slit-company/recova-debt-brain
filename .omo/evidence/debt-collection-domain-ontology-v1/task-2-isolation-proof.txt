@@ -1,0 +1,5 @@
+pwd: member-B worktree
+git top-level: member-B worktree
+branch: team/team-8953292e/B
+member owned-path status before edits: clean
+parent owned-path status before edits: clean

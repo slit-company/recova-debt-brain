@@ -1,0 +1,3 @@
+RED focused pytest before implementation:
+tests/unit/legal_ontology/test_domain_ontology_v1.py failed because the v1 validator and resource did not exist yet.
+GREEN focused pytest after implementation: see task-2-focused-pytest.txt.

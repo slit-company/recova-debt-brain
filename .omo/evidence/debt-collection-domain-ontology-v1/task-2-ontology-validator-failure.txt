@@ -1,0 +1,23 @@
+ERROR recova-debt-collection-v1.classes: missing required class claim
+ERROR recova-debt-collection-v1.classes.claim: missing required root class claim (Claim)
+ERROR recova-debt-collection-v1.objectProperties.claim-has-debtor-identity: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-creditor: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-assignee: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-guarantee-surety: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-case-packet: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-document-assembly: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-enforcement-title: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-service-proof: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-finality-proof: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-execution-clause: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-limitation-review: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-ledger-fact: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-asset-hint: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-route-candidate: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-workflow-state: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-stopgate: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-action-packet: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-has-governance-record: unknown domain claim
+ERROR recova-debt-collection-v1.objectProperties.claim-maps-from-debtor-context-graph: unknown domain claim
+ERROR recova-debt-collection-v1.datatypeProperties.claim-domain-id: unknown domain claim
+ERROR recova-debt-collection-v1.datatypeProperties.evaluation-date: unknown domain claim
