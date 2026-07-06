@@ -1,0 +1,1 @@
+{"document_assemblies": 2, "document_pages": 3, "evidence": ".omo/evidence/debtor-context-graph-v0/task-2-document-assembly-happy.json"}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "recova-document-assembly/v0",
+  "extractor_version": "trustgraph_legal.document_assembly@0.1.0",
+  "summary": {
+    "document_pages": 3,
+    "document_assemblies": 2,
+    "needs_review": 1
+  },
+  "document_pages": [
+    {
+      "page_id": "page:doc-payment:0001",
+      "source_ref": "fixture:legal-ocr-pages/payment/page-001.md#page=1",
+      "source_hash": "sha256:1ae825ec6aae1cea3b58e5419bd8cf912b17315908adf6cded9581a1d56fd698",
+      "relative_path": "legal-ocr-pages/payment/page-001.md",
+      "page_order": 1,
+      "classifier_document_type": "payment-order",
+      "review_status": "assembled",
+      "line_count": 1,
+      "char_count": 23
+    },
+    {
+      "page_id": "page:doc-payment:0002",
+      "source_ref": "fixture:legal-ocr-pages/payment/page-002.md#page=2",
+      "source_hash": "sha256:5bb33e3817c2f3197dd00ff1e9804f0e6398dbb723e2b1ebafd937e4c7b23979",
+      "relative_path": "legal-ocr-pages/payment/page-002.md",
+      "page_order": 2,
+      "classifier_document_type": "payment-order",
+      "review_status": "assembled",
+      "line_count": 1,
+      "char_count": 23
+    },
+    {
+      "page_id": "page:doc-service:0001",
+      "source_ref": "fixture:legal-ocr-pages/service/page-001.md#page=1",
+      "source_hash": "sha256:1a444f1cad6ef773fea7509d1c856b3fde87ea44e8dd9637f75bbf62cef627b6",
+      "relative_path": "legal-ocr-pages/service/page-001.md",
+      "page_order": 1,
+      "classifier_document_type": "service-finality-proof",
+      "review_status": "needs_review",
+      "line_count": 1,
+      "char_count": 29
+    }
+  ],
+  "document_assemblies": [
+    {
+      "assembly_id": "assembly:doc-payment",
+      "document_id": "document:doc-payment",
+      "canonical_document_type": "payment-order",
+      "page_ids": [
+        "page:doc-payment:0001",
+        "page:doc-payment:0002"
+      ],
+      "source_refs": [
+        "fixture:legal-ocr-pages/payment/page-001.md#page=1",
+        "fixture:legal-ocr-pages/payment/page-002.md#page=2"
+      ],
+      "source_hashes": [
+        "sha256:1ae825ec6aae1cea3b58e5419bd8cf912b17315908adf6cded9581a1d56fd698",
+        "sha256:5bb33e3817c2f3197dd00ff1e9804f0e6398dbb723e2b1ebafd937e4c7b23979"
+      ],
+      "confidence": 0.92,
+      "review_status": "assembled",
+      "assembly_method": "recova-document-assembly@v0",
+      "procedure_episode_id": null
+    },
+    {
+      "assembly_id": "assembly:doc-service",
+      "document_id": "document:doc-service",
+      "canonical_document_type": "service-finality-proof",
+      "page_ids": [
+        "page:doc-service:0001"
+      ],
+      "source_refs": [
+        "fixture:legal-ocr-pages/service/page-001.md#page=1"
+      ],
+      "source_hashes": [
+        "sha256:1a444f1cad6ef773fea7509d1c856b3fde87ea44e8dd9637f75bbf62cef627b6"
+      ],
+      "confidence": 0.88,
+      "review_status": "needs_review",
+      "assembly_method": "recova-document-assembly@v0",
+      "procedure_episode_id": null
+    }
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "sensitive_shape_pages": 1
+  }
+}
