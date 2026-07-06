@@ -1,0 +1,1 @@
+PASS ontology recova-debt-collection-v1 root=Claim/Receivable classes=22 objectProperties=20 datatypeProperties=11 requiredEdges=20

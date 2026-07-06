@@ -1,0 +1,706 @@
+{
+  "recova-debt-collection-v1": {
+    "metadata": {
+      "name": "Recova Claim-Centered Debt Collection Domain Ontology",
+      "label": "Recova claim-domain ontology v1",
+      "description": "Additive claim-centered domain contract for advisory debt collection reasoning. DebtorContextGraph remains the runtime memory root.",
+      "version": "1.0.0",
+      "evaluation_date": "2026-07-06",
+      "created": "2026-07-06T00:00:00Z",
+      "modified": "2026-07-06T00:00:00Z",
+      "creator": "recova-domain-brain",
+      "namespace": "https://recova.ai/ontologies/debt-collection/v1",
+      "root": "Claim/Receivable",
+      "runtime_memory_root": "DebtorContextGraph",
+      "non_execution_semantics": "descriptive_only",
+      "pii_policy": "Ontology resources contain schema terms, stable handles, and aliases only. Raw personal data and source-local file paths are out of scope.",
+      "imports": [
+        "http://www.w3.org/2002/07/owl#",
+        "http://www.w3.org/2001/XMLSchema#",
+        "http://www.w3.org/2000/01/rdf-schema#"
+      ],
+      "modules": [
+        "claim-root",
+        "party-and-surety",
+        "document-and-title",
+        "limitation-and-ledger",
+        "asset-and-route",
+        "workflow-stopgate-action",
+        "governance-and-graph-compatibility"
+      ]
+    },
+    "classes": {
+      "claim": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim",
+        "type": "owl:Class",
+        "ontology_role": "root",
+        "v0_aliases": [
+          "claim"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Claim",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Primary v1 domain root for one asserted receivable or adjudicated debt right."
+      },
+      "receivable": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#receivable",
+        "type": "owl:Class",
+        "ontology_role": "root_alias",
+        "v0_aliases": [
+          "claim"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Receivable",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Business-facing alias for Claim used by finance and operator workflows."
+      },
+      "debtor-identity": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#debtor-identity",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "person-party",
+          "identity-evidence"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Debtor identity",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Redacted identity handle for the debtor attached to a claim."
+      },
+      "creditor-party": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#creditor-party",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "organization-party",
+          "party-role"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Creditor party",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Original or current creditor role for the claim."
+      },
+      "assignee-party": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#assignee-party",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "assignment",
+          "succession"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Assignee party",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Party asserting the claim through assignment or succession."
+      },
+      "guarantee-surety": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#guarantee-surety",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "party-role"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Guarantee or surety",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Guarantee, surety, subrogation, or reimbursement relationship requiring review."
+      },
+      "case-packet": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#case-packet",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "case-packet"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Case packet",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Stable packet of documents, facts, and review state supporting the claim."
+      },
+      "document-assembly": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#document-assembly",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "legal-document",
+          "document-provenance"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Document assembly",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Redacted assembly of source pages or documents used as evidence handles."
+      },
+      "enforcement-title": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#enforcement-title",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "enforcement-title"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Enforcement title",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Judgment, order, deed, or equivalent enforceable title status."
+      },
+      "service-proof": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#service-proof",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "service-proof"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Service proof",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Proof that required service or notification evidence exists."
+      },
+      "finality-proof": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#finality-proof",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "finality-proof"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Finality proof",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Finality or appeal-period proof attached to an enforcement title."
+      },
+      "execution-clause": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#execution-clause",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "execution-clause"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Execution clause",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Execution clause status and supporting proof handle."
+      },
+      "limitation-review": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#limitation-review",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "legal-check"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Limitation review",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Temporal review of limitation, interruption, and stale-claim risk."
+      },
+      "ledger-fact": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#ledger-fact",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "amount",
+          "ledger-entry",
+          "interest-calculation",
+          "cost-entry",
+          "recovery-transaction"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Ledger fact",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Principal, interest, damages, cost, payment, allocation, or balance review handle."
+      },
+      "asset-hint": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#asset-hint",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "asset",
+          "asset-evidence",
+          "attachment-target"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Asset hint",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Redacted asset or income signal used only for advisory route eligibility."
+      },
+      "route-candidate": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#route-candidate",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "credit-recovery-plan",
+          "court-procedure"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Route candidate",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Advisory route option with missing, blocking, and required fact handles."
+      },
+      "workflow-state": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#workflow-state",
+        "type": "owl:Class",
+        "rdfs:label": [
+          {
+            "value": "Workflow state",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Canonical collection workflow state linked separately from route decisions."
+      },
+      "stopgate": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#stopgate",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "stopgate"
+        ],
+        "rdfs:label": [
+          {
+            "value": "StopGate",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Compliance, legal, finance, or evidence blocker requiring human review."
+      },
+      "action-packet": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#action-packet",
+        "type": "owl:Class",
+        "rdfs:label": [
+          {
+            "value": "Action packet",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Descriptive future review packet; execution remains forbidden by this ontology."
+      },
+      "governance-record": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#governance-record",
+        "type": "owl:Class",
+        "v0_aliases": [
+          "review-item"
+        ],
+        "rdfs:label": [
+          {
+            "value": "Governance record",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Review, audit, rejection, approval, or operator handoff metadata."
+      },
+      "debtor-context-graph-handle": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#debtor-context-graph-handle",
+        "type": "owl:Class",
+        "rdfs:label": [
+          {
+            "value": "DebtorContextGraph handle",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Compatibility handle back to the runtime memory graph without rewriting graph behavior."
+      },
+      "fact-handle": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#fact-handle",
+        "type": "owl:Class",
+        "rdfs:label": [
+          {
+            "value": "Fact handle",
+            "lang": "en"
+          }
+        ],
+        "rdfs:comment": "Stable source-backed fact assertion handle imported from the debtor context graph."
+      }
+    },
+    "objectProperties": {
+      "claim-has-debtor-identity": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-debtor-identity",
+        "type": "owl:ObjectProperty",
+        "rdfs:domain": "claim",
+        "rdfs:range": "debtor-identity",
+        "rdfs:label": [
+          {
+            "value": "claim has debtor identity",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-creditor": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-creditor",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-party"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "creditor-party",
+        "rdfs:label": [
+          {
+            "value": "claim has creditor",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-assignee": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-assignee",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-assignment",
+          "has-succession"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "assignee-party",
+        "rdfs:label": [
+          {
+            "value": "claim has assignee",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-guarantee-surety": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-guarantee-surety",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-party-role"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "guarantee-surety",
+        "rdfs:label": [
+          {
+            "value": "claim has guarantee or surety",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-case-packet": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-case-packet",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-claim"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "case-packet",
+        "rdfs:label": [
+          {
+            "value": "claim has case packet",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-document-assembly": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-document-assembly",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-document",
+          "has-provenance"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "document-assembly",
+        "rdfs:label": [
+          {
+            "value": "claim has document assembly",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-enforcement-title": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-enforcement-title",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-enforcement-title"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "enforcement-title",
+        "rdfs:label": [
+          {
+            "value": "claim has enforcement title",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-service-proof": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-service-proof",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-service-proof"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "service-proof",
+        "rdfs:label": [
+          {
+            "value": "claim has service proof",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-finality-proof": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-finality-proof",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-finality-proof"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "finality-proof",
+        "rdfs:label": [
+          {
+            "value": "claim has finality proof",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-execution-clause": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-execution-clause",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-execution-clause"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "execution-clause",
+        "rdfs:label": [
+          {
+            "value": "claim has execution clause",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-limitation-review": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-limitation-review",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-legal-check"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "limitation-review",
+        "rdfs:label": [
+          {
+            "value": "claim has limitation review",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-ledger-fact": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-ledger-fact",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-amount",
+          "has-ledger",
+          "has-ledger-entry",
+          "has-interest-calculation"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "ledger-fact",
+        "rdfs:label": [
+          {
+            "value": "claim has ledger fact",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-asset-hint": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-asset-hint",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-asset-evidence",
+          "has-attachment-target"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "asset-hint",
+        "rdfs:label": [
+          {
+            "value": "claim has asset hint",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-route-candidate": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-route-candidate",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "has-credit-recovery-plan",
+          "has-court-procedure"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "route-candidate",
+        "rdfs:label": [
+          {
+            "value": "claim has route candidate",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-workflow-state": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-workflow-state",
+        "type": "owl:ObjectProperty",
+        "rdfs:domain": "claim",
+        "rdfs:range": "workflow-state",
+        "rdfs:label": [
+          {
+            "value": "claim has workflow state",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-stopgate": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-stopgate",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "evaluates-stopgate"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "stopgate",
+        "rdfs:label": [
+          {
+            "value": "claim has StopGate",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-action-packet": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-action-packet",
+        "type": "owl:ObjectProperty",
+        "rdfs:domain": "claim",
+        "rdfs:range": "action-packet",
+        "rdfs:label": [
+          {
+            "value": "claim has action packet",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-has-governance-record": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-has-governance-record",
+        "type": "owl:ObjectProperty",
+        "v0_aliases": [
+          "requires-review"
+        ],
+        "rdfs:domain": "claim",
+        "rdfs:range": "governance-record",
+        "rdfs:label": [
+          {
+            "value": "claim has governance record",
+            "lang": "en"
+          }
+        ]
+      },
+      "claim-maps-from-debtor-context-graph": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-maps-from-debtor-context-graph",
+        "type": "owl:ObjectProperty",
+        "rdfs:domain": "claim",
+        "rdfs:range": "debtor-context-graph-handle",
+        "rdfs:label": [
+          {
+            "value": "claim maps from DebtorContextGraph",
+            "lang": "en"
+          }
+        ]
+      },
+      "debtor-graph-has-fact-handle": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#debtor-graph-has-fact-handle",
+        "type": "owl:ObjectProperty",
+        "rdfs:domain": "debtor-context-graph-handle",
+        "rdfs:range": "fact-handle",
+        "rdfs:label": [
+          {
+            "value": "DebtorContextGraph has fact handle",
+            "lang": "en"
+          }
+        ]
+      }
+    },
+    "datatypeProperties": {
+      "claim-domain-id": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#claim-domain-id",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "claim",
+        "rdfs:range": "xsd:string"
+      },
+      "receivable-id": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#receivable-id",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "receivable",
+        "rdfs:range": "xsd:string"
+      },
+      "evaluation-date": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#evaluation-date",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "claim",
+        "rdfs:range": "xsd:date"
+      },
+      "graph-snapshot-id": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#graph-snapshot-id",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "debtor-context-graph-handle",
+        "rdfs:range": "xsd:string"
+      },
+      "source-ref": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#source-ref",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "fact-handle",
+        "rdfs:range": "xsd:string"
+      },
+      "review-status": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#review-status",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "governance-record",
+        "rdfs:range": "xsd:string"
+      },
+      "non-execution-status": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#non-execution-status",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "action-packet",
+        "rdfs:range": "xsd:string"
+      },
+      "workflow-state-id": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#workflow-state-id",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "workflow-state",
+        "rdfs:range": "xsd:string"
+      },
+      "route-status": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#route-status",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "route-candidate",
+        "rdfs:range": "xsd:string"
+      },
+      "stopgate-decision": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#stopgate-decision",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "stopgate",
+        "rdfs:range": "xsd:string"
+      },
+      "balance-review-status": {
+        "uri": "https://recova.ai/ontologies/debt-collection/v1#balance-review-status",
+        "type": "owl:DatatypeProperty",
+        "rdfs:domain": "ledger-fact",
+        "rdfs:range": "xsd:string"
+      }
+    }
+  }
+}

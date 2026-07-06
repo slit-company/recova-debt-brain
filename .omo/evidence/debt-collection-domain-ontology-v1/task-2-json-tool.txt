@@ -1,0 +1,1 @@
+PASS json.tool resources/ontologies/recova-debt-collection-v1.json
