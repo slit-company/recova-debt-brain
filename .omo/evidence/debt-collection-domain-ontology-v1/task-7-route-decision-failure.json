@@ -1,0 +1,97 @@
+{
+  "schema_version": "trustgraph-route-decision-evidence/v1",
+  "case_id": "synthetic-route-decision-failure",
+  "evaluation_date": "2026-07-07",
+  "failure_scenarios": [
+    {
+      "scenario": "domain_source_review_not_approved",
+      "input_summary": {
+        "route_id": "bank_account_attachment",
+        "workflow_state": "execution_route_selection",
+        "legal_source_review_status": "needs_legal_review"
+      },
+      "decision": {
+        "schema_version": "trustgraph-route-decision-result/v1",
+        "route_id": "bank_account_attachment",
+        "status": "review_required",
+        "priority_score": 85,
+        "missing_fact_handles": [],
+        "blocking_fact_handles": [],
+        "reasons": [
+          {
+            "reason_code": "domain_legal_source_unapproved",
+            "message": "At least one route legal source is not approved for static v1 use.",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l009930-m267359-a593",
+              "kr-law-l010910-m268669-a12"
+            ]
+          }
+        ],
+        "source_refs": [
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009930-m267359-a593",
+          "kr-law-l010910-m268669-a12"
+        ],
+        "next_step_action_packet_type": "legal_action_review",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "pii_profile": {
+          "raw_text_included": false,
+          "source_text_included": false
+        }
+      }
+    },
+    {
+      "scenario": "stopgate_blocker_present",
+      "input_summary": {
+        "route_id": "bank_account_attachment",
+        "workflow_state": "execution_route_selection",
+        "blocking_fact_handles": [
+          "insolvency_stay"
+        ]
+      },
+      "decision": {
+        "schema_version": "trustgraph-route-decision-result/v1",
+        "route_id": "bank_account_attachment",
+        "status": "blocked",
+        "priority_score": 0,
+        "missing_fact_handles": [],
+        "blocking_fact_handles": [
+          "insolvency_stay"
+        ],
+        "reasons": [
+          {
+            "reason_code": "discharge_proceeding_detected",
+            "message": "Blocking fact `insolvency_stay` requires advisory hold.",
+            "source_refs": [
+              "kr-law-l009930-m267359-a593",
+              "kr-law-l009930-m267359-a600"
+            ]
+          }
+        ],
+        "source_refs": [
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009930-m267359-a593",
+          "kr-law-l010910-m268669-a12",
+          "kr-law-l009930-m267359-a600"
+        ],
+        "next_step_action_packet_type": "legal_action_review",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "pii_profile": {
+          "raw_text_included": false,
+          "source_text_included": false
+        }
+      }
+    }
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  }
+}

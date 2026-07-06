@@ -1,0 +1,52 @@
+{
+  "schema_version": "trustgraph-route-decision-evidence/v1",
+  "case_id": "synthetic-route-decision-happy",
+  "evaluation_date": "2026-07-07",
+  "input_summary": {
+    "route_id": "bank_account_attachment",
+    "workflow_state": "execution_route_selection",
+    "fact_handles": [
+      "enforceable_title",
+      "financial_account_hint"
+    ],
+    "legal_source_review_status": "approved_static_v1"
+  },
+  "decision": {
+    "schema_version": "trustgraph-route-decision-result/v1",
+    "route_id": "bank_account_attachment",
+    "status": "possible",
+    "priority_score": 100,
+    "missing_fact_handles": [],
+    "blocking_fact_handles": [],
+    "reasons": [
+      {
+        "reason_code": "required_facts_present",
+        "message": "All required route fact handles are present.",
+        "source_refs": [
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009930-m267359-a593",
+          "kr-law-l010910-m268669-a12"
+        ]
+      }
+    ],
+    "source_refs": [
+      "kr-law-l009290-m268837-a223",
+      "kr-law-l009290-m268837-a229",
+      "kr-law-l009290-m268837-a246",
+      "kr-law-l009930-m267359-a593",
+      "kr-law-l010910-m268669-a12"
+    ],
+    "next_step_action_packet_type": "legal_action_review",
+    "non_execution_semantics": "advisory_only_human_review_required",
+    "pii_profile": {
+      "raw_text_included": false,
+      "source_text_included": false
+    }
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  }
+}
