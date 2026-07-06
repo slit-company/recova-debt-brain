@@ -1,0 +1,2117 @@
+{
+    "case_graph": {
+        "case_packets": [
+            {
+                "case_packet_id": "case-packet:claim-domain:9823c58f387735c9",
+                "debtor_graph_id": "debtor-graph:d75ca859621e3d19",
+                "edges": [],
+                "entities": [
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "Claim",
+                        "id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "ontology_class": "claim",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "claim-root",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+                            ]
+                        },
+                        "value": "claim:from-debtor-graph:16e3bbb3cb4b8d28"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "enforceable_title",
+                        "id": "fact:enforceable_title:275e68916f9e3c33",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+                            ]
+                        },
+                        "value": "enforceable_title"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "enforceable_title",
+                        "id": "fact:enforceable_title:36206adf67121b84",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1"
+                            ]
+                        },
+                        "value": "enforceable_title"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "executable_copy",
+                        "id": "fact:executable_copy:c5fe57a823e77567",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+                            ]
+                        },
+                        "value": "executable_copy"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "final_title_or_written_title",
+                        "id": "fact:final_title_or_written_title:14db3c97b50e3847",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+                            ]
+                        },
+                        "value": "final_title_or_written_title"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "final_title_or_written_title",
+                        "id": "fact:final_title_or_written_title:e89b715fa1671f99",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+                            ]
+                        },
+                        "value": "final_title_or_written_title"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "money_payment_enforcement_title",
+                        "id": "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1"
+                            ]
+                        },
+                        "value": "money_payment_enforcement_title"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "money_payment_enforcement_title",
+                        "id": "fact:money_payment_enforcement_title:807908eb98bf1224",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+                            ]
+                        },
+                        "value": "money_payment_enforcement_title"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "service_path",
+                        "id": "fact:service_path:a95f96215d8fcc1b",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+                            ]
+                        },
+                        "value": "service_path"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "service_path",
+                        "id": "fact:service_path:ef6cd79d462770d7",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+                            ]
+                        },
+                        "value": "service_path"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "third_party_debtor_bank_hint",
+                        "id": "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+                            ]
+                        },
+                        "value": "third_party_debtor_bank_hint"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "third_party_debtor_bank_hint",
+                        "id": "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+                            ]
+                        },
+                        "value": "third_party_debtor_bank_hint"
+                    },
+                    {
+                        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+                        "entity_type": "FactAssertion",
+                        "field_name": "third_party_debtor_hint",
+                        "id": "fact:third_party_debtor_hint:a1ddb15579b54f35",
+                        "ontology_class": "source-span",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "fact-assertion",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+                            ]
+                        },
+                        "value": "third_party_debtor_hint"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:payment_order_title_acquisition",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l001700-m252393-a474|lawId=001700|MST=252393|article=\uc81c474\uc870|effective_date=2025-07-12|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "title_acquisition_payment_order",
+                        "legal_source_refs": [
+                            "kr-law-l001700-m252393-a474"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l001700-m252393-a474|lawId=001700|MST=252393|article=\uc81c474\uc870|effective_date=2025-07-12|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l001700-m252393-a474|lawId=001700|MST=252393|article=\uc81c474\uc870|effective_date=2025-07-12|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "payment_order_title_acquisition",
+                        "value": "payment_order_title_acquisition"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:partial_payment_acknowledgment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l001706-m284415-a165|lawId=001706|MST=284415|article=\uc81c165\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l001706-m284415-a168|lawId=001706|MST=284415|article=\uc81c168\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "limitation_extension_lawsuit",
+                        "legal_source_refs": [
+                            "kr-law-l001706-m284415-a168",
+                            "kr-law-l010910-m268669-a11"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l001706-m284415-a165|lawId=001706|MST=284415|article=\uc81c165\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l001706-m284415-a165|lawId=001706|MST=284415|article=\uc81c165\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l001706-m284415-a168|lawId=001706|MST=284415|article=\uc81c168\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "partial_payment_acknowledgment",
+                        "value": "partial_payment_acknowledgment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:bank_account_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "bank_account_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a229",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "bank_account_attachment",
+                        "value": "bank_account_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:wage_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "wage_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a229",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "wage_attachment",
+                        "value": "wage_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:severance_or_retirement_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "severance_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "severance_or_retirement_attachment",
+                        "value": "severance_or_retirement_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:residential_lease_deposit_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "lease_deposit_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a229",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "residential_lease_deposit_attachment",
+                        "value": "residential_lease_deposit_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:real_estate_compulsory_auction",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "real_estate_auction",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "real_estate_compulsory_auction",
+                        "value": "real_estate_compulsory_auction"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:vehicle_or_heavy_equipment_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "vehicle_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "vehicle_or_heavy_equipment_attachment",
+                        "value": "vehicle_or_heavy_equipment_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:trade_receivable_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "business_receivable_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a229"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "trade_receivable_attachment",
+                        "value": "trade_receivable_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:pg_platform_settlement_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "card_pg_platform_settlement_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a229"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "pg_platform_settlement_attachment",
+                        "value": "pg_platform_settlement_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:insurance_refund_claim_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "insurance_refund_or_claim_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "insurance_refund_claim_attachment",
+                        "value": "insurance_refund_claim_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:tax_refund_or_compensation_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "tax_refund_or_public_receivable_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223",
+                            "kr-law-l009290-m268837-a246"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "tax_refund_or_compensation_attachment",
+                        "value": "tax_refund_or_compensation_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:inheritance_share_attachment",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "inheritance_review_and_share_attachment",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a223"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "inheritance_share_attachment",
+                        "value": "inheritance_share_attachment"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:fraudulent_transfer_cancellation_lawsuit",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l001706-m284415-a406|lawId=001706|MST=284415|article=\uc81c406\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "fraudulent_transfer_lawsuit",
+                        "legal_source_refs": [
+                            "kr-law-l001706-m284415-a406",
+                            "kr-law-l010910-m268669-a11"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l001706-m284415-a406|lawId=001706|MST=284415|article=\uc81c406\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l001706-m284415-a406|lawId=001706|MST=284415|article=\uc81c406\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "fraudulent_transfer_cancellation_lawsuit",
+                        "value": "fraudulent_transfer_cancellation_lawsuit"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:property_disclosure_inquiry_registry",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a61|lawId=009290|MST=268837|article=\uc81c61\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "property_disclosure",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a61",
+                            "kr-law-l009290-m268837-a74",
+                            "kr-law-l009290-m268837-a70"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a61|lawId=009290|MST=268837|article=\uc81c61\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a61|lawId=009290|MST=268837|article=\uc81c61\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "property_disclosure_inquiry_registry",
+                        "value": "property_disclosure_inquiry_registry"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:property_disclosure_inquiry_registry",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a74|lawId=009290|MST=268837|article=\uc81c74\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "property_inquiry",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a61",
+                            "kr-law-l009290-m268837-a74",
+                            "kr-law-l009290-m268837-a70"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a74|lawId=009290|MST=268837|article=\uc81c74\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a74|lawId=009290|MST=268837|article=\uc81c74\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "property_disclosure_inquiry_registry",
+                        "value": "property_disclosure_inquiry_registry"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:property_disclosure_inquiry_registry",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009290-m268837-a70|lawId=009290|MST=268837|article=\uc81c70\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "debtor_default_registry",
+                        "legal_source_refs": [
+                            "kr-law-l009290-m268837-a61",
+                            "kr-law-l009290-m268837-a74",
+                            "kr-law-l009290-m268837-a70"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009290-m268837-a70|lawId=009290|MST=268837|article=\uc81c70\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a70|lawId=009290|MST=268837|article=\uc81c70\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "property_disclosure_inquiry_registry",
+                        "value": "property_disclosure_inquiry_registry"
+                    },
+                    {
+                        "direct_execution_allowed": false,
+                        "entity_type": "RouteCandidate",
+                        "id": "route-candidate:insolvency_discharge_review",
+                        "legacy_legal_source_refs": [
+                            "kr-law-l009930-m267359-a593|lawId=009930|MST=267359|article=\uc81c593\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009930-m267359-a600|lawId=009930|MST=267359|article=\uc81c600\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "kr-law-l009930-m267359-a566|lawId=009930|MST=267359|article=\uc81c566\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                        ],
+                        "legacy_route_id": "insolvency_review_or_cease_collection",
+                        "legal_source_refs": [
+                            "kr-law-l009930-m267359-a593",
+                            "kr-law-l009930-m267359-a600",
+                            "kr-law-l009930-m267359-a566",
+                            "kr-debtor-rehabilitation-act-v0"
+                        ],
+                        "ontology_class": "route-candidate",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "route-candidate",
+                            "source_ref": "kr-law-l009930-m267359-a593|lawId=009930|MST=267359|article=\uc81c593\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                            "source_refs": [
+                                "kr-law-l009930-m267359-a593|lawId=009930|MST=267359|article=\uc81c593\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009930-m267359-a600|lawId=009930|MST=267359|article=\uc81c600\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                                "kr-law-l009930-m267359-a566|lawId=009930|MST=267359|article=\uc81c566\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "route_id": "insolvency_discharge_review",
+                        "value": "insolvency_discharge_review"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l001700-m252393-a474",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l001700-m252393-a474",
+                            "source_refs": [
+                                "kr-law-l001700-m252393-a474"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l001700-m252393-a474",
+                        "value": "kr-law-l001700-m252393-a474"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l001706-m284415-a168",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l001706-m284415-a168",
+                            "source_refs": [
+                                "kr-law-l001706-m284415-a168"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l001706-m284415-a168",
+                        "value": "kr-law-l001706-m284415-a168"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l010910-m268669-a11",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l010910-m268669-a11",
+                            "source_refs": [
+                                "kr-law-l010910-m268669-a11"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l010910-m268669-a11",
+                        "value": "kr-law-l010910-m268669-a11"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009290-m268837-a223",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009290-m268837-a223",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a223"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009290-m268837-a223",
+                        "value": "kr-law-l009290-m268837-a223"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009290-m268837-a229",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009290-m268837-a229",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a229"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009290-m268837-a229",
+                        "value": "kr-law-l009290-m268837-a229"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009290-m268837-a246",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009290-m268837-a246",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a246"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009290-m268837-a246",
+                        "value": "kr-law-l009290-m268837-a246"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l001706-m284415-a406",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l001706-m284415-a406",
+                            "source_refs": [
+                                "kr-law-l001706-m284415-a406"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l001706-m284415-a406",
+                        "value": "kr-law-l001706-m284415-a406"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009290-m268837-a61",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009290-m268837-a61",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a61"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009290-m268837-a61",
+                        "value": "kr-law-l009290-m268837-a61"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009290-m268837-a74",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009290-m268837-a74",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a74"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009290-m268837-a74",
+                        "value": "kr-law-l009290-m268837-a74"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009290-m268837-a70",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009290-m268837-a70",
+                            "source_refs": [
+                                "kr-law-l009290-m268837-a70"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009290-m268837-a70",
+                        "value": "kr-law-l009290-m268837-a70"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009930-m267359-a593",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009930-m267359-a593",
+                            "source_refs": [
+                                "kr-law-l009930-m267359-a593"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009930-m267359-a593",
+                        "value": "kr-law-l009930-m267359-a593"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009930-m267359-a600",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009930-m267359-a600",
+                            "source_refs": [
+                                "kr-law-l009930-m267359-a600"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009930-m267359-a600",
+                        "value": "kr-law-l009930-m267359-a600"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-law-l009930-m267359-a566",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-law-l009930-m267359-a566",
+                            "source_refs": [
+                                "kr-law-l009930-m267359-a566"
+                            ]
+                        },
+                        "review_status": "approved_static_v1",
+                        "source_id": "kr-law-l009930-m267359-a566",
+                        "value": "kr-law-l009930-m267359-a566"
+                    },
+                    {
+                        "entity_type": "LegalSourceStatus",
+                        "id": "legal-source:kr-debtor-rehabilitation-act-v0",
+                        "ontology_class": "legal-source",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "legal-source",
+                            "source_ref": "kr-debtor-rehabilitation-act-v0",
+                            "source_refs": [
+                                "kr-debtor-rehabilitation-act-v0"
+                            ]
+                        },
+                        "review_status": "needs_legal_review",
+                        "source_id": "kr-debtor-rehabilitation-act-v0",
+                        "value": "kr-debtor-rehabilitation-act-v0"
+                    },
+                    {
+                        "entity_type": "GovernanceRecord",
+                        "id": "governance:conflicting_fact_signal:1b85381911ae6afc3196",
+                        "ontology_class": "governance-record",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "governance-record",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+                            ]
+                        },
+                        "reason": "conflicting_fact_values",
+                        "review_status": "review_required",
+                        "value": "conflicting_fact_values"
+                    },
+                    {
+                        "entity_type": "GovernanceRecord",
+                        "id": "governance:conflicting_fact_signal:86265e8de1ec7ab857ec",
+                        "ontology_class": "governance-record",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "governance-record",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+                            ]
+                        },
+                        "reason": "conflicting_fact_values",
+                        "review_status": "review_required",
+                        "value": "conflicting_fact_values"
+                    },
+                    {
+                        "entity_type": "GovernanceRecord",
+                        "id": "governance:conflicting_fact_signal:a020893ab854a4ad2a9c",
+                        "ontology_class": "governance-record",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "governance-record",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+                            ]
+                        },
+                        "reason": "conflicting_fact_values",
+                        "review_status": "review_required",
+                        "value": "conflicting_fact_values"
+                    },
+                    {
+                        "entity_type": "GovernanceRecord",
+                        "id": "governance:identity_unresolved:ad2836a49c16c1f3c0b1",
+                        "ontology_class": "governance-record",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "governance-record",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+                            ]
+                        },
+                        "reason": "identity_unresolved",
+                        "review_status": "review_required",
+                        "value": "identity_unresolved"
+                    },
+                    {
+                        "entity_type": "GovernanceRecord",
+                        "id": "governance:unknown_assembly:c775acb471cf32480375",
+                        "ontology_class": "governance-record",
+                        "provenance": {
+                            "confidence": 1.0,
+                            "field_name": "governance-record",
+                            "source_ref": "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4",
+                            "source_refs": [
+                                "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+                            ]
+                        },
+                        "reason": "unknown_assembly",
+                        "review_status": "review_required",
+                        "value": "unknown_assembly"
+                    }
+                ],
+                "evidence_keys": [],
+                "findings": [],
+                "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+                "id": "case-packet:claim-domain:9823c58f387735c9",
+                "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13"
+            }
+        ],
+        "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+        },
+        "schema_version": "trustgraph-legal-case-graph/v1"
+    },
+    "claim_root": {
+        "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+        "claim_identity_method": "source_bundle_hash_fallback",
+        "claim_ref": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+        "debtor_graph_id": "debtor-graph:d75ca859621e3d19",
+        "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+        "ontology_class": "Claim",
+        "receivable_ref": "receivable:from-debtor-graph:16e3bbb3cb4b8d28",
+        "root_type": "Claim/Receivable",
+        "runtime_memory_root": "DebtorContextGraph",
+        "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13",
+        "source_fact_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84",
+            "fact:executable_copy:c5fe57a823e77567",
+            "fact:final_title_or_written_title:14db3c97b50e3847",
+            "fact:final_title_or_written_title:e89b715fa1671f99",
+            "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+            "fact:money_payment_enforcement_title:807908eb98bf1224",
+            "fact:service_path:a95f96215d8fcc1b",
+            "fact:service_path:ef6cd79d462770d7",
+            "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+            "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+            "fact:third_party_debtor_hint:a1ddb15579b54f35"
+        ],
+        "source_refs": [
+            "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+            "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+            "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+            "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+            "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+        ]
+    },
+    "claim_roots": [
+        {
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "claim_identity_method": "source_bundle_hash_fallback",
+            "claim_ref": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "debtor_graph_id": "debtor-graph:d75ca859621e3d19",
+            "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+            "ontology_class": "Claim",
+            "receivable_ref": "receivable:from-debtor-graph:16e3bbb3cb4b8d28",
+            "root_type": "Claim/Receivable",
+            "runtime_memory_root": "DebtorContextGraph",
+            "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13",
+            "source_fact_ids": [
+                "fact:enforceable_title:275e68916f9e3c33",
+                "fact:enforceable_title:36206adf67121b84",
+                "fact:executable_copy:c5fe57a823e77567",
+                "fact:final_title_or_written_title:14db3c97b50e3847",
+                "fact:final_title_or_written_title:e89b715fa1671f99",
+                "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+                "fact:money_payment_enforcement_title:807908eb98bf1224",
+                "fact:service_path:a95f96215d8fcc1b",
+                "fact:service_path:ef6cd79d462770d7",
+                "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+                "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+                "fact:third_party_debtor_hint:a1ddb15579b54f35"
+            ],
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+            ]
+        }
+    ],
+    "debtor_graph_id": "debtor-graph:d75ca859621e3d19",
+    "domain_ontology_version": "recova-debt-collection-v1@1.0.0",
+    "fact_handles": [
+        {
+            "chunk_id": "page:synthetic-payment-order:0002#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.94,
+            "derived": true,
+            "fact_handle": "enforceable_title",
+            "fact_id": "fact:enforceable_title:275e68916f9e3c33",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-payment-order",
+            "source_hash": "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+            ],
+            "subject_id": "document:synthetic-payment-order"
+        },
+        {
+            "chunk_id": "page:synthetic-payment-order:0001#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.94,
+            "derived": true,
+            "fact_handle": "enforceable_title",
+            "fact_id": "fact:enforceable_title:36206adf67121b84",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-payment-order",
+            "source_hash": "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1"
+            ],
+            "subject_id": "document:synthetic-payment-order"
+        },
+        {
+            "chunk_id": "page:synthetic-service-finality:0003#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.91,
+            "derived": true,
+            "fact_handle": "executable_copy",
+            "fact_id": "fact:executable_copy:c5fe57a823e77567",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-service-finality",
+            "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+            ],
+            "subject_id": "document:synthetic-service-finality"
+        },
+        {
+            "chunk_id": "page:synthetic-service-finality:0003#L7-7",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.94,
+            "derived": false,
+            "fact_handle": "final_title_or_written_title",
+            "fact_id": "fact:final_title_or_written_title:14db3c97b50e3847",
+            "line_end": 7,
+            "line_start": 7,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-service-finality",
+            "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+            ],
+            "subject_id": "document:synthetic-service-finality"
+        },
+        {
+            "chunk_id": "page:synthetic-service-finality:0003#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.91,
+            "derived": true,
+            "fact_handle": "final_title_or_written_title",
+            "fact_id": "fact:final_title_or_written_title:e89b715fa1671f99",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-service-finality",
+            "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+            ],
+            "subject_id": "document:synthetic-service-finality"
+        },
+        {
+            "chunk_id": "page:synthetic-payment-order:0001#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.94,
+            "derived": true,
+            "fact_handle": "money_payment_enforcement_title",
+            "fact_id": "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-payment-order",
+            "source_hash": "sha256:fa3a4df6c0a9347b59e12eb686fee2a91244ea8856a623cda074a34effdb1105",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1"
+            ],
+            "subject_id": "document:synthetic-payment-order"
+        },
+        {
+            "chunk_id": "page:synthetic-payment-order:0002#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.94,
+            "derived": true,
+            "fact_handle": "money_payment_enforcement_title",
+            "fact_id": "fact:money_payment_enforcement_title:807908eb98bf1224",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-payment-order",
+            "source_hash": "sha256:d664f1ebcb47a1797ee2d43e606117957c07a46b40202ab57b8e990bad762ce9",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2"
+            ],
+            "subject_id": "document:synthetic-payment-order"
+        },
+        {
+            "chunk_id": "page:synthetic-service-finality:0003#L6-6",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.94,
+            "derived": false,
+            "fact_handle": "service_path",
+            "fact_id": "fact:service_path:a95f96215d8fcc1b",
+            "line_end": 6,
+            "line_start": 6,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-service-finality",
+            "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+            ],
+            "subject_id": "document:synthetic-service-finality"
+        },
+        {
+            "chunk_id": "page:synthetic-service-finality:0003#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.91,
+            "derived": true,
+            "fact_handle": "service_path",
+            "fact_id": "fact:service_path:ef6cd79d462770d7",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-service-finality",
+            "source_hash": "sha256:3517813579760929c81d1dbc5f8198871bc80de70bf9d58e081306d12687d437",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+            ],
+            "subject_id": "document:synthetic-service-finality"
+        },
+        {
+            "chunk_id": "page:synthetic-attachment-order:0005#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.9,
+            "derived": true,
+            "fact_handle": "third_party_debtor_bank_hint",
+            "fact_id": "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-attachment-order",
+            "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+            ],
+            "subject_id": "document:synthetic-attachment-order"
+        },
+        {
+            "chunk_id": "page:synthetic-attachment-order:0005#L6-6",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.9,
+            "derived": false,
+            "fact_handle": "third_party_debtor_bank_hint",
+            "fact_id": "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+            "line_end": 6,
+            "line_start": 6,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-attachment-order",
+            "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+            ],
+            "subject_id": "document:synthetic-attachment-order"
+        },
+        {
+            "chunk_id": "page:synthetic-attachment-order:0005#L1-12",
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.9,
+            "derived": true,
+            "fact_handle": "third_party_debtor_hint",
+            "fact_id": "fact:third_party_debtor_hint:a1ddb15579b54f35",
+            "line_end": 12,
+            "line_start": 1,
+            "review_status": "verified",
+            "source_document_id": "document:synthetic-attachment-order",
+            "source_hash": "sha256:825c209f972c7d75727ce086489e8fff0ab09a93d228a83594ce89d02268e4c1",
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+            ],
+            "subject_id": "document:synthetic-attachment-order"
+        }
+    ],
+    "governance_records": [
+        {
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "kind": "conflicting_fact_signal",
+            "reason_code": "conflicting_fact_values",
+            "record_id": "governance:conflicting_fact_signal:1b85381911ae6afc3196",
+            "review_status": "review_required",
+            "severity": "medium",
+            "source_fact_ids": [
+                "fact:service_path:a95f96215d8fcc1b",
+                "fact:service_path:ef6cd79d462770d7"
+            ],
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+            ]
+        },
+        {
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "kind": "conflicting_fact_signal",
+            "reason_code": "conflicting_fact_values",
+            "record_id": "governance:conflicting_fact_signal:86265e8de1ec7ab857ec",
+            "review_status": "review_required",
+            "severity": "medium",
+            "source_fact_ids": [
+                "fact:final_title_or_written_title:14db3c97b50e3847",
+                "fact:final_title_or_written_title:e89b715fa1671f99"
+            ],
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3"
+            ]
+        },
+        {
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "kind": "conflicting_fact_signal",
+            "reason_code": "conflicting_fact_values",
+            "record_id": "governance:conflicting_fact_signal:a020893ab854a4ad2a9c",
+            "review_status": "review_required",
+            "severity": "medium",
+            "source_fact_ids": [
+                "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+                "fact:third_party_debtor_bank_hint:62999d7fbab13aaf"
+            ],
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5"
+            ]
+        },
+        {
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "kind": "identity_unresolved",
+            "reason_code": "identity_unresolved",
+            "record_id": "governance:identity_unresolved:ad2836a49c16c1f3c0b1",
+            "review_status": "review_required",
+            "severity": "high",
+            "source_fact_ids": [],
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+                "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+            ]
+        },
+        {
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "kind": "unknown_assembly",
+            "reason_code": "unknown_assembly",
+            "record_id": "governance:unknown_assembly:c775acb471cf32480375",
+            "review_status": "review_required",
+            "severity": "medium",
+            "source_fact_ids": [],
+            "source_refs": [
+                "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+            ]
+        }
+    ],
+    "graph_snapshot": {
+        "extractor_versions": [
+            "trustgraph_legal.debtor_context_types@0.1.0"
+        ],
+        "fact_assertion_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84",
+            "fact:executable_copy:c5fe57a823e77567",
+            "fact:final_title_or_written_title:14db3c97b50e3847",
+            "fact:final_title_or_written_title:e89b715fa1671f99",
+            "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+            "fact:money_payment_enforcement_title:807908eb98bf1224",
+            "fact:service_path:a95f96215d8fcc1b",
+            "fact:service_path:ef6cd79d462770d7",
+            "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+            "fact:third_party_debtor_bank_hint:62999d7fbab13aaf",
+            "fact:third_party_debtor_hint:a1ddb15579b54f35"
+        ],
+        "generated_at": "2026-07-06T00:00:00Z",
+        "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+        "legal_rule_source_version": "recova-legal-rule-sources@v0",
+        "ontology_version": "recova-debt-collection@v0",
+        "route_candidate_ids": [
+            "title_acquisition_payment_order",
+            "limitation_extension_lawsuit",
+            "bank_account_attachment",
+            "wage_attachment",
+            "severance_attachment",
+            "lease_deposit_attachment",
+            "real_estate_auction",
+            "vehicle_attachment",
+            "business_receivable_attachment",
+            "card_pg_platform_settlement_attachment",
+            "insurance_refund_or_claim_attachment",
+            "tax_refund_or_public_receivable_attachment",
+            "inheritance_review_and_share_attachment",
+            "fraudulent_transfer_lawsuit",
+            "property_disclosure",
+            "property_inquiry",
+            "debtor_default_registry",
+            "insolvency_review_or_cease_collection"
+        ],
+        "route_version": "recova-debt-routes@v0",
+        "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13"
+    },
+    "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+    "legal_source_refs": [
+        "kr-law-l001700-m252393-a474",
+        "kr-law-l001706-m284415-a168",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l001706-m284415-a406",
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a74",
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0"
+    ],
+    "non_execution_semantics": "adapter_projection_only_human_review_required",
+    "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+    },
+    "route_candidates": [
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.5,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l001700-m252393-a474"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "payment_order_title_acquisition",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l001700-m252393-a474|lawId=001700|MST=252393|article=\uc81c474\uc870|effective_date=2025-07-12|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "title_acquisition_payment_order",
+            "legal_source_refs": [
+                "kr-law-l001700-m252393-a474"
+            ],
+            "missing_fact_handles": [
+                "claim_basis",
+                "debtor_identity"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "claim_basis",
+                "debtor_identity",
+                "service_path"
+            ],
+            "review_status": "review_required",
+            "route_id": "title_acquisition_payment_order",
+            "source_fact_ids": [
+                "fact:service_path:a95f96215d8fcc1b",
+                "fact:service_path:ef6cd79d462770d7"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l001706-m284415-a168",
+                "kr-law-l010910-m268669-a11"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "partial_payment_acknowledgment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l001706-m284415-a165|lawId=001706|MST=284415|article=\uc81c165\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l001706-m284415-a168|lawId=001706|MST=284415|article=\uc81c168\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "limitation_extension_lawsuit",
+            "legal_source_refs": [
+                "kr-law-l001706-m284415-a165",
+                "kr-law-l001706-m284415-a168"
+            ],
+            "missing_fact_handles": [
+                "limitation_clock",
+                "claim_balance"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "limitation_clock",
+                "claim_balance"
+            ],
+            "review_status": "review_required",
+            "route_id": "limitation_extension_lawsuit",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.9,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "bank_account_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "bank_account_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "enforceable_title",
+                "third_party_debtor_bank_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "bank_account_attachment",
+            "source_fact_ids": [
+                "fact:enforceable_title:275e68916f9e3c33",
+                "fact:enforceable_title:36206adf67121b84",
+                "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+                "fact:third_party_debtor_bank_hint:62999d7fbab13aaf"
+            ],
+            "status": "possible"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.57,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "wage_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "wage_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [
+                "employer_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "enforceable_title",
+                "employer_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "wage_attachment",
+            "source_fact_ids": [
+                "fact:enforceable_title:275e68916f9e3c33",
+                "fact:enforceable_title:36206adf67121b84"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.57,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "severance_or_retirement_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "severance_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [
+                "employment_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "enforceable_title",
+                "employment_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "severance_attachment",
+            "source_fact_ids": [
+                "fact:enforceable_title:275e68916f9e3c33",
+                "fact:enforceable_title:36206adf67121b84"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.57,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "residential_lease_deposit_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "lease_deposit_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [
+                "lease_deposit_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "enforceable_title",
+                "lease_deposit_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "lease_deposit_attachment",
+            "source_fact_ids": [
+                "fact:enforceable_title:275e68916f9e3c33",
+                "fact:enforceable_title:36206adf67121b84"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.57,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "real_estate_compulsory_auction",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "real_estate_auction",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [
+                "real_estate_registry_asset"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "real_estate_registry_asset",
+                "enforceable_title"
+            ],
+            "review_status": "review_required",
+            "route_id": "real_estate_auction",
+            "source_fact_ids": [
+                "fact:enforceable_title:275e68916f9e3c33",
+                "fact:enforceable_title:36206adf67121b84"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.57,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "vehicle_or_heavy_equipment_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "vehicle_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [
+                "vehicle_registration_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "vehicle_registration_hint",
+                "enforceable_title"
+            ],
+            "review_status": "review_required",
+            "route_id": "vehicle_attachment",
+            "source_fact_ids": [
+                "fact:enforceable_title:275e68916f9e3c33",
+                "fact:enforceable_title:36206adf67121b84"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.57,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "trade_receivable_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "business_receivable_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229"
+            ],
+            "missing_fact_handles": [
+                "business_activity_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "business_activity_hint",
+                "third_party_debtor_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "business_receivable_attachment",
+            "source_fact_ids": [
+                "fact:third_party_debtor_hint:a1ddb15579b54f35"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "pg_platform_settlement_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=\uc81c229\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "card_pg_platform_settlement_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229"
+            ],
+            "missing_fact_handles": [
+                "merchant_or_platform_hint",
+                "settlement_counterparty"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "merchant_or_platform_hint",
+                "settlement_counterparty"
+            ],
+            "review_status": "review_required",
+            "route_id": "card_pg_platform_settlement_attachment",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "insurance_refund_claim_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "insurance_refund_or_claim_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [
+                "insurance_policy_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "insurance_policy_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "insurance_refund_or_claim_attachment",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "tax_refund_or_compensation_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=\uc81c246\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "tax_refund_or_public_receivable_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a246"
+            ],
+            "missing_fact_handles": [
+                "refund_or_compensation_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "refund_or_compensation_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "tax_refund_or_public_receivable_attachment",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a223"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "inheritance_share_attachment",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=\uc81c223\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "inheritance_review_and_share_attachment",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a223"
+            ],
+            "missing_fact_handles": [
+                "death_or_family_relation_hint",
+                "estate_asset_hint"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "death_or_family_relation_hint",
+                "estate_asset_hint"
+            ],
+            "review_status": "review_required",
+            "route_id": "inheritance_review_and_share_attachment",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l001706-m284415-a406",
+                "kr-law-l010910-m268669-a11"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "fraudulent_transfer_cancellation_lawsuit",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l001706-m284415-a406|lawId=001706|MST=284415|article=\uc81c406\uc870|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "fraudulent_transfer_lawsuit",
+            "legal_source_refs": [
+                "kr-law-l001706-m284415-a406"
+            ],
+            "missing_fact_handles": [
+                "suspicious_transfer",
+                "claim_before_transfer",
+                "deadline_clock"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "suspicious_transfer",
+                "claim_before_transfer",
+                "deadline_clock"
+            ],
+            "review_status": "review_required",
+            "route_id": "fraudulent_transfer_lawsuit",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.91,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a61",
+                "kr-law-l009290-m268837-a74",
+                "kr-law-l009290-m268837-a70"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "property_disclosure_inquiry_registry",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a61|lawId=009290|MST=268837|article=\uc81c61\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "property_disclosure",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a61"
+            ],
+            "missing_fact_handles": [],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "money_payment_enforcement_title",
+                "executable_copy"
+            ],
+            "review_status": "review_required",
+            "route_id": "property_disclosure",
+            "source_fact_ids": [
+                "fact:executable_copy:c5fe57a823e77567",
+                "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+                "fact:money_payment_enforcement_title:807908eb98bf1224"
+            ],
+            "status": "possible"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a61",
+                "kr-law-l009290-m268837-a74",
+                "kr-law-l009290-m268837-a70"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "property_disclosure_inquiry_registry",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a74|lawId=009290|MST=268837|article=\uc81c74\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "property_inquiry",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a74"
+            ],
+            "missing_fact_handles": [
+                "property_disclosure_episode",
+                "statutory_failure_condition"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "property_disclosure_episode",
+                "statutory_failure_condition"
+            ],
+            "review_status": "review_required",
+            "route_id": "property_inquiry",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.57,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009290-m268837-a61",
+                "kr-law-l009290-m268837-a74",
+                "kr-law-l009290-m268837-a70"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "property_disclosure_inquiry_registry",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009290-m268837-a70|lawId=009290|MST=268837|article=\uc81c70\uc870|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "debtor_default_registry",
+            "legal_source_refs": [
+                "kr-law-l009290-m268837-a70"
+            ],
+            "missing_fact_handles": [
+                "six_month_nonpayment_or_property_disclosure_failure"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "final_title_or_written_title",
+                "six_month_nonpayment_or_property_disclosure_failure"
+            ],
+            "review_status": "review_required",
+            "route_id": "debtor_default_registry",
+            "source_fact_ids": [
+                "fact:final_title_or_written_title:14db3c97b50e3847",
+                "fact:final_title_or_written_title:e89b715fa1671f99"
+            ],
+            "status": "missing_facts"
+        },
+        {
+            "blocking_fact_handles": [],
+            "claim_id": "claim:from-debtor-graph:16e3bbb3cb4b8d28",
+            "confidence": 0.35,
+            "direct_execution_allowed": false,
+            "domain_legal_source_refs": [
+                "kr-law-l009930-m267359-a593",
+                "kr-law-l009930-m267359-a600",
+                "kr-law-l009930-m267359-a566",
+                "kr-debtor-rehabilitation-act-v0"
+            ],
+            "domain_review_status": "approved_static_v1",
+            "domain_route_id": "insolvency_discharge_review",
+            "domain_route_supported": true,
+            "legacy_legal_source_refs": [
+                "kr-law-l009930-m267359-a593|lawId=009930|MST=267359|article=\uc81c593\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009930-m267359-a600|lawId=009930|MST=267359|article=\uc81c600\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+                "kr-law-l009930-m267359-a566|lawId=009930|MST=267359|article=\uc81c566\uc870|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0"
+            ],
+            "legacy_route_id": "insolvency_review_or_cease_collection",
+            "legal_source_refs": [
+                "kr-law-l009930-m267359-a593",
+                "kr-law-l009930-m267359-a600",
+                "kr-law-l009930-m267359-a566"
+            ],
+            "missing_fact_handles": [
+                "insolvency_signal"
+            ],
+            "no_direct_execution": true,
+            "required_fact_handles": [
+                "insolvency_signal"
+            ],
+            "review_status": "review_required",
+            "route_id": "insolvency_review_or_cease_collection",
+            "source_fact_ids": [],
+            "status": "missing_facts"
+        }
+    ],
+    "schema_version": "trustgraph-claim-domain-adapter/v1",
+    "source_bundle_hash": "sha256:d75ca859621e3d19c1d5fad93b4e8c3b9f82a0aad0374cd7585ce7e2630e9f13",
+    "source_refs": [
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_002.md#page=2",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/payment_order_001.md#page=1",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/service_finality_001.md#page=3",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/attachment_order_001.md#page=5",
+        "fixture:tests/fixtures/legal-ocr-pages/pages/unknown_review_001.md#page=4"
+    ],
+    "summary": {
+        "claim_roots": 1,
+        "fact_handles": 12,
+        "governance_records": 5,
+        "route_candidates": 18
+    }
+}
