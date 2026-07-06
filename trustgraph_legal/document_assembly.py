@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-import argparse
-import json
+import importlib
 from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -14,6 +13,7 @@ from trustgraph_legal.document_assembly_pages import (
     DEFAULT_REVIEW_STATUS,
     DocumentAssemblyInputError,
     MaterializedPage,
+    PageSource,
     materialize_pages,
     page_id,
 )
@@ -24,11 +24,13 @@ JsonObject = dict[str, JsonValue]
 
 SCHEMA_VERSION: Final = "recova-document-assembly/v0"
 EXTRACTOR_VERSION: Final = "trustgraph_legal.document_assembly@{}".format(__version__)
+ID_PREFIXES: Final = ("document:", "assembly:")
 
 __all__ = [
     "DocumentAssemblyInputError",
     "DocumentAssemblyPayload",
     "build_document_assembly",
+    "build_document_assembly_payload",
     "main",
 ]
 
@@ -39,60 +41,60 @@ class DocumentAssemblyPayload:
     document_assemblies: tuple[DocumentAssembly, ...]
     sensitive_shape_pages: int
 
-    def to_json(self) -> JsonObject:
+    def to_json(self, summary_only: bool = False) -> JsonObject:
         needs_review = sum(
             1 for item in self.document_assemblies if item.review_status == DEFAULT_REVIEW_STATUS
         )
-        return {
+        summary: JsonObject = {
+            "pages": len(self.document_pages),
+            "assemblies": len(self.document_assemblies),
+            "document_pages": len(self.document_pages),
+            "document_assemblies": len(self.document_assemblies),
+            "needs_review": needs_review,
+        }
+        pii_profile: JsonObject = {
+            "raw_text_included": False,
+            "source_text_included": False,
+            "sensitive_shape_pages": self.sensitive_shape_pages,
+        }
+        payload: JsonObject = {
             "schema_version": SCHEMA_VERSION,
             "extractor_version": EXTRACTOR_VERSION,
-            "summary": {
-                "document_pages": len(self.document_pages),
-                "document_assemblies": len(self.document_assemblies),
-                "needs_review": needs_review,
-            },
+            "summary": summary,
+            "pii_profile": pii_profile,
+        }
+        if summary_only:
+            return payload
+        payload.update({
             "document_pages": [page.to_json() for page in self.document_pages],
             "document_assemblies": [assembly.to_json() for assembly in self.document_assemblies],
-            "pii_profile": {
-                "raw_text_included": False,
-                "source_text_included": False,
-                "sensitive_shape_pages": self.sensitive_shape_pages,
-            },
-        }
+        })
+        return payload
 
 
-def build_document_assembly(pages_dir: Path, repo_root: Path | None = None) -> DocumentAssemblyPayload:
+def build_document_assembly(
+    pages_dir: Path,
+    repo_root: Path | None = None,
+) -> DocumentAssemblyPayload:
     root = repo_root if repo_root is not None else Path.cwd()
-    materialized_pages = materialize_pages(pages_dir, root)
-    document_pages = tuple(page.to_document_page() for page in materialized_pages)
+    return build_document_assembly_payload(materialize_pages(pages_dir, root))
+
+
+def build_document_assembly_payload(
+    materialized_pages: tuple[MaterializedPage, ...],
+) -> DocumentAssemblyPayload:
+    normalized_pages = tuple(_normalize_page(page) for page in materialized_pages)
+    document_pages = tuple(page.to_document_page() for page in normalized_pages)
     return DocumentAssemblyPayload(
         document_pages=document_pages,
-        document_assemblies=_assemblies(materialized_pages),
-        sensitive_shape_pages=sum(1 for page in materialized_pages if page.sensitive_shape_count > 0),
+        document_assemblies=_assemblies(normalized_pages),
+        sensitive_shape_pages=sum(1 for page in normalized_pages if page.sensitive_shape_count > 0),
     )
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="python3 -m trustgraph_legal.document_assembly")
-    _ = parser.add_argument("--pages", required=True)
-    _ = parser.add_argument("--out", required=True)
-    _ = parser.add_argument("--repo-root", default=".")
-    args = parser.parse_args(argv)
-    payload = build_document_assembly(Path(args.pages), Path(args.repo_root))
-    output_path = Path(args.out)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    _ = output_path.write_text(
-        json.dumps(payload.to_json(), ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    print(
-        json.dumps(
-            {"document_pages": len(payload.document_pages), "document_assemblies": len(payload.document_assemblies), "evidence": str(output_path)},
-            ensure_ascii=False,
-            sort_keys=True,
-        )
-    )
-    return 0
+    cli = importlib.import_module("trustgraph_legal.document_assembly_cli")
+    return cli.main(argv)
 
 
 def _assemblies(pages: tuple[MaterializedPage, ...]) -> tuple[DocumentAssembly, ...]:
@@ -107,13 +109,14 @@ def _assemblies(pages: tuple[MaterializedPage, ...]) -> tuple[DocumentAssembly, 
 
 
 def _assembly(document_id: str, pages: tuple[MaterializedPage, ...]) -> DocumentAssembly:
+    document_id_suffix = _id_suffix(document_id)
     canonical_document_type = _assembly_document_type(pages)
     review_status = _assembly_review_status(canonical_document_type, pages)
     return DocumentAssembly(
-        assembly_id="assembly:{}".format(document_id),
-        document_id="document:{}".format(document_id),
+        assembly_id="assembly:{}".format(document_id_suffix),
+        document_id="document:{}".format(document_id_suffix),
         canonical_document_type=canonical_document_type,
-        page_ids=tuple(page_id(page.source.document_id, page.source.page_order) for page in pages),
+        page_ids=tuple(page_id(_id_suffix(page.source.document_id), page.source.page_order) for page in pages),
         source_refs=tuple(page.source_ref for page in pages),
         source_hashes=tuple(page.source_hash for page in pages),
         confidence=_assembly_confidence(pages),
@@ -140,6 +143,39 @@ def _assembly_confidence(pages: tuple[MaterializedPage, ...]) -> float:
     if not pages:
         return 0.0
     return round(sum(page.source.confidence for page in pages) / len(pages), 2)
+
+
+def _normalize_page(page: MaterializedPage) -> MaterializedPage:
+    document_id = _id_suffix(page.source.document_id)
+    if document_id == page.source.document_id:
+        return page
+    return MaterializedPage(
+        source=PageSource(
+            document_id=document_id,
+            canonical_document_type=page.source.canonical_document_type,
+            relative_path=page.source.relative_path,
+            page_order=page.source.page_order,
+            confidence=page.source.confidence,
+            review_status=page.source.review_status,
+        ),
+        repo_relative_path=page.repo_relative_path,
+        source_ref=page.source_ref,
+        source_hash=page.source_hash,
+        line_count=page.line_count,
+        char_count=page.char_count,
+        sensitive_shape_count=page.sensitive_shape_count,
+    )
+
+
+def _id_suffix(value: str) -> str:
+    suffix = value.strip()
+    previous = ""
+    while suffix != previous:
+        previous = suffix
+        for prefix in ID_PREFIXES:
+            if suffix.startswith(prefix):
+                suffix = suffix.removeprefix(prefix)
+    return suffix
 
 
 if __name__ == "__main__":

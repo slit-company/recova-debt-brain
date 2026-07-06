@@ -27,11 +27,12 @@ def test_directory_pages_build_deterministic_inventory_and_assemblies(tmp_path: 
 
     # Then: output is deterministic, source-grounded, and free of raw OCR text.
     assert payload["schema_version"] == "recova-document-assembly/v0"
-    assert payload["summary"] == {
-        "document_pages": 3,
-        "document_assemblies": 2,
-        "needs_review": 1,
-    }
+    summary = _object(payload, "summary")
+    assert summary["pages"] == 3
+    assert summary["assemblies"] == 2
+    assert summary["document_pages"] == 3
+    assert summary["document_assemblies"] == 2
+    assert summary["needs_review"] == 1
     assert [page["page_id"] for page in _items(payload, "document_pages")] == [
         "page:doc-payment:0001",
         "page:doc-payment:0002",
@@ -109,24 +110,34 @@ def test_directory_without_manifest_uses_stable_file_order(tmp_path: Path) -> No
     assert assembly["review_status"] == "needs_review"
 
 
-def test_cli_writes_pii_safe_document_assembly_evidence(tmp_path: Path) -> None:
-    # Given: the public module invocation for task-2 evidence generation.
+def test_cli_ocr_root_summary_only_writes_redacted_summary(tmp_path: Path) -> None:
+    # Given: the preferred Todo 5 CLI invocation for local OCR roots.
     pages_dir = _write_pages_fixture(tmp_path)
-    evidence_path = tmp_path / "task-2-document-assembly.json"
+    evidence_path = tmp_path / "task-5-document-assembly-summary.json"
 
-    # When: the module CLI builds the document assembly payload.
-    exit_code = main(["--pages", str(pages_dir), "--out", str(evidence_path), "--repo-root", str(tmp_path)])
+    # When: the module CLI writes a summary-only payload.
+    exit_code = main(
+        ["--ocr-root", str(pages_dir), "--out", str(evidence_path), "--summary-only", "--repo-root", str(tmp_path)]
+    )
 
-    # Then: evidence is written with no raw OCR text.
+    # Then: evidence is aggregate-only and keeps the required redaction contract.
     payload = json.loads(evidence_path.read_text(encoding="utf-8"))
+    summary = _object(payload, "summary")
     assert exit_code == 0
     assert payload["schema_version"] == "recova-document-assembly/v0"
-    assert payload["summary"]["document_assemblies"] == 2
+    assert summary["pages"] == 3
+    assert summary["assemblies"] == 2
+    assert payload["pii_profile"] == {
+        "raw_text_included": False,
+        "source_text_included": False,
+        "sensitive_shape_pages": 1,
+    }
+    assert "document_pages" not in payload
     assert "Payment page one" not in json.dumps(payload, ensure_ascii=False)
 
 
-def test_module_entrypoint_writes_evidence_from_subprocess(tmp_path: Path) -> None:
-    # Given: a fixture folder and the documented module entrypoint.
+def test_module_entrypoint_preserves_pages_compatibility(tmp_path: Path) -> None:
+    # Given: a fixture folder and the previous --pages CLI surface.
     pages_dir = _write_pages_fixture(tmp_path)
     evidence_path = tmp_path / "subprocess-assembly.json"
 
@@ -153,6 +164,76 @@ def test_module_entrypoint_writes_evidence_from_subprocess(tmp_path: Path) -> No
     assert result.returncode == 0
     assert str(evidence_path) in result.stdout
     assert evidence_path.exists()
+
+
+def test_manifest_tsv_normalizes_prefixed_document_and_assembly_ids(tmp_path: Path) -> None:
+    # Given: a TSV manifest whose document_id is already document-prefixed.
+    ocr_root = tmp_path / "ocr-root"
+    (ocr_root / "pages").mkdir(parents=True)
+    _ = (ocr_root / "pages" / "prefixed.md").write_text("Prefixed payment page\n", encoding="utf-8")
+    manifest_tsv = tmp_path / "manifest.tsv"
+    _ = manifest_tsv.write_text(
+        "document_id\tcanonical_document_type\trelative_path\tpage_order\tconfidence\treview_status\n"
+        "document:prefixed-payment\tpayment-order\tpages/prefixed.md\t1\t0.9\tassembled\n",
+        encoding="utf-8",
+    )
+    evidence_path = tmp_path / "prefixed-assembly.json"
+
+    # When: the CLI bridges the TSV manifest to document assemblies.
+    exit_code = main(
+        [
+            "--ocr-root",
+            str(ocr_root),
+            "--manifest-tsv",
+            str(manifest_tsv),
+            "--out",
+            str(evidence_path),
+            "--repo-root",
+            str(tmp_path),
+        ]
+    )
+
+    # Then: document and assembly identifiers are normalized once.
+    payload = json.loads(evidence_path.read_text(encoding="utf-8"))
+    assembly = _items(payload, "document_assemblies")[0]
+    assert exit_code == 0
+    assert assembly["document_id"] == "document:prefixed-payment"
+    assert assembly["assembly_id"] == "assembly:prefixed-payment"
+    encoded = json.dumps(payload, ensure_ascii=False)
+    assert "document:document:" not in encoded
+    assert "assembly:document:" not in encoded
+
+
+def test_module_entrypoint_reports_controlled_input_errors(tmp_path: Path) -> None:
+    # Given: invalid local CLI inputs.
+    pages_dir = _write_pages_fixture(tmp_path)
+    cases = [
+        (
+            ["--ocr-root", str(tmp_path / "missing-root"), "--out", str(tmp_path / "missing.json")],
+            "OCR root not found",
+            tmp_path / "missing.json",
+        ),
+        (
+            ["--ocr-root", str(pages_dir), "--limit", "0", "--out", str(tmp_path / "limit.json")],
+            "--limit must be >= 1",
+            tmp_path / "limit.json",
+        ),
+    ]
+
+    for args, expected_error, output_path in cases:
+        # When: python runs the document assembly module with invalid input.
+        result = subprocess.run(
+            [sys.executable, "-m", "trustgraph_legal.document_assembly", *args],
+            cwd=Path(__file__).resolve().parents[3],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+        # Then: it fails cleanly without writing partial output.
+        assert result.returncode != 0
+        assert expected_error in result.stderr
+        assert not output_path.exists()
 
 
 def _write_pages_fixture(tmp_path: Path) -> Path:
@@ -215,6 +296,12 @@ def _items(payload: dict[str, JsonValue], key: str) -> list[dict[str, JsonValue]
         assert isinstance(item, dict)
         items.append(item)
     return items
+
+
+def _object(payload: dict[str, JsonValue], key: str) -> dict[str, JsonValue]:
+    value = payload[key]
+    assert isinstance(value, dict)
+    return value
 
 
 def _assembly(payload: dict[str, JsonValue], document_id: str) -> dict[str, JsonValue]:

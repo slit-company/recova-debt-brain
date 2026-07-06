@@ -1,0 +1,16 @@
+{
+  "schema_version": "recova-document-assembly/v0",
+  "extractor_version": "trustgraph_legal.document_assembly@0.1.0",
+  "summary": {
+    "pages": 5,
+    "assemblies": 4,
+    "document_pages": 5,
+    "document_assemblies": 4,
+    "needs_review": 1
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "sensitive_shape_pages": 0
+  }
+}
