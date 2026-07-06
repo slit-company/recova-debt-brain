@@ -1,0 +1,4 @@
+trustgraph_legal/route_decisions.py pure_loc=228
+scripts/legal_ontology/validate_route_decisions_v1.py pure_loc=250
+scripts/legal_ontology/route_decision_validation_common.py pure_loc=179
+tests/unit/legal_ontology/test_route_decisions_v1.py pure_loc=175

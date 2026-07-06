@@ -1,0 +1,3 @@
+PASS json.tool resources/decision_tables/debt_collection_route_decisions_v1.json
+PASS json.tool task-7-route-decision-happy.json
+PASS json.tool task-7-route-decision-failure.json
