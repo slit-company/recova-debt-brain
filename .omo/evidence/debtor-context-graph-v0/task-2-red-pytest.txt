@@ -1,0 +1,3 @@
+Red evidence from first focused pytest before trustgraph_legal/document_assembly.py existed:
+Command: /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_document_assembly.py -q
+Result: collection failed with ModuleNotFoundError: No module named 'trustgraph_legal.document_assembly'

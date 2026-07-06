@@ -1,0 +1,2 @@
+/usr/bin/python3 -m py_compile trustgraph_legal/document_assembly.py trustgraph_legal/document_assembly_pages.py tests/unit/legal_ontology/test_document_assembly.py
+exit_status=0

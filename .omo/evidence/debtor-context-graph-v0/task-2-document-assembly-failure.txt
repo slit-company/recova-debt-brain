@@ -1,0 +1,2 @@
+DocumentAssemblyInputError
+/var/folders/jw/0r1g06hd4091ny863gpv0vs00000gn/T/tmp.g4c6RUkWgt/legal-ocr-pages: page path escapes fixture root: ../outside.md
