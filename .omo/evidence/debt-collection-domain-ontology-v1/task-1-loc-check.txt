@@ -1,0 +1,4 @@
+scripts/legal_ontology/domain_manual_inventory.py      236
+scripts/legal_ontology/domain_manual_inventory_collectors.py       72
+scripts/legal_ontology/domain_manual_inventory_terms.py       77
+tests/unit/legal_ontology/test_domain_manual_inventory.py      121

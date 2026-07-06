@@ -1,0 +1,3 @@
+ERROR manual path does not exist
+
+exit_code=1
