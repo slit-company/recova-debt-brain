@@ -1,0 +1,5 @@
+PASS lsp.diagnostics no diagnostics found for:
+scripts/legal_ontology/action_packet_contract_v1.py
+scripts/legal_ontology/action_packet_validation_v1.py
+scripts/legal_ontology/validate_action_packets_v1.py
+tests/unit/legal_ontology/test_action_packets_v1.py

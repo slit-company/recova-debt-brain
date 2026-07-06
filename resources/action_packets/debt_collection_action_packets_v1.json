@@ -1,0 +1,518 @@
+{
+  "schema_version": "trustgraph-action-packets/v1",
+  "action_packet_version": "recova-debt-collection-action-packets@v1.0.0",
+  "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+  "route_source_version": "recova-debt-collection-routes@v1.0.0",
+  "domain_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+  "workflow_version": "recova-debt-collection-workflow@v1.0.0",
+  "finance_model_version": "recova-claim-finance-model@v1.0.0",
+  "evaluation_date": "2026-07-07",
+  "review_status": "approved_static_v1",
+  "no_direct_execution": true,
+  "direct_execution_allowed": false,
+  "execution_semantics": "schema_only_advisory_packet_preparation",
+  "non_execution_semantics": "advisory_only_human_review_required",
+  "pii_policy": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "debtor_contact_payload_included": false,
+    "filing_destination_included": false,
+    "redaction_required": true
+  },
+  "packet_type_catalog": [
+    "evidence_request",
+    "legal_action_review",
+    "finance_review",
+    "contact_review",
+    "monitoring_retry",
+    "insolvency_recovery_review"
+  ],
+  "forbidden_field_catalog": [
+    "filing_destination",
+    "filing_destination_court",
+    "court_filing_endpoint",
+    "submission_endpoint",
+    "debtor_contact_payload",
+    "debtor_contact_channel",
+    "debtor_phone",
+    "debtor_email",
+    "payment_request_payload",
+    "executable_instruction",
+    "collection_execution_command"
+  ],
+  "packet_schemas": [
+    {
+      "packet_type": "evidence_request",
+      "label": "Evidence request review packet",
+      "purpose": "Describe missing evidence needed before route or finance review can continue.",
+      "packet_lifecycle": "draft_for_human_review_only",
+      "review_status": "human_review_required",
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "required_inputs": [
+        "case_packet_ref",
+        "claim_ref",
+        "missing_fact_handles",
+        "request_reason_code",
+        "source_refs"
+      ],
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l010910-m268669-a11",
+        "recova-privacy-purpose-v0"
+      ],
+      "review_requirements": [
+        "confirm missing facts before request",
+        "attach only redacted source references",
+        "human reviewer approves request wording"
+      ],
+      "allowed_output_fields": [
+        "packet_id",
+        "packet_type",
+        "case_packet_ref",
+        "claim_ref",
+        "missing_fact_handles",
+        "request_reason_code",
+        "source_refs",
+        "review_status",
+        "pii_profile",
+        "operator_notes",
+        "non_execution_semantics"
+      ],
+      "forbidden_fields": [
+        "filing_destination",
+        "filing_destination_court",
+        "court_filing_endpoint",
+        "submission_endpoint",
+        "debtor_contact_payload",
+        "debtor_contact_channel",
+        "debtor_phone",
+        "debtor_email",
+        "payment_request_payload",
+        "executable_instruction",
+        "collection_execution_command"
+      ],
+      "permitted_next_states": [
+        "needs_evidence",
+        "human_review_required"
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false,
+        "redaction_required": true
+      },
+      "route_decision_linkage": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "route_decision_packet_type": "evidence_request",
+        "route_ids": []
+      }
+    },
+    {
+      "packet_type": "legal_action_review",
+      "label": "Legal action review packet",
+      "purpose": "Prepare source-backed legal review context for a route candidate without naming a filing destination.",
+      "packet_lifecycle": "draft_for_human_review_only",
+      "review_status": "human_review_required",
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "required_inputs": [
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "enforceable_title",
+        "service_finality",
+        "execution_clause",
+        "legal_source_review_status",
+        "source_refs"
+      ],
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "review_requirements": [
+        "confirm enforceable title and service finality",
+        "confirm legal-source review status",
+        "human reviewer selects any real-world filing channel outside this schema"
+      ],
+      "allowed_output_fields": [
+        "packet_id",
+        "packet_type",
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "required_fact_handles",
+        "blocking_fact_handles",
+        "legal_source_refs",
+        "review_status",
+        "pii_profile",
+        "operator_notes",
+        "non_execution_semantics"
+      ],
+      "forbidden_fields": [
+        "filing_destination",
+        "filing_destination_court",
+        "court_filing_endpoint",
+        "submission_endpoint",
+        "debtor_contact_payload",
+        "debtor_contact_channel",
+        "debtor_phone",
+        "debtor_email",
+        "payment_request_payload",
+        "executable_instruction",
+        "collection_execution_command"
+      ],
+      "permitted_next_states": [
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false,
+        "redaction_required": true
+      },
+      "route_decision_linkage": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "route_decision_packet_type": "legal_action_review",
+        "route_ids": [
+          "payment_order_title_acquisition",
+          "civil_lawsuit_title_acquisition",
+          "real_estate_provisional_attachment",
+          "receivable_provisional_attachment",
+          "bank_account_attachment",
+          "securities_account_attachment",
+          "virtual_asset_exchange_claim_attachment",
+          "wage_attachment",
+          "severance_or_retirement_attachment",
+          "freelancer_service_fee_attachment",
+          "residential_lease_deposit_attachment",
+          "rent_receivable_attachment",
+          "trade_receivable_attachment",
+          "pg_platform_settlement_attachment",
+          "public_contract_payment_attachment",
+          "real_estate_compulsory_auction",
+          "co_owned_share_auction",
+          "vehicle_or_heavy_equipment_attachment",
+          "movable_inventory_attachment",
+          "insurance_refund_claim_attachment",
+          "court_deposit_or_distribution_claim_attachment",
+          "tax_refund_or_compensation_attachment",
+          "inheritance_share_attachment",
+          "fraudulent_transfer_cancellation_lawsuit",
+          "special_property_right_attachment",
+          "property_disclosure_inquiry_registry"
+        ]
+      }
+    },
+    {
+      "packet_type": "finance_review",
+      "label": "Finance review packet",
+      "purpose": "Summarize balance and allocation review triggers without making payment or collection demands.",
+      "packet_lifecycle": "draft_for_human_review_only",
+      "review_status": "human_review_required",
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "required_inputs": [
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "claim_balance",
+        "payment_history",
+        "statutory_or_complex_interest",
+        "payment_allocation_conflict",
+        "source_refs"
+      ],
+      "source_refs": [
+        "kr-law-l001706-m284415-a168",
+        "kr-law-l010910-m268669-a11",
+        "recova-privacy-purpose-v0"
+      ],
+      "review_requirements": [
+        "confirm authoritative balance remains reviewer-owned",
+        "list finance review trigger codes",
+        "preserve source-backed component references only"
+      ],
+      "allowed_output_fields": [
+        "packet_id",
+        "packet_type",
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "component_refs",
+        "review_trigger_codes",
+        "source_refs",
+        "review_status",
+        "pii_profile",
+        "operator_notes",
+        "non_execution_semantics"
+      ],
+      "forbidden_fields": [
+        "filing_destination",
+        "filing_destination_court",
+        "court_filing_endpoint",
+        "submission_endpoint",
+        "debtor_contact_payload",
+        "debtor_contact_channel",
+        "debtor_phone",
+        "debtor_email",
+        "payment_request_payload",
+        "executable_instruction",
+        "collection_execution_command"
+      ],
+      "permitted_next_states": [
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false,
+        "redaction_required": true
+      },
+      "route_decision_linkage": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "route_decision_packet_type": "finance_review",
+        "route_ids": [
+          "notarial_deed_installment_agreement"
+        ]
+      }
+    },
+    {
+      "packet_type": "contact_review",
+      "label": "Contact compliance review packet",
+      "purpose": "Prepare a compliance review of contact boundaries without carrying channel payloads or debtor contact details.",
+      "packet_lifecycle": "draft_for_human_review_only",
+      "review_status": "human_review_required",
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "required_inputs": [
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "debtor_contact_review",
+        "consent_or_contact_boundary_review",
+        "privacy_purpose_not_established",
+        "source_refs"
+      ],
+      "source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12",
+        "recova-privacy-purpose-v0"
+      ],
+      "review_requirements": [
+        "confirm contact purpose and consent boundary",
+        "do not include channel payloads",
+        "human reviewer owns any outbound communication system"
+      ],
+      "allowed_output_fields": [
+        "packet_id",
+        "packet_type",
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "contact_review_reason_codes",
+        "source_refs",
+        "review_status",
+        "pii_profile",
+        "operator_notes",
+        "non_execution_semantics"
+      ],
+      "forbidden_fields": [
+        "filing_destination",
+        "filing_destination_court",
+        "court_filing_endpoint",
+        "submission_endpoint",
+        "debtor_contact_payload",
+        "debtor_contact_channel",
+        "debtor_phone",
+        "debtor_email",
+        "payment_request_payload",
+        "executable_instruction",
+        "collection_execution_command"
+      ],
+      "permitted_next_states": [
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false,
+        "redaction_required": true
+      },
+      "route_decision_linkage": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "route_decision_packet_type": "contact_review",
+        "route_ids": [
+          "voluntary_repayment_plan",
+          "partial_payment_acknowledgment"
+        ]
+      }
+    },
+    {
+      "packet_type": "monitoring_retry",
+      "label": "Monitoring and retry review packet",
+      "purpose": "Describe a reviewed monitoring interval and retry rationale after no-asset or missing-signal outcomes.",
+      "packet_lifecycle": "draft_for_human_review_only",
+      "review_status": "human_review_required",
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "required_inputs": [
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "monitoring_interval",
+        "prior_search_no_asset_result",
+        "no_asset_retry_window_open",
+        "source_refs"
+      ],
+      "source_refs": [
+        "kr-law-l009290-m268837-a74",
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a11"
+      ],
+      "review_requirements": [
+        "confirm retry window is review-safe",
+        "record prior search result references",
+        "do not schedule production jobs from this schema"
+      ],
+      "allowed_output_fields": [
+        "packet_id",
+        "packet_type",
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "monitoring_reason_codes",
+        "source_refs",
+        "review_status",
+        "pii_profile",
+        "operator_notes",
+        "non_execution_semantics"
+      ],
+      "forbidden_fields": [
+        "filing_destination",
+        "filing_destination_court",
+        "court_filing_endpoint",
+        "submission_endpoint",
+        "debtor_contact_payload",
+        "debtor_contact_channel",
+        "debtor_phone",
+        "debtor_email",
+        "payment_request_payload",
+        "executable_instruction",
+        "collection_execution_command"
+      ],
+      "permitted_next_states": [
+        "monitoring",
+        "human_review_required"
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false,
+        "redaction_required": true
+      },
+      "route_decision_linkage": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "route_decision_packet_type": "monitoring_retry",
+        "route_ids": [
+          "monitoring_retry_after_no_asset"
+        ]
+      }
+    },
+    {
+      "packet_type": "insolvency_recovery_review",
+      "label": "Insolvency and recovery review packet",
+      "purpose": "Summarize insolvency, discharge, exemption, and recovery blockers for human review.",
+      "packet_lifecycle": "draft_for_human_review_only",
+      "review_status": "human_review_required",
+      "no_direct_execution": true,
+      "direct_execution_allowed": false,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "required_inputs": [
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "insolvency_case_signal",
+        "discharge_or_stay_status",
+        "welfare_public_benefit_exemption",
+        "source_refs"
+      ],
+      "source_refs": [
+        "kr-debtor-rehabilitation-act-v0",
+        "kr-law-l009930-m267359-a566",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600"
+      ],
+      "review_requirements": [
+        "confirm discharge or stay status before route movement",
+        "confirm exempt recovery target risk",
+        "hold route until human legal review completes"
+      ],
+      "allowed_output_fields": [
+        "packet_id",
+        "packet_type",
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "insolvency_reason_codes",
+        "source_refs",
+        "review_status",
+        "pii_profile",
+        "operator_notes",
+        "non_execution_semantics"
+      ],
+      "forbidden_fields": [
+        "filing_destination",
+        "filing_destination_court",
+        "court_filing_endpoint",
+        "submission_endpoint",
+        "debtor_contact_payload",
+        "debtor_contact_channel",
+        "debtor_phone",
+        "debtor_email",
+        "payment_request_payload",
+        "executable_instruction",
+        "collection_execution_command"
+      ],
+      "permitted_next_states": [
+        "human_review_required",
+        "blocked",
+        "monitoring"
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false,
+        "redaction_required": true
+      },
+      "route_decision_linkage": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "route_decision_packet_type": "insolvency_recovery_review",
+        "route_ids": [
+          "welfare_public_benefit_exclusion_review",
+          "insolvency_discharge_review"
+        ]
+      }
+    }
+  ]
+}
