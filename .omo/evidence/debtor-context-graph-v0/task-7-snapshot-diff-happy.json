@@ -1,0 +1,81 @@
+{
+  "current_replay": {
+    "fact_assertion_ids": [
+      "fact:bank",
+      "fact:title"
+    ],
+    "graph_snapshot_id": "snapshot:legacy-bundle-only-collision",
+    "replay_snapshot_id": "snapshot-replay:202cbae92ef7dfe7",
+    "route_candidate_ids": [
+      "bank_account_attachment"
+    ],
+    "semantic_hash": "sha256:202cbae92ef7dfe7c9a5c598dbb77873e5860ba47588ad55672bd2657d50360d",
+    "source_bundle_hash": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "versions": {
+      "extractor_versions": [
+        "trustgraph_legal.debtor_context_types@0.1.0"
+      ],
+      "legal_rule_source_version": "recova-legal-rule-sources@v1",
+      "ontology_version": "recova-debt-collection@v0",
+      "route_version": "recova-debt-routes@v0"
+    }
+  },
+  "diff": {
+    "added_fact_ids": [],
+    "added_route_candidate_ids": [],
+    "changed_fact_ids": [
+      "fact:title"
+    ],
+    "changed_route_candidate_ids": [
+      "bank_account_attachment"
+    ],
+    "current_replay_snapshot_id": "snapshot-replay:202cbae92ef7dfe7",
+    "current_source_bundle_hash": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "legacy_graph_snapshot_id_collision": true,
+    "previous_replay_snapshot_id": "snapshot-replay:f7111cf255025508",
+    "previous_source_bundle_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "removed_fact_ids": [],
+    "removed_route_candidate_ids": [],
+    "source_bundle_changed": true,
+    "version_changes": [
+      {
+        "current_value": "recova-legal-rule-sources@v1",
+        "field_name": "legal_rule_source_version",
+        "previous_value": "recova-legal-rule-sources@v0"
+      }
+    ]
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "previous_replay": {
+    "fact_assertion_ids": [
+      "fact:bank",
+      "fact:title"
+    ],
+    "graph_snapshot_id": "snapshot:legacy-bundle-only-collision",
+    "replay_snapshot_id": "snapshot-replay:f7111cf255025508",
+    "route_candidate_ids": [
+      "bank_account_attachment"
+    ],
+    "semantic_hash": "sha256:f7111cf255025508546d8f5ab5a7783b0ba54dbf7c46a2a3f4bf4c3129837b7c",
+    "source_bundle_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "versions": {
+      "extractor_versions": [
+        "trustgraph_legal.debtor_context_types@0.1.0"
+      ],
+      "legal_rule_source_version": "recova-legal-rule-sources@v0",
+      "ontology_version": "recova-debt-collection@v0",
+      "route_version": "recova-debt-routes@v0"
+    }
+  },
+  "provenance": {
+    "issues": [],
+    "summary": {
+      "issues": 0
+    },
+    "valid": true
+  },
+  "task": "task-7-snapshot-diff-happy"
+}

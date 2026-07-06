@@ -1,0 +1,3 @@
+hash_shape_values_present=6
+raw_values_printed=false
+classification=hash-only metadata, not personal identifier evidence
