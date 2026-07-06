@@ -1,0 +1,55 @@
+{
+  "missing_auth_resolver": {
+    "public_callable_parameters": [
+      "arguments"
+    ],
+    "result": {
+      "error_type": "PermissionError",
+      "message": "MCP auth context required"
+    },
+    "token_leaked": false,
+    "tool_name": "list_claim_domain_routes"
+  },
+  "outside_root_path": {
+    "envelope": {
+      "group": "claim_domain",
+      "pii_profile": {
+        "raw_text_included": false,
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "source_text_included": false
+      },
+      "redaction": {
+        "counts": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "status": "redacted"
+      },
+      "result": {
+        "reason": "path_outside_repo_root",
+        "status": "rejected"
+      },
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "scope": "claim_domain:routes",
+      "source_refs": [],
+      "tool_name": "list_claim_domain_routes",
+      "warnings": [
+        "path_outside_repo_root"
+      ]
+    },
+    "path_leaked": false,
+    "secret_leaked": false,
+    "tool_name": "list_claim_domain_routes"
+  },
+  "schema_version": "task-12-mcp-failure-evidence/v1"
+}

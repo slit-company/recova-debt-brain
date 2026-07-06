@@ -1,0 +1,1519 @@
+{
+  "auth_scope_calls": [
+    "claim_domain:routes",
+    "claim_domain:workflow",
+    "claim_domain:decision",
+    "claim_domain:action_packet"
+  ],
+  "fake_mcp_happy_calls": {
+    "evaluate_claim_domain_decision": {
+      "group": "claim_domain",
+      "pii_profile": {
+        "raw_text_included": false,
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "source_text_included": false
+      },
+      "redaction": {
+        "counts": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "status": "redacted"
+      },
+      "result": {
+        "action_packet_candidates": [
+          {
+            "claim_ref": "claim:evidence",
+            "direct_execution_allowed": false,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "packet_type": "legal_action_review",
+            "pii_profile": {
+              "debtor_contact_payload_included": false,
+              "filing_destination_included": false,
+              "raw_text_included": false,
+              "source_text_included": false
+            },
+            "required_inputs": [
+              "case_packet_ref",
+              "claim_ref",
+              "route_id",
+              "enforceable_title",
+              "service_finality",
+              "execution_clause",
+              "legal_source_review_status",
+              "source_refs"
+            ],
+            "review_status": "human_review_required",
+            "route_id": "bank_account_attachment",
+            "route_status": "possible",
+            "schema_version": "trustgraph-action-packet-candidate/v1",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l009930-m267359-a593",
+              "kr-law-l010910-m268669-a12",
+              "kr-law-l009290-m268837-a61"
+            ]
+          }
+        ],
+        "claim_ref": "claim:evidence",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "pii_profile": {
+          "debtor_contact_payload_included": false,
+          "filing_destination_included": false,
+          "raw_text_included": false,
+          "source_text_included": false
+        },
+        "resource_versions": {
+          "action_packet_version": "recova-debt-collection-action-packets@v1.0.0",
+          "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+          "domain_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+          "finance_model_version": "recova-claim-finance-model@v1.0.0",
+          "stopgate_rule_source_version": "recova-debt-collection-stopgate@v1.0.0",
+          "workflow_version": "recova-debt-collection-workflow@v1.0.0"
+        },
+        "review_items": [],
+        "route_decisions": [
+          {
+            "blocking_fact_handles": [],
+            "missing_fact_handles": [],
+            "next_step_action_packet_type": "legal_action_review",
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "pii_profile": {
+              "raw_text_included": false,
+              "source_text_included": false
+            },
+            "priority_score": 100,
+            "reasons": [
+              {
+                "message": "All required route fact handles are present.",
+                "reason_code": "required_facts_present",
+                "source_refs": [
+                  "kr-law-l009290-m268837-a223",
+                  "kr-law-l009290-m268837-a229",
+                  "kr-law-l009290-m268837-a246",
+                  "kr-law-l009930-m267359-a593",
+                  "kr-law-l010910-m268669-a12"
+                ]
+              }
+            ],
+            "route_id": "bank_account_attachment",
+            "schema_version": "trustgraph-route-decision-result/v1",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l009930-m267359-a593",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "status": "possible"
+          }
+        ],
+        "schema_version": "trustgraph-claim-domain-decision/v1",
+        "source_refs": [
+          "fixture:source#claim",
+          "fixture:source#title",
+          "fixture:source#asset",
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009930-m267359-a593",
+          "kr-law-l010910-m268669-a12",
+          "kr-law-l009290-m268837-a61"
+        ],
+        "workflow_state": "execution_route_selection"
+      },
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "scope": "claim_domain:decision",
+      "source_refs": [
+        "fixture:source#asset",
+        "fixture:source#claim",
+        "fixture:source#title",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "tool_name": "evaluate_claim_domain_decision",
+      "warnings": []
+    },
+    "explain_claim_action_packet": {
+      "group": "claim_domain",
+      "pii_profile": {
+        "raw_text_included": false,
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "source_text_included": false
+      },
+      "redaction": {
+        "counts": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "status": "redacted"
+      },
+      "result": {
+        "action_packet_version": "recova-debt-collection-action-packets@v1.0.0",
+        "direct_execution_allowed": false,
+        "forbidden_field_count": 11,
+        "label": "Legal action review packet",
+        "no_direct_execution": true,
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "packet_type": "legal_action_review",
+        "permitted_next_states": [
+          "human_review_required",
+          "blocked",
+          "ready_for_next_state"
+        ],
+        "pii_profile": {
+          "contact_payload_included": false,
+          "court_destination_included": false,
+          "raw_text_included": false,
+          "redaction_required": true,
+          "source_text_included": false
+        },
+        "purpose": "Prepare source-backed legal review context for a route candidate without naming a filing destination.",
+        "required_inputs": [
+          "case_packet_ref",
+          "claim_ref",
+          "route_id",
+          "enforceable_title",
+          "service_finality",
+          "execution_clause",
+          "legal_source_review_status",
+          "source_refs"
+        ],
+        "review_status": "human_review_required",
+        "route_decision_linkage": {
+          "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+          "route_count": 26,
+          "route_decision_packet_type": "legal_action_review"
+        },
+        "schema_version": "trustgraph-claim-action-packet-explanation-mcp/v1",
+        "source_refs": [
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009290-m268837-a61",
+          "kr-law-l010910-m268669-a12"
+        ]
+      },
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "scope": "claim_domain:action_packet",
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "tool_name": "explain_claim_action_packet",
+      "warnings": []
+    },
+    "explain_collection_workflow_state": {
+      "group": "claim_domain",
+      "pii_profile": {
+        "raw_text_included": false,
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "source_text_included": false
+      },
+      "redaction": {
+        "counts": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "status": "redacted"
+      },
+      "result": {
+        "category": "route_precondition_review",
+        "exit_conditions": [
+          "workflow_precondition_summary_recorded",
+          "missing_route_prerequisite_facts_recorded",
+          "route_decision_table_ready_to_consume_workflow_state"
+        ],
+        "label": "Execution Route Selection",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "preconditions": [
+          "service_finality_execution_clause_status_recorded",
+          "asset_hint_inventory_recorded_or_missing",
+          "stopgate_review_status_recorded"
+        ],
+        "purpose": "Export workflow precondition status to later route decision resources without choosing or scoring routes here.",
+        "required_evidence": [
+          "workflow_precondition_summary",
+          "stopgate_review_record",
+          "missing_fact_handles"
+        ],
+        "review_states": [
+          "needs_evidence",
+          "human_review_required",
+          "blocked",
+          "ready_for_next_state"
+        ],
+        "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+        "schema_version": "trustgraph-claim-domain-workflow-state-mcp/v1",
+        "source_refs": [
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l010910-m268669-a12"
+        ],
+        "state_id": "execution_route_selection",
+        "state_non_execution_semantics": "descriptive_only_no_collection_action",
+        "workflow_version": "recova-debt-collection-workflow@v1.0.0"
+      },
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "scope": "claim_domain:workflow",
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "tool_name": "explain_collection_workflow_state",
+      "warnings": []
+    },
+    "list_claim_domain_routes": {
+      "group": "claim_domain",
+      "pii_profile": {
+        "raw_text_included": false,
+        "redacted": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "source_text_included": false
+      },
+      "redaction": {
+        "counts": {
+          "account": 0,
+          "address": 0,
+          "national_id": 0,
+          "phone": 0
+        },
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "status": "redacted"
+      },
+      "result": {
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "route_count": 32,
+        "route_resource_version": "trustgraph-legal-routes/v1",
+        "routes": [
+          {
+            "blocking_fact_handles": [
+              "harassment_or_unfair_collection_risk",
+              "contact_consent_missing",
+              "insolvency_stay"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "voluntary_repayment",
+            "missing_fact_handles": [
+              "claim_basis",
+              "claim_balance",
+              "debtor_contact_review",
+              "repayment_capacity_signal"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "claim_basis",
+              "claim_balance",
+              "debtor_contact_review",
+              "repayment_capacity_signal"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "voluntary_repayment_plan",
+            "source_refs": [
+              "kr-law-l010910-m268669-a9",
+              "kr-law-l010910-m268669-a11",
+              "kr-law-l010910-m268669-a12",
+              "recova-privacy-purpose-v0"
+            ],
+            "workflow_state_refs": [
+              "voluntary_recovery"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "dispute_high",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "voluntary_repayment",
+            "missing_fact_handles": [
+              "claim_basis",
+              "payment_history",
+              "acknowledgment_evidence"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "claim_basis",
+              "payment_history",
+              "acknowledgment_evidence"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "partial_payment_acknowledgment",
+            "source_refs": [
+              "kr-law-l001706-m284415-a168",
+              "kr-law-l010910-m268669-a11",
+              "recova-privacy-purpose-v0"
+            ],
+            "workflow_state_refs": [
+              "voluntary_recovery",
+              "limitation_review"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "contact_consent_missing",
+              "excessive_or_ambiguous_balance"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "notarial_deed",
+            "missing_fact_handles": [
+              "debtor_identity",
+              "claim_basis",
+              "claim_balance",
+              "notarial_deed_consent"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "debtor_identity",
+              "claim_basis",
+              "claim_balance",
+              "notarial_deed_consent"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "notarial_deed_installment_agreement",
+            "source_refs": [
+              "kr-civil-execution-act-v0",
+              "kr-law-l010910-m268669-a11",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "title_acquisition",
+              "voluntary_recovery"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "dispute_high",
+              "identity_uncertain"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "title_acquisition",
+            "missing_fact_handles": [
+              "claim_basis",
+              "debtor_identity",
+              "service_path"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "claim_basis",
+              "debtor_identity",
+              "service_path"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "payment_order_title_acquisition",
+            "source_refs": [
+              "kr-law-l001700-m252393-a474",
+              "kr-law-l010910-m268669-a11"
+            ],
+            "workflow_state_refs": [
+              "title_acquisition",
+              "service_finality_execution_clause"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "limitation_expired_uninterrupted",
+              "excessive_or_ambiguous_balance"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "title_acquisition",
+            "missing_fact_handles": [
+              "claim_basis",
+              "debtor_identity",
+              "limitation_clock",
+              "dispute_profile"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "claim_basis",
+              "debtor_identity",
+              "limitation_clock",
+              "dispute_profile"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "civil_lawsuit_title_acquisition",
+            "source_refs": [
+              "kr-law-l001706-m284415-a165",
+              "kr-law-l001706-m284415-a168",
+              "kr-civil-execution-act-v0",
+              "kr-law-l010910-m268669-a11"
+            ],
+            "workflow_state_refs": [
+              "limitation_review",
+              "title_acquisition"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "asset_value_uncertain",
+              "legal_source_needs_review"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "provisional_remedy",
+            "missing_fact_handles": [
+              "claim_basis",
+              "provisional_need",
+              "real_estate_registry_asset"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "claim_basis",
+              "provisional_need",
+              "real_estate_registry_asset"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "real_estate_provisional_attachment",
+            "source_refs": [
+              "kr-law-l001706-m284415-a168",
+              "kr-civil-execution-act-v0",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "provisional_remedy"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "third_party_overcollection_risk",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "provisional_remedy",
+            "missing_fact_handles": [
+              "claim_basis",
+              "provisional_need",
+              "receivable_counterparty_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "claim_basis",
+              "provisional_need",
+              "receivable_counterparty_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "receivable_provisional_attachment",
+            "source_refs": [
+              "kr-law-l001706-m284415-a168",
+              "kr-civil-execution-act-v0",
+              "kr-law-l010910-m268669-a12",
+              "recova-privacy-purpose-v0"
+            ],
+            "workflow_state_refs": [
+              "provisional_remedy"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "exempt_claim_or_property_risk",
+              "insolvency_stay"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "financial_asset_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "financial_account_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "financial_account_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "bank_account_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l009930-m267359-a593",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "exempt_claim_or_property_risk",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "financial_asset_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "securities_account_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "securities_account_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "securities_account_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "legal_source_needs_review",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "financial_asset_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "virtual_asset_exchange_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "virtual_asset_exchange_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "virtual_asset_exchange_claim_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "exempt_claim_or_property_risk",
+              "excessive_or_ambiguous_balance"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "income_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "employer_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "employer_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "wage_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "exempt_claim_or_property_risk",
+              "insolvency_stay"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "income_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "employment_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "employment_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "severance_or_retirement_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "third_party_overcollection_risk",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "income_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "service_income_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "service_income_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "freelancer_service_fee_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "exempt_claim_or_property_risk",
+              "priority_claims_unknown"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "housing_lease_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "lease_deposit_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "lease_deposit_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "residential_lease_deposit_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "third_party_overcollection_risk",
+              "priority_claims_unknown"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "housing_lease_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "rent_receivable_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "rent_receivable_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "rent_receivable_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "privacy_purpose_not_established",
+              "third_party_overcollection_risk"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "business_receivable_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "trade_receivable_hint",
+              "credit_information_purpose"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "trade_receivable_hint",
+              "credit_information_purpose"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "trade_receivable_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "privacy_purpose_not_established",
+              "third_party_overcollection_risk"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "business_receivable_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "receivable_counterparty_hint",
+              "credit_information_purpose"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "receivable_counterparty_hint",
+              "credit_information_purpose"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "pg_platform_settlement_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l001540-m260423-a32",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "third_party_overcollection_risk",
+              "exempt_claim_or_property_risk"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "business_receivable_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "receivable_counterparty_hint",
+              "public_contract_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "receivable_counterparty_hint",
+              "public_contract_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "public_contract_payment_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "priority_claims_unknown",
+              "asset_value_uncertain",
+              "insolvency_stay"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "real_estate_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "real_estate_registry_asset",
+              "priority_claims_review"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "real_estate_registry_asset",
+              "priority_claims_review"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "real_estate_compulsory_auction",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l009930-m267359-a593",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "family_law_dispute_high",
+              "asset_value_uncertain"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "real_estate_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "co_owned_share_hint",
+              "priority_claims_review"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "co_owned_share_hint",
+              "priority_claims_review"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "co_owned_share_auction",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "asset_value_uncertain",
+              "exempt_claim_or_property_risk"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "movable_business_asset_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "vehicle_registration_hint",
+              "equipment_registration_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "vehicle_registration_hint",
+              "equipment_registration_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "vehicle_or_heavy_equipment_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "asset_value_uncertain",
+              "exempt_claim_or_property_risk"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "movable_business_asset_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "movable_inventory_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "movable_inventory_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "movable_inventory_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "exempt_claim_or_property_risk",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "insurance_refund_deposit_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "insurance_policy_hint",
+              "insurance_claim_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "insurance_policy_hint",
+              "insurance_claim_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "insurance_refund_claim_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "priority_claims_unknown",
+              "third_party_overcollection_risk"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "insurance_refund_deposit_execution",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "deposit_or_distribution_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "deposit_or_distribution_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "court_deposit_or_distribution_claim_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a229",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "welfare_public_benefit_exemption",
+              "exempt_claim_or_property_risk"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "tax_refund_distribution_compensation",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "tax_refund_hint",
+              "compensation_claim_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "tax_refund_hint",
+              "compensation_claim_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "tax_refund_or_compensation_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "family_law_dispute_high",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "inheritance_family_property",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "inheritance_status_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "inheritance_status_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "inheritance_share_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "asset_discovery",
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "limitation_expired_uninterrupted",
+              "legal_source_needs_review",
+              "family_law_dispute_high"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "fraudulent_transfer_hidden_asset",
+            "missing_fact_handles": [
+              "claim_basis",
+              "suspicious_transfer_timing",
+              "family_property_transfer_hint",
+              "hidden_asset_signal"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "claim_basis",
+              "suspicious_transfer_timing",
+              "family_property_transfer_hint",
+              "hidden_asset_signal"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "fraudulent_transfer_cancellation_lawsuit",
+            "source_refs": [
+              "kr-law-l001706-m284415-a406",
+              "kr-law-l010910-m268669-a11",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "asset_discovery",
+              "title_acquisition"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "asset_value_uncertain",
+              "legal_source_needs_review",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "special_property_right",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "intellectual_property_hint",
+              "membership_right_hint",
+              "partnership_share_hint",
+              "online_asset_hint"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "intellectual_property_hint",
+              "membership_right_hint",
+              "partnership_share_hint",
+              "online_asset_hint"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "special_property_right_attachment",
+            "source_refs": [
+              "kr-law-l009290-m268837-a223",
+              "kr-law-l001540-m260423-a15",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "asset_discovery",
+              "execution_route_selection"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "welfare_public_benefit_exemption",
+              "legal_source_needs_review"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "welfare_public_benefit_exclusion",
+            "missing_fact_handles": [
+              "welfare_benefit_signal",
+              "exempt_property_signal"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "welfare_benefit_signal",
+              "exempt_property_signal"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "welfare_public_benefit_exclusion_review",
+            "source_refs": [
+              "kr-law-l009290-m268837-a246",
+              "kr-law-l010910-m268669-a12",
+              "recova-privacy-purpose-v0"
+            ],
+            "workflow_state_refs": [
+              "execution_route_selection",
+              "insolvency_discharge_review"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "service_finality_unproven",
+              "execution_clause_missing",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "asset_disclosure_inquiry_registry",
+            "missing_fact_handles": [
+              "enforceable_title",
+              "asset_disclosure_preconditions",
+              "asset_inquiry_preconditions",
+              "default_registry_preconditions"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "enforceable_title",
+              "asset_disclosure_preconditions",
+              "asset_inquiry_preconditions",
+              "default_registry_preconditions"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "property_disclosure_inquiry_registry",
+            "source_refs": [
+              "kr-law-l009290-m268837-a61",
+              "kr-law-l009290-m268837-a74",
+              "kr-law-l009290-m268837-a70",
+              "kr-law-l010910-m268669-a9",
+              "kr-law-l010910-m268669-a12",
+              "recova-privacy-purpose-v0"
+            ],
+            "workflow_state_refs": [
+              "asset_discovery",
+              "monitoring_retry"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "insolvency_stay",
+              "bankruptcy_discharge_confirmed"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "insolvency_recovery_review",
+            "missing_fact_handles": [
+              "insolvency_case_signal",
+              "discharge_or_stay_status"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "insolvency_case_signal",
+              "discharge_or_stay_status"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "insolvency_discharge_review",
+            "source_refs": [
+              "kr-law-l009930-m267359-a593",
+              "kr-law-l009930-m267359-a600",
+              "kr-law-l009930-m267359-a566",
+              "kr-debtor-rehabilitation-act-v0",
+              "kr-law-l010910-m268669-a12"
+            ],
+            "workflow_state_refs": [
+              "insolvency_discharge_review"
+            ]
+          },
+          {
+            "blocking_fact_handles": [
+              "no_asset_retry_window_open",
+              "privacy_purpose_not_established"
+            ],
+            "direct_execution_allowed": false,
+            "execution_semantics": "none_advisory_only",
+            "family": "monitoring_retry",
+            "missing_fact_handles": [
+              "monitoring_interval",
+              "prior_search_no_asset_result"
+            ],
+            "no_direct_execution": true,
+            "non_execution_semantics": "advisory_only_human_review_required",
+            "required_fact_handles": [
+              "monitoring_interval",
+              "prior_search_no_asset_result"
+            ],
+            "review_status": "approved_static_v1",
+            "route_id": "monitoring_retry_after_no_asset",
+            "source_refs": [
+              "kr-law-l009290-m268837-a70",
+              "kr-law-l010910-m268669-a9",
+              "kr-law-l010910-m268669-a11",
+              "recova-privacy-purpose-v0"
+            ],
+            "workflow_state_refs": [
+              "monitoring_retry"
+            ]
+          }
+        ],
+        "schema_version": "trustgraph-claim-domain-routes-mcp/v1",
+        "source_refs": [
+          "kr-law-l010910-m268669-a9",
+          "kr-law-l010910-m268669-a11",
+          "kr-law-l010910-m268669-a12",
+          "recova-privacy-purpose-v0",
+          "kr-law-l001706-m284415-a168",
+          "kr-civil-execution-act-v0",
+          "kr-law-l001700-m252393-a474",
+          "kr-law-l001706-m284415-a165",
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009930-m267359-a593",
+          "kr-law-l001540-m260423-a15",
+          "kr-law-l001540-m260423-a32",
+          "kr-law-l001706-m284415-a406",
+          "kr-law-l009290-m268837-a61",
+          "kr-law-l009290-m268837-a74",
+          "kr-law-l009290-m268837-a70",
+          "kr-law-l009930-m267359-a600",
+          "kr-law-l009930-m267359-a566",
+          "kr-debtor-rehabilitation-act-v0"
+        ]
+      },
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "scope": "claim_domain:routes",
+      "source_refs": [
+        "kr-civil-execution-act-v0",
+        "kr-debtor-rehabilitation-act-v0",
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l001540-m260423-a32",
+        "kr-law-l001700-m252393-a474",
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168",
+        "kr-law-l001706-m284415-a406",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l009290-m268837-a74",
+        "kr-law-l009930-m267359-a566",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12",
+        "kr-law-l010910-m268669-a9",
+        "recova-privacy-purpose-v0"
+      ],
+      "tool_name": "list_claim_domain_routes",
+      "warnings": []
+    }
+  },
+  "leak_checks": {
+    "context_token_leaked": false,
+    "public_authorization_parameter_present": false,
+    "repo_root_path_leaked": false
+  },
+  "public_call_signatures": {
+    "evaluate_claim_domain_decision": [
+      "arguments"
+    ],
+    "explain_claim_action_packet": [
+      "arguments"
+    ],
+    "explain_collection_workflow_state": [
+      "arguments"
+    ],
+    "list_claim_domain_routes": [
+      "arguments"
+    ]
+  },
+  "schema_version": "task-12-mcp-happy-evidence/v1",
+  "tool_order": {
+    "appended_tools_expected": [
+      "list_claim_domain_routes",
+      "explain_collection_workflow_state",
+      "evaluate_claim_domain_decision",
+      "explain_claim_action_packet"
+    ],
+    "existing_21_expected": [
+      "list_debt_collection_tools",
+      "ingest_legal_document",
+      "ingest_ocr_markdown",
+      "get_ingest_status",
+      "classify_legal_document",
+      "extract_case_packet",
+      "get_case_graph",
+      "check_case_stop_gates",
+      "check_limitation_status",
+      "check_attachment_target_rules",
+      "summarize_case_ledger",
+      "recommend_next_action",
+      "list_unknown_document_types",
+      "review_extracted_fact",
+      "promote_ontology_candidate",
+      "reprocess_case",
+      "assemble_debtor_documents",
+      "build_debtor_context_graph",
+      "get_debtor_graph_snapshot",
+      "list_debtor_route_candidates",
+      "explain_debtor_route_candidate"
+    ],
+    "existing_21_remain_first": true,
+    "fake_mcp_appended_tools": [
+      "list_claim_domain_routes",
+      "explain_collection_workflow_state",
+      "evaluate_claim_domain_decision",
+      "explain_claim_action_packet"
+    ],
+    "fake_mcp_first_21": [
+      "list_debt_collection_tools",
+      "ingest_legal_document",
+      "ingest_ocr_markdown",
+      "get_ingest_status",
+      "classify_legal_document",
+      "extract_case_packet",
+      "get_case_graph",
+      "check_case_stop_gates",
+      "check_limitation_status",
+      "check_attachment_target_rules",
+      "summarize_case_ledger",
+      "recommend_next_action",
+      "list_unknown_document_types",
+      "review_extracted_fact",
+      "promote_ontology_candidate",
+      "reprocess_case",
+      "assemble_debtor_documents",
+      "build_debtor_context_graph",
+      "get_debtor_graph_snapshot",
+      "list_debtor_route_candidates",
+      "explain_debtor_route_candidate"
+    ],
+    "four_tools_appended": true,
+    "listed_appended_tools": [
+      "list_claim_domain_routes",
+      "explain_collection_workflow_state",
+      "evaluate_claim_domain_decision",
+      "explain_claim_action_packet"
+    ],
+    "listed_count": 25,
+    "listed_first_21": [
+      "list_debt_collection_tools",
+      "ingest_legal_document",
+      "ingest_ocr_markdown",
+      "get_ingest_status",
+      "classify_legal_document",
+      "extract_case_packet",
+      "get_case_graph",
+      "check_case_stop_gates",
+      "check_limitation_status",
+      "check_attachment_target_rules",
+      "summarize_case_ledger",
+      "recommend_next_action",
+      "list_unknown_document_types",
+      "review_extracted_fact",
+      "promote_ontology_candidate",
+      "reprocess_case",
+      "assemble_debtor_documents",
+      "build_debtor_context_graph",
+      "get_debtor_graph_snapshot",
+      "list_debtor_route_candidates",
+      "explain_debtor_route_candidate"
+    ],
+    "registered_count": 25
+  }
+}

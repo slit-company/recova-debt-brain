@@ -38,8 +38,12 @@ EXPECTED_TOOL_NAMES = [
     "get_debtor_graph_snapshot",
     "list_debtor_route_candidates",
     "explain_debtor_route_candidate",
+    "list_claim_domain_routes",
+    "explain_collection_workflow_state",
+    "evaluate_claim_domain_decision",
+    "explain_claim_action_packet",
 ]
-EXPECTED_GROUPS = {"read", "ingest", "graph", "stopgate", "governance", "debtor_graph"}
+EXPECTED_GROUPS = {"read", "ingest", "graph", "stopgate", "governance", "debtor_graph", "claim_domain"}
 JsonScalar = str | int | float | bool | None
 JsonValue = JsonScalar | List["JsonValue"] | Dict[str, "JsonValue"]
 JsonObject = Dict[str, JsonValue]
@@ -86,7 +90,7 @@ def test_tool_contracts_expose_final_todo_9_surface() -> None:
     tools = list_tools()
     definition_dicts = [asdict(definition) for definition in TOOL_DEFINITIONS]
 
-    assert len(TOOL_DEFINITIONS) == 21
+    assert len(TOOL_DEFINITIONS) == 25
     assert [definition["tool_name"] for definition in definition_dicts] == EXPECTED_TOOL_NAMES
     assert all("name" not in definition for definition in definition_dicts)
     assert [tool["tool_name"] for tool in tools] == EXPECTED_TOOL_NAMES

@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Callable, Dict, Final, List, Optional, Tuple
 
 from trustgraph_legal import mcp_handlers
+import trustgraph_legal.mcp_claim_domain_handlers as mcp_claim_domain_handlers
 from trustgraph_legal.governance_models import JsonValue
 from trustgraph_legal.mcp_envelope import (
     SCHEMA_VERSION,
@@ -41,6 +42,10 @@ TOOL_GROUPS: Final[Dict[str, Tuple[str, str]]] = {
     "get_debtor_graph_snapshot": ("debtor_graph", "debtor_graph:read"),
     "list_debtor_route_candidates": ("debtor_graph", "debtor_graph:routes"),
     "explain_debtor_route_candidate": ("debtor_graph", "debtor_graph:routes"),
+    "list_claim_domain_routes": ("claim_domain", "claim_domain:routes"),
+    "explain_collection_workflow_state": ("claim_domain", "claim_domain:workflow"),
+    "evaluate_claim_domain_decision": ("claim_domain", "claim_domain:decision"),
+    "explain_claim_action_packet": ("claim_domain", "claim_domain:action_packet"),
 }
 
 
@@ -121,6 +126,10 @@ TOOL_DEFINITIONS: Final[Tuple[ToolDefinition, ...]] = (
     _tool("get_debtor_graph_snapshot", "Return snapshot replay and provenance metadata for a debtor context graph.", ("graph", "graph_path", "ocr_root", "assembly_path"), mcp_handlers.get_debtor_graph_snapshot),
     _tool("list_debtor_route_candidates", "List advisory route candidates for a debtor context graph.", ("graph", "graph_path", "ocr_root", "assembly_path"), mcp_handlers.list_debtor_route_candidates),
     _tool("explain_debtor_route_candidate", "Explain one advisory route candidate using existing route fields.", ("graph", "graph_path", "ocr_root", "assembly_path", "route_id"), mcp_handlers.explain_debtor_route_candidate),
+    _tool("list_claim_domain_routes", "List advisory claim-domain v1 route summaries.", ("routes_path", "family"), mcp_claim_domain_handlers.list_claim_domain_routes),
+    _tool("explain_collection_workflow_state", "Explain one claim-domain collection workflow state.", ("workflow_path", "state_id"), mcp_claim_domain_handlers.explain_collection_workflow_state),
+    _tool("evaluate_claim_domain_decision", "Evaluate deterministic advisory claim-domain route decisions.", ("claim_domain_payload", "claim_domain_payload_path", "workflow_state", "route_ids", "finance_review_codes", "expected_domain_source_version", "decisions_path", "sources_path", "action_packets_path", "workflow_path", "finance_path", "stopgate_path"), mcp_claim_domain_handlers.evaluate_claim_domain_decision),
+    _tool("explain_claim_action_packet", "Explain one advisory claim action packet schema without execution payloads.", ("action_packets_path", "packet_type"), mcp_claim_domain_handlers.explain_claim_action_packet),
 )
 
 
