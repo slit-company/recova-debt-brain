@@ -6,8 +6,9 @@ import sys
 from dataclasses import dataclass, replace
 from datetime import date
 from pathlib import Path
-from typing import Final
+from typing import Final, TypeAlias
 
+from pydantic import JsonValue as PydanticJsonValue
 from pydantic import TypeAdapter
 
 from trustgraph_legal.debtor_context import build_debtor_context
@@ -47,9 +48,8 @@ FORBIDDEN_TEXT: Final = (
     '"' + "debtor_contact_payload" + '":',
     '"' + "filing_destination" + '":',
 )
-JsonScalar = str | int | float | bool | None
-JsonValue = JsonScalar | list["JsonValue"] | dict[str, "JsonValue"]
-JsonObject = dict[str, JsonValue]
+JsonValue: TypeAlias = PydanticJsonValue
+JsonObject: TypeAlias = dict[str, JsonValue]
 JSON_OBJECT_ADAPTER: Final = TypeAdapter[JsonObject](JsonObject)
 
 
