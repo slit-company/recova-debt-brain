@@ -1,0 +1,347 @@
+{
+  "schema_version": "trustgraph-legal-stopgate-rules/v1",
+  "rule_source_version": "recova-debt-collection-stopgate@v1.0.0",
+  "review_status": "approved_static_v1",
+  "effective_date": "2026-07-07",
+  "curation_policy": "static-curated-domain-v1-no-live-updates",
+  "sources": [
+    {
+      "source_id": "kr-law-l009290-m268837-a223",
+      "statute_ref": "Civil Execution Act Article 223 curated v1 enforcement title and claim execution source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C223%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a229",
+      "statute_ref": "Civil Execution Act Article 229 curated v1 collection order and amount scope source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C229%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a246",
+      "statute_ref": "Civil Execution Act Article 246 curated v1 attachment exemption and protected benefit source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C246%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a61",
+      "statute_ref": "Civil Execution Act Article 61 curated v1 property disclosure precondition source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C61%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a74",
+      "statute_ref": "Civil Execution Act Article 74 curated v1 property inquiry precondition source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C74%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a70",
+      "statute_ref": "Civil Execution Act Article 70 curated v1 debtor default registry precondition source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C70%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001700-m252393-a474",
+      "statute_ref": "Civil Procedure Act Article 474 curated v1 payment order title source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001700/252393/%EC%A0%9C474%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001706-m284415-a165",
+      "statute_ref": "Civil Act Article 165 curated v1 final claim limitation source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001706/284415/%EC%A0%9C165%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001706-m284415-a168",
+      "statute_ref": "Civil Act Article 168 curated v1 limitation interruption source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001706/284415/%EC%A0%9C168%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001706-m284415-a406",
+      "statute_ref": "Civil Act Article 406 curated v1 fraudulent transfer source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001706/284415/%EC%A0%9C406%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l010910-m268669-a9",
+      "statute_ref": "Fair Debt Collection Act Article 9 curated v1 collection conduct restriction source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://010910/268669/%EC%A0%9C9%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l010910-m268669-a11",
+      "statute_ref": "Fair Debt Collection Act Article 11 curated v1 truthful route explanation source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://010910/268669/%EC%A0%9C11%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l010910-m268669-a12",
+      "statute_ref": "Fair Debt Collection Act Article 12 curated v1 unfair collection conduct source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://010910/268669/%EC%A0%9C12%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001540-m260423-a15",
+      "statute_ref": "Credit Information Act Article 15 curated v1 minimization and source-provenance source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001540/260423/%EC%A0%9C15%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001540-m260423-a32",
+      "statute_ref": "Credit Information Act Article 32 curated v1 external credit information consent source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001540/260423/%EC%A0%9C32%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009930-m267359-a593",
+      "statute_ref": "Debtor Rehabilitation and Bankruptcy Act Article 593 curated v1 rehabilitation stay source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009930/267359/%EC%A0%9C593%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009930-m267359-a600",
+      "statute_ref": "Debtor Rehabilitation and Bankruptcy Act Article 600 curated v1 opening stay source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009930/267359/%EC%A0%9C600%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009930-m267359-a566",
+      "statute_ref": "Debtor Rehabilitation and Bankruptcy Act Article 566 curated v1 discharge effect source",
+      "effective_date": "2026-07-07",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009930/267359/%EC%A0%9C566%EC%A1%B0"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "dc-stopgate-v1-001",
+      "stopgate_id": "domain-rule-source-unapproved",
+      "reason_code": "domain_rule_source_unapproved",
+      "decision": "보류",
+      "condition": "domain_rule_source_unapproved",
+      "blocked_reason": "The domain-v1 StopGate rule source is not approved for advisory review.",
+      "recommended_action": "Use an approved static domain-v1 rule source before relying on advisory StopGate clearance.",
+      "required_preconditions": ["approved_static_v1 domain StopGate rule source"],
+      "missing_evidence": ["approved_domain_rule_source"],
+      "risk_flags": ["domain_rule_source_unapproved"],
+      "source_ids": ["kr-law-l001540-m260423-a15"],
+      "statute_refs": ["Domain v1 contract: approved static StopGate source required"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-002",
+      "stopgate_id": "source-provenance-missing",
+      "reason_code": "invalid_fact_without_provenance",
+      "decision": "보류",
+      "condition": "invalid_provenance",
+      "blocked_reason": "A legally material domain fact is missing source document, chunk, or span provenance.",
+      "recommended_action": "Repair extraction provenance before using the fact in advisory route review.",
+      "required_preconditions": ["document_id", "source_ref", "chunk_id", "line span"],
+      "missing_evidence": ["fact_source_provenance"],
+      "risk_flags": ["invalid_fact_without_provenance"],
+      "source_ids": ["kr-law-l001540-m260423-a15"],
+      "statute_refs": ["Domain v1 contract: source-provenance-missing StopGate"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-003",
+      "stopgate_id": "limitation-risk",
+      "reason_code": "limitation_risk",
+      "decision": "보류",
+      "condition": "limitation_risk",
+      "blocked_reason": "Limitation, interruption, or stale-claim risk is not cleared by source-backed evidence.",
+      "recommended_action": "Verify limitation status before recommending any recovery route.",
+      "required_preconditions": ["limitation_cleared"],
+      "missing_evidence": ["limitation_clearance"],
+      "risk_flags": ["limitation_risk"],
+      "source_ids": ["kr-law-l001706-m284415-a165", "kr-law-l001706-m284415-a168", "kr-law-l001706-m284415-a406"],
+      "statute_refs": ["Civil Act curated v1 limitation references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-004",
+      "stopgate_id": "insolvency-or-discharge-risk",
+      "reason_code": "discharge_proceeding_detected",
+      "decision": "보류",
+      "condition": "discharge_proceeding_detected",
+      "blocked_reason": "Insolvency, discharge, rehabilitation, stay, or credit-recovery material requires legal review.",
+      "recommended_action": "Review proceeding status and protected period before route recommendation.",
+      "required_preconditions": ["insolvency_or_discharge_clearance"],
+      "missing_evidence": ["insolvency_discharge_clearance"],
+      "risk_flags": ["discharge_proceeding_detected"],
+      "source_ids": ["kr-law-l009930-m267359-a593", "kr-law-l009930-m267359-a600", "kr-law-l009930-m267359-a566", "kr-law-l010910-m268669-a12"],
+      "statute_refs": ["Debtor rehabilitation and bankruptcy curated v1 references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-005",
+      "stopgate_id": "target-exemption-risk",
+      "reason_code": "exempt_claim_targeted",
+      "decision": "보류",
+      "condition": "exempt_claim_targeted",
+      "blocked_reason": "Claim target, property, or priority material indicates exemption review is required.",
+      "recommended_action": "Review target class, protected amount, and priority before route recommendation.",
+      "required_preconditions": ["exemption_clearance"],
+      "missing_evidence": ["exemption_clearance"],
+      "risk_flags": ["exempt_claim_targeted"],
+      "source_ids": ["kr-law-l009290-m268837-a246"],
+      "statute_refs": ["Civil Execution Act curated v1 attachment exemption references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-006",
+      "stopgate_id": "welfare-public-benefit-protected",
+      "reason_code": "welfare_public_benefit_protected",
+      "decision": "보류",
+      "condition": "welfare_public_benefit_protected",
+      "blocked_reason": "Welfare, public-benefit, or protected-benefit material requires protected-property review.",
+      "recommended_action": "Treat the route as review-required until public-benefit protection is cleared.",
+      "required_preconditions": ["welfare_public_benefit_clearance"],
+      "missing_evidence": ["protected_benefit_clearance"],
+      "risk_flags": ["welfare_public_benefit_protected"],
+      "source_ids": ["kr-law-l009290-m268837-a246"],
+      "statute_refs": ["Civil Execution Act curated v1 protected benefit references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-007",
+      "stopgate_id": "domain-legal-source-unapproved",
+      "reason_code": "domain_legal_source_unapproved",
+      "decision": "보류",
+      "condition": "domain_legal_source_unapproved",
+      "blocked_reason": "A domain legal-source fact is draft, legacy, placeholder, unknown, or otherwise not approved_static_v1.",
+      "recommended_action": "Replace or legally review the source before route recommendation.",
+      "required_preconditions": ["approved_static_v1 legal source status"],
+      "missing_evidence": ["approved_domain_legal_source"],
+      "risk_flags": ["domain_legal_source_unapproved"],
+      "source_ids": ["kr-law-l010910-m268669-a11", "kr-law-l001540-m260423-a15"],
+      "statute_refs": ["Domain v1 contract: legal-source status must be approved_static_v1"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-008",
+      "stopgate_id": "missing-enforcement-title",
+      "reason_code": "missing_enforcement_title",
+      "decision": "보류",
+      "condition": "missing_enforcement_title",
+      "blocked_reason": "No source-backed enforceable title document type is present.",
+      "recommended_action": "Collect payment order, judgment, decision, settlement, or equivalent title evidence.",
+      "required_preconditions": ["enforcement_title"],
+      "missing_evidence": ["enforcement_title"],
+      "risk_flags": ["missing_enforcement_title"],
+      "source_ids": ["kr-law-l009290-m268837-a223", "kr-law-l001700-m252393-a474"],
+      "statute_refs": ["Civil Execution Act and Civil Procedure Act curated v1 title references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-009",
+      "stopgate_id": "service-finality-execution-clause-unproven",
+      "reason_code": "missing_execution_clause",
+      "decision": "보류",
+      "condition": "missing_execution_clause",
+      "blocked_reason": "Execution clause proof is absent or not source-backed.",
+      "recommended_action": "Collect source-backed execution clause evidence before advisory route review.",
+      "required_preconditions": ["execution_clause_status"],
+      "missing_evidence": ["execution_clause_status"],
+      "risk_flags": ["missing_execution_clause"],
+      "source_ids": ["kr-law-l009290-m268837-a61", "kr-law-l009290-m268837-a74", "kr-law-l009290-m268837-a70"],
+      "statute_refs": ["Civil Execution Act curated v1 service/finality/execution clause references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-010",
+      "stopgate_id": "service-finality-execution-clause-proof-missing",
+      "reason_code": "missing_service_finality_execution_clause_proof",
+      "decision": "보류",
+      "condition": "missing_service_finality_execution_clause_proof",
+      "blocked_reason": "Service, finality, or execution-clause proof is incomplete for domain-v1 advisory route review.",
+      "recommended_action": "Collect service proof, finality proof, and execution clause evidence before recommending enforcement routes.",
+      "required_preconditions": ["service-finality-proof", "service_status", "finality_status", "execution_clause_status"],
+      "missing_evidence": ["service_finality_execution_clause_proof"],
+      "risk_flags": ["missing_service_finality_execution_clause_proof"],
+      "source_ids": ["kr-law-l009290-m268837-a61", "kr-law-l009290-m268837-a74", "kr-law-l009290-m268837-a70"],
+      "statute_refs": ["Civil Execution Act curated v1 execution precondition references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-011",
+      "stopgate_id": "amount-inconsistent",
+      "reason_code": "amount_mismatch",
+      "decision": "보류",
+      "condition": "amount_mismatch",
+      "blocked_reason": "Claim, principal, or calculated total amounts conflict.",
+      "recommended_action": "Reconcile ledger and amount-interest calculation before route recommendation.",
+      "required_preconditions": ["reconciled amount calculation"],
+      "missing_evidence": ["amount_reconciliation"],
+      "risk_flags": ["amount_mismatch"],
+      "source_ids": ["kr-law-l009290-m268837-a229"],
+      "statute_refs": ["Civil Execution Act curated v1 claim amount scope references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-012",
+      "stopgate_id": "ambiguous-or-excessive-balance",
+      "reason_code": "ambiguous_or_excessive_balance",
+      "decision": "보류",
+      "condition": "ambiguous_or_excessive_balance",
+      "blocked_reason": "Claim balance, payment allocation, or claimed recovery amount is ambiguous, disputed, or excessive.",
+      "recommended_action": "Send the balance to finance/legal review before route recommendation.",
+      "required_preconditions": ["claim_balance_reconciled"],
+      "missing_evidence": ["unambiguous_claim_balance"],
+      "risk_flags": ["ambiguous_or_excessive_balance"],
+      "source_ids": ["kr-law-l009290-m268837-a229"],
+      "statute_refs": ["Civil Execution Act curated v1 amount scope references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-013",
+      "stopgate_id": "unsupported-contact-or-recovery-route",
+      "reason_code": "unsupported_contact_or_recovery_route",
+      "decision": "보류",
+      "condition": "unsupported_contact_or_recovery_route",
+      "blocked_reason": "A contact or recovery route is outside the approved advisory route catalog or carries direct execution semantics.",
+      "recommended_action": "Replace it with a supported advisory route or send to governance review.",
+      "required_preconditions": ["supported advisory route", "direct_execution_allowed false"],
+      "missing_evidence": ["supported_route_mapping"],
+      "risk_flags": ["unsupported_contact_or_recovery_route"],
+      "source_ids": ["kr-law-l010910-m268669-a9", "kr-law-l010910-m268669-a11", "kr-law-l010910-m268669-a12"],
+      "statute_refs": ["Fair Debt Collection Act curated v1 route conduct references"],
+      "effective_date": "2026-07-07"
+    },
+    {
+      "rule_id": "dc-stopgate-v1-014",
+      "stopgate_id": "route-legal-source-uncertain",
+      "reason_code": "route_legal_source_uncertain",
+      "decision": "보류",
+      "condition": "route_legal_source_uncertain",
+      "blocked_reason": "A selected route references an unknown, placeholder, legacy, or non-approved legal source.",
+      "recommended_action": "Resolve route-specific legal-source refs before route recommendation.",
+      "required_preconditions": ["route legal_source_refs all approved_static_v1"],
+      "missing_evidence": ["approved_route_legal_source_refs"],
+      "risk_flags": ["route_legal_source_uncertain"],
+      "source_ids": ["kr-law-l010910-m268669-a11", "kr-law-l001540-m260423-a15"],
+      "statute_refs": ["Domain v1 contract: route-specific legal sources must be approved_static_v1"],
+      "effective_date": "2026-07-07"
+    }
+  ]
+}
