@@ -1,0 +1,85 @@
+{
+  "debtor_graph_id": "debtor-graph:governance",
+  "graph_snapshot_id": "snapshot:governance",
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "production_legal_sources_modified": false,
+  "production_ontology_modified": false,
+  "production_resources_modified": false,
+  "production_routes_modified": false,
+  "records": [
+    {
+      "audit": {
+        "actor_ref": "",
+        "created_at": "2026-07-06T00:00:00Z",
+        "no_direct_execution": true,
+        "production_legal_sources_modified": false,
+        "production_ontology_modified": false,
+        "production_routes_modified": false,
+        "resource_mutation": false,
+        "updated_at": "2026-07-06T00:00:00Z"
+      },
+      "kind": "identity_unresolved",
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "reason_code": "identity_unresolved",
+      "record_id": "governance:identity_unresolved:d69c4e032e285b63704e",
+      "review_status": "review_required",
+      "severity": "high",
+      "source_fact_ids": [],
+      "source_refs": [
+        "fixture:case.md#L1"
+      ],
+      "subject_ref": "debtor-graph:governance",
+      "suggested_action": "Require identity evidence before merging debtor context across source bundles."
+    },
+    {
+      "audit": {
+        "actor_ref": "reviewer:legal-ops",
+        "created_at": "2026-07-06T00:00:00Z",
+        "no_direct_execution": true,
+        "production_legal_sources_modified": false,
+        "production_ontology_modified": false,
+        "production_routes_modified": false,
+        "resource_mutation": false,
+        "updated_at": "2026-07-06T00:00:00Z"
+      },
+      "kind": "manual_fact_review",
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "reason_code": "missing_manual_fact_approval_metadata",
+      "record_id": "governance:manual_fact_review:6b66d31aaf19088e9014",
+      "review_status": "rejected",
+      "severity": "high",
+      "source_fact_ids": [
+        "fact:claim-balance"
+      ],
+      "source_refs": [
+        "fixture:claim.md#L7"
+      ],
+      "subject_ref": "fact:claim-balance",
+      "suggested_action": "Attach approval_evidence_ref before accepting a manual fact decision."
+    }
+  ],
+  "schema_version": "recova-debtor-governance/v1",
+  "summary": {
+    "by_kind": {
+      "identity_unresolved": 1,
+      "manual_fact_review": 1
+    },
+    "by_review_status": {
+      "rejected": 1,
+      "review_required": 1
+    },
+    "by_severity": {
+      "high": 2
+    },
+    "records": 2
+  }
+}
