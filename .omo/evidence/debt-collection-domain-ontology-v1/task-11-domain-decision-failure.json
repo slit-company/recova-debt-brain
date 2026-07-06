@@ -1,0 +1,22 @@
+{
+  "schema_version": "trustgraph-task-11-domain-decision-failure-evidence/v1",
+  "cases": [
+    {
+      "case": "unknown_route_id",
+      "reason_code": "unknown_route_id",
+      "location": "route_ids[0]",
+      "message": "route id is not in decision table v1"
+    },
+    {
+      "case": "stale_legal_source_version",
+      "reason_code": "stale_legal_source_version",
+      "location": "resources/legal_rules/debt_collection_domain_sources_v1.json",
+      "message": "domain legal-source version does not match the decision table"
+    }
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "non_execution_semantics": "advisory_only_human_review_required"
+}

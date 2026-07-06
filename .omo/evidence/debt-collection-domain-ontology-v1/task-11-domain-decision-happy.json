@@ -1,0 +1,364 @@
+{
+  "schema_version": "trustgraph-task-11-domain-decision-evidence/v1",
+  "cases": {
+    "possible": {
+      "schema_version": "trustgraph-claim-domain-decision/v1",
+      "claim_ref": "claim:fixture",
+      "workflow_state": "execution_route_selection",
+      "route_decisions": [
+        {
+          "schema_version": "trustgraph-route-decision-result/v1",
+          "route_id": "bank_account_attachment",
+          "status": "possible",
+          "priority_score": 100,
+          "missing_fact_handles": [],
+          "blocking_fact_handles": [],
+          "reasons": [
+            {
+              "reason_code": "required_facts_present",
+              "message": "All required route fact handles are present.",
+              "source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246",
+                "kr-law-l009930-m267359-a593",
+                "kr-law-l010910-m268669-a12"
+              ]
+            }
+          ],
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12"
+          ],
+          "next_step_action_packet_type": "legal_action_review",
+          "non_execution_semantics": "advisory_only_human_review_required",
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      ],
+      "review_items": [],
+      "action_packet_candidates": [
+        {
+          "schema_version": "trustgraph-action-packet-candidate/v1",
+          "claim_ref": "claim:fixture",
+          "route_id": "bank_account_attachment",
+          "route_status": "possible",
+          "packet_type": "legal_action_review",
+          "review_status": "human_review_required",
+          "required_inputs": [
+            "case_packet_ref",
+            "claim_ref",
+            "route_id",
+            "enforceable_title",
+            "service_finality",
+            "execution_clause",
+            "legal_source_review_status",
+            "source_refs"
+          ],
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12",
+            "kr-law-l009290-m268837-a61"
+          ],
+          "direct_execution_allowed": false,
+          "non_execution_semantics": "advisory_only_human_review_required",
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false,
+            "debtor_contact_payload_included": false,
+            "filing_destination_included": false
+          }
+        }
+      ],
+      "source_refs": [
+        "fixture:source#claim",
+        "fixture:source#title",
+        "fixture:source#enforceable_title",
+        "fixture:source#financial_account_hint",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12",
+        "kr-law-l009290-m268837-a61"
+      ],
+      "resource_versions": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "domain_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+        "workflow_version": "recova-debt-collection-workflow@v1.0.0",
+        "finance_model_version": "recova-claim-finance-model@v1.0.0",
+        "action_packet_version": "recova-debt-collection-action-packets@v1.0.0",
+        "stopgate_rule_source_version": "recova-debt-collection-stopgate@v1.0.0"
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      },
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    "missing": {
+      "schema_version": "trustgraph-claim-domain-decision/v1",
+      "claim_ref": "claim:fixture",
+      "workflow_state": "execution_route_selection",
+      "route_decisions": [
+        {
+          "schema_version": "trustgraph-route-decision-result/v1",
+          "route_id": "bank_account_attachment",
+          "status": "missing_facts",
+          "priority_score": 75,
+          "missing_fact_handles": [
+            "financial_account_hint"
+          ],
+          "blocking_fact_handles": [],
+          "reasons": [
+            {
+              "reason_code": "required_fact_missing",
+              "message": "One or more required route fact handles are absent.",
+              "source_refs": [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246",
+                "kr-law-l009930-m267359-a593",
+                "kr-law-l010910-m268669-a12"
+              ]
+            }
+          ],
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12"
+          ],
+          "next_step_action_packet_type": "legal_action_review",
+          "non_execution_semantics": "advisory_only_human_review_required",
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      ],
+      "review_items": [
+        {
+          "code": "missing_route_fact",
+          "category": "evidence",
+          "route_id": "bank_account_attachment",
+          "fact_handles": [
+            "financial_account_hint"
+          ],
+          "review_status": "human_review_required",
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12"
+          ]
+        }
+      ],
+      "action_packet_candidates": [
+        {
+          "schema_version": "trustgraph-action-packet-candidate/v1",
+          "claim_ref": "claim:fixture",
+          "route_id": "bank_account_attachment",
+          "route_status": "missing_facts",
+          "packet_type": "legal_action_review",
+          "review_status": "human_review_required",
+          "required_inputs": [
+            "case_packet_ref",
+            "claim_ref",
+            "route_id",
+            "enforceable_title",
+            "service_finality",
+            "execution_clause",
+            "legal_source_review_status",
+            "source_refs"
+          ],
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12",
+            "kr-law-l009290-m268837-a61"
+          ],
+          "direct_execution_allowed": false,
+          "non_execution_semantics": "advisory_only_human_review_required",
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false,
+            "debtor_contact_payload_included": false,
+            "filing_destination_included": false
+          }
+        }
+      ],
+      "source_refs": [
+        "fixture:source#claim",
+        "fixture:source#title",
+        "fixture:source#enforceable_title",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12",
+        "kr-law-l009290-m268837-a61"
+      ],
+      "resource_versions": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "domain_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+        "workflow_version": "recova-debt-collection-workflow@v1.0.0",
+        "finance_model_version": "recova-claim-finance-model@v1.0.0",
+        "action_packet_version": "recova-debt-collection-action-packets@v1.0.0",
+        "stopgate_rule_source_version": "recova-debt-collection-stopgate@v1.0.0"
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      },
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    "blocked": {
+      "schema_version": "trustgraph-claim-domain-decision/v1",
+      "claim_ref": "claim:fixture",
+      "workflow_state": "execution_route_selection",
+      "route_decisions": [
+        {
+          "schema_version": "trustgraph-route-decision-result/v1",
+          "route_id": "bank_account_attachment",
+          "status": "blocked",
+          "priority_score": 0,
+          "missing_fact_handles": [],
+          "blocking_fact_handles": [
+            "insolvency_stay"
+          ],
+          "reasons": [
+            {
+              "reason_code": "discharge_proceeding_detected",
+              "message": "Blocking fact `insolvency_stay` requires advisory hold.",
+              "source_refs": [
+                "kr-law-l009930-m267359-a593",
+                "kr-law-l009930-m267359-a600"
+              ]
+            }
+          ],
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12",
+            "kr-law-l009930-m267359-a600"
+          ],
+          "next_step_action_packet_type": "legal_action_review",
+          "non_execution_semantics": "advisory_only_human_review_required",
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      ],
+      "review_items": [
+        {
+          "code": "route_blocked",
+          "category": "stopgate",
+          "route_id": "bank_account_attachment",
+          "fact_handles": [
+            "insolvency_stay"
+          ],
+          "review_status": "human_review_required",
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12",
+            "kr-law-l009930-m267359-a600"
+          ]
+        }
+      ],
+      "action_packet_candidates": [
+        {
+          "schema_version": "trustgraph-action-packet-candidate/v1",
+          "claim_ref": "claim:fixture",
+          "route_id": "bank_account_attachment",
+          "route_status": "blocked",
+          "packet_type": "legal_action_review",
+          "review_status": "human_review_required",
+          "required_inputs": [
+            "case_packet_ref",
+            "claim_ref",
+            "route_id",
+            "enforceable_title",
+            "service_finality",
+            "execution_clause",
+            "legal_source_review_status",
+            "source_refs"
+          ],
+          "source_refs": [
+            "kr-law-l009290-m268837-a223",
+            "kr-law-l009290-m268837-a229",
+            "kr-law-l009290-m268837-a246",
+            "kr-law-l009930-m267359-a593",
+            "kr-law-l010910-m268669-a12",
+            "kr-law-l009930-m267359-a600",
+            "kr-law-l009290-m268837-a61"
+          ],
+          "direct_execution_allowed": false,
+          "non_execution_semantics": "advisory_only_human_review_required",
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false,
+            "debtor_contact_payload_included": false,
+            "filing_destination_included": false
+          }
+        }
+      ],
+      "source_refs": [
+        "fixture:source#claim",
+        "fixture:source#title",
+        "fixture:source#enforceable_title",
+        "fixture:source#financial_account_hint",
+        "fixture:source#insolvency_stay",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009290-m268837-a61"
+      ],
+      "resource_versions": {
+        "decision_table_version": "recova-debt-collection-route-decisions@v1.0.0",
+        "domain_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+        "workflow_version": "recova-debt-collection-workflow@v1.0.0",
+        "finance_model_version": "recova-claim-finance-model@v1.0.0",
+        "action_packet_version": "recova-debt-collection-action-packets@v1.0.0",
+        "stopgate_rule_source_version": "recova-debt-collection-stopgate@v1.0.0"
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false
+      },
+      "non_execution_semantics": "advisory_only_human_review_required"
+    }
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "non_execution_semantics": "advisory_only_human_review_required"
+}
