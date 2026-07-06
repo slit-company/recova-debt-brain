@@ -39,6 +39,12 @@ DEBTOR_TOOL_SCOPES: Final = {
     "list_debtor_route_candidates": "debtor_graph:routes",
     "explain_debtor_route_candidate": "debtor_graph:routes",
 }
+CLAIM_DOMAIN_TOOL_NAMES: Final = [
+    "list_claim_domain_routes",
+    "explain_collection_workflow_state",
+    "evaluate_claim_domain_decision",
+    "explain_claim_action_packet",
+]
 ROUTE_EXPLANATION_KEYS: Final = {
     "route_id",
     "route_label",
@@ -106,12 +112,13 @@ def test_debtor_graph_tools_are_additive_after_existing_mcp_tools() -> None:
 
     # When: tool contracts are listed for MCP clients.
     names = [str(tool["tool_name"]) for tool in tools]
-    debtor_tools = {str(tool["tool_name"]): tool for tool in tools[16:]}
+    debtor_tools = {str(tool["tool_name"]): tool for tool in tools[16:21]}
 
-    # Then: the existing Todo 9 surface stays ordered and debtor tools append after it.
+    # Then: the existing Todo 9 surface and debtor tools stay ordered before claim-domain tools.
     assert names[:16] == BASE_TOOL_NAMES
-    assert names[16:] == list(DEBTOR_TOOL_SCOPES)
-    assert len(tools) == 21
+    assert names[16:21] == list(DEBTOR_TOOL_SCOPES)
+    assert names[21:] == CLAIM_DOMAIN_TOOL_NAMES
+    assert len(tools) == 25
     for tool_name, scope in DEBTOR_TOOL_SCOPES.items():
         tool = debtor_tools[tool_name]
         parameters = tool["parameters"]

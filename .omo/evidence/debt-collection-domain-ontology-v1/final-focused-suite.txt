@@ -1,0 +1,31 @@
+COMMAND
+final focused pytest suite including domain, debtor graph, MCP, and integration tests
+
+OUTCOME
+============================== 77 passed in 5.29s ==============================
+
+RAW OUTPUT
+============================= test session starts ==============================
+collected 77 items
+
+tests/unit/legal_ontology/test_domain_manual_inventory.py ..             [  2%]
+tests/unit/legal_ontology/test_domain_ontology_v1.py ...                 [  6%]
+tests/unit/legal_ontology/test_domain_sources_v1.py ...                  [ 10%]
+tests/unit/legal_ontology/test_finance_claim_model_v1.py ....            [ 15%]
+tests/unit/legal_ontology/test_workflow_v1.py ...                        [ 19%]
+tests/unit/legal_ontology/test_routes_v1.py .....                        [ 25%]
+tests/unit/legal_ontology/test_validate_routes.py ...                    [ 29%]
+tests/unit/legal_ontology/test_route_decisions_v1.py .....               [ 36%]
+tests/unit/legal_ontology/test_action_packets_v1.py ....                 [ 41%]
+tests/unit/legal_ontology/test_stop_gates_domain_v1.py ....              [ 46%]
+tests/unit/legal_ontology/test_stop_gates.py ........                    [ 57%]
+tests/unit/legal_ontology/test_domain_graph_adapter_v1.py ....           [ 62%]
+tests/unit/legal_ontology/test_domain_decision_engine_v1.py ....         [ 67%]
+tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py ....      [ 72%]
+tests/unit/legal_ontology/test_mcp_domain_tools.py ......                [ 80%]
+tests/unit/legal_ontology/test_mcp_debtor_context_tools.py .....         [ 87%]
+tests/integration/legal_ontology/test_debtor_context_pipeline.py .....   [ 93%]
+tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py ..  [ 96%]
+tests/integration/legal_ontology/test_mcp_tools.py ...                   [100%]
+
+============================== 77 passed in 5.29s ==============================

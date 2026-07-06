@@ -1,0 +1,16 @@
+{
+  "domain_decision_failure_status": null,
+  "generated_at": "2026-07-06T20:20:30.010153+00:00",
+  "mcp_failure_warnings": null,
+  "no_real_pii_used": true,
+  "raw_ocr_body_included": false,
+  "schema_version": "recova-domain-final-negative-eval/v1",
+  "unsafe_fixture_raw_fields": [
+    "raw_text"
+  ],
+  "unsafe_fixture_rejected": true,
+  "unsafe_fixture_unknown_sources": [
+    "unknown-legal-source"
+  ],
+  "verdict": "blocked_or_review_required"
+}
