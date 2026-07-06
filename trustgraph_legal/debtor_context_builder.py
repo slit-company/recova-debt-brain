@@ -192,7 +192,7 @@ def _fact(draft: _FactDraft) -> FactAssertion:
         chunk_id="{}#L{}-{}".format(draft.context.page.page_id, draft.line_start, draft.line_end),
         line_start=draft.line_start,
         line_end=draft.line_end,
-        review_status="accepted" if draft.confidence >= 0.75 else "needs_review",
+        review_status="verified" if draft.confidence >= 0.75 else "needs_review",
         derived=draft.derived,
     )
 
