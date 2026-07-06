@@ -1,0 +1,22 @@
+{
+  "adapter_schema_version": "trustgraph-claim-domain-adapter/v1",
+  "failures": [
+    {
+      "case": "missing_source_ref",
+      "location": "fact_assertions[0]",
+      "reason_code": "missing_source_ref",
+      "status": "rejected"
+    },
+    {
+      "case": "unsupported_claim_identity",
+      "location": "claims[0]",
+      "reason_code": "unsupported_claim_identity",
+      "status": "rejected"
+    }
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "schema_version": "trustgraph-claim-domain-adapter-evidence/v1"
+}

@@ -1,0 +1,5 @@
+trustgraph_legal/domain_graph_adapter.py 84
+trustgraph_legal/domain_graph_adapter_shared.py 69
+trustgraph_legal/domain_graph_adapter_handles.py 210
+trustgraph_legal/domain_graph_adapter_case_graph.py 126
+tests/unit/legal_ontology/test_domain_graph_adapter_v1.py 149
