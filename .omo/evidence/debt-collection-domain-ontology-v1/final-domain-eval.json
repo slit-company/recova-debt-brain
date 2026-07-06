@@ -1,0 +1,128 @@
+{
+  "focused_pytest_summary": "============================== 77 passed in 5.29s ==============================",
+  "generated_at": "2026-07-06T20:20:30.010153+00:00",
+  "git_head": "66e3fb61f6893c2ad3e6e8434822690ab5504851",
+  "json_files_validated": 34,
+  "manual_summary": {
+    "candidate_samples_are_summary_only": true,
+    "counts": {
+      "action_packet_candidates": 6,
+      "fact_handles": 9,
+      "finance_candidates": 8,
+      "headings": 115,
+      "legal_source_candidates": 4,
+      "risk_blocker_candidates": 6,
+      "route_candidates": 66,
+      "scoring_fields": 5,
+      "workflow_candidates": 12
+    },
+    "manual_available": true,
+    "manual_label": "operator-provided-v2-practical-manual",
+    "matched_text_included": false,
+    "pii_profile": {
+      "matched_text_included": false,
+      "possible_sensitive_pattern_counts": {
+        "financial_identifier": 3,
+        "long_digit_sequence": 0,
+        "phone": 0,
+        "resident_registration": 0
+      },
+      "raw_text_included": false,
+      "sensitive_counts_only": true,
+      "source_paths_included": false,
+      "source_text_included": false
+    },
+    "raw_text_included": false,
+    "returncode": 0,
+    "source_paths_included": false
+  },
+  "mcp_tools": {
+    "claim_domain_tools": [
+      "list_claim_domain_routes",
+      "explain_collection_workflow_state",
+      "evaluate_claim_domain_decision",
+      "explain_claim_action_packet"
+    ],
+    "debtor_graph_tools": [
+      "assemble_debtor_documents",
+      "build_debtor_context_graph",
+      "get_debtor_graph_snapshot",
+      "list_debtor_route_candidates",
+      "explain_debtor_route_candidate"
+    ],
+    "existing_21_preserved": true,
+    "first_16": [
+      "list_debt_collection_tools",
+      "ingest_legal_document",
+      "ingest_ocr_markdown",
+      "get_ingest_status",
+      "classify_legal_document",
+      "extract_case_packet",
+      "get_case_graph",
+      "check_case_stop_gates",
+      "check_limitation_status",
+      "check_attachment_target_rules",
+      "summarize_case_ledger",
+      "recommend_next_action",
+      "list_unknown_document_types",
+      "review_extracted_fact",
+      "promote_ontology_candidate",
+      "reprocess_case"
+    ],
+    "tool_count": 25
+  },
+  "non_execution_boundary": {
+    "debtor_contact_payload_included": false,
+    "direct_execution_allowed": false,
+    "filing_destination_included": false,
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "resource_counts": {
+    "action_packet_schemas": 6,
+    "action_packet_types": 6,
+    "evaluation_date": "2026-07-07",
+    "finance_component_types": 11,
+    "finance_review_triggers": 6,
+    "legal_sources": 21,
+    "ontology_classes": 22,
+    "ontology_datatype_properties": 11,
+    "ontology_object_properties": 20,
+    "route_decisions": 32,
+    "route_families": 19,
+    "routes": 32,
+    "rule_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+    "score_components": 6,
+    "stopgate_rules": 14,
+    "workflow_loops": 2,
+    "workflow_states": 12,
+    "workflow_transitions": 23
+  },
+  "schema_version": "recova-domain-final-eval/v1",
+  "task13_integration": {
+    "action_packet_type_counts": {
+      "contact_review": 2,
+      "insolvency_recovery_review": 1,
+      "legal_action_review": 6
+    },
+    "manual_inventory_counts": {
+      "action_packet_candidates": 6,
+      "fact_handles": 9,
+      "finance_candidates": 5,
+      "headings": 18,
+      "legal_source_candidates": 1,
+      "risk_blocker_candidates": 6,
+      "route_candidates": 9,
+      "scoring_fields": 5,
+      "workflow_candidates": 7
+    },
+    "non_execution_fields_absent": true,
+    "route_status_counts": {
+      "blocked": 3,
+      "missing_facts": 3,
+      "possible": 1,
+      "review_required": 2
+    },
+    "scenario_count": 9
+  }
+}

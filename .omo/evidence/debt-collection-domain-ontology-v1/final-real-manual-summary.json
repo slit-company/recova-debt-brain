@@ -1,0 +1,35 @@
+{
+  "candidate_samples_are_summary_only": true,
+  "counts": {
+    "action_packet_candidates": 6,
+    "fact_handles": 9,
+    "finance_candidates": 8,
+    "headings": 115,
+    "legal_source_candidates": 4,
+    "risk_blocker_candidates": 6,
+    "route_candidates": 66,
+    "scoring_fields": 5,
+    "workflow_candidates": 12
+  },
+  "generated_at": "2026-07-06T20:20:30.010153+00:00",
+  "manual_available": true,
+  "manual_label": "operator-provided-v2-practical-manual",
+  "matched_text_included": false,
+  "pii_profile": {
+    "matched_text_included": false,
+    "possible_sensitive_pattern_counts": {
+      "financial_identifier": 3,
+      "long_digit_sequence": 0,
+      "phone": 0,
+      "resident_registration": 0
+    },
+    "raw_text_included": false,
+    "sensitive_counts_only": true,
+    "source_paths_included": false,
+    "source_text_included": false
+  },
+  "raw_text_included": false,
+  "returncode": 0,
+  "schema_version": "recova-domain-final-real-manual-summary/v1",
+  "source_paths_included": false
+}
