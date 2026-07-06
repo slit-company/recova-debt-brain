@@ -1,0 +1,3 @@
+resource json.tool PASS
+korean-law-source-map json.tool PASS
+EXIT_CODE=0

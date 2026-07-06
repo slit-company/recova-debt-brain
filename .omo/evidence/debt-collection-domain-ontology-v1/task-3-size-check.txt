@@ -1,0 +1,4 @@
+scripts/legal_ontology/validate_domain_sources_v1.py      239
+scripts/legal_ontology/domain_sources_v1_common.py       86
+tests/unit/legal_ontology/test_domain_sources_v1.py       64
+EXIT_CODE=0

@@ -1,0 +1,379 @@
+{
+  "schema_version": "trustgraph-legal-domain-source-map-evidence/v1",
+  "generated_at": "2026-07-07T01:30:02+09:00",
+  "korean_law_mcp_status": "available",
+  "deterministic_tests_use_live_mcp": false,
+  "lookup_events": [
+    {
+      "tool": "search_law",
+      "query": "민사집행법",
+      "status": "exact_match",
+      "law_id": "009290",
+      "mst": "268837",
+      "effective_date": "2026-02-01"
+    },
+    {
+      "tool": "search_law",
+      "query": "민사소송법",
+      "status": "exact_match",
+      "law_id": "001700",
+      "mst": "252393",
+      "effective_date": "2025-07-12"
+    },
+    {
+      "tool": "search_law",
+      "query": "민법",
+      "status": "exact_match",
+      "law_id": "001706",
+      "mst": "284415",
+      "effective_date": "2026-03-17"
+    },
+    {
+      "tool": "search_law",
+      "query": "채권의 공정한 추심에 관한 법률",
+      "status": "exact_match",
+      "law_id": "010910",
+      "mst": "268669",
+      "effective_date": "2025-07-22"
+    },
+    {
+      "tool": "search_law",
+      "query": "신용정보의 이용 및 보호에 관한 법률",
+      "status": "api_404_searchLaw_then_verified_by_mst",
+      "law_id": "001540",
+      "mst": "260423",
+      "effective_date": "2024-08-14"
+    },
+    {
+      "tool": "search_law",
+      "query": "채무자 회생 및 파산에 관한 법률",
+      "status": "api_404_searchLaw_then_verified_by_mst",
+      "law_id": "009930",
+      "mst": "267359",
+      "effective_date": "2026-03-01"
+    },
+    {
+      "tool": "legal_analysis",
+      "mode": "verify_citations",
+      "status": "partial_verified_due_grouped_citation_parsing",
+      "verified_count": 3,
+      "needs_review_count": 15
+    },
+    {
+      "tool": "get_law_text",
+      "query": "18 curated law_id/mst/article records",
+      "status": "verified_all_article_records",
+      "lookup_basis_date_reported_by_mcp": "2026-07-06"
+    }
+  ],
+  "verified_article_sources": [
+    {
+      "source_id": "kr-law-l009290-m268837-a223",
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "article": "제223조",
+      "article_title": "채권의 압류명령",
+      "effective_date": "2026-02-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C223%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a229",
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "article": "제229조",
+      "article_title": "금전채권의 현금화방법",
+      "effective_date": "2026-02-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C229%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a246",
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "article": "제246조",
+      "article_title": "압류금지채권",
+      "effective_date": "2026-02-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C246%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a61",
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "article": "제61조",
+      "article_title": "재산명시신청",
+      "effective_date": "2026-02-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C61%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a74",
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "article": "제74조",
+      "article_title": "재산조회",
+      "effective_date": "2026-02-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C74%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009290-m268837-a70",
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "article": "제70조",
+      "article_title": "채무불이행자명부 등재신청",
+      "effective_date": "2026-02-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009290/268837/%EC%A0%9C70%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001700-m252393-a474",
+      "law_name": "민사소송법",
+      "law_id": "001700",
+      "mst": "252393",
+      "article": "제474조",
+      "article_title": "지급명령의 효력",
+      "effective_date": "2025-07-12",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001700/252393/%EC%A0%9C474%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001706-m284415-a165",
+      "law_name": "민법",
+      "law_id": "001706",
+      "mst": "284415",
+      "article": "제165조",
+      "article_title": "판결 등에 의하여 확정된 채권의 소멸시효",
+      "effective_date": "2026-03-17",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001706/284415/%EC%A0%9C165%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001706-m284415-a168",
+      "law_name": "민법",
+      "law_id": "001706",
+      "mst": "284415",
+      "article": "제168조",
+      "article_title": "소멸시효의 중단사유",
+      "effective_date": "2026-03-17",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001706/284415/%EC%A0%9C168%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001706-m284415-a406",
+      "law_name": "민법",
+      "law_id": "001706",
+      "mst": "284415",
+      "article": "제406조",
+      "article_title": "채권자취소권",
+      "effective_date": "2026-03-17",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001706/284415/%EC%A0%9C406%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l010910-m268669-a9",
+      "law_name": "채권의 공정한 추심에 관한 법률",
+      "law_id": "010910",
+      "mst": "268669",
+      "article": "제9조",
+      "article_title": "폭행ㆍ협박 등의 금지",
+      "effective_date": "2025-07-22",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://010910/268669/%EC%A0%9C9%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l010910-m268669-a11",
+      "law_name": "채권의 공정한 추심에 관한 법률",
+      "law_id": "010910",
+      "mst": "268669",
+      "article": "제11조",
+      "article_title": "거짓 표시의 금지 등",
+      "effective_date": "2025-07-22",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://010910/268669/%EC%A0%9C11%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l010910-m268669-a12",
+      "law_name": "채권의 공정한 추심에 관한 법률",
+      "law_id": "010910",
+      "mst": "268669",
+      "article": "제12조",
+      "article_title": "불공정한 행위의 금지",
+      "effective_date": "2025-07-22",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://010910/268669/%EC%A0%9C12%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001540-m260423-a15",
+      "law_name": "신용정보의 이용 및 보호에 관한 법률",
+      "law_id": "001540",
+      "mst": "260423",
+      "article": "제15조",
+      "article_title": "수집 및 처리의 원칙",
+      "effective_date": "2024-08-14",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001540/260423/%EC%A0%9C15%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l001540-m260423-a32",
+      "law_name": "신용정보의 이용 및 보호에 관한 법률",
+      "law_id": "001540",
+      "mst": "260423",
+      "article": "제32조",
+      "article_title": "개인신용정보의 제공ㆍ활용에 대한 동의",
+      "effective_date": "2024-08-14",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://001540/260423/%EC%A0%9C32%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009930-m267359-a593",
+      "law_name": "채무자 회생 및 파산에 관한 법률",
+      "law_id": "009930",
+      "mst": "267359",
+      "article": "제593조",
+      "article_title": "중지명령",
+      "effective_date": "2026-03-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009930/267359/%EC%A0%9C593%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009930-m267359-a600",
+      "law_name": "채무자 회생 및 파산에 관한 법률",
+      "law_id": "009930",
+      "mst": "267359",
+      "article": "제600조",
+      "article_title": "다른 절차의 중지 등",
+      "effective_date": "2026-03-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009930/267359/%EC%A0%9C600%EC%A1%B0"
+    },
+    {
+      "source_id": "kr-law-l009930-m267359-a566",
+      "law_name": "채무자 회생 및 파산에 관한 법률",
+      "law_id": "009930",
+      "mst": "267359",
+      "article": "제566조",
+      "article_title": "면책의 효력",
+      "effective_date": "2026-03-01",
+      "evaluation_date": "2026-07-07",
+      "retrieved_at": "2026-07-07T01:30:02+09:00",
+      "retrieval_status": "retrieved_via_korean_law_mcp",
+      "review_status": "approved_static_v1",
+      "source_ref": "korean-law://009930/267359/%EC%A0%9C566%EC%A1%B0"
+    }
+  ],
+  "review_needed_candidates": [
+    {
+      "source_id": "kr-civil-execution-act-v0",
+      "law_name": "민사집행법 legacy StopGate bundle",
+      "effective_date": "2026-06-30",
+      "evaluation_date": "2026-07-07",
+      "retrieval_status": "legacy_bundle_mapped_to_verified_sources",
+      "review_status": "needs_legal_review",
+      "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
+      "candidate_note": "Preserves v0 StopGate source_id compatibility; downstream v1 should replace this bundle with exact article refs where possible.",
+      "linked_source_ids": [
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l009290-m268837-a74",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168"
+      ]
+    },
+    {
+      "source_id": "kr-debtor-rehabilitation-act-v0",
+      "law_name": "채무자 회생 및 파산에 관한 법률 legacy StopGate bundle",
+      "effective_date": "2026-06-30",
+      "evaluation_date": "2026-07-07",
+      "retrieval_status": "legacy_bundle_mapped_to_verified_sources",
+      "review_status": "needs_legal_review",
+      "source_ref": "curated://kr-debtor-rehabilitation-act/2026-06-30/v0",
+      "candidate_note": "Preserves v0 StopGate source_id compatibility; downstream v1 should replace this bundle with exact insolvency, stay, and discharge article refs where possible.",
+      "linked_source_ids": [
+        "kr-law-l009930-m267359-a566",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600"
+      ]
+    },
+    {
+      "source_id": "recova-privacy-purpose-v0",
+      "law_name": "Recova privacy-purpose domain contract",
+      "effective_date": "2026-06-30",
+      "evaluation_date": "2026-07-07",
+      "retrieval_status": "domain_contract_static",
+      "review_status": "needs_legal_review",
+      "source_ref": "curated://recova/privacy-purpose/2026-06-30/v0",
+      "candidate_note": "Preserves v0 governance and provenance source_id compatibility; it is not a single statutory article and remains review-needed for privacy-law expansion.",
+      "linked_source_ids": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l001540-m260423-a32"
+      ]
+    }
+  ],
+  "source_counts": {
+    "total_sources": 21,
+    "verified_article_sources": 18,
+    "review_needed_candidates": 3
+  }
+}
