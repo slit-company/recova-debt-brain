@@ -39,6 +39,19 @@ DEBTOR_TOOL_SCOPES: Final = {
     "list_debtor_route_candidates": "debtor_graph:routes",
     "explain_debtor_route_candidate": "debtor_graph:routes",
 }
+ROUTE_EXPLANATION_KEYS: Final = {
+    "route_id",
+    "route_label",
+    "status",
+    "review_status",
+    "required_facts",
+    "missing_facts",
+    "blocking_facts",
+    "legal_source_refs",
+    "source_fact_ids",
+    "no_direct_execution",
+}
+GOVERNANCE_RECORD_KEYS: Final = {"record_id", "suggested_action", "audit"}
 JsonScalar = str | int | float | bool | None
 JsonValue = JsonScalar | list["JsonValue"] | dict[str, "JsonValue"]
 JsonObject = dict[str, JsonValue]
@@ -148,6 +161,8 @@ def test_debtor_graph_tools_build_redacted_route_explanation() -> None:
     assert candidate_result["route_count"] == 18
     explained = explanation["result"]
     assert isinstance(explained, dict)
+    assert set(explained) == ROUTE_EXPLANATION_KEYS
+    assert GOVERNANCE_RECORD_KEYS.isdisjoint(explained)
     assert explained["route_id"] == "bank_account_attachment"
     assert explained["status"] == "possible"
     assert explained["no_direct_execution"] is True
@@ -160,7 +175,7 @@ def test_debtor_graph_snapshot_rejects_outside_root_path(tmp_path: Path) -> None
     # Given: a graph path outside the registered repository root.
     secret = "task-11-secret-graph-content"
     outside_graph = tmp_path / "secret-graph.json"
-    outside_graph.write_text(json.dumps({"graph_snapshot": {}, "secret": secret}), encoding="utf-8")
+    _ = outside_graph.write_text(json.dumps({"graph_snapshot": {}, "secret": secret}), encoding="utf-8")
 
     # When: the MCP tool is invoked with that out-of-bounds path.
     envelope = invoke_tool(
@@ -179,10 +194,14 @@ def test_debtor_graph_snapshot_rejects_outside_root_path(tmp_path: Path) -> None
 
 def test_fake_mcp_debtor_graph_tools_use_context_auth_only() -> None:
     # Given: the thin MCP adapter registered into an SDK-free fake MCP object.
+    adapter_path = TRUSTGRAPH_MCP_PATH / "trustgraph" / "mcp_server" / "legal_tools.py"
+    adapter_source = adapter_path.read_text(encoding="utf-8")
+    assert "from mcp" not in adapter_source
+    assert "import mcp" not in adapter_source
     legal_tools = _legal_tools_module()
     fake = FakeMcp()
     seen_scopes: list[str] = []
-    legal_tools.register_debt_collection_brain_tools(
+    _ = legal_tools.register_debt_collection_brain_tools(
         fake,
         REPO_ROOT,
         token_resolver=lambda scope: seen_scopes.append(scope) or legal_tools.AuthContext(
@@ -205,6 +224,43 @@ def test_fake_mcp_debtor_graph_tools_use_context_auth_only() -> None:
     assert "authorization" not in inspect.signature(
         fake.registered["list_debtor_route_candidates"]
     ).parameters
+
+
+def test_fake_mcp_authorization_argument_is_rejected_without_token_echo() -> None:
+    # Given: the fake MCP adapter and a token-shaped authorization tool argument.
+    token = "Bearer task-13-tool-arg-token"
+    legal_tools = _legal_tools_module()
+    fake = FakeMcp()
+    _ = legal_tools.register_debt_collection_brain_tools(
+        fake,
+        REPO_ROOT,
+        token_resolver=lambda scope: legal_tools.AuthContext(
+            token="task-13-context-token:{}".format(scope),
+            verified_by_gateway=True,
+            scopes=("debtor_graph:routes",),
+        ),
+    )
+
+    # When: authorization is passed as a public callable argument instead of context.
+    try:
+        _ = fake.registered["list_debtor_route_candidates"](
+            authorization=token,
+            arguments={"ocr_root": PAGES_FIXTURE},
+        )
+    except TypeError as exc:
+        assert "authorization" in str(exc)
+    else:
+        raise AssertionError("fake MCP callable accepted authorization tool arg")
+
+    # Then: the SDK-independent domain layer ignores extra args without token echo.
+    envelope = invoke_tool(
+        "list_debtor_route_candidates",
+        {"ocr_root": PAGES_FIXTURE, "authorization": token},
+        REPO_ROOT,
+    )
+    encoded = json.dumps(envelope, ensure_ascii=False, sort_keys=True)
+    assert envelope["tool_name"] == "list_debtor_route_candidates"
+    assert token not in encoded
 
 
 def _legal_tools_module() -> LegalToolsModule:

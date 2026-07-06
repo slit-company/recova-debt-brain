@@ -1,0 +1,6 @@
+schema_version=recova-task-13-fake-mcp-failure/v1
+fake_mcp_authorization_arg_rejected=True
+domain_authorization_arg_token_echo=False
+outside_root_status=rejected
+outside_root_reason=path_outside_repo_root
+outside_root_path_echo=False
