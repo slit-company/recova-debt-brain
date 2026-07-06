@@ -1,0 +1,5 @@
+COMMAND
+/opt/homebrew/bin/python3 parsed every JSON file under resources and .omo/evidence/debt-collection-domain-ontology-v1
+
+OUTCOME
+PASS json_files=34

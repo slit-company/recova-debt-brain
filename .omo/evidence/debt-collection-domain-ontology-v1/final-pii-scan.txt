@@ -1,5 +1,5 @@
 Final PII/path scan
 Result: NO_FINDINGS
-Scanned files: 12
+Scanned files: 32
 Scope: final evidence, Todo 13/14 evidence, claim-domain docs, synthetic fixtures
 NO_FINDINGS
