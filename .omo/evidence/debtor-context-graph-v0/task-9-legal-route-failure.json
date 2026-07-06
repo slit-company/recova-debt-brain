@@ -1,0 +1,30 @@
+{
+  "candidate": {
+    "blocking_facts": [],
+    "confidence": 0.84,
+    "legal_source_refs": [
+      "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=draft",
+      "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+      "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+    ],
+    "missing_facts": [],
+    "no_direct_execution": true,
+    "required_facts": [
+      "enforceable_title",
+      "third_party_debtor_bank_hint"
+    ],
+    "review_status": "review_required",
+    "route_id": "bank_account_attachment",
+    "route_label": "Bank account attachment",
+    "source_fact_ids": [
+      "fact:bank-hint",
+      "fact:title"
+    ],
+    "status": "review_required"
+  },
+  "scenario": "draft legal source requires route review",
+  "source_override": {
+    "review_status": "draft",
+    "source_id": "kr-law-l009290-m268837-a223"
+  }
+}
