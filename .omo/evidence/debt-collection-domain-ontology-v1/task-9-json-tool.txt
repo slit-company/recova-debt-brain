@@ -1,0 +1,1 @@
+PASS json.tool: v1 StopGate resource, happy evidence, and failure evidence are valid JSON.

@@ -1,0 +1,1 @@
+RED: domain-v1 test initially failed with missing opt-in module. GREEN: domain-v1 plus v0 StopGate tests pass after adding v1 resource/evaluator.

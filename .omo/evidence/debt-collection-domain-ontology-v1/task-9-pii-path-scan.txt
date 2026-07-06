@@ -1,0 +1,1 @@
+PASS PII/path scan: no matched lines for local user paths, manual filename, phone/email/RRN-like patterns.

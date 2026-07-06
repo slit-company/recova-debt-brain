@@ -1,0 +1,262 @@
+{
+  "scenario": "domain_v1_unapproved_or_placeholder_route_sources",
+  "payload": {
+    "schema_version": "trustgraph-legal-stopgate-check/v1",
+    "decision": "보류",
+    "case_packet_ids": [
+      "case:task-9-domain-v1"
+    ],
+    "recommended_action": "Hold advisory recommendation until required preconditions and review items are cleared.",
+    "required_preconditions": [
+      "approved_static_v1 legal source status",
+      "route legal_source_refs all approved_static_v1"
+    ],
+    "blocked_reasons": [
+      "A domain legal-source fact is draft, legacy, placeholder, unknown, or otherwise not approved_static_v1.",
+      "A selected route references an unknown, placeholder, legacy, or non-approved legal source."
+    ],
+    "missing_evidence": [
+      "approved_domain_legal_source",
+      "approved_route_legal_source_refs"
+    ],
+    "risk_flags": [
+      "domain_legal_source_unapproved",
+      "route_legal_source_uncertain"
+    ],
+    "source_refs": [
+      {
+        "fact_id": "route:legacy",
+        "fact_type": "route-candidate",
+        "source_ref": "fixture:route:legacy",
+        "document_id": "doc-for-route:legacy",
+        "chunk_id": "route-candidate",
+        "line_start": 1,
+        "line_end": 1,
+        "confidence": 0.91
+      },
+      {
+        "fact_id": "source:placeholder",
+        "fact_type": "legal-source",
+        "source_ref": "fixture:source:placeholder",
+        "document_id": "doc-for-source:placeholder",
+        "chunk_id": "legal-source",
+        "line_start": 1,
+        "line_end": 1,
+        "confidence": 0.91
+      }
+    ],
+    "rule_refs": [
+      {
+        "rule_id": "dc-stopgate-v1-007",
+        "stopgate_id": "domain-legal-source-unapproved",
+        "statute_refs": [
+          "Domain v1 contract: legal-source status must be approved_static_v1"
+        ],
+        "effective_date": "2026-07-07",
+        "sources": [
+          {
+            "source_id": "kr-law-l010910-m268669-a11",
+            "statute_ref": "Fair Debt Collection Act Article 11 curated v1 truthful route explanation source",
+            "effective_date": "2026-07-07",
+            "review_status": "approved_static_v1",
+            "source_ref": "korean-law://010910/268669/%EC%A0%9C11%EC%A1%B0"
+          },
+          {
+            "source_id": "kr-law-l001540-m260423-a15",
+            "statute_ref": "Credit Information Act Article 15 curated v1 minimization and source-provenance source",
+            "effective_date": "2026-07-07",
+            "review_status": "approved_static_v1",
+            "source_ref": "korean-law://001540/260423/%EC%A0%9C15%EC%A1%B0"
+          }
+        ]
+      },
+      {
+        "rule_id": "dc-stopgate-v1-014",
+        "stopgate_id": "route-legal-source-uncertain",
+        "statute_refs": [
+          "Domain v1 contract: route-specific legal sources must be approved_static_v1"
+        ],
+        "effective_date": "2026-07-07",
+        "sources": [
+          {
+            "source_id": "kr-law-l010910-m268669-a11",
+            "statute_ref": "Fair Debt Collection Act Article 11 curated v1 truthful route explanation source",
+            "effective_date": "2026-07-07",
+            "review_status": "approved_static_v1",
+            "source_ref": "korean-law://010910/268669/%EC%A0%9C11%EC%A1%B0"
+          },
+          {
+            "source_id": "kr-law-l001540-m260423-a15",
+            "statute_ref": "Credit Information Act Article 15 curated v1 minimization and source-provenance source",
+            "effective_date": "2026-07-07",
+            "review_status": "approved_static_v1",
+            "source_ref": "korean-law://001540/260423/%EC%A0%9C15%EC%A1%B0"
+          }
+        ]
+      }
+    ],
+    "confidence": 0.91,
+    "review_queue_items": [
+      {
+        "review_reason": "domain_legal_source_unapproved",
+        "stopgate_id": "domain-legal-source-unapproved",
+        "required_preconditions": [
+          "approved_static_v1 legal source status"
+        ],
+        "source_refs": [
+          {
+            "fact_id": "source:placeholder",
+            "fact_type": "legal-source",
+            "source_ref": "fixture:source:placeholder",
+            "document_id": "doc-for-source:placeholder",
+            "chunk_id": "legal-source",
+            "line_start": 1,
+            "line_end": 1,
+            "confidence": 0.91
+          }
+        ]
+      },
+      {
+        "review_reason": "route_legal_source_uncertain",
+        "stopgate_id": "route-legal-source-uncertain",
+        "required_preconditions": [
+          "route legal_source_refs all approved_static_v1"
+        ],
+        "source_refs": [
+          {
+            "fact_id": "route:legacy",
+            "fact_type": "route-candidate",
+            "source_ref": "fixture:route:legacy",
+            "document_id": "doc-for-route:legacy",
+            "chunk_id": "route-candidate",
+            "line_start": 1,
+            "line_end": 1,
+            "confidence": 0.91
+          }
+        ]
+      }
+    ],
+    "stop_gates": [
+      {
+        "stopgate_id": "domain-legal-source-unapproved",
+        "decision": "보류",
+        "reason_code": "domain_legal_source_unapproved",
+        "blocked_reason": "A domain legal-source fact is draft, legacy, placeholder, unknown, or otherwise not approved_static_v1.",
+        "recommended_action": "Replace or legally review the source before route recommendation.",
+        "required_preconditions": [
+          "approved_static_v1 legal source status"
+        ],
+        "missing_evidence": [
+          "approved_domain_legal_source"
+        ],
+        "risk_flags": [
+          "domain_legal_source_unapproved"
+        ],
+        "source_refs": [
+          {
+            "fact_id": "source:placeholder",
+            "fact_type": "legal-source",
+            "source_ref": "fixture:source:placeholder",
+            "document_id": "doc-for-source:placeholder",
+            "chunk_id": "legal-source",
+            "line_start": 1,
+            "line_end": 1,
+            "confidence": 0.91
+          }
+        ],
+        "rule_refs": [
+          {
+            "rule_id": "dc-stopgate-v1-007",
+            "stopgate_id": "domain-legal-source-unapproved",
+            "statute_refs": [
+              "Domain v1 contract: legal-source status must be approved_static_v1"
+            ],
+            "effective_date": "2026-07-07",
+            "sources": [
+              {
+                "source_id": "kr-law-l010910-m268669-a11",
+                "statute_ref": "Fair Debt Collection Act Article 11 curated v1 truthful route explanation source",
+                "effective_date": "2026-07-07",
+                "review_status": "approved_static_v1",
+                "source_ref": "korean-law://010910/268669/%EC%A0%9C11%EC%A1%B0"
+              },
+              {
+                "source_id": "kr-law-l001540-m260423-a15",
+                "statute_ref": "Credit Information Act Article 15 curated v1 minimization and source-provenance source",
+                "effective_date": "2026-07-07",
+                "review_status": "approved_static_v1",
+                "source_ref": "korean-law://001540/260423/%EC%A0%9C15%EC%A1%B0"
+              }
+            ]
+          }
+        ],
+        "confidence": 0.91
+      },
+      {
+        "stopgate_id": "route-legal-source-uncertain",
+        "decision": "보류",
+        "reason_code": "route_legal_source_uncertain",
+        "blocked_reason": "A selected route references an unknown, placeholder, legacy, or non-approved legal source.",
+        "recommended_action": "Resolve route-specific legal-source refs before route recommendation.",
+        "required_preconditions": [
+          "route legal_source_refs all approved_static_v1"
+        ],
+        "missing_evidence": [
+          "approved_route_legal_source_refs"
+        ],
+        "risk_flags": [
+          "route_legal_source_uncertain"
+        ],
+        "source_refs": [
+          {
+            "fact_id": "route:legacy",
+            "fact_type": "route-candidate",
+            "source_ref": "fixture:route:legacy",
+            "document_id": "doc-for-route:legacy",
+            "chunk_id": "route-candidate",
+            "line_start": 1,
+            "line_end": 1,
+            "confidence": 0.91
+          }
+        ],
+        "rule_refs": [
+          {
+            "rule_id": "dc-stopgate-v1-014",
+            "stopgate_id": "route-legal-source-uncertain",
+            "statute_refs": [
+              "Domain v1 contract: route-specific legal sources must be approved_static_v1"
+            ],
+            "effective_date": "2026-07-07",
+            "sources": [
+              {
+                "source_id": "kr-law-l010910-m268669-a11",
+                "statute_ref": "Fair Debt Collection Act Article 11 curated v1 truthful route explanation source",
+                "effective_date": "2026-07-07",
+                "review_status": "approved_static_v1",
+                "source_ref": "korean-law://010910/268669/%EC%A0%9C11%EC%A1%B0"
+              },
+              {
+                "source_id": "kr-law-l001540-m260423-a15",
+                "statute_ref": "Credit Information Act Article 15 curated v1 minimization and source-provenance source",
+                "effective_date": "2026-07-07",
+                "review_status": "approved_static_v1",
+                "source_ref": "korean-law://001540/260423/%EC%A0%9C15%EC%A1%B0"
+              }
+            ]
+          }
+        ],
+        "confidence": 0.91
+      }
+    ],
+    "rule_source": {
+      "version": "recova-debt-collection-stopgate@v1.0.0",
+      "review_status": "approved_static_v1",
+      "effective_date": "2026-07-07",
+      "curation_policy": "static-curated-domain-v1-no-live-updates"
+    },
+    "pii_profile": {
+      "raw_text_included": false,
+      "source_text_included": false
+    }
+  }
+}
