@@ -1,83 +1,30 @@
 from __future__ import annotations
 
-import importlib
-import importlib.util
 import inspect
 import json
-import re
-import sys
-from dataclasses import asdict, dataclass, field, is_dataclass
 from pathlib import Path
-from types import ModuleType
-from typing import Callable, Final, Mapping, Union
+from typing import Final
 
 import pytest
 
-REPO_ROOT: Final = Path(__file__).resolve().parents[3]
-MCP_PACKAGE_ROOT: Final = REPO_ROOT / "trustgraph-mcp"
-if str(MCP_PACKAGE_ROOT) not in sys.path:
-    sys.path.insert(0, str(MCP_PACKAGE_ROOT))
-
+from tests.utils.legal_mcp_support import (
+    EXPECTED_TOOLS,
+    FakeMcp,
+    REPO_ROOT,
+    assert_no_sensitive_shapes as _assert_no_sensitive_shapes,
+    assert_source_refs_are_redacted as _assert_source_refs_are_redacted,
+    assert_stable_envelope as _assert_stable_envelope,
+    legal_tools_module,
+    mapping as _mapping,
+    mcp_domain_module as _mcp_domain,
+    response_by_tool as _response_by_tool,
+    result_object as _result_object,
+    tool_name as _tool_name,
+)
 from trustgraph_legal.case_graph import build_case_graph
-
-JsonScalar = Union[str, int, float, bool, None]
-JsonValue = Union[JsonScalar, list["JsonValue"], dict[str, "JsonValue"]]
-JsonObject = dict[str, JsonValue]
-ToolCallable = Callable[..., JsonObject]
 
 FIXTURE_MANIFEST: Final = REPO_ROOT / "tests" / "fixtures" / "legal-ocr" / "manifest.json"
 ONTOLOGY_PATH: Final = REPO_ROOT / "resources" / "ontologies" / "recova-debt-collection.json"
-EXPECTED_TOOLS: Final = {
-    "ingest_legal_document": "ingest",
-    "ingest_ocr_markdown": "ingest",
-    "get_ingest_status": "ingest",
-    "classify_legal_document": "graph",
-    "extract_case_packet": "graph",
-    "get_case_graph": "graph",
-    "check_case_stop_gates": "stopgate",
-    "check_limitation_status": "stopgate",
-    "check_attachment_target_rules": "stopgate",
-    "summarize_case_ledger": "read",
-    "recommend_next_action": "stopgate",
-    "list_unknown_document_types": "governance",
-    "review_extracted_fact": "governance",
-    "promote_ontology_candidate": "governance",
-    "reprocess_case": "governance",
-    "list_debt_collection_tools": "read",
-    "assemble_debtor_documents": "debtor_graph",
-    "build_debtor_context_graph": "debtor_graph",
-    "get_debtor_graph_snapshot": "debtor_graph",
-    "list_debtor_route_candidates": "debtor_graph",
-    "explain_debtor_route_candidate": "debtor_graph",
-}
-SENSITIVE_SHAPES: Final = (
-    re.compile(r"\b\d{6}-\d{7}\b"),
-    re.compile(r"\b(?:\+82[-.\s]?)?0\d{1,2}[-.\s]?\d{3,4}[-.\s]?\d{4}\b"),
-    re.compile(
-        r"(?i)\b(?:account|bank|계좌|은행|입금|송금)[^\n\r]{0,24}?"
-        r"\d{2,6}[-.\s]\d{2,6}[-.\s]\d{2,8}\b"
-    ),
-)
-
-
-@dataclass(slots=True)
-class FakeMcp:
-    registered: dict[str, ToolCallable] = field(default_factory=dict)
-
-    def tool(self, name: str | None = None) -> Callable[[ToolCallable], ToolCallable]:
-        def decorator(func: ToolCallable) -> ToolCallable:
-            tool_name = name if name is not None else func.__name__
-            self.registered[tool_name] = func
-            return func
-
-        return decorator
-
-    def call(
-        self,
-        tool_name: str,
-        arguments: JsonObject,
-    ) -> JsonObject:
-        return self.registered[tool_name](arguments=arguments)
 
 
 def test_todo_9_tools_publish_stable_contracts() -> None:
@@ -93,7 +40,7 @@ def test_todo_9_tools_publish_stable_contracts() -> None:
     # Then: every required tool has stable schema, group, scope, and JSON shapes.
     assert definition_names == set(EXPECTED_TOOLS)
     assert listed_names == set(EXPECTED_TOOLS)
-    assert len(listed_tools) == 21
+    assert len(listed_tools) == 25
     for tool_name, group in EXPECTED_TOOLS.items():
         contract = listed_tools[tool_name]
         assert contract["schema_version"] == "trustgraph-legal-mcp-tool-contract/v1"
@@ -179,7 +126,7 @@ def test_todo_9_tool_calls_return_redacted_source_grounded_json(tmp_path: Path) 
 
     secret = "c-review-secret-value"
     outside_graph = tmp_path / "c-review-secret.json"
-    outside_graph.write_text(
+    _ = outside_graph.write_text(
         json.dumps({"case_packets": [], "secret": secret}),
         encoding="utf-8",
     )
@@ -198,10 +145,10 @@ def test_todo_9_tool_calls_return_redacted_source_grounded_json(tmp_path: Path) 
 
 def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
     # Given: a fake MCP object registered through the thin adapter.
-    legal_tools = _legal_tools_adapter()
+    legal_tools = legal_tools_module("trustgraph_mcp_server_legal_tools_under_test")
     fake_mcp = FakeMcp()
     seen_scopes: list[str] = []
-    legal_tools.register_debt_collection_brain_tools(
+    _ = legal_tools.register_debt_collection_brain_tools(
         fake_mcp,
         repo_root=REPO_ROOT,
         token_resolver=lambda scope: seen_scopes.append(scope) or legal_tools.AuthContext(
@@ -230,7 +177,7 @@ def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
         )
 
     raw_token_mcp = FakeMcp()
-    legal_tools.register_debt_collection_brain_tools(
+    _ = legal_tools.register_debt_collection_brain_tools(
         raw_token_mcp,
         repo_root=REPO_ROOT,
         token_resolver=lambda scope: "raw-token-string",
@@ -239,7 +186,7 @@ def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
         raw_token_mcp.call("list_debt_collection_tools", {})
 
     read_only_mcp = FakeMcp()
-    legal_tools.register_debt_collection_brain_tools(
+    _ = legal_tools.register_debt_collection_brain_tools(
         read_only_mcp,
         repo_root=REPO_ROOT,
         token_resolver=lambda scope: legal_tools.AuthContext(
@@ -252,95 +199,9 @@ def test_mcp_registration_requires_bearer_token_without_mcp_sdk() -> None:
         read_only_mcp.call("promote_ontology_candidate", {})
 
     unauthenticated_mcp = FakeMcp()
-    legal_tools.register_debt_collection_brain_tools(
+    _ = legal_tools.register_debt_collection_brain_tools(
         unauthenticated_mcp,
         repo_root=REPO_ROOT,
     )
     with pytest.raises(PermissionError, match="MCP auth context"):
         unauthenticated_mcp.call("list_debt_collection_tools", {})
-
-
-def _mcp_domain() -> ModuleType:
-    try:
-        return importlib.import_module("trustgraph_legal.mcp_domain")
-    except ModuleNotFoundError as exc:
-        raise AssertionError(
-            "Todo 9 contract gap: missing trustgraph_legal.mcp_domain"
-        ) from exc
-
-
-def _legal_tools_adapter() -> ModuleType:
-    adapter_path = MCP_PACKAGE_ROOT / "trustgraph" / "mcp_server" / "legal_tools.py"
-    if not adapter_path.exists():
-        raise AssertionError(
-            "Todo 9 contract gap: missing trustgraph-mcp/trustgraph/mcp_server/legal_tools.py"
-        )
-    spec = importlib.util.spec_from_file_location(
-        "trustgraph_mcp_server_legal_tools_under_test",
-        adapter_path,
-    )
-    if spec is None or spec.loader is None:
-        raise AssertionError("Todo 9 contract gap: cannot load legal_tools adapter")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
-def _mapping(item: object) -> Mapping[str, object]:
-    if isinstance(item, Mapping):
-        return item
-    if is_dataclass(item) and not isinstance(item, type):
-        return asdict(item)
-    raise AssertionError(f"tool definition is not mapping-like: {item!r}")
-
-
-def _tool_name(item: object) -> str:
-    mapped = _mapping(item)
-    return str(mapped["tool_name"])
-
-
-def _assert_stable_envelope(response: JsonObject) -> None:
-    assert response["schema_version"] == "trustgraph-legal-mcp-tool-response/v1"
-    assert response["tool_name"] in EXPECTED_TOOLS
-    assert response["group"] == EXPECTED_TOOLS[str(response["tool_name"])]
-    assert isinstance(response["scope"], str)
-    assert response["scope"].startswith(str(response["group"]))
-    pii_profile = _json_object(response["pii_profile"])
-    redaction = _json_object(response["redaction"])
-    assert pii_profile["raw_text_included"] is False
-    assert pii_profile["source_text_included"] is False
-    assert redaction["status"] == "redacted"
-    assert isinstance(response["source_refs"], list)
-    assert isinstance(response["warnings"], list)
-    assert "result" in response
-
-
-def _assert_source_refs_are_redacted(response: JsonObject) -> None:
-    serialized = json.dumps(response["source_refs"], ensure_ascii=False)
-    assert "excerpt" not in serialized
-    assert "text" not in serialized
-    assert "raw" not in serialized.lower()
-
-
-def _assert_no_sensitive_shapes(response: JsonObject) -> None:
-    serialized = json.dumps(response, ensure_ascii=False)
-    for pattern in SENSITIVE_SHAPES:
-        assert pattern.search(serialized) is None
-
-
-def _response_by_tool(responses: list[JsonObject], tool_name: str) -> JsonObject:
-    for response in responses:
-        if response["tool_name"] == tool_name:
-            return response
-    raise AssertionError(f"missing response for {tool_name}")
-
-
-def _result_object(response: JsonObject) -> JsonObject:
-    result = response["result"]
-    assert isinstance(result, dict)
-    return result
-
-
-def _json_object(value: JsonValue) -> JsonObject:
-    assert isinstance(value, dict)
-    return value
