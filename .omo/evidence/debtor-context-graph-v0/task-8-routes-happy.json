@@ -1,0 +1,58 @@
+{
+  "schema_version": "recova-route-candidate-evidence/v1",
+  "debtor_graph_id": "debtor-graph:task-8-evidence",
+  "route_count": 18,
+  "routes": [
+    {
+      "route_id": "bank_account_attachment",
+      "route_label": "Bank account attachment",
+      "status": "possible",
+      "required_facts": [
+        "enforceable_title",
+        "third_party_debtor_bank_hint"
+      ],
+      "missing_facts": [],
+      "blocking_facts": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "source_fact_ids": [
+        "fact:bank",
+        "fact:title"
+      ],
+      "confidence": 0.84,
+      "review_status": "review_required",
+      "no_direct_execution": true
+    },
+    {
+      "route_id": "wage_attachment",
+      "route_label": "Wage attachment",
+      "status": "missing_facts",
+      "required_facts": [
+        "enforceable_title",
+        "employer_hint"
+      ],
+      "missing_facts": [
+        "employer_hint"
+      ],
+      "blocking_facts": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "source_fact_ids": [
+        "fact:title"
+      ],
+      "confidence": 0.57,
+      "review_status": "review_required",
+      "no_direct_execution": true
+    }
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  }
+}

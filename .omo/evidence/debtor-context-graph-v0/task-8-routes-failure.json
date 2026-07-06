@@ -1,0 +1,60 @@
+{
+  "schema_version": "recova-route-candidate-evidence/v1",
+  "debtor_graph_id": "debtor-graph:task-8-evidence",
+  "route_count": 18,
+  "routes": [
+    {
+      "route_id": "bank_account_attachment",
+      "route_label": "Bank account attachment",
+      "status": "blocked",
+      "required_facts": [
+        "enforceable_title",
+        "third_party_debtor_bank_hint"
+      ],
+      "missing_facts": [],
+      "blocking_facts": [
+        "insolvency_stay"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246"
+      ],
+      "source_fact_ids": [
+        "fact:bank",
+        "fact:insolvency-stay",
+        "fact:title"
+      ],
+      "confidence": 0.93,
+      "review_status": "review_required",
+      "no_direct_execution": true
+    },
+    {
+      "route_id": "insolvency_review_or_cease_collection",
+      "route_label": "Insolvency review or cease collection",
+      "status": "review_required",
+      "required_facts": [
+        "insolvency_signal"
+      ],
+      "missing_facts": [],
+      "blocking_facts": [
+        "stay_or_discharge_detected"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566"
+      ],
+      "source_fact_ids": [
+        "fact:insolvency-signal"
+      ],
+      "confidence": 0.88,
+      "review_status": "review_required",
+      "no_direct_execution": true
+    }
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  }
+}

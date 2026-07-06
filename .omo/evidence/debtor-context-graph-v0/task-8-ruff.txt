@@ -1,0 +1,1 @@
+RUFF_UNAVAILABLE: command not found and python module not installed
