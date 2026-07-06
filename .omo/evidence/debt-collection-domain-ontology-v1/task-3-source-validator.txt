@@ -1,0 +1,2 @@
+PASS domain_sources recova-debt-collection-domain-sources@v1.0.0 legal_sources=21 routes=18 route_source_refs=64 stopgates=12 stopgate_source_refs=12 workflow_refs=12 workflow_source_refs=29
+EXIT_CODE=0

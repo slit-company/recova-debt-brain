@@ -1,0 +1,4 @@
+$ git diff --check
+WORKTREE_EXIT_CODE=0
+$ git diff --cached --check
+CACHED_EXIT_CODE=0
