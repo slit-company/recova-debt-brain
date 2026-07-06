@@ -1,0 +1,1 @@
+PASS json.tool task-1-manual-inventory.json

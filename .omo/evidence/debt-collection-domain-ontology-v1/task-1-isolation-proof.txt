@@ -1,0 +1,21 @@
+pwd: /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-8953292e/worktrees/A
+git_top_level: /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-8953292e/worktrees/A
+branch: team/team-8953292e/A
+worktree_owned_status:
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-basedpyright.txt
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-diff-check.txt
+AM .omo/evidence/debt-collection-domain-ontology-v1/task-1-focused-pytest.txt
+AM .omo/evidence/debt-collection-domain-ontology-v1/task-1-isolation-proof.txt
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-json-tool.txt
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-loc-check.txt
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-manual-inventory-failure.txt
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-manual-inventory.json
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-pii-scan.txt
+A  .omo/evidence/debt-collection-domain-ontology-v1/task-1-py-compile.txt
+A  scripts/legal_ontology/__init__.py
+A  scripts/legal_ontology/domain_manual_inventory.py
+A  scripts/legal_ontology/domain_manual_inventory_collectors.py
+A  scripts/legal_ontology/domain_manual_inventory_terms.py
+A  tests/unit/legal_ontology/test_domain_manual_inventory.py
+?? .omo/evidence/debt-collection-domain-ontology-v1/task-1-cached-diff-check.txt
+parent_owned_status:

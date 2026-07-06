@@ -1,0 +1,1 @@
+PASS no manual source paths, phone/RRN/account-like patterns, long identifiers, or forbidden raw-text keys found

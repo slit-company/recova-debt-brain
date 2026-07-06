@@ -1,0 +1,1721 @@
+{
+  "schema_version": "domain-manual-inventory/v2",
+  "summary_kind": "manual_candidate_inventory",
+  "source": {
+    "manual_kind": "debt_collection_practical_manual_v2",
+    "structure_fingerprint": "sha256-alpha:eaeaibhedfbjjgbiffbbajdadgagcbdgbidabdfjhedceaggabfiadacfafebedc",
+    "source_paths_included": false
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "matched_text_included": false,
+    "source_paths_included": false,
+    "sensitive_counts_only": true,
+    "possible_sensitive_pattern_counts": {
+      "resident_registration": 0,
+      "phone": 0,
+      "financial_identifier": 3,
+      "long_digit_sequence": 0
+    }
+  },
+  "counts": {
+    "headings": 115,
+    "route_candidates": 66,
+    "workflow_candidates": 12,
+    "fact_handles": 9,
+    "risk_blocker_candidates": 6,
+    "legal_source_candidates": 4,
+    "finance_candidates": 8,
+    "scoring_fields": 5,
+    "action_packet_candidates": 6
+  },
+  "headings": [
+    {
+      "heading_id": "heading:unumbered-1",
+      "level": 1,
+      "number": "unumbered-1",
+      "title": "장기채권 추심 실무 루트 총정리 v2",
+      "parent_number": ""
+    },
+    {
+      "heading_id": "heading:0",
+      "level": 2,
+      "number": "0",
+      "title": "한 줄 요약",
+      "parent_number": "0"
+    },
+    {
+      "heading_id": "heading:1",
+      "level": 2,
+      "number": "1",
+      "title": "법적 베이스라인",
+      "parent_number": "1"
+    },
+    {
+      "heading_id": "heading:1-1",
+      "level": 3,
+      "number": "1.1",
+      "title": "민사집행의 핵심 구조",
+      "parent_number": "1"
+    },
+    {
+      "heading_id": "heading:1-2",
+      "level": 3,
+      "number": "1.2",
+      "title": "채권압류의 기본 원리",
+      "parent_number": "1"
+    },
+    {
+      "heading_id": "heading:1-3",
+      "level": 3,
+      "number": "1.3",
+      "title": "추심명령과 전부명령",
+      "parent_number": "1"
+    },
+    {
+      "heading_id": "heading:1-4",
+      "level": 3,
+      "number": "1.4",
+      "title": "제3채무자 진술최고",
+      "parent_number": "1"
+    },
+    {
+      "heading_id": "heading:1-5",
+      "level": 3,
+      "number": "1.5",
+      "title": "압류금지채권",
+      "parent_number": "1"
+    },
+    {
+      "heading_id": "heading:1-6",
+      "level": 3,
+      "number": "1.6",
+      "title": "추심 컴플라이언스",
+      "parent_number": "1"
+    },
+    {
+      "heading_id": "heading:2",
+      "level": 2,
+      "number": "2",
+      "title": "사건을 처음 받았을 때의 실무 체크리스트",
+      "parent_number": "2"
+    },
+    {
+      "heading_id": "heading:2-1",
+      "level": 3,
+      "number": "2.1",
+      "title": "사건 기본정보",
+      "parent_number": "2"
+    },
+    {
+      "heading_id": "heading:2-2",
+      "level": 3,
+      "number": "2.2",
+      "title": "증빙 패키지",
+      "parent_number": "2"
+    },
+    {
+      "heading_id": "heading:2-3",
+      "level": 3,
+      "number": "2.3",
+      "title": "첫 분류",
+      "parent_number": "2"
+    },
+    {
+      "heading_id": "heading:3",
+      "level": 2,
+      "number": "3",
+      "title": "장기채권에서 시효를 보는 방법",
+      "parent_number": "3"
+    },
+    {
+      "heading_id": "heading:3-1",
+      "level": 3,
+      "number": "3.1",
+      "title": "실무자가 먼저 보는 날짜",
+      "parent_number": "3"
+    },
+    {
+      "heading_id": "heading:3-2",
+      "level": 3,
+      "number": "3.2",
+      "title": "시효위험 플래그",
+      "parent_number": "3"
+    },
+    {
+      "heading_id": "heading:3-3",
+      "level": 3,
+      "number": "3.3",
+      "title": "시효연장 소송",
+      "parent_number": "3"
+    },
+    {
+      "heading_id": "heading:4",
+      "level": 2,
+      "number": "4",
+      "title": "정보 단서 수집 루트",
+      "parent_number": "4"
+    },
+    {
+      "heading_id": "heading:4-1",
+      "level": 3,
+      "number": "4.1",
+      "title": "초본·주소 이력",
+      "parent_number": "4"
+    },
+    {
+      "heading_id": "heading:4-2",
+      "level": 3,
+      "number": "4.2",
+      "title": "신용정보·금융기관 단서",
+      "parent_number": "4"
+    },
+    {
+      "heading_id": "heading:4-3",
+      "level": 3,
+      "number": "4.3",
+      "title": "등기부·등록부·공적 장부",
+      "parent_number": "4"
+    },
+    {
+      "heading_id": "heading:5",
+      "level": 2,
+      "number": "5",
+      "title": "임의회수·채무승인·공정증서 루트",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:5-1",
+      "level": 3,
+      "number": "5.1",
+      "title": "임의변제 상담의 목적",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:5-2",
+      "level": 3,
+      "number": "5.2",
+      "title": "일부변제",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:5-3",
+      "level": 3,
+      "number": "5.3",
+      "title": "분할납부 약정",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:5-4",
+      "level": 3,
+      "number": "5.4",
+      "title": "공정증서",
+      "parent_number": "5"
+    },
+    {
+      "heading_id": "heading:6",
+      "level": 2,
+      "number": "6",
+      "title": "집행권원 확보 루트",
+      "parent_number": "6"
+    },
+    {
+      "heading_id": "heading:6-1",
+      "level": 3,
+      "number": "6.1",
+      "title": "지급명령",
+      "parent_number": "6"
+    },
+    {
+      "heading_id": "heading:6-2",
+      "level": 3,
+      "number": "6.2",
+      "title": "민사소송",
+      "parent_number": "6"
+    },
+    {
+      "heading_id": "heading:6-3",
+      "level": 3,
+      "number": "6.3",
+      "title": "조정·화해",
+      "parent_number": "6"
+    },
+    {
+      "heading_id": "heading:7",
+      "level": 2,
+      "number": "7",
+      "title": "보전처분 루트",
+      "parent_number": "7"
+    },
+    {
+      "heading_id": "heading:7-1",
+      "level": 3,
+      "number": "7.1",
+      "title": "부동산 가압류",
+      "parent_number": "7"
+    },
+    {
+      "heading_id": "heading:7-2",
+      "level": 3,
+      "number": "7.2",
+      "title": "예금·매출채권 가압류",
+      "parent_number": "7"
+    },
+    {
+      "heading_id": "heading:7-3",
+      "level": 3,
+      "number": "7.3",
+      "title": "사해행위 의심 시 처분금지가처분/가압류 조합",
+      "parent_number": "7"
+    },
+    {
+      "heading_id": "heading:8",
+      "level": 2,
+      "number": "8",
+      "title": "은행·금융자산 집행 루트",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:8-1",
+      "level": 3,
+      "number": "8.1",
+      "title": "예금채권 압류",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:8-2",
+      "level": 3,
+      "number": "8.2",
+      "title": "적금·예치금·보증금성 금융상품",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:8-3",
+      "level": 3,
+      "number": "8.3",
+      "title": "증권계좌 예수금·주식·펀드",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:8-4",
+      "level": 3,
+      "number": "8.4",
+      "title": "가상자산 거래소 반환청구권",
+      "parent_number": "8"
+    },
+    {
+      "heading_id": "heading:9",
+      "level": 2,
+      "number": "9",
+      "title": "급여·소득 집행 루트",
+      "parent_number": "9"
+    },
+    {
+      "heading_id": "heading:9-1",
+      "level": 3,
+      "number": "9.1",
+      "title": "급여채권 압류",
+      "parent_number": "9"
+    },
+    {
+      "heading_id": "heading:9-2",
+      "level": 3,
+      "number": "9.2",
+      "title": "상여금·성과급·인센티브",
+      "parent_number": "9"
+    },
+    {
+      "heading_id": "heading:9-3",
+      "level": 3,
+      "number": "9.3",
+      "title": "퇴직금·퇴직연금",
+      "parent_number": "9"
+    },
+    {
+      "heading_id": "heading:9-4",
+      "level": 3,
+      "number": "9.4",
+      "title": "프리랜서·용역대금 압류",
+      "parent_number": "9"
+    },
+    {
+      "heading_id": "heading:10",
+      "level": 2,
+      "number": "10",
+      "title": "임대차·주거 관련 루트",
+      "parent_number": "10"
+    },
+    {
+      "heading_id": "heading:10-1",
+      "level": 3,
+      "number": "10.1",
+      "title": "임차보증금 반환채권 압류",
+      "parent_number": "10"
+    },
+    {
+      "heading_id": "heading:10-2",
+      "level": 3,
+      "number": "10.2",
+      "title": "상가임대차보증금 압류",
+      "parent_number": "10"
+    },
+    {
+      "heading_id": "heading:10-3",
+      "level": 3,
+      "number": "10.3",
+      "title": "채무자가 임대인인 경우: 차임채권 압류",
+      "parent_number": "10"
+    },
+    {
+      "heading_id": "heading:10-4",
+      "level": 3,
+      "number": "10.4",
+      "title": "부동산 강제관리",
+      "parent_number": "10"
+    },
+    {
+      "heading_id": "heading:11",
+      "level": 2,
+      "number": "11",
+      "title": "사업자 매출·정산금 루트",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:11-1",
+      "level": 3,
+      "number": "11.1",
+      "title": "거래처 매출채권 압류",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:11-2",
+      "level": 3,
+      "number": "11.2",
+      "title": "카드매출채권 압류",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:11-3",
+      "level": 3,
+      "number": "11.3",
+      "title": "PG·플랫폼 정산금 압류",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:11-4",
+      "level": 3,
+      "number": "11.4",
+      "title": "공공기관 계약대금 압류",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:11-5",
+      "level": 3,
+      "number": "11.5",
+      "title": "의료기관·학원·전문직 수입채권",
+      "parent_number": "11"
+    },
+    {
+      "heading_id": "heading:12",
+      "level": 2,
+      "number": "12",
+      "title": "부동산 집행 루트",
+      "parent_number": "12"
+    },
+    {
+      "heading_id": "heading:12-1",
+      "level": 3,
+      "number": "12.1",
+      "title": "부동산 압류·강제경매",
+      "parent_number": "12"
+    },
+    {
+      "heading_id": "heading:12-2",
+      "level": 3,
+      "number": "12.2",
+      "title": "공유지분 압류·경매",
+      "parent_number": "12"
+    },
+    {
+      "heading_id": "heading:12-3",
+      "level": 3,
+      "number": "12.3",
+      "title": "채무자의 부동산 매매대금채권 압류",
+      "parent_number": "12"
+    },
+    {
+      "heading_id": "heading:12-4",
+      "level": 3,
+      "number": "12.4",
+      "title": "채무자가 매수인인 경우: 소유권이전등기청구권",
+      "parent_number": "12"
+    },
+    {
+      "heading_id": "heading:12-5",
+      "level": 3,
+      "number": "12.5",
+      "title": "근저당권·전세권·담보권 관련 루트",
+      "parent_number": "12"
+    },
+    {
+      "heading_id": "heading:12-6",
+      "level": 3,
+      "number": "12.6",
+      "title": "신탁수익권",
+      "parent_number": "12"
+    },
+    {
+      "heading_id": "heading:13",
+      "level": 2,
+      "number": "13",
+      "title": "자동차·동산·사업장 자산 루트",
+      "parent_number": "13"
+    },
+    {
+      "heading_id": "heading:13-1",
+      "level": 3,
+      "number": "13.1",
+      "title": "자동차 압류·경매",
+      "parent_number": "13"
+    },
+    {
+      "heading_id": "heading:13-2",
+      "level": 3,
+      "number": "13.2",
+      "title": "건설기계·중장비·농기계",
+      "parent_number": "13"
+    },
+    {
+      "heading_id": "heading:13-3",
+      "level": 3,
+      "number": "13.3",
+      "title": "유체동산 압류",
+      "parent_number": "13"
+    },
+    {
+      "heading_id": "heading:13-4",
+      "level": 3,
+      "number": "13.4",
+      "title": "재고·원재료·완성품",
+      "parent_number": "13"
+    },
+    {
+      "heading_id": "heading:14",
+      "level": 2,
+      "number": "14",
+      "title": "보험·공제·환급 루트",
+      "parent_number": "14"
+    },
+    {
+      "heading_id": "heading:14-1",
+      "level": 3,
+      "number": "14.1",
+      "title": "보험 해약환급금 압류",
+      "parent_number": "14"
+    },
+    {
+      "heading_id": "heading:14-2",
+      "level": 3,
+      "number": "14.2",
+      "title": "사고보험금·손해배상금",
+      "parent_number": "14"
+    },
+    {
+      "heading_id": "heading:14-3",
+      "level": 3,
+      "number": "14.3",
+      "title": "공제조합 출자금·공제금",
+      "parent_number": "14"
+    },
+    {
+      "heading_id": "heading:15",
+      "level": 2,
+      "number": "15",
+      "title": "세금·공탁·배당·보상금 루트",
+      "parent_number": "15"
+    },
+    {
+      "heading_id": "heading:15-1",
+      "level": 3,
+      "number": "15.1",
+      "title": "국세·지방세 환급금 압류",
+      "parent_number": "15"
+    },
+    {
+      "heading_id": "heading:15-2",
+      "level": 3,
+      "number": "15.2",
+      "title": "공탁금 출급청구권 압류",
+      "parent_number": "15"
+    },
+    {
+      "heading_id": "heading:15-3",
+      "level": 3,
+      "number": "15.3",
+      "title": "경매 배당금청구권 압류",
+      "parent_number": "15"
+    },
+    {
+      "heading_id": "heading:15-4",
+      "level": 3,
+      "number": "15.4",
+      "title": "토지수용보상금·손실보상금",
+      "parent_number": "15"
+    },
+    {
+      "heading_id": "heading:16",
+      "level": 2,
+      "number": "16",
+      "title": "상속·가족재산 루트",
+      "parent_number": "16"
+    },
+    {
+      "heading_id": "heading:16-1",
+      "level": 3,
+      "number": "16.1",
+      "title": "상속지분 압류",
+      "parent_number": "16"
+    },
+    {
+      "heading_id": "heading:16-2",
+      "level": 3,
+      "number": "16.2",
+      "title": "상속등기 대위",
+      "parent_number": "16"
+    },
+    {
+      "heading_id": "heading:16-3",
+      "level": 3,
+      "number": "16.3",
+      "title": "상속재산분할협의 사해행위",
+      "parent_number": "16"
+    },
+    {
+      "heading_id": "heading:16-4",
+      "level": 3,
+      "number": "16.4",
+      "title": "유류분반환청구권 검토",
+      "parent_number": "16"
+    },
+    {
+      "heading_id": "heading:17",
+      "level": 2,
+      "number": "17",
+      "title": "사해행위·재산은닉 루트",
+      "parent_number": "17"
+    },
+    {
+      "heading_id": "heading:17-1",
+      "level": 3,
+      "number": "17.1",
+      "title": "사해행위취소 기본",
+      "parent_number": "17"
+    },
+    {
+      "heading_id": "heading:17-2",
+      "level": 3,
+      "number": "17.2",
+      "title": "부동산 사해행위",
+      "parent_number": "17"
+    },
+    {
+      "heading_id": "heading:17-3",
+      "level": 3,
+      "number": "17.3",
+      "title": "이혼 재산분할 사해행위",
+      "parent_number": "17"
+    },
+    {
+      "heading_id": "heading:17-4",
+      "level": 3,
+      "number": "17.4",
+      "title": "명의신탁·실소유 의심",
+      "parent_number": "17"
+    },
+    {
+      "heading_id": "heading:18",
+      "level": 2,
+      "number": "18",
+      "title": "특수재산권 루트",
+      "parent_number": "18"
+    },
+    {
+      "heading_id": "heading:18-1",
+      "level": 3,
+      "number": "18.1",
+      "title": "지식재산권",
+      "parent_number": "18"
+    },
+    {
+      "heading_id": "heading:18-2",
+      "level": 3,
+      "number": "18.2",
+      "title": "회원권",
+      "parent_number": "18"
+    },
+    {
+      "heading_id": "heading:18-3",
+      "level": 3,
+      "number": "18.3",
+      "title": "조합원 지분·출자금",
+      "parent_number": "18"
+    },
+    {
+      "heading_id": "heading:18-4",
+      "level": 3,
+      "number": "18.4",
+      "title": "도메인·앱·온라인 자산",
+      "parent_number": "18"
+    },
+    {
+      "heading_id": "heading:19",
+      "level": 2,
+      "number": "19",
+      "title": "복지급여·국가지원금 구분",
+      "parent_number": "19"
+    },
+    {
+      "heading_id": "heading:19-1",
+      "level": 3,
+      "number": "19.1",
+      "title": "압류금지 가능성이 큰 것",
+      "parent_number": "19"
+    },
+    {
+      "heading_id": "heading:19-2",
+      "level": 3,
+      "number": "19.2",
+      "title": "검토 가능한 국가·공공기관 지급금",
+      "parent_number": "19"
+    },
+    {
+      "heading_id": "heading:20",
+      "level": 2,
+      "number": "20",
+      "title": "재산명시·재산조회·채무불이행자명부",
+      "parent_number": "20"
+    },
+    {
+      "heading_id": "heading:20-1",
+      "level": 3,
+      "number": "20.1",
+      "title": "재산명시",
+      "parent_number": "20"
+    },
+    {
+      "heading_id": "heading:20-2",
+      "level": 3,
+      "number": "20.2",
+      "title": "재산조회",
+      "parent_number": "20"
+    },
+    {
+      "heading_id": "heading:20-3",
+      "level": 3,
+      "number": "20.3",
+      "title": "채무불이행자명부 등재",
+      "parent_number": "20"
+    },
+    {
+      "heading_id": "heading:21",
+      "level": 2,
+      "number": "21",
+      "title": "회생·파산·면책 필터",
+      "parent_number": "21"
+    },
+    {
+      "heading_id": "heading:22",
+      "level": 2,
+      "number": "22",
+      "title": "한 사람을 끝까지 추심하는 운영 시나리오",
+      "parent_number": "22"
+    },
+    {
+      "heading_id": "heading:22-1",
+      "level": 3,
+      "number": "22.1",
+      "title": "시나리오 A: 오래된 판결채권 + 체크카드 은행 단서",
+      "parent_number": "22"
+    },
+    {
+      "heading_id": "heading:22-2",
+      "level": 3,
+      "number": "22.2",
+      "title": "시나리오 B: 집행권원 없음 + 주소 확인 + 증빙 충분",
+      "parent_number": "22"
+    },
+    {
+      "heading_id": "heading:22-3",
+      "level": 3,
+      "number": "22.3",
+      "title": "시나리오 C: 연락두절 + 현재주소 장기거주",
+      "parent_number": "22"
+    },
+    {
+      "heading_id": "heading:22-4",
+      "level": 3,
+      "number": "22.4",
+      "title": "시나리오 D: 부모 사망 가능 + 고향 부동산",
+      "parent_number": "22"
+    },
+    {
+      "heading_id": "heading:22-5",
+      "level": 3,
+      "number": "22.5",
+      "title": "시나리오 E: 사업자 + 카드매출 업종",
+      "parent_number": "22"
+    },
+    {
+      "heading_id": "heading:22-6",
+      "level": 3,
+      "number": "22.6",
+      "title": "시나리오 F: 가족에게 부동산 이전",
+      "parent_number": "22"
+    },
+    {
+      "heading_id": "heading:23",
+      "level": 2,
+      "number": "23",
+      "title": "Recova 제품화 관점: 자동 추천 엔진",
+      "parent_number": "23"
+    },
+    {
+      "heading_id": "heading:23-1",
+      "level": 3,
+      "number": "23.1",
+      "title": "사건 상태 필드",
+      "parent_number": "23"
+    },
+    {
+      "heading_id": "heading:23-2",
+      "level": 3,
+      "number": "23.2",
+      "title": "자동 추천 규칙",
+      "parent_number": "23"
+    },
+    {
+      "heading_id": "heading:23-3",
+      "level": 3,
+      "number": "23.3",
+      "title": "우선순위 스코어링",
+      "parent_number": "23"
+    },
+    {
+      "heading_id": "heading:24",
+      "level": 2,
+      "number": "24",
+      "title": "루트별 빠른 카탈로그",
+      "parent_number": "24"
+    },
+    {
+      "heading_id": "heading:25",
+      "level": 2,
+      "number": "25",
+      "title": "실무자가 가장 많이 실수하는 지점",
+      "parent_number": "25"
+    },
+    {
+      "heading_id": "heading:26",
+      "level": 2,
+      "number": "26",
+      "title": "법령·근거 체크리스트",
+      "parent_number": "26"
+    },
+    {
+      "heading_id": "heading:27",
+      "level": 2,
+      "number": "27",
+      "title": "최종 운영 원칙",
+      "parent_number": "27"
+    },
+    {
+      "heading_id": "heading:28",
+      "level": 2,
+      "number": "28",
+      "title": "Recova식 한 문장 정의",
+      "parent_number": "28"
+    }
+  ],
+  "route_candidates": [
+    {
+      "candidate_id": "route:1-2",
+      "name": "채권압류의 기본 원리",
+      "source_heading_id": "heading:1-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:1-5",
+      "name": "압류금지채권",
+      "source_heading_id": "heading:1-5",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:4-1",
+      "name": "초본·주소 이력",
+      "source_heading_id": "heading:4-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:4-2",
+      "name": "신용정보·금융기관 단서",
+      "source_heading_id": "heading:4-2",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:4-3",
+      "name": "등기부·등록부·공적 장부",
+      "source_heading_id": "heading:4-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:5-1",
+      "name": "임의변제 상담의 목적",
+      "source_heading_id": "heading:5-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:5-2",
+      "name": "일부변제",
+      "source_heading_id": "heading:5-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:5-3",
+      "name": "분할납부 약정",
+      "source_heading_id": "heading:5-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:5-4",
+      "name": "공정증서",
+      "source_heading_id": "heading:5-4",
+      "route_family": "title_acquisition",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:6-1",
+      "name": "지급명령",
+      "source_heading_id": "heading:6-1",
+      "route_family": "title_acquisition",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:6-2",
+      "name": "민사소송",
+      "source_heading_id": "heading:6-2",
+      "route_family": "title_acquisition",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:6-3",
+      "name": "조정·화해",
+      "source_heading_id": "heading:6-3",
+      "route_family": "title_acquisition",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:7-1",
+      "name": "부동산 가압류",
+      "source_heading_id": "heading:7-1",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:7-2",
+      "name": "예금·매출채권 가압류",
+      "source_heading_id": "heading:7-2",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:7-3",
+      "name": "사해행위 의심 시 처분금지가처분/가압류 조합",
+      "source_heading_id": "heading:7-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:8-1",
+      "name": "예금채권 압류",
+      "source_heading_id": "heading:8-1",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:8-2",
+      "name": "적금·예치금·보증금성 금융상품",
+      "source_heading_id": "heading:8-2",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:8-3",
+      "name": "증권계좌 예수금·주식·펀드",
+      "source_heading_id": "heading:8-3",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:8-4",
+      "name": "가상자산 거래소 반환청구권",
+      "source_heading_id": "heading:8-4",
+      "route_family": "financial_asset",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:9-1",
+      "name": "급여채권 압류",
+      "source_heading_id": "heading:9-1",
+      "route_family": "income",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:9-2",
+      "name": "상여금·성과급·인센티브",
+      "source_heading_id": "heading:9-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:9-3",
+      "name": "퇴직금·퇴직연금",
+      "source_heading_id": "heading:9-3",
+      "route_family": "income",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:9-4",
+      "name": "프리랜서·용역대금 압류",
+      "source_heading_id": "heading:9-4",
+      "route_family": "income",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:10-1",
+      "name": "임차보증금 반환채권 압류",
+      "source_heading_id": "heading:10-1",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:10-2",
+      "name": "상가임대차보증금 압류",
+      "source_heading_id": "heading:10-2",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:10-3",
+      "name": "채무자가 임대인인 경우: 차임채권 압류",
+      "source_heading_id": "heading:10-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:10-4",
+      "name": "부동산 강제관리",
+      "source_heading_id": "heading:10-4",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:11-1",
+      "name": "거래처 매출채권 압류",
+      "source_heading_id": "heading:11-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:11-2",
+      "name": "카드매출채권 압류",
+      "source_heading_id": "heading:11-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:11-3",
+      "name": "PG·플랫폼 정산금 압류",
+      "source_heading_id": "heading:11-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:11-4",
+      "name": "공공기관 계약대금 압류",
+      "source_heading_id": "heading:11-4",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:11-5",
+      "name": "의료기관·학원·전문직 수입채권",
+      "source_heading_id": "heading:11-5",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:12-1",
+      "name": "부동산 압류·강제경매",
+      "source_heading_id": "heading:12-1",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:12-2",
+      "name": "공유지분 압류·경매",
+      "source_heading_id": "heading:12-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:12-3",
+      "name": "채무자의 부동산 매매대금채권 압류",
+      "source_heading_id": "heading:12-3",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:12-4",
+      "name": "채무자가 매수인인 경우: 소유권이전등기청구권",
+      "source_heading_id": "heading:12-4",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:12-5",
+      "name": "근저당권·전세권·담보권 관련 루트",
+      "source_heading_id": "heading:12-5",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:12-6",
+      "name": "신탁수익권",
+      "source_heading_id": "heading:12-6",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:13-1",
+      "name": "자동차 압류·경매",
+      "source_heading_id": "heading:13-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:13-2",
+      "name": "건설기계·중장비·농기계",
+      "source_heading_id": "heading:13-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:13-3",
+      "name": "유체동산 압류",
+      "source_heading_id": "heading:13-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:13-4",
+      "name": "재고·원재료·완성품",
+      "source_heading_id": "heading:13-4",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:14-1",
+      "name": "보험 해약환급금 압류",
+      "source_heading_id": "heading:14-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:14-2",
+      "name": "사고보험금·손해배상금",
+      "source_heading_id": "heading:14-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:14-3",
+      "name": "공제조합 출자금·공제금",
+      "source_heading_id": "heading:14-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:15-1",
+      "name": "국세·지방세 환급금 압류",
+      "source_heading_id": "heading:15-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:15-2",
+      "name": "공탁금 출급청구권 압류",
+      "source_heading_id": "heading:15-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:15-3",
+      "name": "경매 배당금청구권 압류",
+      "source_heading_id": "heading:15-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:15-4",
+      "name": "토지수용보상금·손실보상금",
+      "source_heading_id": "heading:15-4",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:16-1",
+      "name": "상속지분 압류",
+      "source_heading_id": "heading:16-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:16-2",
+      "name": "상속등기 대위",
+      "source_heading_id": "heading:16-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:16-3",
+      "name": "상속재산분할협의 사해행위",
+      "source_heading_id": "heading:16-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:16-4",
+      "name": "유류분반환청구권 검토",
+      "source_heading_id": "heading:16-4",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:17-1",
+      "name": "사해행위취소 기본",
+      "source_heading_id": "heading:17-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:17-2",
+      "name": "부동산 사해행위",
+      "source_heading_id": "heading:17-2",
+      "route_family": "real_estate_or_housing",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:17-3",
+      "name": "이혼 재산분할 사해행위",
+      "source_heading_id": "heading:17-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:17-4",
+      "name": "명의신탁·실소유 의심",
+      "source_heading_id": "heading:17-4",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:18-1",
+      "name": "지식재산권",
+      "source_heading_id": "heading:18-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:18-2",
+      "name": "회원권",
+      "source_heading_id": "heading:18-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:18-3",
+      "name": "조합원 지분·출자금",
+      "source_heading_id": "heading:18-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:18-4",
+      "name": "도메인·앱·온라인 자산",
+      "source_heading_id": "heading:18-4",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:19-1",
+      "name": "압류금지 가능성이 큰 것",
+      "source_heading_id": "heading:19-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:19-2",
+      "name": "검토 가능한 국가·공공기관 지급금",
+      "source_heading_id": "heading:19-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:20-1",
+      "name": "재산명시",
+      "source_heading_id": "heading:20-1",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:20-2",
+      "name": "재산조회",
+      "source_heading_id": "heading:20-2",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    },
+    {
+      "candidate_id": "route:20-3",
+      "name": "채무불이행자명부 등재",
+      "source_heading_id": "heading:20-3",
+      "route_family": "collection_route",
+      "advisory_only": true,
+      "direct_execution_allowed": false
+    }
+  ],
+  "workflow_candidates": [
+    {
+      "candidate_id": "workflow:intake",
+      "name": "intake",
+      "signal_count": 3
+    },
+    {
+      "candidate_id": "workflow:identity_evidence_package",
+      "name": "identity_evidence_package",
+      "signal_count": 14
+    },
+    {
+      "candidate_id": "workflow:limitation_review",
+      "name": "limitation_review",
+      "signal_count": 30
+    },
+    {
+      "candidate_id": "workflow:title_acquisition",
+      "name": "title_acquisition",
+      "signal_count": 68
+    },
+    {
+      "candidate_id": "workflow:service_finality_execution_clause",
+      "name": "service_finality_execution_clause",
+      "signal_count": 45
+    },
+    {
+      "candidate_id": "workflow:voluntary_recovery",
+      "name": "voluntary_recovery",
+      "signal_count": 25
+    },
+    {
+      "candidate_id": "workflow:provisional_remedy",
+      "name": "provisional_remedy",
+      "signal_count": 21
+    },
+    {
+      "candidate_id": "workflow:asset_discovery",
+      "name": "asset_discovery",
+      "signal_count": 23
+    },
+    {
+      "candidate_id": "workflow:execution_route_selection",
+      "name": "execution_route_selection",
+      "signal_count": 182
+    },
+    {
+      "candidate_id": "workflow:insolvency_discharge_review",
+      "name": "insolvency_discharge_review",
+      "signal_count": 45
+    },
+    {
+      "candidate_id": "workflow:monitoring_retry",
+      "name": "monitoring_retry",
+      "signal_count": 13
+    },
+    {
+      "candidate_id": "workflow:closure",
+      "name": "closure",
+      "signal_count": 1
+    }
+  ],
+  "fact_handles": [
+    {
+      "candidate_id": "fact:claim.basic_info",
+      "name": "claim.basic_info",
+      "signal_count": 168
+    },
+    {
+      "candidate_id": "fact:claim.evidence_package",
+      "name": "claim.evidence_package",
+      "signal_count": 43
+    },
+    {
+      "candidate_id": "fact:claim.limitation.dates",
+      "name": "claim.limitation.dates",
+      "signal_count": 37
+    },
+    {
+      "candidate_id": "fact:claim.enforcement_title.status",
+      "name": "claim.enforcement_title.status",
+      "signal_count": 76
+    },
+    {
+      "candidate_id": "fact:claim.service_finality_execution_clause",
+      "name": "claim.service_finality_execution_clause",
+      "signal_count": 45
+    },
+    {
+      "candidate_id": "fact:claim.ledger.amounts",
+      "name": "claim.ledger.amounts",
+      "signal_count": 52
+    },
+    {
+      "candidate_id": "fact:debtor.asset_hints",
+      "name": "debtor.asset_hints",
+      "signal_count": 182
+    },
+    {
+      "candidate_id": "fact:debtor.insolvency_status",
+      "name": "debtor.insolvency_status",
+      "signal_count": 45
+    },
+    {
+      "candidate_id": "fact:governance.stopgate_status",
+      "name": "governance.stopgate_status",
+      "signal_count": 75
+    }
+  ],
+  "risk_blocker_candidates": [
+    {
+      "candidate_id": "risk:limitation_risk",
+      "name": "limitation_risk",
+      "signal_count": 4
+    },
+    {
+      "candidate_id": "risk:exempt_property",
+      "name": "exempt_property",
+      "signal_count": 40
+    },
+    {
+      "candidate_id": "risk:insolvency_discharge",
+      "name": "insolvency_discharge",
+      "signal_count": 32
+    },
+    {
+      "candidate_id": "risk:missing_title_or_service",
+      "name": "missing_title_or_service",
+      "signal_count": 50
+    },
+    {
+      "candidate_id": "risk:ambiguous_balance",
+      "name": "ambiguous_balance",
+      "signal_count": 40
+    },
+    {
+      "candidate_id": "risk:unsupported_contact",
+      "name": "unsupported_contact",
+      "signal_count": 24
+    }
+  ],
+  "legal_source_candidates": [
+    {
+      "candidate_id": "legal-source:74cb23ce14",
+      "law_name": "민사집행법",
+      "article_refs": [
+        "제189조",
+        "제223조",
+        "제229조",
+        "제237조",
+        "제246조",
+        "제251조",
+        "제276조",
+        "제404조",
+        "제406조",
+        "제61조",
+        "제70조",
+        "제74조",
+        "제78조"
+      ],
+      "signal_count": 3,
+      "review_status": "candidate_requires_legal_review"
+    },
+    {
+      "candidate_id": "legal-source:046edb28b3",
+      "law_name": "민법",
+      "article_refs": [
+        "제189조",
+        "제223조",
+        "제229조",
+        "제237조",
+        "제246조",
+        "제251조",
+        "제276조",
+        "제404조",
+        "제406조",
+        "제61조",
+        "제70조",
+        "제74조",
+        "제78조"
+      ],
+      "signal_count": 2,
+      "review_status": "candidate_requires_legal_review"
+    },
+    {
+      "candidate_id": "legal-source:1bafb289cf",
+      "law_name": "채권의 공정한 추심에 관한 법률",
+      "article_refs": [
+        "제189조",
+        "제223조",
+        "제229조",
+        "제237조",
+        "제246조",
+        "제251조",
+        "제276조",
+        "제404조",
+        "제406조",
+        "제61조",
+        "제70조",
+        "제74조",
+        "제78조"
+      ],
+      "signal_count": 1,
+      "review_status": "candidate_requires_legal_review"
+    },
+    {
+      "candidate_id": "legal-source:88e897f966",
+      "law_name": "개인채무자보호법",
+      "article_refs": [
+        "제189조",
+        "제223조",
+        "제229조",
+        "제237조",
+        "제246조",
+        "제251조",
+        "제276조",
+        "제404조",
+        "제406조",
+        "제61조",
+        "제70조",
+        "제74조",
+        "제78조"
+      ],
+      "signal_count": 1,
+      "review_status": "candidate_requires_legal_review"
+    }
+  ],
+  "finance_candidates": [
+    {
+      "candidate_id": "finance:principal",
+      "name": "principal",
+      "signal_count": 8
+    },
+    {
+      "candidate_id": "finance:interest",
+      "name": "interest",
+      "signal_count": 7
+    },
+    {
+      "candidate_id": "finance:enforcement_costs",
+      "name": "enforcement_costs",
+      "signal_count": 18
+    },
+    {
+      "candidate_id": "finance:payments",
+      "name": "payments",
+      "signal_count": 35
+    },
+    {
+      "candidate_id": "finance:payment_allocation",
+      "name": "payment_allocation",
+      "signal_count": 10
+    },
+    {
+      "candidate_id": "finance:remaining_balance",
+      "name": "remaining_balance",
+      "signal_count": 8
+    },
+    {
+      "candidate_id": "finance:assignment_succession",
+      "name": "assignment_succession",
+      "signal_count": 5
+    },
+    {
+      "candidate_id": "finance:surety_subrogation",
+      "name": "surety_subrogation",
+      "signal_count": 55
+    }
+  ],
+  "scoring_fields": [
+    {
+      "candidate_id": "score:legal_readiness",
+      "name": "legal_readiness",
+      "signal_count": 84
+    },
+    {
+      "candidate_id": "score:asset_signal_strength",
+      "name": "asset_signal_strength",
+      "signal_count": 111
+    },
+    {
+      "candidate_id": "score:recovery_expected_value",
+      "name": "recovery_expected_value",
+      "signal_count": 2
+    },
+    {
+      "candidate_id": "score:risk_penalty",
+      "name": "risk_penalty",
+      "signal_count": 45
+    },
+    {
+      "candidate_id": "score:time_to_action",
+      "name": "time_to_action",
+      "signal_count": 4
+    }
+  ],
+  "action_packet_candidates": [
+    {
+      "candidate_id": "action-packet:evidence_request",
+      "name": "evidence_request",
+      "signal_count": 99,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:legal_action_review",
+      "name": "legal_action_review",
+      "signal_count": 208,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:finance_review",
+      "name": "finance_review",
+      "signal_count": 52,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:contact_review",
+      "name": "contact_review",
+      "signal_count": 17,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:monitoring_retry",
+      "name": "monitoring_retry",
+      "signal_count": 14,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    },
+    {
+      "candidate_id": "action-packet:insolvency_recovery_review",
+      "name": "insolvency_recovery_review",
+      "signal_count": 45,
+      "status": "draft_only",
+      "human_review_required": true,
+      "execution_forbidden": true
+    }
+  ],
+  "non_execution_semantics": {
+    "inventory_only": true,
+    "direct_execution_allowed": false,
+    "human_review_required": true
+  }
+}
