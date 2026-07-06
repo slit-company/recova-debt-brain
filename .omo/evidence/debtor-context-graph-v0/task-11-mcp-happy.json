@@ -1,0 +1,480 @@
+{
+  "call": {
+    "group": "debtor_graph",
+    "pii_profile": {
+      "raw_text_included": false,
+      "redacted": {
+        "account": 0,
+        "address": 0,
+        "national_id": 0,
+        "phone": 0
+      },
+      "source_text_included": false
+    },
+    "redaction": {
+      "counts": {
+        "account": 0,
+        "address": 0,
+        "national_id": 0,
+        "phone": 0
+      },
+      "default": "redacted",
+      "raw_text_included": false,
+      "source_text_included": false,
+      "status": "redacted"
+    },
+    "result": {
+      "graph_snapshot_id": "snapshot:d75ca859621e3d19",
+      "route_candidates": [
+        {
+          "blocking_facts": [],
+          "confidence": 0.5,
+          "legal_source_refs": [
+            "kr-law-l001700-m252393-a474|lawId=001700|MST=252393|article=제474조|effective_date=2025-07-12|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "claim_basis",
+            "debtor_identity"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "claim_basis",
+            "debtor_identity",
+            "service_path"
+          ],
+          "review_status": "review_required",
+          "route_id": "title_acquisition_payment_order",
+          "route_label": "Title acquisition payment order",
+          "source_fact_ids": [
+            "fact:service_path:a95f96215d8fcc1b",
+            "fact:service_path:ef6cd79d462770d7"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l001706-m284415-a165|lawId=001706|MST=284415|article=제165조|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l001706-m284415-a168|lawId=001706|MST=284415|article=제168조|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "limitation_clock",
+            "claim_balance"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "limitation_clock",
+            "claim_balance"
+          ],
+          "review_status": "review_required",
+          "route_id": "limitation_extension_lawsuit",
+          "route_label": "Limitation extension lawsuit",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.9,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [],
+          "no_direct_execution": true,
+          "required_facts": [
+            "enforceable_title",
+            "third_party_debtor_bank_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "bank_account_attachment",
+          "route_label": "Bank account attachment",
+          "source_fact_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84",
+            "fact:third_party_debtor_bank_hint:1440ffab77a978cd",
+            "fact:third_party_debtor_bank_hint:62999d7fbab13aaf"
+          ],
+          "status": "possible"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.57,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "employer_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "enforceable_title",
+            "employer_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "wage_attachment",
+          "route_label": "Wage attachment",
+          "source_fact_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.57,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "employment_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "enforceable_title",
+            "employment_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "severance_attachment",
+          "route_label": "Severance attachment",
+          "source_fact_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.57,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "lease_deposit_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "enforceable_title",
+            "lease_deposit_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "lease_deposit_attachment",
+          "route_label": "Lease deposit attachment",
+          "source_fact_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.57,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "real_estate_registry_asset"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "real_estate_registry_asset",
+            "enforceable_title"
+          ],
+          "review_status": "review_required",
+          "route_id": "real_estate_auction",
+          "route_label": "Real estate auction",
+          "source_fact_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.57,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "vehicle_registration_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "vehicle_registration_hint",
+            "enforceable_title"
+          ],
+          "review_status": "review_required",
+          "route_id": "vehicle_attachment",
+          "route_label": "Vehicle attachment",
+          "source_fact_ids": [
+            "fact:enforceable_title:275e68916f9e3c33",
+            "fact:enforceable_title:36206adf67121b84"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.57,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "business_activity_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "business_activity_hint",
+            "third_party_debtor_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "business_receivable_attachment",
+          "route_label": "Business receivable attachment",
+          "source_fact_ids": [
+            "fact:third_party_debtor_hint:a1ddb15579b54f35"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a229|lawId=009290|MST=268837|article=제229조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "merchant_or_platform_hint",
+            "settlement_counterparty"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "merchant_or_platform_hint",
+            "settlement_counterparty"
+          ],
+          "review_status": "review_required",
+          "route_id": "card_pg_platform_settlement_attachment",
+          "route_label": "Card pg platform settlement attachment",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "insurance_policy_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "insurance_policy_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "insurance_refund_or_claim_attachment",
+          "route_label": "Insurance refund or claim attachment",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009290-m268837-a246|lawId=009290|MST=268837|article=제246조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "refund_or_compensation_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "refund_or_compensation_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "tax_refund_or_public_receivable_attachment",
+          "route_label": "Tax refund or public receivable attachment",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a223|lawId=009290|MST=268837|article=제223조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "death_or_family_relation_hint",
+            "estate_asset_hint"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "death_or_family_relation_hint",
+            "estate_asset_hint"
+          ],
+          "review_status": "review_required",
+          "route_id": "inheritance_review_and_share_attachment",
+          "route_label": "Inheritance review and share attachment",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l001706-m284415-a406|lawId=001706|MST=284415|article=제406조|effective_date=2026-03-17|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "suspicious_transfer",
+            "claim_before_transfer",
+            "deadline_clock"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "suspicious_transfer",
+            "claim_before_transfer",
+            "deadline_clock"
+          ],
+          "review_status": "review_required",
+          "route_id": "fraudulent_transfer_lawsuit",
+          "route_label": "Fraudulent transfer lawsuit",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.91,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a61|lawId=009290|MST=268837|article=제61조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [],
+          "no_direct_execution": true,
+          "required_facts": [
+            "money_payment_enforcement_title",
+            "executable_copy"
+          ],
+          "review_status": "review_required",
+          "route_id": "property_disclosure",
+          "route_label": "Property disclosure",
+          "source_fact_ids": [
+            "fact:executable_copy:c5fe57a823e77567",
+            "fact:money_payment_enforcement_title:0cacd3df5dc79936",
+            "fact:money_payment_enforcement_title:807908eb98bf1224"
+          ],
+          "status": "possible"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a74|lawId=009290|MST=268837|article=제74조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "property_disclosure_episode",
+            "statutory_failure_condition"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "property_disclosure_episode",
+            "statutory_failure_condition"
+          ],
+          "review_status": "review_required",
+          "route_id": "property_inquiry",
+          "route_label": "Property inquiry",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.57,
+          "legal_source_refs": [
+            "kr-law-l009290-m268837-a70|lawId=009290|MST=268837|article=제70조|effective_date=2026-02-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "six_month_nonpayment_or_property_disclosure_failure"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "final_title_or_written_title",
+            "six_month_nonpayment_or_property_disclosure_failure"
+          ],
+          "review_status": "review_required",
+          "route_id": "debtor_default_registry",
+          "route_label": "Debtor default registry",
+          "source_fact_ids": [
+            "fact:final_title_or_written_title:14db3c97b50e3847",
+            "fact:final_title_or_written_title:e89b715fa1671f99"
+          ],
+          "status": "missing_facts"
+        },
+        {
+          "blocking_facts": [],
+          "confidence": 0.35,
+          "legal_source_refs": [
+            "kr-law-l009930-m267359-a593|lawId=009930|MST=267359|article=제593조|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009930-m267359-a600|lawId=009930|MST=267359|article=제600조|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0",
+            "kr-law-l009930-m267359-a566|lawId=009930|MST=267359|article=제566조|effective_date=2026-03-01|retrieval_status=retrieved|review_status=approved_static_v0"
+          ],
+          "missing_facts": [
+            "insolvency_signal"
+          ],
+          "no_direct_execution": true,
+          "required_facts": [
+            "insolvency_signal"
+          ],
+          "review_status": "review_required",
+          "route_id": "insolvency_review_or_cease_collection",
+          "route_label": "Insolvency review or cease collection",
+          "source_fact_ids": [],
+          "status": "missing_facts"
+        }
+      ],
+      "route_count": 18
+    },
+    "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+    "scope": "debtor_graph:routes",
+    "source_refs": [],
+    "tool_name": "list_debtor_route_candidates",
+    "warnings": []
+  },
+  "debtor_graph_tools": [
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate"
+  ],
+  "existing_tool_order_preserved": [
+    "list_debt_collection_tools",
+    "ingest_legal_document",
+    "ingest_ocr_markdown",
+    "get_ingest_status",
+    "classify_legal_document",
+    "extract_case_packet",
+    "get_case_graph",
+    "check_case_stop_gates",
+    "check_limitation_status",
+    "check_attachment_target_rules",
+    "summarize_case_ledger",
+    "recommend_next_action",
+    "list_unknown_document_types",
+    "review_extracted_fact",
+    "promote_ontology_candidate",
+    "reprocess_case"
+  ],
+  "registered_tool_count": 21,
+  "schema_version": "recova-task-11-mcp-evidence/v1",
+  "seen_scopes": [
+    "debtor_graph:routes",
+    "debtor_graph:read"
+  ]
+}

@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import inspect
+import importlib.util
 import json
 import sys
 from dataclasses import asdict
 from pathlib import Path
-from typing import Callable, Dict, List, Optional
+from types import ModuleType
+from typing import Callable, Dict, List, Optional, Protocol, TypeGuard
 
 import pytest
 
@@ -31,11 +33,41 @@ EXPECTED_TOOL_NAMES = [
     "review_extracted_fact",
     "promote_ontology_candidate",
     "reprocess_case",
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate",
 ]
-EXPECTED_GROUPS = {"read", "ingest", "graph", "stopgate", "governance"}
+EXPECTED_GROUPS = {"read", "ingest", "graph", "stopgate", "governance", "debtor_graph"}
 JsonScalar = str | int | float | bool | None
 JsonValue = JsonScalar | List["JsonValue"] | Dict[str, "JsonValue"]
 JsonObject = Dict[str, JsonValue]
+
+
+class AuthContextValue(Protocol):
+    token: str
+    verified_by_gateway: bool
+    scopes: tuple[str, ...]
+
+
+class AuthContextFactory(Protocol):
+    def __call__(self, token: str, verified_by_gateway: bool, scopes: tuple[str, ...]) -> AuthContextValue:
+        ...
+
+
+class LegalToolsModule(Protocol):
+    LEGAL_MCP_GATEWAY_SCOPE: str
+    AuthContext: AuthContextFactory
+
+    def register_debt_collection_brain_tools(
+        self,
+        mcp: "FakeMcp",
+        repo_root: Path,
+        token_resolver: Callable[[str], AuthContextValue | str] | None = None,
+        require_auth: bool = True,
+    ) -> List[JsonObject]:
+        ...
 
 
 class FakeMcp:
@@ -54,12 +86,12 @@ def test_tool_contracts_expose_final_todo_9_surface() -> None:
     tools = list_tools()
     definition_dicts = [asdict(definition) for definition in TOOL_DEFINITIONS]
 
-    assert len(TOOL_DEFINITIONS) == 16
+    assert len(TOOL_DEFINITIONS) == 21
     assert [definition["tool_name"] for definition in definition_dicts] == EXPECTED_TOOL_NAMES
     assert all("name" not in definition for definition in definition_dicts)
     assert [tool["tool_name"] for tool in tools] == EXPECTED_TOOL_NAMES
     assert [tool["name"] for tool in tools] == EXPECTED_TOOL_NAMES
-    assert {tool["group"] for tool in tools} == EXPECTED_GROUPS
+    assert {group for tool in tools if isinstance(group := tool["group"], str)} == EXPECTED_GROUPS
     for tool in tools:
         group = tool["group"]
         redaction = tool["redaction"]
@@ -100,9 +132,12 @@ def test_invoke_tool_returns_redacted_stable_response_envelope() -> None:
     assert envelope["tool_name"] == "classify_legal_document"
     assert envelope["group"] == "graph"
     assert envelope["scope"] == "graph:document-classification"
-    assert envelope["pii_profile"]["raw_text_included"] is False
-    assert envelope["redaction"]["raw_text_included"] is False
-    assert "fixture:sensitive.md" in envelope["source_refs"]
+    pii_profile = _json_object(envelope["pii_profile"])
+    redaction = _json_object(envelope["redaction"])
+    refs = _json_list(envelope["source_refs"])
+    assert pii_profile["raw_text_included"] is False
+    assert redaction["raw_text_included"] is False
+    assert "fixture:sensitive.md" in refs
     assert sensitive_number not in encoded
     assert sensitive_phone not in encoded
     assert "[NATIONAL_ID_REDACTED]" in encoded
@@ -117,9 +152,11 @@ def test_write_like_tools_are_review_safe_and_non_executing() -> None:
     )
     recommendation = invoke_tool("recommend_next_action", {}, REPO_ROOT)
 
-    assert review["result"]["status"] == "queued_for_review"
-    assert review["result"]["production_graph_modified"] is False
-    assert recommendation["result"]["no_direct_filing_contact_or_collection"] is True
+    review_result = _json_object(review["result"])
+    recommendation_result = _json_object(recommendation["result"])
+    assert review_result["status"] == "queued_for_review"
+    assert review_result["production_graph_modified"] is False
+    assert recommendation_result["no_direct_filing_contact_or_collection"] is True
 
 
 def test_register_debt_collection_brain_tools_is_fake_mcp_and_auth_safe() -> None:
@@ -217,17 +254,40 @@ def test_nested_source_refs_are_normalized_to_pointer_strings() -> None:
         },
         REPO_ROOT,
     )
-    encoded_refs = json.dumps(envelope["source_refs"], ensure_ascii=False)
+    refs = _json_list(envelope["source_refs"])
+    encoded_refs = json.dumps(refs, ensure_ascii=False)
 
-    assert "document_id=doc-1|chunk_id=chunk-1" in envelope["source_refs"]
+    assert "document_id=doc-1|chunk_id=chunk-1" in refs
     assert "excerpt" not in encoded_refs
     assert sensitive_number not in encoded_refs
 
 
-def _legal_tools_module() -> object:
-    sys.path.insert(0, str(TRUSTGRAPH_MCP_PATH))
-    try:
-        module = __import__("trustgraph.mcp_server.legal_tools", fromlist=["legal_tools"])
-    finally:
-        sys.path.remove(str(TRUSTGRAPH_MCP_PATH))
-    return module
+def _json_object(value: JsonValue) -> JsonObject:
+    assert isinstance(value, dict)
+    return value
+
+
+def _json_list(value: JsonValue) -> List[JsonValue]:
+    assert isinstance(value, list)
+    return value
+
+
+def _legal_tools_module() -> LegalToolsModule:
+    adapter_path = TRUSTGRAPH_MCP_PATH / "trustgraph" / "mcp_server" / "legal_tools.py"
+    spec = importlib.util.spec_from_file_location("trustgraph_mcp_server_legal_tools_unit", adapter_path)
+    if spec is None or spec.loader is None:
+        raise AssertionError("cannot load legal_tools adapter")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    if _is_legal_tools_module(module):
+        return module
+    raise AssertionError("legal_tools adapter is missing MCP registration attributes")
+
+
+def _is_legal_tools_module(module: ModuleType) -> TypeGuard[LegalToolsModule]:
+    return (
+        hasattr(module, "register_debt_collection_brain_tools")
+        and hasattr(module, "AuthContext")
+        and hasattr(module, "LEGAL_MCP_GATEWAY_SCOPE")
+    )

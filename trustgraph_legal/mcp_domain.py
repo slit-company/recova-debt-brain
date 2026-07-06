@@ -36,6 +36,11 @@ TOOL_GROUPS: Final[Dict[str, Tuple[str, str]]] = {
     "review_extracted_fact": ("governance", "governance:review"),
     "promote_ontology_candidate": ("governance", "governance:review"),
     "reprocess_case": ("governance", "governance:reprocess"),
+    "assemble_debtor_documents": ("debtor_graph", "debtor_graph:assembly"),
+    "build_debtor_context_graph": ("debtor_graph", "debtor_graph:build"),
+    "get_debtor_graph_snapshot": ("debtor_graph", "debtor_graph:read"),
+    "list_debtor_route_candidates": ("debtor_graph", "debtor_graph:routes"),
+    "explain_debtor_route_candidate": ("debtor_graph", "debtor_graph:routes"),
 }
 
 
@@ -95,7 +100,7 @@ def _tool(
 
 
 TOOL_DEFINITIONS: Final[Tuple[ToolDefinition, ...]] = (
-    _tool("list_debt_collection_tools", "List debt-collection domain tool contracts.", (), lambda args, root: {"tools": list_tools()}),
+    _tool("list_debt_collection_tools", "List debt-collection domain tool contracts.", (), lambda args, root: {"tools": _tools_json()}),
     _tool("ingest_legal_document", "Prepare a legal document for reviewed ingestion without storing raw PII.", ("zip_path", "workspace", "collection", "limit"), mcp_handlers.ingest_legal_document),
     _tool("ingest_ocr_markdown", "Classify and extract OCR markdown into a review-safe queued envelope.", ("markdown_text", "document_id", "source_ref", "document_type"), lambda args, root: mcp_handlers.ingest_ocr_markdown(args)),
     _tool("get_ingest_status", "Return deterministic v0 ingest status metadata.", ("document_id", "processing_id"), lambda args, root: mcp_handlers.status_result(args)),
@@ -111,11 +116,20 @@ TOOL_DEFINITIONS: Final[Tuple[ToolDefinition, ...]] = (
     _tool("review_extracted_fact", "Queue or record a reviewed fact decision without mutating production ontology.", ("fact_id", "decision", "reviewer", "reason"), lambda args, root: mcp_handlers.review_fact(args)),
     _tool("promote_ontology_candidate", "Evaluate ontology promotion metadata and return accepted/rejected status only.", ("candidate_id", "approval_metadata", "ontology_path"), mcp_handlers.promote_candidate),
     _tool("reprocess_case", "Return a reviewed reprocess plan; no production job is executed by this tool.", ("case_packet_id", "manifest_path"), mcp_handlers.reprocess_case),
+    _tool("assemble_debtor_documents", "Assemble OCR pages into a redacted debtor document assembly.", ("ocr_root", "summary_only"), mcp_handlers.assemble_debtor_documents),
+    _tool("build_debtor_context_graph", "Build a redacted debtor context graph and advisory route candidates.", ("ocr_root", "assembly_path", "route_resources", "legal_sources"), mcp_handlers.build_debtor_context_graph),
+    _tool("get_debtor_graph_snapshot", "Return snapshot replay and provenance metadata for a debtor context graph.", ("graph", "graph_path", "ocr_root", "assembly_path"), mcp_handlers.get_debtor_graph_snapshot),
+    _tool("list_debtor_route_candidates", "List advisory route candidates for a debtor context graph.", ("graph", "graph_path", "ocr_root", "assembly_path"), mcp_handlers.list_debtor_route_candidates),
+    _tool("explain_debtor_route_candidate", "Explain one advisory route candidate using existing route fields.", ("graph", "graph_path", "ocr_root", "assembly_path", "route_id"), mcp_handlers.explain_debtor_route_candidate),
 )
 
 
 def list_tools() -> List[JsonObject]:
     return [definition.to_json() for definition in TOOL_DEFINITIONS]
+
+
+def _tools_json() -> List[JsonValue]:
+    return [tool for tool in list_tools()]
 
 
 def invoke_tool(
