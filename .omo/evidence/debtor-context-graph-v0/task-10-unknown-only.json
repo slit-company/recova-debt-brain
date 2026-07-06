@@ -1,0 +1,30 @@
+{
+  "debtor_graph_id": "debtor-graph:4ad177eeacdf4e73",
+  "graph_snapshot_id": "snapshot:4ad177eeacdf4e73",
+  "identity_resolution": {
+    "debtor_subject_id": "debtor-graph:4ad177eeacdf4e73",
+    "method": "source_bundle_hash_fallback",
+    "source_bundle_hash": "sha256:4ad177eeacdf4e73c96210e6a6715313126b5e616063c487e41fec319cbe7c0c",
+    "status": "identity_unresolved"
+  },
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false
+  },
+  "schema_version": "recova-debtor-context-summary/v1",
+  "summary": {
+    "case_packets": 1,
+    "document_assemblies": 1,
+    "document_pages": 1,
+    "fact_assertions": 0,
+    "provenance_issues": 0,
+    "provenance_valid": true,
+    "review_items": 1,
+    "route_candidates": 18,
+    "route_status_counts": {
+      "missing_facts": 18
+    },
+    "snapshot_replay_id": "snapshot-replay:a5548a2967706933",
+    "unknown_assemblies": 1
+  }
+}
