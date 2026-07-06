@@ -260,6 +260,46 @@ Final planning decisions:
 - Action packets are modeled as `draft_only` / `human_review_required` / `execution_forbidden` style artifacts, not executable actions.
 - The MCP surface may be extended with read-only claim-domain tools after the existing 21 tools. Existing tool order must remain unchanged.
 
+### 2026-07-07 - Claim Domain Ontology v1 operator/developer docs
+
+Todo 14 documents the integrated `debt-collection-domain-ontology-v1` surface.
+
+Added operator/developer contract:
+
+- `docs/product/debt-collection-ontology/claim-domain-ontology-v1.md`
+
+The doc explains:
+
+- `Claim` / `Receivable` as the Domain Ontology v1 root;
+- `DebtorContextGraph` as the runtime memory graph that feeds the claim-domain adapter;
+- frozen legal-source curation and effective-date policy;
+- finance calculation boundaries and review triggers;
+- deterministic workflow, route decision, StopGate, and scoring semantics;
+- action packet schemas as non-executing, human-review artifacts;
+- the four appended claim-domain MCP tools:
+  - `list_claim_domain_routes`
+  - `explain_collection_workflow_state`
+  - `evaluate_claim_domain_decision`
+  - `explain_claim_action_packet`
+
+Current integrated resource summary:
+
+- ontology: 22 classes, 20 object properties, 11 datatype properties;
+- legal sources: 21 curated sources;
+- routes: 32 advisory route templates across 19 route families;
+- workflow: 12 states and 23 transitions;
+- action packets: six packet schemas, all with `direct_execution_allowed: false`;
+- MCP surface: 25 tools, with the four claim-domain tools appended after the existing 21.
+
+Todo 14 evidence:
+
+- `.omo/evidence/debt-collection-domain-ontology-v1/task-14-docs-smoke.txt`
+- `.omo/evidence/debt-collection-domain-ontology-v1/task-14-docs-pii.txt`
+
+Team handoff:
+
+- `artifacts/T-domain-docs-report.md`
+
 Planned v1 implementation todos:
 
 1. PII-safe v2 manual inventory and candidate extractor.
