@@ -1,0 +1,1 @@
+PASS json.tool resources/workflows/debt_collection_workflow_v1.json

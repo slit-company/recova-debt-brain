@@ -1,0 +1,1074 @@
+{
+  "schema_version": "trustgraph-legal-workflow/v1",
+  "workflow_version": "recova-debt-collection-workflow@v1.0.0",
+  "ontology_ref": "recova-debt-collection-v1#workflow-state",
+  "domain_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+  "evaluation_date": "2026-07-07",
+  "review_status": "approved_static_v1",
+  "execution_policy": "advisory_workflow_model_only",
+  "no_direct_execution": true,
+  "route_decision_logic_excluded": true,
+  "pii_policy": "Stable workflow handles and source ids only; raw personal data, source text, and local paths are excluded.",
+  "state_id_order": [
+    "intake",
+    "identity_evidence_package",
+    "limitation_review",
+    "title_acquisition",
+    "service_finality_execution_clause",
+    "voluntary_recovery",
+    "provisional_remedy",
+    "asset_discovery",
+    "execution_route_selection",
+    "insolvency_discharge_review",
+    "monitoring_retry",
+    "closure"
+  ],
+  "review_state_catalog": [
+    {
+      "review_state": "needs_evidence",
+      "meaning": "Required evidence is missing, stale, or not source-backed."
+    },
+    {
+      "review_state": "human_review_required",
+      "meaning": "A legal, finance, identity, compliance, or operator judgment must be reviewed by a human."
+    },
+    {
+      "review_state": "blocked",
+      "meaning": "A StopGate or domain blocker prevents advisory progression until cleared."
+    },
+    {
+      "review_state": "monitoring",
+      "meaning": "No immediate advisory route is ready; wait for new facts, dates, or reviewer action."
+    },
+    {
+      "review_state": "ready_for_next_state",
+      "meaning": "Workflow prerequisites are source-backed enough to move to the next workflow state."
+    },
+    {
+      "review_state": "closed",
+      "meaning": "The advisory workflow is complete, rejected, or archived with closure evidence."
+    },
+    {
+      "review_state": "rejected",
+      "meaning": "The state or transition cannot be accepted under current evidence."
+    }
+  ],
+  "states": [
+    {
+      "state_id": "intake",
+      "label": "Intake",
+      "category": "claim_opening",
+      "status": "canonical_v1",
+      "purpose": "Create a claim-domain handle and confirm the source bundle is allowed for advisory analysis.",
+      "preconditions": [
+        "source_bundle_received",
+        "operator_scope_confirmed",
+        "non_execution_notice_attached"
+      ],
+      "exit_conditions": [
+        "claim_domain_handle_created",
+        "source_bundle_summary_available",
+        "initial_claim_basis_signal_recorded"
+      ],
+      "required_evidence": [
+        "source_bundle_summary",
+        "claim_basis_signal",
+        "operator_scope_record"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l010910-m268669-a11"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "identity_evidence_package",
+      "label": "Identity Evidence Package",
+      "category": "identity_and_document_evidence",
+      "status": "canonical_v1",
+      "purpose": "Assemble debtor, creditor, assignee, and surety identity evidence without changing DebtorContextGraph merge rules.",
+      "preconditions": [
+        "claim_domain_handle_created",
+        "source_bundle_summary_available"
+      ],
+      "exit_conditions": [
+        "debtor_identity_evidence_source_backed",
+        "creditor_or_assignee_evidence_source_backed",
+        "identity_uncertainty_review_recorded"
+      ],
+      "required_evidence": [
+        "debtor_identity_evidence",
+        "creditor_or_assignee_evidence",
+        "case_party_source_refs"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l001540-m260423-a15"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "limitation_review",
+      "label": "Limitation Review",
+      "category": "legal_temporal_review",
+      "status": "canonical_v1",
+      "purpose": "Review limitation period, interruption, stale claim risk, and evaluation-date assumptions.",
+      "preconditions": [
+        "claim_basis_signal_recorded",
+        "claim_event_dates_available_or_missing_fact_recorded"
+      ],
+      "exit_conditions": [
+        "limitation_status_recorded",
+        "interruption_or_expiry_evidence_recorded",
+        "evaluation_date_recorded"
+      ],
+      "required_evidence": [
+        "claim_event_date_evidence",
+        "limitation_clock_evidence",
+        "interruption_evidence_or_missing_fact"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "title_acquisition",
+      "label": "Title Acquisition",
+      "category": "enforcement_title_review",
+      "status": "canonical_v1",
+      "purpose": "Track whether an enforceable title exists or whether title acquisition needs legal review.",
+      "preconditions": [
+        "identity_evidence_package_ready",
+        "limitation_status_recorded"
+      ],
+      "exit_conditions": [
+        "enforcement_title_status_recorded",
+        "title_gap_review_recorded",
+        "title_source_refs_attached"
+      ],
+      "required_evidence": [
+        "claim_basis_documents",
+        "enforcement_title_document_or_gap",
+        "title_review_record"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "kr-law-l001700-m252393-a474",
+        "kr-civil-execution-act-v0"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "service_finality_execution_clause",
+      "label": "Service Finality Execution Clause",
+      "category": "enforceability_evidence_review",
+      "status": "canonical_v1",
+      "purpose": "Confirm service, finality, and execution-clause proof before any enforcement route is evaluated elsewhere.",
+      "preconditions": [
+        "enforcement_title_status_recorded",
+        "title_source_refs_attached"
+      ],
+      "exit_conditions": [
+        "service_proof_status_recorded",
+        "finality_proof_status_recorded",
+        "execution_clause_status_recorded"
+      ],
+      "required_evidence": [
+        "service_proof_or_gap",
+        "finality_proof_or_gap",
+        "execution_clause_or_gap"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "kr-civil-execution-act-v0"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "voluntary_recovery",
+      "label": "Voluntary Recovery",
+      "category": "advisory_recovery_review",
+      "status": "canonical_v1",
+      "purpose": "Review voluntary repayment, acknowledgment, settlement, or contact-review possibilities without contacting the debtor.",
+      "preconditions": [
+        "identity_evidence_package_ready",
+        "operator_contact_boundary_confirmed"
+      ],
+      "exit_conditions": [
+        "voluntary_recovery_review_recorded",
+        "contact_review_packet_status_recorded",
+        "payment_or_acknowledgment_evidence_recorded_or_missing"
+      ],
+      "required_evidence": [
+        "contact_authority_review",
+        "payment_or_acknowledgment_evidence",
+        "operator_review_record"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "monitoring",
+        "ready_for_next_state",
+        "closed"
+      ],
+      "source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "provisional_remedy",
+      "label": "Provisional Remedy",
+      "category": "preservation_review",
+      "status": "canonical_v1",
+      "purpose": "Record provisional attachment or preservation-review readiness when urgency or dissipation risk is source-backed.",
+      "preconditions": [
+        "limitation_status_recorded",
+        "preservation_risk_signal_recorded"
+      ],
+      "exit_conditions": [
+        "provisional_remedy_review_recorded",
+        "security_or_preservation_evidence_recorded",
+        "preservation_gap_recorded"
+      ],
+      "required_evidence": [
+        "preservation_risk_evidence",
+        "claim_basis_documents",
+        "security_review_record"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "kr-law-l001706-m284415-a168",
+        "kr-civil-execution-act-v0"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "asset_discovery",
+      "label": "Asset Discovery",
+      "category": "asset_hint_review",
+      "status": "canonical_v1",
+      "purpose": "Assemble source-backed asset and third-party debtor hints for later route evaluation.",
+      "preconditions": [
+        "identity_evidence_package_ready",
+        "permitted_information_purpose_recorded"
+      ],
+      "exit_conditions": [
+        "asset_hint_inventory_recorded",
+        "exemption_or_privacy_risk_recorded",
+        "missing_asset_hint_recorded"
+      ],
+      "required_evidence": [
+        "asset_hint_source_refs",
+        "third_party_debtor_hint_evidence",
+        "privacy_purpose_review"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "monitoring",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a74",
+        "recova-privacy-purpose-v0"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "execution_route_selection",
+      "label": "Execution Route Selection",
+      "category": "route_precondition_review",
+      "status": "canonical_v1",
+      "purpose": "Export workflow precondition status to later route decision resources without choosing or scoring routes here.",
+      "preconditions": [
+        "service_finality_execution_clause_status_recorded",
+        "asset_hint_inventory_recorded_or_missing",
+        "stopgate_review_status_recorded"
+      ],
+      "exit_conditions": [
+        "workflow_precondition_summary_recorded",
+        "missing_route_prerequisite_facts_recorded",
+        "route_decision_table_ready_to_consume_workflow_state"
+      ],
+      "required_evidence": [
+        "workflow_precondition_summary",
+        "stopgate_review_record",
+        "missing_fact_handles"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "ready_for_next_state"
+      ],
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "insolvency_discharge_review",
+      "label": "Insolvency Discharge Review",
+      "category": "insolvency_and_discharge_review",
+      "status": "canonical_v1",
+      "purpose": "Review rehabilitation, bankruptcy, discharge, stay, and exempt recovery blockers before any recovery advice proceeds.",
+      "preconditions": [
+        "insolvency_or_discharge_signal_recorded",
+        "claim_domain_handle_created"
+      ],
+      "exit_conditions": [
+        "insolvency_status_recorded",
+        "discharge_or_stay_review_recorded",
+        "collection_boundary_recorded"
+      ],
+      "required_evidence": [
+        "insolvency_case_status_evidence",
+        "discharge_or_stay_evidence",
+        "legal_review_record"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "blocked",
+        "monitoring",
+        "closed"
+      ],
+      "source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "monitoring_retry",
+      "label": "Monitoring Retry",
+      "category": "monitoring_loop",
+      "status": "canonical_v1",
+      "purpose": "Hold blocked or incomplete advisory work until new facts, dates, reviewer decisions, or asset signals arrive.",
+      "preconditions": [
+        "blocked_or_missing_evidence_status_recorded",
+        "retry_trigger_or_review_date_recorded"
+      ],
+      "exit_conditions": [
+        "retry_reason_recorded",
+        "next_review_trigger_recorded",
+        "return_state_selected_or_closure_recorded"
+      ],
+      "required_evidence": [
+        "monitoring_reason",
+        "retry_trigger",
+        "review_date_or_new_fact_signal"
+      ],
+      "review_states": [
+        "needs_evidence",
+        "human_review_required",
+        "monitoring",
+        "ready_for_next_state",
+        "closed"
+      ],
+      "source_refs": [
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    },
+    {
+      "state_id": "closure",
+      "label": "Closure",
+      "category": "terminal_review",
+      "status": "canonical_v1",
+      "purpose": "Close, reject, archive, or supersede the advisory workflow with evidence and non-execution boundaries preserved.",
+      "preconditions": [
+        "closure_reason_available",
+        "operator_or_review_decision_recorded"
+      ],
+      "exit_conditions": [
+        "closure_status_recorded",
+        "closure_source_refs_attached",
+        "no_direct_execution_boundary_preserved"
+      ],
+      "required_evidence": [
+        "closure_reason",
+        "operator_review_record",
+        "final_workflow_summary"
+      ],
+      "review_states": [
+        "human_review_required",
+        "closed",
+        "rejected"
+      ],
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l010910-m268669-a11"
+      ],
+      "route_link_semantics": "workflow_precondition_only_no_route_decision_logic",
+      "non_execution_semantics": "descriptive_only_no_collection_action"
+    }
+  ],
+  "transitions": [
+    {
+      "transition_id": "intake_to_identity_evidence_package",
+      "from_state": "intake",
+      "to_state": "identity_evidence_package",
+      "trigger": "source_bundle_passes_intake_review",
+      "transition_kind": "linear_progression",
+      "preconditions": [
+        "claim_domain_handle_created",
+        "source_bundle_summary_available"
+      ],
+      "exit_conditions": [
+        "identity_review_opened"
+      ],
+      "required_evidence": [
+        "source_bundle_summary",
+        "claim_basis_signal"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l010910-m268669-a11"
+      ]
+    },
+    {
+      "transition_id": "identity_evidence_package_to_limitation_review",
+      "from_state": "identity_evidence_package",
+      "to_state": "limitation_review",
+      "trigger": "identity_package_has_source_backed_minimum",
+      "transition_kind": "linear_progression",
+      "preconditions": [
+        "debtor_identity_evidence_source_backed",
+        "claim_basis_signal_recorded"
+      ],
+      "exit_conditions": [
+        "limitation_review_opened"
+      ],
+      "required_evidence": [
+        "debtor_identity_evidence",
+        "case_party_source_refs"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l001540-m260423-a15"
+      ]
+    },
+    {
+      "transition_id": "limitation_review_to_title_acquisition",
+      "from_state": "limitation_review",
+      "to_state": "title_acquisition",
+      "trigger": "limitation_review_allows_title_review",
+      "transition_kind": "linear_progression",
+      "preconditions": [
+        "limitation_status_recorded",
+        "no_unresolved_time_bar_blocker"
+      ],
+      "exit_conditions": [
+        "title_review_opened"
+      ],
+      "required_evidence": [
+        "limitation_clock_evidence",
+        "interruption_evidence_or_missing_fact"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168"
+      ]
+    },
+    {
+      "transition_id": "limitation_review_to_provisional_remedy",
+      "from_state": "limitation_review",
+      "to_state": "provisional_remedy",
+      "trigger": "preservation_risk_requires_review",
+      "transition_kind": "review_branch",
+      "preconditions": [
+        "limitation_status_recorded",
+        "preservation_risk_signal_recorded"
+      ],
+      "exit_conditions": [
+        "provisional_remedy_review_opened"
+      ],
+      "required_evidence": [
+        "preservation_risk_evidence",
+        "claim_basis_documents"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l001706-m284415-a168",
+        "kr-civil-execution-act-v0"
+      ]
+    },
+    {
+      "transition_id": "limitation_review_to_insolvency_discharge_review",
+      "from_state": "limitation_review",
+      "to_state": "insolvency_discharge_review",
+      "trigger": "insolvency_or_discharge_signal_detected",
+      "transition_kind": "blocked_review_branch",
+      "preconditions": [
+        "insolvency_or_discharge_signal_recorded"
+      ],
+      "exit_conditions": [
+        "insolvency_review_opened"
+      ],
+      "required_evidence": [
+        "insolvency_case_status_evidence",
+        "legal_review_record"
+      ],
+      "review_status": "blocked",
+      "source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0"
+      ]
+    },
+    {
+      "transition_id": "provisional_remedy_to_title_acquisition",
+      "from_state": "provisional_remedy",
+      "to_state": "title_acquisition",
+      "trigger": "preservation_review_requires_title_path",
+      "transition_kind": "return_from_review_branch",
+      "preconditions": [
+        "provisional_remedy_review_recorded"
+      ],
+      "exit_conditions": [
+        "title_review_opened_or_resumed"
+      ],
+      "required_evidence": [
+        "provisional_remedy_review_record",
+        "claim_basis_documents"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l001700-m252393-a474",
+        "kr-civil-execution-act-v0"
+      ]
+    },
+    {
+      "transition_id": "title_acquisition_to_service_finality_execution_clause",
+      "from_state": "title_acquisition",
+      "to_state": "service_finality_execution_clause",
+      "trigger": "enforcement_title_status_supports_enforceability_review",
+      "transition_kind": "linear_progression",
+      "preconditions": [
+        "enforcement_title_status_recorded",
+        "title_source_refs_attached"
+      ],
+      "exit_conditions": [
+        "service_finality_execution_clause_review_opened"
+      ],
+      "required_evidence": [
+        "enforcement_title_document_or_gap",
+        "title_review_record"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-civil-execution-act-v0"
+      ]
+    },
+    {
+      "transition_id": "title_acquisition_to_voluntary_recovery",
+      "from_state": "title_acquisition",
+      "to_state": "voluntary_recovery",
+      "trigger": "operator_requests_voluntary_review_before_execution_route",
+      "transition_kind": "advisory_branch",
+      "preconditions": [
+        "identity_evidence_package_ready",
+        "operator_contact_boundary_confirmed"
+      ],
+      "exit_conditions": [
+        "voluntary_recovery_review_opened"
+      ],
+      "required_evidence": [
+        "contact_authority_review",
+        "operator_review_record"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12"
+      ]
+    },
+    {
+      "transition_id": "service_finality_execution_clause_to_asset_discovery",
+      "from_state": "service_finality_execution_clause",
+      "to_state": "asset_discovery",
+      "trigger": "enforceability_evidence_ready_for_asset_hint_review",
+      "transition_kind": "linear_progression",
+      "preconditions": [
+        "service_proof_status_recorded",
+        "finality_proof_status_recorded",
+        "execution_clause_status_recorded"
+      ],
+      "exit_conditions": [
+        "asset_discovery_review_opened"
+      ],
+      "required_evidence": [
+        "service_proof_or_gap",
+        "finality_proof_or_gap",
+        "execution_clause_or_gap"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-civil-execution-act-v0",
+        "recova-privacy-purpose-v0"
+      ]
+    },
+    {
+      "transition_id": "service_finality_execution_clause_to_voluntary_recovery",
+      "from_state": "service_finality_execution_clause",
+      "to_state": "voluntary_recovery",
+      "trigger": "operator_requests_voluntary_review_after_enforceability_review",
+      "transition_kind": "advisory_branch",
+      "preconditions": [
+        "operator_contact_boundary_confirmed",
+        "service_or_enforceability_status_recorded"
+      ],
+      "exit_conditions": [
+        "voluntary_recovery_review_opened"
+      ],
+      "required_evidence": [
+        "contact_authority_review",
+        "operator_review_record"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12"
+      ]
+    },
+    {
+      "transition_id": "voluntary_recovery_to_monitoring_retry",
+      "from_state": "voluntary_recovery",
+      "to_state": "monitoring_retry",
+      "trigger": "voluntary_review_needs_later_follow_up",
+      "transition_kind": "monitoring_loop_entry",
+      "preconditions": [
+        "voluntary_recovery_review_recorded",
+        "retry_trigger_or_review_date_recorded"
+      ],
+      "exit_conditions": [
+        "monitoring_retry_opened"
+      ],
+      "required_evidence": [
+        "monitoring_reason",
+        "retry_trigger"
+      ],
+      "review_status": "monitoring",
+      "source_refs": [
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9"
+      ]
+    },
+    {
+      "transition_id": "voluntary_recovery_to_closure",
+      "from_state": "voluntary_recovery",
+      "to_state": "closure",
+      "trigger": "voluntary_review_resolves_or_operator_closes",
+      "transition_kind": "terminal_progression",
+      "preconditions": [
+        "closure_reason_available",
+        "operator_or_review_decision_recorded"
+      ],
+      "exit_conditions": [
+        "closure_status_recorded"
+      ],
+      "required_evidence": [
+        "closure_reason",
+        "operator_review_record"
+      ],
+      "review_status": "closed",
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l010910-m268669-a11"
+      ]
+    },
+    {
+      "transition_id": "asset_discovery_to_execution_route_selection",
+      "from_state": "asset_discovery",
+      "to_state": "execution_route_selection",
+      "trigger": "asset_and_stopgate_facts_ready_for_route_precondition_summary",
+      "transition_kind": "linear_progression",
+      "preconditions": [
+        "asset_hint_inventory_recorded",
+        "exemption_or_privacy_risk_recorded"
+      ],
+      "exit_conditions": [
+        "workflow_precondition_summary_recorded"
+      ],
+      "required_evidence": [
+        "asset_hint_source_refs",
+        "privacy_purpose_review",
+        "stopgate_review_record"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a74",
+        "recova-privacy-purpose-v0"
+      ]
+    },
+    {
+      "transition_id": "execution_route_selection_to_insolvency_discharge_review",
+      "from_state": "execution_route_selection",
+      "to_state": "insolvency_discharge_review",
+      "trigger": "route_precondition_summary_contains_insolvency_blocker",
+      "transition_kind": "blocked_review_branch",
+      "preconditions": [
+        "insolvency_or_discharge_signal_recorded"
+      ],
+      "exit_conditions": [
+        "insolvency_review_opened"
+      ],
+      "required_evidence": [
+        "insolvency_case_status_evidence",
+        "workflow_precondition_summary"
+      ],
+      "review_status": "blocked",
+      "source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0"
+      ]
+    },
+    {
+      "transition_id": "execution_route_selection_to_monitoring_retry",
+      "from_state": "execution_route_selection",
+      "to_state": "monitoring_retry",
+      "trigger": "route_precondition_summary_missing_facts_or_blocked",
+      "transition_kind": "monitoring_loop_entry",
+      "preconditions": [
+        "missing_route_prerequisite_facts_recorded"
+      ],
+      "exit_conditions": [
+        "monitoring_retry_opened"
+      ],
+      "required_evidence": [
+        "missing_fact_handles",
+        "monitoring_reason"
+      ],
+      "review_status": "monitoring",
+      "source_refs": [
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9"
+      ]
+    },
+    {
+      "transition_id": "execution_route_selection_to_closure",
+      "from_state": "execution_route_selection",
+      "to_state": "closure",
+      "trigger": "operator_closes_after_route_precondition_summary",
+      "transition_kind": "terminal_progression",
+      "preconditions": [
+        "closure_reason_available",
+        "operator_or_review_decision_recorded"
+      ],
+      "exit_conditions": [
+        "closure_status_recorded"
+      ],
+      "required_evidence": [
+        "closure_reason",
+        "workflow_precondition_summary"
+      ],
+      "review_status": "closed",
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l010910-m268669-a11"
+      ]
+    },
+    {
+      "transition_id": "insolvency_discharge_review_to_monitoring_retry",
+      "from_state": "insolvency_discharge_review",
+      "to_state": "monitoring_retry",
+      "trigger": "insolvency_review_requires_future_check",
+      "transition_kind": "monitoring_loop_entry",
+      "preconditions": [
+        "insolvency_status_recorded",
+        "next_review_trigger_recorded"
+      ],
+      "exit_conditions": [
+        "monitoring_retry_opened"
+      ],
+      "required_evidence": [
+        "insolvency_case_status_evidence",
+        "review_date_or_new_fact_signal"
+      ],
+      "review_status": "monitoring",
+      "source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0"
+      ]
+    },
+    {
+      "transition_id": "insolvency_discharge_review_to_closure",
+      "from_state": "insolvency_discharge_review",
+      "to_state": "closure",
+      "trigger": "insolvency_or_discharge_review_closes_advisory_workflow",
+      "transition_kind": "terminal_progression",
+      "preconditions": [
+        "collection_boundary_recorded",
+        "closure_reason_available"
+      ],
+      "exit_conditions": [
+        "closure_status_recorded"
+      ],
+      "required_evidence": [
+        "legal_review_record",
+        "closure_reason"
+      ],
+      "review_status": "closed",
+      "source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0"
+      ]
+    },
+    {
+      "transition_id": "monitoring_retry_to_identity_evidence_package",
+      "from_state": "monitoring_retry",
+      "to_state": "identity_evidence_package",
+      "trigger": "new_identity_evidence_arrives",
+      "transition_kind": "monitoring_return",
+      "preconditions": [
+        "new_fact_signal_recorded",
+        "return_state_selected"
+      ],
+      "exit_conditions": [
+        "identity_review_reopened"
+      ],
+      "required_evidence": [
+        "review_date_or_new_fact_signal",
+        "debtor_identity_evidence"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l001540-m260423-a15"
+      ]
+    },
+    {
+      "transition_id": "monitoring_retry_to_limitation_review",
+      "from_state": "monitoring_retry",
+      "to_state": "limitation_review",
+      "trigger": "new_limitation_or_interruption_evidence_arrives",
+      "transition_kind": "monitoring_return",
+      "preconditions": [
+        "new_fact_signal_recorded",
+        "return_state_selected"
+      ],
+      "exit_conditions": [
+        "limitation_review_reopened"
+      ],
+      "required_evidence": [
+        "review_date_or_new_fact_signal",
+        "limitation_clock_evidence"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168"
+      ]
+    },
+    {
+      "transition_id": "monitoring_retry_to_asset_discovery",
+      "from_state": "monitoring_retry",
+      "to_state": "asset_discovery",
+      "trigger": "new_asset_hint_arrives",
+      "transition_kind": "monitoring_return",
+      "preconditions": [
+        "new_fact_signal_recorded",
+        "return_state_selected"
+      ],
+      "exit_conditions": [
+        "asset_discovery_review_reopened"
+      ],
+      "required_evidence": [
+        "review_date_or_new_fact_signal",
+        "asset_hint_source_refs"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a74",
+        "recova-privacy-purpose-v0"
+      ]
+    },
+    {
+      "transition_id": "monitoring_retry_to_execution_route_selection",
+      "from_state": "monitoring_retry",
+      "to_state": "execution_route_selection",
+      "trigger": "missing_route_prerequisite_fact_arrives",
+      "transition_kind": "monitoring_return",
+      "preconditions": [
+        "new_fact_signal_recorded",
+        "return_state_selected"
+      ],
+      "exit_conditions": [
+        "execution_route_selection_review_reopened"
+      ],
+      "required_evidence": [
+        "review_date_or_new_fact_signal",
+        "workflow_precondition_summary"
+      ],
+      "review_status": "human_review_required",
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12"
+      ]
+    },
+    {
+      "transition_id": "monitoring_retry_to_closure",
+      "from_state": "monitoring_retry",
+      "to_state": "closure",
+      "trigger": "monitoring_review_closes_or_rejects_workflow",
+      "transition_kind": "terminal_progression",
+      "preconditions": [
+        "closure_reason_available",
+        "operator_or_review_decision_recorded"
+      ],
+      "exit_conditions": [
+        "closure_status_recorded"
+      ],
+      "required_evidence": [
+        "closure_reason",
+        "final_workflow_summary"
+      ],
+      "review_status": "closed",
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l010910-m268669-a11"
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "loop_id": "blocked_evidence_to_monitoring_retry",
+      "loop_kind": "blocked_evidence_loop",
+      "monitor_state": "monitoring_retry",
+      "entry_states": [
+        "identity_evidence_package",
+        "limitation_review",
+        "title_acquisition",
+        "service_finality_execution_clause",
+        "asset_discovery",
+        "execution_route_selection"
+      ],
+      "return_states": [
+        "identity_evidence_package",
+        "limitation_review",
+        "asset_discovery",
+        "execution_route_selection",
+        "closure"
+      ],
+      "blocking_review_states": [
+        "needs_evidence",
+        "blocked",
+        "human_review_required"
+      ],
+      "required_evidence": [
+        "missing_fact_handles",
+        "monitoring_reason",
+        "review_date_or_new_fact_signal"
+      ],
+      "review_status": "monitoring",
+      "source_refs": [
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9"
+      ]
+    },
+    {
+      "loop_id": "insolvency_discharge_to_monitoring_or_closure",
+      "loop_kind": "blocked_legal_review_loop",
+      "monitor_state": "monitoring_retry",
+      "entry_states": [
+        "insolvency_discharge_review",
+        "execution_route_selection"
+      ],
+      "return_states": [
+        "execution_route_selection",
+        "monitoring_retry",
+        "closure"
+      ],
+      "blocking_review_states": [
+        "blocked",
+        "human_review_required",
+        "monitoring"
+      ],
+      "required_evidence": [
+        "insolvency_case_status_evidence",
+        "discharge_or_stay_evidence",
+        "legal_review_record"
+      ],
+      "review_status": "blocked",
+      "source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0"
+      ]
+    }
+  ]
+}
