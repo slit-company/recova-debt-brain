@@ -1,0 +1,9 @@
+SCAN: PASS
+checks: local absolute path prefixes, raw fixture marker text, resident-number shape, phone-number shape
+targets:
+- docs/product/debt-collection-ontology/debtor-context-graph-v0.md
+- .omo/evidence/debtor-context-graph-v0/task-14-docs-smoke.txt
+- .omo/evidence/debtor-context-graph-v0/task-14-document-assembly.json
+- .omo/evidence/debtor-context-graph-v0/task-14-synthetic-from-assembly.json
+- .omo/evidence/debtor-context-graph-v0/task-14-synthetic-full-graph.json
+result: NO_FINDINGS
