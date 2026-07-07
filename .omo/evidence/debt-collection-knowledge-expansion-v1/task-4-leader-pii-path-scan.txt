@@ -1,0 +1,2 @@
+NO_FINDINGS
+files_scanned=12

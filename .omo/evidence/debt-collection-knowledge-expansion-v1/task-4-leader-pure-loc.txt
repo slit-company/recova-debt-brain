@@ -1,0 +1,17 @@
+trustgraph_legal/finance_claims.py pure_loc=224
+
+trustgraph_legal/domain_decisions.py pure_loc=249
+
+trustgraph_legal/route_decisions.py pure_loc=229
+
+trustgraph_legal/stop_gates_domain_v1.py pure_loc=250
+
+trustgraph_legal/stopgate_proof_text.py pure_loc=19
+
+tests/unit/legal_ontology/test_finance_claim_model_v1.py pure_loc=174
+
+tests/unit/legal_ontology/test_domain_decision_engine_v1.py pure_loc=194
+
+tests/unit/legal_ontology/test_domain_decision_engine_goal4.py pure_loc=152
+
+tests/unit/legal_ontology/test_stop_gates_domain_v1.py pure_loc=250

@@ -1,0 +1,9 @@
+{
+  "goal": {
+    "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl as the audit trail.",
+    "status": "active",
+    "tokensUsed": 357287,
+    "timeUsedSeconds": 31201,
+    "note": "Current Codex app goal tool reports paused after interruption; ULW checkpoint requires active/complete for aggregate non-final goals, so this records the resumed active objective snapshot."
+  }
+}

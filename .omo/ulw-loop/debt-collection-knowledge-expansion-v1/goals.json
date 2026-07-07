@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-07-07T02:58:34.724Z",
-  "updatedAt": "2026-07-07T12:59:15.190Z",
+  "updatedAt": "2026-07-07T13:43:18.592Z",
   "briefPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/brief.md",
   "goalsPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json",
   "ledgerPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl",
@@ -404,7 +404,7 @@
       "id": "G010-decision-stopgate-finance-and-review",
       "title": "Decision StopGate finance and review hardening",
       "objective": "Strengthen finance/review, domain decision, and StopGate regressions so expanded knowledge remains deterministic, traceable, and review-safe.",
-      "status": "pending",
+      "status": "complete",
       "successCriteria": [
         {
           "id": "C001",
@@ -412,8 +412,10 @@
           "userModel": "happy",
           "expectedEvidence": "Focused finance/domain decision tests and happy/failure evidence pass, with source_refs and review reasons preserved.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "A commit b7668289 and merged master surface 85586bca harden finance review decisions: unsupported allocations, disputed placeholder refs, stale finance version, and manual review triggers now produce deterministic review-safe results; evidence task-4-finance-review-* plus leader 52-test suite passed.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T13:42:05.329Z",
+          "notes": "A worktree reported clean; no StopGate, deployment, runbook, or remote MCP files touched."
         },
         {
           "id": "C002",
@@ -421,8 +423,10 @@
           "userModel": "edge",
           "expectedEvidence": "Focused StopGate/domain decision tests plus JSON evidence pass and no case falsely clears to execution-ready behavior.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "B commit 9c3c046a and merged master surface 85586bca harden domain-v1 StopGate proof matching: negated or uncertain service/finality/execution-clause values remain 보류, positive proof variants still clear, and protected-property/insolvency blockers stay conservative; evidence task-4-stopgate-domain-* passed.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T13:42:05.290Z",
+          "notes": "C final review accepted B after positive-vocabulary regression was fixed; no execution/contact/filing behavior added."
         },
         {
           "id": "C003",
@@ -430,13 +434,18 @@
           "userModel": "regression",
           "expectedEvidence": "A focused compatibility suite records passing tests across domain decisions, StopGates, route candidates, debtor graph, and MCP tools.",
           "essential": false,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Leader verification on final master surface 85586bca: task-4-leader-focused-pytest.txt records 52 passed across finance, domain decisions, StopGates, route candidates, debtor context, MCP tools, and domain pipeline; Python 3.9 py_compile, basedpyright, JSON, MCP 25-tool order, PII/path, deployment-boundary, and C contract review evidence all passed.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T13:42:05.418Z",
+          "notes": "C artifact copied to task-4-goal4-contract-review.md; code split 85586bca keeps test files under pure-LOC ceiling."
         }
       ],
-      "attempt": 0,
+      "attempt": 1,
       "createdAt": "2026-07-07T02:59:03.400Z",
-      "updatedAt": "2026-07-07T03:01:26.124Z"
+      "updatedAt": "2026-07-07T13:43:18.592Z",
+      "startedAt": "2026-07-07T13:00:24.898Z",
+      "completedAt": "2026-07-07T13:43:18.592Z",
+      "evidence": "Goal 4 complete on master 85586bca: A finance/review hardening b7668289, B StopGate safety hardening 9c3c046a, merge commits 8e07f921/4cef7bed, split 85586bca, and C final review accepted. Leader evidence records 52 focused tests passed, Python 3.9 py_compile, basedpyright, JSON validation, MCP 25-tool order, PII/path scan, deployment-boundary scan, and LOC ceiling all passed."
     },
     {
       "id": "G011-docs-final-eval-and-acceptance-revie",
