@@ -129,6 +129,74 @@ def test_engine_keeps_finance_review_codes_as_review_required_items() -> None:
     assert finance_items[0]["source_refs"]
 
 
+@pytest.mark.parametrize(
+    ("route_id", "workflow_state", "fact_handles", "blocker"),
+    (
+        (
+            "bank_account_attachment",
+            "execution_route_selection",
+            ("enforceable_title", "financial_account_hint", "exempt_claim_or_property_risk"),
+            "exempt_claim_or_property_risk",
+        ),
+        (
+            "bank_account_attachment",
+            "execution_route_selection",
+            ("enforceable_title", "financial_account_hint", "insolvency_stay"),
+            "insolvency_stay",
+        ),
+        (
+            "property_disclosure_inquiry_registry",
+            "asset_discovery",
+            (
+                "enforceable_title",
+                "asset_disclosure_preconditions",
+                "asset_inquiry_preconditions",
+                "default_registry_preconditions",
+                "service_finality_unproven",
+            ),
+            "service_finality_unproven",
+        ),
+        (
+            "property_disclosure_inquiry_registry",
+            "asset_discovery",
+            (
+                "enforceable_title",
+                "asset_disclosure_preconditions",
+                "asset_inquiry_preconditions",
+                "default_registry_preconditions",
+                "execution_clause_missing",
+            ),
+            "execution_clause_missing",
+        ),
+    ),
+)
+def test_engine_blocks_stopgate_safety_fact_handles(
+    route_id: str,
+    workflow_state: str,
+    fact_handles: tuple[str, ...],
+    blocker: str,
+) -> None:
+    # Given: an otherwise route-ready adapter payload includes one StopGate safety blocker.
+    payload = _adapter_payload((route_id,), fact_handles)
+
+    # When: the deterministic domain decision engine evaluates the route.
+    decision = evaluate_claim_domain_decision(
+        DomainDecisionRequest(payload, workflow_state=workflow_state),
+    )
+
+    # Then: the route remains blocked and any action candidate remains human-review-only.
+    route_decision = _only_object(decision["route_decisions"])
+    action_candidate = _only_object(decision["action_packet_candidates"])
+    assert route_decision["status"] == "blocked"
+    assert route_decision["priority_score"] == 0
+    assert blocker in _string_list(route_decision["blocking_fact_handles"])
+    assert action_candidate["review_status"] == "human_review_required"
+    assert action_candidate["direct_execution_allowed"] is False
+    assert action_candidate["non_execution_semantics"] == "advisory_only_human_review_required"
+    assert "filing_destination" not in action_candidate
+    assert "debtor_contact_payload" not in action_candidate
+
+
 def test_engine_rejects_unknown_route_id() -> None:
     # Given: an otherwise valid adapter payload that asks for an unknown route id.
     payload = _adapter_payload(("unknown_route",), ("enforceable_title",))

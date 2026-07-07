@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: $B_WORKTREE/tests
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.13.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 13 items
+
+tests/unit/legal_ontology/test_stop_gates_domain_v1.py ...F.             [ 38%]
+tests/unit/legal_ontology/test_domain_decision_engine_v1.py ........     [100%]
+
+=================================== FAILURES ===================================
+____ test_domain_v1_holds_negated_service_finality_execution_clause_values _____
+tests/unit/legal_ontology/test_stop_gates_domain_v1.py:152: in test_domain_v1_holds_negated_service_finality_execution_clause_values
+    assert payload["decision"] == "보류"
+E   AssertionError: assert '가능' == '보류'
+E
+E     - 보류
+E     + 가능
+=========================== short test summary info ============================
+FAILED tests/unit/legal_ontology/test_stop_gates_domain_v1.py::test_domain_v1_holds_negated_service_finality_execution_clause_values
+========================= 1 failed, 12 passed in 0.08s =========================

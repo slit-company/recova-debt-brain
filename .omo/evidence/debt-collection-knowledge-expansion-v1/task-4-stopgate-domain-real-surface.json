@@ -1,0 +1,38 @@
+{
+  "insolvency_decision": {
+    "blocking_fact_handles": [
+      "insolvency_stay"
+    ],
+    "candidate_direct_execution_allowed": false,
+    "candidate_has_debtor_contact_payload": false,
+    "candidate_has_filing_destination": false,
+    "candidate_non_execution_semantics": "advisory_only_human_review_required",
+    "candidate_review_status": "human_review_required",
+    "priority_score": 0,
+    "status": "blocked"
+  },
+  "negated_stopgate_decision": "보류",
+  "negated_stopgate_reason_codes": [
+    "missing_service_finality_execution_clause_proof"
+  ],
+  "positive_stopgate_decision": "가능",
+  "protected_property_decision": {
+    "blocking_fact_handles": [
+      "exempt_claim_or_property_risk"
+    ],
+    "candidate_direct_execution_allowed": false,
+    "candidate_has_debtor_contact_payload": false,
+    "candidate_has_filing_destination": false,
+    "candidate_non_execution_semantics": "advisory_only_human_review_required",
+    "candidate_review_status": "human_review_required",
+    "priority_score": 0,
+    "status": "blocked"
+  },
+  "tool_count": 25,
+  "tool_tail": [
+    "list_claim_domain_routes",
+    "explain_collection_workflow_state",
+    "evaluate_claim_domain_decision",
+    "explain_claim_action_packet"
+  ]
+}
