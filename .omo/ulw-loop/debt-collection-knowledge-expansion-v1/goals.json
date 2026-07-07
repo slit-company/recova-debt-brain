@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-07-07T02:58:34.724Z",
-  "updatedAt": "2026-07-07T03:11:42.416Z",
+  "updatedAt": "2026-07-07T12:59:15.190Z",
   "briefPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/brief.md",
   "goalsPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json",
   "ledgerPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl",
@@ -357,7 +357,7 @@
       "id": "G009-resource-and-fixture-expansion",
       "title": "Resource and fixture expansion",
       "objective": "Replace or explicitly disposition review-needed source records, expand rare-case synthetic claim-domain fixtures, and preserve JSON validity plus local MCP 25-tool ordering.",
-      "status": "pending",
+      "status": "complete",
       "successCriteria": [
         {
           "id": "C001",
@@ -365,8 +365,10 @@
           "userModel": "happy",
           "expectedEvidence": "Updated static resources/evidence plus validator output show no unresolved un-dispositioned source records introduced by this wave.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "A commit cbb60d46 and merged main evidence: .omo/evidence/debt-collection-knowledge-expansion-v1/task-3-source-dispositions.json plus task-3-leader-merge-verification.txt; source dispositions keep three needs_legal_review records conservative while adding machine-readable replacement/supporting refs; validators passed. cleanup: no runtime process spawned; team member A archived; worktree clean.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T12:56:04.405Z",
+          "notes": "C-goal3-review accepted C001; deployment/runbook boundary unchanged."
         },
         {
           "id": "C002",
@@ -374,8 +376,10 @@
           "userModel": "edge",
           "expectedEvidence": "Focused integration tests/evidence pass over added fixtures and demonstrate possible/review_required/blocked diversity without raw PII.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "B commit d22d03c4 and merged main evidence: .omo/evidence/debt-collection-knowledge-expansion-v1/task-3-expanded-scenarios-happy.json plus task-3-leader-merge-verification.txt; fixture bundle now has 26 scenarios, 22 route ids, status diversity blocked=9 missing_facts=6 possible=5 review_required=6; focused pipeline tests passed. cleanup: no runtime process spawned; team member B archived; worktree clean.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T12:56:04.443Z",
+          "notes": "C-goal3-review accepted expanded rare-case scenario coverage and context-aware PII/path scan."
         },
         {
           "id": "C003",
@@ -383,13 +387,18 @@
           "userModel": "regression",
           "expectedEvidence": "json.tool over changed resources/evidence passes and a local MCP smoke records 25-tool order unchanged.",
           "essential": false,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Merged main evidence .omo/evidence/debt-collection-knowledge-expansion-v1/task-3-leader-merge-verification.txt and task-3-goal3-review.md; JSON resources/evidence parse, local MCP order reports 25 tools with four claim-domain tools appended, context-aware PII/path scan has no findings, deployment boundary diff is empty. cleanup: team team-9252afb4 archived; member threads archived; no live QA process remains.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T12:56:04.479Z",
+          "notes": "Initial broad scan false positives were resolved by context-aware scan; C artifact records addendum."
         }
       ],
-      "attempt": 0,
+      "attempt": 1,
       "createdAt": "2026-07-07T02:59:03.368Z",
-      "updatedAt": "2026-07-07T03:01:26.016Z"
+      "updatedAt": "2026-07-07T12:59:15.190Z",
+      "startedAt": "2026-07-07T03:12:27.398Z",
+      "completedAt": "2026-07-07T12:59:15.190Z",
+      "evidence": "Goal 3 complete: A/B integrated on master via cf58177a/d65ea884; source dispositions, expanded fixtures, leader verification, and C review accepted; JSON/tests/validators/MCP/PII/deployment boundary passed."
     },
     {
       "id": "G010-decision-stopgate-finance-and-review",
