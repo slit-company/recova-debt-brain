@@ -1,0 +1,44 @@
+{
+  "schema_version": "recova-debtor-context-research/recova-mcp-surface/v1",
+  "generated_at": "2026-07-06T06:44:45.276880+00:00",
+  "tool_count": 16,
+  "tool_names": [
+    "list_debt_collection_tools",
+    "ingest_legal_document",
+    "ingest_ocr_markdown",
+    "get_ingest_status",
+    "classify_legal_document",
+    "extract_case_packet",
+    "get_case_graph",
+    "check_case_stop_gates",
+    "check_limitation_status",
+    "check_attachment_target_rules",
+    "summarize_case_ledger",
+    "recommend_next_action",
+    "list_unknown_document_types",
+    "review_extracted_fact",
+    "promote_ontology_candidate",
+    "reprocess_case"
+  ],
+  "groups": {
+    "read": 2,
+    "ingest": 3,
+    "graph": 3,
+    "stopgate": 4,
+    "governance": 4
+  },
+  "unknown_tool_status": "unknown_tool",
+  "ingest_status": "not_configured",
+  "fixture_case_graph_summary": {
+    "case_packets": 1,
+    "documents": 9,
+    "entities": 116,
+    "edges": 117,
+    "unresolved_identities": 0,
+    "review_items": 2
+  },
+  "redaction_defaults": [
+    "redacted"
+  ],
+  "key_finding": "MCP v0 exposes a review-safe 16-tool facade and can build a fixture case graph, but production ingest/persistent per-debtor memory backend is not attached."
+}

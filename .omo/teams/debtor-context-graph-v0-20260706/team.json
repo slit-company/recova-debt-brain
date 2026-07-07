@@ -1,0 +1,855 @@
+{
+  "schemaVersion": 2,
+  "teamId": "3f56f122-840a-4636-a632-a13aa3c4f882",
+  "teamName": "debtor-context-graph-v0",
+  "sessionName": "debtor-context-graph-v0",
+  "sessionId": "debtor-context-graph-v0-20260706",
+  "threadTitleConvention": "[debtor-context-graph-v0] <member name>",
+  "status": "active",
+  "createdAt": "2026-07-06T07:32:43.643Z",
+  "updatedAt": "2026-07-06T10:16:27.433Z",
+  "archivedAt": null,
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "debtor-context-graph-v0-20260706"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "schema-contract",
+      "focus": "Todo 1 debtor context schema types and JSON contract: trustgraph_legal/debtor_context_types.py, tests/unit/legal_ontology/test_debtor_context_types.py, task-1 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 1 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add debtor context graph schema/types, tests, happy/failure evidence, PII-safe outputs, and commit only owned files.",
+      "threadId": "019f3658-b877-7290-bf01-3d998e47511b",
+      "threadTitle": "[debtor-context-graph-v0] schema-contract",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/A",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/A",
+        "branch": "team/debtor-context-graph-v0-20260706/A"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "B",
+      "name": "route-sources",
+      "focus": "Todo 4 route/legal resources and validators: resources/legal_routes/, resources/legal_rules/debt_collection_route_sources_v0.json, scripts/legal_ontology/validate_routes.py, focused tests/evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 4 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add curated route and legal source resources, validator, tests/evidence, and commit only owned files.",
+      "threadId": "019f3658-c4e8-7772-9fd7-343438120636",
+      "threadTitle": "[debtor-context-graph-v0] route-sources",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/B",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/B",
+        "branch": "team/debtor-context-graph-v0-20260706/B"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "C",
+      "name": "document-assembly",
+      "focus": "Todo 2 deterministic OCR page inventory and document assembly builder: trustgraph_legal/document_assembly.py, tests/unit/legal_ontology/test_document_assembly.py, task-2 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 2 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add deterministic OCR page inventory/document assembly builder, tests, happy/failure evidence, PII-safe output, and commit only owned files.",
+      "threadId": "019f3667-12f4-7f91-ad98-186f622c217b",
+      "threadTitle": "[debtor-context-graph-v0] document-assembly",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/C",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/C",
+        "branch": "team/debtor-context-graph-v0-20260706/C"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "D",
+      "name": "ocr-fixtures-probe",
+      "focus": "Todo 3 minimized OCR assembly fixtures and PII-safe real corpus probe: tests/fixtures/legal-ocr-pages/, scripts/legal_ontology real corpus summary helper, task-3 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 3 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add minimized OCR page fixtures and PII-safe real OCR corpus probe, tests/evidence, and commit only owned files.",
+      "threadId": "019f3667-2021-78d1-bba4-e89988da5a99",
+      "threadTitle": "[debtor-context-graph-v0] ocr-fixtures-probe",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/D",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/D",
+        "branch": "team/debtor-context-graph-v0-20260706/D"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "E",
+      "name": "route-matcher",
+      "focus": "Todo 8 route candidate matcher over DebtorContextGraph: trustgraph_legal/route_candidates.py, tests/unit/legal_ontology/test_route_candidates.py, task-8 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 8 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree after Todo 4 integration. Add route candidate matcher, tests, happy/failure evidence, and commit only owned files.",
+      "threadId": "019f3667-2dbf-7bf1-8546-37070dccd6da",
+      "threadTitle": "[debtor-context-graph-v0] route-matcher",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/E",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/E",
+        "branch": "team/debtor-context-graph-v0-20260706/E"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "F",
+      "name": "assembly-cli",
+      "focus": "Todo 5 DocumentAssembly CLI and manifest-to-assembly bridge: trustgraph_legal/document_assembly.py, tests/unit/legal_ontology/test_document_assembly.py, task-5 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 5 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add --ocr-root/--manifest-tsv/--summary-only/--limit CLI support, normalize assembly IDs without double prefixes, support synthetic fixture folders, produce task-5 happy/failure evidence, and commit only owned files.",
+      "threadId": "019f367d-a107-7a61-b0a1-981ded84d2b5",
+      "threadTitle": "[debtor-context-graph-v0] assembly-cli",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/F",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/F",
+        "branch": "team/debtor-context-graph-v0-20260706/F"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "G",
+      "name": "assembly-cli-impl",
+      "focus": "Replacement Todo 5 DocumentAssembly CLI implementation: trustgraph_legal/document_assembly.py, tests/unit/legal_ontology/test_document_assembly.py, task-5 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 5 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Keep JSON manifest and --pages compatibility, add --ocr-root/--manifest-tsv/--summary-only/--limit CLI support, fix double-prefix assembly/document IDs, produce task-5 happy/failure evidence, and commit only owned files.",
+      "threadId": "019f3681-d750-75d1-b326-205048778bee",
+      "threadTitle": "[debtor-context-graph-v0] assembly-cli-impl",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/G",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/G",
+        "branch": "team/debtor-context-graph-v0-20260706/G"
+      },
+      "status": "blocked"
+    },
+    {
+      "id": "H",
+      "name": "debtor-graph-builder",
+      "focus": "Todo 6 DebtorContextGraph builder: trustgraph_legal/debtor_context.py, tests/unit/legal_ontology/test_debtor_context.py, task-6 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 6 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Build DebtorContextGraph from DocumentAssembly output and existing extractors, add tests/evidence, and commit only owned files.",
+      "threadId": "019f368e-8c85-7c32-a3ab-eed810a905e7",
+      "threadTitle": "[debtor-context-graph-v0] debtor-graph-builder",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/H",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/H",
+        "branch": "team/debtor-context-graph-v0-20260706/H"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "I",
+      "name": "debtor-graph-contract-review",
+      "focus": "Todo 6 contract review: read-only debtor graph builder acceptance/risk artifact",
+      "lens": "perspective",
+      "deliverable": "Review Todo 6 contracts, existing graph/schema/route code, and H branch when available. Write read-only artifact artifacts/I-debtor-graph-contract-review.md; no production edits.",
+      "threadId": "019f368e-9b7c-7a30-8ecc-84a1ced8b6db",
+      "threadTitle": "[debtor-context-graph-v0] debtor-graph-contract-review",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/I",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/I",
+        "branch": "team/debtor-context-graph-v0-20260706/I"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "J",
+      "name": "snapshot-diffs",
+      "focus": "Todo 7 snapshot replay/diff/provenance validation: trustgraph_legal/debtor_snapshots.py, tests/unit/legal_ontology/test_debtor_snapshots.py, task-7 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 7 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add debtor graph snapshot diff/replay helpers, provenance validation, focused tests, happy/failure evidence, and commit only owned files.",
+      "threadId": "019f36a1-c1a4-7492-8346-288dd23b50cf",
+      "threadTitle": "[debtor-context-graph-v0] snapshot-diffs",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/J",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/J",
+        "branch": "team/debtor-context-graph-v0-20260706/J"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "K",
+      "name": "route-stopgate-integration",
+      "focus": "Todo 9 route StopGate/legal-source integration: trustgraph_legal/route_candidates.py, tests/unit/legal_ontology/test_route_candidates.py, task-9 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 9 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Attach StopGate reason codes and legal rule-source metadata to route evaluation, resolve H accepted-status compatibility deliberately, add tests/evidence, and commit only owned files.",
+      "threadId": "019f36a1-d104-71f3-b2cd-174e9bef3f82",
+      "threadTitle": "[debtor-context-graph-v0] route-stopgate-integration",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/K",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/K",
+        "branch": "team/debtor-context-graph-v0-20260706/K"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "L",
+      "name": "route-snapshot-review",
+      "focus": "Todo 7/9 contract review artifact: snapshot id semantics, StopGate/legal-source route semantics, PII/hash evidence gate",
+      "lens": "perspective",
+      "deliverable": "Review Todo 7 and Todo 9 contracts and J/K branches when available. Write read-only artifact artifacts/L-route-snapshot-review.md; no production edits.",
+      "threadId": "019f36a1-e09e-7112-972a-edb8caaa6e13",
+      "threadTitle": "[debtor-context-graph-v0] route-snapshot-review",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/L",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/L",
+        "branch": "team/debtor-context-graph-v0-20260706/L"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "M",
+      "name": "debtor-context-cli",
+      "focus": "Todo 10 end-to-end DebtorContextGraph CLI and synthetic/real summary pipeline: trustgraph_legal/debtor_context.py, tests/integration/legal_ontology/test_debtor_context_pipeline.py, task-10 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 10 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add python3 -m trustgraph_legal.debtor_context CLI with --ocr-root/--assembly/--out/--route-resources/--legal-sources/--summary-only/--limit, synthetic pipeline tests, PII-safe real OCR summary evidence, and commit only owned files.",
+      "threadId": "019f36bd-14ef-7b83-8b0e-1218b2cf06cf",
+      "threadTitle": "[debtor-context-graph-v0] debtor-context-cli",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/M",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/M",
+        "branch": "team/debtor-context-graph-v0-20260706/M"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "N",
+      "name": "mcp-debtor-tools",
+      "focus": "Todo 11 additive MCP debtor graph tools: trustgraph_legal/mcp_domain.py, trustgraph_legal/mcp_handlers.py, MCP fake adapter contracts, task-11 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 11 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add additive debtor context MCP tools over the existing redacted envelope, preserve the existing 16 tools, enforce repo-root path bounds and no authorization tool args, add focused tests/evidence, and commit only owned files.",
+      "threadId": "019f36cf-f677-7270-afd5-f50e5b947a6a",
+      "threadTitle": "[debtor-context-graph-v0] mcp-debtor-tools",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/N",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/N",
+        "branch": "team/debtor-context-graph-v0-20260706/N"
+      },
+      "status": "active"
+    },
+    {
+      "id": "O",
+      "name": "debtor-governance",
+      "focus": "Todo 12 governance/review hooks for debtor facts, assemblies, and routes: trustgraph_legal/debtor_governance.py, tests/unit/legal_ontology/test_debtor_governance.py, task-12 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 12 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add PII-safe service-side review/governance hooks for unknown assemblies, unresolved identity, conflicting facts, legal-source review states, blocked routes, and manual fact review decisions. Keep production ontology/resources read-only, add tests/evidence, and commit only owned files.",
+      "threadId": "019f36d0-0c55-7f41-9c3b-ad1117b5b360",
+      "threadTitle": "[debtor-context-graph-v0] debtor-governance",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/O",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/O",
+        "branch": "team/debtor-context-graph-v0-20260706/O"
+      },
+      "status": "active"
+    },
+    {
+      "id": "P",
+      "name": "mcp-governance-review",
+      "focus": "Todo 11/12 contract review: additive MCP surface, auth/path redaction, governance service-record boundary, existing 16-tool compatibility",
+      "lens": "perspective",
+      "deliverable": "Review Todo 11 and Todo 12 contracts plus N/O branches when available. Write read-only artifact artifacts/P-mcp-governance-review.md. No production edits. Verify existing 16 MCP tools stay compatible, new debtor tools are additive, path/auth/redaction behavior is safe, and governance records stay service-side.",
+      "threadId": "019f36d0-2594-78f3-b5e4-87204915ceab",
+      "threadTitle": "[debtor-context-graph-v0] mcp-governance-review",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/P",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/P",
+        "branch": "team/debtor-context-graph-v0-20260706/P"
+      },
+      "status": "active"
+    },
+    {
+      "id": "Q",
+      "name": "integration-contracts",
+      "focus": "Todo 13 integration and fake-MCP contract tests: tests/unit/legal_ontology/test_mcp_debtor_context_tools.py, tests/integration/legal_ontology/test_debtor_context_pipeline.py, task-13 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 13 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Strengthen integration/fake-MCP tests for debtor graph pipeline, repo-root path boundaries, redaction, tool schema, stable graph snapshot IDs, route explanation, authorization rejection, and no global MCP SDK dependency. Commit only owned tests/evidence unless a tiny support fix is explicitly required and reported.",
+      "threadId": "019f36ec-6c31-7ec0-9073-0373c23e93d1",
+      "threadTitle": "[debtor-context-graph-v0] integration-contracts",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/Q",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/Q",
+        "branch": "team/debtor-context-graph-v0-20260706/Q"
+      },
+      "status": "active"
+    },
+    {
+      "id": "R",
+      "name": "debtor-docs",
+      "focus": "Todo 14 product/developer documentation for Debtor Context Graph v0: docs/product/debt-collection-ontology/debtor-context-graph-v0.md and task-14 evidence only",
+      "lens": "area",
+      "deliverable": "Implement Todo 14 from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Add operator/developer docs explaining graph model, CLI usage, MCP tools, governance hooks, route status semantics, redaction policy, evidence paths, and known limitations. Do not edit unrelated dirty deployment runbooks. Commit only owned docs/evidence.",
+      "threadId": "019f36ec-7b7a-7e00-98e9-dbd3ee666419",
+      "threadTitle": "[debtor-context-graph-v0] debtor-docs",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/R",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/R",
+        "branch": "team/debtor-context-graph-v0-20260706/R"
+      },
+      "status": "active"
+    },
+    {
+      "id": "S",
+      "name": "final-eval-pack",
+      "focus": "Todo 15 final real OCR eval and evidence pack: final task evidence under .omo/evidence/debtor-context-graph-v0, no raw OCR text",
+      "lens": "area",
+      "deliverable": "Prepare Todo 15 final evaluation from .omo/plans/debtor-context-graph-v0.md in an isolated worktree. Wait for leader to confirm Todo 13/14 are integrated before final commit. Then run real OCR summary-only eval, final MCP tool list, final PII scan, focused tests, evidence summary, and commit only final evidence files.",
+      "threadId": "019f36ec-8b52-7430-a61c-0ac57c722c09",
+      "threadTitle": "[debtor-context-graph-v0] final-eval-pack",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/S",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/S",
+        "branch": "team/debtor-context-graph-v0-20260706/S"
+      },
+      "status": "active"
+    },
+    {
+      "id": "T",
+      "name": "final-contract-review",
+      "focus": "Final plan compliance/code quality/manual QA/scope fidelity review for debtor-context-graph-v0",
+      "lens": "perspective",
+      "deliverable": "Perform final read-only review after Todo 13/14/15 are ready. Write artifacts/T-final-contract-review.md. Verify plan compliance, changed-file quality, real OCR summary-only manual QA, MCP path rejection, no raw PII, existing 16+5 tools compatibility, and no out-of-scope deployment mutations. No production edits.",
+      "threadId": "019f36ec-9e61-7a81-86ea-7543ef1d5fcb",
+      "threadTitle": "[debtor-context-graph-v0] final-contract-review",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/T",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/T",
+        "branch": "team/debtor-context-graph-v0-20260706/T"
+      },
+      "status": "active"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-07-06T07:32:43.643Z",
+      "event": "created",
+      "detail": "team debtor-context-graph-v0"
+    },
+    {
+      "ts": "2026-07-06T07:32:43.680Z",
+      "event": "add-member",
+      "detail": "member A (area): Todo 1 debtor context schema types and JSON contract: trustgraph_legal/debtor_context_types.py, tests/unit/legal_ontology/test_debtor_context_types.py, task-1 evidence only"
+    },
+    {
+      "ts": "2026-07-06T07:32:43.720Z",
+      "event": "add-member",
+      "detail": "member B (area): Todo 4 route/legal resources and validators: resources/legal_routes/, resources/legal_rules/debt_collection_route_sources_v0.json, scripts/legal_ontology/validate_routes.py, focused tests/evidence only"
+    },
+    {
+      "ts": "2026-07-06T07:32:44.314Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/A (team/debtor-context-graph-v0-20260706/A)"
+    },
+    {
+      "ts": "2026-07-06T07:32:45.016Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/B (team/debtor-context-graph-v0-20260706/B)"
+    },
+    {
+      "ts": "2026-07-06T07:34:11.200Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f3658-b877-7290-bf01-3d998e47511b"
+    },
+    {
+      "ts": "2026-07-06T07:34:11.243Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f3658-c4e8-7772-9fd7-343438120636"
+    },
+    {
+      "ts": "2026-07-06T07:34:11.283Z",
+      "event": "set-status",
+      "detail": "member A -> active: Todo 1 schema-contract dispatched in worktree A"
+    },
+    {
+      "ts": "2026-07-06T07:34:11.336Z",
+      "event": "set-status",
+      "detail": "member B -> active: Todo 4 route-sources dispatched in worktree B"
+    },
+    {
+      "ts": "2026-07-06T07:37:54.051Z",
+      "event": "set-status",
+      "detail": "member A -> active: isolation repair requested: misplaced main-checkout test must be removed and reapplied in A worktree before Todo 1 continues"
+    },
+    {
+      "ts": "2026-07-06T07:48:27.962Z",
+      "event": "add-member",
+      "detail": "member C (area): Todo 2 deterministic OCR page inventory and document assembly builder: trustgraph_legal/document_assembly.py, tests/unit/legal_ontology/test_document_assembly.py, task-2 evidence only"
+    },
+    {
+      "ts": "2026-07-06T07:48:28.079Z",
+      "event": "add-member",
+      "detail": "member D (area): Todo 3 minimized OCR assembly fixtures and PII-safe real corpus probe: tests/fixtures/legal-ocr-pages/, scripts/legal_ontology real corpus summary helper, task-3 evidence only"
+    },
+    {
+      "ts": "2026-07-06T07:48:28.156Z",
+      "event": "add-member",
+      "detail": "member E (area): Todo 8 route candidate matcher over DebtorContextGraph: trustgraph_legal/route_candidates.py, tests/unit/legal_ontology/test_route_candidates.py, task-8 evidence only"
+    },
+    {
+      "ts": "2026-07-06T07:48:43.948Z",
+      "event": "worktree-add",
+      "detail": "member C -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/C (team/debtor-context-graph-v0-20260706/C)"
+    },
+    {
+      "ts": "2026-07-06T07:48:44.671Z",
+      "event": "worktree-add",
+      "detail": "member D -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/D (team/debtor-context-graph-v0-20260706/D)"
+    },
+    {
+      "ts": "2026-07-06T07:48:45.144Z",
+      "event": "worktree-add",
+      "detail": "member E -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/E (team/debtor-context-graph-v0-20260706/E)"
+    },
+    {
+      "ts": "2026-07-06T07:49:39.800Z",
+      "event": "bind-thread",
+      "detail": "member C -> thread 019f3667-12f4-7f91-ad98-186f622c217b"
+    },
+    {
+      "ts": "2026-07-06T07:49:39.839Z",
+      "event": "bind-thread",
+      "detail": "member D -> thread 019f3667-2021-78d1-bba4-e89988da5a99"
+    },
+    {
+      "ts": "2026-07-06T07:49:39.878Z",
+      "event": "bind-thread",
+      "detail": "member E -> thread 019f3667-2dbf-7bf1-8546-37070dccd6da"
+    },
+    {
+      "ts": "2026-07-06T07:49:39.922Z",
+      "event": "set-status",
+      "detail": "member C -> active: Todo 2 document assembly dispatched in worktree C after Todo 1 integration"
+    },
+    {
+      "ts": "2026-07-06T07:49:39.972Z",
+      "event": "set-status",
+      "detail": "member D -> active: Todo 3 OCR fixtures/probe dispatched in worktree D after Todo 1 integration"
+    },
+    {
+      "ts": "2026-07-06T07:49:40.014Z",
+      "event": "set-status",
+      "detail": "member E -> active: Todo 8 route matcher dispatched in worktree E after Todo 4 integration"
+    },
+    {
+      "ts": "2026-07-06T07:53:22.307Z",
+      "event": "set-status",
+      "detail": "member A -> reported: Todo 1 complete and integrated into master as e58fd1fc via merge b596e508; main verification passed"
+    },
+    {
+      "ts": "2026-07-06T07:53:23.891Z",
+      "event": "set-status",
+      "detail": "member B -> reported: Todo 4 complete and integrated into master as c846aa88 via merge 8983bacd; main verification passed"
+    },
+    {
+      "ts": "2026-07-06T08:02:52.666Z",
+      "event": "set-status",
+      "detail": "member E -> reported: Todo 8 route matcher verified by leader; integrating"
+    },
+    {
+      "ts": "2026-07-06T08:10:28.461Z",
+      "event": "set-status",
+      "detail": "member C -> reported: DONE commit 310eff3b verified by leader: pytest 5 passed, py_compile passed, JSON evidence valid, PII NO_FINDINGS, diff clean; ready to integrate."
+    },
+    {
+      "ts": "2026-07-06T08:12:14.567Z",
+      "event": "set-status",
+      "detail": "member D -> reported: DONE commit f0dbd10a verified by leader: pytest 3 passed, py_compile passed, JSON valid, aggregate-only evidence, D worktree clean; ready to integrate."
+    },
+    {
+      "ts": "2026-07-06T08:13:33.415Z",
+      "event": "add-member",
+      "detail": "member F (area): Todo 5 DocumentAssembly CLI and manifest-to-assembly bridge: trustgraph_legal/document_assembly.py, tests/unit/legal_ontology/test_document_assembly.py, task-5 evidence only"
+    },
+    {
+      "ts": "2026-07-06T08:13:50.327Z",
+      "event": "worktree-add",
+      "detail": "member F -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/F (team/debtor-context-graph-v0-20260706/F)"
+    },
+    {
+      "ts": "2026-07-06T08:14:01.546Z",
+      "event": "bind-thread",
+      "detail": "member F -> thread 019f367d-a107-7a61-b0a1-981ded84d2b5"
+    },
+    {
+      "ts": "2026-07-06T08:15:09.511Z",
+      "event": "set-status",
+      "detail": "member F -> active: Todo 5 assembly CLI dispatched in worktree F after Todo 2/3 integration"
+    },
+    {
+      "ts": "2026-07-06T08:18:12.967Z",
+      "event": "set-status",
+      "detail": "member F -> blocked: No file diff or progress after repeated leader directives; reassigning Todo 5 to a replacement member."
+    },
+    {
+      "ts": "2026-07-06T08:18:12.982Z",
+      "event": "add-member",
+      "detail": "member G (area): Replacement Todo 5 DocumentAssembly CLI implementation: trustgraph_legal/document_assembly.py, tests/unit/legal_ontology/test_document_assembly.py, task-5 evidence only"
+    },
+    {
+      "ts": "2026-07-06T08:18:26.197Z",
+      "event": "worktree-add",
+      "detail": "member G -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/G (team/debtor-context-graph-v0-20260706/G)"
+    },
+    {
+      "ts": "2026-07-06T08:18:44.350Z",
+      "event": "bind-thread",
+      "detail": "member G -> thread 019f3681-d750-75d1-b326-205048778bee"
+    },
+    {
+      "ts": "2026-07-06T08:19:34.302Z",
+      "event": "set-status",
+      "detail": "member F -> active: F resumed with first red-test diff but must repair parent-checkout isolation slip before continuing."
+    },
+    {
+      "ts": "2026-07-06T08:19:34.311Z",
+      "event": "set-status",
+      "detail": "member G -> blocked: Superseded temporarily: F resumed Todo 5; G must not edit unless reactivated by leader."
+    },
+    {
+      "ts": "2026-07-06T08:22:59.125Z",
+      "event": "set-status",
+      "detail": "member F -> blocked: Superseded: F produced isolated red tests but stalled before implementation; do not integrate F."
+    },
+    {
+      "ts": "2026-07-06T08:22:59.436Z",
+      "event": "set-status",
+      "detail": "member G -> active: Reactivated to implement Todo 5 from clean worktree after F stalled before implementation."
+    },
+    {
+      "ts": "2026-07-06T08:23:25.721Z",
+      "event": "set-status",
+      "detail": "member G -> blocked: Paused again: F implementation landed and focused pytest is green; G must remain clean unless reactivated."
+    },
+    {
+      "ts": "2026-07-06T08:23:39.386Z",
+      "event": "set-status",
+      "detail": "member F -> active: Reactivated: F implementation landed, focused pytest green; finish evidence/report/commit for Todo 5."
+    },
+    {
+      "ts": "2026-07-06T08:26:26.429Z",
+      "event": "set-status",
+      "detail": "member F -> blocked: Leader takeover for size-gate helper split; F should pause edits."
+    },
+    {
+      "ts": "2026-07-06T08:30:16.951Z",
+      "event": "set-status",
+      "detail": "member F -> reported: Todo 5 committed as f29aea92; leader verified tests, CLI evidence, PII scan, py_compile, basedpyright, diff checks."
+    },
+    {
+      "ts": "2026-07-06T08:31:48.872Z",
+      "event": "add-member",
+      "detail": "member H (area): Todo 6 DebtorContextGraph builder: trustgraph_legal/debtor_context.py, tests/unit/legal_ontology/test_debtor_context.py, task-6 evidence only"
+    },
+    {
+      "ts": "2026-07-06T08:31:57.716Z",
+      "event": "add-member",
+      "detail": "member I (perspective): Todo 6 contract review: read-only debtor graph builder acceptance/risk artifact"
+    },
+    {
+      "ts": "2026-07-06T08:31:58.668Z",
+      "event": "worktree-add",
+      "detail": "member H -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/H (team/debtor-context-graph-v0-20260706/H)"
+    },
+    {
+      "ts": "2026-07-06T08:32:19.058Z",
+      "event": "worktree-add",
+      "detail": "member I -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/I (team/debtor-context-graph-v0-20260706/I)"
+    },
+    {
+      "ts": "2026-07-06T08:32:51.172Z",
+      "event": "bind-thread",
+      "detail": "member H -> thread 019f368e-8c85-7c32-a3ab-eed810a905e7"
+    },
+    {
+      "ts": "2026-07-06T08:32:51.419Z",
+      "event": "bind-thread",
+      "detail": "member I -> thread 019f368e-9b7c-7a30-8ecc-84a1ced8b6db"
+    },
+    {
+      "ts": "2026-07-06T08:33:01.715Z",
+      "event": "set-status",
+      "detail": "member H -> active: Todo 6 debtor graph builder dispatched in worktree H after Todo 5 integration."
+    },
+    {
+      "ts": "2026-07-06T08:33:01.966Z",
+      "event": "set-status",
+      "detail": "member I -> active: Todo 6 read-only contract review dispatched in worktree I."
+    },
+    {
+      "ts": "2026-07-06T08:51:49.448Z",
+      "event": "set-status",
+      "detail": "member H -> reported: DONE: Todo 6 builder commit 611909b5 integrated into master as b6ca1f60; I review follow-ups assigned to Todo 7/9/final evidence."
+    },
+    {
+      "ts": "2026-07-06T08:51:49.498Z",
+      "event": "set-status",
+      "detail": "member I -> reported: DONE: Post-implementation review artifact updated; H accepted for builder with follow-up route/snapshot/hash-gate risks."
+    },
+    {
+      "ts": "2026-07-06T08:52:37.213Z",
+      "event": "add-member",
+      "detail": "member J (area): Todo 7 snapshot replay/diff/provenance validation: trustgraph_legal/debtor_snapshots.py, tests/unit/legal_ontology/test_debtor_snapshots.py, task-7 evidence only"
+    },
+    {
+      "ts": "2026-07-06T08:52:37.435Z",
+      "event": "add-member",
+      "detail": "member K (area): Todo 9 route StopGate/legal-source integration: trustgraph_legal/route_candidates.py, tests/unit/legal_ontology/test_route_candidates.py, task-9 evidence only"
+    },
+    {
+      "ts": "2026-07-06T08:52:37.526Z",
+      "event": "add-member",
+      "detail": "member L (perspective): Todo 7/9 contract review artifact: snapshot id semantics, StopGate/legal-source route semantics, PII/hash evidence gate"
+    },
+    {
+      "ts": "2026-07-06T08:52:39.894Z",
+      "event": "worktree-add",
+      "detail": "member J -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/J (team/debtor-context-graph-v0-20260706/J)"
+    },
+    {
+      "ts": "2026-07-06T08:52:40.559Z",
+      "event": "worktree-add",
+      "detail": "member K -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/K (team/debtor-context-graph-v0-20260706/K)"
+    },
+    {
+      "ts": "2026-07-06T08:52:41.290Z",
+      "event": "worktree-add",
+      "detail": "member L -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/L (team/debtor-context-graph-v0-20260706/L)"
+    },
+    {
+      "ts": "2026-07-06T08:53:51.645Z",
+      "event": "bind-thread",
+      "detail": "member J -> thread 019f36a1-c1a4-7492-8346-288dd23b50cf"
+    },
+    {
+      "ts": "2026-07-06T08:53:52.042Z",
+      "event": "bind-thread",
+      "detail": "member L -> thread 019f36a1-e09e-7112-972a-edb8caaa6e13"
+    },
+    {
+      "ts": "2026-07-06T08:53:52.072Z",
+      "event": "bind-thread",
+      "detail": "member K -> thread 019f36a1-d104-71f3-b2cd-174e9bef3f82"
+    },
+    {
+      "ts": "2026-07-06T08:54:58.995Z",
+      "event": "set-status",
+      "detail": "member H -> active: Follow-up route status compatibility fix in progress after I review; do not duplicate in K."
+    },
+    {
+      "ts": "2026-07-06T08:56:19.684Z",
+      "event": "set-status",
+      "detail": "member H -> reported: DONE: Follow-up route fact status fix commit 6ee22757 integrated into master after verification; hash-shaped scan false positives remain final evidence gate risk."
+    },
+    {
+      "ts": "2026-07-06T08:57:59.054Z",
+      "event": "set-status",
+      "detail": "member E -> reported: Original Todo 8 accepted/integrated. Later alternate accepted-status commit 0465cc6e is intentionally not integrated; K owns any future route status semantics."
+    },
+    {
+      "ts": "2026-07-06T08:59:13.669Z",
+      "event": "set-status",
+      "detail": "member I -> reported: DONE: H follow-up reviewed. Route-status blocker resolved on master via 6ee22757/27ed6cb1; snapshot/hash risks assigned forward."
+    },
+    {
+      "ts": "2026-07-06T08:59:51.078Z",
+      "event": "set-status",
+      "detail": "member I -> reported: DONE: Final follow-up review complete. Todo 6 route blocker resolved on master; E alternate not canonical; snapshot/hash risks assigned forward."
+    },
+    {
+      "ts": "2026-07-06T09:05:04.118Z",
+      "event": "set-status",
+      "detail": "member L -> reported: Read-only route/snapshot review artifact complete; J/K draft risks recorded."
+    },
+    {
+      "ts": "2026-07-06T09:22:04.350Z",
+      "event": "set-status",
+      "detail": "member K -> reported: Todo 9 committed cb4ea60b and integrated to master as 450d98cc."
+    },
+    {
+      "ts": "2026-07-06T09:22:04.361Z",
+      "event": "set-status",
+      "detail": "member J -> reported: Todo 7 committed e9fcb007, reviewed by L, integrated to master as 2f857d78."
+    },
+    {
+      "ts": "2026-07-06T09:22:46.702Z",
+      "event": "add-member",
+      "detail": "member M (area): Todo 10 end-to-end DebtorContextGraph CLI and synthetic/real summary pipeline: trustgraph_legal/debtor_context.py, tests/integration/legal_ontology/test_debtor_context_pipeline.py, task-10 evidence only"
+    },
+    {
+      "ts": "2026-07-06T09:22:58.093Z",
+      "event": "worktree-add",
+      "detail": "member M -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/M (team/debtor-context-graph-v0-20260706/M)"
+    },
+    {
+      "ts": "2026-07-06T09:23:19.278Z",
+      "event": "bind-thread",
+      "detail": "member M -> thread 019f36bd-14ef-7b83-8b0e-1218b2cf06cf"
+    },
+    {
+      "ts": "2026-07-06T09:23:19.324Z",
+      "event": "set-status",
+      "detail": "member M -> active: Bound to Todo 10 worktree and starting debtor context CLI slice."
+    },
+    {
+      "ts": "2026-07-06T09:36:07.164Z",
+      "event": "set-status",
+      "detail": "member K -> reported: Todo 9 plus Python 3.9 import compatibility follow-ups integrated to master as 0fc37242."
+    },
+    {
+      "ts": "2026-07-06T09:42:05.232Z",
+      "event": "add-member",
+      "detail": "member N (area): Todo 11 additive MCP debtor graph tools: trustgraph_legal/mcp_domain.py, trustgraph_legal/mcp_handlers.py, MCP fake adapter contracts, task-11 evidence only"
+    },
+    {
+      "ts": "2026-07-06T09:42:05.338Z",
+      "event": "add-member",
+      "detail": "member O (area): Todo 12 governance/review hooks for debtor facts, assemblies, and routes: trustgraph_legal/debtor_governance.py, tests/unit/legal_ontology/test_debtor_governance.py, task-12 evidence only"
+    },
+    {
+      "ts": "2026-07-06T09:42:05.353Z",
+      "event": "add-member",
+      "detail": "member P (perspective): Todo 11/12 contract review: additive MCP surface, auth/path redaction, governance service-record boundary, existing 16-tool compatibility"
+    },
+    {
+      "ts": "2026-07-06T09:42:15.499Z",
+      "event": "worktree-add",
+      "detail": "member O -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/O (team/debtor-context-graph-v0-20260706/O)"
+    },
+    {
+      "ts": "2026-07-06T09:42:16.801Z",
+      "event": "worktree-add",
+      "detail": "member P -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/P (team/debtor-context-graph-v0-20260706/P)"
+    },
+    {
+      "ts": "2026-07-06T09:42:17.691Z",
+      "event": "worktree-add",
+      "detail": "member N -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/N (team/debtor-context-graph-v0-20260706/N)"
+    },
+    {
+      "ts": "2026-07-06T09:44:30.130Z",
+      "event": "bind-thread",
+      "detail": "member N -> thread 019f36cf-f677-7270-afd5-f50e5b947a6a"
+    },
+    {
+      "ts": "2026-07-06T09:44:30.147Z",
+      "event": "bind-thread",
+      "detail": "member O -> thread 019f36d0-0c55-7f41-9c3b-ad1117b5b360"
+    },
+    {
+      "ts": "2026-07-06T09:44:30.321Z",
+      "event": "bind-thread",
+      "detail": "member P -> thread 019f36d0-2594-78f3-b5e4-87204915ceab"
+    },
+    {
+      "ts": "2026-07-06T09:45:33.166Z",
+      "event": "set-status",
+      "detail": "member M -> reported: Todo 10 integrated into master by merge 13e7a097; leader verified focused tests, CLI, real OCR summary, JSON evidence, py_compile, basedpyright."
+    },
+    {
+      "ts": "2026-07-06T09:45:33.215Z",
+      "event": "set-status",
+      "detail": "member N -> active: Todo 11 started after Todo 10 integration."
+    },
+    {
+      "ts": "2026-07-06T09:45:33.260Z",
+      "event": "set-status",
+      "detail": "member O -> active: Todo 12 started after Todo 10 integration."
+    },
+    {
+      "ts": "2026-07-06T09:45:33.309Z",
+      "event": "set-status",
+      "detail": "member P -> active: Todo 11/12 contract review started."
+    },
+    {
+      "ts": "2026-07-06T10:13:51.506Z",
+      "event": "add-member",
+      "detail": "member Q (area): Todo 13 integration and fake-MCP contract tests: tests/unit/legal_ontology/test_mcp_debtor_context_tools.py, tests/integration/legal_ontology/test_debtor_context_pipeline.py, task-13 evidence only"
+    },
+    {
+      "ts": "2026-07-06T10:13:51.520Z",
+      "event": "add-member",
+      "detail": "member R (area): Todo 14 product/developer documentation for Debtor Context Graph v0: docs/product/debt-collection-ontology/debtor-context-graph-v0.md and task-14 evidence only"
+    },
+    {
+      "ts": "2026-07-06T10:13:51.630Z",
+      "event": "add-member",
+      "detail": "member S (area): Todo 15 final real OCR eval and evidence pack: final task evidence under .omo/evidence/debtor-context-graph-v0, no raw OCR text"
+    },
+    {
+      "ts": "2026-07-06T10:13:51.718Z",
+      "event": "add-member",
+      "detail": "member T (perspective): Final plan compliance/code quality/manual QA/scope fidelity review for debtor-context-graph-v0"
+    },
+    {
+      "ts": "2026-07-06T10:14:05.041Z",
+      "event": "worktree-add",
+      "detail": "member Q -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/Q (team/debtor-context-graph-v0-20260706/Q)"
+    },
+    {
+      "ts": "2026-07-06T10:14:05.542Z",
+      "event": "worktree-add",
+      "detail": "member T -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/T (team/debtor-context-graph-v0-20260706/T)"
+    },
+    {
+      "ts": "2026-07-06T10:14:05.941Z",
+      "event": "worktree-add",
+      "detail": "member R -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/R (team/debtor-context-graph-v0-20260706/R)"
+    },
+    {
+      "ts": "2026-07-06T10:14:06.396Z",
+      "event": "worktree-add",
+      "detail": "member S -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/debtor-context-graph-v0-20260706/worktrees/S (team/debtor-context-graph-v0-20260706/S)"
+    },
+    {
+      "ts": "2026-07-06T10:15:30.474Z",
+      "event": "bind-thread",
+      "detail": "member R -> thread 019f36ec-7b7a-7e00-98e9-dbd3ee666419"
+    },
+    {
+      "ts": "2026-07-06T10:15:30.487Z",
+      "event": "bind-thread",
+      "detail": "member Q -> thread 019f36ec-6c31-7ec0-9073-0373c23e93d1"
+    },
+    {
+      "ts": "2026-07-06T10:15:30.691Z",
+      "event": "bind-thread",
+      "detail": "member T -> thread 019f36ec-9e61-7a81-86ea-7543ef1d5fcb"
+    },
+    {
+      "ts": "2026-07-06T10:15:30.722Z",
+      "event": "bind-thread",
+      "detail": "member S -> thread 019f36ec-8b52-7430-a61c-0ac57c722c09"
+    },
+    {
+      "ts": "2026-07-06T10:16:27.305Z",
+      "event": "set-status",
+      "detail": "member Q -> active: Todo 13 started after N/O integration."
+    },
+    {
+      "ts": "2026-07-06T10:16:27.348Z",
+      "event": "set-status",
+      "detail": "member R -> active: Todo 14 started after N/O integration."
+    },
+    {
+      "ts": "2026-07-06T10:16:27.397Z",
+      "event": "set-status",
+      "detail": "member S -> active: Todo 15 preflight active; final commit waits for Todo 13/14 integration."
+    },
+    {
+      "ts": "2026-07-06T10:16:27.433Z",
+      "event": "set-status",
+      "detail": "member T -> active: Final review preflight active."
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": "recova-debtor-context-research/korean-law-source-map/v1",
+  "generated_at": "2026-07-06T06:44:45.276880+00:00",
+  "retrieval_source": "mcp__korean_law search_law/get_law_text on 2026-07-06 Asia/Seoul context",
+  "current_version_notes": {
+    "민사집행법": "Current MST 268837; future amendment MST 284419 effective 20280301 also exists.",
+    "민사소송법": "Current MST 252393; future amendment MST 284417 effective 20280301 also exists.",
+    "신용정보법": "Current MST 260423; future amendments MST 285955 effective 20260813 and MST 283841 effective 20260911 exist.",
+    "회생파산법": "Current MST 267359; future related amendment MST 91493 effective 20280101 exists."
+  },
+  "sources": [
+    {
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "effective_date": "20260201",
+      "article": "제223조",
+      "rule_axis": "채권집행 개시",
+      "graph_use": "Attachment route requires a court attachment order for execution against debtor claims toward third parties."
+    },
+    {
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "effective_date": "20260201",
+      "article": "제229조",
+      "rule_axis": "추심명령/전부명령",
+      "graph_use": "Collection order route must distinguish collection order from assignment order and finality requirements."
+    },
+    {
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "effective_date": "20260201",
+      "article": "제246조",
+      "rule_axis": "압류금지채권",
+      "graph_use": "Attachment target checks must inspect wage, severance, deposit, insurance, livelihood account, and one-month living cost exemptions."
+    },
+    {
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "effective_date": "20260201",
+      "article": "제61조",
+      "rule_axis": "재산명시",
+      "graph_use": "Property disclosure requires money-payment enforcement title and executable copy/documents."
+    },
+    {
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "effective_date": "20260201",
+      "article": "제74조",
+      "rule_axis": "재산조회",
+      "graph_use": "Property inquiry route depends on prior property disclosure episode, statutory failure/insufficiency condition, institution scope, and prepaid costs."
+    },
+    {
+      "law_name": "민사집행법",
+      "law_id": "009290",
+      "mst": "268837",
+      "effective_date": "20260201",
+      "article": "제70조",
+      "rule_axis": "채무불이행자명부",
+      "graph_use": "Default registry route needs final/written title plus six-month nonpayment or property disclosure failure proof."
+    },
+    {
+      "law_name": "민사소송법",
+      "law_id": "001700",
+      "mst": "252393",
+      "effective_date": "20250712",
+      "article": "제474조",
+      "rule_axis": "지급명령 효력",
+      "graph_use": "Payment order becomes title-equivalent only after no objection/withdrawal/dismissal finality."
+    },
+    {
+      "law_name": "민법",
+      "law_id": "001706",
+      "mst": "284415",
+      "effective_date": "20260317",
+      "article": "제165조",
+      "rule_axis": "확정채권 시효",
+      "graph_use": "Judgment-equivalent claim limitation clock is generally modeled as 10 years after finality, with maturity caveat."
+    },
+    {
+      "law_name": "민법",
+      "law_id": "001706",
+      "mst": "284415",
+      "effective_date": "20260317",
+      "article": "제168조",
+      "rule_axis": "시효중단 사유",
+      "graph_use": "Claims, attachment/provisional attachment/provisional disposition, and acknowledgment become limitation events in debtor timeline."
+    },
+    {
+      "law_name": "민법",
+      "law_id": "001706",
+      "mst": "284415",
+      "effective_date": "20260317",
+      "article": "제406조",
+      "rule_axis": "채권자취소권",
+      "graph_use": "Fraudulent transfer route needs suspicious transfer, harm/knowledge facts, and one-year/five-year deadlines."
+    },
+    {
+      "law_name": "채권의 공정한 추심에 관한 법률",
+      "law_id": "010910",
+      "mst": "268669",
+      "effective_date": "20250722",
+      "article": "제9조",
+      "rule_axis": "폭행 협박 반복 야간 연락 등 금지",
+      "graph_use": "Contact/action recommendation must block coercive, repeated, night, third-party exposure, and unlawful pressure patterns."
+    },
+    {
+      "law_name": "채권의 공정한 추심에 관한 법률",
+      "law_id": "010910",
+      "mst": "268669",
+      "effective_date": "20250722",
+      "article": "제11조",
+      "rule_axis": "거짓 표시 금지",
+      "graph_use": "Agent must not imply nonexistent claim, state authority, false legal status, or untrue proceeding state."
+    },
+    {
+      "law_name": "채권의 공정한 추심에 관한 법률",
+      "law_id": "010910",
+      "mst": "268669",
+      "effective_date": "20250722",
+      "article": "제12조",
+      "rule_axis": "불공정 행위 금지",
+      "graph_use": "Cease/review gates required for relationship contact, insolvency stay, discharge/rehabilitation, and exposed postcard-like communications."
+    },
+    {
+      "law_name": "신용정보의 이용 및 보호에 관한 법률",
+      "law_id": "001540",
+      "mst": "260423",
+      "effective_date": "20240814",
+      "article": "제15조",
+      "rule_axis": "신용정보 수집 처리 원칙",
+      "graph_use": "Debtor memory ingestion must track purpose, minimum-necessary scope, fair collection, consent/exception basis."
+    },
+    {
+      "law_name": "신용정보의 이용 및 보호에 관한 법률",
+      "law_id": "001540",
+      "mst": "260423",
+      "effective_date": "20240814",
+      "article": "제32조",
+      "rule_axis": "개인신용정보 제공 활용 동의/예외",
+      "graph_use": "External financial-credit data route requires consent/exception/proof-burden metadata before graph promotion."
+    },
+    {
+      "law_name": "채무자 회생 및 파산에 관한 법률",
+      "law_id": "009930",
+      "mst": "267359",
+      "effective_date": "20260301",
+      "article": "제593조",
+      "rule_axis": "개인회생 중지/금지명령",
+      "graph_use": "Insolvency signal can block execution, provisional attachment, auction, and repayment demands until review."
+    },
+    {
+      "law_name": "채무자 회생 및 파산에 관한 법률",
+      "law_id": "009930",
+      "mst": "267359",
+      "effective_date": "20260301",
+      "article": "제600조",
+      "rule_axis": "개인회생 개시 후 중지/금지",
+      "graph_use": "Commencement order can stop/prohibit enforcement/repayment demand; limitation clock handling must record stopped period."
+    },
+    {
+      "law_name": "채무자 회생 및 파산에 관한 법률",
+      "law_id": "009930",
+      "mst": "267359",
+      "effective_date": "20260301",
+      "article": "제566조",
+      "rule_axis": "면책 효력",
+      "graph_use": "Discharge detection should block ordinary collection unless claim falls in statutory exception category."
+    }
+  ],
+  "key_finding": "Legal knowledge must be stored as curated versioned rule-source records, not as unversioned prompt memory."
+}

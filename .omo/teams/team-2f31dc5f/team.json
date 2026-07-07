@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "teamId": "09cb2f1f-c643-445e-bc26-d477876faf9e",
+  "teamName": "knowledge-expansion-goal4",
+  "sessionName": "knowledge-expansion-goal4",
+  "sessionId": "team-2f31dc5f",
+  "threadTitleConvention": "[knowledge-expansion-goal4] <member name>",
+  "status": "active",
+  "createdAt": "2026-07-07T13:01:46.992Z",
+  "updatedAt": "2026-07-07T13:32:49.233Z",
+  "archivedAt": null,
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "team-2f31dc5f"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "finance-review-hardening",
+      "focus": "trustgraph_legal/finance_claims.py, trustgraph_legal/domain_decisions.py finance-review paths, tests/evidence for G010 C001",
+      "lens": "area",
+      "deliverable": "Strengthen finance/review regressions for stale finance source version, unsupported allocation inputs, disputed amounts, manual-review-required triggers, preserving source_refs/review reasons and non-execution semantics; commit owned code/tests/evidence and write A report.",
+      "threadId": "019f3cac-8633-72a0-9f0c-426e17b8371d",
+      "threadTitle": "[knowledge-expansion-goal4] finance-review-hardening",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/A",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/A",
+        "branch": "team/team-2f31dc5f/A"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "B",
+      "name": "stopgate-safety-hardening",
+      "focus": "resources/legal_rules/debt_collection_stopgate_domain_v1.json, trustgraph_legal/stop_gates_domain_v1.py, StopGate/domain decision safety tests/evidence for G010 C002",
+      "lens": "area",
+      "deliverable": "Strengthen StopGate/domain decision regressions for legal-source uncertainty, protected income/property risks, bankruptcy/insolvency signals, and execution-title/service/finality uncertainty; prove no scenario falsely clears to execution-ready behavior; commit owned code/tests/evidence and write B report.",
+      "threadId": "019f3cac-942a-7061-b3a6-7f4a08f711c9",
+      "threadTitle": "[knowledge-expansion-goal4] stopgate-safety-hardening",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/B",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/B",
+        "branch": "team/team-2f31dc5f/B"
+      },
+      "status": "reported"
+    },
+    {
+      "id": "C",
+      "name": "goal4-contract-review",
+      "focus": "read-only review of Goal 4 A/B commits, evidence, compatibility suite, MCP order, PII/path, and deployment boundary",
+      "lens": "perspective",
+      "deliverable": "Review A/B Goal 4 outputs read-only; verify G010 C001-C003, merged-surface compatibility, local MCP 25-tool order, PII/path safety, no deployment/runbook mutation, and write C contract-review artifact with ACCEPTED/BLOCKED verdict.",
+      "threadId": "019f3cac-a260-7583-977f-7a6436fbfa0e",
+      "threadTitle": "[knowledge-expansion-goal4] goal4-contract-review",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/C",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/C",
+        "branch": "team/team-2f31dc5f/C"
+      },
+      "status": "active"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-07-07T13:01:46.992Z",
+      "event": "created",
+      "detail": "team knowledge-expansion-goal4"
+    },
+    {
+      "ts": "2026-07-07T13:01:54.901Z",
+      "event": "add-member",
+      "detail": "member A (area): trustgraph_legal/finance_claims.py, trustgraph_legal/domain_decisions.py finance-review paths, tests/evidence for G010 C001"
+    },
+    {
+      "ts": "2026-07-07T13:02:01.268Z",
+      "event": "add-member",
+      "detail": "member B (area): resources/legal_rules/debt_collection_stopgate_domain_v1.json, trustgraph_legal/stop_gates_domain_v1.py, StopGate/domain decision safety tests/evidence for G010 C002"
+    },
+    {
+      "ts": "2026-07-07T13:02:06.993Z",
+      "event": "add-member",
+      "detail": "member C (perspective): read-only review of Goal 4 A/B commits, evidence, compatibility suite, MCP order, PII/path, and deployment boundary"
+    },
+    {
+      "ts": "2026-07-07T13:02:18.390Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/A (team/team-2f31dc5f/A)"
+    },
+    {
+      "ts": "2026-07-07T13:02:18.796Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/B (team/team-2f31dc5f/B)"
+    },
+    {
+      "ts": "2026-07-07T13:02:19.342Z",
+      "event": "worktree-add",
+      "detail": "member C -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-2f31dc5f/worktrees/C (team/team-2f31dc5f/C)"
+    },
+    {
+      "ts": "2026-07-07T13:03:36.212Z",
+      "event": "bind-thread",
+      "detail": "member C -> thread 019f3cac-a260-7583-977f-7a6436fbfa0e"
+    },
+    {
+      "ts": "2026-07-07T13:03:36.232Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f3cac-8633-72a0-9f0c-426e17b8371d"
+    },
+    {
+      "ts": "2026-07-07T13:03:36.256Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f3cac-942a-7061-b3a6-7f4a08f711c9"
+    },
+    {
+      "ts": "2026-07-07T13:32:49.194Z",
+      "event": "set-status",
+      "detail": "member A -> reported: A committed b7668289 via leader rescue after verified gates"
+    },
+    {
+      "ts": "2026-07-07T13:32:49.233Z",
+      "event": "set-status",
+      "detail": "member B -> reported: B committed 9c3c046a and reported DONE"
+    }
+  ]
+}

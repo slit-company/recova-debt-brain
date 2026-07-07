@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-06T06:32:31.997Z",
+  "updatedAt": "2026-07-06T06:51:08.997Z",
+  "briefPath": ".omo/ulw-loop/debtor-context-graph-research-20260706/brief.md",
+  "goalsPath": ".omo/ulw-loop/debtor-context-graph-research-20260706/goals.json",
+  "ledgerPath": ".omo/ulw-loop/debtor-context-graph-research-20260706/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-research-and-planning-task-for-recov",
+      "title": "Research and planning task for Recova Debt Brain. Analyze OCR corpus...",
+      "objective": "Research and planning task for Recova Debt Brain. Analyze OCR corpus /Users/cosmos/dev/ocr/MinerU/work/legal_ocr_20260630, supplied long-term debt-collection legal action route manual /Users/cosmos/Downloads/채권추심_장기채권_법조치_루트_총정리.md, current TrustGraph/Recova source and MCP surface, and legal-source requirements. Produce evidence-backed research and next-step plan inputs for designing a per-debtor Debtor Context Graph and debt-collection route/domain logic ontology. Do not mutate production code. Keep PII out of outputs.",
+      "status": "complete",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Auxiliary CLI/data research proof: run PII-safe OCR/document-shape analysis, Recova MCP surface probes, route-manual extraction, and legal-source collection; PASS when synthesis report exists and cites all evidence artifacts.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/research/debtor-context-graph/SYNTHESIS.md plus evidence files under .omo/evidence/debtor-context-graph/",
+          "essential": true,
+          "capturedEvidence": ".omo/research/debtor-context-graph/SYNTHESIS.md; .omo/evidence/debtor-context-graph/ocr-corpus-shape.json; .omo/evidence/debtor-context-graph/ocr-classifier-coverage.json; .omo/evidence/debtor-context-graph/route-manual-summary.json; .omo/evidence/debtor-context-graph/korean-law-source-map.json; .omo/evidence/debtor-context-graph/recova-mcp-tools.json",
+          "status": "pass",
+          "capturedAt": "2026-07-06T06:47:42.828Z"
+        },
+        {
+          "id": "C002",
+          "scenario": "Adversarial/edge proof: verify outputs do not expose resident-registration-number patterns or raw personal identifiers from OCR, and document current classifier unknown-doc limitation.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/evidence/debtor-context-graph/pii-redaction-scan.txt and OCR classifier limitation evidence",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/debtor-context-graph/pii-redaction-scan.txt NO_FINDINGS; .omo/evidence/debtor-context-graph/ocr-classifier-coverage.json documents_evaluated=208 unknown=178; limitation documented in .omo/research/debtor-context-graph/SYNTHESIS.md",
+          "status": "pass",
+          "capturedAt": "2026-07-06T06:48:04.410Z"
+        },
+        {
+          "id": "C003",
+          "scenario": "Regression proof: current Recova MCP 16-tool surface and focused MCP tests still run after research-only artifacts, with no production-code mutation.",
+          "userModel": "regression",
+          "expectedEvidence": ".omo/evidence/debtor-context-graph/recova-mcp-tools.json and .omo/evidence/debtor-context-graph/focused-mcp-tests.txt",
+          "essential": false,
+          "capturedEvidence": ".omo/evidence/debtor-context-graph/recova-mcp-tools.json tool_count=16; .omo/evidence/debtor-context-graph/focused-mcp-tests.txt 9 passed",
+          "status": "pass",
+          "capturedAt": "2026-07-06T06:47:42.921Z"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-06T06:32:31.997Z",
+      "updatedAt": "2026-07-06T06:51:08.997Z",
+      "completedAt": "2026-07-06T06:51:08.997Z",
+      "evidence": ".omo/research/debtor-context-graph/SYNTHESIS.md; all C001-C003 evidence pass; focused MCP tests 9 passed; PII scan NO_FINDINGS; Codex goal completed tokensUsed=28654 timeUsedSeconds=210"
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/debtor-context-graph-research-20260706/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/debtor-context-graph-research-20260706/ledger.jsonl as the audit trail.",
+  "aggregateCompletion": {
+    "status": "complete",
+    "completedAt": "2026-07-06T06:51:08.997Z",
+    "evidence": ".omo/research/debtor-context-graph/SYNTHESIS.md; all C001-C003 evidence pass; focused MCP tests 9 passed; PII scan NO_FINDINGS; Codex goal completed tokensUsed=28654 timeUsedSeconds=210",
+    "codexGoal": {
+      "status": "complete",
+      "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/debtor-context-graph-research-20260706/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/debtor-context-graph-research-20260706/ledger.jsonl as the audit trail.",
+      "tokensUsed": 28654,
+      "timeUsedSeconds": 210
+    }
+  }
+}

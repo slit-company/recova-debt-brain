@@ -1,0 +1,9 @@
+name = "recova-mcp-lab-proxy"
+main = "worker.js"
+compatibility_date = "2026-07-06"
+account_id = "d334cf4490e67dee6d752bc5214d27d0"
+workers_dev = true
+
+routes = [
+  { pattern = "recova-mcp-lab.slit.company/*", zone_name = "slit.company" },
+]

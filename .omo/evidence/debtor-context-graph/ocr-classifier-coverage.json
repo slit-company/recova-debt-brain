@@ -1,0 +1,26 @@
+{
+  "schema_version": "recova-debtor-context-research/ocr-classifier-coverage/v1",
+  "generated_at": "2026-07-06T06:44:45.276880+00:00",
+  "source_root": "/Users/cosmos/dev/ocr/MinerU/work/legal_ocr_20260630",
+  "documents_evaluated": 208,
+  "document_type_counts": {
+    "attachment-collection-order": 30,
+    "unknown": 178
+  },
+  "review_status_counts": {
+    "classified": 30,
+    "needs_review_unknown_doc_type": 178
+  },
+  "redaction_totals": {
+    "account": 0,
+    "address": 42,
+    "national_id": 124,
+    "phone": 39
+  },
+  "top_reason_signals": {
+    "insufficient_document_type_signals": 178,
+    "attachment_collection_order_marker": 30
+  },
+  "key_finding": "Current v0 classifier recognizes attachment/collection order pages in this real OCR corpus, but the majority of page-level OCR files remain unknown and require document reconstruction plus additional route/document classifiers.",
+  "privacy_note": "Classifier excerpts and source text were intentionally not persisted because real OCR pages can contain personal identifiers."
+}

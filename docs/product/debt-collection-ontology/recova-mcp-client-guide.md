@@ -17,6 +17,9 @@ url: https://recova-mcp-lab.slit.company/mcp
 auth header: Authorization: Bearer <MCP_LAB_BEARER_TOKEN>
 ```
 
+The direct Vercel origin remains available as a fallback:
+`https://recova-debt-brain-lab.vercel.app/mcp`.
+
 The bearer token belongs in the MCP HTTP connection context. Do not pass it as a tool argument.
 
 ## Generic Config Shape
@@ -194,10 +197,16 @@ The client should read domain answers from `result` and use `source_refs` for tr
 
 If the client cannot connect:
 
-- Confirm the URL is exactly `https://recova-mcp-lab.slit.company/mcp`.
+- Confirm the URL is exactly `https://recova-mcp-lab.slit.company/mcp`
+  for the current lab endpoint.
 - Confirm the transport is streamable HTTP, not stdio.
 - Confirm the auth header is exactly `Authorization: Bearer <token>`.
 - Confirm the bearer token is not being sent as a tool argument.
+- If Cloudflare returns `530` with `error code: 1033`, the client config is
+  not the main problem. The old tunnel/origin path is leaking back in; check the
+  Cloudflare DNS record and Worker route before rotating tokens.
+- If the response has `x-recova-edge: cloudflare-worker`, traffic reached the
+  current company-domain edge path.
 
 If no-auth access succeeds, stop testing and rotate the lab token.
 
@@ -220,7 +229,8 @@ set +a
 /opt/homebrew/bin/python3 scripts/recova_mcp/mcp_lab_smoke.py \
   --url https://recova-mcp-lab.slit.company/mcp \
   --token-env MCP_LAB_BEARER_TOKEN \
-  --out .omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json
+  --out .omo/evidence/recova-mcp-deployment/cloudflare-worker-mcp-smoke.json \
+  --allow-missing-trace
 ```
 
 Expected:
@@ -229,9 +239,8 @@ Expected:
 - `tool_count=16`
 - `generic_tools=[]`
 - `execution_tools=[]`
-- `trace_status=recorded`
-- `evaluation_status=recorded`
-- `judgment_status=recorded`
+- `trace_status=not_recorded` when Supabase env is not loaded with
+  `--allow-missing-trace`
 
 ## Related Docs
 

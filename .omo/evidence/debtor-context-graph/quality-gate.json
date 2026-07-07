@@ -1,0 +1,136 @@
+{
+  "codeReview": {
+    "by": "lazycodex-code-reviewer",
+    "recommendation": "APPROVE",
+    "codeQualityStatus": "CLEAR",
+    "reportPath": ".omo/research/debtor-context-graph/code-review.md",
+    "evidence": "Research-only diff reviewed; no production code mutated; JSON evidence validates; limitations documented.",
+    "blockers": []
+  },
+  "manualQa": {
+    "by": "lazycodex-qa-executor",
+    "status": "passed",
+    "evidence": "Data, CLI, and adversarial PII surfaces passed for the debtor context graph research artifacts.",
+    "surfaceEvidence": [
+      {
+        "id": "surface-focused-mcp-tests",
+        "criterionRef": "C003",
+        "surface": "cli",
+        "invocation": "/opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_mcp_domain_tools.py tests/integration/legal_ontology/test_mcp_tools.py -q",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-focused-mcp-tests"
+        ]
+      },
+      {
+        "id": "surface-research-evidence",
+        "criterionRef": "C001",
+        "surface": "data",
+        "invocation": "python evidence generation over OCR corpus, route manual, mcp_domain, and Korean-law source map",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-ocr-shape",
+          "artifact-route-summary",
+          "artifact-law-map",
+          "artifact-mcp-surface"
+        ]
+      },
+      {
+        "id": "surface-pii-scan",
+        "criterionRef": "C002",
+        "surface": "cli",
+        "invocation": "rg sensitive identifier patterns over .omo/research/debtor-context-graph and .omo/evidence/debtor-context-graph",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-pii-scan"
+        ]
+      }
+    ],
+    "adversarialCases": [
+      {
+        "id": "adv-no-raw-ocr-pii",
+        "criterionRef": "C002",
+        "scenario": "Research outputs generated from real OCR corpus must not expose resident-registration-number, phone, or account-shaped identifiers.",
+        "expectedBehavior": "PII pattern scan returns NO_FINDINGS and classifier raw excerpts are not persisted.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-pii-scan",
+          "artifact-classifier-coverage"
+        ]
+      }
+    ],
+    "artifactRefs": [
+      {
+        "id": "artifact-focused-mcp-tests",
+        "kind": "cli-transcript",
+        "description": "Focused Recova MCP/domain tests passed.",
+        "path": ".omo/evidence/debtor-context-graph/focused-mcp-tests.txt"
+      },
+      {
+        "id": "artifact-ocr-shape",
+        "kind": "data-diff",
+        "description": "OCR corpus shape evidence.",
+        "path": ".omo/evidence/debtor-context-graph/ocr-corpus-shape.json"
+      },
+      {
+        "id": "artifact-classifier-coverage",
+        "kind": "data-diff",
+        "description": "PII-safe classifier coverage aggregate.",
+        "path": ".omo/evidence/debtor-context-graph/ocr-classifier-coverage.json"
+      },
+      {
+        "id": "artifact-route-summary",
+        "kind": "data-diff",
+        "description": "Route manual summary evidence.",
+        "path": ".omo/evidence/debtor-context-graph/route-manual-summary.json"
+      },
+      {
+        "id": "artifact-law-map",
+        "kind": "data-diff",
+        "description": "Korean-law MCP legal source map.",
+        "path": ".omo/evidence/debtor-context-graph/korean-law-source-map.json"
+      },
+      {
+        "id": "artifact-mcp-surface",
+        "kind": "data-diff",
+        "description": "Recova MCP 16-tool surface summary.",
+        "path": ".omo/evidence/debtor-context-graph/recova-mcp-tools.json"
+      },
+      {
+        "id": "artifact-pii-scan",
+        "kind": "log",
+        "description": "PII redaction scan log.",
+        "path": ".omo/evidence/debtor-context-graph/pii-redaction-scan.txt"
+      }
+    ]
+  },
+  "gateReview": {
+    "by": "lazycodex-gate-reviewer",
+    "recommendation": "APPROVE",
+    "reportPath": ".omo/research/debtor-context-graph/gate-review.md",
+    "evidence": "All three ULW criteria pass, focused MCP regression passes, PII scan is clean, and next-build plan is documented.",
+    "blockers": []
+  },
+  "iteration": {
+    "fullRerun": true,
+    "status": "passed",
+    "rerunCommands": [
+      "/opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_mcp_domain_tools.py tests/integration/legal_ontology/test_mcp_tools.py -q",
+      "for f in .omo/evidence/debtor-context-graph/*.json; do /opt/homebrew/bin/python3 -m json.tool \"$f\" >/dev/null; done",
+      "rg sensitive identifier patterns over research/evidence outputs"
+    ],
+    "evidence": "Focused tests passed, JSON evidence validates, and PII scan returned NO_FINDINGS."
+  },
+  "criteriaCoverage": {
+    "totalCriteria": 3,
+    "passCount": 3,
+    "originalIntent": "Analyze OCR corpus, route manual, current TrustGraph/Recova source and MCP surface, plus Korean-law MCP legal requirements before building debtor context graph/domain logic.",
+    "desiredOutcome": "Evidence-backed recommendation and next-build plan for per-debtor Debtor Context Graph and route/legal ontology work.",
+    "userOutcomeReview": "SYNTHESIS.md explains what exists, what is missing, why Debtor Context Graph v0 should come first, and how legal source/versioning should be represented.",
+    "adversarialClassesCovered": [
+      "real_ocr_pii_redaction",
+      "classifier_unknown_coverage_limitation",
+      "mcp_surface_regression"
+    ]
+  }
+}

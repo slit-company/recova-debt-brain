@@ -1,0 +1,284 @@
+{
+  "schema_version": "recova-debtor-context-research/route-manual-summary/v1",
+  "generated_at": "2026-07-06T06:44:45.276880+00:00",
+  "source_path": "/Users/cosmos/Downloads/채권추심_장기채권_법조치_루트_총정리.md",
+  "line_count": 2135,
+  "heading_count": 113,
+  "heading_samples": [
+    "# 장기채권 추심 업무 루트 총정리",
+    "## 0. 핵심 요약",
+    "## 1. 사건을 처음 받았을 때 보는 순서",
+    "### 1.1 채권 파일 체크",
+    "## 2. 장기채권에서 가장 먼저 갈리는 법적 전제",
+    "### 2.1 집행권원이 있는가",
+    "### 2.2 시효가 살아 있는가",
+    "### 2.3 회생·파산·면책 여부",
+    "## 3. 한 사람을 추심할 때 전체 흐름",
+    "### 3.1 전체 운영 플로우",
+    "### 3.2 사람 단위 프로파일링",
+    "### 3.3 사건 단위 상태값",
+    "## 4. 정보·단서 확보 루트",
+    "### 4.1 주민등록표 초본",
+    "### 4.2 신용정보 조회",
+    "### 4.3 등기부등본 / 등기사항증명서",
+    "### 4.4 자동차등록원부",
+    "### 4.5 사업자 정보",
+    "## 5. 집행권원 확보 루트",
+    "### 5.1 지급명령",
+    "### 5.2 민사소송",
+    "### 5.3 공정증서",
+    "### 5.4 가압류",
+    "## 6. 기본 압류 구조: 제3채무자 찾기",
+    "## 7. 은행·금융자산 압류 루트",
+    "### 7.1 예금채권 압류",
+    "### 7.2 적금·예치금·청약성 계좌",
+    "### 7.3 증권사 예수금·펀드·주식",
+    "### 7.4 가상자산 거래소 반환청구권",
+    "## 8. 급여·근로소득 압류 루트",
+    "### 8.1 급여채권 압류",
+    "### 8.2 상여금·성과급·인센티브",
+    "### 8.3 퇴직금 압류",
+    "### 8.4 프리랜서·개인 용역대금 압류",
+    "## 9. 주거·임대차 관련 루트",
+    "### 9.1 임차보증금 반환채권 압류",
+    "### 9.2 전세권 관련 권리 압류",
+    "### 9.3 채무자가 임대인인 경우: 차임채권 압류",
+    "### 9.4 부동산 강제관리",
+    "## 10. 부동산 관련 루트"
+  ],
+  "route_term_counts": {
+    "상속": 76,
+    "부동산": 58,
+    "경매": 37,
+    "보험": 35,
+    "소송": 35,
+    "급여": 31,
+    "은행": 28,
+    "환급금": 28,
+    "가압류": 24,
+    "사해행위": 21,
+    "지급명령": 18,
+    "플랫폼": 15,
+    "재산명시": 14,
+    "회생": 14,
+    "면책": 13,
+    "자동차": 12,
+    "재산조회": 12,
+    "PG": 11,
+    "공탁금": 11,
+    "파산": 11,
+    "보상금": 10,
+    "카드매출": 9,
+    "배당금": 8,
+    "추심명령": 8,
+    "퇴직금": 8,
+    "유체동산": 7,
+    "채무불이행자명부": 6,
+    "소멸시효": 4,
+    "임대차보증금": 3,
+    "채권압류": 3
+  },
+  "route_candidates_v0": [
+    {
+      "route_id": "title_acquisition_payment_order",
+      "family": "title",
+      "requires": [
+        "claim_basis",
+        "debtor_identity",
+        "service_path"
+      ],
+      "blocks_on": [
+        "dispute_high",
+        "identity_uncertain"
+      ]
+    },
+    {
+      "route_id": "limitation_extension_lawsuit",
+      "family": "title",
+      "requires": [
+        "limitation_clock",
+        "claim_balance"
+      ],
+      "blocks_on": [
+        "already_time_barred_without_interruption"
+      ]
+    },
+    {
+      "route_id": "bank_account_attachment",
+      "family": "financial_asset",
+      "requires": [
+        "enforceable_title",
+        "third_party_debtor_bank_hint"
+      ],
+      "blocks_on": [
+        "exempt_deposit_risk",
+        "insolvency_stay"
+      ]
+    },
+    {
+      "route_id": "wage_attachment",
+      "family": "income",
+      "requires": [
+        "enforceable_title",
+        "employer_hint"
+      ],
+      "blocks_on": [
+        "wage_exemption_review"
+      ]
+    },
+    {
+      "route_id": "severance_attachment",
+      "family": "income",
+      "requires": [
+        "enforceable_title",
+        "employment_hint"
+      ],
+      "blocks_on": [
+        "severance_half_exemption_review"
+      ]
+    },
+    {
+      "route_id": "lease_deposit_attachment",
+      "family": "housing",
+      "requires": [
+        "enforceable_title",
+        "lease_deposit_hint"
+      ],
+      "blocks_on": [
+        "priority_small_deposit_exemption"
+      ]
+    },
+    {
+      "route_id": "real_estate_auction",
+      "family": "real_estate",
+      "requires": [
+        "real_estate_registry_asset",
+        "enforceable_title"
+      ],
+      "blocks_on": [
+        "priority_claims_unknown"
+      ]
+    },
+    {
+      "route_id": "vehicle_attachment",
+      "family": "movable_asset",
+      "requires": [
+        "vehicle_registration_hint",
+        "enforceable_title"
+      ],
+      "blocks_on": [
+        "asset_value_low_or_priority_unclear"
+      ]
+    },
+    {
+      "route_id": "business_receivable_attachment",
+      "family": "business_revenue",
+      "requires": [
+        "business_activity_hint",
+        "third_party_debtor_hint"
+      ],
+      "blocks_on": [
+        "receivable_specificity_low"
+      ]
+    },
+    {
+      "route_id": "card_pg_platform_settlement_attachment",
+      "family": "business_revenue",
+      "requires": [
+        "merchant_or_platform_hint",
+        "settlement_counterparty"
+      ],
+      "blocks_on": [
+        "third_party_debtor_uncertain"
+      ]
+    },
+    {
+      "route_id": "insurance_refund_or_claim_attachment",
+      "family": "insurance",
+      "requires": [
+        "insurance_policy_hint"
+      ],
+      "blocks_on": [
+        "protection_or_exemption_review"
+      ]
+    },
+    {
+      "route_id": "tax_refund_or_public_receivable_attachment",
+      "family": "public_receivable",
+      "requires": [
+        "refund_or_compensation_hint"
+      ],
+      "blocks_on": [
+        "public_law_priority_unclear"
+      ]
+    },
+    {
+      "route_id": "inheritance_review_and_share_attachment",
+      "family": "inheritance",
+      "requires": [
+        "death_or_family_relation_hint",
+        "estate_asset_hint"
+      ],
+      "blocks_on": [
+        "renunciation_or_limited_acceptance_unknown"
+      ]
+    },
+    {
+      "route_id": "fraudulent_transfer_lawsuit",
+      "family": "asset_recovery",
+      "requires": [
+        "suspicious_transfer",
+        "claim_before_transfer",
+        "deadline_clock"
+      ],
+      "blocks_on": [
+        "knowledge_date_or_transfer_date_missing"
+      ]
+    },
+    {
+      "route_id": "property_disclosure",
+      "family": "court_auxiliary",
+      "requires": [
+        "money_payment_enforcement_title",
+        "executable_copy"
+      ],
+      "blocks_on": [
+        "nonfinal_or_provisional_title"
+      ]
+    },
+    {
+      "route_id": "property_inquiry",
+      "family": "court_auxiliary",
+      "requires": [
+        "property_disclosure_episode",
+        "statutory_failure_condition"
+      ],
+      "blocks_on": [
+        "institution_scope_missing"
+      ]
+    },
+    {
+      "route_id": "debtor_default_registry",
+      "family": "pressure_legal",
+      "requires": [
+        "final_title_or_written_title",
+        "six_month_nonpayment_or_property_disclosure_failure"
+      ],
+      "blocks_on": [
+        "proof_missing"
+      ]
+    },
+    {
+      "route_id": "insolvency_review_or_cease_collection",
+      "family": "stopgate",
+      "requires": [
+        "insolvency_signal"
+      ],
+      "blocks_on": [
+        "stay_or_discharge_detected"
+      ]
+    }
+  ],
+  "key_finding": "The route manual is best modeled as route candidates with preconditions, blockers, evidence requirements, and expected next legal/operational step, not as one flat ontology class list.",
+  "privacy_note": "No personal data from debtor documents is included."
+}

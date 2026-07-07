@@ -8,12 +8,15 @@ from typing import Any
 
 REQUIRED_TEXT = (
     "recova-mcp-lab.slit.company",
-    "mini",
-    "Cloudflare Tunnel",
+    "Linux VPS",
+    "Docker Compose",
+    "Cloudflare DNS",
+    "Cloudflare Worker",
     "Supabase",
     "MCP_LAB_BEARER_TOKEN",
     "rollback",
     "task-11-mcp-smoke.json",
+    "cloudflare-worker-mcp-smoke.json",
 )
 
 

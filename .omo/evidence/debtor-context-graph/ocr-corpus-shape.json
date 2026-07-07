@@ -1,0 +1,105 @@
+{
+  "schema_version": "recova-debtor-context-research/ocr-corpus-shape/v1",
+  "generated_at": "2026-07-06T06:44:45.276880+00:00",
+  "source_root": "/Users/cosmos/dev/ocr/MinerU/work/legal_ocr_20260630",
+  "files_total": 211,
+  "markdown_files_total": 208,
+  "zip_files_total": 1,
+  "manifest_tsv_present": true,
+  "manifest_tsv_line_count": 209,
+  "missing_txt_present": true,
+  "missing_txt_empty": true,
+  "total_markdown_lines": 5393,
+  "total_markdown_chars": 350586,
+  "page_level_ocr": true,
+  "pii_signals_file_counts": {
+    "national_id": 89,
+    "phone": 38
+  },
+  "keyword_group_file_counts": {
+    "amount_ledger": 79,
+    "asset_signal": 54,
+    "assignment_succession": 43,
+    "attachment_collection": 90,
+    "court_procedure": 150,
+    "enforcement_title": 75,
+    "identity_evidence": 92,
+    "insolvency_signal": 17,
+    "limitation_signal": 19
+  },
+  "exact_term_counts": {
+    "채권압류 및 추심명령": {
+      "files": 30,
+      "occurrences": 30
+    },
+    "청구채권의 표시": {
+      "files": 29,
+      "occurrences": 29
+    },
+    "압류 및 추심할 채권": {
+      "files": 10,
+      "occurrences": 10
+    },
+    "지급명령": {
+      "files": 5,
+      "occurrences": 7
+    },
+    "송달": {
+      "files": 42,
+      "occurrences": 60
+    },
+    "확정": {
+      "files": 13,
+      "occurrences": 23
+    },
+    "집행문": {
+      "files": 5,
+      "occurrences": 12
+    },
+    "등기사항": {
+      "files": 13,
+      "occurrences": 15
+    },
+    "주민등록": {
+      "files": 33,
+      "occurrences": 85
+    },
+    "채권양도": {
+      "files": 1,
+      "occurrences": 1
+    },
+    "회생": {
+      "files": 7,
+      "occurrences": 9
+    },
+    "파산": {
+      "files": 15,
+      "occurrences": 51
+    },
+    "면책": {
+      "files": 10,
+      "occurrences": 31
+    },
+    "신용정보": {
+      "files": 14,
+      "occurrences": 38
+    },
+    "부동산": {
+      "files": 5,
+      "occurrences": 11
+    },
+    "급여": {
+      "files": 4,
+      "occurrences": 6
+    },
+    "보험": {
+      "files": 20,
+      "occurrences": 114
+    },
+    "보증금": {
+      "files": 11,
+      "occurrences": 12
+    }
+  },
+  "privacy_note": "No OCR source text or raw personal identifiers are included in this evidence file."
+}

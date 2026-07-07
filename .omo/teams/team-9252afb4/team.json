@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "teamId": "c5a95efb-5666-43ef-8d52-df27cdd9545e",
+  "teamName": "knowledge-expansion-goal3",
+  "sessionName": "knowledge expansion goal3",
+  "sessionId": "team-9252afb4",
+  "threadTitleConvention": "[knowledge-expansion-goal3] <member name>",
+  "status": "archived",
+  "createdAt": "2026-07-07T11:43:57.088Z",
+  "updatedAt": "2026-07-07T12:55:51.770Z",
+  "archivedAt": "2026-07-07T12:55:51.770Z",
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "team-9252afb4"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": true,
+    "baseBranch": "master",
+    "root": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4",
+    "team": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/team.json",
+    "guide": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/guide.md",
+    "artifacts": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/artifacts"
+  },
+  "members": [
+    {
+      "id": "A",
+      "name": "source-dispositions",
+      "focus": "resources/legal_rules/debt_collection_domain_sources_v1.json plus task-3 source-disposition evidence",
+      "lens": "area",
+      "deliverable": "Add machine-readable disposition metadata for the three needs_legal_review domain source records without clearing their conservative review_status; prove validators and PII/path-safe evidence.",
+      "threadId": "019f3c65-c273-7eb0-8bb6-8f8624c16109",
+      "threadTitle": "[knowledge-expansion-goal3] source-dispositions",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/A",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/A",
+        "branch": "team/team-9252afb4/A"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "B",
+      "name": "scenario-fixtures",
+      "focus": "tests/fixtures/claim-domain-v1/synthetic_claim_states.json plus task-3 expanded scenario evidence",
+      "lens": "area",
+      "deliverable": "Expand rare-case synthetic claim-domain fixtures across missing route families while preserving PII-safe non-execution semantics; prove integration tests and status diversity.",
+      "threadId": "019f3c65-db0f-7633-9788-7ae692a7476f",
+      "threadTitle": "[knowledge-expansion-goal3] scenario-fixtures",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/B",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/B",
+        "branch": "team/team-9252afb4/B"
+      },
+      "status": "archived"
+    },
+    {
+      "id": "C",
+      "name": "goal3-review",
+      "focus": "read-only contract review of A/B Goal 3 outputs and merge readiness",
+      "lens": "perspective",
+      "deliverable": "Review A/B commits and evidence read-only; verify Goal 3 criteria C001-C003, MCP 25-tool order, JSON validity, PII/path safety, and no deployment/runbook mutation.",
+      "threadId": "019f3c65-f653-7de1-8d7c-907df59feac7",
+      "threadTitle": "[knowledge-expansion-goal3] goal3-review",
+      "cwd": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/C",
+      "worktree": {
+        "path": "/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/C",
+        "branch": "team/team-9252afb4/C"
+      },
+      "status": "archived"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-07-07T11:43:57.088Z",
+      "event": "created",
+      "detail": "team knowledge-expansion-goal3"
+    },
+    {
+      "ts": "2026-07-07T11:44:12.019Z",
+      "event": "add-member",
+      "detail": "member A (area): resources/legal_rules/debt_collection_domain_sources_v1.json plus task-3 source-disposition evidence"
+    },
+    {
+      "ts": "2026-07-07T11:44:12.038Z",
+      "event": "add-member",
+      "detail": "member B (area): tests/fixtures/claim-domain-v1/synthetic_claim_states.json plus task-3 expanded scenario evidence"
+    },
+    {
+      "ts": "2026-07-07T11:44:12.135Z",
+      "event": "add-member",
+      "detail": "member C (perspective): read-only contract review of A/B Goal 3 outputs and merge readiness"
+    },
+    {
+      "ts": "2026-07-07T11:44:22.791Z",
+      "event": "worktree-add",
+      "detail": "member A -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/A (team/team-9252afb4/A)"
+    },
+    {
+      "ts": "2026-07-07T11:44:23.167Z",
+      "event": "worktree-add",
+      "detail": "member B -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/B (team/team-9252afb4/B)"
+    },
+    {
+      "ts": "2026-07-07T11:44:23.630Z",
+      "event": "worktree-add",
+      "detail": "member C -> /Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-9252afb4/worktrees/C (team/team-9252afb4/C)"
+    },
+    {
+      "ts": "2026-07-07T11:46:08.197Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f3c65-db0f-7633-9788-7ae692a7476f"
+    },
+    {
+      "ts": "2026-07-07T11:46:08.233Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f3c65-c273-7eb0-8bb6-8f8624c16109"
+    },
+    {
+      "ts": "2026-07-07T11:46:08.498Z",
+      "event": "bind-thread",
+      "detail": "member C -> thread 019f3c65-f653-7de1-8d7c-907df59feac7"
+    },
+    {
+      "ts": "2026-07-07T12:52:49.616Z",
+      "event": "set-status",
+      "detail": "member A -> reported: DONE cbb60d46 source dispositions"
+    },
+    {
+      "ts": "2026-07-07T12:52:49.639Z",
+      "event": "set-status",
+      "detail": "member B -> reported: DONE d22d03c4 expanded scenario fixtures"
+    },
+    {
+      "ts": "2026-07-07T12:55:13.276Z",
+      "event": "set-status",
+      "detail": "member C -> reported: DONE/REVIEW accepted Goal 3"
+    },
+    {
+      "ts": "2026-07-07T12:55:51.770Z",
+      "event": "archive",
+      "detail": "Goal 3 A/B integrated; C accepted review; member threads archived"
+    }
+  ]
+}

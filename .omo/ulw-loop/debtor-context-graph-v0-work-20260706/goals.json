@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-06T07:31:23.532Z",
+  "updatedAt": "2026-07-06T07:31:41.741Z",
+  "briefPath": ".omo/ulw-loop/debtor-context-graph-v0-work-20260706/brief.md",
+  "goalsPath": ".omo/ulw-loop/debtor-context-graph-v0-work-20260706/goals.json",
+  "ledgerPath": ".omo/ulw-loop/debtor-context-graph-v0-work-20260706/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-execute-omo-plans-debtor-context-gra",
+      "title": "Execute .omo/plans/debtor-context-graph-v0.md end-to-end. Use the pla...",
+      "objective": "Execute .omo/plans/debtor-context-graph-v0.md end-to-end. Use the plan's 15 Todos and Final Verification Wave as the source of truth. Build a deterministic debtor-context graph v0 under trustgraph_legal: schema types, OCR document assembly, route/legal resources, debtor graph builder, snapshot diff, route candidates, StopGate integration, CLI, additive MCP debtor tools, governance hooks, tests, docs, and PII-safe real OCR eval evidence. Success is all top-level plan checkboxes completed with automated tests, real CLI/fake-MCP surface evidence, PII scans, cleanup receipts, commits, and final review evidence. Do not mutate unrelated deployment files or expose raw OCR/PII.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Auxiliary CLI/data surface: complete every top-level checkbox in .omo/plans/debtor-context-graph-v0.md, then run /opt/homebrew/bin/python3 -m pytest tests/unit/legal_ontology/test_document_assembly.py tests/unit/legal_ontology/test_debtor_context.py tests/unit/legal_ontology/test_route_candidates.py tests/unit/legal_ontology/test_mcp_debtor_context_tools.py tests/integration/legal_ontology/test_debtor_context_pipeline.py tests/unit/legal_ontology/test_mcp_domain_tools.py tests/integration/legal_ontology/test_mcp_tools.py -q; PASS when the command exits 0 and final evidence files exist.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/debtor-context-graph-v0/final-focused-pytest.txt plus completed plan checkboxes",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "Adversarial safety surface: run the final PII scan and outside-root fake-MCP path probe; PASS when final-pii-scan.txt contains NO_FINDINGS and final-mcp-path-failure.json reports path_outside_repo_root without leaking the requested path or file content.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/evidence/debtor-context-graph-v0/final-pii-scan.txt and .omo/evidence/debtor-context-graph-v0/final-mcp-path-failure.json",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "regression: adjacent surface still works",
+          "userModel": "regression",
+          "expectedEvidence": "Replace via revise_criterion with regression proof for neighboring behavior after: Execute .omo/plans/debtor-context-graph-v0.md end-to-end. Use the plan's 15 T....",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-06T07:31:23.532Z",
+      "updatedAt": "2026-07-06T07:31:41.741Z"
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/debtor-context-graph-v0-work-20260706/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/debtor-context-graph-v0-work-20260706/ledger.jsonl as the audit trail."
+}

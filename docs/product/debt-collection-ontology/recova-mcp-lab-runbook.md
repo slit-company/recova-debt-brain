@@ -6,11 +6,18 @@ Status: lab-ready, not production-ready.
 
 ## Live Surface
 
-- Public MCP URL: `https://recova-mcp-lab.slit.company/mcp`
-- Origin host: `mini`
-- Origin process: native Python FastMCP server in `~/recova-mcp-lab`
-- Origin URL: `http://127.0.0.1:8000/mcp`
-- DNS path: Cloudflare Tunnel route for `recova-mcp-lab.slit.company`
+- Active public MCP URL: `https://recova-mcp-lab.slit.company/mcp`
+- Direct origin/fallback MCP URL: `https://recova-debt-brain-lab.vercel.app/mcp`
+- Current edge path: Cloudflare Worker `recova-mcp-lab-proxy` route
+  `recova-mcp-lab.slit.company/*`.
+- Current origin host: Vercel serverless endpoint wrapping `trustgraph_legal.mcp_domain`.
+- Preferred future durable origin host: always-on Linux VPS, not the retired Mac mini.
+- Origin process: Docker Compose service `recova-mcp` plus Caddy reverse proxy.
+- Internal MCP URL: `http://recova-mcp:8000/mcp` inside the Compose network.
+- Host-local MCP URL: `http://127.0.0.1:8000/mcp` on the VPS.
+- DNS path: Cloudflare proxied `CNAME` record for `recova-mcp-lab.slit.company`
+  targeting `cname.vercel-dns.com`; Cloudflare Worker route handles requests
+  before origin fallback.
 - Database: Supabase project `recova-mcp-lab`
 - Trace storage: Supabase `evaluation_runs`, `judgment_runs`, and `tool_traces`
 
@@ -71,39 +78,77 @@ reprocess_case
 
 Generic TrustGraph tools such as `embeddings`, `put_config`, `load_document`, and `delete_kg_core` must not be exposed from the lab endpoint.
 
-## Restart
+## VPS Bootstrap
 
-On `mini`:
+Bootstrap a fresh Ubuntu/Debian VPS once:
 
 ```sh
-cd ~/recova-mcp-lab
-if [ -f recova-mcp.pid ]; then kill "$(cat recova-mcp.pid)" || true; fi
+scp deploy/recova-mcp-lab/bootstrap_vps_ubuntu.sh root@<vps-ip>:/tmp/
+ssh root@<vps-ip> 'sh /tmp/bootstrap_vps_ubuntu.sh'
+```
+
+The bootstrap installs Docker Compose, opens SSH/HTTP/HTTPS with `ufw`, and
+creates `/opt/recova-mcp-lab`.
+
+## Deploy Or Restart
+
+From this repo:
+
+```sh
 set -a
-. ./.env
+. deploy/recova-mcp-lab/.env
 set +a
-PYTHONPATH="$PWD/app:$PWD/app/trustgraph-base:$PWD/app/trustgraph-mcp" \
-  nohup .venv/bin/python -m trustgraph.mcp_server.legal_only \
-  --host 127.0.0.1 \
-  --port 8000 \
-  --repo-root "$PWD/app" \
-  --auth-issuer "https://recova-mcp-lab.slit.company" \
-  --auth-resource-url "https://recova-mcp-lab.slit.company/mcp" \
-  --no-loki-enabled > recova-mcp.log 2>&1 &
-echo "$!" > recova-mcp.pid
+scripts/recova_mcp/deploy_vps.sh user@<vps-ip-or-hostname>
 ```
 
-Then restart or reload the tunnel if needed:
+The deploy script:
+
+- verifies required lab env without printing secret values;
+- copies the repo to `/opt/recova-mcp-lab/app`;
+- copies the ignored lab `.env` separately;
+- runs `docker compose -f deploy/recova-mcp-lab/docker-compose.yml up -d --build`;
+- prints the remote Compose service status.
+
+Use `root@<vps-ip>` for the first deployment unless another SSH user already
+has write access to `/opt/recova-mcp-lab` and Docker permissions.
+
+Manual restart on the VPS:
 
 ```sh
-launchctl kickstart -k "gui/$(id -u)/com.slit.cliproxyapi-cloudflared"
+ssh user@<vps-ip-or-hostname> \
+  'cd /opt/recova-mcp-lab/app && docker compose -f deploy/recova-mcp-lab/docker-compose.yml --env-file deploy/recova-mcp-lab/.env up -d --build'
 ```
+
+## DNS And Edge
+
+The old Cloudflare Tunnel-backed record has been replaced. Keeping that dead
+tunnel route caused Cloudflare `530` / `error code: 1033`.
+
+Current live path:
+
+1. Cloudflare DNS has `recova-mcp-lab.slit.company` as a proxied `CNAME` to
+   `cname.vercel-dns.com`.
+2. Cloudflare Worker `recova-mcp-lab-proxy` is deployed from
+   `deploy/cloudflare-mcp-proxy/`.
+3. The Worker route `recova-mcp-lab.slit.company/*` forwards requests to
+   `https://recova-debt-brain-lab.vercel.app`.
+4. Vercel remains the current origin until a VPS is provisioned.
+
+If moving to a VPS later, point the Worker upstream at the VPS hostname or
+replace the Worker route with a reviewed `A` / `AAAA` DNS cutover and rerun the
+health checks below.
+
+The public MCP URL should not change for clients.
 
 ## Logs
 
 ```sh
-ssh mini 'tail -n 120 ~/recova-mcp-lab/recova-mcp.log'
-ssh mini 'tail -n 120 ~/.cloudflared/cloudflared.log'
-ssh mini 'launchctl print gui/$(id -u)/com.slit.cliproxyapi-cloudflared | head -80'
+ssh user@<vps-ip-or-hostname> \
+  'cd /opt/recova-mcp-lab/app && docker compose -f deploy/recova-mcp-lab/docker-compose.yml logs --tail=120 recova-mcp'
+ssh user@<vps-ip-or-hostname> \
+  'cd /opt/recova-mcp-lab/app && docker compose -f deploy/recova-mcp-lab/docker-compose.yml logs --tail=120 caddy'
+ssh user@<vps-ip-or-hostname> \
+  'cd /opt/recova-mcp-lab/app && docker compose -f deploy/recova-mcp-lab/docker-compose.yml ps'
 ```
 
 Do not paste `.env`, bearer tokens, Supabase keys, Cloudflare tokens, raw legal text, or full OCR text into logs, reports, or issue descriptions.
@@ -127,7 +172,8 @@ set +a
 /opt/homebrew/bin/python3 scripts/recova_mcp/mcp_lab_smoke.py \
   --url https://recova-mcp-lab.slit.company/mcp \
   --token-env MCP_LAB_BEARER_TOKEN \
-  --out .omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json
+  --out .omo/evidence/recova-mcp-deployment/cloudflare-worker-mcp-smoke.json \
+  --allow-missing-trace
 ```
 
 Expected:
@@ -136,16 +182,15 @@ Expected:
 - `tool_count=16`
 - `generic_tools=[]`
 - `decision` is one of `가능`, `보류`, `불가능`
-- `trace_status=recorded`
-- `evaluation_status=recorded`
-- `judgment_status=recorded`
+- `trace_status=not_recorded` when Supabase env is not loaded with
+  `--allow-missing-trace`
 
 No-auth MCP client failure:
 
 ```sh
 env -u MCP_LAB_BEARER_TOKEN /opt/homebrew/bin/python3 scripts/recova_mcp/mcp_lab_smoke.py \
   --url https://recova-mcp-lab.slit.company/mcp \
-  --out .omo/evidence/recova-mcp-deployment/task-11-no-auth.json \
+  --out .omo/evidence/recova-mcp-deployment/cloudflare-worker-mcp-no-auth.json \
   --expect-auth-failure
 ```
 
@@ -163,6 +208,8 @@ Trace and judgment proof:
 - `.omo/evidence/recova-mcp-deployment/task-10-trace-insert.json`
 - `.omo/evidence/recova-mcp-deployment/task-10-trace-count.json`
 - `.omo/evidence/recova-mcp-deployment/task-11-mcp-smoke.json`
+- `.omo/evidence/recova-mcp-deployment/cloudflare-worker-mcp-smoke.json`
+- `.omo/evidence/recova-mcp-deployment/cloudflare-worker-mcp-no-auth.json`
 
 PII-shaped inserts should be rejected or redacted:
 
@@ -171,9 +218,11 @@ PII-shaped inserts should be rejected or redacted:
 ## Token Rotation
 
 1. Generate a new `MCP_LAB_BEARER_TOKEN`.
-2. Update `~/recova-mcp-lab/.env` on `mini`.
-3. Update the local ignored file `deploy/recova-mcp-lab/.env`.
-4. Restart the MCP process.
+2. Update `deploy/recova-mcp-lab/.env` locally.
+3. Update the Vercel `MCP_LAB_BEARER_TOKEN` environment variable for
+   `recova-debt-brain-lab`, then redeploy the Vercel origin.
+4. If the VPS origin is active instead, redeploy with
+   `scripts/recova_mcp/deploy_vps.sh user@<vps-ip-or-hostname>`.
 5. Rerun `scripts/recova_mcp/check_lab_env.sh --redacted`.
 6. Rerun the authenticated and unauthenticated MCP smokes.
 
@@ -189,9 +238,10 @@ scripts/recova_mcp/rollback_lab.sh --dry-run
 
 Rollback defaults:
 
-- stop the native MCP process on `mini`
-- remove or disable the `recova-mcp-lab.slit.company` Cloudflare Tunnel ingress
-- remove the DNS route from Cloudflare after review
+- stop the VPS Docker Compose stack
+- snapshot `/opt/recova-mcp-lab/app` before deletion
+- remove or disable the `recova-mcp-lab.slit.company` Cloudflare Worker route
+  and DNS record after review
 - preserve Supabase evidence unless the user explicitly requests a purge
 - rotate exposed credentials if the rollback was caused by leakage
 

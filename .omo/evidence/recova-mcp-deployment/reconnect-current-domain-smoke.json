@@ -1,0 +1,31 @@
+{
+  "status": "ok",
+  "auth_failure": false,
+  "tool_count": 16,
+  "expected_tool_count": 16,
+  "generic_tools": [],
+  "execution_tools": [],
+  "tools": [
+    "list_debt_collection_tools",
+    "ingest_legal_document",
+    "ingest_ocr_markdown",
+    "get_ingest_status",
+    "classify_legal_document",
+    "extract_case_packet",
+    "get_case_graph",
+    "check_case_stop_gates",
+    "check_limitation_status",
+    "check_attachment_target_rules",
+    "summarize_case_ledger",
+    "recommend_next_action",
+    "list_unknown_document_types",
+    "review_extracted_fact",
+    "promote_ontology_candidate",
+    "reprocess_case"
+  ],
+  "decision": "보류",
+  "trace_required": false,
+  "trace_status": "not_recorded",
+  "evaluation_status": "not_recorded",
+  "judgment_status": "not_recorded"
+}
