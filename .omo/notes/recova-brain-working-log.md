@@ -373,6 +373,16 @@ Recommended next steps, in order:
    - design a human-review operator UI or workflow for action packets and governance records.
 5. Decide the production boundary before enabling any real execution workflow. Current packets are intentionally advisory and non-executing.
 
+2026-07-07 decision update:
+
+- User chose to intentionally skip Next Work 1-3 for now:
+  - updated MCP server deployment;
+  - remote MCP live smoke;
+  - client-facing remote setup docs.
+- Next execution target is `.omo/plans/debt-collection-knowledge-expansion-v1.md`.
+- The new wave focuses on legal-source precision, rare claim-domain scenario expansion, finance/review regressions, and human-review workflow contracts.
+- Deployment and production execution remain out of scope until the user explicitly brings them back.
+
 This log should continue to be updated whenever the user answers interview questions, changes product direction, or completes/accepts a major implementation slice.
 
 ## Working Rules For Future Updates
