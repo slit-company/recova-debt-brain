@@ -1,0 +1,387 @@
+{
+  "schema_version": "trustgraph-task-evidence/v1",
+  "evidence_id": "task-3-expanded-scenarios-happy",
+  "task": "Goal 3 C002 expanded synthetic claim-domain scenarios",
+  "fixture_paths": [
+    "tests/fixtures/claim-domain-v1/synthetic_claim_states.json",
+    "tests/fixtures/claim-domain-v1/minimized_manual_v2_scenarios.md"
+  ],
+  "pii_profile": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "local_absolute_paths_included": false,
+    "contact_payload_included": false,
+    "filing_destination_included": false,
+    "synthetic_only": true
+  },
+  "non_execution_semantics": "fixture_only_advisory_domain_test_no_collection_action",
+  "summary": {
+    "scenario_count": 26,
+    "unique_route_count": 22,
+    "status_counts": {
+      "blocked": 9,
+      "missing_facts": 6,
+      "possible": 5,
+      "review_required": 6
+    },
+    "packet_type_counts": {
+      "contact_review": 2,
+      "finance_review": 1,
+      "insolvency_recovery_review": 2,
+      "legal_action_review": 20,
+      "monitoring_retry": 1
+    },
+    "manual_inventory_route_candidates": 26,
+    "engine_expected_status_mismatches": 0
+  },
+  "required_family_coverage": {
+    "notarial_deed": 1,
+    "service_finality_uncertainty": 2,
+    "real_estate_provisional_remedy": 1,
+    "receivable_provisional_remedy": 1,
+    "business_receivable": 2,
+    "real_estate_auction": 1,
+    "movable_asset": 2,
+    "insurance_deposit": 2,
+    "tax_refund_benefit_risk": 2,
+    "inheritance": 1,
+    "hidden_asset_fraudulent_transfer": 1,
+    "insolvency": 1,
+    "monitoring_retry": 1,
+    "finance_ambiguity": 2
+  },
+  "scenario_outcomes": [
+    {
+      "scenario_id": "clean-title-bank-route",
+      "family": "bank_account_attachment_baseline",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "possible",
+      "expected_status": "possible",
+      "packet_type": "legal_action_review",
+      "review_codes": []
+    },
+    {
+      "scenario_id": "missing-service-finality-proof",
+      "family": "service_finality_uncertainty",
+      "route_id": "property_disclosure_inquiry_registry",
+      "workflow_state": "asset_discovery",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "limitation-risk-acknowledgment-missing",
+      "family": "limitation_acknowledgment",
+      "route_id": "partial_payment_acknowledgment",
+      "workflow_state": "limitation_review",
+      "engine_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "contact_review",
+      "review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "wage-route-missing-employer-signal",
+      "family": "wage_income",
+      "route_id": "wage_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "bank-route-missing-account-hint",
+      "family": "bank_account_attachment_missing_asset_hint",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "insolvency-blocker-bank-route",
+      "family": "insolvency_stopgate",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "exempt-public-benefit-risk",
+      "family": "tax_refund_benefit_risk",
+      "route_id": "welfare_public_benefit_exclusion_review",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "insolvency_recovery_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "voluntary-repayment-acknowledgment-path",
+      "family": "voluntary_repayment_acknowledgment",
+      "route_id": "partial_payment_acknowledgment",
+      "workflow_state": "voluntary_recovery",
+      "engine_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "contact_review",
+      "review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "finance-ambiguity-bank-route",
+      "family": "finance_ambiguity",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "payment_allocation_conflict"
+      ]
+    },
+    {
+      "scenario_id": "notarial-deed-source-review",
+      "family": "notarial_deed",
+      "route_id": "notarial_deed_installment_agreement",
+      "workflow_state": "title_acquisition",
+      "engine_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "finance_review",
+      "review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "payment-order-service-path-missing",
+      "family": "service_finality_uncertainty",
+      "route_id": "payment_order_title_acquisition",
+      "workflow_state": "service_finality_execution_clause",
+      "engine_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "real-estate-provisional-source-review",
+      "family": "real_estate_provisional_remedy",
+      "route_id": "real_estate_provisional_attachment",
+      "workflow_state": "provisional_remedy",
+      "engine_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "receivable-provisional-privacy-blocker",
+      "family": "receivable_provisional_remedy",
+      "route_id": "receivable_provisional_attachment",
+      "workflow_state": "provisional_remedy",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "business-trade-receivable-ready",
+      "family": "business_receivable",
+      "route_id": "trade_receivable_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "possible",
+      "expected_status": "possible",
+      "packet_type": "legal_action_review",
+      "review_codes": []
+    },
+    {
+      "scenario_id": "pg-platform-settlement-counterparty-missing",
+      "family": "business_receivable",
+      "route_id": "pg_platform_settlement_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "real-estate-auction-priority-ready",
+      "family": "real_estate_auction",
+      "route_id": "real_estate_compulsory_auction",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "possible",
+      "expected_status": "possible",
+      "packet_type": "legal_action_review",
+      "review_codes": []
+    },
+    {
+      "scenario_id": "movable-inventory-value-uncertain",
+      "family": "movable_asset",
+      "route_id": "movable_inventory_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "vehicle-heavy-equipment-missing-registration",
+      "family": "movable_asset",
+      "route_id": "vehicle_or_heavy_equipment_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "missing_facts",
+      "expected_status": "missing_facts",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "insurance-refund-policy-ready",
+      "family": "insurance_deposit",
+      "route_id": "insurance_refund_claim_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "possible",
+      "expected_status": "possible",
+      "packet_type": "legal_action_review",
+      "review_codes": []
+    },
+    {
+      "scenario_id": "court-deposit-priority-unknown",
+      "family": "insurance_deposit",
+      "route_id": "court_deposit_or_distribution_claim_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "tax-refund-benefit-exemption-risk",
+      "family": "tax_refund_benefit_risk",
+      "route_id": "tax_refund_or_compensation_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "inheritance-share-family-dispute",
+      "family": "inheritance",
+      "route_id": "inheritance_share_attachment",
+      "workflow_state": "asset_discovery",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "hidden-asset-fraudulent-transfer-ready",
+      "family": "hidden_asset_fraudulent_transfer",
+      "route_id": "fraudulent_transfer_cancellation_lawsuit",
+      "workflow_state": "asset_discovery",
+      "engine_status": "possible",
+      "expected_status": "possible",
+      "packet_type": "legal_action_review",
+      "review_codes": []
+    },
+    {
+      "scenario_id": "insolvency-discharge-source-review",
+      "family": "insolvency",
+      "route_id": "insolvency_discharge_review",
+      "workflow_state": "insolvency_discharge_review",
+      "engine_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "insolvency_recovery_review",
+      "review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "monitoring-retry-no-asset-window-open",
+      "family": "monitoring_retry",
+      "route_id": "monitoring_retry_after_no_asset",
+      "workflow_state": "monitoring_retry",
+      "engine_status": "blocked",
+      "expected_status": "blocked",
+      "packet_type": "monitoring_retry",
+      "review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "securities-account-finance-ambiguity",
+      "family": "finance_ambiguity",
+      "route_id": "securities_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "engine_status": "review_required",
+      "expected_status": "review_required",
+      "packet_type": "legal_action_review",
+      "review_codes": [
+        "statutory_or_complex_interest"
+      ]
+    }
+  ],
+  "verification": [
+    {
+      "command": "python3 -m json.tool tests/fixtures/claim-domain-v1/synthetic_claim_states.json",
+      "result": "passed"
+    },
+    {
+      "command": "python3 scripts/legal_ontology/domain_manual_inventory.py --manual tests/fixtures/claim-domain-v1/minimized_manual_v2_scenarios.md --out <temp>",
+      "result": "passed route_candidates=26"
+    },
+    {
+      "command": "python3 -m pytest tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py -q",
+      "result": "passed 6 tests"
+    },
+    {
+      "command": "fixture-vs-engine consistency script",
+      "result": "passed expected statuses and packet types matched engine output"
+    },
+    {
+      "command": "python3 -m json.tool .omo/evidence/debt-collection-knowledge-expansion-v1/task-3-expanded-scenarios-happy.json",
+      "result": "passed"
+    },
+    {
+      "command": "PII/path scan over task fixture, companion manual fixture, and evidence JSON",
+      "result": "passed no forbidden fields, contact payloads, filing destinations, local absolute paths, phone-like, or RRN-like tokens"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ]
+}

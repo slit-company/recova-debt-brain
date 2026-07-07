@@ -215,6 +215,383 @@
       "expected_review_codes": [
         "payment_allocation_conflict"
       ]
+    },
+    {
+      "scenario_id": "notarial-deed-source-review",
+      "manual_state": "notarial deed installment agreement with static source review",
+      "route_id": "notarial_deed_installment_agreement",
+      "workflow_state": "title_acquisition",
+      "fact_handles": [
+        "debtor_identity",
+        "claim_basis",
+        "claim_balance",
+        "notarial_deed_consent"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-civil-execution-act-v0",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "finance_review",
+      "expected_review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "payment-order-service-path-missing",
+      "manual_state": "payment order title with uncertain service path",
+      "route_id": "payment_order_title_acquisition",
+      "workflow_state": "service_finality_execution_clause",
+      "fact_handles": [
+        "claim_basis",
+        "debtor_identity"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001700-m252393-a474",
+        "kr-law-l010910-m268669-a11"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "real-estate-provisional-source-review",
+      "manual_state": "real estate provisional attachment source review",
+      "route_id": "real_estate_provisional_attachment",
+      "workflow_state": "provisional_remedy",
+      "fact_handles": [
+        "claim_basis",
+        "provisional_need",
+        "real_estate_registry_asset"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a168",
+        "kr-civil-execution-act-v0",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "receivable-provisional-privacy-blocker",
+      "manual_state": "receivable provisional attachment privacy blocker",
+      "route_id": "receivable_provisional_attachment",
+      "workflow_state": "provisional_remedy",
+      "fact_handles": [
+        "claim_basis",
+        "provisional_need",
+        "receivable_counterparty_hint",
+        "privacy_purpose_not_established"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a168",
+        "kr-civil-execution-act-v0",
+        "kr-law-l010910-m268669-a12",
+        "recova-privacy-purpose-v0"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "business-trade-receivable-ready",
+      "manual_state": "business trade receivable route ready",
+      "route_id": "trade_receivable_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "trade_receivable_hint",
+        "credit_information_purpose"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "possible",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": []
+    },
+    {
+      "scenario_id": "pg-platform-settlement-counterparty-missing",
+      "manual_state": "platform settlement receivable missing counterparty",
+      "route_id": "pg_platform_settlement_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "credit_information_purpose"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l001540-m260423-a32",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "real-estate-auction-priority-ready",
+      "manual_state": "real estate auction priority review ready",
+      "route_id": "real_estate_compulsory_auction",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "real_estate_registry_asset",
+        "priority_claims_review"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "possible",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": []
+    },
+    {
+      "scenario_id": "movable-inventory-value-uncertain",
+      "manual_state": "movable inventory value uncertain",
+      "route_id": "movable_inventory_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "movable_inventory_hint",
+        "asset_value_uncertain"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "vehicle-heavy-equipment-missing-registration",
+      "manual_state": "vehicle heavy equipment missing equipment registration",
+      "route_id": "vehicle_or_heavy_equipment_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "vehicle_registration_hint"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ]
+    },
+    {
+      "scenario_id": "insurance-refund-policy-ready",
+      "manual_state": "insurance refund claim route ready",
+      "route_id": "insurance_refund_claim_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "insurance_policy_hint",
+        "insurance_claim_hint"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "possible",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": []
+    },
+    {
+      "scenario_id": "court-deposit-priority-unknown",
+      "manual_state": "court deposit priority unknown",
+      "route_id": "court_deposit_or_distribution_claim_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "deposit_or_distribution_hint",
+        "priority_claims_unknown"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "tax-refund-benefit-exemption-risk",
+      "manual_state": "tax refund public benefit exemption risk",
+      "route_id": "tax_refund_or_compensation_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "tax_refund_hint",
+        "compensation_claim_hint",
+        "welfare_public_benefit_exemption"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "inheritance-share-family-dispute",
+      "manual_state": "inheritance share family dispute",
+      "route_id": "inheritance_share_attachment",
+      "workflow_state": "asset_discovery",
+      "fact_handles": [
+        "enforceable_title",
+        "inheritance_status_hint",
+        "family_law_dispute_high"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "hidden-asset-fraudulent-transfer-ready",
+      "manual_state": "hidden asset fraudulent transfer ready",
+      "route_id": "fraudulent_transfer_cancellation_lawsuit",
+      "workflow_state": "asset_discovery",
+      "fact_handles": [
+        "claim_basis",
+        "suspicious_transfer_timing",
+        "family_property_transfer_hint",
+        "hidden_asset_signal"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001706-m284415-a406",
+        "kr-law-l010910-m268669-a11",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "possible",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": []
+    },
+    {
+      "scenario_id": "insolvency-discharge-source-review",
+      "manual_state": "insolvency discharge source review",
+      "route_id": "insolvency_discharge_review",
+      "workflow_state": "insolvency_discharge_review",
+      "fact_handles": [
+        "insolvency_case_signal",
+        "discharge_or_stay_status"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "insolvency_recovery_review",
+      "expected_review_codes": [
+        "domain_legal_source_unapproved"
+      ]
+    },
+    {
+      "scenario_id": "monitoring-retry-no-asset-window-open",
+      "manual_state": "monitoring retry no asset window open",
+      "route_id": "monitoring_retry_after_no_asset",
+      "workflow_state": "monitoring_retry",
+      "fact_handles": [
+        "monitoring_interval",
+        "prior_search_no_asset_result",
+        "no_asset_retry_window_open"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a11",
+        "recova-privacy-purpose-v0"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "monitoring_retry",
+      "expected_review_codes": [
+        "route_blocked"
+      ]
+    },
+    {
+      "scenario_id": "securities-account-finance-ambiguity",
+      "manual_state": "securities account finance ambiguity",
+      "route_id": "securities_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "securities_account_hint"
+      ],
+      "finance_review_codes": [
+        "statutory_or_complex_interest"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "statutory_or_complex_interest"
+      ]
     }
   ]
 }
