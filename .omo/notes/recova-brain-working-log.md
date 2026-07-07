@@ -392,6 +392,23 @@ Recommended next steps, in order:
 
 This log should continue to be updated whenever the user answers interview questions, changes product direction, or completes/accepts a major implementation slice.
 
+2026-07-07 Goal 4 completion update:
+
+- Knowledge expansion Goal 4 is accepted and pushed on master through `d2310533`.
+- Integrated commits:
+  - `b7668289`: finance/review hardening for unsupported allocations, disputed placeholder refs, stale finance model versions, and manual-review finance triggers.
+  - `9c3c046a`: StopGate/domain safety hardening for negated service/finality/execution-clause proof, protected property, and insolvency blockers.
+  - `85586bca`: test split to keep Goal 4 decision regressions under the pure-LOC ceiling.
+  - `d2310533`: Goal 4 leader evidence and ULW checkpoint.
+- Final verification recorded 52 focused tests passing, Python 3.9 py_compile passing, basedpyright clean, JSON validation passing, MCP order still 25 tools, PII/path scan `NO_FINDINGS`, and no deployment/runbook/client-doc mutation.
+
+Current next work:
+
+1. Run G011 docs/log update so product docs and this working log reflect the accepted knowledge-expansion state.
+2. Run final eval evidence under `.omo/evidence/debt-collection-knowledge-expansion-v1/final-*`.
+3. Produce final acceptance review with a clear ACCEPTED/BLOCKED verdict.
+4. Keep remote MCP deployment, remote smoke, and client-facing setup docs deferred unless the user explicitly changes scope.
+
 ## Working Rules For Future Updates
 
 - Update this file whenever the user answers an interview question.
