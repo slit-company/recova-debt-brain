@@ -1,0 +1,454 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-07T02:58:34.724Z",
+  "updatedAt": "2026-07-07T03:01:26.228Z",
+  "briefPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/brief.md",
+  "goalsPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json",
+  "ledgerPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-do-not-deploy-mcp-do-not-run-remote",
+      "title": "Do not deploy MCP, do not run remote MCP smoke, do not update client-...",
+      "objective": "Do not deploy MCP, do not run remote MCP smoke, do not update client-facing remote setup docs.",
+      "status": "blocked",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "happy path for: Do not deploy MCP, do not run remote MCP smoke, do not update client-facing r...",
+          "userModel": "happy",
+          "expectedEvidence": "Replace via revise_criterion with observable happy-path proof for goal 1.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "edge case (boundary/empty/malformed)",
+          "userModel": "edge",
+          "expectedEvidence": "Replace via revise_criterion with boundary or malformed-input proof for: Do not deploy MCP, do not run remote MCP smoke, do not update client-facing r....",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "regression: adjacent surface still works",
+          "userModel": "regression",
+          "expectedEvidence": "Replace via revise_criterion with regression proof for neighboring behavior after: Do not deploy MCP, do not run remote MCP smoke, do not update client-facing r....",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:58:34.724Z",
+      "updatedAt": "2026-07-07T02:59:03.115Z",
+      "steeringEvidence": "create-goals parsed aggregate constraints as standalone goals; these constraints remain plan-wide guardrails, not executable goals.",
+      "steeringRationale": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly.",
+      "steeringStatus": "blocked",
+      "blockedReason": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly."
+    },
+    {
+      "id": "G002-do-not-implement-real-debt-collectio",
+      "title": "Do not implement real debt-collection execution, filing, debtor conta...",
+      "objective": "Do not implement real debt-collection execution, filing, debtor contact, payment demand, seizure initiation, ledger mutation, or production storage mutation.",
+      "status": "blocked",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "happy path for: Do not implement real debt-collection execution, filing, debtor contact, paym...",
+          "userModel": "happy",
+          "expectedEvidence": "Replace via revise_criterion with observable happy-path proof for goal 2.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "edge case (boundary/empty/malformed)",
+          "userModel": "edge",
+          "expectedEvidence": "Replace via revise_criterion with boundary or malformed-input proof for: Do not implement real debt-collection execution, filing, debtor contact, paym....",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "regression: adjacent surface still works",
+          "userModel": "regression",
+          "expectedEvidence": "Replace via revise_criterion with regression proof for neighboring behavior after: Do not implement real debt-collection execution, filing, debtor contact, paym....",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:58:34.724Z",
+      "updatedAt": "2026-07-07T02:59:03.146Z",
+      "steeringEvidence": "create-goals parsed aggregate constraints as standalone goals; these constraints remain plan-wide guardrails, not executable goals.",
+      "steeringRationale": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly.",
+      "steeringStatus": "blocked",
+      "blockedReason": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly."
+    },
+    {
+      "id": "G003-keep-local-25-tool-mcp-source-contra",
+      "title": "Keep local 25-tool MCP source contract intact: existing 21 tools firs...",
+      "objective": "Keep local 25-tool MCP source contract intact: existing 21 tools first, four claim-domain tools appended.",
+      "status": "blocked",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "happy path for: Keep local 25-tool MCP source contract intact: existing 21 tools first, four...",
+          "userModel": "happy",
+          "expectedEvidence": "Replace via revise_criterion with observable happy-path proof for goal 3.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "edge case (boundary/empty/malformed)",
+          "userModel": "edge",
+          "expectedEvidence": "Replace via revise_criterion with boundary or malformed-input proof for: Keep local 25-tool MCP source contract intact: existing 21 tools first, four....",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "regression: adjacent surface still works",
+          "userModel": "regression",
+          "expectedEvidence": "Replace via revise_criterion with regression proof for neighboring behavior after: Keep local 25-tool MCP source contract intact: existing 21 tools first, four....",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:58:34.724Z",
+      "updatedAt": "2026-07-07T02:59:03.177Z",
+      "steeringEvidence": "create-goals parsed aggregate constraints as standalone goals; these constraints remain plan-wide guardrails, not executable goals.",
+      "steeringRationale": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly.",
+      "steeringStatus": "blocked",
+      "blockedReason": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly."
+    },
+    {
+      "id": "G004-use-korean-law-mcp-for-legal-source",
+      "title": "Use Korean-law MCP for legal source discovery/evidence, but freeze de...",
+      "objective": "Use Korean-law MCP for legal source discovery/evidence, but freeze deterministic tests/resources to static JSON.",
+      "status": "blocked",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "happy path for: Use Korean-law MCP for legal source discovery/evidence, but freeze determinis...",
+          "userModel": "happy",
+          "expectedEvidence": "Replace via revise_criterion with observable happy-path proof for goal 4.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "edge case (boundary/empty/malformed)",
+          "userModel": "edge",
+          "expectedEvidence": "Replace via revise_criterion with boundary or malformed-input proof for: Use Korean-law MCP for legal source discovery/evidence, but freeze determinis....",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "regression: adjacent surface still works",
+          "userModel": "regression",
+          "expectedEvidence": "Replace via revise_criterion with regression proof for neighboring behavior after: Use Korean-law MCP for legal source discovery/evidence, but freeze determinis....",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:58:34.724Z",
+      "updatedAt": "2026-07-07T02:59:03.208Z",
+      "steeringEvidence": "create-goals parsed aggregate constraints as standalone goals; these constraints remain plan-wide guardrails, not executable goals.",
+      "steeringRationale": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly.",
+      "steeringStatus": "blocked",
+      "blockedReason": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly."
+    },
+    {
+      "id": "G005-for-finance-judgment-inspect-availab",
+      "title": "For finance judgment, inspect available MCP surfaces first; if no ded...",
+      "objective": "For finance judgment, inspect available MCP surfaces first; if no dedicated finance MCP exists, use official/public web sources plus Korean-law MCP and freeze adopted source refs.",
+      "status": "blocked",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "happy path for: For finance judgment, inspect available MCP surfaces first; if no dedicated f...",
+          "userModel": "happy",
+          "expectedEvidence": "Replace via revise_criterion with observable happy-path proof for goal 5.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "edge case (boundary/empty/malformed)",
+          "userModel": "edge",
+          "expectedEvidence": "Replace via revise_criterion with boundary or malformed-input proof for: For finance judgment, inspect available MCP surfaces first; if no dedicated f....",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "regression: adjacent surface still works",
+          "userModel": "regression",
+          "expectedEvidence": "Replace via revise_criterion with regression proof for neighboring behavior after: For finance judgment, inspect available MCP surfaces first; if no dedicated f....",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:58:34.724Z",
+      "updatedAt": "2026-07-07T02:59:03.240Z",
+      "steeringEvidence": "create-goals parsed aggregate constraints as standalone goals; these constraints remain plan-wide guardrails, not executable goals.",
+      "steeringRationale": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly.",
+      "steeringStatus": "blocked",
+      "blockedReason": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly."
+    },
+    {
+      "id": "G006-keep-all-evidence-pii-path-safe",
+      "title": "Keep all evidence PII/path safe.",
+      "objective": "Keep all evidence PII/path safe.",
+      "status": "blocked",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "happy path for: Keep all evidence PII/path safe.",
+          "userModel": "happy",
+          "expectedEvidence": "Replace via revise_criterion with observable happy-path proof for goal 6.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "edge case (boundary/empty/malformed)",
+          "userModel": "edge",
+          "expectedEvidence": "Replace via revise_criterion with boundary or malformed-input proof for: Keep all evidence PII/path safe..",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "regression: adjacent surface still works",
+          "userModel": "regression",
+          "expectedEvidence": "Replace via revise_criterion with regression proof for neighboring behavior after: Keep all evidence PII/path safe..",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:58:34.724Z",
+      "updatedAt": "2026-07-07T02:59:03.272Z",
+      "steeringEvidence": "create-goals parsed aggregate constraints as standalone goals; these constraints remain plan-wide guardrails, not executable goals.",
+      "steeringRationale": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly.",
+      "steeringStatus": "blocked",
+      "blockedReason": "Recover usable ULW state without hand-editing goals.json; real execution goals will be added explicitly."
+    },
+    {
+      "id": "G007-legal-and-finance-source-research-fo",
+      "title": "Legal and finance source research foundation",
+      "objective": "Produce static, PII-safe research evidence for remaining needs_legal_review legal sources using Korean-law MCP, and for finance-source channels using available MCP discovery plus official/public sources where needed.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Legal source audit: inspect v1 domain source and decision resources, verify remaining needs_legal_review candidates with Korean-law MCP search/get_law_text/legal_analysis where available, and produce a static source audit.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json parses with json.tool and lists source ids, MCP lookup status, article candidates, and impacted downstream route/decision ids.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "Finance source channel audit: inspect available MCP surfaces for finance-specific tooling, then identify official/public source channels for interest, allocation, delinquency, and review-threshold judgments.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-finance-source-channel-audit.json parses with json.tool and records finance MCP availability/disposition plus official source candidates.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "Boundary regression: confirm this research foundation does not mutate deployment/runbook surfaces or remote MCP/client docs.",
+          "userModel": "regression",
+          "expectedEvidence": "A git status/diff evidence note shows no staged/committed changes under deploy/recova-mcp-lab, deploy/cloudflare-mcp-proxy, deploy/vercel-mcp, or MCP client runbooks for this goal.",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:59:03.302Z",
+      "updatedAt": "2026-07-07T03:01:25.793Z"
+    },
+    {
+      "id": "G008-scenario-coverage-and-human-review-c",
+      "title": "Scenario coverage and human-review contract foundation",
+      "objective": "Inventory scenario gaps against the claim-domain route catalog and define a validated human-review operator workflow contract for action packets and governance records.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Scenario coverage inventory: compare route catalog, workflow states, StopGate/domain decision reasons, finance review triggers, and existing fixtures to identify missing practical collection scenarios.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-2-scenario-gap-inventory.json parses with json.tool and lists covered/missing scenario families with suggested fixture ids.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "Human-review workflow contract: define operator review states, allowed decisions, required source_refs/audit fields, and explicit non-execution constraints for action packets/governance records.",
+          "userModel": "edge",
+          "expectedEvidence": "A validated JSON contract or markdown-backed smoke evidence exists for human-review operator workflow, and PII/path scan has NO_FINDINGS.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "Regression: existing local MCP source surface still exposes 25 tools in the required order after scenario/review planning.",
+          "userModel": "regression",
+          "expectedEvidence": "A local Python smoke records MCP tool count=25, existing 21 first, four claim-domain tools appended, with no token/path leak.",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:59:03.334Z",
+      "updatedAt": "2026-07-07T03:01:25.914Z"
+    },
+    {
+      "id": "G009-resource-and-fixture-expansion",
+      "title": "Resource and fixture expansion",
+      "objective": "Replace or explicitly disposition review-needed source records, expand rare-case synthetic claim-domain fixtures, and preserve JSON validity plus local MCP 25-tool ordering.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Legal/resource update: replace or explicitly disposition review-needed source records using Goal 1 audit outputs, then rerun relevant validators.",
+          "userModel": "happy",
+          "expectedEvidence": "Updated static resources/evidence plus validator output show no unresolved un-dispositioned source records introduced by this wave.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "Fixture expansion: add rare-case synthetic claim-domain fixtures for missing scenario families, including protected income/property, stale/disputed finance data, partial payments, insolvency/bankruptcy, service/finality uncertainty, and identity uncertainty where applicable.",
+          "userModel": "edge",
+          "expectedEvidence": "Focused integration tests/evidence pass over added fixtures and demonstrate possible/review_required/blocked diversity without raw PII.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "Regression: JSON resources and local MCP order remain valid after resource/fixture additions.",
+          "userModel": "regression",
+          "expectedEvidence": "json.tool over changed resources/evidence passes and a local MCP smoke records 25-tool order unchanged.",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:59:03.368Z",
+      "updatedAt": "2026-07-07T03:01:26.016Z"
+    },
+    {
+      "id": "G010-decision-stopgate-finance-and-review",
+      "title": "Decision StopGate finance and review hardening",
+      "objective": "Strengthen finance/review, domain decision, and StopGate regressions so expanded knowledge remains deterministic, traceable, and review-safe.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Finance/review hardening: add or strengthen deterministic tests for stale finance source version, unsupported allocation inputs, disputed amounts, and manual-review-required finance triggers.",
+          "userModel": "happy",
+          "expectedEvidence": "Focused finance/domain decision tests and happy/failure evidence pass, with source_refs and review reasons preserved.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "StopGate/domain decision hardening: expanded rules produce conservative review/hold results for legal-source uncertainty, protected-property/income risks, bankruptcy/insolvency signals, and execution-title/service/finality uncertainty.",
+          "userModel": "edge",
+          "expectedEvidence": "Focused StopGate/domain decision tests plus JSON evidence pass and no case falsely clears to execution-ready behavior.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "Regression: broader legal ontology, debtor graph, route candidate, and MCP tests stay green after decision hardening.",
+          "userModel": "regression",
+          "expectedEvidence": "A focused compatibility suite records passing tests across domain decisions, StopGates, route candidates, debtor graph, and MCP tools.",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:59:03.400Z",
+      "updatedAt": "2026-07-07T03:01:26.124Z"
+    },
+    {
+      "id": "G011-docs-final-eval-and-acceptance-revie",
+      "title": "Docs final eval and acceptance review",
+      "objective": "Update docs and working log, run final focused suite/JSON/PII/local MCP checks, and produce an accepted final contract review with no deployment/runbook mutation.",
+      "status": "pending",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Docs/log update: update claim-domain ontology docs and the working log with the new source/research/scenario/decision status and remaining TODOs.",
+          "userModel": "happy",
+          "expectedEvidence": "Docs smoke finds the key terms and the working log references this wave's final state; PII/path scan has NO_FINDINGS.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C002",
+          "scenario": "Final eval: run focused test suite, JSON validation, PII/path scan, py_compile/type checks where applicable, and local MCP tool-order smoke.",
+          "userModel": "edge",
+          "expectedEvidence": "Final evidence under .omo/evidence/debt-collection-knowledge-expansion-v1/final-* validates and records no deployment/runbook mutation.",
+          "essential": true,
+          "capturedEvidence": null,
+          "status": "pending"
+        },
+        {
+          "id": "C003",
+          "scenario": "Final review: contract review artifact accepts the wave or records concrete blockers, with no pending checklist-only state.",
+          "userModel": "regression",
+          "expectedEvidence": "A final review artifact under .omo/teams or .omo/evidence states ACCEPTED or BLOCKED with reproduced verification commands.",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-07T02:59:03.432Z",
+      "updatedAt": "2026-07-07T03:01:26.228Z"
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl as the audit trail."
+}

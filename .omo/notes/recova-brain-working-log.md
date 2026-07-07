@@ -383,6 +383,13 @@ Recommended next steps, in order:
 - The new wave focuses on legal-source precision, rare claim-domain scenario expansion, finance/review regressions, and human-review workflow contracts.
 - Deployment and production execution remain out of scope until the user explicitly brings them back.
 
+2026-07-07 planning clarification:
+
+- User does not want to provide more detailed scenario planning unless truly necessary.
+- Legal research should use Korean-law MCP first, then freeze verified article/source refs into deterministic resources.
+- Practical scenario expansion should be Codex-led from the manual, current route catalog, existing gaps, and source research.
+- Finance judgment research should first inspect available MCP surfaces; if no dedicated finance MCP exists, use official/public web sources plus Korean-law MCP and freeze adopted refs into static evidence/resources.
+
 This log should continue to be updated whenever the user answers interview questions, changes product direction, or completes/accepts a major implementation slice.
 
 ## Working Rules For Future Updates

@@ -3,7 +3,7 @@ slug: debt-collection-knowledge-expansion-v1
 status: awaiting-start-work
 intent: clear
 pending-action: run start-work on .omo/plans/debt-collection-knowledge-expansion-v1.md
-approach: skip remote deployment/client docs for now; expand the accepted local claim-domain brain with article-level legal-source hardening, rare scenario fixtures, finance/review regressions, and human-review workflow contracts.
+approach: skip remote deployment/client docs for now; expand the accepted local claim-domain brain with article-level legal-source hardening, rare scenario fixtures, finance-source research plus finance/review regressions, and human-review workflow contracts. User does not want to specify more details; the plan should rely on MCP/web/source research.
 ---
 
 # Draft: debt-collection-knowledge-expansion-v1
@@ -27,6 +27,8 @@ approach: skip remote deployment/client docs for now; expand the accepted local 
 | Next useful wave is knowledge content, not infrastructure. | Plan around legal source precision, rare scenarios, finance/review regressions, and operator review workflow. | Local ontology v1 is accepted; the highest value gap is professional depth. | Yes |
 | `recova-privacy-purpose-v0` may not map to a single article. | Replace with article refs where possible, otherwise keep explicit review-required non-article contract metadata. | Current resource says it is a privacy-purpose domain contract, not a single statute article. | Yes |
 | Execution remains forbidden. | Human-review workflow models review/approval records only, not filing/contact/payment execution. | Current docs and action packet schemas are non-executing. | Yes |
+| User does not want to drive more detailed planning interviews. | Research-first: use Korean-law MCP, repo evidence, official/public web sources, and available MCP discovery. | User said the core is for Codex to investigate carefully rather than ask them to define scenarios. | Yes |
+| Finance-specific MCP availability is uncertain. | Inspect tool availability first; if no finance-specific MCP exists, use official/public web sources plus Korean-law MCP and freeze adopted refs. | Current tool discovery surfaces Korean-law MCP and Recova domain MCP, but not a dedicated finance MCP. | Yes |
 
 ## Findings (cited - path:lines)
 
@@ -41,6 +43,9 @@ approach: skip remote deployment/client docs for now; expand the accepted local 
 - `tests/fixtures/claim-domain-v1/synthetic_claim_states.json:13` shows the current scenario list starts with only the minimized synthetic scenarios.
 - `docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:226` defines where new knowledge should be added.
 - `docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:241` defines the safe-change checklist.
+- Korean-law MCP search confirms current law identifiers for `민사집행법`, `채무자 회생 및 파산에 관한 법률`, `채권의 공정한 추심에 관한 법률`, and `이자제한법`.
+- Korean-law MCP `discover_tools` did not expose a finance-specific tool for "금융 이자 채권추심 변제충당 법정이율 금융감독원"; it exposed legal categories instead.
+- Web/source discovery found official candidates for finance/procedure grounding: 국가법령정보센터/law.go.kr, 대한민국 법원 전자소송/ecfs.scourt.go.kr, 금융감독원/fss.or.kr, and 한국은행/bok.or.kr.
 
 ## Decisions (with rationale)
 
@@ -48,12 +53,14 @@ approach: skip remote deployment/client docs for now; expand the accepted local 
 - 2026-07-07: Treat legal source precision and scenario expansion as one wave. Rationale: routes, StopGates, finance review, and action packets only become trustworthy when tested together.
 - 2026-07-07: Keep Korean-law MCP as a discovery/evidence tool, not a deterministic test dependency. Rationale: this matches the accepted v1 resource-correctness pattern.
 - 2026-07-07: Keep execution forbidden. Rationale: current product contract is advisory/human-review only; production boundary decision remains separate.
+- 2026-07-07: Do not ask the user to enumerate more practical scenarios unless a true owner decision appears. Rationale: user explicitly prefers Codex-led investigation.
+- 2026-07-07: Finance judgment research will not assume a finance MCP exists. Rationale: tool discovery did not reveal one; official/public web and legal MCP are sufficient for the next planning wave, with any adopted source frozen into static resources.
 
 ## Scope IN
 
 - Legal-source audit and replacement/disposition for review-needed refs.
 - Scenario coverage inventory and rare-case synthetic fixture expansion.
-- Finance ambiguity and human-review regression tests.
+- Finance-source research, finance ambiguity, and human-review regression tests.
 - Domain decision and StopGate regression strengthening.
 - Operator review workflow contract for action packets/governance records.
 - Working log and product docs updates for this knowledge expansion.
