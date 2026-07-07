@@ -438,7 +438,16 @@
       "stopgate_usage": ["service-finality-unproven", "limitation-risk", "target-exemption-risk", "assignment-chain-unproven", "amount-inconsistent", "missing-enforcement-title"],
       "source_ref": "curated://kr-civil-execution-act/2026-06-30/v0",
       "candidate_note": "Preserves v0 StopGate source_id compatibility; downstream v1 should replace this bundle with exact article refs where possible.",
-      "linked_source_ids": ["kr-law-l009290-m268837-a61", "kr-law-l009290-m268837-a70", "kr-law-l009290-m268837-a74", "kr-law-l009290-m268837-a223", "kr-law-l009290-m268837-a229", "kr-law-l009290-m268837-a246", "kr-law-l001706-m284415-a165", "kr-law-l001706-m284415-a168"]
+      "linked_source_ids": ["kr-law-l009290-m268837-a61", "kr-law-l009290-m268837-a70", "kr-law-l009290-m268837-a74", "kr-law-l009290-m268837-a223", "kr-law-l009290-m268837-a229", "kr-law-l009290-m268837-a246", "kr-law-l001706-m284415-a165", "kr-law-l001706-m284415-a168"],
+      "source_disposition": {
+        "status": "formally_dispositioned_pending_legal_review",
+        "disposition": "replace_where_possible_with_article_level_refs",
+        "review_status_retained": "needs_legal_review",
+        "authority_boundary": "legacy_bundle_not_approved_article_level_authority",
+        "replacement_source_ids": ["kr-law-l009290-m268837-a61", "kr-law-l009290-m268837-a70", "kr-law-l009290-m268837-a74", "kr-law-l009290-m268837-a223", "kr-law-l009290-m268837-a229", "kr-law-l009290-m268837-a246", "kr-law-l001706-m284415-a165", "kr-law-l001706-m284415-a168"],
+        "retain_legacy_source_id_for": ["v0_stopgate_compatibility"],
+        "disposition_evidence_ref": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json"
+      }
     },
     {
       "source_id": "kr-debtor-rehabilitation-act-v0",
@@ -455,7 +464,16 @@
       "stopgate_usage": ["insolvency-or-discharge-risk"],
       "source_ref": "curated://kr-debtor-rehabilitation-act/2026-06-30/v0",
       "candidate_note": "Preserves v0 StopGate source_id compatibility; downstream v1 should replace this bundle with exact insolvency, stay, and discharge article refs where possible.",
-      "linked_source_ids": ["kr-law-l009930-m267359-a566", "kr-law-l009930-m267359-a593", "kr-law-l009930-m267359-a600"]
+      "linked_source_ids": ["kr-law-l009930-m267359-a566", "kr-law-l009930-m267359-a593", "kr-law-l009930-m267359-a600"],
+      "source_disposition": {
+        "status": "formally_dispositioned_pending_legal_review",
+        "disposition": "replace_where_possible_with_article_level_refs",
+        "review_status_retained": "needs_legal_review",
+        "authority_boundary": "legacy_bundle_not_approved_article_level_authority",
+        "replacement_source_ids": ["kr-law-l009930-m267359-a566", "kr-law-l009930-m267359-a593", "kr-law-l009930-m267359-a600"],
+        "retain_legacy_source_id_for": ["v0_stopgate_compatibility"],
+        "disposition_evidence_ref": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json"
+      }
     },
     {
       "source_id": "recova-privacy-purpose-v0",
@@ -472,7 +490,17 @@
       "stopgate_usage": ["source-provenance-missing", "party-identity-uncertain", "unknown-document-type", "rule-source-unapproved"],
       "source_ref": "curated://recova/privacy-purpose/2026-06-30/v0",
       "candidate_note": "Preserves v0 governance and provenance source_id compatibility; it is not a single statutory article and remains review-needed for privacy-law expansion.",
-      "linked_source_ids": ["kr-law-l001540-m260423-a15", "kr-law-l001540-m260423-a32"]
+      "linked_source_ids": ["kr-law-l001540-m260423-a15", "kr-law-l001540-m260423-a32"],
+      "source_disposition": {
+        "status": "formally_dispositioned_pending_legal_review",
+        "disposition": "retain_as_domain_contract_with_supporting_refs",
+        "review_status_retained": "needs_legal_review",
+        "authority_boundary": "domain_contract_not_single_statutory_article",
+        "supporting_source_ids": ["kr-law-l001540-m260423-a15", "kr-law-l001540-m260423-a32"],
+        "supporting_ref_role": "domain_contract_supporting_refs",
+        "retain_legacy_source_id_for": ["privacy_purpose_domain_contract", "v0_governance_compatibility"],
+        "disposition_evidence_ref": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json"
+      }
     }
   ]
 }

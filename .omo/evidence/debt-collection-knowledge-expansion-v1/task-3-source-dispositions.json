@@ -1,0 +1,113 @@
+{
+  "schema_version": "trustgraph-source-disposition-evidence/v1",
+  "goal": "knowledge-expansion-goal3",
+  "criterion": "C001",
+  "artifact": "task-3-source-dispositions",
+  "generated_at": "2026-07-07T12:00:00+09:00",
+  "changed_resource": "resources/legal_rules/debt_collection_domain_sources_v1.json",
+  "source_audit_ref": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json",
+  "pii_path_safety": {
+    "raw_pii_included": false,
+    "absolute_paths_included": false,
+    "source_text_included": false
+  },
+  "summary": {
+    "needs_legal_review_records_dispositioned": 3,
+    "review_status_changed_to_approved": 0,
+    "legacy_bundle_replacement_dispositions": 2,
+    "domain_contract_supporting_ref_dispositions": 1
+  },
+  "source_dispositions": [
+    {
+      "source_id": "kr-civil-execution-act-v0",
+      "review_status_retained": "needs_legal_review",
+      "disposition": "replace_where_possible_with_article_level_refs",
+      "authority_boundary": "legacy_bundle_not_approved_article_level_authority",
+      "replacement_source_ids": [
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l009290-m268837-a74",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168"
+      ],
+      "supporting_source_ids": [],
+      "retain_legacy_source_id_for": ["v0_stopgate_compatibility"]
+    },
+    {
+      "source_id": "kr-debtor-rehabilitation-act-v0",
+      "review_status_retained": "needs_legal_review",
+      "disposition": "replace_where_possible_with_article_level_refs",
+      "authority_boundary": "legacy_bundle_not_approved_article_level_authority",
+      "replacement_source_ids": [
+        "kr-law-l009930-m267359-a566",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600"
+      ],
+      "supporting_source_ids": [],
+      "retain_legacy_source_id_for": ["v0_stopgate_compatibility"]
+    },
+    {
+      "source_id": "recova-privacy-purpose-v0",
+      "review_status_retained": "needs_legal_review",
+      "disposition": "retain_as_domain_contract_with_supporting_refs",
+      "authority_boundary": "domain_contract_not_single_statutory_article",
+      "replacement_source_ids": [],
+      "supporting_source_ids": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l001540-m260423-a32"
+      ],
+      "supporting_ref_role": "domain_contract_supporting_refs",
+      "retain_legacy_source_id_for": ["privacy_purpose_domain_contract", "v0_governance_compatibility"]
+    }
+  ],
+  "verification": {
+    "json_tool": [
+      {
+        "target": "resources/legal_rules/debt_collection_domain_sources_v1.json",
+        "status": "pass"
+      },
+      {
+        "target": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-3-source-dispositions.json",
+        "status": "pass"
+      }
+    ],
+    "validators": [
+      {
+        "command": "python scripts/legal_ontology/validate_domain_sources_v1.py resources/legal_rules/debt_collection_domain_sources_v1.json resources/legal_routes/debt_collection_routes_v0.json resources/legal_rules/debt_collection_stopgate_v0.json",
+        "status": "pass",
+        "summary": "legal_sources=21 routes=18 stopgates=12 workflow_refs=12 workflow_source_refs=29"
+      },
+      {
+        "command": "python scripts/legal_ontology/validate_routes.py resources/legal_routes/debt_collection_routes_v1.json resources/legal_rules/debt_collection_domain_sources_v1.json",
+        "status": "pass",
+        "summary": "routes=32 legal_sources=21 legal_refs=68"
+      }
+    ],
+    "focused_tests": [
+      {
+        "command": "python -m pytest tests/unit/legal_ontology/test_domain_sources_v1.py -q",
+        "status": "pass",
+        "summary": "3 passed"
+      },
+      {
+        "command": "python -m pytest tests/unit/legal_ontology/test_stop_gates_domain_v1.py -q",
+        "status": "pass",
+        "summary": "4 passed"
+      }
+    ],
+    "pii_path_scan": {
+      "target_files": [
+        "resources/legal_rules/debt_collection_domain_sources_v1.json",
+        ".omo/evidence/debt-collection-knowledge-expansion-v1/task-3-source-dispositions.json"
+      ],
+      "status": "NO_FINDINGS"
+    },
+    "diff_check": {
+      "command": "git diff --check",
+      "status": "pass"
+    }
+  }
+}
