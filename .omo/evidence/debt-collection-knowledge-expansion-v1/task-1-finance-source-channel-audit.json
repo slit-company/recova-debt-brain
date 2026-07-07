@@ -1,0 +1,133 @@
+{
+  "schema_version": "recova.knowledge_expansion.finance_source_channel_audit.v1",
+  "generated_at": "2026-07-07T12:05:23+09:00",
+  "mcp_surface_audit": {
+    "tool_search_query": "finance interest rate debt collection Korea MCP 금융 금리 변제충당 채권추심",
+    "dedicated_finance_mcp_found": false,
+    "available_relevant_mcp": [
+      "mcp__korean_law",
+      "mcp__recova_debt_brain_lab"
+    ],
+    "korean_law_discover_tools_intent": "금융 이자 채권추심 변제충당 법정이율 금융감독원 한국은행 기준금리",
+    "korean_law_discover_tools_result": "no direct finance-specific tool; legal, precedent, interpretation, utility, and statistics-link categories are available"
+  },
+  "legal_finance_checks": {
+    "citation_verification": {
+      "tool": "mcp__korean_law.legal_analysis",
+      "mode": "verify_citations",
+      "status": "verified",
+      "total_citations": 11,
+      "verified_citations": 11,
+      "errors": 0,
+      "citations": [
+        "민법 제379조",
+        "민법 제397조",
+        "민법 제476조",
+        "민법 제477조",
+        "민법 제478조",
+        "민법 제479조",
+        "이자제한법 제2조",
+        "이자제한법 제3조",
+        "이자제한법 제4조",
+        "이자제한법 제7조",
+        "이자제한법 제8조"
+      ]
+    },
+    "law_identifier_checks": [
+      {
+        "law_name": "민법",
+        "law_id": "001706",
+        "mst": "284415",
+        "effective_date": "2026-03-17",
+        "finance_use": [
+          "legal_interest",
+          "monetary_default_damages",
+          "payment_allocation"
+        ]
+      },
+      {
+        "law_name": "이자제한법",
+        "law_id": "010404",
+        "mst": "268667",
+        "effective_date": "2025-07-22",
+        "finance_use": [
+          "maximum_interest",
+          "deemed_interest",
+          "prepaid_interest",
+          "scope_and_penalty_review"
+        ]
+      },
+      {
+        "law_name": "이자제한법 제2조제1항의 최고이자율에 관한 규정",
+        "law_id": "010468",
+        "mst": "230727",
+        "effective_date": "2021-07-07",
+        "finance_use": [
+          "maximum_interest_rate_parameter_source"
+        ]
+      }
+    ]
+  },
+  "official_public_source_candidates": [
+    {
+      "source_name": "국가법령정보센터",
+      "url": "https://www.law.go.kr/",
+      "use_for": [
+        "statutory interest",
+        "payment allocation",
+        "maximum interest",
+        "civil execution article refs"
+      ],
+      "adoption_rule": "Prefer Korean-law MCP lawId/MST/article refs for deterministic resources; use law.go.kr URL as external human-readable source."
+    },
+    {
+      "source_name": "대한민국 법원 전자소송",
+      "url": "https://ecfs.scourt.go.kr/",
+      "use_for": [
+        "civil execution procedure pages",
+        "채권압류 및 추심명령 filing-form reference",
+        "procedure-only operator guidance"
+      ],
+      "adoption_rule": "Use as procedure reference only; action packets remain non-executing and must not generate filing payloads."
+    },
+    {
+      "source_name": "금융감독원",
+      "url": "https://www.fss.or.kr/",
+      "use_for": [
+        "illegal private finance guidance",
+        "consumer-debtor protection channels",
+        "debt proxy/legal aid service references",
+        "financial consumer warning material"
+      ],
+      "adoption_rule": "Use as regulatory/consumer-protection context; do not treat homepage guidance as a substitute for statute or case-law authority."
+    },
+    {
+      "source_name": "한국은행",
+      "url": "https://www.bok.or.kr/portal/singl/baseRate/list.do?dataSeCd=01&menuNo=200643",
+      "use_for": [
+        "public base-rate history",
+        "macro/reference-rate context where contract/ledger data cites benchmark rates"
+      ],
+      "adoption_rule": "Use only when a claim record explicitly depends on benchmark-rate context; statutory interest remains law-source driven."
+    }
+  ],
+  "finance_model_gaps_to_plan": [
+    {
+      "gap_id": "finance-source-versioning",
+      "description": "Finance fixtures and decisions should carry source_version/effective_date metadata for legal interest, maximum interest, and benchmark-rate references."
+    },
+    {
+      "gap_id": "payment-allocation-authority",
+      "description": "Payment allocation should cite 민법 제476조 through 제479조 and preserve disputed or contract-overridden allocation as review-required."
+    },
+    {
+      "gap_id": "maximum-interest-authority",
+      "description": "Maximum interest review should distinguish statutory cap source, 대통령령 cap parameter source, and case/contract-specific applicability."
+    },
+    {
+      "gap_id": "procedure-vs-execution-boundary",
+      "description": "Court procedure sources can explain paperwork or route context, but action packets must stay advisory and non-executing."
+    }
+  ],
+  "decision": "Proceed without a dedicated finance MCP for this wave. Use Korean-law MCP for statute/citation grounding, official web/public sources for human-readable source channels, and freeze all adopted finance refs into static repo resources and tests."
+}

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-07-07T02:58:34.724Z",
-  "updatedAt": "2026-07-07T03:01:26.228Z",
+  "updatedAt": "2026-07-07T03:07:37.989Z",
   "briefPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/brief.md",
   "goalsPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json",
   "ledgerPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl",
@@ -263,7 +263,7 @@
       "id": "G007-legal-and-finance-source-research-fo",
       "title": "Legal and finance source research foundation",
       "objective": "Produce static, PII-safe research evidence for remaining needs_legal_review legal sources using Korean-law MCP, and for finance-source channels using available MCP discovery plus official/public sources where needed.",
-      "status": "pending",
+      "status": "complete",
       "successCriteria": [
         {
           "id": "C001",
@@ -271,8 +271,10 @@
           "userModel": "happy",
           "expectedEvidence": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json parses with json.tool and lists source ids, MCP lookup status, article candidates, and impacted downstream route/decision ids.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Created .omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json; python3 -m json.tool passed; Korean-law MCP verified 16 current legal citations with 0 errors; audit identifies 3 needs_legal_review sources, usage counts, dispositions, and article candidates.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T03:07:17.503Z",
+          "notes": "No raw law text stored; evidence contains lawId/MST/article/status metadata only."
         },
         {
           "id": "C002",
@@ -280,8 +282,10 @@
           "userModel": "edge",
           "expectedEvidence": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-1-finance-source-channel-audit.json parses with json.tool and records finance MCP availability/disposition plus official source candidates.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Created .omo/evidence/debt-collection-knowledge-expansion-v1/task-1-finance-source-channel-audit.json; python3 -m json.tool passed; Korean-law MCP verified 11 finance-law citations; tool_search/discover_tools found no dedicated finance MCP, so plan records Korean-law MCP plus official/public web source channels.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T03:07:17.538Z",
+          "notes": "Official source candidates recorded: law.go.kr, ecfs.scourt.go.kr, fss.or.kr, bok.or.kr."
         },
         {
           "id": "C003",
@@ -289,13 +293,18 @@
           "userModel": "regression",
           "expectedEvidence": "A git status/diff evidence note shows no staged/committed changes under deploy/recova-mcp-lab, deploy/cloudflare-mcp-proxy, deploy/vercel-mcp, or MCP client runbooks for this goal.",
           "essential": false,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Created .omo/evidence/debt-collection-knowledge-expansion-v1/task-1-boundary-regression.txt; git diff --cached --name-only over deployment/runbook/client-doc paths returned empty; rg PII/path/token scan over task-1 evidence returned no findings.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T03:07:17.571Z",
+          "notes": "Pre-existing unrelated deployment/runbook working-tree changes remain untouched and unstaged."
         }
       ],
-      "attempt": 0,
+      "attempt": 1,
       "createdAt": "2026-07-07T02:59:03.302Z",
-      "updatedAt": "2026-07-07T03:01:25.793Z"
+      "updatedAt": "2026-07-07T03:07:37.989Z",
+      "startedAt": "2026-07-07T03:02:14.289Z",
+      "completedAt": "2026-07-07T03:07:37.989Z",
+      "evidence": "Goal 1 complete: legal-source audit JSON, finance-source channel audit JSON, and boundary-regression note created; json.tool, PII/path scan, and deployment/runbook cached diff boundary passed; all three criteria recorded pass."
     },
     {
       "id": "G008-scenario-coverage-and-human-review-c",

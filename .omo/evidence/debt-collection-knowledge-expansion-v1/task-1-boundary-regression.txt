@@ -1,0 +1,16 @@
+Goal 1 boundary regression
+Generated at: 2026-07-07T12:05:23+09:00
+
+Intent:
+- This goal is research/evidence only for legal and finance source channels.
+- It must not stage or commit remote MCP deployment, remote smoke, or client-facing remote setup/runbook changes.
+
+Observed repository context before Goal 1 evidence commit:
+- Existing unrelated deployment/runbook worktree changes were already present before this goal.
+- They are intentionally left untouched and unstaged by this goal.
+
+Boundary commands to rerun before commit:
+- git diff --cached --name-only -- deploy/recova-mcp-lab deploy/cloudflare-mcp-proxy deploy/vercel-mcp docs/product/debt-collection-ontology/recova-mcp-client-guide.md docs/product/debt-collection-ontology/recova-mcp-lab-runbook.md scripts/recova_mcp
+- Expected output: empty.
+- git diff --cached --name-only -- .omo/evidence/debt-collection-knowledge-expansion-v1
+- Expected output before the Goal 1 evidence commit: only task-1 legal/finance/boundary evidence plus ULW ledger updates.

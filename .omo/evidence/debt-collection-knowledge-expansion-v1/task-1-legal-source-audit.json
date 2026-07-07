@@ -1,0 +1,166 @@
+{
+  "schema_version": "recova.knowledge_expansion.legal_source_audit.v1",
+  "generated_at": "2026-07-07T12:05:23+09:00",
+  "source_surface": {
+    "domain_sources": "resources/legal_rules/debt_collection_domain_sources_v1.json",
+    "routes": "resources/legal_routes/debt_collection_routes_v1.json",
+    "route_decisions": "resources/decision_tables/debt_collection_route_decisions_v1.json",
+    "stop_gates": "resources/legal_rules/debt_collection_stopgate_domain_v1.json",
+    "workflow": "resources/workflows/debt_collection_workflow_v1.json",
+    "action_packets": "resources/action_packets/debt_collection_action_packets_v1.json"
+  },
+  "current_source_counts": {
+    "total_sources": 21,
+    "approved_static_v1": 18,
+    "needs_legal_review": 3
+  },
+  "korean_law_mcp_checks": {
+    "citation_verification": {
+      "tool": "mcp__korean_law.legal_analysis",
+      "mode": "verify_citations",
+      "status": "verified",
+      "total_citations": 16,
+      "verified_citations": 16,
+      "errors": 0,
+      "review_needed": 0,
+      "citations": [
+        "민사집행법 제61조",
+        "민사집행법 제70조",
+        "민사집행법 제74조",
+        "민사집행법 제223조",
+        "민사집행법 제229조",
+        "민사집행법 제246조",
+        "민법 제165조",
+        "민법 제168조",
+        "신용정보의 이용 및 보호에 관한 법률 제15조",
+        "신용정보의 이용 및 보호에 관한 법률 제32조",
+        "채권의 공정한 추심에 관한 법률 제9조",
+        "채권의 공정한 추심에 관한 법률 제11조",
+        "채권의 공정한 추심에 관한 법률 제12조",
+        "채무자 회생 및 파산에 관한 법률 제566조",
+        "채무자 회생 및 파산에 관한 법률 제593조",
+        "채무자 회생 및 파산에 관한 법률 제600조"
+      ]
+    },
+    "law_identifier_checks": [
+      {
+        "law_name": "민사집행법",
+        "law_id": "009290",
+        "mst": "268837",
+        "effective_date": "2026-02-01",
+        "future_revision_seen": true,
+        "future_revision": {
+          "mst": "284419",
+          "effective_date": "2028-03-01"
+        }
+      },
+      {
+        "law_name": "채무자 회생 및 파산에 관한 법률",
+        "law_id": "009930",
+        "mst": "267359",
+        "effective_date": "2026-03-01",
+        "future_revision_seen": true,
+        "future_revision": {
+          "mst": "91493",
+          "effective_date": "2028-01-01"
+        }
+      },
+      {
+        "law_name": "채권의 공정한 추심에 관한 법률",
+        "law_id": "010910",
+        "mst": "268669",
+        "effective_date": "2025-07-22",
+        "future_revision_seen": false
+      },
+      {
+        "law_name": "신용정보의 이용 및 보호에 관한 법률",
+        "law_id": "001540",
+        "mst": "260423",
+        "effective_date": "2024-08-14",
+        "future_revision_seen": true,
+        "future_revisions": [
+          {
+            "mst": "283841",
+            "effective_date": "2026-09-11"
+          },
+          {
+            "mst": "285955",
+            "effective_date": "2026-08-13"
+          }
+        ]
+      }
+    ]
+  },
+  "needs_legal_review_sources": [
+    {
+      "source_id": "kr-civil-execution-act-v0",
+      "current_status": "needs_legal_review",
+      "usage_count": 70,
+      "usage_examples": [
+        "resources/legal_routes/debt_collection_routes_v1.json:notarial_deed_installment_agreement.legal_source_refs",
+        "resources/legal_routes/debt_collection_routes_v1.json:civil_lawsuit_title_acquisition.legal_source_refs",
+        "resources/legal_routes/debt_collection_routes_v1.json:real_estate_provisional_attachment.legal_source_refs",
+        "resources/legal_routes/debt_collection_routes_v1.json:receivable_provisional_attachment.legal_source_refs",
+        "resources/decision_tables/debt_collection_route_decisions_v1.json:stopgate_reason_catalog.4.source_refs"
+      ],
+      "disposition": "replace_where_possible_with_article_level_refs",
+      "candidate_article_refs": [
+        "kr-law-l009290-m268837-a61",
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l009290-m268837-a74",
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168"
+      ],
+      "next_resource_action": "For each route/decision/StopGate use, replace the broad bundle with the smallest applicable article set; keep a compatibility alias only where v0 StopGate provenance still requires the old id."
+    },
+    {
+      "source_id": "kr-debtor-rehabilitation-act-v0",
+      "current_status": "needs_legal_review",
+      "usage_count": 22,
+      "usage_examples": [
+        "resources/legal_routes/debt_collection_routes_v1.json:insolvency_discharge_review.legal_source_refs",
+        "resources/decision_tables/debt_collection_route_decisions_v1.json:insolvency_discharge_review.legal_source_refs",
+        "resources/decision_tables/debt_collection_route_decisions_v1.json:30.finance_preconditions.0.source_refs"
+      ],
+      "disposition": "replace_where_possible_with_article_level_refs",
+      "candidate_article_refs": [
+        "kr-law-l009930-m267359-a566",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600"
+      ],
+      "next_resource_action": "Use article-level personal rehabilitation stay/opening-stay/discharge refs for insolvency routes and decision blockers; keep the bundle only as a legacy compatibility marker if a consumer still expects it."
+    },
+    {
+      "source_id": "recova-privacy-purpose-v0",
+      "current_status": "needs_legal_review",
+      "usage_count": 118,
+      "usage_examples": [
+        "resources/legal_routes/debt_collection_routes_v1.json:voluntary_repayment_plan.compliance_source_refs",
+        "resources/legal_routes/debt_collection_routes_v1.json:partial_payment_acknowledgment.compliance_source_refs",
+        "resources/legal_routes/debt_collection_routes_v1.json:property_disclosure_inquiry_registry.compliance_source_refs",
+        "resources/decision_tables/debt_collection_route_decisions_v1.json:stopgate_reason_catalog.7.source_refs"
+      ],
+      "disposition": "do_not_force_into_single_article_ref",
+      "candidate_article_refs": [
+        "kr-law-l001540-m260423-a15",
+        "kr-law-l001540-m260423-a32"
+      ],
+      "next_resource_action": "Model this as a Recova privacy/provenance purpose contract with article-level supporting refs; do not replace every occurrence with one statute article because it represents an operational purpose-limitation boundary."
+    }
+  ],
+  "implementation_recommendation": {
+    "priority": [
+      "Replace civil-execution and rehabilitation broad bundle refs where a route or decision has an obvious article-level equivalent.",
+      "Add a dedicated privacy-purpose governance/source record that links to credit-information article refs instead of pretending the source is one law article.",
+      "Add tests that reject stale/future source versions when evaluation_date is before a future_revision effective_date."
+    ],
+    "do_not_do": [
+      "Do not remove the legacy ids until all v0 compatibility consumers are checked.",
+      "Do not store raw law text in repo evidence.",
+      "Do not add live Korean-law MCP calls to deterministic tests."
+    ]
+  }
+}
