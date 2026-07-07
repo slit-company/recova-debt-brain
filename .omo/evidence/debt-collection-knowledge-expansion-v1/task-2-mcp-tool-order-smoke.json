@@ -1,0 +1,38 @@
+{
+  "schema_version": "recova.knowledge_expansion.mcp_tool_order_smoke.v1",
+  "generated_at": "2026-07-07T12:12:00+09:00",
+  "command": "/opt/homebrew/bin/python3 - <<'PY' ... trustgraph_legal.mcp_domain.list_tools() ... PY",
+  "tool_count": 25,
+  "existing_21_first": [
+    "list_debt_collection_tools",
+    "ingest_legal_document",
+    "ingest_ocr_markdown",
+    "get_ingest_status",
+    "classify_legal_document",
+    "extract_case_packet",
+    "get_case_graph",
+    "check_case_stop_gates",
+    "check_limitation_status",
+    "check_attachment_target_rules",
+    "summarize_case_ledger",
+    "recommend_next_action",
+    "list_unknown_document_types",
+    "review_extracted_fact",
+    "promote_ontology_candidate",
+    "reprocess_case",
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate"
+  ],
+  "claim_domain_4_appended": [
+    "list_claim_domain_routes",
+    "explain_collection_workflow_state",
+    "evaluate_claim_domain_decision",
+    "explain_claim_action_packet"
+  ],
+  "auth_or_token_echo": "not_present",
+  "local_path_echo": "not_present",
+  "status": "pass"
+}

@@ -1,0 +1,173 @@
+{
+  "schema_version": "recova.knowledge_expansion.scenario_gap_inventory.v1",
+  "generated_at": "2026-07-07T12:12:00+09:00",
+  "source_surfaces": {
+    "routes": "resources/legal_routes/debt_collection_routes_v1.json",
+    "workflow": "resources/workflows/debt_collection_workflow_v1.json",
+    "route_decisions": "resources/decision_tables/debt_collection_route_decisions_v1.json",
+    "stop_gates": "resources/legal_rules/debt_collection_stopgate_domain_v1.json",
+    "finance": "resources/finance/claim_finance_model_v1.json",
+    "action_packets": "resources/action_packets/debt_collection_action_packets_v1.json",
+    "fixtures": "tests/fixtures/claim-domain-v1/synthetic_claim_states.json"
+  },
+  "catalog_counts": {
+    "routes": 32,
+    "route_families": 19,
+    "workflow_states": 12,
+    "workflow_transitions": 23,
+    "route_decisions": 32,
+    "stopgate_reasons": 13,
+    "stopgate_rules": 14,
+    "finance_components": 11,
+    "finance_review_triggers": 6,
+    "action_packet_schemas": 6,
+    "current_synthetic_scenarios": 9
+  },
+  "current_fixture_coverage": {
+    "covered_route_ids": [
+      "bank_account_attachment",
+      "partial_payment_acknowledgment",
+      "property_disclosure_inquiry_registry",
+      "wage_attachment",
+      "welfare_public_benefit_exclusion_review"
+    ],
+    "covered_route_families": [
+      "asset_disclosure_inquiry_registry",
+      "financial_asset_execution",
+      "income_execution",
+      "voluntary_repayment",
+      "welfare_public_benefit_exclusion"
+    ],
+    "missing_route_family_count": 14,
+    "missing_route_families": [
+      "business_receivable_execution",
+      "fraudulent_transfer_hidden_asset",
+      "housing_lease_execution",
+      "inheritance_family_property",
+      "insolvency_recovery_review",
+      "insurance_refund_deposit_execution",
+      "monitoring_retry",
+      "movable_business_asset_execution",
+      "notarial_deed",
+      "provisional_remedy",
+      "real_estate_execution",
+      "special_property_right",
+      "tax_refund_distribution_compensation",
+      "title_acquisition"
+    ]
+  },
+  "recommended_synthetic_scenarios": [
+    {
+      "scenario_id": "notarial-deed-installment-review",
+      "route_id": "notarial_deed_installment_agreement",
+      "family": "notarial_deed",
+      "expected_status": "review_required",
+      "primary_gap": "notarial deed consent and ambiguous balance review are not currently exercised."
+    },
+    {
+      "scenario_id": "payment-order-service-finality-missing",
+      "route_id": "payment_order_title_acquisition",
+      "family": "title_acquisition",
+      "expected_status": "review_required",
+      "primary_gap": "payment-order/title path should not imply execution readiness without service/finality proof."
+    },
+    {
+      "scenario_id": "civil-lawsuit-limitation-dispute",
+      "route_id": "civil_lawsuit_title_acquisition",
+      "family": "title_acquisition",
+      "expected_status": "review_required",
+      "primary_gap": "limitation and dispute profile should be tested before title acquisition recommendation."
+    },
+    {
+      "scenario_id": "real-estate-provisional-attachment-asset-value-uncertain",
+      "route_id": "real_estate_provisional_attachment",
+      "family": "provisional_remedy",
+      "expected_status": "review_required",
+      "primary_gap": "provisional remedy should require provisional need and value/priority review."
+    },
+    {
+      "scenario_id": "trade-receivable-third-party-overcollection",
+      "route_id": "trade_receivable_attachment",
+      "family": "business_receivable_execution",
+      "expected_status": "review_required",
+      "primary_gap": "business receivable execution introduces third-party overcollection and privacy-purpose boundaries."
+    },
+    {
+      "scenario_id": "pg-platform-settlement-privacy-purpose",
+      "route_id": "pg_platform_settlement_attachment",
+      "family": "business_receivable_execution",
+      "expected_status": "review_required",
+      "primary_gap": "platform settlement route needs explicit credit-information purpose and counterparty hint review."
+    },
+    {
+      "scenario_id": "real-estate-auction-priority-claims-unknown",
+      "route_id": "real_estate_compulsory_auction",
+      "family": "real_estate_execution",
+      "expected_status": "review_required",
+      "primary_gap": "real-estate execution should hold for priority claims and insolvency risk."
+    },
+    {
+      "scenario_id": "vehicle-equipment-asset-value-uncertain",
+      "route_id": "vehicle_or_heavy_equipment_attachment",
+      "family": "movable_business_asset_execution",
+      "expected_status": "review_required",
+      "primary_gap": "vehicle/equipment route needs asset-value and exemption review."
+    },
+    {
+      "scenario_id": "insurance-refund-privacy-purpose-missing",
+      "route_id": "insurance_refund_claim_attachment",
+      "family": "insurance_refund_deposit_execution",
+      "expected_status": "review_required",
+      "primary_gap": "insurance/refund route combines exemption and privacy-purpose review."
+    },
+    {
+      "scenario_id": "court-deposit-distribution-priority-risk",
+      "route_id": "court_deposit_or_distribution_claim_attachment",
+      "family": "insurance_refund_deposit_execution",
+      "expected_status": "review_required",
+      "primary_gap": "court deposit/distribution claims need priority and third-party risk coverage."
+    },
+    {
+      "scenario_id": "tax-refund-welfare-exemption-risk",
+      "route_id": "tax_refund_or_compensation_attachment",
+      "family": "tax_refund_distribution_compensation",
+      "expected_status": "review_required",
+      "primary_gap": "tax refund or compensation attachment must hold when welfare/public benefit exemption is plausible."
+    },
+    {
+      "scenario_id": "inheritance-share-family-dispute",
+      "route_id": "inheritance_share_attachment",
+      "family": "inheritance_family_property",
+      "expected_status": "review_required",
+      "primary_gap": "inheritance and family property routes need family-law dispute and privacy-purpose coverage."
+    },
+    {
+      "scenario_id": "fraudulent-transfer-hidden-asset",
+      "route_id": "fraudulent_transfer_cancellation_lawsuit",
+      "family": "fraudulent_transfer_hidden_asset",
+      "expected_status": "review_required",
+      "primary_gap": "hidden-asset/fraudulent-transfer route should test suspicious transfer timing and limitation risk."
+    },
+    {
+      "scenario_id": "insolvency-discharge-route-blocked",
+      "route_id": "insolvency_discharge_review",
+      "family": "insolvency_recovery_review",
+      "expected_status": "blocked",
+      "primary_gap": "dedicated insolvency route should prove stay/discharge blocks rather than only bank-route blocking."
+    },
+    {
+      "scenario_id": "monitoring-retry-no-asset-window-open",
+      "route_id": "monitoring_retry_after_no_asset",
+      "family": "monitoring_retry",
+      "expected_status": "monitoring",
+      "primary_gap": "monitoring/retry loop needs a non-execution scenario that records retry window and no-asset history."
+    }
+  ],
+  "scenario_design_rules": [
+    "Each fixture must use synthetic ids and no debtor contact payload.",
+    "Each fixture must name expected route status and expected review/action packet type.",
+    "At least one fixture in the next implementation wave should produce each of: possible, review_required, blocked, monitoring.",
+    "Any scenario touching real filing, debtor contact, payment demand, or seizure initiation must produce review-only artifacts, never executable instructions.",
+    "Any scenario relying on Goal 1 source audit outputs should include source_version/effective_date metadata or be review_required."
+  ]
+}

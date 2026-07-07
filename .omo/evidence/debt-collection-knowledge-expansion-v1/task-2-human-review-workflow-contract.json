@@ -1,0 +1,156 @@
+{
+  "schema_version": "recova.knowledge_expansion.human_review_workflow_contract.v1",
+  "generated_at": "2026-07-07T12:12:00+09:00",
+  "purpose": "Define the operator-review layer that a Hermes-like collection agent can use without performing legal filing, debtor contact, payment demand, seizure initiation, ledger mutation, or production storage mutation.",
+  "non_execution_boundary": {
+    "direct_execution_allowed": false,
+    "no_direct_execution": true,
+    "forbidden_payload_fields": [
+      "filing_destination",
+      "filing_destination_court",
+      "court_filing_endpoint",
+      "submission_endpoint",
+      "debtor_contact_payload",
+      "debtor_contact_channel",
+      "direct_debtor_contact_identifier",
+      "payment_request_payload",
+      "executable_instruction",
+      "collection_execution_command"
+    ],
+    "allowed_output_semantics": [
+      "advisory_only",
+      "human_review_required",
+      "evidence_request",
+      "review_record",
+      "non_executing_action_packet"
+    ]
+  },
+  "operator_review_states": [
+    {
+      "review_status": "draft",
+      "meaning": "Machine-generated recommendation has not yet been reviewed by an operator.",
+      "allowed_next_statuses": [
+        "needs_more_evidence",
+        "approved_for_internal_review",
+        "rejected"
+      ]
+    },
+    {
+      "review_status": "needs_more_evidence",
+      "meaning": "Operator or rule contract requires more source-backed facts before any recommendation can be acted on.",
+      "allowed_next_statuses": [
+        "approved_for_internal_review",
+        "rejected",
+        "blocked_by_policy"
+      ]
+    },
+    {
+      "review_status": "approved_for_internal_review",
+      "meaning": "Operator accepts the advisory packet for internal review queueing only; it is not execution approval.",
+      "allowed_next_statuses": [
+        "escalated_to_legal_review",
+        "rejected",
+        "closed_no_action"
+      ]
+    },
+    {
+      "review_status": "escalated_to_legal_review",
+      "meaning": "A human legal reviewer must inspect source refs, source version, and action packet boundaries.",
+      "allowed_next_statuses": [
+        "approved_for_internal_review",
+        "rejected",
+        "blocked_by_policy",
+        "closed_no_action"
+      ]
+    },
+    {
+      "review_status": "rejected",
+      "meaning": "Operator rejected the recommendation or packet. Rejection is recorded as evidence and no execution may occur.",
+      "allowed_next_statuses": [
+        "closed_no_action"
+      ]
+    },
+    {
+      "review_status": "blocked_by_policy",
+      "meaning": "The case is blocked by StopGate, source uncertainty, debtor-protection, privacy, insolvency, or execution-boundary policy.",
+      "allowed_next_statuses": [
+        "closed_no_action",
+        "needs_more_evidence"
+      ]
+    },
+    {
+      "review_status": "closed_no_action",
+      "meaning": "No action packet should proceed. This closes the review loop without external execution.",
+      "allowed_next_statuses": []
+    }
+  ],
+  "manual_decision_codes": [
+    "approve_advisory_packet_for_internal_review",
+    "request_more_source_evidence",
+    "request_finance_review",
+    "request_legal_source_review",
+    "request_privacy_purpose_review",
+    "reject_due_to_missing_provenance",
+    "reject_due_to_stopgate_blocker",
+    "reject_due_to_non_execution_boundary",
+    "close_without_action"
+  ],
+  "required_review_record_fields": [
+    "record_id",
+    "case_packet_ref",
+    "claim_ref",
+    "subject_ref",
+    "route_id",
+    "packet_type",
+    "review_status",
+    "decision_code",
+    "reason_codes",
+    "severity",
+    "source_refs",
+    "reviewer_ref",
+    "reviewed_at",
+    "audit_event_id",
+    "pii_profile",
+    "redaction",
+    "non_execution_semantics"
+  ],
+  "source_ref_rules": [
+    "Every operator decision must include at least one source_ref unless the decision_code is reject_due_to_missing_provenance.",
+    "Source refs must be pointers or curated ids, not raw document bodies.",
+    "If a source has review_status other than approved_static_v1, the review_status must be needs_more_evidence, escalated_to_legal_review, rejected, or blocked_by_policy.",
+    "Future-effective legal sources may not clear a route for the current evaluation date."
+  ],
+  "packet_type_mapping": [
+    {
+      "packet_type": "evidence_request",
+      "operator_use": "request_more_source_evidence"
+    },
+    {
+      "packet_type": "legal_action_review",
+      "operator_use": "request_legal_source_review"
+    },
+    {
+      "packet_type": "finance_review",
+      "operator_use": "request_finance_review"
+    },
+    {
+      "packet_type": "contact_review",
+      "operator_use": "request_privacy_purpose_review"
+    },
+    {
+      "packet_type": "monitoring_retry",
+      "operator_use": "approve_advisory_packet_for_internal_review"
+    },
+    {
+      "packet_type": "insolvency_recovery_review",
+      "operator_use": "reject_due_to_stopgate_blocker"
+    }
+  ],
+  "acceptance_checks_for_next_implementation": [
+    "Reject any review record missing source_refs unless the reason is missing provenance.",
+    "Reject or block any record containing forbidden payload fields.",
+    "Ensure review approval never changes direct_execution_allowed to true.",
+    "Ensure rejected or blocked review records are retained as audit evidence.",
+    "Ensure MCP outputs summarize review records without echoing reviewer secrets, raw OCR text, local paths, or debtor contact payloads."
+  ]
+}

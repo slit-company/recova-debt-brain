@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-07-07T02:58:34.724Z",
-  "updatedAt": "2026-07-07T03:07:37.989Z",
+  "updatedAt": "2026-07-07T03:11:42.416Z",
   "briefPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/brief.md",
   "goalsPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json",
   "ledgerPath": ".omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl",
@@ -310,7 +310,7 @@
       "id": "G008-scenario-coverage-and-human-review-c",
       "title": "Scenario coverage and human-review contract foundation",
       "objective": "Inventory scenario gaps against the claim-domain route catalog and define a validated human-review operator workflow contract for action packets and governance records.",
-      "status": "pending",
+      "status": "complete",
       "successCriteria": [
         {
           "id": "C001",
@@ -318,8 +318,10 @@
           "userModel": "happy",
           "expectedEvidence": ".omo/evidence/debt-collection-knowledge-expansion-v1/task-2-scenario-gap-inventory.json parses with json.tool and lists covered/missing scenario families with suggested fixture ids.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Created .omo/evidence/debt-collection-knowledge-expansion-v1/task-2-scenario-gap-inventory.json; json.tool passed; inventory compares 32 routes, 19 route families, 12 workflow states, 14 StopGate rules, 11 finance components, 6 review triggers, 6 action packet schemas, and 9 current synthetic scenarios; identifies 14 uncovered route families and recommended scenario ids.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T03:11:29.002Z",
+          "notes": "Coverage currently centers on 5 route families; recommended scenarios target real estate, business receivable, movable asset, inheritance, insolvency, monitoring, and other gaps."
         },
         {
           "id": "C002",
@@ -327,8 +329,10 @@
           "userModel": "edge",
           "expectedEvidence": "A validated JSON contract or markdown-backed smoke evidence exists for human-review operator workflow, and PII/path scan has NO_FINDINGS.",
           "essential": true,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Created .omo/evidence/debt-collection-knowledge-expansion-v1/task-2-human-review-workflow-contract.json; json.tool passed; PII/path/token scan returned no findings; contract defines operator review statuses, decision codes, required audit/source fields, and non-execution forbidden payload boundaries.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T03:11:29.039Z",
+          "notes": "Review approval is internal-review only and never changes direct_execution_allowed to true."
         },
         {
           "id": "C003",
@@ -336,13 +340,18 @@
           "userModel": "regression",
           "expectedEvidence": "A local Python smoke records MCP tool count=25, existing 21 first, four claim-domain tools appended, with no token/path leak.",
           "essential": false,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": "Created .omo/evidence/debt-collection-knowledge-expansion-v1/task-2-mcp-tool-order-smoke.json; /opt/homebrew/bin/python3 smoke asserted 25 tools, first debt-collection tool list preserved, and the four claim-domain tools appended in order.",
+          "status": "pass",
+          "capturedAt": "2026-07-07T03:11:29.073Z",
+          "notes": "Smoke printed MCP_TOOL_ORDER_OK; no token/path leak patterns found in task-2 evidence."
         }
       ],
-      "attempt": 0,
+      "attempt": 1,
       "createdAt": "2026-07-07T02:59:03.334Z",
-      "updatedAt": "2026-07-07T03:01:25.914Z"
+      "updatedAt": "2026-07-07T03:11:42.416Z",
+      "startedAt": "2026-07-07T03:08:07.475Z",
+      "completedAt": "2026-07-07T03:11:42.416Z",
+      "evidence": "Goal 2 complete: scenario gap inventory, human-review workflow contract, and MCP 25-tool order smoke evidence created; json.tool, PII/path scan, MCP smoke, and diff check passed; all three criteria recorded pass."
     },
     {
       "id": "G009-resource-and-fixture-expansion",
