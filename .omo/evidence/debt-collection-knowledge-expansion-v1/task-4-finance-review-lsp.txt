@@ -1,0 +1,7 @@
+LSP diagnostics severity=error:
+- trustgraph_legal/finance_claims.py: No diagnostics found
+- trustgraph_legal/domain_decisions.py: No diagnostics found
+- trustgraph_legal/route_decisions.py: No diagnostics found
+- tests/unit/legal_ontology/test_finance_claim_model_v1.py: No diagnostics found
+- tests/unit/legal_ontology/test_domain_decision_engine_v1.py: No diagnostics found
+Note: lsp.status reported basedpyright installed; active root was another team worktree before absolute A-file diagnostics were requested.

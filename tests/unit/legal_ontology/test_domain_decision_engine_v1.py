@@ -127,6 +127,11 @@ def test_engine_keeps_finance_review_codes_as_review_required_items() -> None:
     assert finance_items
     assert finance_items[0]["category"] == "finance"
     assert finance_items[0]["source_refs"]
+    action_packet = _only_object(decision["action_packet_candidates"])
+    assert action_packet["direct_execution_allowed"] is False
+    assert action_packet["non_execution_semantics"] == "advisory_only_human_review_required"
+    assert "filing_destination" not in action_packet
+    assert "debtor_contact_payload" not in action_packet
 
 
 def test_engine_rejects_unknown_route_id() -> None:
@@ -162,6 +167,31 @@ def test_engine_rejects_stale_legal_source_version() -> None:
 
     assert error.value.reason_code == "stale_legal_source_version"
     assert error.value.location == "resources/legal_rules/debt_collection_domain_sources_v1.json"
+
+
+def test_engine_rejects_stale_finance_model_version(tmp_path: Path) -> None:
+    # Given: a request using a finance model resource with a stale model version.
+    finance_path = tmp_path / "claim_finance_model_v1.json"
+    finance_model = json.loads((REPO_ROOT / "resources/finance/claim_finance_model_v1.json").read_text(encoding="utf-8"))
+    finance_model["model_version"] = "recova-claim-finance-model@stale"
+    _ = finance_path.write_text(json.dumps(finance_model), encoding="utf-8")
+    payload = _adapter_payload(
+        ("bank_account_attachment",),
+        ("enforceable_title", "financial_account_hint"),
+    )
+
+    # When / Then: the engine rejects stale finance independently from stale legal sources.
+    with pytest.raises(DomainDecisionError) as error:
+        _ = evaluate_claim_domain_decision(
+            DomainDecisionRequest(
+                payload,
+                workflow_state="execution_route_selection",
+                finance_path=finance_path,
+            ),
+        )
+
+    assert error.value.reason_code == "stale_finance_model_version"
+    assert error.value.location == "resources/finance/claim_finance_model_v1.json"
 
 
 def _adapter_payload(route_ids: tuple[str, ...], fact_handles: tuple[str, ...]) -> JsonObject:

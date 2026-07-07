@@ -1,0 +1,3 @@
+trustgraph_legal/finance_claims.py: pure_loc=224
+trustgraph_legal/domain_decisions.py: pure_loc=249
+trustgraph_legal/route_decisions.py: pure_loc=229

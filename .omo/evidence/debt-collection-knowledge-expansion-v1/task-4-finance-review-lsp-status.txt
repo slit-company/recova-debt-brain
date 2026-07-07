@@ -1,0 +1,1 @@
+LSP status: basedpyright installed; active root reported as worktree B before A-file diagnostics. See tool output in thread.

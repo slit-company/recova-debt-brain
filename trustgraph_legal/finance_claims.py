@@ -3,11 +3,13 @@ from __future__ import annotations
 from dataclasses import dataclass, replace
 from datetime import date
 from decimal import Decimal, ROUND_HALF_UP
-from typing import Final, TypeAlias
+from typing import Final, Union
+
+from typing_extensions import TypeAlias
 
 
-JsonScalar: TypeAlias = None | bool | int | float | str
-JsonValue: TypeAlias = JsonScalar | list["JsonValue"] | dict[str, "JsonValue"]
+JsonScalar: TypeAlias = Union[None, bool, int, float, str]
+JsonValue: TypeAlias = Union[JsonScalar, list["JsonValue"], dict[str, "JsonValue"]]
 JsonObject: TypeAlias = dict[str, JsonValue]
 
 CALCULATION_SCHEMA_VERSION: Final = "trustgraph-claim-finance-calculation/v1"
@@ -18,9 +20,10 @@ EXPLICIT_RATE_BASIS: Final = "explicit_contract_rate"
 EXPLICIT_ALLOCATION_STATUS: Final = "explicit_fixture_rule"
 KRW: Final = "KRW"
 PLACEHOLDER_SOURCE_REFS: Final = frozenset({"", "-", "missing", "n/a", "none", "null", "placeholder", "todo", "unknown"})
+SUPPORTED_ALLOCATION_COMPONENTS: Final = frozenset({"enforcement_costs", "interest", "late_damages", "principal"})
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class MoneyComponent:
     component_id: str
     component_type: str
@@ -38,7 +41,7 @@ class MoneyComponent:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class RatePeriod:
     component_type: str
     annual_rate_bps: int
@@ -48,7 +51,7 @@ class RatePeriod:
     source_refs: tuple[str, ...]
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class Payment:
     payment_id: str
     amount: int
@@ -57,7 +60,7 @@ class Payment:
     currency: str = KRW
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class PaymentAllocationRule:
     rule_id: str
     component_order: tuple[str, ...]
@@ -65,7 +68,7 @@ class PaymentAllocationRule:
     source_refs: tuple[str, ...]
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class FinanceRelationship:
     relationship_type: str
     status: str
@@ -79,7 +82,7 @@ class FinanceRelationship:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class FinanceReviewItem:
     code: str
     message: str
@@ -89,7 +92,7 @@ class FinanceReviewItem:
         return {"code": self.code, "message": self.message, "source_refs": list(self.source_refs)}
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class PaymentAllocation:
     payment_id: str
     applied: tuple[MoneyComponent, ...]
@@ -106,7 +109,7 @@ class PaymentAllocation:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class ClaimFinanceFixture:
     claim_id: str
     evaluation_date: date
@@ -132,7 +135,7 @@ class ClaimFinanceFixture:
         )
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class ClaimFinanceCalculation:
     claim_id: str
     evaluation_date: date
@@ -224,7 +227,11 @@ def _review_items(fixture: ClaimFinanceFixture) -> list[FinanceReviewItem]:
         items.append(FinanceReviewItem("missing_source_ref", "finance facts require non-placeholder source refs", ()))
     if _needs_rate_review(fixture.interest) or _needs_rate_review(fixture.late_damages):
         items.append(FinanceReviewItem("statutory_or_complex_interest", "interest basis is not an explicit fixture rate", _rate_refs(fixture)))
-    if fixture.allocation_rule.review_status != EXPLICIT_ALLOCATION_STATUS or not fixture.allocation_rule.component_order:
+    if (
+        fixture.allocation_rule.review_status != EXPLICIT_ALLOCATION_STATUS
+        or not fixture.allocation_rule.component_order
+        or _unsupported_allocation_components(fixture.allocation_rule)
+    ):
         items.append(FinanceReviewItem("payment_allocation_conflict", "payment allocation is missing or disputed", fixture.allocation_rule.source_refs))
     if fixture.disputed_amount is not None:
         items.append(FinanceReviewItem("disputed_amount", "disputed amount requires finance review", fixture.disputed_amount.source_refs))
@@ -235,11 +242,16 @@ def _needs_rate_review(terms: RatePeriod) -> bool:
     return terms.basis != EXPLICIT_RATE_BASIS or terms.annual_rate_bps <= 0 or terms.end_date <= terms.start_date
 
 
+def _unsupported_allocation_components(rule: PaymentAllocationRule) -> tuple[str, ...]:
+    return tuple(component for component in rule.component_order if component not in SUPPORTED_ALLOCATION_COMPONENTS)
+
+
 def _rate_refs(fixture: ClaimFinanceFixture) -> tuple[str, ...]:
     return tuple(dict.fromkeys((*fixture.interest.source_refs, *fixture.late_damages.source_refs)))
 
 
 def _has_missing_source_refs(fixture: ClaimFinanceFixture) -> bool:
+    disputed_refs = () if fixture.disputed_amount is None else (fixture.disputed_amount.source_refs,)
     source_groups = (
         fixture.principal.source_refs,
         fixture.interest.source_refs,
@@ -250,6 +262,7 @@ def _has_missing_source_refs(fixture: ClaimFinanceFixture) -> bool:
         fixture.reimbursement_subrogation_candidate.source_refs,
         *(cost.source_refs for cost in fixture.enforcement_costs),
         *(payment.source_refs for payment in fixture.payments),
+        *disputed_refs,
     )
     return any(not refs or any(_is_placeholder_source_ref(source_ref) for source_ref in refs) for refs in source_groups)
 

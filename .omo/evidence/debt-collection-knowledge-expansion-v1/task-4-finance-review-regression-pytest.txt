@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: $WORKTREE_A/tests
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.13.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 17 items
+
+tests/unit/legal_ontology/test_finance_claim_model_v1.py ......          [ 35%]
+tests/unit/legal_ontology/test_domain_decision_engine_v1.py .....        [ 64%]
+tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py ....      [ 88%]
+tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py ..  [100%]
+
+============================== 17 passed in 2.91s ==============================
