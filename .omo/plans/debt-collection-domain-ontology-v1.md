@@ -158,7 +158,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
 ## Todos
 > Implementation + Test = ONE todo. Never separate.
 <!-- APPEND TASK BATCHES BELOW THIS LINE WITH edit/apply_patch - never rewrite the headers above. -->
-- [ ] 1. Build PII-safe v2 manual inventory and candidate extractor
+- [x] 1. Build PII-safe v2 manual inventory and candidate extractor
   What to do / Must NOT do: Add a small extractor under `scripts/legal_ontology/` that reads `/Users/cosmos/Downloads/채권추심_장기채권_법조치_루트_총정리_v2_실무확장판 (1).md` and emits a summary-only candidate inventory: headings, route candidates, workflow candidates, fact handles, risk/blocker candidates, legal-source names/articles if present, finance/accounting candidates, scoring fields, and action-packet candidates. The output must not include full prose bodies, raw personal data, or local source paths. Keep the original manual outside committed resources unless a minimized/redacted fixture is deliberately created.
   Parallelization: Wave 1 | Blocked by: none | Blocks: 4, 5, 6, 7
   References (executor has NO interview context - be exhaustive): `/Users/cosmos/Downloads/채권추심_장기채권_법조치_루트_총정리_v2_실무확장판 (1).md`; `.omo/notes/recova-brain-working-log.md`; existing summary patterns in `scripts/legal_ontology/summarize_ocr_corpus.py`; evidence conventions in `.omo/evidence/debtor-context-graph-v0/`.
@@ -166,7 +166,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: run the extractor on the v2 manual and write `.omo/evidence/debt-collection-domain-ontology-v1/task-1-manual-inventory.json`; failure: run on a temp invalid/nonexistent manual path and require a controlled error in `.omo/evidence/debt-collection-domain-ontology-v1/task-1-manual-inventory-failure.txt`.
   Commit: Y | `test(legal-domain): inventory collection manual candidates`
 
-- [ ] 2. Define claim-centered ontology v1 resource and validator
+- [x] 2. Define claim-centered ontology v1 resource and validator
   What to do / Must NOT do: Add `resources/ontologies/recova-debt-collection-v1.json` and `scripts/legal_ontology/validate_domain_ontology_v1.py` or extend the existing validator if the shape remains compatible. The ontology must explicitly model `Claim`/`Receivable` as root, connected to debtor identity, creditor/assignee, guarantee/surety, case packet, document assembly, enforcement title, service/finality/execution clause, limitation, ledger facts, asset hints, route candidates, workflow states, StopGates, action packets, and governance records. Preserve links to existing `recova-debt-collection` IDs where possible; do not silently rename existing public IDs without alias metadata.
   Parallelization: Wave 1 | Blocked by: none | Blocks: 4, 5, 8, 10, 11
   References (executor has NO interview context - be exhaustive): `resources/ontologies/recova-debt-collection.json`; `scripts/legal_ontology/validate_ontology.py`; `tests/unit/legal_ontology/test_validate_ontology.py`; `.omo/plans/debtor-context-graph-v0.md`; `.omo/teams/debtor-context-graph-v0-20260706/artifacts/T-final-contract-review.md`.
@@ -174,7 +174,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: `python3 scripts/legal_ontology/validate_domain_ontology_v1.py resources/ontologies/recova-debt-collection-v1.json` writes `.omo/evidence/debt-collection-domain-ontology-v1/task-2-ontology-validator.txt`; failure: remove a required class in a temp copy and write `.omo/evidence/debt-collection-domain-ontology-v1/task-2-ontology-validator-failure.txt`.
   Commit: Y | `feat(legal-domain): add claim-centered ontology v1`
 
-- [ ] 3. Expand Korean-law source map into curated domain source v1
+- [x] 3. Expand Korean-law source map into curated domain source v1
   What to do / Must NOT do: Use the Korean-law MCP to discover/verify law and article refs needed by the v2 manual and existing route/StopGate resources. Add `resources/legal_rules/debt_collection_domain_sources_v1.json` and a validator. Each source record must include stable source_id, law name, law_id/mst/article when available, effective date, retrieved_at, retrieval_status, review_status, source axis, route/workflow/StopGate usage, and source_ref. If the MCP is unavailable or a source is ambiguous, record a candidate with `review_status: needs_legal_review` and evidence of the failed lookup; do not guess.
   Parallelization: Wave 1 | Blocked by: none | Blocks: 6, 7, 9
   References (executor has NO interview context - be exhaustive): `resources/legal_rules/debt_collection_route_sources_v0.json`; `resources/legal_rules/debt_collection_stopgate_v0.json`; `resources/legal_routes/debt_collection_routes_v0.json`; v2 manual legal-source checklist; Korean-law MCP tools available in this Codex environment.
@@ -182,7 +182,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: Korean-law lookup evidence summarized in `.omo/evidence/debt-collection-domain-ontology-v1/task-3-korean-law-source-map.json` and validator output in `task-3-source-validator.txt`; failure: temp-copy route source ref to unknown source_id and write `task-3-source-validator-failure.txt`.
   Commit: Y | `feat(legal-domain): curate domain legal sources v1`
 
-- [ ] 4. Add finance and claim accounting model v1
+- [x] 4. Add finance and claim accounting model v1
   What to do / Must NOT do: Add finance/ledger concepts and a deterministic schema/contract for claim balance reasoning. Cover principal, interest, late damages, enforcement costs, payments, payment allocation, remaining balance, assignment/succession, guarantee/surety, reimbursement/subrogation candidate, and disputed amount. Include a minimal deterministic fixture calculator for cases where amount, rate, period, payment date, and allocation rule are explicit. Complex statutory interest or disputed facts must return `needs_finance_review`. Do not mutate ledgers or present fixture calculations as authoritative balances.
   Parallelization: Wave 2 | Blocked by: 1, 2 | Blocks: 7, 8, 10
   References (executor has NO interview context - be exhaustive): `resources/ontologies/recova-debt-collection-v1.json`; existing amount/interest classes in `resources/ontologies/recova-debt-collection.json`; v2 manual sections on 채권 원금/이자/비용/변제/상계/시효; current field extraction and debtor context fact models under `trustgraph_legal/fields.py`, `trustgraph_legal/debtor_context_types.py`.
@@ -190,7 +190,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: write a synthetic claim ledger fixture and output `.omo/evidence/debt-collection-domain-ontology-v1/task-4-finance-happy.json`; failure: conflicting payment/allocation fixture produces review item evidence `.omo/evidence/debt-collection-domain-ontology-v1/task-4-finance-failure.json`.
   Commit: Y | `feat(legal-domain): add claim finance model`
 
-- [ ] 5. Add collection workflow state resource v1
+- [x] 5. Add collection workflow state resource v1
   What to do / Must NOT do: Add `resources/workflows/debt_collection_workflow_v1.json` and validator. Model canonical state IDs, transitions, preconditions, exit conditions, required evidence, review states, and blocked/monitoring loops. The required v1 state IDs are `intake`, `identity_evidence_package`, `limitation_review`, `title_acquisition`, `service_finality_execution_clause`, `voluntary_recovery`, `provisional_remedy`, `asset_discovery`, `execution_route_selection`, `insolvency_discharge_review`, `monitoring_retry`, and `closure`. Do not encode route decision logic here; keep workflow state and route eligibility linked but separable.
   Parallelization: Wave 2 | Blocked by: 1, 2 | Blocks: 7, 8, 12
   References (executor has NO interview context - be exhaustive): v2 manual headings and operational scenarios; `.omo/notes/recova-brain-working-log.md`; current route candidate statuses in `trustgraph_legal/route_candidates.py`; governance review statuses in `trustgraph_legal/debtor_governance.py`.
@@ -198,7 +198,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: validate workflow resource and write `.omo/evidence/debt-collection-domain-ontology-v1/task-5-workflow-validator.txt`; failure: temp-copy invalid transition target writes `task-5-workflow-validator-failure.txt`.
   Commit: Y | `feat(legal-domain): add collection workflow states`
 
-- [ ] 6. Expand legal route catalog v1 from manual and curated sources
+- [x] 6. Expand legal route catalog v1 from manual and curated sources
   What to do / Must NOT do: Add `resources/legal_routes/debt_collection_routes_v1.json` and validator. Expand beyond the current 18 route candidates using v2 manual route families: voluntary repayment, debt acknowledgment/notarial deed, title acquisition, provisional attachment, bank/financial asset execution, wage/income, lease/housing, business receivables/settlement, real estate, vehicle/movable/business assets, insurance/refund/deposit, tax/refund/distribution/compensation, inheritance/family property, fraudulent transfer/hidden assets, special property rights, welfare/public-benefit exclusions, property disclosure/inquiry/default registry, insolvency/recovery routes, monitoring/retry. Preserve advisory-only/no-direct-execution semantics.
   Parallelization: Wave 2 | Blocked by: 1, 2, 3 | Blocks: 7, 8, 9, 10
   References (executor has NO interview context - be exhaustive): `resources/legal_routes/debt_collection_routes_v0.json`; `scripts/legal_ontology/validate_routes.py`; `tests/unit/legal_ontology/test_validate_routes.py`; v2 manual route catalog and legal-source checklist; `resources/legal_rules/debt_collection_domain_sources_v1.json`.
@@ -206,7 +206,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: `python3 scripts/legal_ontology/validate_routes.py resources/legal_routes/debt_collection_routes_v1.json resources/legal_rules/debt_collection_domain_sources_v1.json` writes `task-6-route-validator.txt`; failure: unknown legal source ref writes `task-6-route-validator-failure.txt`.
   Commit: Y | `feat(legal-routes): expand debt collection route catalog v1`
 
-- [ ] 7. Add route decision table and priority scoring v1
+- [x] 7. Add route decision table and priority scoring v1
   What to do / Must NOT do: Add `resources/decision_tables/debt_collection_route_decisions_v1.json` plus a validator and lightweight evaluator module if needed. Encode route decision predicates: required fact handles, missing fact handles, blocking handles, workflow preconditions, finance preconditions, legal-source review status, StopGate blockers, priority score components, explainable reasons, and next-step action packet type. Priority scoring must be deterministic rule weights with named components, capped score ranges, tie-breaker order, and source refs. Do not collapse complex legal judgment into a single opaque score; every score/reason must be traceable.
   Parallelization: Wave 2 | Blocked by: 4, 5, 6 | Blocks: 8, 10, 11, 12
   References (executor has NO interview context - be exhaustive): `trustgraph_legal/route_candidates.py`; `resources/legal_routes/debt_collection_routes_v1.json`; `resources/workflows/debt_collection_workflow_v1.json`; `resources/decision_tables` conventions if present; v2 manual recommendation engine fields/rules/scoring section.
@@ -214,7 +214,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: evaluate a synthetic claim graph fixture and write `.omo/evidence/debt-collection-domain-ontology-v1/task-7-route-decision-happy.json`; failure: missing legal-source review status or StopGate blocker writes `task-7-route-decision-failure.json`.
   Commit: Y | `feat(legal-domain): add route decision table v1`
 
-- [ ] 8. Add advisory action packet schemas
+- [x] 8. Add advisory action packet schemas
   What to do / Must NOT do: Add `resources/action_packets/debt_collection_action_packets_v1.json` and validator. Define schemas for evidence-request, legal-action-review, finance-review, contact-review, monitoring/retry, and insolvency/recovery-review packets. Each schema must specify required inputs, source_refs, pii_profile, review_status, non_execution_semantics, and forbidden fields. No packet may include actual filing destination, debtor contact channel payload, or executable instruction.
   Parallelization: Wave 3 | Blocked by: 4, 5, 7 | Blocks: 11, 12, 13
   References (executor has NO interview context - be exhaustive): current MCP non-execution envelope in `trustgraph_legal/mcp_domain.py`; governance record style in `trustgraph_legal/debtor_governance.py`; v2 manual operational scenarios and Recova recommendation fields.
@@ -222,7 +222,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: validate all packet schemas and write `task-8-action-packets-validator.txt`; failure: temp-copy packet with `direct_execution_allowed: true` writes `task-8-action-packets-failure.txt`.
   Commit: Y | `feat(legal-domain): add advisory action packet schemas`
 
-- [ ] 9. Expand StopGate and compliance rule coverage for domain v1
+- [x] 9. Expand StopGate and compliance rule coverage for domain v1
   What to do / Must NOT do: Extend or add a v1 StopGate/compliance resource to cover domain-level blockers from the v2 manual: limitation risk, insolvency/discharge, exempt claim/property, welfare/public benefit protection, unapproved legal-source status, missing title/service/finality/execution-clause proof, excessive/ambiguous balance, unsupported contact/recovery route, and route-specific legal source uncertainty. Keep the engine advisory and review-safe.
   Parallelization: Wave 3 | Blocked by: 3, 6 | Blocks: 10, 11, 12
   References (executor has NO interview context - be exhaustive): `resources/legal_rules/debt_collection_stopgate_v0.json`; `trustgraph_legal/stop_gates.py`; `tests/unit/legal_ontology/test_stop_gates.py`; `resources/legal_rules/debt_collection_domain_sources_v1.json`; v2 manual common mistakes and legal baseline.
@@ -230,7 +230,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: evaluate a synthetic graph with known blockers and write `.omo/evidence/debt-collection-domain-ontology-v1/task-9-stopgate-happy.json`; failure: unapproved legal source or placeholder source ref writes `task-9-stopgate-failure.json`.
   Commit: Y | `feat(legal-check): expand domain stop gates v1`
 
-- [ ] 10. Add DebtorContextGraph to domain-v1 compatibility adapter
+- [x] 10. Add DebtorContextGraph to domain-v1 compatibility adapter
   What to do / Must NOT do: Add a narrow adapter module that maps existing `DebtorContextGraph` fact assertions, route candidates, governance records, and snapshots into the new claim-centered domain handles. The adapter must preserve existing graph IDs and source refs. It must not change debtor identity merge behavior, graph snapshot generation, or route candidate v0 outputs.
   Parallelization: Wave 3 | Blocked by: 2, 4, 6, 7, 9 | Blocks: 11, 13, 15
   References (executor has NO interview context - be exhaustive): `trustgraph_legal/debtor_context.py`; `trustgraph_legal/debtor_context_builder.py`; `trustgraph_legal/debtor_context_types.py`; `trustgraph_legal/debtor_snapshots.py`; `trustgraph_legal/route_candidates.py`; final accepted evidence in `.omo/evidence/debtor-context-graph-v0/final-real-ocr-eval.json`.
@@ -238,7 +238,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: adapt the synthetic debtor graph fixture and write `task-10-graph-adapter-happy.json`; failure: graph fact with missing source_ref or unsupported claim identity writes `task-10-graph-adapter-failure.json`.
   Commit: Y | `feat(legal-domain): map debtor graphs to claim domain`
 
-- [ ] 11. Implement domain decision engine v1
+- [x] 11. Implement domain decision engine v1
   What to do / Must NOT do: Add a deterministic engine that consumes the claim-domain adapter output plus workflow, route, decision-table, action-packet, legal-source, finance, and StopGate resources. It returns an advisory domain decision payload with candidate routes, reasons, blockers, missing facts, workflow stage, finance review items, action packet candidates, and source refs. Do not call LLMs, live law MCP, external services, or production systems.
   Parallelization: Wave 3 | Blocked by: 7, 8, 9, 10 | Blocks: 12, 13, 15
   References (executor has NO interview context - be exhaustive): `trustgraph_legal/route_candidates.py`; `trustgraph_legal/stop_gates.py`; `trustgraph_legal/debtor_governance.py`; all v1 resources added above.
@@ -246,7 +246,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: run decision engine on synthetic possible/missing/blocked cases and write `.omo/evidence/debt-collection-domain-ontology-v1/task-11-domain-decision-happy.json`; failure: unknown route id or stale legal-source version writes `task-11-domain-decision-failure.json`.
   Commit: Y | `feat(legal-domain): evaluate claim domain decisions`
 
-- [ ] 12. Add additive MCP read/explain tools for domain ontology v1
+- [x] 12. Add additive MCP read/explain tools for domain ontology v1
   What to do / Must NOT do: Add read-only MCP tools after the existing 21 tools: `list_claim_domain_routes`, `explain_collection_workflow_state`, `evaluate_claim_domain_decision`, and `explain_claim_action_packet`. Keep auth out of public tool arguments, preserve repo-root path bounds, use redacted envelopes, and preserve existing 21 tool order. If a security reviewer rejects a tool, replace it with an explicit deferral record and preserve the remaining compatible tools.
   Parallelization: Wave 3 | Blocked by: 5, 8, 11 | Blocks: 13, 14, 15
   References (executor has NO interview context - be exhaustive): `trustgraph_legal/mcp_domain.py`; `trustgraph_legal/mcp_handlers.py`; `trustgraph_legal/mcp_debtor_handlers.py`; `trustgraph-mcp/trustgraph/mcp_server/legal_tools.py`; `tests/unit/legal_ontology/test_mcp_domain_tools.py`; `tests/unit/legal_ontology/test_mcp_debtor_context_tools.py`; `tests/integration/legal_ontology/test_mcp_tools.py`.
@@ -254,7 +254,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: fake-MCP calls for each new read/explain tool write `.omo/evidence/debt-collection-domain-ontology-v1/task-12-mcp-happy.json`; failure: outside-root path and missing auth resolver write `task-12-mcp-failure.json` with no token/path leak.
   Commit: Y | `feat(legal-mcp): expose claim domain ontology tools`
 
-- [ ] 13. Add integration fixtures and end-to-end domain tests
+- [x] 13. Add integration fixtures and end-to-end domain tests
   What to do / Must NOT do: Add synthetic minimized fixtures that represent common claim states from the v2 manual: clean title route, missing service/finality proof, limitation risk, wage route with missing employer signal, bank route with missing account hint, insolvency blocker, exempt/public-benefit risk, voluntary repayment/acknowledgment path, and finance ambiguity. Use these fixtures to exercise manual inventory, ontology, legal sources, finance, workflow, routes, decision table, action packets, adapter, decision engine, and MCP if present. Do not use real PII or raw OCR bodies.
   Parallelization: Wave 4 | Blocked by: 10, 11, 12 | Blocks: 15
   References (executor has NO interview context - be exhaustive): `tests/fixtures/legal-ocr/`; `tests/fixtures/legal-ocr-pages/`; `tests/unit/legal_ontology/`; `tests/integration/legal_ontology/test_debtor_context_pipeline.py`; v2 manual operational scenarios.
@@ -262,7 +262,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: run all synthetic integration fixtures and write `.omo/evidence/debt-collection-domain-ontology-v1/task-13-integration-happy.json`; failure: fixture with raw/unsafe field or unknown legal source writes `task-13-integration-failure.json`.
   Commit: Y | `test(legal-domain): add claim domain integration fixtures`
 
-- [ ] 14. Write operator/developer docs and update working log
+- [x] 14. Write operator/developer docs and update working log
   What to do / Must NOT do: Add or update docs under `docs/product/debt-collection-ontology/`, recommended `claim-domain-ontology-v1.md`, and update `.omo/notes/recova-brain-working-log.md`. Explain how Domain Ontology v1, DebtorContextGraph, and MCP tools work together; how legal-source curation works; how finance calculations are bounded; how action packet schemas remain non-executing; how an agent should ask questions; and how to add new law/route/finance/workflow knowledge safely. Do not edit Recova MCP deployment runbooks unless directly needed for links.
   Parallelization: Wave 4 | Blocked by: 11, 12 | Blocks: 15
   References (executor has NO interview context - be exhaustive): `docs/product/debt-collection-ontology/debtor-context-graph-v0.md`; `.omo/notes/recova-brain-working-log.md`; this plan; final v1 resource files.
@@ -270,7 +270,7 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
   QA scenarios (name the exact tool + invocation): happy: docs smoke writes `.omo/evidence/debt-collection-domain-ontology-v1/task-14-docs-smoke.txt`; failure: path/PII scan over docs and evidence writes `task-14-docs-pii.txt` with `NO_FINDINGS`.
   Commit: Y | `docs(legal-domain): document claim ontology v1`
 
-- [ ] 15. Build final eval pack and final contract review
+- [x] 15. Build final eval pack and final contract review
   What to do / Must NOT do: Run the full final focused suite, validate every JSON resource/evidence file, run final PII/path scans, run real v2 manual summary-only eval, and produce final contract review. If MCP tools were added, prove final tool count/order and fake-MCP behavior. Do not mark complete from self-report only; the final review artifact must cite the exact commands and outcomes.
   Parallelization: Wave 4 | Blocked by: all prior | Blocks: final verification
   References (executor has NO interview context - be exhaustive): all resources/tests/docs/evidence added above; `.omo/evidence/debtor-context-graph-v0/final-real-ocr-eval.json`; `.omo/teams/debtor-context-graph-v0-20260706/artifacts/T-final-contract-review.md`.
@@ -280,19 +280,19 @@ Your next move: start execution with `$omo:start-work .omo/plans/debt-collection
 
 ## Final verification wave
 > Runs in parallel after ALL todos. ALL technical verification is agent-executed. The later user okay is only a release/declaration checkpoint.
-- [ ] F1. Plan compliance audit
+- [x] F1. Plan compliance audit
   - Verify every Must Have has an implemented artifact or a documented accepted deferral.
   - Verify every Must NOT Have is tested or scanned.
   - Evidence: `.omo/evidence/debt-collection-domain-ontology-v1/final-plan-compliance.md`.
-- [ ] F2. Code quality review
+- [x] F2. Code quality review
   - Review validators, engines, adapters, and MCP additions for size, dependency, import-floor, and duplicated-logic risks.
   - Run focused pytest, py_compile, basedpyright if available, and `git diff --check`.
   - Evidence: `.omo/evidence/debt-collection-domain-ontology-v1/final-code-quality.md`.
-- [ ] F3. Real manual QA
+- [x] F3. Real manual QA
   - Run the manual inventory and domain decision smoke on summary-only data from the v2 manual.
   - Prove no raw prose, local path, or sensitive personal data appears.
   - Evidence: `.omo/evidence/debt-collection-domain-ontology-v1/final-real-manual-summary.json`.
-- [ ] F4. Scope fidelity and MCP contract review
+- [x] F4. Scope fidelity and MCP contract review
   - Verify existing 21 MCP tools are preserved.
   - Verify any new MCP tools are additive, read-only, auth-safe, repo-root bounded, and redacted.
   - Verify no deployment, Supabase, Cloudflare, Vercel, or production mutation work snuck in.

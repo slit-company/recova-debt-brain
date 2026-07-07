@@ -9,11 +9,12 @@ Keep it updated whenever planning, interview decisions, ontology scope, implemen
 
 ## Current Stage
 
-We have completed the deterministic debtor-context graph v0 and are now planning the next major axis:
+We have completed the deterministic debtor-context graph v0 and the claim-centered domain ontology v1:
 
-`debt-collection-domain-ontology-v1`
+- `debtor-context-graph-v0`
+- `debt-collection-domain-ontology-v1`
 
-The next axis should integrate legal rules, finance concepts, collection workflow, route decision logic, evidence requirements, and compliance StopGates into one coherent domain ontology. It should not become a disconnected law database or a generic finance glossary.
+The current local `master` contains the completed domain brain implementation and final evaluation evidence. The next major axis is deployment and productization: publish the updated MCP server surface, verify the remote tool count/order, then decide whether to deepen legal-source coverage, agent workflow UX, or production governance.
 
 ## Completed Work
 
@@ -300,7 +301,7 @@ Team handoff:
 
 - `artifacts/T-domain-docs-report.md`
 
-Planned v1 implementation todos:
+Completed v1 implementation todos:
 
 1. PII-safe v2 manual inventory and candidate extractor.
 2. Claim-centered ontology v1 resource and validator.
@@ -317,6 +318,60 @@ Planned v1 implementation todos:
 13. Integration fixtures and end-to-end tests.
 14. Operator/developer docs.
 15. Final eval pack and contract review.
+
+### 2026-07-07 - Claim Domain Ontology v1 final acceptance
+
+Plan:
+
+- `.omo/plans/debt-collection-domain-ontology-v1.md`
+
+Final integrated master:
+
+- `e37c7aea` (`Merge branch 'team/team-8953292e/U'`)
+
+Final review:
+
+- `/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-8953292e/artifacts/V-final-contract-review.md`
+- Verdict: `ACCEPTED`
+
+Final verification:
+
+- Focused suite: `77 passed`.
+- JSON validation: 34 resource/evidence JSON files parsed.
+- MCP surface: 25 tools total.
+- Existing 21 MCP tools are preserved first.
+- Four claim-domain tools are appended last:
+  - `list_claim_domain_routes`
+  - `explain_collection_workflow_state`
+  - `evaluate_claim_domain_decision`
+  - `explain_claim_action_packet`
+- Final PII/path scan: `NO_FINDINGS` across 32 files.
+- Final review confirmed no deployment, Supabase, Cloudflare, Vercel, or production MCP runbook mutation was introduced by the ontology work.
+
+What this means:
+
+- Recova now has two connected brain axes:
+  - `DebtorContextGraph`: remembers one debtor/claim packet at a point in time.
+  - `Claim Domain Ontology v1`: understands the professional debt-collection domain around a claim/receivable.
+- The MCP layer can now answer both debtor-graph questions and claim-domain questions, but only after the remote MCP server is redeployed with this master state.
+
+## Next Work
+
+Recommended next steps, in order:
+
+1. Deploy the updated MCP server from the pushed master and verify remote MCP `tool_count=25`.
+2. Run a live remote smoke against `https://recova-mcp-lab.slit.company/mcp` for:
+   - `list_debt_collection_tools`
+   - `build_debtor_context_graph`
+   - `list_claim_domain_routes`
+   - `evaluate_claim_domain_decision`
+   - `explain_claim_action_packet`
+3. Update client-facing setup docs only after the remote service proves the 25-tool surface.
+4. Start the next knowledge expansion wave:
+   - replace remaining `needs_legal_review` legacy/source bundle refs with exact article-level legal refs where possible;
+   - add more synthetic scenario coverage for rare asset classes and insolvency/recovery cases;
+   - design a human-review operator UI or workflow for action packets and governance records.
+5. Decide the production boundary before enabling any real execution workflow. Current packets are intentionally advisory and non-executing.
 
 This log should continue to be updated whenever the user answers interview questions, changes product direction, or completes/accepts a major implementation slice.
 

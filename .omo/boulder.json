@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "active_work_id": "debt-collection-ontology-20260630",
+  "active_work_id": "debt-collection-domain-ontology-v1-20260707",
   "works": {
     "debt-collection-ontology-20260630": {
       "work_id": "debt-collection-ontology-20260630",
@@ -11,7 +11,26 @@
       ],
       "status": "completed",
       "worktree_path": null
+    },
+    "debtor-context-graph-v0-20260706": {
+      "work_id": "debtor-context-graph-v0-20260706",
+      "active_plan": ".omo/plans/debtor-context-graph-v0.md",
+      "plan_name": "debtor-context-graph-v0",
+      "session_ids": [
+        "codex:019f124c-74e3-76c1-9a67-4c65799f2cd3"
+      ],
+      "status": "completed",
+      "worktree_path": null
+    },
+    "debt-collection-domain-ontology-v1-20260707": {
+      "work_id": "debt-collection-domain-ontology-v1-20260707",
+      "active_plan": ".omo/plans/debt-collection-domain-ontology-v1.md",
+      "plan_name": "debt-collection-domain-ontology-v1",
+      "session_ids": [
+        "codex:019f124c-74e3-76c1-9a67-4c65799f2cd3"
+      ],
+      "status": "completed",
+      "worktree_path": null
     }
-  },
-  "completed_at": "2026-07-01T02:55:00+09:00"
+  }
 }
