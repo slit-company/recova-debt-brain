@@ -4,11 +4,13 @@ import json
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Final, TypeAlias
+from typing import Final, Union
+
+from typing_extensions import TypeAlias
 
 
-JsonScalar: TypeAlias = None | bool | int | float | str
-JsonValue: TypeAlias = JsonScalar | list["JsonValue"] | dict[str, "JsonValue"]
+JsonScalar: TypeAlias = Union[None, bool, int, float, str]
+JsonValue: TypeAlias = Union[JsonScalar, list["JsonValue"], dict[str, "JsonValue"]]
 JsonObject: TypeAlias = dict[str, JsonValue]
 
 DECISION_SCHEMA_VERSION: Final = "trustgraph-route-decisions/v1"
@@ -21,7 +23,7 @@ APPROVED_SOURCE_STATUS: Final = "approved_static_v1"
 NON_EXECUTION_SEMANTICS: Final = "advisory_only_human_review_required"
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class RouteDecisionTableError(Exception):
     message: str
 
@@ -29,13 +31,13 @@ class RouteDecisionTableError(Exception):
         return self.message
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class SourceReviewStatus:
     source_id: str
     review_status: str
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class RouteDecisionRequest:
     route_id: str
     workflow_state: str
@@ -44,7 +46,7 @@ class RouteDecisionRequest:
     finance_review_codes: tuple[str, ...] = ()
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class DecisionReason:
     reason_code: str
     message: str
@@ -58,7 +60,7 @@ class DecisionReason:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class RouteDecision:
     route_id: str
     status: str
@@ -85,7 +87,7 @@ class RouteDecision:
         }
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class RouteDecisionTable:
     root: JsonObject
     decisions_by_route: dict[str, JsonObject]
@@ -97,7 +99,7 @@ class RouteDecisionTable:
         return decision
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class EvaluationContext:
     entry: JsonObject
     request: RouteDecisionRequest

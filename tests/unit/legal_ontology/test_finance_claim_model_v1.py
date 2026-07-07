@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import subprocess
 import sys
+from dataclasses import replace
 from datetime import date
 from pathlib import Path
 
@@ -110,6 +111,53 @@ def test_ambiguous_or_conflicting_balance_returns_finance_review() -> None:
         "disputed_amount",
         "missing_source_ref",
     } <= review_codes
+
+
+def test_unsupported_allocation_component_returns_finance_review_without_balance() -> None:
+    # Given: an explicit fixture allocation rule containing a component the calculator cannot support.
+    fixture = _explicit_fixture()
+    unsupported_rule = replace(
+        fixture.allocation_rule,
+        component_order=("unsupported_fee", "principal"),
+    )
+
+    # When: the deterministic fixture calculator evaluates the rule.
+    result = calculate_claim_finance_fixture(replace(fixture, allocation_rule=unsupported_rule))
+    payload = result.to_json()
+
+    # Then: it refuses a balance and preserves the allocation source refs for review.
+    assert payload["balance_review_status"] == "needs_finance_review"
+    assert "remaining_balance" not in payload
+    allocation_reviews = [
+        item
+        for item in object_list_field(payload, "review_items")
+        if text_field(item, "code") == "payment_allocation_conflict"
+    ]
+    assert allocation_reviews
+    assert allocation_reviews[0]["source_refs"] == ["fixture:finance#allocation"]
+    assert payload["non_execution_semantics"] == "fixture_calculation_only_not_authoritative_balance"
+
+
+def test_disputed_amount_placeholder_source_ref_is_preserved_and_reviewed() -> None:
+    # Given: a disputed amount whose source ref is still only a placeholder.
+    disputed = MoneyComponent(
+        "component:disputed",
+        "disputed_amount",
+        125_000,
+        ("placeholder:finance#dispute",),
+    )
+
+    # When: the deterministic fixture calculator evaluates the disputed amount.
+    result = calculate_claim_finance_fixture(replace(_explicit_fixture(), disputed_amount=disputed))
+    payload = result.to_json()
+
+    # Then: the disputed source ref is preserved and the placeholder source is review-blocking.
+    review_items = object_list_field(payload, "review_items")
+    by_code = {text_field(item, "code"): item for item in review_items}
+    assert payload["balance_review_status"] == "needs_finance_review"
+    assert "remaining_balance" not in payload
+    assert by_code["disputed_amount"]["source_refs"] == ["placeholder:finance#dispute"]
+    assert "missing_source_ref" in by_code
 
 
 def object_field(entry: JsonObject, field: str) -> JsonObject:

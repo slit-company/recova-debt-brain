@@ -37,7 +37,7 @@ STOPGATE_PATH: Final = REPO_ROOT / "resources" / "legal_rules" / "debt_collectio
 NON_EXECUTION_SEMANTICS: Final = "advisory_only_human_review_required"
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class DomainDecisionError(Exception):
     location: str
     reason_code: str
@@ -48,7 +48,7 @@ class DomainDecisionError(Exception):
         return "{}: {}".format(self.reason_code, self.message)
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class DomainDecisionRequest:
     claim_domain_payload: JsonObject
     workflow_state: str
@@ -63,7 +63,7 @@ class DomainDecisionRequest:
     stopgate_path: Path = STOPGATE_PATH
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class ResourceBundle:
     decision_table: RouteDecisionTable
     source_reviews: tuple[SourceReviewStatus, ...]
@@ -124,8 +124,10 @@ def _load_resources(request: DomainDecisionRequest) -> ResourceBundle:
     finance = _load_json(request.finance_path)
     stopgate = _load_json(request.stopgate_path)
     source_version = text(sources.get("rule_source_version"))
-    expected_source_version = text(table.root.get("domain_source_version"))
-    _require_source_version(source_version, expected_source_version, request.expected_domain_source_version)
+    finance_version = text(finance.get("model_version"))
+    _require_source_version(source_version, text(table.root.get("domain_source_version")), request.expected_domain_source_version)
+    if finance_version != text(table.root.get("finance_model_version")):
+        raise DomainDecisionError("resources/finance/claim_finance_model_v1.json", "stale_finance_model_version", "finance model version does not match the decision table")
     return ResourceBundle(
         table,
         tuple(
@@ -141,7 +143,7 @@ def _load_resources(request: DomainDecisionRequest) -> ResourceBundle:
             "decision_table_version": text(table.root.get("decision_table_version")),
             "domain_source_version": source_version,
             "workflow_version": text(table.root.get("workflow_version")),
-            "finance_model_version": text(finance.get("model_version")),
+            "finance_model_version": finance_version,
             "action_packet_version": text(actions.get("action_packet_version")),
             "stopgate_rule_source_version": text(stopgate.get("rule_source_version")),
         },

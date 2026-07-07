@@ -1,0 +1,106 @@
+{
+  "disputed_amount": {
+    "balance_review_status": "needs_finance_review",
+    "remaining_balance_present": false,
+    "review_items": [
+      {
+        "code": "missing_source_ref",
+        "message": "finance facts require non-placeholder source refs",
+        "source_refs": []
+      },
+      {
+        "code": "disputed_amount",
+        "message": "disputed amount requires finance review",
+        "source_refs": [
+          "placeholder:finance#dispute"
+        ]
+      }
+    ]
+  },
+  "manual_finance_review_decision": {
+    "action_packet": {
+      "claim_ref": "claim:fixture",
+      "direct_execution_allowed": false,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "packet_type": "legal_action_review",
+      "pii_profile": {
+        "debtor_contact_payload_included": false,
+        "filing_destination_included": false,
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "required_inputs": [
+        "case_packet_ref",
+        "claim_ref",
+        "route_id",
+        "enforceable_title",
+        "service_finality",
+        "execution_clause",
+        "legal_source_review_status",
+        "source_refs"
+      ],
+      "review_status": "human_review_required",
+      "route_id": "bank_account_attachment",
+      "route_status": "review_required",
+      "schema_version": "trustgraph-action-packet-candidate/v1",
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12",
+        "kr-law-l009290-m268837-a61"
+      ]
+    },
+    "non_execution_semantics": "advisory_only_human_review_required",
+    "review_items": [
+      {
+        "category": "finance",
+        "code": "payment_allocation_conflict",
+        "fact_handles": [],
+        "review_status": "human_review_required",
+        "route_id": "",
+        "source_refs": [
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009930-m267359-a593",
+          "kr-law-l010910-m268669-a12"
+        ]
+      },
+      {
+        "category": "finance",
+        "code": "disputed_amount",
+        "fact_handles": [],
+        "review_status": "human_review_required",
+        "route_id": "",
+        "source_refs": [
+          "kr-law-l009290-m268837-a223",
+          "kr-law-l009290-m268837-a229",
+          "kr-law-l009290-m268837-a246",
+          "kr-law-l009930-m267359-a593",
+          "kr-law-l010910-m268669-a12"
+        ]
+      }
+    ],
+    "route_status": "review_required"
+  },
+  "stale_finance": {
+    "location": "resources/finance/claim_finance_model_v1.json",
+    "reason": "stale_finance_model_version: finance model version does not match the decision table",
+    "reason_code": "stale_finance_model_version"
+  },
+  "unsupported_allocation": {
+    "balance_review_status": "needs_finance_review",
+    "remaining_balance_present": false,
+    "review_items": [
+      {
+        "code": "payment_allocation_conflict",
+        "message": "payment allocation is missing or disputed",
+        "source_refs": [
+          "fixture:finance#allocation"
+        ]
+      }
+    ]
+  }
+}
