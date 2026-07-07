@@ -25,12 +25,12 @@ from trustgraph_legal.stopgate_domain_resources import (
     string_tuple,
     text_value,
 )
+from trustgraph_legal.stopgate_proof_text import has_positive_proof_text
 from trustgraph_legal.stopgate_rules import StopGateInputError
 from trustgraph_legal.stopgate_types import (
     FactRef,
     FieldFact,
     JsonObject,
-    JsonValue,
     RuleSourceSet,
     StopGateFinding,
     StopGatePayload,
@@ -209,8 +209,8 @@ def _missing_service_finality_execution_clause_proof(
     domain_packet: DomainCaseIndex,
 ) -> Tuple[FactRef, ...]:
     service_docs = tuple(document for document in packet.documents if document.value == "service-finality-proof")
-    execution_valid = _has_positive_proof(packet.fields.get("execution_clause_status", ()), {"grant", "issued"})
-    service_valid = _has_positive_proof(packet.fields.get("service_status", ()), {"served", "service"})
+    execution_valid = _has_positive_proof(packet.fields.get("execution_clause_status", ()), {"grant", "granted", "issued"})
+    service_valid = _has_positive_proof(packet.fields.get("service_status", ()), {"completed", "served", "service"})
     finality_valid = _has_positive_proof(packet.fields.get("finality_status", ()), {"final", "confirmed"})
     if service_docs and execution_valid and service_valid and finality_valid:
         return ()
@@ -276,7 +276,7 @@ def _field_facts(packet: CaseIndex, names: Set[str]) -> Tuple[FieldFact, ...]:
 
 
 def _has_positive_proof(facts: Tuple[FieldFact, ...], tokens: Set[str]) -> bool:
-    return any(any(token in fact.value.lower() for token in tokens) for fact in facts)
+    return any(has_positive_proof_text(fact.value, tokens) for fact in facts)
 
 
 def _balance_review_value(value: str) -> bool:

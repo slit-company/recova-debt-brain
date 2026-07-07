@@ -92,8 +92,8 @@ def test_domain_v1_clear_case_preserves_review_safe_possible_decision() -> None:
     graph = _graph(
         _document("doc:title", "payment-order"),
         _document("doc:service", "service-finality-proof"),
-        _field("field:execution", "execution_clause_status", "granted"),
-        _field("field:service", "service_status", "served"),
+        _field("field:execution", "execution_clause_status", "grant"),
+        _field("field:service", "service_status", "service"),
         _field("field:finality", "finality_status", "final"),
         _field("field:limitation", "limitation_cleared", "reviewed"),
         _field("field:claim", "claim_amount", "KRW 1000", amount_kind="claim_amount"),
@@ -119,6 +119,39 @@ def test_domain_v1_clear_case_preserves_review_safe_possible_decision() -> None:
         "Legal StopGates are clear for advisory recommendation; external approval still owns execution."
     )
     assert payload["stop_gates"] == []
+
+
+def test_domain_v1_holds_negated_service_finality_execution_clause_values() -> None:
+    # Given: title/service/finality evidence exists but each material proof value is explicitly negated.
+    graph = _graph(
+        _document("doc:title", "payment-order"),
+        _document("doc:service", "service-finality-proof"),
+        _field("field:execution", "execution_clause_status", "not granted"),
+        _field("field:service", "service_status", "not served"),
+        _field("field:finality", "finality_status", "not final"),
+        _field("field:limitation", "limitation_cleared", "reviewed"),
+        _field("field:claim", "claim_amount", "KRW 1000", amount_kind="claim_amount"),
+        _field("field:principal", "principal_amount", "KRW 1000", amount_kind="principal_amount"),
+        _route_candidate(
+            "route:bank",
+            "bank_account_attachment",
+            "approved_static_v1",
+            [
+                "kr-law-l009290-m268837-a223",
+                "kr-law-l009290-m268837-a229",
+                "kr-law-l009290-m268837-a246",
+            ],
+        ),
+    )
+
+    # When: the domain-v1 StopGate evaluates service, finality, and execution-clause proof.
+    payload = evaluate_domain_v1_case_graph(graph).to_json()
+    reason_codes = {_str_value(gate["reason_code"]) for gate in _object_list(payload["stop_gates"])}
+
+    # Then: negated or uncertain proof wording keeps the case on hold instead of falsely clearing.
+    assert payload["decision"] == "보류"
+    assert "missing_service_finality_execution_clause_proof" in reason_codes
+    assert payload["recommended_action"] == "Hold advisory recommendation until required preconditions and review items are cleared."
 
 
 def test_domain_v1_flags_unapproved_or_placeholder_route_sources() -> None:
