@@ -30,6 +30,20 @@ codegraph project store. The codegraph database is local state and must not be
 committed. See `docs/ai-maintenance/codegraph.md` for the current setup and
 operating notes.
 
+On this Mac, use `/Users/slit/.omo/codegraph/bin/codegraph` for local CLI
+checks. Do not rely on a raw Node invocation of the Codegraph JavaScript entry;
+the system Node version may trip Codegraph's runtime guard even when the
+bundled wrapper works.
+
+Current clean baseline, verified on 2026-07-08:
+
+- Codegraph status: 1,248 files, 18,898 nodes, 51,660 edges.
+- Supported tracked source parity: Python/YAML/JavaScript missing=0, extra=0,
+  indexed_errors=0.
+- The first-party
+  `trustgraph-vertexai/trustgraph/model/text_completion/vertexai/` provider
+  source must remain indexed despite the generic local `vertexai/` ignore rule.
+
 When codegraph appears stale after edits, wait briefly for the watcher to catch
 up and query again. If a tool reports that the project is not indexed in a new
 environment, initialize/index codegraph locally there rather than committing
@@ -58,6 +72,7 @@ Current documentation anchors:
 - `docs/product/debt-collection-ontology/claim-domain-ontology-v1.md`
 - `.omo/plans/debt-brain-structural-depth-v1.md`
 - `.omo/evidence/debt-brain-structural-depth-v1/final-summary.md`
+- `.omo/evidence/codegraph-index-cleanup-20260708/final-summary.md`
 
 ## Hard Guardrails
 
@@ -107,4 +122,3 @@ python3 -m compileall <changed-python-files>
 uv run --with ruff ruff check <changed-python-files>
 uv run --with basedpyright --with pytest --with pydantic --with typing-extensions basedpyright <changed-python-files>
 ```
-
