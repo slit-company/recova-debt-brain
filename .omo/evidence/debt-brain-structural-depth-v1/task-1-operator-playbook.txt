@@ -1,0 +1,44 @@
+Todo 1 operator playbook evidence
+Timestamp: 2026-07-08 Asia/Seoul
+
+Changed files:
+- resources/workflows/debt_collection_operator_playbook_v1.json
+- scripts/legal_ontology/validate_operator_playbook_v1.py
+- tests/unit/legal_ontology/test_operator_playbook_v1.py
+
+Manual QA artifact:
+- The playbook validator was run directly against the committed playbook, canonical workflow resource, and curated domain source map.
+- Result: PASS operator_playbook recova-debt-collection-operator-playbook@v1.0.0 stages=10 action_types=13 remediation_loops=9 source_refs=28
+
+Behavior covered:
+- Practical operator stages: intake, evidence_completion, title_acquisition, asset_discovery, execution_route_selection, enforcement_ready, monitoring, settlement_restructuring, insolvency_protected_asset_review, closure.
+- Each stage carries workflow_state_ids, next_action_types, premature_action_reasons, missing_inputs, required_checkpoint_inputs, remediation_loops, ready_when, source_refs, human_review_required, and advisory-only non_execution_semantics.
+- Validator rejects unknown workflow state references.
+- Validator rejects direct_execution_allowed=true.
+- Existing debt_collection_workflow_v1.json was not replaced or modified.
+
+Commands and results:
+- /opt/homebrew/bin/uv run --with pytest python -m pytest tests/unit/legal_ontology/test_operator_playbook_v1.py tests/unit/legal_ontology/test_workflow_v1.py -q
+  Result: 7 passed, 1 warning.
+  Warning: pytest reports unknown config option asyncio_mode under the transient uv pytest environment.
+- /opt/homebrew/bin/uv run python scripts/legal_ontology/validate_operator_playbook_v1.py resources/workflows/debt_collection_operator_playbook_v1.json resources/workflows/debt_collection_workflow_v1.json resources/legal_rules/debt_collection_domain_sources_v1.json
+  Result: PASS operator_playbook recova-debt-collection-operator-playbook@v1.0.0 stages=10 action_types=13 remediation_loops=9 source_refs=28
+- /opt/homebrew/bin/uv run python -m compileall scripts/legal_ontology/validate_operator_playbook_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+  Result: compile passed.
+- /opt/homebrew/bin/uv run python JSON validation for resources/workflows/debt_collection_operator_playbook_v1.json
+  Result: JSON_VALIDATION_OK files=1.
+- PII/path/secret/raw-payload safety scan across changed files and evidence
+  Result: NO_FINDINGS files=4.
+- Pure LOC check
+  Result: scripts/legal_ontology/validate_operator_playbook_v1.py 198; tests/unit/legal_ontology/test_operator_playbook_v1.py 103.
+
+Environment notes:
+- The first red test attempt with system python3 failed because pytest is not installed there.
+- A direct system python3 validator invocation also fails before this change because the repo's existing domain_sources_v1_common.py imports typing.TypeAlias, which is not available in the Apple Python 3.9 on this machine.
+- Verification therefore used uv's Python 3.14.6 runner.
+- LSP diagnostics could not run: basedpyright is not installed and was previously declined in this environment.
+
+Cleanup and risks:
+- No generated cache files were intentionally kept.
+- Existing unrelated worktree changes were left untouched.
+- Remaining risk: downstream Todo 2/6 integration must decide how to consume this playbook; Todo 1 only defines and validates the resource contract.

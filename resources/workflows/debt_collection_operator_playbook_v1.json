@@ -1,0 +1,718 @@
+{
+  "schema_version": "trustgraph-collection-operator-playbook/v1",
+  "playbook_version": "recova-debt-collection-operator-playbook@v1.0.0",
+  "workflow_version": "recova-debt-collection-workflow@v1.0.0",
+  "domain_source_version": "recova-debt-collection-domain-sources@v1.0.0",
+  "ontology_ref": "resources/ontologies/recova-debt-collection-v1.json",
+  "evaluation_date": "2026-07-08",
+  "review_status": "human_review_required",
+  "execution_policy": "operator_judgment_only_no_direct_collection_action",
+  "no_direct_execution": true,
+  "direct_execution_allowed": false,
+  "route_decision_logic_excluded": true,
+  "non_execution_semantics": "advisory_only_human_review_required",
+  "pii_policy": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "debtor_contact_payload_allowed": false,
+    "court_destination_payload_allowed": false
+  },
+  "stage_order": [
+    "intake",
+    "evidence_completion",
+    "title_acquisition",
+    "asset_discovery",
+    "execution_route_selection",
+    "enforcement_ready",
+    "monitoring",
+    "settlement_restructuring",
+    "insolvency_protected_asset_review",
+    "closure"
+  ],
+  "next_action_type_catalog": [
+    {
+      "action_type": "collect_missing_evidence",
+      "description": "Open an evidence completion loop for missing or placeholder source-backed facts."
+    },
+    {
+      "action_type": "confirm_claim_identity",
+      "description": "Confirm claim, debtor, creditor, assignment, and source-bundle identity before route judgment."
+    },
+    {
+      "action_type": "review_limitation",
+      "description": "Record limitation timing or hold for legal review when timing is ambiguous."
+    },
+    {
+      "action_type": "acquire_or_confirm_title",
+      "description": "Route the case toward title acquisition or confirm the existing title evidence."
+    },
+    {
+      "action_type": "confirm_service_finality_execution_clause",
+      "description": "Confirm service, finality, and execution-clause readiness before enforcement review."
+    },
+    {
+      "action_type": "enrich_asset_signals",
+      "description": "Collect source-backed asset hints and exemption risk markers."
+    },
+    {
+      "action_type": "select_execution_route",
+      "description": "Compare advisory execution routes only after workflow preconditions are present."
+    },
+    {
+      "action_type": "prepare_advisory_packet",
+      "description": "Prepare a draft-only human review packet without filing, contact, seizure, or ledger mutation."
+    },
+    {
+      "action_type": "reconcile_finance",
+      "description": "Resolve fixture finance ambiguity before treating amount facts as decision support."
+    },
+    {
+      "action_type": "monitor_retry",
+      "description": "Place low-yield or blocked cases into monitored retry with a review trigger."
+    },
+    {
+      "action_type": "settlement_restructuring_review",
+      "description": "Prepare an advisory review for voluntary, settlement, or restructuring options."
+    },
+    {
+      "action_type": "insolvency_protected_asset_review",
+      "description": "Hold enforcement posture while insolvency, discharge, stay, or protected-asset signals are reviewed."
+    },
+    {
+      "action_type": "close_case",
+      "description": "Record reviewed closure when no practical or permitted next action remains."
+    }
+  ],
+  "premature_action_reason_catalog": [
+    {
+      "reason": "claim_identity_unconfirmed",
+      "description": "Claim, debtor, creditor, or assignment identity is not source-backed enough for route judgment."
+    },
+    {
+      "reason": "evidence_missing_or_conflicted",
+      "description": "Required proof is missing, placeholder-backed, stale, low-confidence, or contradicted."
+    },
+    {
+      "reason": "limitation_ambiguous",
+      "description": "Limitation timing or interruption facts need review before escalation."
+    },
+    {
+      "reason": "enforcement_title_missing",
+      "description": "The case does not yet have a confirmed enforceable title."
+    },
+    {
+      "reason": "service_finality_execution_clause_missing",
+      "description": "Service, finality, or execution-clause prerequisites are absent or unresolved."
+    },
+    {
+      "reason": "asset_signal_missing_or_low_yield",
+      "description": "No useful target signal exists or expected recovery is low enough to monitor first."
+    },
+    {
+      "reason": "finance_reconciliation_needed",
+      "description": "Amount, payment allocation, interest, or disputed-balance review is still open."
+    },
+    {
+      "reason": "protected_asset_or_insolvency_signal",
+      "description": "Protected asset, insolvency, discharge, or stay signals require hold/review."
+    },
+    {
+      "reason": "legal_source_review_needed",
+      "description": "A legal-source or StopGate review item prevents route-ready judgment."
+    }
+  ],
+  "checkpoint_input_catalog": [
+    {
+      "checkpoint_input": "workflow_state",
+      "description": "Current workflow state and allowed progression from the canonical workflow resource."
+    },
+    {
+      "checkpoint_input": "evidence_quality",
+      "description": "Source quality, directness, freshness, confidence, and conflict signals."
+    },
+    {
+      "checkpoint_input": "legal_preconditions",
+      "description": "Limitation, title, service, finality, execution-clause, and legal-source preconditions."
+    },
+    {
+      "checkpoint_input": "finance_review",
+      "description": "Fixture-only finance ambiguity, disputed amount, allocation, interest, and cost review signals."
+    },
+    {
+      "checkpoint_input": "stopgate",
+      "description": "Governance hold, block, or review state that must not be cleared by free-form inference."
+    },
+    {
+      "checkpoint_input": "route_decision",
+      "description": "Deterministic advisory route status after workflow prerequisites are checked."
+    },
+    {
+      "checkpoint_input": "asset_signal",
+      "description": "Source-backed asset, income, receivable, or exemption-risk signal."
+    },
+    {
+      "checkpoint_input": "operator_scope",
+      "description": "Human-review scope, non-execution boundary, and permitted advisory purpose."
+    }
+  ],
+  "remediation_loop_catalog": [
+    {
+      "loop": "evidence_completion_loop",
+      "description": "Request or review missing source-backed proof, then re-run workflow judgment."
+    },
+    {
+      "loop": "title_acquisition_loop",
+      "description": "Move from claim support into payment order, lawsuit, notarial deed, or other reviewed title path."
+    },
+    {
+      "loop": "legal_precondition_review_loop",
+      "description": "Resolve limitation, service, finality, execution-clause, and source-approval blockers."
+    },
+    {
+      "loop": "asset_discovery_loop",
+      "description": "Improve asset signal quality before choosing an execution route."
+    },
+    {
+      "loop": "finance_reconciliation_loop",
+      "description": "Resolve amount, payment, allocation, interest, or cost ambiguity as review support only."
+    },
+    {
+      "loop": "protected_asset_insolvency_hold",
+      "description": "Hold escalation while protected asset, insolvency, discharge, or stay review proceeds."
+    },
+    {
+      "loop": "low_yield_monitoring_loop",
+      "description": "Monitor for new facts or retry triggers when immediate action is low-yield or blocked."
+    },
+    {
+      "loop": "settlement_restructuring_review_loop",
+      "description": "Review voluntary, settlement, repayment, or restructuring posture without contact payloads."
+    },
+    {
+      "loop": "closure_review_loop",
+      "description": "Close only after reviewed terminal reason and source refs are recorded."
+    }
+  ],
+  "stages": [
+    {
+      "stage_id": "intake",
+      "label": "Intake and claim triage",
+      "workflow_state_ids": [
+        "intake"
+      ],
+      "operator_question": "Is there a source-backed claim packet that Recova can safely interpret?",
+      "operational_posture": "open_claim_context_and_confirm_scope",
+      "entry_signals": [
+        "source_bundle_received",
+        "operator_scope_confirmed"
+      ],
+      "next_action_types": [
+        "confirm_claim_identity",
+        "collect_missing_evidence"
+      ],
+      "premature_action_reasons": [
+        "claim_identity_unconfirmed",
+        "evidence_missing_or_conflicted"
+      ],
+      "missing_inputs": [
+        "claim_basis_signal",
+        "source_bundle_summary",
+        "operator_scope"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "evidence_quality",
+        "operator_scope"
+      ],
+      "remediation_loops": [
+        "evidence_completion_loop",
+        "closure_review_loop"
+      ],
+      "decision_rule": "Open workflow judgment only when claim identity and permitted advisory scope are source-backed.",
+      "ready_when": [
+        "claim_domain_handle_created",
+        "source_bundle_summary_available"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "recova-privacy-purpose-v0",
+        "kr-law-l010910-m268669-a11"
+      ]
+    },
+    {
+      "stage_id": "evidence_completion",
+      "label": "Evidence completion and contradiction review",
+      "workflow_state_ids": [
+        "identity_evidence_package",
+        "limitation_review"
+      ],
+      "operator_question": "What proof is missing, weak, stale, placeholder-backed, or contradicted?",
+      "operational_posture": "complete_source_backed_fact_package_before_escalation",
+      "entry_signals": [
+        "claim_identity_open",
+        "missing_or_conflicted_fact_handles"
+      ],
+      "next_action_types": [
+        "collect_missing_evidence",
+        "review_limitation",
+        "reconcile_finance"
+      ],
+      "premature_action_reasons": [
+        "evidence_missing_or_conflicted",
+        "limitation_ambiguous",
+        "finance_reconciliation_needed"
+      ],
+      "missing_inputs": [
+        "debtor_identity_evidence",
+        "creditor_or_assignee_evidence",
+        "claim_event_date_evidence",
+        "limitation_clock_evidence"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "evidence_quality",
+        "legal_preconditions",
+        "finance_review"
+      ],
+      "remediation_loops": [
+        "evidence_completion_loop",
+        "legal_precondition_review_loop",
+        "finance_reconciliation_loop"
+      ],
+      "decision_rule": "Prefer completion/review loops over route escalation when the evidence package is incomplete or conflicted.",
+      "ready_when": [
+        "debtor_identity_evidence_source_backed",
+        "creditor_or_assignee_evidence_source_backed",
+        "limitation_status_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a12",
+        "kr-law-l001540-m260423-a15"
+      ]
+    },
+    {
+      "stage_id": "title_acquisition",
+      "label": "Title acquisition and enforceability path",
+      "workflow_state_ids": [
+        "title_acquisition",
+        "service_finality_execution_clause"
+      ],
+      "operator_question": "Does the case need an enforcement title or enforceability proof before execution thinking?",
+      "operational_posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "entry_signals": [
+        "identity_evidence_package_ready",
+        "title_gap_or_title_evidence_present"
+      ],
+      "next_action_types": [
+        "acquire_or_confirm_title",
+        "confirm_service_finality_execution_clause",
+        "collect_missing_evidence"
+      ],
+      "premature_action_reasons": [
+        "enforcement_title_missing",
+        "service_finality_execution_clause_missing",
+        "legal_source_review_needed"
+      ],
+      "missing_inputs": [
+        "enforcement_title_document_or_gap",
+        "service_proof_or_gap",
+        "finality_proof_or_gap",
+        "execution_clause_or_gap"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "legal_preconditions",
+        "stopgate",
+        "evidence_quality"
+      ],
+      "remediation_loops": [
+        "title_acquisition_loop",
+        "legal_precondition_review_loop",
+        "evidence_completion_loop"
+      ],
+      "decision_rule": "Treat enforcement routes as premature until title, service, finality, and execution-clause facts are reviewed.",
+      "ready_when": [
+        "enforcement_title_status_recorded",
+        "service_proof_status_recorded",
+        "finality_proof_status_recorded",
+        "execution_clause_status_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l001706-m284415-a165",
+        "kr-law-l001706-m284415-a168",
+        "kr-law-l001706-m284415-a406"
+      ]
+    },
+    {
+      "stage_id": "asset_discovery",
+      "label": "Asset discovery and yield review",
+      "workflow_state_ids": [
+        "asset_discovery"
+      ],
+      "operator_question": "Is there a useful, permitted, source-backed asset signal to guide the next route?",
+      "operational_posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+      "entry_signals": [
+        "identity_evidence_package_ready",
+        "asset_hint_missing_or_partial"
+      ],
+      "next_action_types": [
+        "enrich_asset_signals",
+        "monitor_retry",
+        "insolvency_protected_asset_review"
+      ],
+      "premature_action_reasons": [
+        "asset_signal_missing_or_low_yield",
+        "protected_asset_or_insolvency_signal",
+        "evidence_missing_or_conflicted"
+      ],
+      "missing_inputs": [
+        "asset_hint_source_refs",
+        "third_party_debtor_hint_evidence",
+        "exemption_or_privacy_risk_record"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "asset_signal",
+        "evidence_quality",
+        "stopgate"
+      ],
+      "remediation_loops": [
+        "asset_discovery_loop",
+        "low_yield_monitoring_loop",
+        "protected_asset_insolvency_hold"
+      ],
+      "decision_rule": "Prefer asset enrichment or monitoring when the case lacks a practical execution target or has exemption risk.",
+      "ready_when": [
+        "asset_hint_inventory_recorded",
+        "exemption_or_privacy_risk_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a246",
+        "recova-privacy-purpose-v0"
+      ]
+    },
+    {
+      "stage_id": "execution_route_selection",
+      "label": "Execution route selection",
+      "workflow_state_ids": [
+        "execution_route_selection"
+      ],
+      "operator_question": "Which advisory execution route is practically timed and not blocked by checkpoints?",
+      "operational_posture": "compare_routes_after_workflow_preconditions_and_guardrails",
+      "entry_signals": [
+        "service_finality_execution_clause_status_recorded",
+        "asset_hint_inventory_recorded_or_missing"
+      ],
+      "next_action_types": [
+        "select_execution_route",
+        "prepare_advisory_packet",
+        "monitor_retry"
+      ],
+      "premature_action_reasons": [
+        "service_finality_execution_clause_missing",
+        "asset_signal_missing_or_low_yield",
+        "finance_reconciliation_needed",
+        "legal_source_review_needed"
+      ],
+      "missing_inputs": [
+        "workflow_precondition_summary",
+        "stopgate_review_record",
+        "route_decision_status",
+        "finance_review_signal"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "route_decision",
+        "legal_preconditions",
+        "finance_review",
+        "stopgate",
+        "asset_signal"
+      ],
+      "remediation_loops": [
+        "legal_precondition_review_loop",
+        "finance_reconciliation_loop",
+        "asset_discovery_loop",
+        "low_yield_monitoring_loop"
+      ],
+      "decision_rule": "Select an advisory route only when blockers are absent and missing/review states are explicitly resolved or routed to remediation.",
+      "ready_when": [
+        "workflow_precondition_summary_recorded",
+        "missing_route_prerequisite_facts_recorded",
+        "route_decision_status_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-civil-execution-act-v0"
+      ]
+    },
+    {
+      "stage_id": "enforcement_ready",
+      "label": "Enforcement-ready advisory review",
+      "workflow_state_ids": [
+        "execution_route_selection"
+      ],
+      "operator_question": "Can Recova prepare a human-review advisory packet without executing the collection action?",
+      "operational_posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+      "entry_signals": [
+        "route_decision_possible",
+        "no_stopgate_blocker_active"
+      ],
+      "next_action_types": [
+        "prepare_advisory_packet",
+        "select_execution_route"
+      ],
+      "premature_action_reasons": [
+        "legal_source_review_needed",
+        "finance_reconciliation_needed",
+        "protected_asset_or_insolvency_signal"
+      ],
+      "missing_inputs": [
+        "packet_required_inputs",
+        "source_refs",
+        "human_review_record"
+      ],
+      "required_checkpoint_inputs": [
+        "route_decision",
+        "legal_preconditions",
+        "finance_review",
+        "stopgate",
+        "operator_scope"
+      ],
+      "remediation_loops": [
+        "legal_precondition_review_loop",
+        "finance_reconciliation_loop",
+        "protected_asset_insolvency_hold"
+      ],
+      "decision_rule": "Ready means draft-only advisory packet preparation; it never means filing, seizure, contact, or ledger mutation.",
+      "ready_when": [
+        "route_decision_possible",
+        "action_packet_candidate_ready",
+        "human_review_required_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l001706-m284415-a406",
+        "recova-privacy-purpose-v0"
+      ]
+    },
+    {
+      "stage_id": "monitoring",
+      "label": "Monitoring and retry",
+      "workflow_state_ids": [
+        "monitoring_retry"
+      ],
+      "operator_question": "Should the case wait for new evidence, new asset signals, or a review trigger?",
+      "operational_posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+      "entry_signals": [
+        "blocked_or_missing_evidence_status_recorded",
+        "retry_trigger_or_review_date_recorded"
+      ],
+      "next_action_types": [
+        "monitor_retry",
+        "collect_missing_evidence",
+        "enrich_asset_signals"
+      ],
+      "premature_action_reasons": [
+        "asset_signal_missing_or_low_yield",
+        "evidence_missing_or_conflicted",
+        "legal_source_review_needed"
+      ],
+      "missing_inputs": [
+        "monitoring_reason",
+        "retry_trigger",
+        "new_fact_signal"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "evidence_quality",
+        "asset_signal",
+        "stopgate"
+      ],
+      "remediation_loops": [
+        "low_yield_monitoring_loop",
+        "evidence_completion_loop",
+        "asset_discovery_loop"
+      ],
+      "decision_rule": "Use monitored retry when immediate escalation is blocked, unsupported, or operationally low-yield.",
+      "ready_when": [
+        "retry_reason_recorded",
+        "next_review_trigger_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9"
+      ]
+    },
+    {
+      "stage_id": "settlement_restructuring",
+      "label": "Settlement and restructuring review",
+      "workflow_state_ids": [
+        "voluntary_recovery"
+      ],
+      "operator_question": "Is a voluntary, settlement, or restructuring posture more practical than escalation?",
+      "operational_posture": "review_non_execution_voluntary_resolution_options",
+      "entry_signals": [
+        "operator_contact_boundary_confirmed",
+        "payment_or_acknowledgment_evidence_present_or_missing"
+      ],
+      "next_action_types": [
+        "settlement_restructuring_review",
+        "reconcile_finance",
+        "prepare_advisory_packet"
+      ],
+      "premature_action_reasons": [
+        "finance_reconciliation_needed",
+        "claim_identity_unconfirmed",
+        "evidence_missing_or_conflicted"
+      ],
+      "missing_inputs": [
+        "contact_authority_review",
+        "payment_or_acknowledgment_evidence",
+        "settlement_review_record"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "finance_review",
+        "evidence_quality",
+        "operator_scope"
+      ],
+      "remediation_loops": [
+        "settlement_restructuring_review_loop",
+        "finance_reconciliation_loop",
+        "evidence_completion_loop"
+      ],
+      "decision_rule": "Frame voluntary resolution as a review posture only; do not emit debtor-contact or payment-demand payloads.",
+      "ready_when": [
+        "voluntary_recovery_review_recorded",
+        "contact_review_packet_status_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "recova-privacy-purpose-v0"
+      ]
+    },
+    {
+      "stage_id": "insolvency_protected_asset_review",
+      "label": "Insolvency and protected-asset review",
+      "workflow_state_ids": [
+        "insolvency_discharge_review",
+        "execution_route_selection"
+      ],
+      "operator_question": "Do insolvency, discharge, stay, or protected-asset signals require a hold?",
+      "operational_posture": "hold_or_redirect_before_enforcement_ready_judgment",
+      "entry_signals": [
+        "insolvency_or_discharge_signal_recorded",
+        "protected_asset_or_exemption_signal_recorded"
+      ],
+      "next_action_types": [
+        "insolvency_protected_asset_review",
+        "monitor_retry",
+        "close_case"
+      ],
+      "premature_action_reasons": [
+        "protected_asset_or_insolvency_signal",
+        "legal_source_review_needed",
+        "asset_signal_missing_or_low_yield"
+      ],
+      "missing_inputs": [
+        "insolvency_case_status_evidence",
+        "discharge_or_stay_evidence",
+        "protected_asset_review_record"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "legal_preconditions",
+        "stopgate",
+        "asset_signal",
+        "evidence_quality"
+      ],
+      "remediation_loops": [
+        "protected_asset_insolvency_hold",
+        "legal_precondition_review_loop",
+        "low_yield_monitoring_loop",
+        "closure_review_loop"
+      ],
+      "decision_rule": "Hold enforcement readiness when insolvency, discharge, stay, or protected-asset signals are unresolved.",
+      "ready_when": [
+        "insolvency_status_recorded",
+        "discharge_or_stay_review_recorded",
+        "protected_asset_review_recorded"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l009930-m267359-a600",
+        "kr-law-l009930-m267359-a566",
+        "kr-debtor-rehabilitation-act-v0",
+        "kr-law-l009290-m268837-a246"
+      ]
+    },
+    {
+      "stage_id": "closure",
+      "label": "Closure review",
+      "workflow_state_ids": [
+        "closure"
+      ],
+      "operator_question": "Is there a reviewed terminal reason to close or reject further collection workflow?",
+      "operational_posture": "record_terminal_review_without_execution_side_effects",
+      "entry_signals": [
+        "closure_reason_available",
+        "operator_or_review_decision_recorded"
+      ],
+      "next_action_types": [
+        "close_case",
+        "monitor_retry"
+      ],
+      "premature_action_reasons": [
+        "evidence_missing_or_conflicted",
+        "legal_source_review_needed",
+        "asset_signal_missing_or_low_yield"
+      ],
+      "missing_inputs": [
+        "closure_reason",
+        "operator_review_record",
+        "source_refs"
+      ],
+      "required_checkpoint_inputs": [
+        "workflow_state",
+        "evidence_quality",
+        "stopgate",
+        "operator_scope"
+      ],
+      "remediation_loops": [
+        "closure_review_loop",
+        "low_yield_monitoring_loop"
+      ],
+      "decision_rule": "Close only with a reviewed terminal reason; unresolved cases should remain in monitoring or remediation.",
+      "ready_when": [
+        "closure_status_recorded",
+        "closure_source_refs_attached"
+      ],
+      "human_review_required": true,
+      "non_execution_semantics": "advisory_only_human_review_required",
+      "source_refs": [
+        "kr-law-l010910-m268669-a9",
+        "recova-privacy-purpose-v0"
+      ]
+    }
+  ]
+}
