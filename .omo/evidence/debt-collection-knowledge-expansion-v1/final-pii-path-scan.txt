@@ -1,0 +1,6 @@
+FINAL_PII_PATH_SCAN
+command: rg path/secret/PII-shaped patterns over G011 docs, final evidence, final review, gate review, and notepad
+
+NO_FINDINGS
+
+cleanup: no runtime process, tmux session, browser context, container, bound port, temp directory, or open reviewer agent remains

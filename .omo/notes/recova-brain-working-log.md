@@ -1,6 +1,6 @@
 # Recova Debt Brain Working Log
 
-Updated: 2026-07-07 Asia/Seoul
+Updated: 2026-07-08 Asia/Seoul
 
 ## Purpose
 
@@ -14,7 +14,7 @@ We have completed the deterministic debtor-context graph v0 and the claim-center
 - `debtor-context-graph-v0`
 - `debt-collection-domain-ontology-v1`
 
-The current local `master` contains the completed domain brain implementation and final evaluation evidence. The next major axis is deployment and productization: publish the updated MCP server surface, verify the remote tool count/order, then decide whether to deepen legal-source coverage, agent workflow UX, or production governance.
+The current local `master` contains the completed domain brain implementation plus the accepted local knowledge-expansion hardening through G011. The local professional debt-collection brain is accepted for this wave: product docs and this working log are updated, deterministic final eval evidence lives under `.omo/evidence/debt-collection-knowledge-expansion-v1/final-*`, and final contract review is `ACCEPTED`. Remote MCP deployment and client-facing setup docs remain deliberately deferred.
 
 ## Completed Work
 
@@ -83,7 +83,7 @@ Final verification evidence:
 
 New user-provided source:
 
-- `/Users/cosmos/Downloads/채권추심_장기채권_법조치_루트_총정리_v2_실무확장판 (1).md`
+- redacted local Downloads markdown: `채권추심_장기채권_법조치_루트_총정리_v2_실무확장판`
 
 Observed structure:
 
@@ -331,7 +331,7 @@ Final integrated master:
 
 Final review:
 
-- `/Users/cosmos/dev/ontology/trustgraph/.omo/teams/team-8953292e/artifacts/V-final-contract-review.md`
+- `.omo/teams/team-8953292e/artifacts/V-final-contract-review.md`
 - Verdict: `ACCEPTED`
 
 Final verification:
@@ -402,12 +402,26 @@ This log should continue to be updated whenever the user answers interview quest
   - `d2310533`: Goal 4 leader evidence and ULW checkpoint.
 - Final verification recorded 52 focused tests passing, Python 3.9 py_compile passing, basedpyright clean, JSON validation passing, MCP order still 25 tools, PII/path scan `NO_FINDINGS`, and no deployment/runbook/client-doc mutation.
 
-Current next work:
+G011 closeout target:
 
 1. Run G011 docs/log update so product docs and this working log reflect the accepted knowledge-expansion state.
 2. Run final eval evidence under `.omo/evidence/debt-collection-knowledge-expansion-v1/final-*`.
 3. Produce final acceptance review with a clear ACCEPTED/BLOCKED verdict.
 4. Keep remote MCP deployment, remote smoke, and client-facing setup docs deferred unless the user explicitly changes scope.
+
+2026-07-08 G011 documentation update:
+
+- Product/operator docs now describe the accepted knowledge-expansion state: source dispositions, expanded scenario coverage, finance/review hardening, StopGate/domain decision safety, human-review workflow constraints, and final-eval evidence location.
+- Final eval must be fresh G011 evidence, not a copy of Goal 4 outputs.
+- Final acceptance must reproduce verification commands and explicitly confirm no deployment/runbook/client-doc mutation.
+- The durable next work after G011 remains productization/deployment only if the user reopens it; otherwise the local professional debt-collection brain is the accepted deliverable for this wave.
+
+2026-07-08 G011 completion update:
+
+- G011 is accepted locally and checkpointed complete in ULW.
+- Final evidence includes docs smoke, 52 focused tests, JSON validation, Python 3.9 py_compile, basedpyright, local MCP 25-tool order, deployment-boundary scan, diff check, final PII/path scan, and final contract review.
+- Final contract review: `.omo/evidence/debt-collection-knowledge-expansion-v1/final-contract-review.md`
+- Final gate review: `.omo/evidence/G011-docs-final-eval-and-acceptance-revie-gate-review.md`
 
 ## Working Rules For Future Updates
 

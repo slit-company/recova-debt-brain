@@ -1,0 +1,13 @@
+{
+  "status": "LEGAL_SOURCE_DELTA_DISPOSITIONED",
+  "evaluation_date": "2026-07-08",
+  "source_resource": "resources/legal_rules/debt_collection_domain_sources_v1.json",
+  "source_count": 21,
+  "workflow_source_ref_count": 12,
+  "policy": "Ambiguous law/article/effective-date cases remain review-needed and cannot clear StopGates by inference.",
+  "prior_evidence": [
+    "task-1-legal-source-audit.json",
+    "task-3-source-dispositions.json"
+  ],
+  "deterministic_dependency": "Static repo resources only; live Korean-law MCP is not required for tests or local MCP calls."
+}

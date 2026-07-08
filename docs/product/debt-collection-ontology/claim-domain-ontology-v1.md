@@ -1,10 +1,10 @@
 # Claim Domain Ontology v1
 
 Status: operator/developer contract for `debt-collection-domain-ontology-v1`
-Updated: 2026-07-07 Asia/Seoul
+Updated: 2026-07-08 Asia/Seoul
 Primary resources: `resources/ontologies/recova-debt-collection-v1.json`, `resources/legal_rules/debt_collection_domain_sources_v1.json`, `resources/legal_routes/debt_collection_routes_v1.json`, `resources/workflows/debt_collection_workflow_v1.json`, `resources/decision_tables/debt_collection_route_decisions_v1.json`, `resources/action_packets/debt_collection_action_packets_v1.json`
 Primary code: `trustgraph_legal.domain_graph_adapter`, `trustgraph_legal.domain_decisions`, `trustgraph_legal.mcp_claim_domain_handlers`, `trustgraph_legal.mcp_domain`
-Evidence root: `.omo/evidence/debt-collection-domain-ontology-v1/`
+Evidence roots: `.omo/evidence/debt-collection-domain-ontology-v1/`, `.omo/evidence/debt-collection-knowledge-expansion-v1/`
 
 ## Purpose
 
@@ -81,6 +81,13 @@ To add legal knowledge safely:
 4. Record happy/failure evidence and a PII/path scan.
 5. Keep deterministic tests independent of live Korean-law MCP.
 
+Current knowledge-expansion state:
+
+- Remaining review-needed legal-source records have explicit conservative dispositions and supporting/replacement refs where available.
+- Korean-law MCP and public/official source discovery were used as evidence-gathering surfaces; adopted references are frozen into repo-local resources and evidence.
+- Deterministic tests and local MCP calls do not depend on live Korean-law MCP or web access.
+- Any unresolved source ambiguity remains a human/legal-review reason; it must not be converted into a route-ready decision by memory, web search, or agent inference.
+
 ## Finance Boundary
 
 The finance model is a contract for decision support, not a production ledger.
@@ -100,6 +107,15 @@ Not allowed:
 - use production account or payment identifiers in docs, evidence, or MCP responses.
 
 Finance payloads and action candidates keep `raw_text_included: false` and `source_text_included: false`.
+
+Knowledge-expansion hardening keeps finance decisions review-safe when any of these are present:
+
+- unsupported or conflicting payment allocation inputs;
+- disputed amount facts or placeholder source refs;
+- stale finance model source versions;
+- assignment/succession, guarantee/surety, subrogation, reimbursement, enforcement-cost, or balance evidence ambiguity.
+
+Those conditions may produce review items or advisory packet candidates, but they do not produce an authoritative balance, a payment demand, or a ledger mutation.
 
 ## Workflow And Route Decisions
 
@@ -133,6 +149,8 @@ Status semantics:
 
 The score components are named and traceable: required facts present, workflow precondition met, no StopGate blockers, legal sources approved, finance review clear, and asset signal present.
 
+The expanded scenario fixture set now exercises rare and high-risk collection situations including protected income/property, stale or disputed finance data, partial payments, insolvency/bankruptcy signals, service/finality uncertainty, identity uncertainty, business receivables, movable assets, inheritance, and monitoring/retry cases. The expected status mix intentionally includes `possible`, `review_required`, `missing_facts`, and `blocked`; a broader `possible` count is not a success metric if it weakens StopGates.
+
 ## Action Packet Non-Execution Boundary
 
 Action packets are schemas for human review, not commands. Every packet candidate remains non-executing with `non_execution_semantics: advisory_only_human_review_required` and `direct_execution_allowed: false`.
@@ -152,6 +170,8 @@ Forbidden packet fields include:
 - `collection_execution_command`
 
 If an operator needs an actual filing, contact, demand, seizure, settlement, or payment workflow, that must happen outside this ontology contract and only through a separately approved human/legal process.
+
+Human-review workflow artifacts are still review/governance records only. An operator approval may record review status, rationale, source refs, and audit fields; it does not flip `direct_execution_allowed` to true and must not add debtor-contact, court-filing, payment-request, seizure, ledger-write, or production-storage payloads.
 
 ## MCP Surface
 
@@ -257,3 +277,12 @@ Todo 14 evidence lives under `.omo/evidence/debt-collection-domain-ontology-v1/`
 - `task-14-docs-pii.txt`
 
 The team handoff report is `artifacts/T-domain-docs-report.md`.
+
+The follow-on knowledge-expansion wave lives under `.omo/evidence/debt-collection-knowledge-expansion-v1/`:
+
+- Goal 1/2 evidence: legal-source audit, finance-source channel audit, scenario gap inventory, human-review workflow contract, and local MCP 25-tool order smoke.
+- Goal 3 evidence: source dispositions, expanded synthetic scenarios, JSON validation, local MCP order smoke, and accepted Goal 3 review.
+- Goal 4 evidence: finance/review hardening, StopGate/domain decision hardening, 52 focused tests, Python compile/type checks, JSON validation, local MCP order smoke, PII/path scan, deployment-boundary scan, and accepted Goal 4 review.
+- Goal 5/G011 evidence: final docs smoke, final focused eval, final PII/path scan, final local MCP order smoke, and final contract review.
+
+Deployment remains intentionally out of scope for this wave: no remote MCP deploy, no remote live smoke, and no client-facing remote setup docs update unless that work is explicitly reopened.

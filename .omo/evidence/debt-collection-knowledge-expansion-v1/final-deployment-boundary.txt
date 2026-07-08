@@ -1,0 +1,31 @@
+FINAL_DEPLOYMENT_BOUNDARY
+command: git diff --name-only -- deploy and remote/client setup docs
+
+Changed files:
+.omo/drafts/debt-collection-knowledge-expansion-v1.md
+.omo/notes/recova-brain-working-log.md
+.omo/ulw-loop/debt-collection-knowledge-expansion-v1/goals.json
+.omo/ulw-loop/debt-collection-knowledge-expansion-v1/ledger.jsonl
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md
+
+Untracked final files:
+.omo/evidence/G011-docs-final-eval-and-acceptance-revie-gate-review.md
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-contract-review.md
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-deployment-boundary.txt
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-diff-check.txt
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-docs-smoke.txt
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-focused-pytest.txt
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-json-validation.txt
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-knowledge-expansion-eval.json
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-legal-source-delta.json
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-mcp-order.json
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-pii-path-scan.txt
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-pycompile.txt
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-scenario-coverage.json
+.omo/evidence/debt-collection-knowledge-expansion-v1/final-typecheck.txt
+.omo/ulw-loop/debt-collection-knowledge-expansion-v1/g011-notepad.md
+
+Deployment/runbook/client-doc diff:
+DEPLOYMENT_BOUNDARY_NO_FINDINGS
+
+cleanup: no runtime process, tmux session, browser context, container, bound port, or temp directory spawned

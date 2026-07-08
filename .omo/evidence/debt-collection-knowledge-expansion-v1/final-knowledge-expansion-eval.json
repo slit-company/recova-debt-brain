@@ -1,0 +1,56 @@
+{
+  "status": "FINAL_EVAL_ACCEPTED_INPUTS_READY",
+  "evaluation_date": "2026-07-08",
+  "scope": "repo-local deterministic G011 final eval; no remote MCP deploy, no remote live smoke, no client setup docs",
+  "non_execution_boundary": {
+    "direct_execution_allowed": false,
+    "forbidden": [
+      "court_filing",
+      "debtor_contact",
+      "payment_demand",
+      "seizure_initiation",
+      "ledger_mutation",
+      "production_storage_mutation"
+    ]
+  },
+  "resource_counts": {
+    "legal_sources": 21,
+    "workflow_source_refs": 12,
+    "route_templates": 32,
+    "route_families": 19,
+    "workflow_states": 12,
+    "workflow_transitions": 23,
+    "action_packet_schemas": 6,
+    "finance_component_types": 11,
+    "finance_review_triggers": 6,
+    "stopgate_rules": 14,
+    "synthetic_scenarios": 26,
+    "scenario_route_ids": 22
+  },
+  "scenario_status_counts": {
+    "blocked": 9,
+    "missing_facts": 6,
+    "possible": 5,
+    "review_required": 6
+  },
+  "mcp_surface": {
+    "tool_count": 25,
+    "existing_21_preserved_first": true,
+    "tail_4": [
+      "list_claim_domain_routes",
+      "explain_collection_workflow_state",
+      "evaluate_claim_domain_decision",
+      "explain_claim_action_packet"
+    ]
+  },
+  "fresh_evidence": [
+    "final-docs-smoke.txt",
+    "final-focused-pytest.txt",
+    "final-json-validation.txt",
+    "final-pycompile.txt",
+    "final-typecheck.txt",
+    "final-mcp-order.json",
+    "final-deployment-boundary.txt",
+    "final-diff-check.txt"
+  ]
+}

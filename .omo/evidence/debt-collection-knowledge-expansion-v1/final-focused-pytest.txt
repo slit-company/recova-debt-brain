@@ -1,0 +1,25 @@
+FINAL_FOCUSED_PYTEST
+command: uv run --python 3.14 --with pytest --with pytest-asyncio --with pydantic python -m pytest <focused legal ontology suite> -q
+
+============================= test session starts ==============================
+platform darwin -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0
+rootdir: $REPO_ROOT/tests
+configfile: pytest.ini
+plugins: asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 52 items
+
+tests/unit/legal_ontology/test_finance_claim_model_v1.py ......          [ 11%]
+tests/unit/legal_ontology/test_domain_decision_engine_v1.py ....         [ 19%]
+tests/unit/legal_ontology/test_domain_decision_engine_goal4.py .....     [ 28%]
+tests/unit/legal_ontology/test_stop_gates_domain_v1.py .....             [ 38%]
+tests/unit/legal_ontology/test_route_candidates.py ............          [ 61%]
+tests/unit/legal_ontology/test_debtor_context.py ...                     [ 67%]
+tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py ....      [ 75%]
+tests/unit/legal_ontology/test_mcp_domain_tools.py ......                [ 86%]
+tests/unit/legal_ontology/test_mcp_debtor_context_tools.py .....         [ 96%]
+tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py ..  [100%]
+
+============================== 52 passed in 2.81s ==============================
+
+cleanup: no runtime process, tmux session, browser context, container, bound port, or temp directory spawned

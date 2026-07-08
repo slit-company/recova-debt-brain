@@ -1,0 +1,18 @@
+{
+  "status": "SCENARIO_COVERAGE_EXPANDED_REVIEW_SAFE",
+  "evaluation_date": "2026-07-08",
+  "fixture": "tests/fixtures/claim-domain-v1/synthetic_claim_states.json",
+  "scenario_count": 26,
+  "route_id_count": 22,
+  "status_counts": {
+    "blocked": 9,
+    "missing_facts": 6,
+    "possible": 5,
+    "review_required": 6
+  },
+  "families_exercised_or_recommended": 19,
+  "coverage_notes": [
+    "Expanded rare/high-risk cases include protected income/property, stale or disputed finance data, partial payments, insolvency/bankruptcy, service/finality uncertainty, identity uncertainty, business receivables, movable assets, inheritance, and monitoring/retry.",
+    "The status mix intentionally includes possible, review_required, missing_facts, and blocked; broadening possible outcomes is not a success metric if StopGates weaken."
+  ]
+}

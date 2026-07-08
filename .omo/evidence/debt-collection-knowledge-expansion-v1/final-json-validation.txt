@@ -1,0 +1,30 @@
+FINAL_JSON_VALIDATION
+command: /usr/bin/python3 -m json.tool over claim-domain resources and all final JSON evidence
+
+OK resources/ontologies/recova-debt-collection-v1.json
+OK resources/legal_rules/debt_collection_domain_sources_v1.json
+OK resources/legal_routes/debt_collection_routes_v1.json
+OK resources/workflows/debt_collection_workflow_v1.json
+OK resources/decision_tables/debt_collection_route_decisions_v1.json
+OK resources/action_packets/debt_collection_action_packets_v1.json
+OK resources/finance/claim_finance_model_v1.json
+OK resources/legal_rules/debt_collection_stopgate_domain_v1.json
+OK tests/fixtures/claim-domain-v1/synthetic_claim_states.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/final-mcp-order.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/final-knowledge-expansion-eval.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/final-legal-source-delta.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/final-scenario-coverage.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-1-finance-source-channel-audit.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-1-legal-source-audit.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-2-human-review-workflow-contract.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-2-mcp-tool-order-smoke.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-2-scenario-gap-inventory.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-3-expanded-scenarios-happy.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-3-source-dispositions.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-4-finance-review-mcp-order.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-4-finance-review-stale-finance-input.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-4-finance-review-surface.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-4-leader-mcp-order.json
+OK .omo/evidence/debt-collection-knowledge-expansion-v1/task-4-stopgate-domain-real-surface.json
+
+cleanup: no runtime process, tmux session, browser context, container, bound port, or temp directory spawned

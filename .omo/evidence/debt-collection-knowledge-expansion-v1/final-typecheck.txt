@@ -1,0 +1,6 @@
+FINAL_TYPECHECK
+command: uv run --python 3.14 --with basedpyright --with pytest --with typing-extensions --with pydantic basedpyright --level error <goal4 production/test files>
+
+0 errors, 0 warnings, 0 notes
+
+cleanup: no runtime process, tmux session, browser context, container, bound port, or temp directory spawned

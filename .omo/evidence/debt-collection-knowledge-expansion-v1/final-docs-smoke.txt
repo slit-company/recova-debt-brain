@@ -1,0 +1,67 @@
+C001_DOCS_SMOKE
+command: rg -n "Goal 4|G011|knowledge expansion|final acceptance|ACCEPTED|remote MCP|client-facing|direct_execution_allowed|raw_text_included|NO_FINDINGS|deployment" docs/product/debt-collection-ontology/claim-domain-ontology-v1.md .omo/notes/recova-brain-working-log.md .omo/drafts/debt-collection-knowledge-expansion-v1.md
+
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:5:pending-action: commit and push G011 closeout; keep remote deployment/client docs deferred unless reopened
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:6:approach: skip remote deployment/client docs for now; expand the accepted local claim-domain brain with article-level legal-source hardening, rare scenario fixtures, finance-source research plus finance/review regressions, and human-review workflow contracts. User does not want to specify more details; the plan should rely on MCP/web/source research.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:20:| remote-mcp-deployment | Deploy updated server, remote smoke, and client setup docs. | deferred | Existing recova-mcp-deployment evidence only; out of this plan. |
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:35:- `.omo/notes/recova-brain-working-log.md:362` records the skipped deployment step.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:38:- `.omo/notes/recova-brain-working-log.md:370` identifies the next knowledge expansion wave.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:52:- 2026-07-07: Skip remote deployment and client setup work for this wave. Rationale: user explicitly wants to move past Next Work 1-3 and deepen the brain itself.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:58:- 2026-07-07: Goal 4 decision/StopGate/finance hardening is accepted and pushed on master through `d2310533`. Rationale: A finance review hardening, B StopGate proof safety, C contract review, 52 focused tests, Python 3.9 compile, basedpyright, MCP order, PII/path, deployment-boundary, and LOC checks all passed.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:66:- Complete: G011 docs, final eval, and acceptance review.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:72:3. Produce a final review artifact that says either ACCEPTED or BLOCKED with reproduced evidence.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:73:4. Keep remote MCP deployment, live remote smoke, and client setup docs out of scope unless the user explicitly brings them back.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:75:## G011 final closeout criteria
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:79:- Final review states `ACCEPTED`, reproduces the verification commands, and confirms the deployment/runbook/client-doc boundary.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:80:- Commit/push should include only the scoped G011 docs, final evidence, review, ULW state, and handoff artifacts.
+.omo/drafts/debt-collection-knowledge-expansion-v1.md:89:- Working log and product docs updates for this knowledge expansion.
+.omo/notes/recova-brain-working-log.md:17:The current local `master` contains the completed domain brain implementation plus the accepted local knowledge-expansion hardening through G011. The local professional debt-collection brain is accepted for this wave: product docs and this working log are updated, deterministic final eval evidence lives under `.omo/evidence/debt-collection-knowledge-expansion-v1/final-*`, and final contract review is `ACCEPTED`. Remote MCP deployment and client-facing setup docs remain deliberately deferred.
+.omo/notes/recova-brain-working-log.md:80:- T final contract review: `FINAL VERDICT ACCEPTED`.
+.omo/notes/recova-brain-working-log.md:292:- action packets: six packet schemas, all with `direct_execution_allowed: false`;
+.omo/notes/recova-brain-working-log.md:322:### 2026-07-07 - Claim Domain Ontology v1 final acceptance
+.omo/notes/recova-brain-working-log.md:335:- Verdict: `ACCEPTED`
+.omo/notes/recova-brain-working-log.md:348:- Final PII/path scan: `NO_FINDINGS` across 32 files.
+.omo/notes/recova-brain-working-log.md:349:- Final review confirmed no deployment, Supabase, Cloudflare, Vercel, or production MCP runbook mutation was introduced by the ontology work.
+.omo/notes/recova-brain-working-log.md:356:- The MCP layer can now answer both debtor-graph questions and claim-domain questions, but only after the remote MCP server is redeployed with this master state.
+.omo/notes/recova-brain-working-log.md:362:1. Deploy the updated MCP server from the pushed master and verify remote MCP `tool_count=25`.
+.omo/notes/recova-brain-working-log.md:369:3. Update client-facing setup docs only after the remote service proves the 25-tool surface.
+.omo/notes/recova-brain-working-log.md:370:4. Start the next knowledge expansion wave:
+.omo/notes/recova-brain-working-log.md:379:  - updated MCP server deployment;
+.omo/notes/recova-brain-working-log.md:380:  - remote MCP live smoke;
+.omo/notes/recova-brain-working-log.md:381:  - client-facing remote setup docs.
+.omo/notes/recova-brain-working-log.md:395:2026-07-07 Goal 4 completion update:
+.omo/notes/recova-brain-working-log.md:397:- Knowledge expansion Goal 4 is accepted and pushed on master through `d2310533`.
+.omo/notes/recova-brain-working-log.md:401:  - `85586bca`: test split to keep Goal 4 decision regressions under the pure-LOC ceiling.
+.omo/notes/recova-brain-working-log.md:402:  - `d2310533`: Goal 4 leader evidence and ULW checkpoint.
+.omo/notes/recova-brain-working-log.md:403:- Final verification recorded 52 focused tests passing, Python 3.9 py_compile passing, basedpyright clean, JSON validation passing, MCP order still 25 tools, PII/path scan `NO_FINDINGS`, and no deployment/runbook/client-doc mutation.
+.omo/notes/recova-brain-working-log.md:405:G011 closeout target:
+.omo/notes/recova-brain-working-log.md:407:1. Run G011 docs/log update so product docs and this working log reflect the accepted knowledge-expansion state.
+.omo/notes/recova-brain-working-log.md:409:3. Produce final acceptance review with a clear ACCEPTED/BLOCKED verdict.
+.omo/notes/recova-brain-working-log.md:410:4. Keep remote MCP deployment, remote smoke, and client-facing setup docs deferred unless the user explicitly changes scope.
+.omo/notes/recova-brain-working-log.md:412:2026-07-08 G011 documentation update:
+.omo/notes/recova-brain-working-log.md:415:- Final eval must be fresh G011 evidence, not a copy of Goal 4 outputs.
+.omo/notes/recova-brain-working-log.md:416:- Final acceptance must reproduce verification commands and explicitly confirm no deployment/runbook/client-doc mutation.
+.omo/notes/recova-brain-working-log.md:417:- The durable next work after G011 remains productization/deployment only if the user reopens it; otherwise the local professional debt-collection brain is the accepted deliverable for this wave.
+.omo/notes/recova-brain-working-log.md:419:2026-07-08 G011 completion update:
+.omo/notes/recova-brain-working-log.md:421:- G011 is accepted locally and checkpointed complete in ULW.
+.omo/notes/recova-brain-working-log.md:422:- Final evidence includes docs smoke, 52 focused tests, JSON validation, Python 3.9 py_compile, basedpyright, local MCP 25-tool order, deployment-boundary scan, diff check, final PII/path scan, and final contract review.
+.omo/notes/recova-brain-working-log.md:424:- Final gate review: `.omo/evidence/G011-docs-final-eval-and-acceptance-revie-gate-review.md`
+.omo/notes/recova-brain-working-log.md:432:- Do not mix deployment/MCP hosting dirty files into ontology planning unless the user explicitly changes scope.
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:42:| `resources/legal_routes/debt_collection_routes_v1.json` | 32 advisory route templates across 19 route families; `direct_execution_allowed` remains false. |
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:109:Finance payloads and action candidates keep `raw_text_included: false` and `source_text_included: false`.
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:156:Action packets are schemas for human review, not commands. Every packet candidate remains non-executing with `non_execution_semantics: advisory_only_human_review_required` and `direct_execution_allowed: false`.
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:174:Human-review workflow artifacts are still review/governance records only. An operator approval may record review status, rationale, source refs, and audit fields; it does not flip `direct_execution_allowed` to true and must not add debtor-contact, court-filing, payment-request, seizure, ledger-write, or production-storage payloads.
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:211:print(invoke_tool("explain_claim_action_packet", {"packet_type": "legal_action_review"}, root)["result"]["direct_execution_allowed"])
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:222:    "raw_text_included": false,
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:227:    "raw_text_included": false,
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:267:- keep `direct_execution_allowed: false`;
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:268:- keep `raw_text_included: false` and avoid source text or local paths in evidence;
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:270:- avoid Recova MCP deployment runbooks unless a link target must be corrected.
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:285:- Goal 4 evidence: finance/review hardening, StopGate/domain decision hardening, 52 focused tests, Python compile/type checks, JSON validation, local MCP order smoke, PII/path scan, deployment-boundary scan, and accepted Goal 4 review.
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:286:- Goal 5/G011 evidence: final docs smoke, final focused eval, final PII/path scan, final local MCP order smoke, and final contract review.
+docs/product/debt-collection-ontology/claim-domain-ontology-v1.md:288:Deployment remains intentionally out of scope for this wave: no remote MCP deploy, no remote live smoke, and no client-facing remote setup docs update unless that work is explicitly reopened.
+
+C001_PII_PATH_SCAN
+NO_FINDINGS
+
+cleanup: no runtime process, tmux session, browser context, container, bound port, or temp directory spawned

@@ -1,0 +1,6 @@
+FINAL_DIFF_CHECK
+command: git diff --check
+
+DIFF_CHECK_OK
+
+cleanup: no runtime process, tmux session, browser context, container, bound port, or temp directory spawned

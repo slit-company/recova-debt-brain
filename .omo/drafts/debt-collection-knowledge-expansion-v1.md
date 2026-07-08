@@ -1,8 +1,8 @@
 ---
 slug: debt-collection-knowledge-expansion-v1
-status: goal4-complete-final-eval-pending
+status: g011-complete
 intent: clear
-pending-action: run G011 docs, final eval, and acceptance review
+pending-action: commit and push G011 closeout; keep remote deployment/client docs deferred unless reopened
 approach: skip remote deployment/client docs for now; expand the accepted local claim-domain brain with article-level legal-source hardening, rare scenario fixtures, finance-source research plus finance/review regressions, and human-review workflow contracts. User does not want to specify more details; the plan should rely on MCP/web/source research.
 ---
 
@@ -16,7 +16,7 @@ approach: skip remote deployment/client docs for now; expand the accepted local 
 | scenario-expansion | Synthetic claim-domain cases cover rare assets, insolvency/recovery, protected-property, inheritance, hidden assets, and finance ambiguity. | accepted | `.omo/evidence/debt-collection-knowledge-expansion-v1/task-2-*`, `task-3-*` |
 | finance-review-depth | Ambiguous balances, assignment, surety, subrogation, and payment allocation remain review-safe. | accepted | `.omo/evidence/debt-collection-knowledge-expansion-v1/task-4-finance-review-*` |
 | operator-review-workflow | Action packets/governance records have a human-review state contract with audit and forbidden-field gates. | accepted | `.omo/evidence/debt-collection-knowledge-expansion-v1/task-2-*`, `task-4-*` |
-| integrated-eval | Domain decision, StopGate, route, finance, docs, and local MCP compatibility remain accepted. | pending | `.omo/evidence/debt-collection-knowledge-expansion-v1/final-*` |
+| integrated-eval | Domain decision, StopGate, route, finance, docs, and local MCP compatibility remain accepted. | accepted | `.omo/evidence/debt-collection-knowledge-expansion-v1/final-*` |
 | remote-mcp-deployment | Deploy updated server, remote smoke, and client setup docs. | deferred | Existing recova-mcp-deployment evidence only; out of this plan. |
 
 ## Open assumptions (announced defaults)
@@ -63,7 +63,7 @@ approach: skip remote deployment/client docs for now; expand the accepted local 
 - Complete: G008 scenario coverage and human-review contract foundation.
 - Complete: G009 resource and fixture expansion.
 - Complete: G010 decision, StopGate, finance, and review hardening.
-- Remaining: G011 docs, final eval, and acceptance review.
+- Complete: G011 docs, final eval, and acceptance review.
 
 ## Next work
 
@@ -71,6 +71,13 @@ approach: skip remote deployment/client docs for now; expand the accepted local 
 2. Run final focused tests, JSON validation, PII/path scan, Python compile/type checks where applicable, and local MCP 25-tool order smoke.
 3. Produce a final review artifact that says either ACCEPTED or BLOCKED with reproduced evidence.
 4. Keep remote MCP deployment, live remote smoke, and client setup docs out of scope unless the user explicitly brings them back.
+
+## G011 final closeout criteria
+
+- Docs smoke found the accepted knowledge-expansion terms in this draft, the working log, and the product/operator doc.
+- Final eval evidence was freshly generated under `.omo/evidence/debt-collection-knowledge-expansion-v1/final-*`.
+- Final review states `ACCEPTED`, reproduces the verification commands, and confirms the deployment/runbook/client-doc boundary.
+- Commit/push should include only the scoped G011 docs, final evidence, review, ULW state, and handoff artifacts.
 
 ## Scope IN
 
@@ -96,4 +103,4 @@ approach: skip remote deployment/client docs for now; expand the accepted local 
 - None blocking. If the user later wants a UI prototype rather than a workflow contract, that should become a separate frontend/product-design plan.
 
 ## Approval gate
-status: goal4-complete-g011-next
+status: accepted
