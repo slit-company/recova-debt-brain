@@ -24,6 +24,10 @@ Verified on 2026-07-08:
   `domain_workflow_integration -> evaluate_workflow_judgment` flow.
 - The indexed source included the generic structured support fields
   `evidence_checkpoint`, `finance_bridge`, and `legal_checkpoints`.
+- The root `.gitignore` keeps generic `vertexai/` runtime directories ignored,
+  but explicitly unignores
+  `trustgraph-vertexai/trustgraph/model/text_completion/vertexai/` so
+  Codegraph indexes this first-party provider source.
 
 ## How AI Sessions Should Use It
 
