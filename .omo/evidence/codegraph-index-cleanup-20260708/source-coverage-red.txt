@@ -1,0 +1,13 @@
+SOURCE_COVERAGE_CHECK phase=red_before_repair
+invocation=compare git tracked python/yaml/js files against .codegraph/codegraph.db files table
+repo_supported_files=1248
+indexed_supported_files=1245
+missing=3
+extra=0
+indexed_errors=0
+missing_paths:
+trustgraph-vertexai/trustgraph/model/text_completion/vertexai/__init__.py
+trustgraph-vertexai/trustgraph/model/text_completion/vertexai/__main__.py
+trustgraph-vertexai/trustgraph/model/text_completion/vertexai/llm.py
+extra_paths:
+SOURCE_COVERAGE_RED missing=3 extra=0 indexed_errors=0

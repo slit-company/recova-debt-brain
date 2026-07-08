@@ -1,0 +1,41 @@
+CODEGRAPH_CLEANUP_CHECK
+fix_commit=4356b7c9 fix(codegraph): include vertexai provider sources
+push=origin/master updated successfully
+codegraph_local_only=.git/info/exclude:7:.codegraph .codegraph
+git_status_after_fix_push:
+## master...origin/master
+?? .omo/evidence/codegraph-index-cleanup-20260708/
+?? .omo/ulw-loop/codegraph-index-cleanup-20260708/
+codegraph_status_summary:
+
+CodeGraph Status
+
+Project: /Users/slit/dev/recova-debt-brain
+
+Index Statistics:
+  Files:     1,248
+  Nodes:     18,898
+  Edges:     51,660
+  DB Size:   41.76 MB
+  Backend:   node:sqlite — built-in (full WAL)
+  Journal:   wal
+
+Nodes by Kind:
+  method          6,393
+  import          4,947
+  function        3,033
+  variable        1,820
+  class           1,568
+  file            1,108
+  constant        29
+
+Files by Language:
+  python          1,106
+  yaml            140
+  javascript      2
+
+✓ Index is up to date
+durable_tracked_changes=committed_and_pushed
+evidence_artifacts_untracked_until_final_evidence_commit=yes
+cleanup=no tmux/server/browser/temp runtime resources; mktemp files removed; codegraph DB remains local ignored state
+CODEGRAPH_CLEANUP_OK commit=4356b7c9 pushed=yes local_db_ignored=yes

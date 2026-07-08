@@ -1,0 +1,9 @@
+{
+  "threadId": "019f3f27-ada7-7c93-822d-4fec7f79c920",
+  "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/codegraph-index-cleanup-20260708/goals.json; clean up local Codegraph indexing for /Users/slit/dev/recova-debt-brain and record evidence in .omo/ulw-loop/codegraph-index-cleanup-20260708/ledger.jsonl.",
+  "status": "complete",
+  "tokensUsed": 237043,
+  "timeUsedSeconds": 1413,
+  "createdAt": 1783498178,
+  "updatedAt": 1783499592
+}

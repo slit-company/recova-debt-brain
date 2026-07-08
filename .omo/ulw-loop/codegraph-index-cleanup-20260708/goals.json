@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-08T08:09:16.775Z",
+  "updatedAt": "2026-07-08T08:34:45.753Z",
+  "briefPath": ".omo/ulw-loop/codegraph-index-cleanup-20260708/brief.md",
+  "goalsPath": ".omo/ulw-loop/codegraph-index-cleanup-20260708/goals.json",
+  "ledgerPath": ".omo/ulw-loop/codegraph-index-cleanup-20260708/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-clean-up-the-local-codegraph-indexin",
+      "title": "Clean up the local Codegraph indexing for /Users/slit/dev/recova-debt...",
+      "objective": "Clean up the local Codegraph indexing for /Users/slit/dev/recova-debt-brain so the supported source-code surface is indexed consistently. Baseline evidence shows .codegraph is live and indexes 1245 files, but three tracked Python files under trustgraph-vertexai/trustgraph/model/text_completion/vertexai are missing. Diagnose and repair the local codegraph setup without committing the codegraph database. Prove with CLI/data evidence that supported Python/YAML/JS candidates match the codegraph files table, core debt-brain symbols resolve through codegraph, there are zero indexing errors, cleanup receipts are recorded, and any durable repo docs or scripts are committed and pushed if changed.",
+      "status": "complete",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "CLI/data surface: run a repo-vs-codegraph source coverage check that lists tracked Python/YAML/JS files, compares them with sqlite .codegraph/codegraph.db files, and prints SOURCE_COVERAGE_OK only when missing=0, extra=0, indexed_errors=0.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/codegraph-index-cleanup-20260708/source-coverage.txt containing SOURCE_COVERAGE_OK missing=0 extra=0 indexed_errors=0.",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/codegraph-index-cleanup-20260708/source-coverage.txt: SOURCE_COVERAGE_OK missing=0 extra=0 indexed_errors=0; RED proof: .omo/evidence/codegraph-index-cleanup-20260708/source-coverage-red.txt showed missing=3 before repair; cleanup: mktemp compare files removed, no tmux/server/browser/temp runtime resources left",
+          "status": "pass",
+          "capturedAt": "2026-07-08T08:15:59.264Z"
+        },
+        {
+          "id": "C002",
+          "scenario": "Codegraph MCP real surface: query the formerly missing vertexai file and a core debt-brain workflow symbol through codegraph; PASS iff vertexai/llm.py resolves as an indexed file and evaluate_claim_domain_decision / evaluate_workflow_judgment still resolve through codegraph.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/evidence/codegraph-index-cleanup-20260708/codegraph-real-surface.txt containing CODEGRAPH_REAL_SURFACE_OK vertexai=yes debt_brain=yes.",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/codegraph-index-cleanup-20260708/codegraph-real-surface.txt: CODEGRAPH_REAL_SURFACE_OK vertexai=yes debt_brain=yes; MCP probe also resolved vertexai/llm.py with 16 symbols and debt-brain symbols; cleanup: no tmux/server/browser/temp runtime resources created",
+          "status": "pass",
+          "capturedAt": "2026-07-08T08:15:59.421Z"
+        },
+        {
+          "id": "C003",
+          "scenario": "CLI/git cleanup surface: verify .codegraph remains ignored/local-only, git status has no uncommitted tracked product files after any durable doc/script change, cleanup receipts exist, and any git-tracked durable changes are committed and pushed.",
+          "userModel": "regression",
+          "expectedEvidence": ".omo/evidence/codegraph-index-cleanup-20260708/final-cleanup.txt containing CODEGRAPH_CLEANUP_OK and commit/push hash if tracked files changed, or NO_GIT_CHANGE_REQUIRED if none changed.",
+          "essential": false,
+          "capturedEvidence": ".omo/evidence/codegraph-index-cleanup-20260708/final-cleanup.txt: CODEGRAPH_CLEANUP_OK commit=4356b7c9 pushed=yes local_db_ignored=yes; cleanup: no tmux/server/browser/temp runtime resources; mktemp files removed; codegraph DB remains local ignored state",
+          "status": "pass",
+          "capturedAt": "2026-07-08T08:17:42.012Z",
+          "notes": "Durable setup fix was committed and pushed as 4356b7c9; ULW evidence artifacts will be committed in a final evidence commit."
+        }
+      ],
+      "attempt": 1,
+      "createdAt": "2026-07-08T08:09:16.775Z",
+      "updatedAt": "2026-07-08T08:34:45.753Z",
+      "startedAt": "2026-07-08T08:10:19.725Z",
+      "completedAt": "2026-07-08T08:34:45.753Z",
+      "evidence": "CodeGraph indexing cleanup complete: supported source coverage is 1248/1248 with missing=0 extra=0 indexed_errors=0; vertexai provider source and core debt-brain workflow symbols resolve through CodeGraph; .codegraph remains local-only; fix commit 4356b7c9 pushed; quality gate approved."
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/codegraph-index-cleanup-20260708/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/codegraph-index-cleanup-20260708/ledger.jsonl as the audit trail.",
+  "aggregateCompletion": {
+    "status": "complete",
+    "completedAt": "2026-07-08T08:34:45.753Z",
+    "evidence": "CodeGraph indexing cleanup complete: supported source coverage is 1248/1248 with missing=0 extra=0 indexed_errors=0; vertexai provider source and core debt-brain workflow symbols resolve through CodeGraph; .codegraph remains local-only; fix commit 4356b7c9 pushed; quality gate approved.",
+    "codexGoal": {
+      "threadId": "019f3f27-ada7-7c93-822d-4fec7f79c920",
+      "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/codegraph-index-cleanup-20260708/goals.json; clean up local Codegraph indexing for /Users/slit/dev/recova-debt-brain and record evidence in .omo/ulw-loop/codegraph-index-cleanup-20260708/ledger.jsonl.",
+      "status": "complete",
+      "tokensUsed": 237043,
+      "timeUsedSeconds": 1413,
+      "createdAt": 1783498178,
+      "updatedAt": 1783499592
+    }
+  }
+}

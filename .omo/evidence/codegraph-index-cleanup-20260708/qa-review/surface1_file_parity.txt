@@ -1,0 +1,12 @@
+INVOCATION: git/sqlite indexed file parity check
+CWD: /Users/slit/dev/recova-debt-brain
+git files command: git ls-files '*.py' '*.yaml' '*.yml' '*.js' | LC_ALL=C sort
+sqlite files command: sqlite3 .codegraph/codegraph.db "select path from files where language in ('python','yaml','javascript') order by path;"
+git_count=1248
+indexed_count=1248
+missing=0
+extra=0
+indexed_errors=0
+missing sample:
+extra sample:
+indexed errors sample:

@@ -1,0 +1,159 @@
+{
+  "codeReview": {
+    "by": "lazycodex-code-reviewer",
+    "recommendation": "APPROVE",
+    "codeQualityStatus": "CLEAR",
+    "reportPath": ".omo/evidence/codegraph-index-cleanup-20260708-code-review.md",
+    "evidence": "Minimal .gitignore and documentation change reviewed; no product code, tests, or CodeGraph database artifacts were committed; remove-ai-slops and programming review lenses passed.",
+    "blockers": []
+  },
+  "manualQa": {
+    "by": "lazycodex-qa-executor",
+    "status": "passed",
+    "evidence": "Independent CLI and data checks confirmed clean source parity, vertexai provider symbol resolution, core debt-brain symbol search, and local-only .codegraph state.",
+    "surfaceEvidence": [
+      {
+        "id": "surface-source-coverage",
+        "criterionRef": "C001",
+        "surface": "data",
+        "invocation": "Compare git tracked Python/YAML/JavaScript files against .codegraph/codegraph.db files table.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-source-coverage"
+        ]
+      },
+      {
+        "id": "surface-codegraph-query",
+        "criterionRef": "C002",
+        "surface": "cli",
+        "invocation": "/Users/slit/.omo/codegraph/bin/codegraph node/query checks for vertexai provider and debt-brain workflow symbols.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-codegraph-surface",
+          "artifact-qa-vertexai-symbols",
+          "artifact-qa-domain-symbol",
+          "artifact-qa-workflow-symbol"
+        ]
+      },
+      {
+        "id": "surface-local-only-cleanup",
+        "criterionRef": "C003",
+        "surface": "cli",
+        "invocation": "Check .codegraph git ignore status, pushed fix commit, and cleanup receipts.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-final-cleanup",
+          "artifact-qa-local-only"
+        ]
+      }
+    ],
+    "adversarialCases": [
+      {
+        "id": "adv-broad-ignore-missing-files",
+        "criterionRef": "C001",
+        "scenario": "A broad .gitignore pattern can hide tracked first-party source from CodeGraph scanning.",
+        "expectedBehavior": "The repo-vs-index parity check reports zero missing files after the narrow unignore fix.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-source-red",
+          "artifact-source-coverage"
+        ]
+      },
+      {
+        "id": "adv-index-db-not-committed",
+        "criterionRef": "C003",
+        "scenario": "Local CodeGraph SQLite state must not be committed while fixing indexing.",
+        "expectedBehavior": ".codegraph remains ignored/local-only and no DB artifact is tracked.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-final-cleanup",
+          "artifact-qa-local-only"
+        ]
+      }
+    ],
+    "artifactRefs": [
+      {
+        "id": "artifact-source-red",
+        "kind": "data-diff",
+        "description": "Before-fix source coverage showing three missing vertexai provider files.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/source-coverage-red.txt"
+      },
+      {
+        "id": "artifact-source-coverage",
+        "kind": "data-diff",
+        "description": "After-fix source coverage showing missing=0, extra=0, indexed_errors=0.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/source-coverage.txt"
+      },
+      {
+        "id": "artifact-codegraph-surface",
+        "kind": "cli-transcript",
+        "description": "CodeGraph CLI/MCP surface proof for vertexai provider and debt-brain workflow symbols.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/codegraph-real-surface.txt"
+      },
+      {
+        "id": "artifact-final-cleanup",
+        "kind": "cli-transcript",
+        "description": "Cleanup receipt showing fix commit pushed and .codegraph kept local-only.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/final-cleanup.txt"
+      },
+      {
+        "id": "artifact-qa-vertexai-symbols",
+        "kind": "cli-transcript",
+        "description": "Independent QA symbol check for the vertexai provider file.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/qa-review/surface2_vertexai_llm_symbols.txt"
+      },
+      {
+        "id": "artifact-qa-domain-symbol",
+        "kind": "cli-transcript",
+        "description": "Independent QA query for evaluate_claim_domain_decision.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/qa-review/surface3_query_evaluate_claim_domain_decision.txt"
+      },
+      {
+        "id": "artifact-qa-workflow-symbol",
+        "kind": "cli-transcript",
+        "description": "Independent QA query for evaluate_workflow_judgment.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/qa-review/surface3_query_evaluate_workflow_judgment.txt"
+      },
+      {
+        "id": "artifact-qa-local-only",
+        "kind": "cli-transcript",
+        "description": "Independent QA check that .codegraph remains local-only.",
+        "path": ".omo/evidence/codegraph-index-cleanup-20260708/qa-review/surface4_codegraph_local_only.txt"
+      }
+    ]
+  },
+  "gateReview": {
+    "by": "lazycodex-gate-reviewer",
+    "recommendation": "APPROVE",
+    "reportPath": ".omo/evidence/codegraph-index-cleanup-20260708-gate-review.md",
+    "evidence": "All ULW criteria pass, the prior missing-code-review blocker is resolved, and the final gate approves the clean CodeGraph indexing outcome.",
+    "blockers": []
+  },
+  "iteration": {
+    "fullRerun": true,
+    "status": "passed",
+    "rerunCommands": [
+      "/Users/slit/.omo/codegraph/bin/codegraph index --force /Users/slit/dev/recova-debt-brain",
+      "/Users/slit/.omo/codegraph/bin/codegraph status /Users/slit/dev/recova-debt-brain",
+      "python3 source coverage parity check against .codegraph/codegraph.db",
+      "python3 -m json.tool .omo/evidence/codegraph-index-cleanup-20260708/quality-gate.json",
+      "git diff --check"
+    ],
+    "evidence": "Forced reindex, status, source parity, JSON validation, and diff whitespace checks passed."
+  },
+  "criteriaCoverage": {
+    "totalCriteria": 3,
+    "passCount": 3,
+    "originalIntent": "Make CodeGraph indexing clean for the full supported source surface of /Users/slit/dev/recova-debt-brain.",
+    "desiredOutcome": "Future AI maintenance can use CodeGraph with no supported tracked source files missing, no index errors, queryable vertexai provider files, queryable core debt-brain symbols, and local-only database state.",
+    "userOutcomeReview": "The broad vertexai ignore rule was narrowed, CodeGraph now indexes 1,248 supported files with zero missing/extra/error rows, real symbol queries pass, and durable repo changes were committed and pushed.",
+    "adversarialClassesCovered": [
+      "missing_tracked_source_files",
+      "extra_indexed_files",
+      "index_errors",
+      "broad_gitignore_source_exclusion",
+      "accidental_codegraph_database_commit",
+      "core_symbol_search_regression"
+    ]
+  }
+}

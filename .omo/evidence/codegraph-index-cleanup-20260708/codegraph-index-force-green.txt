@@ -1,0 +1,6 @@
+  Indexing project
+  Cleared existing index
+[K[2m[0m  [32m[0m Scanning files  1,248 found
+  Indexed 1,248 files
+  18,898 nodes, 51,660 edges in 8.4s
+  Done

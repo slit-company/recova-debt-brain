@@ -1,0 +1,10 @@
+SOURCE_COVERAGE_CHECK phase=green_after_repair
+invocation=compare git tracked python/yaml/js files against .codegraph/codegraph.db files table
+repo_supported_files=1248
+indexed_supported_files=1248
+missing=0
+extra=0
+indexed_errors=0
+missing_paths:
+extra_paths:
+SOURCE_COVERAGE_OK missing=0 extra=0 indexed_errors=0

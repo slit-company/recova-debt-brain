@@ -1,0 +1,14 @@
+INVOCATION: git check-ignore -v .codegraph; git ls-files .codegraph .codegraph/codegraph.db; ls -la .codegraph; readlink .codegraph
+
+-- git check-ignore -v .codegraph --
+.git/info/exclude:7:.codegraph	.codegraph
+
+-- git ls-files .codegraph .codegraph/codegraph.db --
+
+-- ls -la .codegraph --
+lrwxr-xr-x@ 1 slit  staff  70 Jul  8 03:36 .codegraph -> /Users/slit/.omo/codegraph/projects/recova-debt-brain-ebc6d01c9c699178
+
+-- readlink .codegraph --
+/Users/slit/.omo/codegraph/projects/recova-debt-brain-ebc6d01c9c699178
+
+-- git ls-files containing codegraph.db/.codegraph --

@@ -1,0 +1,41 @@
+INVOCATION: /Users/slit/.omo/codegraph/bin/codegraph query --path /Users/slit/dev/recova-debt-brain evaluate_claim_domain_decision
+[1m
+Search Results for "evaluate_claim_domain_decision":
+[0m
+[36mfunction    [0m[37mevaluate_claim_domain_decision[0m [2m(11971%)[0m
+[2m  trustgraph_legal/domain_decisions.py:49[0m
+[2m  (request: DomainDecisionRequest) -> JsonObject[0m
+
+[36mfunction    [0m[37mevaluate_claim_domain_decision[0m [2m(11961%)[0m
+[2m  trustgraph_legal/mcp_claim_domain_handlers.py:90[0m
+[2m  (args: JsonObject, root: Path) -> JsonObject[0m
+
+[36mimport      [0m[37mtrustgraph_legal.domain_decisions[0m [2m(2234%)[0m
+[2m  trustgraph_legal/mcp_claim_domain_handlers.py:7[0m
+[2m  from trustgraph_legal.domain_decisions import (
+    DomainDecisionError,
+    DomainDecisionRequest,
+    evaluate_claim_domain_decision as run_domain_decision,
+)[0m
+
+[36mimport      [0m[37mtrustgraph_legal.domain_decisions[0m [2m(814%)[0m
+[2m  tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:6[0m
+[2m  from trustgraph_legal.domain_decisions import DomainDecisionRequest, evaluate_claim_domain_decision[0m
+
+[36mimport      [0m[37mtrustgraph_legal.domain_decisions[0m [2m(797%)[0m
+[2m  tests/unit/legal_ontology/test_domain_decision_engine_goal4.py:8[0m
+[2m  from trustgraph_legal.domain_decisions import (
+    DomainDecisionError,
+    DomainDecisionRequest,
+    evaluate_claim_domain_decision,
+)[0m
+
+[36mimport      [0m[37mtrustgraph_legal.domain_decisions[0m [2m(797%)[0m
+[2m  tests/unit/legal_ontology/test_domain_decision_engine_v1.py:8[0m
+[2m  from trustgraph_legal.domain_decisions import (
+    DomainDecisionError,
+    DomainDecisionRequest,
+    evaluate_claim_domain_decision,
+)[0m
+
+evaluate_claim_domain_decision_matches=8

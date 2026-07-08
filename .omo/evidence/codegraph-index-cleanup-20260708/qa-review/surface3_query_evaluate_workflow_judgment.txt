@@ -1,0 +1,17 @@
+INVOCATION: /Users/slit/.omo/codegraph/bin/codegraph query --path /Users/slit/dev/recova-debt-brain evaluate_workflow_judgment
+[1m
+Search Results for "evaluate_workflow_judgment":
+[0m
+[36mfunction    [0m[37mevaluate_workflow_judgment[0m [2m(12111%)[0m
+[2m  trustgraph_legal/workflow_judgments.py:73[0m
+[2m  (request: WorkflowJudgmentRequest) -> JsonObject[0m
+
+[36mimport      [0m[37mtrustgraph_legal.workflow_judgments[0m [2m(2404%)[0m
+[2m  trustgraph_legal/domain_workflow_integration.py:8[0m
+[2m  from trustgraph_legal.workflow_judgments import WorkflowJudgmentRequest, evaluate_workflow_judgment[0m
+
+[36mimport      [0m[37mtrustgraph_legal.workflow_judgments[0m [2m(924%)[0m
+[2m  tests/unit/legal_ontology/test_workflow_judgments_v1.py:5[0m
+[2m  from trustgraph_legal.workflow_judgments import evaluate_workflow_judgment[0m
+
+evaluate_workflow_judgment_matches=5
