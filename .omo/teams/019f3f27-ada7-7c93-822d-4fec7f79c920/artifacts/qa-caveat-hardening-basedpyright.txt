@@ -1,0 +1,110 @@
+/Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:11:5 - warning: Type of "adapter_payload" is partially unknown
+    Type of "adapter_payload" is "(scenario: Scenario) -> dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:12:5 - warning: Type of "adapt_synthetic_debtor_graph" is partially unknown
+    Type of "adapt_synthetic_debtor_graph" is "() -> dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:13:5 - warning: Type of "assert_fixture_safe" is partially unknown
+    Type of "assert_fixture_safe" is "(bundle: dict[str, Unknown], source_ids: frozenset[str]) -> None" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:14:5 - warning: Type of "assert_no_leakage" is partially unknown
+    Type of "assert_no_leakage" is "(payload: dict[str, Unknown]) -> None" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:17:5 - warning: Type of "int_value" is partially unknown
+    Type of "int_value" is "(value: Unknown) -> int" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:18:5 - warning: Type of "json_object" is partially unknown
+    Type of "json_object" is "(value: Unknown) -> dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:19:5 - warning: Type of "load_bundle" is partially unknown
+    Type of "load_bundle" is "() -> dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:20:5 - warning: Type of "mcp_result" is partially unknown
+    Type of "mcp_result" is "(envelope: dict[str, Unknown]) -> dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:21:5 - warning: Type of "object_list" is partially unknown
+    Type of "object_list" is "(value: Unknown) -> list[dict[str, Unknown]]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:22:5 - warning: Type of "only" is partially unknown
+    Type of "only" is "(values: list[dict[str, Unknown]]) -> dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:23:5 - warning: Type of "run_manual_inventory" is partially unknown
+    Type of "run_manual_inventory" is "(tmp_path: Path) -> dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:25:5 - warning: Type of "scenario_list" is partially unknown
+    Type of "scenario_list" is "(bundle: dict[str, Unknown]) -> tuple[Scenario, ...]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:32:5 - warning: Type of "bundle" is partially unknown
+    Type of "bundle" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:34:56 - warning: Argument type is partially unknown
+    Argument corresponds to parameter "bundle" in function "workflow_expectations"
+    Argument type is "dict[str, Unknown]" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:39:5 - warning: Type of "inventory" is partially unknown
+    Type of "inventory" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:41:5 - warning: Type of "adapter_projection" is partially unknown
+    Type of "adapter_projection" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:46:17 - warning: Argument type is partially unknown
+    Argument corresponds to parameter "claim_domain_payload" in function "__init__"
+    Argument type is "dict[str, Unknown]" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:53:5 - warning: Type of "mcp_decisions" is partially unknown
+    Type of "mcp_decisions" is "dict[str, dict[str, Unknown]]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:69:36 - warning: Argument type is unknown
+    Argument corresponds to parameter "value" in function "int_value" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:69:48 - warning: Argument type is unknown
+    Argument corresponds to parameter "value" in function "json_object" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:73:22 - warning: Argument type is unknown
+    Argument corresponds to parameter "value" in function "int_value" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:73:34 - warning: Argument type is unknown
+    Argument corresponds to parameter "value" in function "json_object" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:75:17 - warning: Argument type is unknown
+    Argument corresponds to parameter "object" in function "__new__" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:83:9 - warning: Type of "route_decision" is partially unknown
+    Type of "route_decision" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:84:9 - warning: Type of "action_packet" is partially unknown
+    Type of "action_packet" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:92:17 - warning: Argument type is unknown
+    Argument corresponds to parameter "object" in function "__new__" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:92:35 - warning: Type of "item" is partially unknown
+    Type of "item" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:95:34 - warning: Argument type is partially unknown
+    Argument corresponds to parameter "decision" in function "assert_workflow_envelope"
+    Argument type is "dict[str, Unknown]" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:99:41 - warning: Argument type is partially unknown
+    Argument corresponds to parameter "decision" in function "assert_workflow_expectation"
+    Argument type is "dict[str, Unknown]" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:106:9 - warning: Type of "packet" is partially unknown
+    Type of "packet" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:114:5 - warning: Type of "bundle" is partially unknown
+    Type of "bundle" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:115:5 - warning: Type of "scenarios" is partially unknown
+    Type of "scenarios" is "list[dict[str, Unknown]]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:115:29 - warning: Argument type is unknown
+    Argument corresponds to parameter "value" in function "object_list" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:116:5 - warning: Type of "first" is partially unknown
+    Type of "first" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:131:5 - warning: Type of "bundle" is partially unknown
+    Type of "bundle" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:133:42 - warning: Argument type is partially unknown
+    Argument corresponds to parameter "bundle" in function "workflow_expectations"
+    Argument type is "dict[str, Unknown]" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:147:9 - warning: Type of "mcp_decision" is partially unknown
+    Type of "mcp_decision" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:160:37 - warning: Argument type is partially unknown
+    Argument corresponds to parameter "decision" in function "assert_workflow_expectation"
+    Argument type is "dict[str, Unknown]" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:166:5 - warning: Type of "workflow" is partially unknown
+    Type of "workflow" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:167:5 - warning: Type of "operator_next_steps" is partially unknown
+    Type of "operator_next_steps" is "list[dict[str, Unknown]]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:180:5 - warning: Type of "workflow" is partially unknown
+    Type of "workflow" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:181:5 - warning: Type of "action" is partially unknown
+    Type of "action" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:181:31 - warning: Argument type is unknown
+    Argument corresponds to parameter "value" in function "object_list" (reportUnknownArgumentType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:190:5 - warning: Type of "payload" is partially unknown
+    Type of "payload" is "dict[str, Unknown]" (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:192:9 - warning: Type of "_" is unknown (reportUnknownVariableType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:192:13 - warning: Type of "pop" is partially unknown
+    Type of "pop" is "Overload[(key: str, /) -> Unknown, (key: str, default: Unknown, /) -> Unknown, (key: str, default: _T@pop, /) -> (Unknown | _T@pop)]" (reportUnknownMemberType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:193:8 - warning: Type of "workflow_support" is partially unknown
+    Type of "workflow_support" is "dict[str, Unknown] | None" (reportUnknownMemberType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:194:39 - warning: Type of "workflow_support" is partially unknown
+    Type of "workflow_support" is "dict[str, Unknown]" (reportUnknownMemberType)
+  /Users/slit/dev/recova-debt-brain/tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py:195:12 - warning: Return type, "dict[str, Unknown]", is partially unknown (reportUnknownVariableType)
+/Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py:7:8 - error: Import "pytest" could not be resolved (reportMissingImports)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py:74:10 - warning: Type of "raises" is unknown (reportUnknownMemberType)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py:82:10 - warning: Type of "raises" is unknown (reportUnknownMemberType)
+/Users/slit/dev/recova-debt-brain/trustgraph_legal/domain_decisions.py
+  /Users/slit/dev/recova-debt-brain/trustgraph_legal/domain_decisions.py:9:6 - error: Import "typing_extensions" could not be resolved from source (reportMissingModuleSource)
+2 errors, 51 warnings, 0 notes

@@ -592,6 +592,484 @@
       "expected_review_codes": [
         "statutory_or_complex_interest"
       ]
+    },
+    {
+      "scenario_id": "premature_litigation_review",
+      "manual_state": "semireal premature litigation review before service path is complete",
+      "route_id": "payment_order_title_acquisition",
+      "workflow_state": "title_acquisition",
+      "fact_handles": [
+        "claim_basis",
+        "debtor_identity"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001700-m252393-a474",
+        "kr-law-l010910-m268669-a11"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ],
+      "expected_workflow_stage": "title_acquisition",
+      "expected_workflow_action": "confirm_service_finality_execution_clause",
+      "expected_workflow_posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "expected_workflow_remediation_loop": "legal_precondition_review_loop",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "pass",
+          "workflow_signals": [],
+          "review_items": [],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        },
+        "legal_checkpoints": {
+          "schema_version": "trustgraph-legal-workflow-checkpoints/v1",
+          "overall_status": "hold",
+          "ready_for_enforcement_advisory": false,
+          "checkpoints": [
+            {
+              "checkpoint_id": "service_proof",
+              "status": "missing",
+              "workflow_gate": "legal_precondition_review",
+              "reason_codes": [
+                "missing_service_finality_execution_clause_proof"
+              ],
+              "source_refs": [
+                "fixture:premature_litigation_review#legal-checkpoint"
+              ],
+              "blocks_enforcement_readiness": false
+            }
+          ],
+          "review_items": [
+            {
+              "code": "service_proof",
+              "category": "legal_workflow_checkpoint",
+              "workflow_gate": "legal_precondition_review",
+              "reason_codes": [
+                "missing_service_finality_execution_clause_proof"
+              ],
+              "review_status": "human_review_required",
+              "source_refs": [
+                "fixture:premature_litigation_review#legal-checkpoint"
+              ]
+            }
+          ],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          },
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      }
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "manual_state": "semireal evidence package completion before escalation",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "financial_account_hint"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "possible",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [],
+      "expected_workflow_stage": "evidence_completion",
+      "expected_workflow_action": "collect_missing_evidence",
+      "expected_workflow_posture": "complete_source_backed_fact_package_before_escalation",
+      "expected_workflow_remediation_loop": "evidence_completion_loop",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "review_required",
+          "workflow_signals": [
+            {
+              "code": "missing_provenance",
+              "category": "evidence",
+              "review_status": "human_review_required",
+              "source_refs": [
+                "fixture:evidence_completion_loop#summary"
+              ]
+            }
+          ],
+          "review_items": [
+            {
+              "code": "missing_provenance",
+              "category": "evidence",
+              "review_status": "human_review_required",
+              "source_refs": [
+                "fixture:evidence_completion_loop#summary"
+              ]
+            }
+          ],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "manual_state": "semireal payment order title acquisition loop",
+      "route_id": "payment_order_title_acquisition",
+      "workflow_state": "title_acquisition",
+      "fact_handles": [
+        "claim_basis",
+        "debtor_identity"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l001700-m252393-a474",
+        "kr-law-l010910-m268669-a11"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ],
+      "expected_workflow_stage": "title_acquisition",
+      "expected_workflow_action": "acquire_or_confirm_title",
+      "expected_workflow_posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "expected_workflow_remediation_loop": "title_acquisition_loop",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "pass",
+          "workflow_signals": [],
+          "review_items": [],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        },
+        "legal_checkpoints": {
+          "schema_version": "trustgraph-legal-workflow-checkpoints/v1",
+          "overall_status": "hold",
+          "ready_for_enforcement_advisory": false,
+          "checkpoints": [
+            {
+              "checkpoint_id": "enforcement_title",
+              "status": "missing",
+              "workflow_gate": "title_acquisition_loop",
+              "reason_codes": [
+                "missing_enforcement_title"
+              ],
+              "source_refs": [
+                "fixture:title_acquisition_loop#legal-checkpoint"
+              ],
+              "blocks_enforcement_readiness": false
+            }
+          ],
+          "review_items": [
+            {
+              "code": "enforcement_title",
+              "category": "legal_workflow_checkpoint",
+              "workflow_gate": "title_acquisition_loop",
+              "reason_codes": [
+                "missing_enforcement_title"
+              ],
+              "review_status": "human_review_required",
+              "source_refs": [
+                "fixture:title_acquisition_loop#legal-checkpoint"
+              ]
+            }
+          ],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          },
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      }
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "manual_state": "semireal bank route with missing account hint",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "missing_facts",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "missing_route_fact"
+      ],
+      "expected_workflow_stage": "asset_discovery",
+      "expected_workflow_action": "enrich_asset_signals",
+      "expected_workflow_posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+      "expected_workflow_remediation_loop": "asset_discovery_loop",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "pass",
+          "workflow_signals": [],
+          "review_items": [],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "manual_state": "semireal reviewed title and account hint ready for advisory packet",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "financial_account_hint"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "possible",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [],
+      "expected_workflow_stage": "enforcement_ready",
+      "expected_workflow_action": "prepare_advisory_packet",
+      "expected_workflow_posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+      "expected_workflow_remediation_loop": "legal_precondition_review_loop",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "pass",
+          "workflow_signals": [],
+          "review_items": [],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "manual_state": "semireal low-yield monitoring retry with no direct recovery action",
+      "route_id": "monitoring_retry_after_no_asset",
+      "workflow_state": "monitoring_retry",
+      "fact_handles": [
+        "monitoring_interval",
+        "prior_search_no_asset_result",
+        "low_yield_collection_signal"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a70",
+        "kr-law-l010910-m268669-a9",
+        "kr-law-l010910-m268669-a11",
+        "recova-privacy-purpose-v0"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "monitoring_retry",
+      "expected_review_codes": [
+        "domain_legal_source_unapproved"
+      ],
+      "expected_workflow_stage": "monitoring",
+      "expected_workflow_action": "monitor_retry",
+      "expected_workflow_posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+      "expected_workflow_remediation_loop": "low_yield_monitoring_loop",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "pass",
+          "workflow_signals": [],
+          "review_items": [],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "manual_state": "semireal payment allocation conflict requiring finance reconciliation",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "financial_account_hint"
+      ],
+      "finance_review_codes": [
+        "payment_allocation_conflict"
+      ],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "review_required",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "payment_allocation_conflict"
+      ],
+      "expected_workflow_stage": "evidence_completion",
+      "expected_workflow_action": "reconcile_finance",
+      "expected_workflow_posture": "complete_source_backed_fact_package_before_escalation",
+      "expected_workflow_remediation_loop": "finance_reconciliation_loop",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "pass",
+          "workflow_signals": [],
+          "review_items": [],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        },
+        "finance_bridge": {
+          "schema_version": "trustgraph-finance-workflow-bridge/v1",
+          "workflow_review_status": "finance_review_required",
+          "advisory_readiness": "finance_reconciliation_required_before_route_readiness",
+          "signals": [
+            {
+              "signal_code": "payment_allocation_review",
+              "review_code": "payment_allocation_conflict",
+              "category": "finance",
+              "reason": "fixture payment allocation conflict",
+              "remediation_loop": "finance_reconciliation_loop",
+              "review_status": "human_review_required",
+              "workflow_hold": true,
+              "source_refs": [
+                "fixture:finance_reconciliation_hold#finance"
+              ]
+            }
+          ],
+          "workflow_flags": {
+            "finance_reconciliation_needed": false,
+            "disputed_balance_hold": false,
+            "unsupported_interest_review": false,
+            "payment_allocation_review": true
+          },
+          "source_refs": [
+            "fixture:finance_reconciliation_hold#finance"
+          ],
+          "collectable_balance_authority": false,
+          "non_execution_semantics": "fixture_calculation_only_not_authoritative_balance",
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "manual_state": "semireal insolvency stay hold before protected-asset enforcement",
+      "route_id": "bank_account_attachment",
+      "workflow_state": "execution_route_selection",
+      "fact_handles": [
+        "enforceable_title",
+        "financial_account_hint",
+        "insolvency_stay"
+      ],
+      "finance_review_codes": [],
+      "legal_source_refs": [
+        "kr-law-l009290-m268837-a223",
+        "kr-law-l009290-m268837-a229",
+        "kr-law-l009290-m268837-a246",
+        "kr-law-l009930-m267359-a593",
+        "kr-law-l010910-m268669-a12"
+      ],
+      "expected_status": "blocked",
+      "expected_packet_type": "legal_action_review",
+      "expected_review_codes": [
+        "route_blocked"
+      ],
+      "expected_workflow_stage": "insolvency_protected_asset_review",
+      "expected_workflow_action": "insolvency_protected_asset_review",
+      "expected_workflow_posture": "hold_or_redirect_before_enforcement_ready_judgment",
+      "expected_workflow_remediation_loop": "protected_asset_insolvency_hold",
+      "workflow_support": {
+        "evidence_checkpoint": {
+          "schema_version": "trustgraph-evidence-quality-check/v1",
+          "decision": "pass",
+          "workflow_signals": [],
+          "review_items": [],
+          "hold_items": [],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          }
+        },
+        "legal_checkpoints": {
+          "schema_version": "trustgraph-legal-workflow-checkpoints/v1",
+          "overall_status": "hold",
+          "ready_for_enforcement_advisory": false,
+          "checkpoints": [
+            {
+              "checkpoint_id": "insolvency_or_protected_asset",
+              "status": "blocked",
+              "workflow_gate": "protected_asset_review_hold",
+              "reason_codes": [
+                "discharge_proceeding_detected"
+              ],
+              "source_refs": [
+                "fixture:insolvency_protected_asset_hold#legal-checkpoint"
+              ],
+              "blocks_enforcement_readiness": true
+            }
+          ],
+          "review_items": [
+            {
+              "code": "insolvency_or_protected_asset",
+              "category": "legal_workflow_checkpoint",
+              "workflow_gate": "protected_asset_review_hold",
+              "reason_codes": [
+                "discharge_proceeding_detected"
+              ],
+              "review_status": "human_review_required",
+              "source_refs": [
+                "fixture:insolvency_protected_asset_hold#legal-checkpoint"
+              ]
+            }
+          ],
+          "pii_profile": {
+            "raw_text_included": false,
+            "source_text_included": false
+          },
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      }
     }
   ]
 }

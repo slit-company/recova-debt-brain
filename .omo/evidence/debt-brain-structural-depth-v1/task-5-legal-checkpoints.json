@@ -1,0 +1,92 @@
+{
+  "task_id": 5,
+  "title": "Legal precondition workflow checkpoints",
+  "status": "passed",
+  "type_diagnostics": "clean",
+  "changed_files": [
+    "trustgraph_legal/legal_workflow_checkpoints.py",
+    "tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py",
+    ".omo/evidence/debt-brain-structural-depth-v1/task-5-legal-checkpoints.json"
+  ],
+  "behavior": {
+    "checkpoint_schema_version": "trustgraph-legal-workflow-checkpoints/v1",
+    "source_of_truth": "StopGatePayload from trustgraph_legal.stop_gates_domain_v1.evaluate_domain_v1_case_graph",
+    "clearing_policy": "static_stopgate_result_only",
+    "non_execution_semantics": "advisory_only_human_review_required",
+    "workflow_gates": [
+      "title_acquisition_loop",
+      "legal_precondition_review",
+      "limitation_review_hold",
+      "legal_source_review_hold",
+      "protected_asset_review_hold"
+    ],
+    "guardrails": [
+      "Does not mutate StopGate decisions.",
+      "Does not call web, LLM, memory, or live law lookup to clear blockers.",
+      "Does not include raw source text, debtor contact payloads, court filing destinations, or authoritative balance output."
+    ]
+  },
+  "qa_scenarios": [
+    {
+      "name": "missing_title_routes_to_title_acquisition_loop",
+      "observed": "enforcement_title status missing with title_acquisition_loop"
+    },
+    {
+      "name": "missing_service_finality_execution_clause_routes_to_legal_review",
+      "observed": "service_proof, finality_proof, and execution_clause statuses missing with legal_precondition_review"
+    },
+    {
+      "name": "limitation_ambiguity_routes_to_review_hold",
+      "observed": "limitation status review_required with limitation_review_hold"
+    },
+    {
+      "name": "protected_asset_signal_blocks_enforcement_readiness",
+      "observed": "insolvency_or_protected_asset status blocked with protected_asset_review_hold and ready_for_enforcement_advisory false"
+    }
+  ],
+  "commands": [
+    {
+      "command": "python3 -m pytest tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py",
+      "result": "not_run_environment_missing_pytest",
+      "summary": "System Python did not have pytest installed; reran through isolated uv runner."
+    },
+    {
+      "command": "uv run --with basedpyright --with pydantic --with typing-extensions basedpyright trustgraph_legal/legal_workflow_checkpoints.py tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py",
+      "result": "passed",
+      "summary": "0 errors, 0 warnings, 0 notes after V35 type-diagnostic follow-up."
+    },
+    {
+      "command": "uv run --with pytest python -m pytest tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py",
+      "result": "passed",
+      "summary": "4 passed; pytest warned that asyncio_mode is unknown in this temporary runner."
+    },
+    {
+      "command": "uv run --with pytest python -m pytest tests/unit/legal_ontology/test_stop_gates_domain_v1.py tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py",
+      "result": "passed",
+      "summary": "9 passed; existing StopGate domain behavior remained green."
+    },
+    {
+      "command": "uv run python -m compileall trustgraph_legal/legal_workflow_checkpoints.py tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py",
+      "result": "passed",
+      "summary": "Both changed Python files compiled successfully."
+    },
+    {
+      "command": "awk pure-LOC checks on changed Python files",
+      "result": "passed",
+      "summary": "legal_workflow_checkpoints.py has 157 pure LOC; test_legal_workflow_checkpoints_v1.py has 143 pure LOC."
+    },
+    {
+      "command": "direct adapter surface run with protected-benefit fixture",
+      "result": "passed",
+      "summary": "MANUAL_QA_TASK_5_OK overall_status=hold gate=protected_asset_review_hold"
+    }
+  ],
+  "diagnostics": {
+    "basedpyright": "clean",
+    "reason": "V35 Todo 5 JsonObject/list[str] and JsonValue narrowing diagnostics were fixed without behavior changes."
+  },
+  "known_risks": [
+    "The adapter is intentionally standalone for Todo 5; downstream workflow judgment integration belongs to later todos.",
+    "The checkout contains unrelated concurrent team changes that were not inspected or modified for this task."
+  ]
+}

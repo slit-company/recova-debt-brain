@@ -2,13 +2,13 @@
 
 Status: operator/developer contract for `debt-collection-domain-ontology-v1`
 Updated: 2026-07-08 Asia/Seoul
-Primary resources: `resources/ontologies/recova-debt-collection-v1.json`, `resources/legal_rules/debt_collection_domain_sources_v1.json`, `resources/legal_routes/debt_collection_routes_v1.json`, `resources/workflows/debt_collection_workflow_v1.json`, `resources/decision_tables/debt_collection_route_decisions_v1.json`, `resources/action_packets/debt_collection_action_packets_v1.json`
-Primary code: `trustgraph_legal.domain_graph_adapter`, `trustgraph_legal.domain_decisions`, `trustgraph_legal.mcp_claim_domain_handlers`, `trustgraph_legal.mcp_domain`
-Evidence roots: `.omo/evidence/debt-collection-domain-ontology-v1/`, `.omo/evidence/debt-collection-knowledge-expansion-v1/`
+Primary resources: `resources/ontologies/recova-debt-collection-v1.json`, `resources/legal_rules/debt_collection_domain_sources_v1.json`, `resources/legal_routes/debt_collection_routes_v1.json`, `resources/workflows/debt_collection_workflow_v1.json`, `resources/workflows/debt_collection_operator_playbook_v1.json`, `resources/decision_tables/debt_collection_route_decisions_v1.json`, `resources/action_packets/debt_collection_action_packets_v1.json`
+Primary code: `trustgraph_legal.domain_graph_adapter`, `trustgraph_legal.domain_decisions`, `trustgraph_legal.workflow_judgments`, `trustgraph_legal.domain_workflow_integration`, `trustgraph_legal.mcp_claim_domain_handlers`, `trustgraph_legal.mcp_domain`
+Evidence roots: `.omo/evidence/debt-collection-domain-ontology-v1/`, `.omo/evidence/debt-collection-knowledge-expansion-v1/`, `.omo/evidence/debt-brain-structural-depth-v1/`
 
 ## Purpose
 
-Claim Domain Ontology v1 is Recova's claim-centered debt-collection domain brain. It explains how a source-backed debtor context becomes advisory route decisions, review items, and draft-only action packet candidates.
+Claim Domain Ontology v1 is Recova's claim-centered debt-collection domain brain. It explains how a source-backed debtor context becomes workflow judgment, advisory route decisions, review items, and draft-only action packet candidates.
 
 The system is non-executing. It does not file court documents, contact debtors, send payment demands, mutate production ledgers, initiate seizure, or treat fixture finance calculations as authoritative balances.
 
@@ -28,10 +28,35 @@ The three layers have different ownership boundaries:
 OCR pages or reviewed graph facts
   -> DebtorContextGraph
   -> claim-domain adapter payload
-  -> deterministic route decision engine
+  -> deterministic workflow judgment and route decision engines
   -> advisory route decisions and review items
   -> draft-only action packet candidates for human review
 ```
+
+## Collection Workflow Judgment Brain
+
+The structural-depth wave makes workflow judgment the center of the product surface. The brain now answers operator questions before route execution questions:
+
+- where the case currently sits in the collection workflow;
+- what practical next move is most useful;
+- which routes are premature, blocked, low-yield, or ready only for review;
+- which missing inputs or support-layer checks must be resolved;
+- which remediation loop should happen next.
+
+The output contract is `trustgraph-collection-workflow-judgment/v1`, surfaced as `workflow_judgment` on claim-domain decisions. It includes `current_stage`, `posture`, `next_best_actions`, `premature_actions`, `missing_inputs`, `review_items`, `remediation_loop`, `reasons`, `source_refs`, `pii_profile`, and `non_execution_semantics`.
+
+The real domain/MCP boundary consumes structured workflow support through generic payload fields, not through scenario names or test labels. Semireal fixtures may carry PII-safe `workflow_support`; adapters should project that support into standard `evidence_checkpoint`, `finance_bridge`, and `legal_checkpoints` fields, and `domain_workflow_integration` also accepts the same fields when they remain nested under `workflow_support`. This keeps exact workflow stage, action, posture, and remediation-loop behavior stable at both `evaluate_claim_domain_decision` and the MCP `evaluate_claim_domain_decision` envelope without scenario-id branching.
+
+Legal, evidence, finance, and StopGate layers are support layers for this workflow judgment:
+
+| Support layer | How it supports workflow judgment | What it must not become |
+| --- | --- | --- |
+| Legal checkpoints | Hold or review limitation, title, service, finality, execution-clause, source-approval, insolvency, and protected-asset states. | A free-form legal advice engine or a way to clear StopGates from memory/web/LLM inference. |
+| Evidence quality | Distinguish source-backed, stale, placeholder, derived, low-confidence, and conflicting facts before route escalation. | Raw document analysis, raw OCR output, or a document automation product center. |
+| Finance bridge | Turn fixture finance ambiguity into reconciliation, allocation, unsupported-interest, or disputed-balance workflow signals. | An authoritative ledger, collectable balance, or payment-demand engine. |
+| Operator playbook | Defines practical stages, next-action types, premature-action reasons, and remediation loops. | A direct execution checklist for filings, contact, seizure, or ledger mutation. |
+
+This keeps the product identity as collection workflow intelligence: legal, evidence, and finance constraints guide the operator judgment, but they do not replace it.
 
 ## Resource Map
 
@@ -41,6 +66,7 @@ OCR pages or reviewed graph facts
 | `resources/legal_rules/debt_collection_domain_sources_v1.json` | Frozen domain legal-source map with 21 curated sources, 12 workflow source refs, `evaluation_date`, effective-date metadata, and Korean-law lookup evidence refs. |
 | `resources/legal_routes/debt_collection_routes_v1.json` | 32 advisory route templates across 19 route families; `direct_execution_allowed` remains false. |
 | `resources/workflows/debt_collection_workflow_v1.json` | 12 canonical states, 23 transitions, and 2 monitoring/blocked loops. Route decision logic is linked but kept out of workflow state definitions. |
+| `resources/workflows/debt_collection_operator_playbook_v1.json` | Practical operator stages, next-action types, premature-action reasons, missing-input expectations, checkpoint inputs, and remediation loops for workflow judgment. |
 | `resources/decision_tables/debt_collection_route_decisions_v1.json` | Deterministic route scoring/status table for `possible`, `review_required`, `missing_facts`, and `blocked` outcomes. |
 | `resources/action_packets/debt_collection_action_packets_v1.json` | Six draft-only packet schemas: evidence request, legal-action review, finance review, contact review, monitoring/retry, and insolvency/recovery review. |
 | `resources/finance/claim_finance_model_v1.json` | Fixture-only finance model for principal, interest, late damages, enforcement costs, payments, allocations, remaining balance, assignment/succession, guarantee/surety, and review triggers. |
@@ -119,6 +145,10 @@ Those conditions may produce review items or advisory packet candidates, but the
 
 ## Workflow And Route Decisions
 
+Workflow judgment is evaluated before an operator treats any route as ready. It uses the operator playbook, route decisions, evidence quality, finance review signals, legal checkpoints, and the claim-domain adapter payload to explain the case stage and next operational loop.
+
+For semireal coverage, exact workflow outcomes are asserted at both the direct domain decision surface and the MCP decision surface. The boundary preserves exact behavior when structured support appears either as top-level `evidence_checkpoint`, `finance_bridge`, and `legal_checkpoints` fields or as the same fields nested under `workflow_support`. If all structured support is absent, deterministic fallback logic remains conservative and review-safe.
+
 The canonical workflow states are:
 
 ```text
@@ -193,7 +223,7 @@ The claim-domain tools are:
 | --- | --- |
 | `list_claim_domain_routes` | List advisory v1 route summaries, optionally by route family. |
 | `explain_collection_workflow_state` | Explain a workflow state's purpose, preconditions, exit conditions, evidence, review states, and source refs. |
-| `evaluate_claim_domain_decision` | Evaluate deterministic claim-domain route decisions from an adapter payload and frozen v1 resources. |
+| `evaluate_claim_domain_decision` | Evaluate deterministic claim-domain workflow judgment and route decisions from an adapter payload and frozen v1 resources. |
 | `explain_claim_action_packet` | Explain an advisory packet schema and its forbidden execution/contact fields. |
 
 Example read-only smoke:
@@ -239,7 +269,9 @@ An agent should ask the domain brain questions in this order:
 3. Ask `list_claim_domain_routes` to inspect the route families available for the claim state.
 4. Ask `explain_collection_workflow_state` for the current workflow state and evidence requirements.
 5. Ask `evaluate_claim_domain_decision` with the adapter payload, workflow state, candidate route IDs, and any finance review codes.
-6. Ask `explain_claim_action_packet` only to understand the schema for a candidate packet. Do not turn it into a filing, contact, or payment instruction.
+6. Read `workflow_judgment` first: it is the operator-facing center for stage, posture, next best actions, premature actions, missing inputs, and remediation loop.
+7. If the adapter has structured workflow support, keep it in the standard `evidence_checkpoint`, `finance_bridge`, and `legal_checkpoints` fields, or preserve the same fields under `workflow_support` for the domain boundary to normalize. Do not branch on `scenario_id`, expected-test labels, or fixture-only names.
+8. Ask `explain_claim_action_packet` only to understand the schema for a candidate packet. Do not turn it into a filing, contact, or payment instruction.
 
 If the MCP response disagrees with the agent's memory, prefer the MCP response when it has source refs and resource versions. If newer evidence exists, ingest it or create a reviewed fact/governance item instead of overriding the graph locally.
 
@@ -286,3 +318,9 @@ The follow-on knowledge-expansion wave lives under `.omo/evidence/debt-collectio
 - Goal 5/G011 evidence: final docs smoke, final focused eval, final PII/path scan, final local MCP order smoke, and final contract review.
 
 Deployment remains intentionally out of scope for this wave: no remote MCP deploy, no remote live smoke, and no client-facing remote setup docs update unless that work is explicitly reopened.
+
+The structural-depth wave lives under `.omo/evidence/debt-brain-structural-depth-v1/`:
+
+- Task evidence documents the operator playbook, workflow judgment engine, evidence quality checkpoint, finance bridge, legal workflow checkpoints, domain/MCP integration, and eight semireal workflow scenarios.
+- Final readiness evidence is recorded in `final-*` files under that evidence root.
+- This wave proves local deploy-readiness only. It does not perform or claim remote MCP deployment, remote live smoke, client setup changes, public admin/write tools, debtor contact, filing, seizure, payment demand, production ledger mutation, or authoritative balance output.

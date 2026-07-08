@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "active_work_id": "debt-collection-domain-ontology-v1-20260707",
+  "active_work_id": "debt-brain-structural-depth-v1-20260708",
   "works": {
     "debt-collection-ontology-20260630": {
       "work_id": "debt-collection-ontology-20260630",
@@ -28,6 +28,16 @@
       "plan_name": "debt-collection-domain-ontology-v1",
       "session_ids": [
         "codex:019f124c-74e3-76c1-9a67-4c65799f2cd3"
+      ],
+      "status": "completed",
+      "worktree_path": null
+    },
+    "debt-brain-structural-depth-v1-20260708": {
+      "work_id": "debt-brain-structural-depth-v1-20260708",
+      "active_plan": ".omo/plans/debt-brain-structural-depth-v1.md",
+      "plan_name": "debt-brain-structural-depth-v1",
+      "session_ids": [
+        "codex:019f3f27-ada7-7c93-822d-4fec7f79c920"
       ],
       "status": "completed",
       "worktree_path": null

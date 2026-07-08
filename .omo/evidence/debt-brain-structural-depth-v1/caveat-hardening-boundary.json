@@ -1,0 +1,172 @@
+{
+  "status": "NESTED_SUPPORT_BOUNDARY_OK",
+  "scenarios": 8,
+  "surfaces": [
+    "domain",
+    "mcp"
+  ],
+  "exact_stage_action_posture_loop": "pass",
+  "unsafe_fields": "absent",
+  "results": [
+    {
+      "scenario_id": "premature_litigation_review",
+      "surface": "domain",
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "confirm_service_finality_execution_clause",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "legal_precondition_review_loop"
+      }
+    },
+    {
+      "scenario_id": "premature_litigation_review",
+      "surface": "mcp",
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "confirm_service_finality_execution_clause",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "legal_precondition_review_loop"
+      }
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "surface": "domain",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "evidence_completion_loop"
+      }
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "surface": "mcp",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "evidence_completion_loop"
+      }
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "surface": "domain",
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "acquire_or_confirm_title",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "title_acquisition_loop"
+      }
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "surface": "mcp",
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "acquire_or_confirm_title",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "title_acquisition_loop"
+      }
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "surface": "domain",
+      "observed": {
+        "stage": "asset_discovery",
+        "action": "enrich_asset_signals",
+        "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+        "remediation_loop": "asset_discovery_loop"
+      }
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "surface": "mcp",
+      "observed": {
+        "stage": "asset_discovery",
+        "action": "enrich_asset_signals",
+        "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+        "remediation_loop": "asset_discovery_loop"
+      }
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "surface": "domain",
+      "observed": {
+        "stage": "enforcement_ready",
+        "action": "prepare_advisory_packet",
+        "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+        "remediation_loop": "legal_precondition_review_loop"
+      }
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "surface": "mcp",
+      "observed": {
+        "stage": "enforcement_ready",
+        "action": "prepare_advisory_packet",
+        "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+        "remediation_loop": "legal_precondition_review_loop"
+      }
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "surface": "domain",
+      "observed": {
+        "stage": "monitoring",
+        "action": "monitor_retry",
+        "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+        "remediation_loop": "low_yield_monitoring_loop"
+      }
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "surface": "mcp",
+      "observed": {
+        "stage": "monitoring",
+        "action": "monitor_retry",
+        "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+        "remediation_loop": "low_yield_monitoring_loop"
+      }
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "surface": "domain",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "reconcile_finance",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "finance_reconciliation_loop"
+      }
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "surface": "mcp",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "reconcile_finance",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "finance_reconciliation_loop"
+      }
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "surface": "domain",
+      "observed": {
+        "stage": "insolvency_protected_asset_review",
+        "action": "insolvency_protected_asset_review",
+        "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+        "remediation_loop": "protected_asset_insolvency_hold"
+      }
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "surface": "mcp",
+      "observed": {
+        "stage": "insolvency_protected_asset_review",
+        "action": "insolvency_protected_asset_review",
+        "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+        "remediation_loop": "protected_asset_insolvency_hold"
+      }
+    }
+  ]
+}

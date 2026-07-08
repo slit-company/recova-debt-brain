@@ -1,0 +1,94 @@
+{
+  "task": "Todo 7 scenario-coverage",
+  "status": "passed",
+  "scope": {
+    "fixture_path": "tests/fixtures/claim-domain-v1/synthetic_claim_states.json",
+    "total_scenarios": 34,
+    "workflow_expectation_scenarios": 8,
+    "decision_boundary_expectation_policy": "exact workflow stage/action/posture/remediation assertions are enforced at both evaluate_claim_domain_decision and MCP decision boundaries for all eight semireal workflow scenarios",
+    "structured_support_contract": "eight fixture rows carry PII-safe workflow_support profiles projected into adapter payload evidence_checkpoint, finance_bridge, and legal_checkpoints surfaces; product code consumes these structured fields either at top level or nested under workflow_support without scenario-id branching"
+  },
+  "scenario_expectations": [
+    {
+      "scenario_id": "premature_litigation_review",
+      "stage": "title_acquisition",
+      "action": "confirm_service_finality_execution_clause",
+      "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "remediation_loop": "legal_precondition_review_loop"
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop"
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "stage": "title_acquisition",
+      "action": "acquire_or_confirm_title",
+      "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "remediation_loop": "title_acquisition_loop"
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "stage": "asset_discovery",
+      "action": "enrich_asset_signals",
+      "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+      "remediation_loop": "asset_discovery_loop"
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "stage": "enforcement_ready",
+      "action": "prepare_advisory_packet",
+      "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+      "remediation_loop": "legal_precondition_review_loop"
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "stage": "monitoring",
+      "action": "monitor_retry",
+      "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+      "remediation_loop": "low_yield_monitoring_loop"
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "stage": "evidence_completion",
+      "action": "reconcile_finance",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "finance_reconciliation_loop"
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "stage": "insolvency_protected_asset_review",
+      "action": "insolvency_protected_asset_review",
+      "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+      "remediation_loop": "protected_asset_insolvency_hold"
+    }
+  ],
+  "verification": {
+    "required_acceptance_command": "uv run --with pytest --with pydantic python -m pytest tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_workflow_judgments_v1.py",
+    "required_acceptance_result": "9 passed, 1 warning",
+    "typecheck": "uv run --with basedpyright --with pydantic basedpyright tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/workflow_scenario_requests.py tests/utils/workflow_scenario_expectations.py tests/utils/claim_domain_pipeline_support.py trustgraph_legal/domain_workflow_integration.py -> 0 errors, 0 warnings, 0 notes",
+    "compile": "uv run --with pydantic python -m compileall tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/workflow_scenario_requests.py tests/utils/workflow_scenario_expectations.py tests/utils/claim_domain_pipeline_support.py trustgraph_legal/domain_workflow_integration.py -> pass",
+    "json_validation": "python3 -m json.tool tests/fixtures/claim-domain-v1/synthetic_claim_states.json -> JSON_OK",
+    "fixture_leakage_scan": "NO_FINDINGS files=11",
+    "scenario_inventory": "SCENARIO_COVERAGE_OK scenarios=34 workflow_expectations=8",
+    "real_boundary_manual_qa": "REAL_BOUNDARY_WORKFLOW_EXPECTATIONS_OK scenarios=8 surfaces=domain,mcp",
+    "local_python_note": "system python3 is 3.9 and lacks typing.TypeAlias support for the test helper; uv was used as the accepted equivalent"
+  },
+  "manual_qa": {
+    "summary": "Reviewed all eight named semireal scenarios and confirmed each has scenario_id plus expected workflow stage, action, posture, remediation loop, and structured support signals. Direct public-boundary QA confirmed evaluate_claim_domain_decision and MCP decision outputs match each expected workflow stage/action/posture/remediation loop without raw payload leakage.",
+    "pii_and_payload_guardrails": [
+      "no raw real debtor data",
+      "no raw OCR or source text payload",
+      "no contact payload",
+      "no filing or court destination payload",
+      "no local path",
+      "no authoritative balance"
+    ]
+  },
+  "risks": [
+    "If all structured support is stripped, fallback deterministic defaults may route earlier to evidence completion, but the fallback remains advisory-only and review-safe. Exact outcomes now survive when support is preserved either as top-level evidence_checkpoint, finance_bridge, and legal_checkpoints fields or nested under workflow_support."
+  ]
+}

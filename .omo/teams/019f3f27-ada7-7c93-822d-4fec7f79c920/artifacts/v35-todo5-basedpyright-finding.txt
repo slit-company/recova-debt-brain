@@ -1,0 +1,58 @@
+V35 Todo 5 basedpyright finding
+
+Command:
+uv run --with basedpyright --with pydantic --with typing-extensions basedpyright trustgraph_legal/evidence_quality.py trustgraph_legal/finance_review_bridge.py trustgraph_legal/legal_workflow_checkpoints.py tests/unit/legal_ontology/test_evidence_quality_v1.py tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py tests/unit/legal_ontology/test_finance_claim_model_v1.py tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py
+
+Exit code: 1
+
+Output:
+/Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:3:20 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:3:26 - warning: This type is deprecated as of Python 3.9; use "list" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:3:32 - warning: This type is deprecated as of Python 3.10; use "| None" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:3:42 - warning: This type is deprecated as of Python 3.10; use "|" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:9:14 - warning: This type is deprecated as of Python 3.10; use "|" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:10:13 - warning: This type is deprecated as of Python 3.10; use "|" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:10:31 - warning: This type is deprecated as of Python 3.9; use "list" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:10:50 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:32:12 - error: Operator "in" not supported for types "Literal['missing_enforcement_title']" and "JsonValue"
+    Operator "in" not supported for types "Literal['missing_enforcement_title']" and "int"
+    Operator "in" not supported for types "Literal['missing_enforcement_title']" and "float"
+    Operator "in" not supported for types "Literal['missing_enforcement_title']" and "bool"
+    Operator "in" not supported for types "Literal['missing_enforcement_title']" and "None" (reportOperatorIssue)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:59:16 - error: Operator "in" not supported for types "Literal['missing_service_finality_execution_clause_proof']" and "JsonValue"
+    Operator "in" not supported for types "Literal['missing_service_finality_execution_clause_proof']" and "int"
+    Operator "in" not supported for types "Literal['missing_service_finality_execution_clause_proof']" and "float"
+    Operator "in" not supported for types "Literal['missing_service_finality_execution_clause_proof']" and "bool"
+    Operator "in" not supported for types "Literal['missing_service_finality_execution_clause_proof']" and "None" (reportOperatorIssue)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:112:26 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:112:71 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:122:23 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:122:48 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:137:55 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:151:18 - warning: This type is deprecated as of Python 3.10; use "| None" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:152:6 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:153:14 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:167:61 - warning: This type is deprecated as of Python 3.10; use "| None" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:167:86 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py:168:14 - warning: This type is deprecated as of Python 3.9; use "dict" instead (reportDeprecated)
+/Users/slit/dev/recova-debt-brain/trustgraph_legal/legal_workflow_checkpoints.py
+  /Users/slit/dev/recova-debt-brain/trustgraph_legal/legal_workflow_checkpoints.py:29:16 - error: Type "dict[str, str | list[str] | list[JsonObject] | bool]" is not assignable to return type "JsonObject"
+    Type "list[str]" is not assignable to type "JsonValue"
+      "list[str]" is not assignable to "str"
+      "list[str]" is not assignable to "int"
+      "list[str]" is not assignable to "float"
+      "list[str]" is not assignable to "bool"
+      "list[str]" is not assignable to "None"
+      "list[str]" is not assignable to "List[JsonValue]"
+        Type parameter "_T@list" is invariant, but "str" is not the same as "JsonValue" (reportReturnType)
+  /Users/slit/dev/recova-debt-brain/trustgraph_legal/legal_workflow_checkpoints.py:163:12 - error: Type "dict[str, str | list[str] | list[JsonObject]]" is not assignable to return type "JsonObject"
+    Type "list[str]" is not assignable to type "JsonValue"
+      "list[str]" is not assignable to "str"
+      "list[str]" is not assignable to "int"
+      "list[str]" is not assignable to "float"
+      "list[str]" is not assignable to "bool"
+      "list[str]" is not assignable to "None"
+      "list[str]" is not assignable to "List[JsonValue]"
+        Type parameter "_T@list" is invariant, but "str" is not the same as "JsonValue" (reportReturnType)
+4 errors, 19 warnings, 0 notes

@@ -423,6 +423,24 @@ G011 closeout target:
 - Final contract review: `.omo/evidence/debt-collection-knowledge-expansion-v1/final-contract-review.md`
 - Final gate review: `.omo/evidence/G011-docs-final-eval-and-acceptance-revie-gate-review.md`
 
+2026-07-08 structural-depth workflow judgment update:
+
+- Plan `.omo/plans/debt-brain-structural-depth-v1.md` deepened the local brain around collection workflow judgment, not lawyer-like document automation.
+- The new center is `trustgraph-collection-workflow-judgment/v1`: current stage, posture, next best actions, premature actions, missing inputs, review items, remediation loop, source refs, PII profile, and advisory-only semantics.
+- The operator playbook defines practical stages and remediation loops. Evidence quality, fixture finance review, legal checkpoints, and StopGate outputs are support layers that feed the workflow judgment and hold/review unsafe ambiguity.
+- `evaluate_claim_domain_decision` now carries `workflow_judgment` and `operator_next_steps` while preserving route decisions, review items, action packet candidates, source refs, PII profile, advisory-only semantics, and the accepted 25-tool local MCP order.
+- Eight semireal no-PII workflow scenarios cover premature litigation, evidence completion, title acquisition, asset discovery, enforcement-ready review, monitoring/low yield, finance reconciliation, and insolvency/protected-asset hold.
+- Evidence for this wave lives under `.omo/evidence/debt-brain-structural-depth-v1/`, with final local readiness artifacts written as `final-*` files.
+- Deployment remains deferred: this wave can only say local deploy-ready after local checks pass. It does not perform or claim remote MCP deployment, remote live smoke, client-facing setup changes, public admin/write tools, debtor contact, filing, seizure, payment demand, production ledger mutation, or authoritative balance output.
+
+2026-07-08 structural-depth real-boundary refresh:
+
+- Global review found the earlier Todo 6/7 boundary was too weak: real `evaluate_claim_domain_decision` and MCP evaluation collapsed eight semireal scenarios to `evidence_completion`.
+- F/G reopened and fixed the boundary. Semireal fixtures now carry PII-safe `workflow_support`, the adapter projects it into standard `evidence_checkpoint`, `finance_bridge`, and `legal_checkpoints` payload fields, and `domain_workflow_integration` consumes those generic fields before deterministic fallbacks. A caveat-hardening pass then made the boundary accept the same fields when they remain nested under `workflow_support`, so exact workflow outcomes no longer depend only on top-level projection.
+- The approved contract does not branch on scenario IDs, expected workflow labels, or fixture-only names in product code.
+- RV67R approved the refreshed real boundary with exact stage/action/posture/remediation loop at both domain and MCP surfaces: `DIRECT_QA_APPROVED scenarios=8 surfaces=domain,mcp exact_stage_action_posture_loop=pass`.
+- Todo 8 final readiness evidence was refreshed to describe this stricter boundary while keeping deployment local-only and remote deploy/smoke/client-doc work deferred.
+
 ## Working Rules For Future Updates
 
 - Update this file whenever the user answers an interview question.

@@ -1,0 +1,817 @@
+{
+  "schema_version": "manualQa/v1",
+  "overall_verdict": "PASS",
+  "surfaceEvidence": [
+    {
+      "scenario_id": "premature_litigation_review",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='title_acquisition', route_ids=('payment_order_title_acquisition',), finance_review_codes=()))",
+      "expected": {
+        "stage": "title_acquisition",
+        "action": "confirm_service_finality_execution_clause",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "legal_precondition_review_loop"
+      },
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "confirm_service_finality_execution_clause",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "legal_precondition_review_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "premature_litigation_review",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'title_acquisition', route_ids:['payment_order_title_acquisition'], finance_review_codes:[]}, REPO_ROOT)",
+      "expected": {
+        "stage": "title_acquisition",
+        "action": "confirm_service_finality_execution_clause",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "legal_precondition_review_loop"
+      },
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "confirm_service_finality_execution_clause",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "legal_precondition_review_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='execution_route_selection', route_ids=('bank_account_attachment',), finance_review_codes=()))",
+      "expected": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "evidence_completion_loop"
+      },
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'execution_route_selection', route_ids:['bank_account_attachment'], finance_review_codes:[]}, REPO_ROOT)",
+      "expected": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "evidence_completion_loop"
+      },
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='title_acquisition', route_ids=('payment_order_title_acquisition',), finance_review_codes=()))",
+      "expected": {
+        "stage": "title_acquisition",
+        "action": "acquire_or_confirm_title",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "title_acquisition_loop"
+      },
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "acquire_or_confirm_title",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "title_acquisition_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'title_acquisition', route_ids:['payment_order_title_acquisition'], finance_review_codes:[]}, REPO_ROOT)",
+      "expected": {
+        "stage": "title_acquisition",
+        "action": "acquire_or_confirm_title",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "title_acquisition_loop"
+      },
+      "observed": {
+        "stage": "title_acquisition",
+        "action": "acquire_or_confirm_title",
+        "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+        "remediation_loop": "title_acquisition_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='execution_route_selection', route_ids=('bank_account_attachment',), finance_review_codes=()))",
+      "expected": {
+        "stage": "asset_discovery",
+        "action": "enrich_asset_signals",
+        "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+        "remediation_loop": "asset_discovery_loop"
+      },
+      "observed": {
+        "stage": "asset_discovery",
+        "action": "enrich_asset_signals",
+        "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+        "remediation_loop": "asset_discovery_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'execution_route_selection', route_ids:['bank_account_attachment'], finance_review_codes:[]}, REPO_ROOT)",
+      "expected": {
+        "stage": "asset_discovery",
+        "action": "enrich_asset_signals",
+        "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+        "remediation_loop": "asset_discovery_loop"
+      },
+      "observed": {
+        "stage": "asset_discovery",
+        "action": "enrich_asset_signals",
+        "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+        "remediation_loop": "asset_discovery_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='execution_route_selection', route_ids=('bank_account_attachment',), finance_review_codes=()))",
+      "expected": {
+        "stage": "enforcement_ready",
+        "action": "prepare_advisory_packet",
+        "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+        "remediation_loop": "legal_precondition_review_loop"
+      },
+      "observed": {
+        "stage": "enforcement_ready",
+        "action": "prepare_advisory_packet",
+        "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+        "remediation_loop": "legal_precondition_review_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'execution_route_selection', route_ids:['bank_account_attachment'], finance_review_codes:[]}, REPO_ROOT)",
+      "expected": {
+        "stage": "enforcement_ready",
+        "action": "prepare_advisory_packet",
+        "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+        "remediation_loop": "legal_precondition_review_loop"
+      },
+      "observed": {
+        "stage": "enforcement_ready",
+        "action": "prepare_advisory_packet",
+        "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+        "remediation_loop": "legal_precondition_review_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='monitoring_retry', route_ids=('monitoring_retry_after_no_asset',), finance_review_codes=()))",
+      "expected": {
+        "stage": "monitoring",
+        "action": "monitor_retry",
+        "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+        "remediation_loop": "low_yield_monitoring_loop"
+      },
+      "observed": {
+        "stage": "monitoring",
+        "action": "monitor_retry",
+        "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+        "remediation_loop": "low_yield_monitoring_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'monitoring_retry', route_ids:['monitoring_retry_after_no_asset'], finance_review_codes:[]}, REPO_ROOT)",
+      "expected": {
+        "stage": "monitoring",
+        "action": "monitor_retry",
+        "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+        "remediation_loop": "low_yield_monitoring_loop"
+      },
+      "observed": {
+        "stage": "monitoring",
+        "action": "monitor_retry",
+        "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+        "remediation_loop": "low_yield_monitoring_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='execution_route_selection', route_ids=('bank_account_attachment',), finance_review_codes=('payment_allocation_conflict',)))",
+      "expected": {
+        "stage": "evidence_completion",
+        "action": "reconcile_finance",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "finance_reconciliation_loop"
+      },
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "reconcile_finance",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "finance_reconciliation_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'execution_route_selection', route_ids:['bank_account_attachment'], finance_review_codes:['payment_allocation_conflict']}, REPO_ROOT)",
+      "expected": {
+        "stage": "evidence_completion",
+        "action": "reconcile_finance",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "finance_reconciliation_loop"
+      },
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "reconcile_finance",
+        "posture": "complete_source_backed_fact_package_before_escalation",
+        "remediation_loop": "finance_reconciliation_loop",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "criterion_ref": "C001",
+      "surface": "direct-domain",
+      "exact_invocation": "evaluate_claim_domain_decision(DomainDecisionRequest(nested workflow_support-only payload, workflow_state='execution_route_selection', route_ids=('bank_account_attachment',), finance_review_codes=()))",
+      "expected": {
+        "stage": "insolvency_protected_asset_review",
+        "action": "insolvency_protected_asset_review",
+        "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+        "remediation_loop": "protected_asset_insolvency_hold"
+      },
+      "observed": {
+        "stage": "insolvency_protected_asset_review",
+        "action": "insolvency_protected_asset_review",
+        "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+        "remediation_loop": "protected_asset_insolvency_hold",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "criterion_ref": "C001",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {claim_domain_payload:nested workflow_support-only payload, workflow_state:'execution_route_selection', route_ids:['bank_account_attachment'], finance_review_codes:[]}, REPO_ROOT)",
+      "expected": {
+        "stage": "insolvency_protected_asset_review",
+        "action": "insolvency_protected_asset_review",
+        "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+        "remediation_loop": "protected_asset_insolvency_hold"
+      },
+      "observed": {
+        "stage": "insolvency_protected_asset_review",
+        "action": "insolvency_protected_asset_review",
+        "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+        "remediation_loop": "protected_asset_insolvency_hold",
+        "non_execution_semantics": "advisory_only_human_review_required"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    }
+  ],
+  "adversarialCases": [
+    {
+      "scenario_id": "premature_litigation_review",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "premature_litigation_review",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_direct-domain",
+      "surface": "direct-domain",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "criterion_ref": "C002",
+      "adversarial_class": "fully_stripped_support_in-process-mcp-dispatcher",
+      "surface": "in-process-mcp-dispatcher",
+      "exact_invocation": "same as C001 but payload has no workflow_support/evidence_checkpoint/finance_bridge/legal_checkpoints",
+      "expected_behavior": "conservative advisory-only human-review output with no unsafe raw/contact/filing/balance-authority fields",
+      "observed": {
+        "stage": "evidence_completion",
+        "action": "collect_missing_evidence",
+        "remediation_loop": "evidence_completion_loop",
+        "non_execution_semantics": "advisory_only_human_review_required",
+        "unsafe_tokens": []
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "mcp-tool-order",
+      "criterion_ref": "C003",
+      "adversarial_class": "mcp_order_regression",
+      "surface": "in-process-mcp-registry",
+      "exact_invocation": "trustgraph_legal.mcp_domain.list_tools()",
+      "expected_behavior": "25 tools; claim-domain tools appended after existing 21 in stable order",
+      "observed": {
+        "count": 25,
+        "tail": [
+          "list_claim_domain_routes",
+          "explain_collection_workflow_state",
+          "evaluate_claim_domain_decision",
+          "explain_claim_action_packet"
+        ]
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-manualqa-json"
+      ]
+    },
+    {
+      "scenario_id": "focused-regression-pytest",
+      "criterion_ref": "C003",
+      "adversarial_class": "regression_tests",
+      "surface": "terminal/pytest",
+      "exact_invocation": "uv run --with pytest --with pydantic --with typing-extensions pytest -q tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py::test_claim_domain_workflow_support_survives_without_projection tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py::test_claim_domain_tools_append_after_existing_mcp_tools tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py::test_claim_domain_tools_return_advisory_redacted_envelopes",
+      "expected_behavior": "focused nested-support, MCP order, and advisory redaction regression tests pass",
+      "observed": {
+        "summary": "3 passed, 1 pytest config warning"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-focused-pytest-with-deps"
+      ]
+    },
+    {
+      "scenario_id": "scoped-lint",
+      "criterion_ref": "C003",
+      "adversarial_class": "lint",
+      "surface": "terminal/ruff",
+      "exact_invocation": "uvx ruff check trustgraph_legal/domain_workflow_integration.py trustgraph_legal/domain_decisions.py trustgraph_legal/mcp_claim_domain_handlers.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py",
+      "expected_behavior": "scoped lint passes",
+      "observed": {
+        "summary": "All checks passed!"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-ruff"
+      ]
+    },
+    {
+      "scenario_id": "scoped-typecheck",
+      "criterion_ref": "C003",
+      "adversarial_class": "typecheck",
+      "surface": "terminal/basedpyright",
+      "exact_invocation": "uv run --with basedpyright --with pytest --with pydantic --with typing-extensions basedpyright trustgraph_legal/domain_workflow_integration.py trustgraph_legal/domain_decisions.py trustgraph_legal/mcp_claim_domain_handlers.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py",
+      "expected_behavior": "scoped typecheck passes with test dependencies available",
+      "observed": {
+        "summary": "0 errors, 0 warnings, 0 notes"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-basedpyright-with-deps"
+      ]
+    },
+    {
+      "scenario_id": "git-diff-check",
+      "criterion_ref": "C003",
+      "adversarial_class": "whitespace_safety",
+      "surface": "terminal/git",
+      "exact_invocation": "git diff --check",
+      "expected_behavior": "no whitespace errors in current diff",
+      "observed": {
+        "summary": "PASS (no whitespace errors)"
+      },
+      "verdict": "PASS",
+      "artifactRefs": [
+        "qa-git-diff-check"
+      ]
+    }
+  ],
+  "artifactRefs": [
+    {
+      "id": "qa-manualqa-json",
+      "kind": "json",
+      "description": "Fresh read-only QA direct/MCP nested-only and stripped-support matrix",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-manualqa.json"
+    },
+    {
+      "id": "qa-focused-pytest-with-deps",
+      "kind": "terminal-transcript",
+      "description": "Focused pytest rerun using uv --with pytest/pydantic/typing-extensions",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-focused-pytest-with-deps.txt"
+    },
+    {
+      "id": "qa-ruff",
+      "kind": "terminal-transcript",
+      "description": "Scoped ruff check for touched caveat-hardening code/test surfaces",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-ruff.txt"
+    },
+    {
+      "id": "qa-basedpyright-with-deps",
+      "kind": "terminal-transcript",
+      "description": "Scoped basedpyright with transient pytest/pydantic/typing-extensions dependencies",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-basedpyright-with-deps.txt"
+    },
+    {
+      "id": "qa-git-diff-check",
+      "kind": "terminal-transcript",
+      "description": "git diff --check whitespace validation",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-git-diff-check.txt"
+    },
+    {
+      "id": "qa-resource-check-final",
+      "kind": "terminal-transcript",
+      "description": "Final filtered process/tmux snapshot after QA commands completed",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-resource-check-final2.txt"
+    },
+    {
+      "id": "existing-boundary",
+      "kind": "json",
+      "description": "Supplied caveat hardening nested boundary evidence inspected by QA",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-boundary.json"
+    },
+    {
+      "id": "existing-fallback",
+      "kind": "json",
+      "description": "Supplied caveat hardening stripped fallback evidence inspected by QA",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-fallback.json"
+    },
+    {
+      "id": "existing-final",
+      "kind": "json",
+      "description": "Supplied caveat hardening final verification summary inspected by QA",
+      "path": "/Users/slit/dev/recova-debt-brain/.omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-final.json"
+    }
+  ]
+}

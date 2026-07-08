@@ -17,6 +17,7 @@ from trustgraph_legal.finance_claims import (
     RatePeriod,
     calculate_claim_finance_fixture,
 )
+from trustgraph_legal.finance_review_bridge import FINANCE_REVIEW_CODE_TO_WORKFLOW_SIGNAL
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -158,6 +159,17 @@ def test_disputed_amount_placeholder_source_ref_is_preserved_and_reviewed() -> N
     assert "remaining_balance" not in payload
     assert by_code["disputed_amount"]["source_refs"] == ["placeholder:finance#dispute"]
     assert "missing_source_ref" in by_code
+
+
+def test_calculator_review_codes_have_workflow_bridge_mappings() -> None:
+    # Given: the calculator emits review codes for all ambiguous fixture finance states.
+    payload = calculate_claim_finance_fixture(_explicit_fixture().with_review_risks()).to_json()
+
+    # When: those codes are compared with the workflow bridge contract.
+    review_codes = {text_field(item, "code") for item in object_list_field(payload, "review_items")}
+
+    # Then: each code can become a workflow judgment signal without authorizing a balance.
+    assert review_codes <= set(FINANCE_REVIEW_CODE_TO_WORKFLOW_SIGNAL)
 
 
 def object_field(entry: JsonObject, field: str) -> JsonObject:

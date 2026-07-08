@@ -1,0 +1,55 @@
+V35 Todo 1 operator-playbook verification finding
+
+Commit checked:
+72f41c11 feat(collection-brain): add operator playbook resource
+
+Path scope:
+.omo/evidence/debt-brain-structural-depth-v1/task-1-operator-playbook.txt
+resources/workflows/debt_collection_operator_playbook_v1.json
+scripts/legal_ontology/validate_operator_playbook_v1.py
+tests/unit/legal_ontology/test_operator_playbook_v1.py
+
+Passing checks:
+- uv run --with pytest python -m pytest tests/unit/legal_ontology/test_operator_playbook_v1.py tests/unit/legal_ontology/test_workflow_v1.py
+  Result: 7 passed, 1 warning for unknown pytest asyncio_mode in disposable runner.
+- uv run python scripts/legal_ontology/validate_operator_playbook_v1.py resources/workflows/debt_collection_operator_playbook_v1.json resources/workflows/debt_collection_workflow_v1.json resources/legal_rules/debt_collection_domain_sources_v1.json
+  Result: PASS operator_playbook recova-debt-collection-operator-playbook@v1.0.0 stages=10 action_types=13 remediation_loops=9 source_refs=28
+- python3 -m compileall scripts/legal_ontology/validate_operator_playbook_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+  Result: compile passed.
+- JSON/PII/path safety scan over Todo 1 changed files and evidence.
+  Result: JSON_VALIDATION_OK files=1; NO_FINDINGS files=4.
+
+Blocking lint check:
+Command:
+uv run --with ruff ruff check scripts/legal_ontology/validate_operator_playbook_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+
+Exit code: 1
+
+Output:
+F402 Import `field` from line 7 shadowed by loop variable
+   --> scripts/legal_ontology/validate_operator_playbook_v1.py:140:9
+    |
+138 |     issues: list[DomainSourceIssue] = []
+139 |     source_ref_count = 0
+140 |     for field in STAGE_LIST_FIELDS:
+    |         ^^^^^
+141 |         values, value_issues = string_list_value(stage, field, location)
+142 |         issues.extend(value_issues)
+    |
+
+Found 1 error.
+
+Type diagnostics:
+Command:
+uv run --with basedpyright --with pydantic --with typing-extensions basedpyright scripts/legal_ontology/validate_operator_playbook_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+
+Exit code: 1
+
+Output:
+/Users/slit/dev/recova-debt-brain/scripts/legal_ontology/validate_operator_playbook_v1.py
+  /Users/slit/dev/recova-debt-brain/scripts/legal_ontology/validate_operator_playbook_v1.py:223:9 - warning: Implicit string concatenation not allowed (reportImplicitStringConcatenation)
+/Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_operator_playbook_v1.py
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_operator_playbook_v1.py:33:5 - warning: Type of "raw" is Any (reportAny)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_operator_playbook_v1.py:119:5 - warning: Result of call expression is of type "int" and is not used; assign to variable "_" if this is intentional (reportUnusedCallResult)
+  /Users/slit/dev/recova-debt-brain/tests/unit/legal_ontology/test_operator_playbook_v1.py:135:5 - warning: Result of call expression is of type "int" and is not used; assign to variable "_" if this is intentional (reportUnusedCallResult)
+0 errors, 4 warnings, 0 notes

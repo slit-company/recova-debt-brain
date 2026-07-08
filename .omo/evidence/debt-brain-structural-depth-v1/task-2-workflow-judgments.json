@@ -1,0 +1,155 @@
+{
+  "schema_version": "task-2-workflow-judgments-evidence/v1",
+  "todo": "Todo 2 workflow judgment engine",
+  "changed_files": [
+    "trustgraph_legal/workflow_judgments.py",
+    "tests/unit/legal_ontology/test_workflow_judgments_v1.py",
+    "tests/unit/legal_ontology/workflow_judgment_helpers.py"
+  ],
+  "commands": [
+    {
+      "command": "uv run --with pytest python -m pytest tests/unit/legal_ontology/test_workflow_judgments_v1.py",
+      "result": "red: missing trustgraph_legal.workflow_judgments before implementation"
+    },
+    {
+      "command": "uv run --with pytest --with typing_extensions python -m pytest tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/test_evidence_quality_v1.py tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py",
+      "result": "pass: 22 passed, 1 pytest config warning"
+    },
+    {
+      "command": "python3 -m compileall trustgraph_legal/workflow_judgments.py tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/workflow_judgment_helpers.py",
+      "result": "pass"
+    }
+  ],
+  "manual_qa": {
+    "evidence_completion": {
+      "current_stage": "evidence_completion",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "next_best_actions": [
+        {
+          "action_type": "collect_missing_evidence",
+          "stage": "evidence_completion",
+          "review_status": "human_review_required",
+          "source_refs": [
+            "fixture:claim#root",
+            "fixture:evidence#placeholder",
+            "playbook:stage:evidence_completion"
+          ],
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      ],
+      "premature_actions": [
+        "evidence_missing_or_conflicted"
+      ],
+      "missing_inputs": [
+        "evidence_quality"
+      ],
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    "title_acquisition": {
+      "current_stage": "title_acquisition",
+      "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "next_best_actions": [
+        {
+          "action_type": "acquire_or_confirm_title",
+          "stage": "title_acquisition",
+          "review_status": "human_review_required",
+          "source_refs": [
+            "fixture:claim#root",
+            "fixture:legal#title",
+            "playbook:stage:title_acquisition"
+          ],
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      ],
+      "premature_actions": [
+        "enforcement_title_missing"
+      ],
+      "missing_inputs": [
+        "enforcement_title"
+      ],
+      "remediation_loop": "title_acquisition_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    "asset_discovery": {
+      "current_stage": "asset_discovery",
+      "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+      "next_best_actions": [
+        {
+          "action_type": "enrich_asset_signals",
+          "stage": "asset_discovery",
+          "review_status": "human_review_required",
+          "source_refs": [
+            "fixture:claim#root",
+            "fixture:route#required_fact_missing",
+            "playbook:stage:asset_discovery"
+          ],
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      ],
+      "premature_actions": [
+        "asset_signal_missing_or_low_yield"
+      ],
+      "missing_inputs": [
+        "asset_signal"
+      ],
+      "remediation_loop": "asset_discovery_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    "enforcement_ready": {
+      "current_stage": "enforcement_ready",
+      "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+      "next_best_actions": [
+        {
+          "action_type": "prepare_advisory_packet",
+          "stage": "enforcement_ready",
+          "review_status": "human_review_required",
+          "source_refs": [
+            "fixture:claim#root",
+            "fixture:route#required_facts_present",
+            "playbook:stage:enforcement_ready"
+          ],
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      ],
+      "premature_actions": [],
+      "missing_inputs": [],
+      "remediation_loop": "legal_precondition_review_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    "low_yield_monitoring": {
+      "current_stage": "monitoring",
+      "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+      "next_best_actions": [
+        {
+          "action_type": "monitor_retry",
+          "stage": "monitoring",
+          "review_status": "human_review_required",
+          "source_refs": [
+            "fixture:claim#root",
+            "fixture:route#asset_signal_missing_or_low_yield",
+            "playbook:stage:monitoring"
+          ],
+          "non_execution_semantics": "advisory_only_human_review_required"
+        }
+      ],
+      "premature_actions": [
+        "asset_signal_missing_or_low_yield"
+      ],
+      "missing_inputs": [
+        "asset_signal"
+      ],
+      "remediation_loop": "low_yield_monitoring_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    }
+  },
+  "guardrails": {
+    "no_raw_excerpts_or_source_text": true,
+    "no_authoritative_finance_balance": true,
+    "advisory_only_non_execution_semantics": true,
+    "no_llm_or_free_text_legal_clearance": true
+  },
+  "risks": [
+    "Todo 6 must wire this standalone engine into the claim-domain decision/MCP envelope."
+  ]
+}

@@ -12,6 +12,7 @@ from tests.utils.legal_mcp_support import (
     FakeMcp,
     REPO_ROOT,
     claim_domain_adapter_payload,
+    json_object,
     legal_tools_module,
     object_list,
     only_object,
@@ -135,6 +136,17 @@ def test_claim_domain_tools_return_advisory_redacted_envelopes() -> None:
     route_decision = only_object(decision["route_decisions"])
     assert route_decision["route_id"] == "bank_account_attachment"
     assert route_decision["status"] == "possible"
+    workflow_judgment = json_object(decision["workflow_judgment"])
+    assert workflow_judgment["schema_version"] == "trustgraph-collection-workflow-judgment/v1"
+    assert workflow_judgment["current_stage"]
+    assert workflow_judgment["next_best_actions"] or workflow_judgment["remediation_loop"]
+    assert workflow_judgment["non_execution_semantics"] == "advisory_only_human_review_required"
+    operator_next_steps = object_list(decision["operator_next_steps"])
+    assert operator_next_steps
+    assert operator_next_steps[0]["review_status"] == "human_review_required"
+    encoded_decision = json.dumps(decision, ensure_ascii=False, sort_keys=True)
+    assert '"remaining_balance":' not in encoded_decision
+    assert '"collectable_balance_authority":' not in encoded_decision
 
     packet = result_object(envelopes[3])
     assert packet["packet_type"] == "legal_action_review"

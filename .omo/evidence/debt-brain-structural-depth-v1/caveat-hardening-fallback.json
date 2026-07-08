@@ -1,0 +1,124 @@
+{
+  "status": "STRIPPED_SUPPORT_SAFE_FALLBACK_OK",
+  "scenarios": 8,
+  "surfaces": [
+    "domain",
+    "mcp"
+  ],
+  "unsafe": 0,
+  "fallback_behavior": "conservative_advisory_only_human_review",
+  "results": [
+    {
+      "scenario_id": "premature_litigation_review",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "premature_litigation_review",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "evidence_completion_loop",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "title_acquisition_loop",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "asset_discovery_loop",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "enforcement_ready_review",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "monitoring_low_yield",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "finance_reconciliation_hold",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "surface": "domain",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    },
+    {
+      "scenario_id": "insolvency_protected_asset_hold",
+      "surface": "mcp",
+      "stage": "evidence_completion",
+      "remediation_loop": "evidence_completion_loop",
+      "non_execution_semantics": "advisory_only_human_review_required"
+    }
+  ]
+}

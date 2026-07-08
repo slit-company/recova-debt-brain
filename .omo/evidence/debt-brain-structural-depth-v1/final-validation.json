@@ -1,0 +1,206 @@
+{
+  "schema_version": "debt-brain-structural-depth-final-validation/v1",
+  "todo": "Todo 8 docs, evidence, and local deploy-readiness gate",
+  "status": "refreshed_passed_after_caveat_hardening_review",
+  "refresh_reason": "Todo 6/7 real domain and MCP workflow boundary was fixed after global review, then hardened for nested support payloads, recursive unsafe-field scrubbing, and pure-LOC compliance before push.",
+  "local_deploy_readiness": "approved_local_only",
+  "remote_deployment": "not_performed",
+  "remote_smoke": "not_performed",
+  "client_setup_docs": "not_changed",
+  "changed_docs": [
+    "docs/product/debt-collection-ontology/claim-domain-ontology-v1.md",
+    ".omo/notes/recova-brain-working-log.md",
+    ".omo/drafts/debt-brain-structural-depth-v1.md",
+    ".omo/plans/debt-brain-structural-depth-v1.md"
+  ],
+  "final_evidence": [
+    ".omo/evidence/debt-brain-structural-depth-v1/final-validation.json",
+    ".omo/evidence/debt-brain-structural-depth-v1/final-summary.md"
+  ],
+  "real_boundary_contract": {
+    "fixture_support_field": "workflow_support",
+    "standard_payload_fields": [
+      "evidence_checkpoint",
+      "finance_bridge",
+      "legal_checkpoints"
+    ],
+    "accepted_payload_shapes": [
+      "top_level_structured_support_fields",
+      "nested_workflow_support_fields"
+    ],
+    "domain_surface": "evaluate_claim_domain_decision",
+    "mcp_surface": "evaluate_claim_domain_decision",
+    "exact_assertions": [
+      "current_stage",
+      "next_best_action",
+      "posture",
+      "remediation_loop"
+    ],
+    "scenario_id_branching": false,
+    "expected_label_branching": false,
+    "deterministic_fallbacks_preserved": true,
+    "nested_support_boundary_hardened": true,
+    "unsafe_review_items_recursively_scrubbed": true,
+    "domain_decisions_resource_split": true,
+    "mcp_handler_type_probe_clean": true
+  },
+  "commands": [
+    {
+      "name": "focused pytest",
+      "command": "uv run --with pytest --with pydantic --with typing-extensions python -m pytest tests/unit/legal_ontology/test_operator_playbook_v1.py tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/test_evidence_quality_v1.py tests/unit/legal_ontology/test_finance_claim_model_v1.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py -q",
+      "result": "passed",
+      "summary": "30 passed; pytest reported one existing config warning for asyncio_mode under the transient pytest runner."
+    },
+    {
+      "name": "regression pytest",
+      "command": "uv run --with pytest --with pydantic --with typing-extensions python -m pytest tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py tests/unit/legal_ontology/test_stop_gates_domain_v1.py tests/unit/legal_ontology/test_route_decisions_v1.py tests/unit/legal_ontology/test_action_packets_v1.py -q",
+      "result": "passed",
+      "summary": "18 passed; pytest reported one existing config warning for asyncio_mode under the transient pytest runner."
+    },
+    {
+      "name": "reopened real-boundary pytest",
+      "command": "uv run --with pytest --with pydantic --with typing-extensions python -m pytest tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_workflow_judgments_v1.py -q",
+      "result": "passed",
+      "summary": "11 passed; pytest reported one existing config warning for asyncio_mode under the transient pytest runner."
+    },
+    {
+      "name": "domain and MCP boundary pytest",
+      "command": "uv run --with pytest --with pydantic --with typing-extensions python -m pytest tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py -q",
+      "result": "passed",
+      "summary": "8 passed; pytest reported one existing config warning for asyncio_mode under the transient pytest runner."
+    },
+    {
+      "name": "exact system pytest caveat",
+      "command": "python3 -m pytest focused suite",
+      "result": "environment_caveat",
+      "summary": "System Python could not run pytest because pytest is not installed; the same focused and regression suites passed through uv with explicit dependencies."
+    },
+    {
+      "name": "JSON validation",
+      "command": "python3 JSON validation over resources, claim-domain fixtures, and structural-depth evidence",
+      "result": "passed",
+      "summary": "JSON_VALIDATION_OK files=24 after final evidence creation."
+    },
+    {
+      "name": "compile",
+      "command": "python3 -m compileall trustgraph_legal tests/unit/legal_ontology tests/integration/legal_ontology",
+      "result": "passed",
+      "summary": "compileall completed successfully."
+    },
+    {
+      "name": "broad typecheck",
+      "command": "uv run --with basedpyright --with pydantic --with pytest --with typing-extensions basedpyright trustgraph_legal tests/unit/legal_ontology tests/integration/legal_ontology",
+      "result": "pre_existing_gaps_documented",
+      "summary": "Broad repo typecheck still reports existing diagnostics in older legal ontology files outside this Todo 8 docs gate."
+    },
+    {
+      "name": "scoped structural-depth typecheck",
+      "command": "uv run --with basedpyright --with pydantic --with pytest --with typing-extensions basedpyright structural-depth product and test files",
+      "result": "passed",
+      "summary": "0 errors, 0 warnings, 0 notes."
+    },
+    {
+      "name": "scoped real-boundary lint",
+      "command": "uv run --with ruff ruff check real-boundary product, integration, and utility files",
+      "result": "passed",
+      "summary": "All checks passed."
+    },
+    {
+      "name": "MCP tool-order smoke",
+      "command": "uv run --with pydantic --with typing-extensions python MCP tool-order smoke",
+      "result": "passed",
+      "summary": "MCP_ORDER_OK count=25 tail=list_claim_domain_routes,explain_collection_workflow_state,evaluate_claim_domain_decision,explain_claim_action_packet."
+    },
+    {
+      "name": "manual QA scenario surface",
+      "command": "uv run --with pydantic --with typing-extensions python representative workflow scenario decision check",
+      "result": "passed",
+      "summary": "MANUAL_QA_APPROVED scenarios=8."
+    },
+    {
+      "name": "real-boundary direct QA",
+      "command": "uv run --with pydantic --with typing-extensions python domain and MCP exact workflow boundary check",
+      "result": "passed",
+      "summary": "DIRECT_QA_APPROVED scenarios=8 surfaces=domain,mcp exact_stage_action_posture_loop=pass nested_workflow_support=yes unsafe_fields=absent MCP_ORDER_OK count=25."
+    },
+    {
+      "name": "stripped support fallback QA",
+      "command": "uv run --with pydantic --with typing-extensions python stripped-support fallback safety check",
+      "result": "passed",
+      "summary": "STRIPPED_SUPPORT_SAFE_FALLBACK_OK scenarios=8 unsafe=0 advisory_only_human_review_required."
+    },
+    {
+      "name": "remove-ai-slops review",
+      "command": "explicit remove-ai-slops review over caveat-hardening changed files",
+      "result": "passed",
+      "summary": ".omo/evidence/debt-brain-structural-depth-v1/remove-ai-slops-review.md records behavior lock, cleanup plan, oversized-module split, unsafe-field fix, and quality gates."
+    },
+    {
+      "name": "scope fidelity",
+      "command": "python3 workflow-first docs/evidence contract check",
+      "result": "passed",
+      "summary": "SCOPE_FIDELITY_APPROVED workflow_first support_layers_ok real_boundary_structured_support_ok."
+    },
+    {
+      "name": "plan compliance",
+      "command": "git diff --name-only review plus forbidden-surface scan",
+      "result": "passed",
+      "summary": "PLAN_COMPLIANCE_APPROVED no_remote_deploy no_admin no_write no_pii no_ledger."
+    },
+    {
+      "name": "PII/path scan",
+      "command": "python3 PII/path scan over structural-depth evidence, product contract, resources, and claim-domain fixtures",
+      "result": "passed",
+      "summary": "SCOPED_EVIDENCE_SAFETY_OK files=6 for caveat-hardening final evidence surfaces; live direct/MCP outputs also checked unsafe fields absent."
+    },
+    {
+      "name": "broad docs scan caveat",
+      "command": "python3 broad scan over all debt-collection product docs",
+      "result": "pre_existing_scope_caveat",
+      "summary": "Older deferred remote MCP docs outside Todo 8 name environment variables; they were not changed because deployment/client docs are out of scope."
+    },
+    {
+      "name": "whitespace",
+      "command": "git diff --check",
+      "result": "passed",
+      "summary": "No whitespace errors."
+    }
+  ],
+  "manual_qa": {
+    "workflow_judgment_centered_in_docs": true,
+    "real_boundary_exact_outcomes_documented": true,
+    "structured_support_surfaces_documented": true,
+    "support_layers_named": [
+      "legal",
+      "evidence",
+      "finance",
+      "StopGate",
+      "operator_playbook"
+    ],
+    "local_deploy_ready_only_boundary": true,
+    "final_evidence_files_exist": true,
+    "non_execution_semantics": "advisory_only_human_review_required"
+  },
+  "loc": {
+    "trustgraph_legal/domain_decisions.py": 199,
+    "trustgraph_legal/domain_decision_resources.py": 96,
+    "trustgraph_legal/workflow_judgments.py": 243
+  },
+  "guardrails": {
+    "public_admin_tools_added": false,
+    "public_write_tools_added": false,
+    "mcp_tool_count_changed": false,
+    "remote_deployment_claimed": false,
+    "raw_pii_included": false,
+    "raw_ocr_text_included": false,
+    "debtor_contact_payload_included": false,
+    "court_or_filing_destination_included": false,
+    "ledger_mutation_included": false,
+    "authoritative_balance_output_included": false
+  },
+  "risks": [
+    "Broad repository typecheck still has older diagnostics outside the structural-depth files; scoped structural-depth typecheck is clean.",
+    "The broad all-docs scan still sees older deferred remote MCP docs outside Todo 8; the deliverable-surface PII/path scan is clean.",
+    "Remote MCP deployment and remote live smoke remain explicitly deferred."
+  ]
+}

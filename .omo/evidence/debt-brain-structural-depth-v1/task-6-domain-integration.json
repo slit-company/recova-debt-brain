@@ -1,0 +1,167 @@
+{
+  "task": "Todo 6 domain-integration",
+  "status": "passed_with_reopen_addendum",
+  "summary": "Integrated workflow judgment into claim-domain decision output and MCP decision response while preserving route_decisions, review_items, action_packet_candidates, source_refs, pii_profile, non_execution_semantics, and the 25-tool local MCP order. Reopen addendum fixed the real domain/MCP boundary so eight semireal workflow scenarios match expected stage, action, posture, and remediation loop from structured support surfaces.",
+  "changed_files": [
+    "trustgraph_legal/domain_decisions.py",
+    "trustgraph_legal/domain_workflow_integration.py",
+    "tests/unit/legal_ontology/test_domain_decision_engine_v1.py",
+    "tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py",
+    "tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+    "tests/utils/claim_domain_pipeline_support.py",
+    "tests/fixtures/claim-domain-v1/synthetic_claim_states.json"
+  ],
+  "compatibility": {
+    "decision_fields_preserved": [
+      "route_decisions",
+      "review_items",
+      "action_packet_candidates",
+      "source_refs",
+      "pii_profile",
+      "non_execution_semantics"
+    ],
+    "decision_fields_added": [
+      "workflow_judgment",
+      "operator_next_steps"
+    ],
+    "mcp_tool_order": "preserved",
+    "mcp_tool_count": 25,
+    "public_admin_or_write_tools_added": false
+  },
+  "commands": [
+    {
+      "name": "required Todo 6 pytest suite",
+      "command": "uv run --with pytest --with pydantic python -m pytest tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+      "result": "passed",
+      "summary": "10 passed; one pytest config warning about asyncio_mode from the existing test configuration"
+    },
+    {
+      "name": "MCP tool-order smoke",
+      "command": "uv run --with pydantic python - <<'PY' ... list_tools order check ... PY",
+      "result": "passed",
+      "summary": "MCP_ORDER_OK count=25 tail=list_claim_domain_routes,explain_collection_workflow_state,evaluate_claim_domain_decision,explain_claim_action_packet"
+    },
+    {
+      "name": "manual QA decision and MCP surfaces",
+      "command": "uv run --with pydantic python - <<'PY' ... evaluate domain and MCP decision surfaces ... PY",
+      "result": "passed",
+      "summary": "MANUAL_QA_OK surfaces=domain,mcp workflow_judgment=yes old_fields=yes unsafe_fields=absent finance_authority=absent execution_semantics=absent non_execution=advisory_only_human_review_required"
+    },
+    {
+      "name": "compile",
+      "command": "python3 -m compileall trustgraph_legal tests/unit/legal_ontology tests/integration/legal_ontology",
+      "result": "passed",
+      "summary": "compileall completed for changed product and test areas"
+    },
+    {
+      "name": "ruff changed files",
+      "command": "uv run --with ruff ruff check trustgraph_legal/domain_workflow_integration.py trustgraph_legal/domain_decisions.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+      "result": "passed",
+      "summary": "All checks passed"
+    },
+    {
+      "name": "basedpyright changed files",
+      "command": "uv run --with basedpyright --with pytest --with pydantic basedpyright trustgraph_legal/domain_workflow_integration.py trustgraph_legal/domain_decisions.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+      "result": "passed",
+      "summary": "0 errors, 0 warnings, 0 notes"
+    }
+  ],
+  "manual_qa": {
+    "domain_decision_has_workflow_judgment": true,
+    "mcp_decision_has_workflow_judgment": true,
+    "operator_next_steps_present": true,
+    "old_fields_backward_compatible": true,
+    "unsafe_fields_absent": [
+      "raw_text",
+      "source_text",
+      "filing_destination",
+      "debtor_contact_payload",
+      "remaining_balance",
+      "collectable_balance_authority",
+      "execution_command"
+    ],
+    "authoritative_finance_balance_absent": true,
+    "execution_semantics_absent": true,
+    "non_execution_semantics": "advisory_only_human_review_required"
+  },
+  "reopen_addendum": {
+    "blocker": "Global review found that the real evaluate_claim_domain_decision and MCP decision surface collapsed eight semireal workflow scenarios to evidence_completion because structured legal/evidence/finance support surfaces were not consumed at the public decision boundary.",
+    "fix": "domain_workflow_integration now consumes payload-provided evidence_checkpoint, finance_bridge, and legal_checkpoints surfaces before falling back to deterministic defaults. It accepts those generic surfaces either at the adapter payload top level or nested under workflow_support. The MCP handler forwards the same result unchanged. The semireal fixture helper forwards structured workflow_support objects into those standard payload surfaces.",
+    "no_scenario_id_branching": true,
+    "boundary_outcome_assertions": {
+      "scenario_count": 8,
+      "surfaces": [
+        "domain",
+        "mcp"
+      ],
+      "asserted_fields": [
+        "current_stage",
+        "next_best_actions[0].action_type",
+        "posture",
+        "remediation_loop"
+      ]
+    },
+    "commands": [
+      {
+        "name": "red boundary repro before fix",
+        "command": "uv run --with pytest --with pydantic python -m pytest tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py::test_domain_ontology_v1_pipeline_runs_synthetic_claim_scenarios",
+        "result": "failed_before_fix",
+        "summary": "Expected title_acquisition for premature_litigation_review; observed evidence_completion"
+      },
+      {
+        "name": "required Todo 6 reopened suite",
+        "command": "uv run --with pytest --with pydantic python -m pytest tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+        "result": "passed",
+        "summary": "10 passed; existing pytest asyncio_mode config warning"
+      },
+      {
+        "name": "workflow unit plus integration boundary suite",
+        "command": "uv run --with pytest --with pydantic python -m pytest tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+        "result": "passed",
+        "summary": "9 passed; existing pytest warnings only"
+      },
+      {
+        "name": "MCP tool-order smoke",
+        "command": "uv run --with pydantic python - <<'PY' ... list_tools order check ... PY",
+        "result": "passed",
+        "summary": "MCP_ORDER_OK count=25 tail=list_claim_domain_routes,explain_collection_workflow_state,evaluate_claim_domain_decision,explain_claim_action_packet"
+      },
+      {
+        "name": "manual QA exact eight workflow scenarios",
+        "command": "uv run --with pydantic python - <<'PY' ... compare domain and MCP workflow outcomes for eight scenarios ... PY",
+        "result": "passed",
+        "summary": "MANUAL_QA_OK scenarios=8 surfaces=domain,mcp exact_workflow_outcomes=yes advisory_only=yes unsafe_fields=absent finance_authority=absent"
+      },
+      {
+        "name": "compile",
+        "command": "python3 -m compileall trustgraph_legal tests/unit/legal_ontology tests/integration/legal_ontology",
+        "result": "passed",
+        "summary": "compileall completed"
+      },
+      {
+        "name": "ruff changed files",
+        "command": "uv run --with ruff ruff check trustgraph_legal/domain_workflow_integration.py trustgraph_legal/domain_decisions.py tests/utils/claim_domain_pipeline_support.py tests/utils/workflow_scenario_expectations.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+        "result": "passed",
+        "summary": "All checks passed"
+      },
+      {
+        "name": "basedpyright changed files",
+        "command": "uv run --with basedpyright --with pytest --with pydantic basedpyright trustgraph_legal/domain_workflow_integration.py trustgraph_legal/domain_decisions.py tests/utils/claim_domain_pipeline_support.py tests/utils/workflow_scenario_expectations.py tests/unit/legal_ontology/test_domain_decision_engine_v1.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py",
+        "result": "passed",
+        "summary": "0 errors, 0 warnings, 0 notes"
+      }
+    ],
+    "manual_qa": {
+      "exact_workflow_outcomes_at_domain_boundary": true,
+      "exact_workflow_outcomes_at_mcp_boundary": true,
+      "advisory_only_semantics_preserved": true,
+      "unsafe_fields_absent": true,
+      "authoritative_finance_balance_absent": true,
+      "mcp_tool_order_preserved_count": 25
+    }
+  },
+  "risks": [
+    "Local python lacks pytest, so pytest commands were run through uv with explicit pytest and pydantic dependencies.",
+    "If all structured support is stripped, deterministic fallback remains conservative and advisory-only; exact semireal scenario differentiation is preserved when support is either projected into standard evidence_checkpoint, finance_bridge, and legal_checkpoints payload fields or retained under workflow_support."
+  ]
+}

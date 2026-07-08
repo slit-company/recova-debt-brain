@@ -1,0 +1,27 @@
+tmux ls:
+recova-voice: 1 windows (created Wed Jul  8 15:43:59 2026) (attached)
+ulw-qa-hindsight-recall-recovery: 1 windows (created Wed Jul  8 15:51:06 2026)
+
+relevant ps:
+  332     1 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/Contents/MacOS/WiFiCloudAssetsXPCService
+  706     1 Ss   /System/Applications/Calendar.app/Contents/Extensions/CalendarFocusConfigurationExtension.appex/Contents/MacOS/CalendarFocusConfigurationExtension
+  710     1 Ss   /System/Applications/Messages.app/Contents/Extensions/MessagesActionExtension.appex/Contents/MacOS/MessagesActionExtension
+ 4587 20099 Ss   /bin/zsh -c uvx basedpyright trustgraph_legal/domain_workflow_integration.py trustgraph_legal/domain_decisions.py trustgraph_legal/mcp_claim_domain_handlers.py tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py | tee .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-basedpyright.txt
+ 4588 20099 Ss   /bin/zsh -c { printf 'tmux ls:\n'; tmux ls 2>&1 || true; printf '\nrelevant ps:\n'; ps -axo pid,ppid,stat,command | rg -i 'recova-debt-brain|qa-caveat-hardening|pytest|playwright|vite|next|tsx|ts-node|tmux' || true; printf '\nartifact sizes:\n'; find .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts -maxdepth 1 -type f -name 'qa-caveat-hardening-*' -print0 | xargs -0 ls -l; } | tee .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-resource-check.txt
+ 4590  4587 S    tee .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-basedpyright.txt
+ 4592  4588 S    /bin/zsh -c { printf 'tmux ls:\n'; tmux ls 2>&1 || true; printf '\nrelevant ps:\n'; ps -axo pid,ppid,stat,command | rg -i 'recova-debt-brain|qa-caveat-hardening|pytest|playwright|vite|next|tsx|ts-node|tmux' || true; printf '\nartifact sizes:\n'; find .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts -maxdepth 1 -type f -name 'qa-caveat-hardening-*' -print0 | xargs -0 ls -l; } | tee .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-resource-check.txt
+ 4594  4588 S    tee .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-resource-check.txt
+ 4596  4592 R    rg -i recova-debt-brain|qa-caveat-hardening|pytest|playwright|vite|next|tsx|ts-node|tmux
+82817     1 Ss   tmux new -s recova-voice
+91569 91562 Ss   /Users/slit/.omo/codegraph/node --liftoff-only /Users/slit/.omo/codegraph/lib/dist/bin/codegraph.js serve --mcp --path /Users/slit/dev/recova-debt-brain
+92002 20099 Ss   /bin/zsh -c for i in $(seq 1 24); do sleep 10; tmux capture-pane -pt ulw-qa-hindsight-recall-recovery -S -4000 > .omo/evidence/hindsight-hermes-memory/task-6-recall-tmux-recovery-live.txt 2>&1 || break; if rg -q 'END_PROMPT' .omo/evidence/hindsight-hermes-memory/task-6-recall-tmux-recovery-live.txt; then count=$(rg -c 'END_PROMPT' .omo/evidence/hindsight-hermes-memory/task-6-recall-tmux-recovery-live.txt || true); echo "END_PROMPT_count=$count at poll $i"; if [ "$count" -ge 6 ]; then break; fi; else echo "poll $i no END_PROMPT yet"; fi; done; cp .omo/evidence/hindsight-hermes-memory/task-6-recall-tmux-recovery-live.txt .omo/evidence/hindsight-hermes-memory/task-6-recall-tmux-recovery.txt; tail -n 220 .omo/evidence/hindsight-hermes-memory/task-6-recall-tmux-recovery.txt
+82810 32655 S+   tmux new -s recova-voice
+
+artifact sizes:
+-rw-r--r--@ 1 slit  staff      0 Jul  8 15:54 .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-basedpyright.txt
+-rw-r--r--@ 1 slit  staff    976 Jul  8 15:53 .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-focused-pytest-with-deps.txt
+-rw-r--r--@ 1 slit  staff      0 Jul  8 15:53 .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-focused-pytest.txt
+-rw-r--r--@ 1 slit  staff      0 Jul  8 15:54 .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-git-diff-check.txt
+-rw-r--r--@ 1 slit  staff  32701 Jul  8 15:54 .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-manualqa.json
+-rw-r--r--@ 1 slit  staff   3463 Jul  8 15:54 .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-resource-check.txt
+-rw-r--r--@ 1 slit  staff     19 Jul  8 15:54 .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-ruff.txt

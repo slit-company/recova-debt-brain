@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Final
+from typing import TYPE_CHECKING, Final
 
 from trustgraph_legal.domain_decisions import (
     DomainDecisionError,
@@ -13,6 +13,16 @@ from trustgraph_legal.governance_models import JsonValue
 from trustgraph_legal.mcp_inputs import path_arg, str_arg
 
 JsonObject = dict[str, JsonValue]
+if TYPE_CHECKING:
+
+    def _loads_json(_raw_text: str) -> JsonValue: ...
+
+else:
+
+    def _loads_json(_raw_text: str) -> JsonValue:
+        return json.loads(_raw_text)
+
+
 ROUTES_PATH: Final = Path("resources/legal_routes/debt_collection_routes_v1.json")
 WORKFLOW_PATH: Final = Path("resources/workflows/debt_collection_workflow_v1.json")
 DECISIONS_PATH: Final = Path("resources/decision_tables/debt_collection_route_decisions_v1.json")
@@ -199,7 +209,7 @@ def _pii_profile(value: JsonValue) -> JsonObject:
 
 
 def _load_json(path: Path) -> JsonObject:
-    raw: JsonValue = json.loads(path.read_text(encoding="utf-8"))
+    raw = _loads_json(path.read_text(encoding="utf-8"))
     return raw if isinstance(raw, dict) else {}
 
 

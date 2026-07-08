@@ -137,20 +137,20 @@ def validate_catalogs(root: JsonObject) -> tuple[ValidationContext, list[DomainS
 def validate_stage_lists(stage: JsonObject, context: ValidationContext, location: str) -> tuple[int, list[DomainSourceIssue]]:
     issues: list[DomainSourceIssue] = []
     source_ref_count = 0
-    for field in STAGE_LIST_FIELDS:
-        values, value_issues = string_list_value(stage, field, location)
+    for list_field in STAGE_LIST_FIELDS:
+        values, value_issues = string_list_value(stage, list_field, location)
         issues.extend(value_issues)
-        if field == "workflow_state_ids":
+        if list_field == "workflow_state_ids":
             issues.extend(issue(location, f"unknown workflow_state_id {value}") for value in values if value not in context.workflow_state_ids)
-        if field == "next_action_types":
+        if list_field == "next_action_types":
             issues.extend(issue(location, f"unknown action_type {value}") for value in values if value not in context.action_types)
-        if field == "premature_action_reasons":
+        if list_field == "premature_action_reasons":
             issues.extend(issue(location, f"unknown premature_action_reason {value}") for value in values if value not in context.premature_reasons)
-        if field == "required_checkpoint_inputs":
+        if list_field == "required_checkpoint_inputs":
             issues.extend(issue(location, f"unknown checkpoint_input {value}") for value in values if value not in context.checkpoint_inputs)
-        if field == "remediation_loops":
+        if list_field == "remediation_loops":
             issues.extend(issue(location, f"unknown remediation_loop {value}") for value in values if value not in context.remediation_loops)
-        if field == "source_refs":
+        if list_field == "source_refs":
             source_ref_count = len(values)
             issues.extend(issue(location, f"unknown source_id {value}") for value in values if value not in context.source_ids)
     return source_ref_count, issues
@@ -219,11 +219,12 @@ def main(argv: Sequence[str]) -> int:
         for entry in issues:
             print(f"ERROR {entry.format()}", file=sys.stderr)
         return 1
-    print(
-        f"PASS operator_playbook {summary.playbook_version} stages={summary.stage_count} "
-        f"action_types={summary.action_type_count} remediation_loops={summary.remediation_loop_count} "
+    output_parts = (
+        f"PASS operator_playbook {summary.playbook_version} stages={summary.stage_count}",
+        f"action_types={summary.action_type_count} remediation_loops={summary.remediation_loop_count}",
         f"source_refs={summary.source_ref_count}",
     )
+    print(" ".join(output_parts))
     return 0
 
 

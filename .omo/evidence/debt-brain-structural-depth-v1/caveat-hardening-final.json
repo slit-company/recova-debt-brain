@@ -1,0 +1,92 @@
+{
+  "schema_version": "debt-brain-caveat-hardening/v1",
+  "status": "passed_after_review_blocker_fixes",
+  "summary": "Reduced structural-depth caveats before push: nested workflow_support is accepted as a generic support-field alias, stripped support remains conservative/advisory-only, nested unsafe support review items are recursively scrubbed, MCP handler type diagnostics are clean, and the edited domain decision file is below the pure-LOC ceiling.",
+  "red_to_green": {
+    "red_transcript": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-red-transcript.txt",
+    "nested_support_red": "test_claim_domain_workflow_support_survives_without_projection failed: observed evidence_completion where title_acquisition was expected; RED_NESTED_SUPPORT_FAILURES count=14 from direct/MCP probe.",
+    "nested_support_green": "test_claim_domain_workflow_support_survives_without_projection passed after domain_workflow_integration accepted evidence_checkpoint, finance_bridge, and legal_checkpoints from top-level payload or nested workflow_support.",
+    "unsafe_review_item_red": "test_review_items_scrub_nested_unsafe_support_fields failed because nested raw_text, debtor_contact_payload, filing_destination, source_path, and remaining_balance were visible in workflow_judgment.review_items.",
+    "unsafe_review_item_green": "workflow_judgments recursively scrubs unsafe review-item keys at any depth while preserving safe structured fields."
+  },
+  "manual_qa": {
+    "nested_support_boundary": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-boundary.json: NESTED_SUPPORT_BOUNDARY_OK scenarios=8 surfaces=domain,mcp exact_stage_action_posture_loop=pass",
+    "stripped_support_fallback": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-fallback.json: STRIPPED_SUPPORT_SAFE_FALLBACK_OK scenarios=8 unsafe=0 advisory_only_human_review_required",
+    "direct_qa_refresh": "DIRECT_QA_APPROVED scenarios=8 surfaces=domain,mcp exact_stage_action_posture_loop=pass nested_workflow_support=yes unsafe_fields=absent MCP_ORDER_OK count=25",
+    "safe_fallback_refresh": "STRIPPED_SUPPORT_SAFE_FALLBACK_OK scenarios=8 unsafe=0 advisory_only_human_review_required"
+  },
+  "verification": [
+    {
+      "name": "focused pytest",
+      "result": "passed",
+      "summary": "30 passed, 1 existing asyncio_mode warning"
+    },
+    {
+      "name": "regression pytest",
+      "result": "passed",
+      "summary": "18 passed, 1 existing asyncio_mode warning"
+    },
+    {
+      "name": "reopened boundary pytest",
+      "result": "passed",
+      "summary": "11 passed, 1 existing asyncio_mode warning"
+    },
+    {
+      "name": "domain and MCP boundary pytest",
+      "result": "passed",
+      "summary": "8 passed, 1 existing asyncio_mode warning"
+    },
+    {
+      "name": "compileall",
+      "result": "passed"
+    },
+    {
+      "name": "scoped basedpyright including MCP handler and resource split",
+      "result": "passed",
+      "summary": "0 errors, 0 warnings, 0 notes"
+    },
+    {
+      "name": "scoped ruff",
+      "result": "passed",
+      "summary": "All checks passed"
+    },
+    {
+      "name": "git diff --check",
+      "result": "passed"
+    },
+    {
+      "name": "JSON validation",
+      "result": "passed",
+      "summary": "JSON_VALIDATION_OK files=24"
+    },
+    {
+      "name": "scoped evidence safety scan",
+      "result": "passed",
+      "summary": "SCOPED_EVIDENCE_SAFETY_OK files=6"
+    },
+    {
+      "name": "remove-ai-slops review",
+      "result": "passed",
+      "summary": ".omo/evidence/debt-brain-structural-depth-v1/remove-ai-slops-review.md"
+    }
+  ],
+  "loc": {
+    "trustgraph_legal/domain_decisions.py": 199,
+    "trustgraph_legal/domain_decision_resources.py": 96,
+    "trustgraph_legal/workflow_judgments.py": 243
+  },
+  "guardrails": {
+    "scenario_id_branching": false,
+    "expected_label_branching": false,
+    "advisory_only": true,
+    "remote_deploy": "not_performed",
+    "admin_write_tools_added": false,
+    "authoritative_balance": false,
+    "unsafe_raw_or_contact_fields": false
+  },
+  "remaining_caveats": [
+    "If all structured support is stripped, exact semireal workflow semantics cannot be recovered from missing information; fallback remains conservative, advisory-only, and human-review gated.",
+    "Older remote MCP docs still contain literal environment variable names for operator setup, but no secret values were found and structural-depth deliverables are clean.",
+    "System python3 remains incompatible with pytest/test-helper imports; uv runner verification passed."
+  ]
+}

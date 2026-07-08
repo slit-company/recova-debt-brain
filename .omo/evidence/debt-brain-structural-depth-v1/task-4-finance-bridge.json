@@ -1,0 +1,100 @@
+{
+  "task": "Todo 4 finance workflow bridge",
+  "status": "pass",
+  "changed_files": [
+    "trustgraph_legal/finance_review_bridge.py",
+    "tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py",
+    "tests/unit/legal_ontology/test_finance_claim_model_v1.py"
+  ],
+  "scope_guardrails": {
+    "fixture_only_finance_semantics_preserved": true,
+    "collectable_balance_authority_emitted": false,
+    "raw_text_included": false,
+    "source_text_included": false,
+    "ledger_mutation": false,
+    "unrelated_product_area_changes": false
+  },
+  "bridge_contract": {
+    "schema_version": "trustgraph-finance-workflow-bridge/v1",
+    "non_execution_semantics": "fixture_calculation_only_not_authoritative_balance",
+    "review_code_mappings": {
+      "missing_source_ref": "finance_reconciliation_needed",
+      "payment_allocation_conflict": "payment_allocation_review",
+      "statutory_or_complex_interest": "unsupported_interest_review",
+      "disputed_amount": "disputed_balance_hold"
+    }
+  },
+  "manual_qa_artifact": {
+    "surface": "bridge_finance_review_to_workflow(calculate_claim_finance_fixture(...)).to_json()",
+    "clean_fixture": {
+      "workflow_review_status": "finance_fixture_advisory_ready",
+      "advisory_readiness": "fixture_finance_can_support_workflow_review",
+      "signals": [],
+      "workflow_flags": {
+        "finance_reconciliation_needed": false,
+        "disputed_balance_hold": false,
+        "unsupported_interest_review": false,
+        "payment_allocation_review": false
+      },
+      "collectable_balance_authority": false
+    },
+    "risky_fixture": {
+      "workflow_review_status": "finance_review_required",
+      "advisory_readiness": "finance_reconciliation_required_before_route_readiness",
+      "signal_codes": [
+        "finance_reconciliation_needed",
+        "unsupported_interest_review",
+        "payment_allocation_review",
+        "disputed_balance_hold"
+      ],
+      "workflow_flags": {
+        "finance_reconciliation_needed": true,
+        "disputed_balance_hold": true,
+        "unsupported_interest_review": true,
+        "payment_allocation_review": true
+      },
+      "collectable_balance_authority": false
+    },
+    "interest_review_fixture": {
+      "workflow_review_status": "finance_review_required",
+      "signal_code": "unsupported_interest_review",
+      "remediation_loop": "interest_basis_review_loop",
+      "source_refs": [
+        "fixture:finance#interest",
+        "fixture:finance#late-damages"
+      ],
+      "collectable_balance_authority": false
+    }
+  },
+  "verification": [
+    {
+      "command": "uv run --with pytest --with pydantic --with typing-extensions python -m pytest tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py tests/unit/legal_ontology/test_finance_claim_model_v1.py",
+      "result": "pass",
+      "summary": "11 passed; pytest warned that asyncio_mode is unknown under the disposable pytest 9 runner"
+    },
+    {
+      "command": "python3 -m compileall trustgraph_legal/finance_review_bridge.py tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py tests/unit/legal_ontology/test_finance_claim_model_v1.py",
+      "result": "pass",
+      "summary": "changed finance bridge/test files compile under system python"
+    },
+    {
+      "command": "uv run --with ruff ruff check trustgraph_legal/finance_review_bridge.py tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py tests/unit/legal_ontology/test_finance_claim_model_v1.py",
+      "result": "pass",
+      "summary": "All checks passed"
+    },
+    {
+      "command": "uv run --with basedpyright --with pydantic --with typing-extensions basedpyright trustgraph_legal/finance_review_bridge.py tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py tests/unit/legal_ontology/test_finance_claim_model_v1.py",
+      "result": "pass",
+      "summary": "0 errors, 0 warnings, 0 notes"
+    },
+    {
+      "command": "changed-file pure LOC check",
+      "result": "pass",
+      "summary": "finance_review_bridge.py=101, test_finance_workflow_bridge_v1.py=131, test_finance_claim_model_v1.py=179"
+    }
+  ],
+  "risks": [
+    "The bridge is intentionally not yet wired into domain decision or workflow judgment output; that belongs to downstream Todos 2 and 6.",
+    "The exact python3 -m pytest command could not run on the system interpreter because pytest is not installed there; the focused suite was verified through uv with the required lightweight dependencies."
+  ]
+}

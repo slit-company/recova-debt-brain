@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-08T06:39:39.649Z",
+  "updatedAt": "2026-07-08T06:44:21.720Z",
+  "briefPath": ".omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/brief.md",
+  "goalsPath": ".omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/goals.json",
+  "ledgerPath": ".omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-improve-the-recorded-structural-dept",
+      "title": "Improve the recorded structural-depth caveats before push: reduce the...",
+      "objective": "Improve the recorded structural-depth caveats before push: reduce the exact-workflow fragility around structured support fields, clean or scope noisy safety/type caveats where feasible, preserve advisory-only/no deploy/no admin/write/no PII/no authoritative balance guardrails, verify direct domain and MCP real surfaces, then commit and push the completed work to origin/master.",
+      "status": "in_progress",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "CLI/data surface: run a boundary QA script that removes top-level evidence_checkpoint/finance_bridge/legal_checkpoints while preserving nested workflow_support, then calls direct evaluate_claim_domain_decision and MCP invoke_tool for all 8 semireal scenarios; PASS iff exact expected current_stage/action_type/posture/remediation_loop match on both surfaces.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-boundary.json with NESTED_SUPPORT_BOUNDARY_OK scenarios=8 surfaces=domain,mcp",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-boundary.json: NESTED_SUPPORT_BOUNDARY_OK scenarios=8 surfaces=domain,mcp exact_stage_action_posture_loop=pass; cleanup: no tmux/server/browser/temp runtime resources created",
+          "status": "pass",
+          "capturedAt": "2026-07-08T06:44:21.661Z"
+        },
+        {
+          "id": "C002",
+          "scenario": "CLI/data surface: run a fallback QA script that strips both top-level support fields and nested workflow_support for all 8 semireal scenarios; PASS iff outputs remain advisory_only_human_review_required, unsafe raw/contact/filing/path/authority fields are absent, and any conservative evidence_completion fallback is explicitly reported as safe.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-fallback.json with STRIPPED_SUPPORT_SAFE_FALLBACK_OK scenarios=8 unsafe=0",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-fallback.json: STRIPPED_SUPPORT_SAFE_FALLBACK_OK scenarios=8 unsafe=0 advisory_only_human_review_required; cleanup: no tmux/server/browser/temp runtime resources created",
+          "status": "pass",
+          "capturedAt": "2026-07-08T06:44:21.720Z"
+        },
+        {
+          "id": "C003",
+          "scenario": "CLI/git surface: run focused/reopened pytest suites, JSON validation, compileall, scoped basedpyright, ruff, safety scans, reviewer approval, then commit and git push to origin/master; PASS iff push succeeds and git status shows no uncommitted tracked structural-depth files except explicitly excluded local debug/notepad artifacts.",
+          "userModel": "regression",
+          "expectedEvidence": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-final.json plus pushed commit hash",
+          "essential": false,
+          "capturedEvidence": null,
+          "status": "pending"
+        }
+      ],
+      "attempt": 1,
+      "createdAt": "2026-07-08T06:39:39.649Z",
+      "updatedAt": "2026-07-08T06:44:21.720Z",
+      "startedAt": "2026-07-08T06:40:46.091Z"
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/ledger.jsonl as the audit trail.",
+  "activeGoalId": "G001-improve-the-recorded-structural-dept"
+}

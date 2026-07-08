@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 from typing import TypeAlias
 
+from scripts.legal_ontology.domain_sources_v1_common import load_json
+
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 PLAYBOOK_PATH = REPO_ROOT / "resources" / "workflows" / "debt_collection_operator_playbook_v1.json"
@@ -30,9 +32,7 @@ JsonObject: TypeAlias = dict[str, JsonValue]
 
 
 def load_json_object(path: Path) -> JsonObject:
-    raw: JsonValue = json.loads(path.read_text(encoding="utf-8"))
-    assert isinstance(raw, dict)
-    return raw
+    return load_json(path)
 
 
 def object_list(entry: JsonObject, field: str) -> list[JsonObject]:
@@ -116,7 +116,7 @@ def test_validator_rejects_unknown_workflow_state(tmp_path: Path) -> None:
     stages = object_list(playbook, "stages")
     stages[0]["workflow_state_ids"] = ["missing_workflow_state"]
     invalid_path = tmp_path / "invalid-operator-playbook.json"
-    invalid_path.write_text(json.dumps(playbook, ensure_ascii=False), encoding="utf-8")
+    _ = invalid_path.write_text(json.dumps(playbook, ensure_ascii=False), encoding="utf-8")
 
     # When: the CLI validator checks the generated invalid resource.
     result = run_validator(invalid_path)
@@ -132,7 +132,7 @@ def test_validator_rejects_execution_semantics(tmp_path: Path) -> None:
     playbook = load_json_object(PLAYBOOK_PATH)
     playbook["direct_execution_allowed"] = True
     invalid_path = tmp_path / "execution-operator-playbook.json"
-    invalid_path.write_text(json.dumps(playbook, ensure_ascii=False), encoding="utf-8")
+    _ = invalid_path.write_text(json.dumps(playbook, ensure_ascii=False), encoding="utf-8")
 
     # When: the CLI validator checks the generated invalid resource.
     result = run_validator(invalid_path)

@@ -1,0 +1,478 @@
+[
+  {
+    "scenario_id": "premature_litigation_review",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint",
+        "legal_checkpoints"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "title_acquisition",
+      "action": "confirm_service_finality_execution_clause",
+      "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "remediation_loop": "legal_precondition_review_loop"
+    },
+    "observed": {
+      "current_stage": "title_acquisition",
+      "action": "confirm_service_finality_execution_clause",
+      "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "remediation_loop": "legal_precondition_review_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 1
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "evidence_completion_loop",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop"
+    },
+    "observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 2
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "title_acquisition_loop",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint",
+        "legal_checkpoints"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "title_acquisition",
+      "action": "acquire_or_confirm_title",
+      "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "remediation_loop": "title_acquisition_loop"
+    },
+    "observed": {
+      "current_stage": "title_acquisition",
+      "action": "acquire_or_confirm_title",
+      "posture": "resolve_title_service_finality_and_execution_clause_before_enforcement",
+      "remediation_loop": "title_acquisition_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 1
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "asset_discovery_loop",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "asset_discovery",
+      "action": "enrich_asset_signals",
+      "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+      "remediation_loop": "asset_discovery_loop"
+    },
+    "observed": {
+      "current_stage": "asset_discovery",
+      "action": "enrich_asset_signals",
+      "posture": "enrich_asset_targets_and_exemption_risk_before_route_selection",
+      "remediation_loop": "asset_discovery_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 0
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "enforcement_ready_review",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "enforcement_ready",
+      "action": "prepare_advisory_packet",
+      "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+      "remediation_loop": "legal_precondition_review_loop"
+    },
+    "observed": {
+      "current_stage": "enforcement_ready",
+      "action": "prepare_advisory_packet",
+      "posture": "prepare_review_packet_only_after_route_and_guardrail_readiness",
+      "remediation_loop": "legal_precondition_review_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 0
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "monitoring_low_yield",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "monitoring",
+      "action": "monitor_retry",
+      "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+      "remediation_loop": "low_yield_monitoring_loop"
+    },
+    "observed": {
+      "current_stage": "monitoring",
+      "action": "monitor_retry",
+      "posture": "hold_low_yield_or_blocked_case_with_review_trigger",
+      "remediation_loop": "low_yield_monitoring_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 0
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "finance_reconciliation_hold",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint",
+        "finance_bridge"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "evidence_completion",
+      "action": "reconcile_finance",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "finance_reconciliation_loop"
+    },
+    "observed": {
+      "current_stage": "evidence_completion",
+      "action": "reconcile_finance",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "finance_reconciliation_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 1
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "insolvency_protected_asset_hold",
+    "surface": "MCP invoke_tool(\"evaluate_claim_domain_decision\")",
+    "exact_invocation": "invoke_tool(\"evaluate_claim_domain_decision\", {\"claim_domain_payload\": payload_with_nested_workflow_support, \"workflow_state\": scenario.workflow_state, \"route_ids\": [scenario.route_id], \"finance_review_codes\": list(scenario.finance_review_codes)}, REPO_ROOT)",
+    "request_shape": {
+      "workflow_support_present": true,
+      "top_level_support_keys_present": [],
+      "nested_support_keys": [
+        "evidence_checkpoint",
+        "legal_checkpoints"
+      ]
+    },
+    "envelope": {
+      "schema_version": "trustgraph-legal-mcp-tool-response/v1",
+      "tool_name": "evaluate_claim_domain_decision",
+      "group": "claim_domain",
+      "scope": "claim_domain:decision",
+      "warnings": [],
+      "redaction": {
+        "status": "redacted",
+        "default": "redacted",
+        "raw_text_included": false,
+        "source_text_included": false,
+        "counts": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      },
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false,
+        "redacted": {
+          "national_id": 0,
+          "phone": 0,
+          "account": 0,
+          "address": 0
+        }
+      }
+    },
+    "expected": {
+      "current_stage": "insolvency_protected_asset_review",
+      "action": "insolvency_protected_asset_review",
+      "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+      "remediation_loop": "protected_asset_insolvency_hold"
+    },
+    "observed": {
+      "current_stage": "insolvency_protected_asset_review",
+      "action": "insolvency_protected_asset_review",
+      "posture": "hold_or_redirect_before_enforcement_ready_judgment",
+      "remediation_loop": "protected_asset_insolvency_hold",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 1
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  }
+]

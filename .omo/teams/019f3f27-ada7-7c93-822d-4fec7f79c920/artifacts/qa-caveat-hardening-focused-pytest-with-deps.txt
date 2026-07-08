@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/slit/dev/recova-debt-brain/tests
+configfile: pytest.ini
+collected 3 items
+
+tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py .   [ 33%]
+tests/unit/legal_ontology/test_mcp_domain_ontology_v1_tools.py ..        [100%]
+
+=============================== warnings summary ===============================
+../../.cache/uv/archive-v0/D4-1nKbsYnDkyFKy/lib/python3.14/site-packages/_pytest/config/__init__.py:1464
+  /Users/slit/.cache/uv/archive-v0/D4-1nKbsYnDkyFKy/lib/python3.14/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================= 3 passed, 1 warning in 2.19s =========================

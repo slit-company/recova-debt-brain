@@ -42,3 +42,44 @@ Cleanup and risks:
 - No generated cache files were intentionally kept.
 - Existing unrelated worktree changes were left untouched.
 - Remaining risk: downstream Todo 2/6 integration must decide how to consume this playbook; Todo 1 only defines and validates the resource contract.
+
+V35 lint/type diagnostics addendum
+Timestamp: 2026-07-08 Asia/Seoul
+
+Changed files:
+- scripts/legal_ontology/validate_operator_playbook_v1.py
+- tests/unit/legal_ontology/test_operator_playbook_v1.py
+
+Manual QA artifact:
+- Direct validator run still reports: PASS operator_playbook recova-debt-collection-operator-playbook@v1.0.0 stages=10 action_types=13 remediation_loops=9 source_refs=28
+- The playbook JSON contract was not changed.
+
+Fixes:
+- Renamed validator loop variable `field` to `list_field` so it no longer shadows `dataclasses.field`.
+- Replaced implicit adjacent f-string output construction with explicit `" ".join(...)`.
+- Reused the shared JSON loader in the test helper so `raw` no longer receives an `Any` type.
+- Assigned generated invalid-resource `Path.write_text(...)` results to `_`.
+
+Commands and results:
+- uv run --with ruff ruff check scripts/legal_ontology/validate_operator_playbook_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+  Result: All checks passed.
+- uv run --with basedpyright --with pydantic --with typing-extensions basedpyright scripts/legal_ontology/validate_operator_playbook_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+  Result: 0 errors, 0 warnings, 0 notes.
+- uv run --with pytest python -m pytest tests/unit/legal_ontology/test_operator_playbook_v1.py tests/unit/legal_ontology/test_workflow_v1.py -q
+  Result: 7 passed, 1 warning.
+  Warning: pytest reports unknown config option asyncio_mode under the transient uv pytest environment.
+- uv run python scripts/legal_ontology/validate_operator_playbook_v1.py resources/workflows/debt_collection_operator_playbook_v1.json resources/workflows/debt_collection_workflow_v1.json resources/legal_rules/debt_collection_domain_sources_v1.json
+  Result: PASS operator_playbook recova-debt-collection-operator-playbook@v1.0.0 stages=10 action_types=13 remediation_loops=9 source_refs=28
+- python3 -m compileall scripts/legal_ontology/validate_operator_playbook_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+  Result: compile passed.
+- uv run python JSON validation for resources/workflows/debt_collection_operator_playbook_v1.json
+  Result: JSON_VALIDATION_OK files=1.
+- PII/path/secret/raw-payload safety scan across changed Todo 1 files and evidence
+  Result: NO_FINDINGS files=4.
+- Pure LOC check
+  Result: scripts/legal_ontology/validate_operator_playbook_v1.py 199; tests/unit/legal_ontology/test_operator_playbook_v1.py 102.
+
+Cleanup and risks:
+- No unrelated files were edited.
+- Existing unrelated team worktree changes remain untouched.
+- No follow-up commit has been made yet in this addendum state.

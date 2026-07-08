@@ -1,0 +1,314 @@
+[
+  {
+    "scenario_id": "premature_litigation_review",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "evidence_completion_loop",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "title_acquisition_loop",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "asset_discovery_loop",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 4
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 4
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "enforcement_ready_review",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 8
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "monitoring_low_yield",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 12
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 12
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "finance_reconciliation_hold",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 9
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 9
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  },
+  {
+    "scenario_id": "insolvency_protected_asset_hold",
+    "surface": "direct and MCP stripped-support fallback",
+    "exact_invocation": "evaluate_claim_domain_decision(...) and invoke_tool(\"evaluate_claim_domain_decision\", ...) with top-level support keys and workflow_support removed",
+    "request_shape": {
+      "workflow_support_present": false,
+      "top_level_support_keys_present": []
+    },
+    "direct_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 12
+    },
+    "mcp_observed": {
+      "current_stage": "evidence_completion",
+      "action": "collect_missing_evidence",
+      "posture": "complete_source_backed_fact_package_before_escalation",
+      "remediation_loop": "evidence_completion_loop",
+      "workflow_non_execution_semantics": "advisory_only_human_review_required",
+      "decision_non_execution_semantics": "advisory_only_human_review_required",
+      "operator_next_step_non_execution_semantics": "advisory_only_human_review_required",
+      "workflow_review_item_count": 12
+    },
+    "advisory_ok": {
+      "direct_decision": true,
+      "direct_workflow": true,
+      "direct_operator": true,
+      "mcp_decision": true,
+      "mcp_workflow": true,
+      "mcp_operator": true
+    },
+    "unsafe_findings": [],
+    "verdict": "PASS"
+  }
+]

@@ -1,0 +1,1210 @@
+{
+  "schemaVersion": 2,
+  "teamId": "31c56867-227c-40f7-999c-e83322c7dd32",
+  "teamName": "debt-brain-structural-depth",
+  "sessionName": "recova ontology leader",
+  "sessionId": "019f3f27-ada7-7c93-822d-4fec7f79c920",
+  "threadTitleConvention": "[debt-brain-structural-depth] <member name>",
+  "status": "active",
+  "createdAt": "2026-07-08T04:06:20.387Z",
+  "updatedAt": "2026-07-08T06:18:22.733Z",
+  "archivedAt": null,
+  "leader": {
+    "kind": "main-session",
+    "sessionId": "019f3f27-ada7-7c93-822d-4fec7f79c920"
+  },
+  "communication": {
+    "memberLanguage": "english",
+    "replyToUserInUserLanguage": true
+  },
+  "worktree": {
+    "enabled": false,
+    "baseBranch": "master",
+    "root": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/worktrees"
+  },
+  "paths": {
+    "dir": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920",
+    "team": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/team.json",
+    "guide": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/guide.md",
+    "artifacts": "/Users/slit/dev/recova-debt-brain/.omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts"
+  },
+  "members": [
+    {
+      "id": "B",
+      "name": "evidence-quality",
+      "focus": "Todo 3 evidence quality/conflict checkpoint: trustgraph_legal/evidence_quality.py plus tests/unit/legal_ontology/test_evidence_quality_v1.py",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 3 with tests and evidence path .omo/evidence/debt-brain-structural-depth-v1/task-3-evidence-quality.json",
+      "threadId": "019f3fe8-c41e-77a1-91c6-2bf2addf016b",
+      "threadTitle": "[debt-brain-structural-depth] evidence-quality",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "C",
+      "name": "finance-bridge",
+      "focus": "Todo 4 finance workflow bridge: trustgraph_legal/finance_review_bridge.py or finance_claims.py plus tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py and finance regression tests",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 4 with tests and evidence path .omo/evidence/debt-brain-structural-depth-v1/task-4-finance-bridge.json",
+      "threadId": "019f3fe8-cc77-7961-b5d0-dcdc41f8dd84",
+      "threadTitle": "[debt-brain-structural-depth] finance-bridge",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "D",
+      "name": "legal-checkpoints",
+      "focus": "Todo 5 legal precondition workflow checkpoints: StopGate/domain resource reuse plus trustgraph_legal legal checkpoint module/tests tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 5 with tests and evidence path .omo/evidence/debt-brain-structural-depth-v1/task-5-legal-checkpoints.json",
+      "threadId": "019f3fe8-d53b-7a71-be22-5f0b58bb95dd",
+      "threadTitle": "[debt-brain-structural-depth] legal-checkpoints",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "A",
+      "name": "operator-playbook",
+      "focus": "Todo 1 operator playbook resource and validator: resources/workflows/debt_collection_operator_playbook_v1.json plus tests/unit/legal_ontology/test_operator_playbook_v1.py",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 1 with tests and evidence path .omo/evidence/debt-brain-structural-depth-v1/task-1-operator-playbook.txt",
+      "threadId": "019f3fe8-bbe6-7612-9eb1-959e30d49655",
+      "threadTitle": "[debt-brain-structural-depth] operator-playbook",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "V35",
+      "name": "wave1-verifier-evidence-legal",
+      "focus": "Independent verification for reported Todo 3 evidence-quality and Todo 5 legal-checkpoints; inspect files/evidence, rerun scoped checks, and approve/reject without editing product code",
+      "lens": "perspective",
+      "deliverable": "Verification report for Todo 3 and Todo 5 with commands, manual QA confirmation, risks, and APPROVE/REJECT",
+      "threadId": "019f3ff0-1f04-7381-ae4a-97f899dba9d3",
+      "threadTitle": "[debt-brain-structural-depth] wave1-verifier-evidence-legal",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "E",
+      "name": "workflow-judgments",
+      "focus": "Todo 2 workflow judgment engine: trustgraph_legal/workflow_judgments.py plus tests/unit/legal_ontology/test_workflow_judgments_v1.py, consuming Wave 1 operator playbook, evidence quality, finance bridge, and legal checkpoint surfaces",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 2 with tests and evidence path .omo/evidence/debt-brain-structural-depth-v1/task-2-workflow-judgments.json",
+      "threadId": "019f3ffb-ec6e-7fa3-8cbd-2acbdc98b210",
+      "threadTitle": "[debt-brain-structural-depth] workflow-judgments",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "V2",
+      "name": "verify-workflow-judgments",
+      "focus": "Independent verification for Todo 2 workflow judgment engine; inspect changed files/evidence, rerun scoped checks, and approve/reject without product edits",
+      "lens": "perspective",
+      "deliverable": "VerificationClaim for Todo 2 with commands, manual QA confirmation, guardrail checks, risks, and APPROVE/REJECT",
+      "threadId": "019f4008-0fdd-7a62-bab9-bfb52b35d5b6",
+      "threadTitle": "[debt-brain-structural-depth] verify-workflow-judgments",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "F",
+      "name": "domain-mcp-integration",
+      "focus": "Todo 6 integrate workflow judgment into claim-domain decision output and MCP envelope: domain_decisions, mcp_claim_domain_handlers, MCP tool-order/backward compatibility tests",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 6 with tests and evidence path .omo/evidence/debt-brain-structural-depth-v1/task-6-domain-integration.json",
+      "threadId": "019f4010-1a8c-7180-b343-f569ab9b3457",
+      "threadTitle": "[debt-brain-structural-depth] domain-mcp-integration",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "G",
+      "name": "workflow-scenarios",
+      "focus": "Todo 7 expand semireal workflow scenario fixtures under tests/fixtures/claim-domain-v1 and integration/unit coverage for practical workflow judgment",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 7 with tests and evidence path .omo/evidence/debt-brain-structural-depth-v1/task-7-scenario-coverage.json",
+      "threadId": "019f4010-2468-7cc3-9236-153b60cb6cac",
+      "threadTitle": "[debt-brain-structural-depth] workflow-scenarios",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "V67",
+      "name": "verify-domain-scenarios",
+      "focus": "Independent verification for Todo 6 domain/MCP integration and Todo 7 workflow scenario coverage; inspect shared integration changes, evidence, safety, type/lint/tests, and approve/reject without product edits",
+      "lens": "perspective",
+      "deliverable": "VerificationClaim for Todo 6 and Todo 7 with commands, manual QA confirmation, guardrails, risks, and APPROVE/REJECT per todo",
+      "threadId": "019f401e-d766-7030-af83-d5374e1f70e3",
+      "threadTitle": "[debt-brain-structural-depth] verify-domain-scenarios",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "H",
+      "name": "docs-readiness-gate",
+      "focus": "Todo 8 docs, evidence, and local deploy-readiness gate: product/operator docs, working log, final validation suite, JSON validation, compile/type, PII/path scan, MCP tool-order smoke",
+      "lens": "area",
+      "deliverable": "Complete plan Todo 8 with docs/evidence updates and final summary at .omo/evidence/debt-brain-structural-depth-v1/final-summary.md",
+      "threadId": "019f4027-c5fb-7bc3-9c8e-3ea51d075ca7",
+      "threadTitle": "[debt-brain-structural-depth] docs-readiness-gate",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "V8",
+      "name": "verify-docs-readiness",
+      "focus": "Independent verification for Todo 8 docs/evidence/local readiness; inspect docs, final evidence, scoped scans, command claims, and approve/reject without product edits",
+      "lens": "perspective",
+      "deliverable": "VerificationClaim for Todo 8 with commands, manual QA confirmation, guardrails, caveats, and APPROVE/REJECT",
+      "threadId": "019f402e-efaf-7dc1-b884-7ea6e809f713",
+      "threadTitle": "[debt-brain-structural-depth] verify-docs-readiness",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "FINAL1",
+      "name": "final-plan-compliance",
+      "focus": "Final F1 plan compliance audit: inspect touched paths and reject remote deploy/admin/write/PII/ledger/tool-order violations",
+      "lens": "perspective",
+      "deliverable": "F1 VerificationClaim with PLAN_COMPLIANCE_APPROVED or rejection plus evidence",
+      "threadId": "019f4035-0411-7582-bc77-bc3647111c6e",
+      "threadTitle": "[debt-brain-structural-depth] final-plan-compliance",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "FINAL3",
+      "name": "final-manual-qa",
+      "focus": "Final F3 real manual QA: run local decision surface across 8 representative workflow scenarios and verify advisory workflow_judgment behavior",
+      "lens": "perspective",
+      "deliverable": "F3 VerificationClaim with MANUAL_QA_APPROVED or rejection plus evidence",
+      "threadId": "019f4035-1646-7412-8ce9-fd7e2178f1bc",
+      "threadTitle": "[debt-brain-structural-depth] final-manual-qa",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "FINAL4",
+      "name": "final-scope-fidelity",
+      "focus": "Final F4 scope fidelity: prove final story is collection workflow intelligence first and legal/evidence/finance are support layers",
+      "lens": "perspective",
+      "deliverable": "F4 VerificationClaim with SCOPE_FIDELITY_APPROVED or rejection plus evidence",
+      "threadId": "019f4035-217d-7de3-b52f-b9cb494b9684",
+      "threadTitle": "[debt-brain-structural-depth] final-scope-fidelity",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "FINAL2",
+      "name": "final-code-quality",
+      "focus": "Final F2 code quality review: focused/regression tests, JSON validation, compileall, typecheck if available, deterministic structured parsing review",
+      "lens": "perspective",
+      "deliverable": "F2 VerificationClaim with CODE_QUALITY_APPROVED or rejection plus evidence",
+      "threadId": "019f4035-0cf8-74e2-9795-6a0826d9060b",
+      "threadTitle": "[debt-brain-structural-depth] final-code-quality",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "RW1",
+      "name": "review-goal-constraints",
+      "focus": "Global review lane 1: verify final implementation against user goal and constraints",
+      "lens": "perspective",
+      "deliverable": "Review lane verdict PASS/FAIL for goal and constraints",
+      "threadId": "019f403b-3f50-71b1-8e20-b3c2fafb7d45",
+      "threadTitle": "[debt-brain-structural-depth] review-goal-constraints",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "RW2",
+      "name": "review-qa-execution",
+      "focus": "Global review lane 2: hands-on QA execution for workflow judgment/domain/MCP surfaces",
+      "lens": "perspective",
+      "deliverable": "Review lane verdict PASS/FAIL for hands-on QA",
+      "threadId": "019f403b-48e8-7b33-9ae1-4384355fb0f0",
+      "threadTitle": "[debt-brain-structural-depth] review-qa-execution",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "RW4",
+      "name": "review-security",
+      "focus": "Global review lane 4: security and safety review for data leakage, authority, tools, and mutation surfaces",
+      "lens": "perspective",
+      "deliverable": "Review lane verdict PASS/FAIL for security",
+      "threadId": "019f403b-5bde-71c1-8646-0c10ca714406",
+      "threadTitle": "[debt-brain-structural-depth] review-security",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "RW3",
+      "name": "review-code-quality",
+      "focus": "Global review lane 3: code quality and architecture review for structural-depth changes",
+      "lens": "perspective",
+      "deliverable": "Review lane verdict PASS/FAIL for code quality",
+      "threadId": "019f403b-5143-77b1-8ac6-55ab703b9c93",
+      "threadTitle": "[debt-brain-structural-depth] review-code-quality",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "RW5",
+      "name": "review-context-mining",
+      "focus": "Global review lane 5: context mining for missed requirements across git history/docs/cross references",
+      "lens": "perspective",
+      "deliverable": "Review lane verdict PASS/FAIL for missed context",
+      "threadId": "019f403b-64de-7be3-817e-a4ee7be1e2d3",
+      "threadTitle": "[debt-brain-structural-depth] review-context-mining",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "RV67R",
+      "name": "reverify-real-boundary",
+      "focus": "Independent reverify for reopened Todo 6/7 real domain/MCP boundary workflow outcomes after RW1/RW3 failures",
+      "lens": "perspective",
+      "deliverable": "VerificationClaim APPROVED/REJECTED for Todo 6/7 reopen fix with exact eight-scenario domain/MCP boundary QA, guardrails, and commands",
+      "threadId": "019f4047-2ad6-7301-9e5c-db1a48bfedfd",
+      "threadTitle": "[debt-brain-structural-depth] reverify-real-boundary",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    },
+    {
+      "id": "GRFINAL",
+      "name": "final-global-review-debug",
+      "focus": "Final Global Review and Debugging Gate after Todo 6/7 real-boundary fix, Todo 8 refresh, and F1-F4 refresh approvals",
+      "lens": "perspective",
+      "deliverable": "GlobalReviewDebuggingClaim APPROVED/REJECTED with prior blocker verification, runtime debugging hypotheses, guardrails, and artifact",
+      "threadId": "019f405a-b602-79c1-88cd-9e26fea7290e",
+      "threadTitle": "[debt-brain-structural-depth] final-global-review-debug",
+      "cwd": "/Users/slit/dev/recova-debt-brain",
+      "worktree": {
+        "path": null,
+        "branch": null
+      },
+      "status": "reported"
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-07-08T04:06:20.387Z",
+      "event": "created",
+      "detail": "team debt-brain-structural-depth"
+    },
+    {
+      "ts": "2026-07-08T04:06:47.534Z",
+      "event": "add-member",
+      "detail": "member B (area): Todo 3 evidence quality/conflict checkpoint: trustgraph_legal/evidence_quality.py plus tests/unit/legal_ontology/test_evidence_quality_v1.py"
+    },
+    {
+      "ts": "2026-07-08T04:06:47.548Z",
+      "event": "add-member",
+      "detail": "member C (area): Todo 4 finance workflow bridge: trustgraph_legal/finance_review_bridge.py or finance_claims.py plus tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py and finance regression tests"
+    },
+    {
+      "ts": "2026-07-08T04:06:47.564Z",
+      "event": "add-member",
+      "detail": "member D (area): Todo 5 legal precondition workflow checkpoints: StopGate/domain resource reuse plus trustgraph_legal legal checkpoint module/tests tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py"
+    },
+    {
+      "ts": "2026-07-08T04:06:47.591Z",
+      "event": "add-member",
+      "detail": "member A (area): Todo 1 operator playbook resource and validator: resources/workflows/debt_collection_operator_playbook_v1.json plus tests/unit/legal_ontology/test_operator_playbook_v1.py"
+    },
+    {
+      "ts": "2026-07-08T04:07:51.904Z",
+      "event": "bind-thread",
+      "detail": "member D -> thread 019f3fe8-d53b-7a71-be22-5f0b58bb95dd"
+    },
+    {
+      "ts": "2026-07-08T04:07:51.914Z",
+      "event": "bind-thread",
+      "detail": "member B -> thread 019f3fe8-c41e-77a1-91c6-2bf2addf016b"
+    },
+    {
+      "ts": "2026-07-08T04:07:51.930Z",
+      "event": "bind-thread",
+      "detail": "member A -> thread 019f3fe8-bbe6-7612-9eb1-959e30d49655"
+    },
+    {
+      "ts": "2026-07-08T04:07:51.957Z",
+      "event": "bind-thread",
+      "detail": "member C -> thread 019f3fe8-cc77-7961-b5d0-dcdc41f8dd84"
+    },
+    {
+      "ts": "2026-07-08T04:08:08.575Z",
+      "event": "set-status",
+      "detail": "member A -> active: Wave 1 Todo 1 dispatched"
+    },
+    {
+      "ts": "2026-07-08T04:08:08.592Z",
+      "event": "set-status",
+      "detail": "member D -> active: Wave 1 Todo 5 dispatched"
+    },
+    {
+      "ts": "2026-07-08T04:08:08.606Z",
+      "event": "set-status",
+      "detail": "member B -> active: Wave 1 Todo 3 dispatched"
+    },
+    {
+      "ts": "2026-07-08T04:08:08.626Z",
+      "event": "set-status",
+      "detail": "member C -> active: Wave 1 Todo 4 dispatched"
+    },
+    {
+      "ts": "2026-07-08T04:08:29.469Z",
+      "event": "set-status",
+      "detail": "member B -> active: WORKING: Todo 3 - evidence-quality contract discovery"
+    },
+    {
+      "ts": "2026-07-08T04:08:29.505Z",
+      "event": "set-status",
+      "detail": "member A -> active: WORKING: Todo 1 - inspecting existing workflow resource and tests"
+    },
+    {
+      "ts": "2026-07-08T04:08:29.522Z",
+      "event": "set-status",
+      "detail": "member C -> active: WORKING: Todo 4 - finance bridge discovery"
+    },
+    {
+      "ts": "2026-07-08T04:08:45.759Z",
+      "event": "set-status",
+      "detail": "member B -> active: WORKING: Todo 3 - soft deterministic evidence checkpoint design; no raw excerpts"
+    },
+    {
+      "ts": "2026-07-08T04:08:45.771Z",
+      "event": "set-status",
+      "detail": "member D -> active: WORKING: Todo 5 - reading StopGate/domain checkpoint code before edits"
+    },
+    {
+      "ts": "2026-07-08T04:09:06.696Z",
+      "event": "set-status",
+      "detail": "member A -> active: WORKING: Todo 1 - creating separate operator playbook resource/validator; existing workflow untouched"
+    },
+    {
+      "ts": "2026-07-08T04:09:45.424Z",
+      "event": "set-status",
+      "detail": "member D -> active: WORKING: Todo 5 - building workflow-facing adapter over existing StopGate outputs"
+    },
+    {
+      "ts": "2026-07-08T04:10:00.617Z",
+      "event": "set-status",
+      "detail": "member A -> active: WORKING: Todo 1 - adding validator test/resource contract first"
+    },
+    {
+      "ts": "2026-07-08T04:10:00.680Z",
+      "event": "set-status",
+      "detail": "member B -> active: WORKING: Todo 3 - adding tests/module for evidence checkpoint contract"
+    },
+    {
+      "ts": "2026-07-08T04:10:00.699Z",
+      "event": "set-status",
+      "detail": "member C -> active: WORKING: Todo 4 - added bridge tests; running red/green loop"
+    },
+    {
+      "ts": "2026-07-08T04:10:00.715Z",
+      "event": "set-status",
+      "detail": "member D -> active: WORKING: Todo 5 - adding adapter-contract tests for legal workflow gates"
+    },
+    {
+      "ts": "2026-07-08T04:10:39.795Z",
+      "event": "set-status",
+      "detail": "member C -> active: WORKING: Todo 4 - red tests added; missing finance_review_bridge expected"
+    },
+    {
+      "ts": "2026-07-08T04:10:47.074Z",
+      "event": "set-status",
+      "detail": "member C -> active: WORKING: Todo 4 - intended red signal reached; adding finance_review_bridge module"
+    },
+    {
+      "ts": "2026-07-08T04:11:38.124Z",
+      "event": "set-status",
+      "detail": "member A -> active: WORKING: Todo 1 - red test captured; implementing validator and advisory-only playbook JSON"
+    },
+    {
+      "ts": "2026-07-08T04:11:38.136Z",
+      "event": "set-status",
+      "detail": "member B -> active: WORKING: Todo 3 - module implemented; running focused/regression/compile checks"
+    },
+    {
+      "ts": "2026-07-08T04:11:38.161Z",
+      "event": "set-status",
+      "detail": "member C -> active: WORKING: Todo 4 - finance tests pass 11; running compile/type/evidence"
+    },
+    {
+      "ts": "2026-07-08T04:11:50.226Z",
+      "event": "set-status",
+      "detail": "member D -> active: WORKING: Todo 5 - adapter/tests implemented; running StopGate regression and evidence checks"
+    },
+    {
+      "ts": "2026-07-08T04:12:00.910Z",
+      "event": "set-status",
+      "detail": "member B -> active: WORKING: Todo 3 - focused pytest passed; compile/size/evidence remaining"
+    },
+    {
+      "ts": "2026-07-08T04:13:24.109Z",
+      "event": "set-status",
+      "detail": "member D -> reported: Todo 5 legal workflow checkpoints implemented and verified"
+    },
+    {
+      "ts": "2026-07-08T04:14:24.044Z",
+      "event": "set-status",
+      "detail": "member B -> reported: DoneClaim received for Todo 3; pending independent verification"
+    },
+    {
+      "ts": "2026-07-08T04:15:05.727Z",
+      "event": "add-member",
+      "detail": "member V35 (perspective): Independent verification for reported Todo 3 evidence-quality and Todo 5 legal-checkpoints; inspect files/evidence, rerun scoped checks, and approve/reject without editing product code"
+    },
+    {
+      "ts": "2026-07-08T04:15:13.608Z",
+      "event": "set-status",
+      "detail": "member C -> reported: DoneClaim received for Todo 4; pending independent verification"
+    },
+    {
+      "ts": "2026-07-08T04:15:13.622Z",
+      "event": "set-status",
+      "detail": "member V35 -> active: Assigned verification scope expanded to Todo 3, 4, and 5"
+    },
+    {
+      "ts": "2026-07-08T04:15:36.671Z",
+      "event": "bind-thread",
+      "detail": "member V35 -> thread 019f3ff0-1f04-7381-ae4a-97f899dba9d3"
+    },
+    {
+      "ts": "2026-07-08T04:17:28.830Z",
+      "event": "set-status",
+      "detail": "member A -> reported: DoneClaim received for Todo 1; pending independent verification"
+    },
+    {
+      "ts": "2026-07-08T04:17:51.552Z",
+      "event": "set-status",
+      "detail": "member V35 -> active: Wave 1 verification expanded to Todo 1/3/4/5; Todo 5 awaiting D type fix"
+    },
+    {
+      "ts": "2026-07-08T04:17:51.573Z",
+      "event": "set-status",
+      "detail": "member D -> active: Verifier found Todo 5 basedpyright errors; returned to D for type-diagnostics fix"
+    },
+    {
+      "ts": "2026-07-08T04:20:36.180Z",
+      "event": "set-status",
+      "detail": "member A -> active: Verifier found Todo 1 lint/type diagnostics; returned to A for narrow fix"
+    },
+    {
+      "ts": "2026-07-08T04:20:49.873Z",
+      "event": "set-status",
+      "detail": "member V35 -> active: Holding Wave 1 approval pending Todo 1 lint/type fix and Todo 5 type fix"
+    },
+    {
+      "ts": "2026-07-08T04:22:46.675Z",
+      "event": "set-status",
+      "detail": "member D -> reported: Todo 5 V35 type diagnostics fixed; basedpyright clean"
+    },
+    {
+      "ts": "2026-07-08T04:23:19.810Z",
+      "event": "set-status",
+      "detail": "member D -> reported: Todo 5 type-diagnostic follow-up DoneClaim received; pending V35 final reverify"
+    },
+    {
+      "ts": "2026-07-08T04:24:20.810Z",
+      "event": "set-status",
+      "detail": "member A -> reported: Todo 1 lint/type follow-up DoneClaim received; pending V35 final approval"
+    },
+    {
+      "ts": "2026-07-08T04:25:10.504Z",
+      "event": "set-status",
+      "detail": "member V35 -> reported: VerificationClaim approved Todo 1/3/4/5 Wave 1 foundations"
+    },
+    {
+      "ts": "2026-07-08T04:28:04.961Z",
+      "event": "add-member",
+      "detail": "member E (area): Todo 2 workflow judgment engine: trustgraph_legal/workflow_judgments.py plus tests/unit/legal_ontology/test_workflow_judgments_v1.py, consuming Wave 1 operator playbook, evidence quality, finance bridge, and legal checkpoint surfaces"
+    },
+    {
+      "ts": "2026-07-08T04:28:33.100Z",
+      "event": "bind-thread",
+      "detail": "member E -> thread 019f3ffb-ec6e-7fa3-8cbd-2acbdc98b210"
+    },
+    {
+      "ts": "2026-07-08T04:28:36.939Z",
+      "event": "set-status",
+      "detail": "member E -> active: Wave 2 Todo 2 workflow judgment engine dispatched after Wave 1 approval"
+    },
+    {
+      "ts": "2026-07-08T04:41:16.491Z",
+      "event": "add-member",
+      "detail": "member V2 (perspective): Independent verification for Todo 2 workflow judgment engine; inspect changed files/evidence, rerun scoped checks, and approve/reject without product edits"
+    },
+    {
+      "ts": "2026-07-08T04:41:47.720Z",
+      "event": "bind-thread",
+      "detail": "member V2 -> thread 019f4008-0fdd-7a62-bab9-bfb52b35d5b6"
+    },
+    {
+      "ts": "2026-07-08T04:41:52.086Z",
+      "event": "set-status",
+      "detail": "member V2 -> active: Independent verification for Todo 2 workflow judgment DoneClaim"
+    },
+    {
+      "ts": "2026-07-08T04:45:21.115Z",
+      "event": "set-status",
+      "detail": "member V2 -> reported: Todo 2 rejected pending type diagnostics fix: workflow_judgments.py reportAny and workflow_judgment_helpers.py reportReturnType"
+    },
+    {
+      "ts": "2026-07-08T04:46:46.429Z",
+      "event": "set-status",
+      "detail": "member V2 -> active: Reverifying Todo 2 after type diagnostics addendum"
+    },
+    {
+      "ts": "2026-07-08T04:49:36.119Z",
+      "event": "set-status",
+      "detail": "member E -> reported: Todo 2 approved by V2 after type diagnostics follow-up"
+    },
+    {
+      "ts": "2026-07-08T04:49:36.144Z",
+      "event": "set-status",
+      "detail": "member V2 -> reported: VerificationClaim approved Todo 2 workflow judgment engine"
+    },
+    {
+      "ts": "2026-07-08T04:49:46.775Z",
+      "event": "add-member",
+      "detail": "member F (area): Todo 6 integrate workflow judgment into claim-domain decision output and MCP envelope: domain_decisions, mcp_claim_domain_handlers, MCP tool-order/backward compatibility tests"
+    },
+    {
+      "ts": "2026-07-08T04:49:46.811Z",
+      "event": "add-member",
+      "detail": "member G (area): Todo 7 expand semireal workflow scenario fixtures under tests/fixtures/claim-domain-v1 and integration/unit coverage for practical workflow judgment"
+    },
+    {
+      "ts": "2026-07-08T04:50:43.006Z",
+      "event": "bind-thread",
+      "detail": "member F -> thread 019f4010-1a8c-7180-b343-f569ab9b3457"
+    },
+    {
+      "ts": "2026-07-08T04:50:43.020Z",
+      "event": "bind-thread",
+      "detail": "member G -> thread 019f4010-2468-7cc3-9236-153b60cb6cac"
+    },
+    {
+      "ts": "2026-07-08T04:50:49.932Z",
+      "event": "set-status",
+      "detail": "member F -> active: Wave 2 Todo 6 domain/MCP integration dispatched after Todo 2 approval"
+    },
+    {
+      "ts": "2026-07-08T04:50:50.145Z",
+      "event": "set-status",
+      "detail": "member G -> active: Wave 2 Todo 7 workflow scenarios dispatched after Todo 2 approval"
+    },
+    {
+      "ts": "2026-07-08T05:02:30.817Z",
+      "event": "set-status",
+      "detail": "member F -> blocked: Todo 6 acceptance blocked by Todo 7 underdetermined scenario expectations for identical decision inputs"
+    },
+    {
+      "ts": "2026-07-08T05:03:18.300Z",
+      "event": "set-status",
+      "detail": "member F -> active: Unblocked after Todo 7 relaxed underdetermined integration expectations"
+    },
+    {
+      "ts": "2026-07-08T05:05:12.385Z",
+      "event": "set-status",
+      "detail": "member G -> reported: DoneClaim Todo 7 scenario coverage submitted; awaiting independent verification with Todo 6"
+    },
+    {
+      "ts": "2026-07-08T05:05:59.096Z",
+      "event": "set-status",
+      "detail": "member F -> reported: DoneClaim Todo 6 domain integration submitted; awaiting independent verification with Todo 7"
+    },
+    {
+      "ts": "2026-07-08T05:06:07.837Z",
+      "event": "add-member",
+      "detail": "member V67 (perspective): Independent verification for Todo 6 domain/MCP integration and Todo 7 workflow scenario coverage; inspect shared integration changes, evidence, safety, type/lint/tests, and approve/reject without product edits"
+    },
+    {
+      "ts": "2026-07-08T05:06:41.474Z",
+      "event": "bind-thread",
+      "detail": "member V67 -> thread 019f401e-d766-7030-af83-d5374e1f70e3"
+    },
+    {
+      "ts": "2026-07-08T05:06:47.586Z",
+      "event": "set-status",
+      "detail": "member V67 -> active: Independent verification for Todo 6 domain integration and Todo 7 scenario coverage"
+    },
+    {
+      "ts": "2026-07-08T05:10:57.527Z",
+      "event": "set-status",
+      "detail": "member G -> active: Reopened Todo 7 for V67 basedpyright JsonObject diagnostic in workflow_scenario_requests.py"
+    },
+    {
+      "ts": "2026-07-08T05:12:35.992Z",
+      "event": "set-status",
+      "detail": "member V67 -> active: Reverifying Todo 7 after type diagnostics addendum"
+    },
+    {
+      "ts": "2026-07-08T05:12:44.286Z",
+      "event": "set-status",
+      "detail": "member V67 -> reported: Todo 6 approved; Todo 7 rejected due basedpyright error in workflow_scenario_requests.py"
+    },
+    {
+      "ts": "2026-07-08T05:13:04.933Z",
+      "event": "set-status",
+      "detail": "member V67 -> active: Reopening Todo 7 verdict for type-fix addendum"
+    },
+    {
+      "ts": "2026-07-08T05:14:54.349Z",
+      "event": "set-status",
+      "detail": "member V67 -> reported: Todo 6 approved; Todo 7 approved after addendum recheck"
+    },
+    {
+      "ts": "2026-07-08T05:15:44.975Z",
+      "event": "set-status",
+      "detail": "member F -> reported: Todo 6 approved by V67"
+    },
+    {
+      "ts": "2026-07-08T05:15:44.997Z",
+      "event": "set-status",
+      "detail": "member G -> reported: Todo 7 approved by V67 after type diagnostics addendum"
+    },
+    {
+      "ts": "2026-07-08T05:15:45.077Z",
+      "event": "set-status",
+      "detail": "member V67 -> reported: VerificationClaim approved Todo 6 and Todo 7"
+    },
+    {
+      "ts": "2026-07-08T05:15:59.877Z",
+      "event": "add-member",
+      "detail": "member H (area): Todo 8 docs, evidence, and local deploy-readiness gate: product/operator docs, working log, final validation suite, JSON validation, compile/type, PII/path scan, MCP tool-order smoke"
+    },
+    {
+      "ts": "2026-07-08T05:16:27.517Z",
+      "event": "bind-thread",
+      "detail": "member H -> thread 019f4027-c5fb-7bc3-9c8e-3ea51d075ca7"
+    },
+    {
+      "ts": "2026-07-08T05:16:33.601Z",
+      "event": "set-status",
+      "detail": "member H -> active: Todo 8 docs/evidence/local readiness gate dispatched after Todo 6/7 approval"
+    },
+    {
+      "ts": "2026-07-08T05:23:33.704Z",
+      "event": "set-status",
+      "detail": "member H -> reported: DoneClaim Todo 8 docs/readiness submitted; awaiting independent verification"
+    },
+    {
+      "ts": "2026-07-08T05:23:42.666Z",
+      "event": "add-member",
+      "detail": "member V8 (perspective): Independent verification for Todo 8 docs/evidence/local readiness; inspect docs, final evidence, scoped scans, command claims, and approve/reject without product edits"
+    },
+    {
+      "ts": "2026-07-08T05:24:16.185Z",
+      "event": "bind-thread",
+      "detail": "member V8 -> thread 019f402e-efaf-7dc1-b884-7ea6e809f713"
+    },
+    {
+      "ts": "2026-07-08T05:24:22.000Z",
+      "event": "set-status",
+      "detail": "member V8 -> active: Independent verification for Todo 8 docs/readiness DoneClaim"
+    },
+    {
+      "ts": "2026-07-08T05:29:45.669Z",
+      "event": "set-status",
+      "detail": "member V8 -> reported: VerificationClaim approved Todo 8 docs/readiness"
+    },
+    {
+      "ts": "2026-07-08T05:30:09.162Z",
+      "event": "add-member",
+      "detail": "member FINAL1 (perspective): Final F1 plan compliance audit: inspect touched paths and reject remote deploy/admin/write/PII/ledger/tool-order violations"
+    },
+    {
+      "ts": "2026-07-08T05:30:09.187Z",
+      "event": "add-member",
+      "detail": "member FINAL3 (perspective): Final F3 real manual QA: run local decision surface across 8 representative workflow scenarios and verify advisory workflow_judgment behavior"
+    },
+    {
+      "ts": "2026-07-08T05:30:09.221Z",
+      "event": "add-member",
+      "detail": "member FINAL4 (perspective): Final F4 scope fidelity: prove final story is collection workflow intelligence first and legal/evidence/finance are support layers"
+    },
+    {
+      "ts": "2026-07-08T05:30:09.231Z",
+      "event": "add-member",
+      "detail": "member FINAL2 (perspective): Final F2 code quality review: focused/regression tests, JSON validation, compileall, typecheck if available, deterministic structured parsing review"
+    },
+    {
+      "ts": "2026-07-08T05:31:20.808Z",
+      "event": "bind-thread",
+      "detail": "member FINAL1 -> thread 019f4035-0411-7582-bc77-bc3647111c6e"
+    },
+    {
+      "ts": "2026-07-08T05:31:20.828Z",
+      "event": "bind-thread",
+      "detail": "member FINAL3 -> thread 019f4035-1646-7412-8ce9-fd7e2178f1bc"
+    },
+    {
+      "ts": "2026-07-08T05:31:20.846Z",
+      "event": "bind-thread",
+      "detail": "member FINAL2 -> thread 019f4035-0cf8-74e2-9795-6a0826d9060b"
+    },
+    {
+      "ts": "2026-07-08T05:31:21.007Z",
+      "event": "bind-thread",
+      "detail": "member FINAL4 -> thread 019f4035-217d-7de3-b52f-b9cb494b9684"
+    },
+    {
+      "ts": "2026-07-08T05:31:34.219Z",
+      "event": "set-status",
+      "detail": "member FINAL1 -> active: Final F1 plan compliance verification dispatched"
+    },
+    {
+      "ts": "2026-07-08T05:31:34.242Z",
+      "event": "set-status",
+      "detail": "member FINAL2 -> active: Final F2 code quality verification dispatched"
+    },
+    {
+      "ts": "2026-07-08T05:31:34.318Z",
+      "event": "set-status",
+      "detail": "member FINAL3 -> active: Final F3 manual QA verification dispatched"
+    },
+    {
+      "ts": "2026-07-08T05:31:34.519Z",
+      "event": "set-status",
+      "detail": "member FINAL4 -> active: Final F4 scope fidelity verification dispatched"
+    },
+    {
+      "ts": "2026-07-08T05:33:15.035Z",
+      "event": "set-status",
+      "detail": "member FINAL4 -> reported: VerificationClaim F4 APPROVED scope fidelity"
+    },
+    {
+      "ts": "2026-07-08T05:33:15.130Z",
+      "event": "set-status",
+      "detail": "member FINAL3 -> reported: F3 manual QA passed, awaiting formal final claim if not already sent"
+    },
+    {
+      "ts": "2026-07-08T05:33:23.635Z",
+      "event": "set-status",
+      "detail": "member FINAL3 -> reported: VerificationClaim F3 APPROVED manual QA scenarios=8"
+    },
+    {
+      "ts": "2026-07-08T05:34:47.064Z",
+      "event": "set-status",
+      "detail": "member FINAL1 -> reported: F1 APPROVED plan compliance artifact FINAL1-plan-compliance-report.md"
+    },
+    {
+      "ts": "2026-07-08T05:36:03.772Z",
+      "event": "set-status",
+      "detail": "member FINAL2 -> reported: VerificationClaim F2 APPROVED code quality"
+    },
+    {
+      "ts": "2026-07-08T05:36:03.794Z",
+      "event": "set-status",
+      "detail": "member FINAL1 -> reported: VerificationClaim F1 APPROVED plan compliance"
+    },
+    {
+      "ts": "2026-07-08T05:37:03.761Z",
+      "event": "add-member",
+      "detail": "member RW1 (perspective): Global review lane 1: verify final implementation against user goal and constraints"
+    },
+    {
+      "ts": "2026-07-08T05:37:03.790Z",
+      "event": "add-member",
+      "detail": "member RW2 (perspective): Global review lane 2: hands-on QA execution for workflow judgment/domain/MCP surfaces"
+    },
+    {
+      "ts": "2026-07-08T05:37:03.871Z",
+      "event": "add-member",
+      "detail": "member RW4 (perspective): Global review lane 4: security and safety review for data leakage, authority, tools, and mutation surfaces"
+    },
+    {
+      "ts": "2026-07-08T05:37:03.894Z",
+      "event": "add-member",
+      "detail": "member RW3 (perspective): Global review lane 3: code quality and architecture review for structural-depth changes"
+    },
+    {
+      "ts": "2026-07-08T05:37:04.121Z",
+      "event": "add-member",
+      "detail": "member RW5 (perspective): Global review lane 5: context mining for missed requirements across git history/docs/cross references"
+    },
+    {
+      "ts": "2026-07-08T05:38:37.404Z",
+      "event": "bind-thread",
+      "detail": "member RW1 -> thread 019f403b-3f50-71b1-8e20-b3c2fafb7d45"
+    },
+    {
+      "ts": "2026-07-08T05:38:37.430Z",
+      "event": "bind-thread",
+      "detail": "member RW3 -> thread 019f403b-5143-77b1-8ac6-55ab703b9c93"
+    },
+    {
+      "ts": "2026-07-08T05:38:37.456Z",
+      "event": "bind-thread",
+      "detail": "member RW2 -> thread 019f403b-48e8-7b33-9ae1-4384355fb0f0"
+    },
+    {
+      "ts": "2026-07-08T05:38:37.484Z",
+      "event": "bind-thread",
+      "detail": "member RW5 -> thread 019f403b-64de-7be3-817e-a4ee7be1e2d3"
+    },
+    {
+      "ts": "2026-07-08T05:38:37.509Z",
+      "event": "bind-thread",
+      "detail": "member RW4 -> thread 019f403b-5bde-71c1-8646-0c10ca714406"
+    },
+    {
+      "ts": "2026-07-08T05:38:55.305Z",
+      "event": "set-status",
+      "detail": "member RW1 -> active: Global review goal/constraints lane active"
+    },
+    {
+      "ts": "2026-07-08T05:38:55.329Z",
+      "event": "set-status",
+      "detail": "member RW2 -> active: Global review QA execution lane active"
+    },
+    {
+      "ts": "2026-07-08T05:38:55.352Z",
+      "event": "set-status",
+      "detail": "member RW3 -> active: Global review code quality lane active"
+    },
+    {
+      "ts": "2026-07-08T05:38:55.437Z",
+      "event": "set-status",
+      "detail": "member RW4 -> active: Global review security lane active"
+    },
+    {
+      "ts": "2026-07-08T05:38:55.677Z",
+      "event": "set-status",
+      "detail": "member RW5 -> active: Global review context mining lane active"
+    },
+    {
+      "ts": "2026-07-08T05:41:02.281Z",
+      "event": "set-status",
+      "detail": "member RW1 -> reported: RW1 FAIL: integrated decision/MCP surface collapses semireal workflow scenarios to evidence_completion"
+    },
+    {
+      "ts": "2026-07-08T05:41:31.511Z",
+      "event": "set-status",
+      "detail": "member RW1 -> reported: ReviewClaim RW1 FAIL: real domain/MCP surface collapses semireal workflow scenarios to evidence_completion"
+    },
+    {
+      "ts": "2026-07-08T05:44:26.498Z",
+      "event": "set-status",
+      "detail": "member F -> active: Reopened by global review: fix real domain/MCP workflow outcomes with structured support surfaces"
+    },
+    {
+      "ts": "2026-07-08T05:44:26.530Z",
+      "event": "set-status",
+      "detail": "member RW4 -> reported: ReviewClaim PASS: security/safety no blockers"
+    },
+    {
+      "ts": "2026-07-08T05:44:26.562Z",
+      "event": "set-status",
+      "detail": "member G -> active: Reopened by global review: add structured fixture support surfaces and exact decision/MCP expectations"
+    },
+    {
+      "ts": "2026-07-08T05:44:26.584Z",
+      "event": "set-status",
+      "detail": "member RW2 -> reported: ReviewClaim PASS received: hands-on QA under prior plus workflow-surface exactness"
+    },
+    {
+      "ts": "2026-07-08T05:44:26.610Z",
+      "event": "set-status",
+      "detail": "member RW3 -> reported: ReviewClaim FAIL: public domain/MCP path lacks legal workflow checkpoints and real-surface exact expectations"
+    },
+    {
+      "ts": "2026-07-08T05:44:26.702Z",
+      "event": "set-status",
+      "detail": "member RW5 -> reported: ReviewClaim PASS: context mining no blockers; non-blocking caveat noted"
+    },
+    {
+      "ts": "2026-07-08T05:46:19.439Z",
+      "event": "set-status",
+      "detail": "member F -> active: WORKING reopen: product bridge consumes payload evidence/finance/legal support surfaces with fallback defaults"
+    },
+    {
+      "ts": "2026-07-08T05:47:42.365Z",
+      "event": "set-status",
+      "detail": "member F -> active: WORKING reopen: red boundary green; running full required suite/tool-order/manual QA/diagnostics"
+    },
+    {
+      "ts": "2026-07-08T05:48:21.373Z",
+      "event": "set-status",
+      "detail": "member G -> reported: DoneClaim addendum received: Todo 7 real scenario expectations fixed; pending independent reverify"
+    },
+    {
+      "ts": "2026-07-08T05:50:15.628Z",
+      "event": "set-status",
+      "detail": "member F -> reported: DoneClaim addendum received: Todo 6 real workflow outcomes fixed; pending independent reverify"
+    },
+    {
+      "ts": "2026-07-08T05:50:45.539Z",
+      "event": "add-member",
+      "detail": "member RV67R (perspective): Independent reverify for reopened Todo 6/7 real domain/MCP boundary workflow outcomes after RW1/RW3 failures"
+    },
+    {
+      "ts": "2026-07-08T05:50:54.839Z",
+      "event": "bind-thread",
+      "detail": "member RV67R -> thread 019f4047-2ad6-7301-9e5c-db1a48bfedfd"
+    },
+    {
+      "ts": "2026-07-08T05:50:54.884Z",
+      "event": "set-status",
+      "detail": "member RV67R -> active: Independent reverify dispatched for Todo 6/7 reopen real boundary fix"
+    },
+    {
+      "ts": "2026-07-08T05:51:43.622Z",
+      "event": "set-status",
+      "detail": "member RV67R -> active: WORKING: inspecting suspected remaining boundary risk in domain_decisions/domain_workflow_integration before verdict"
+    },
+    {
+      "ts": "2026-07-08T05:52:25.377Z",
+      "event": "set-status",
+      "detail": "member RV67R -> active: WORKING: generic support consumption confirmed; exact suites/manual boundary QA running"
+    },
+    {
+      "ts": "2026-07-08T05:53:43.834Z",
+      "event": "set-status",
+      "detail": "member RV67R -> active: WORKING: direct QA approved 8 domain/MCP scenarios; scoped safety scan finishing"
+    },
+    {
+      "ts": "2026-07-08T05:55:18.923Z",
+      "event": "set-status",
+      "detail": "member RV67R -> reported: VerificationClaim approved Todo 6/7 reopen fix; exact real boundary QA passed"
+    },
+    {
+      "ts": "2026-07-08T05:56:04.387Z",
+      "event": "set-status",
+      "detail": "member H -> active: Todo 8 reopened: refresh docs/final readiness after Todo 6/7 real-boundary fix"
+    },
+    {
+      "ts": "2026-07-08T05:57:06.015Z",
+      "event": "set-status",
+      "detail": "member H -> active: WORKING refresh: updating final Todo 8 surfaces for structured support exact domain/MCP outcomes"
+    },
+    {
+      "ts": "2026-07-08T05:58:52.741Z",
+      "event": "set-status",
+      "detail": "member H -> active: WORKING refresh validation passed; awaiting DoneClaim addendum"
+    },
+    {
+      "ts": "2026-07-08T06:00:31.227Z",
+      "event": "set-status",
+      "detail": "member H -> reported: DoneClaim addendum received: Todo 8 real-boundary readiness refresh; pending V8 reverify"
+    },
+    {
+      "ts": "2026-07-08T06:00:41.372Z",
+      "event": "set-status",
+      "detail": "member V8 -> active: Reopened to verify Todo 8 real-boundary readiness refresh"
+    },
+    {
+      "ts": "2026-07-08T06:01:35.693Z",
+      "event": "set-status",
+      "detail": "member V8 -> active: WORKING: refreshed docs/evidence inspection for real-boundary contract and stale relaxed-policy wording"
+    },
+    {
+      "ts": "2026-07-08T06:03:12.954Z",
+      "event": "set-status",
+      "detail": "member V8 -> active: WORKING: refreshed pytest gates passed; continuing JSON/compile/type/lint/MCP/direct-QA/safety scans"
+    },
+    {
+      "ts": "2026-07-08T06:05:25.393Z",
+      "event": "set-status",
+      "detail": "member V8 -> reported: VerificationClaim approved Todo 8 refresh"
+    },
+    {
+      "ts": "2026-07-08T06:06:34.442Z",
+      "event": "set-status",
+      "detail": "member FINAL1 -> active: Reopened F1 refresh verification after real-boundary fix"
+    },
+    {
+      "ts": "2026-07-08T06:06:34.463Z",
+      "event": "set-status",
+      "detail": "member FINAL2 -> active: Reopened F2 refresh verification after real-boundary fix"
+    },
+    {
+      "ts": "2026-07-08T06:06:34.485Z",
+      "event": "set-status",
+      "detail": "member FINAL3 -> active: Reopened F3 refresh manual QA: exact 8-scenario domain/MCP outcomes required"
+    },
+    {
+      "ts": "2026-07-08T06:06:34.509Z",
+      "event": "set-status",
+      "detail": "member FINAL4 -> active: Reopened F4 refresh scope fidelity after real-boundary docs refresh"
+    },
+    {
+      "ts": "2026-07-08T06:07:41.058Z",
+      "event": "set-status",
+      "detail": "member FINAL1 -> active: WORKING refresh: rechecking touched paths and guardrails"
+    },
+    {
+      "ts": "2026-07-08T06:07:41.073Z",
+      "event": "set-status",
+      "detail": "member FINAL2 -> active: WORKING refresh: rerunning code-quality gates"
+    },
+    {
+      "ts": "2026-07-08T06:07:41.098Z",
+      "event": "set-status",
+      "detail": "member FINAL3 -> active: WORKING refresh: exact 8-scenario domain/MCP manual QA"
+    },
+    {
+      "ts": "2026-07-08T06:07:41.185Z",
+      "event": "set-status",
+      "detail": "member FINAL4 -> active: WORKING refresh: scope fidelity and stale relaxed-policy checks"
+    },
+    {
+      "ts": "2026-07-08T06:09:18.639Z",
+      "event": "set-status",
+      "detail": "member FINAL3 -> reported: VerificationClaim F3 REFRESH APPROVED: exact 8-scenario direct/MCP QA passed"
+    },
+    {
+      "ts": "2026-07-08T06:09:18.759Z",
+      "event": "set-status",
+      "detail": "member FINAL2 -> active: WORKING refresh: gates clean; reviewing LOC caveat"
+    },
+    {
+      "ts": "2026-07-08T06:09:36.667Z",
+      "event": "set-status",
+      "detail": "member FINAL1 -> reported: F1 REFRESH APPROVED artifact FINAL1-refresh-plan-compliance-report.md"
+    },
+    {
+      "ts": "2026-07-08T06:10:08.067Z",
+      "event": "set-status",
+      "detail": "member FINAL4 -> reported: VerificationClaim F4 REFRESH APPROVED"
+    },
+    {
+      "ts": "2026-07-08T06:10:08.092Z",
+      "event": "set-status",
+      "detail": "member FINAL1 -> reported: VerificationClaim F1 REFRESH APPROVED"
+    },
+    {
+      "ts": "2026-07-08T06:10:36.632Z",
+      "event": "set-status",
+      "detail": "member FINAL2 -> reported: VerificationClaim F2 REFRESH APPROVED"
+    },
+    {
+      "ts": "2026-07-08T06:12:06.376Z",
+      "event": "add-member",
+      "detail": "member GRFINAL (perspective): Final Global Review and Debugging Gate after Todo 6/7 real-boundary fix, Todo 8 refresh, and F1-F4 refresh approvals"
+    },
+    {
+      "ts": "2026-07-08T06:12:21.311Z",
+      "event": "bind-thread",
+      "detail": "member GRFINAL -> thread 019f405a-b602-79c1-88cd-9e26fea7290e"
+    },
+    {
+      "ts": "2026-07-08T06:12:21.358Z",
+      "event": "set-status",
+      "detail": "member GRFINAL -> active: Final Global Review and Debugging Gate dispatched"
+    },
+    {
+      "ts": "2026-07-08T06:13:24.028Z",
+      "event": "set-status",
+      "detail": "member GRFINAL -> active: WORKING: plan checked; running hypothesis-driven real-boundary probes"
+    },
+    {
+      "ts": "2026-07-08T06:14:25.775Z",
+      "event": "set-status",
+      "detail": "member GRFINAL -> active: WORKING: static inspection clean; running direct+MCP QA, stripped-support fallback, safety/JSON/order/type/lint"
+    },
+    {
+      "ts": "2026-07-08T06:15:54.257Z",
+      "event": "set-status",
+      "detail": "member GRFINAL -> active: WORKING: runtime QA passed; stripped-support fallback conservative; documenting pre-existing type caveat"
+    },
+    {
+      "ts": "2026-07-08T06:18:22.733Z",
+      "event": "set-status",
+      "detail": "member GRFINAL -> reported: GlobalReviewDebuggingClaim APPROVED; artifact .omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/GRFINAL-global-review-debug.md"
+    }
+  ]
+}

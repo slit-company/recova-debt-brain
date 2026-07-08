@@ -1,0 +1,1 @@
+Improve the recorded structural-depth caveats before push: reduce the exact-workflow fragility around structured support fields, clean or scope noisy safety/type caveats where feasible, preserve advisory-only/no deploy/no admin/write/no PII/no authoritative balance guardrails, verify direct domain and MCP real surfaces, then commit and push the completed work to origin/master.

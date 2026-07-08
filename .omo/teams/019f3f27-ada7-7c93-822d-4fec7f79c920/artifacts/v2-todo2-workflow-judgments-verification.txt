@@ -1,0 +1,47 @@
+VerificationClaim: Todo 2 REJECTED
+
+Verifier: V2 verify-workflow-judgments
+Source thread: codex://threads/019f3ffb-ec6e-7fa3-8cbd-2acbdc98b210
+Scope: Todo 2 workflow judgment engine; no product/test/evidence edits made.
+
+Changed files inspected:
+- trustgraph_legal/workflow_judgments.py
+- tests/unit/legal_ontology/test_workflow_judgments_v1.py
+- tests/unit/legal_ontology/workflow_judgment_helpers.py
+- .omo/evidence/debt-brain-structural-depth-v1/task-2-workflow-judgments.json
+
+Passing checks:
+- uv run --with pytest --with typing_extensions python -m pytest tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/test_evidence_quality_v1.py tests/unit/legal_ontology/test_finance_workflow_bridge_v1.py tests/unit/legal_ontology/test_legal_workflow_checkpoints_v1.py tests/unit/legal_ontology/test_operator_playbook_v1.py
+  Result: 22 passed, 1 pytest config warning for unknown asyncio_mode.
+- python3 -m compileall trustgraph_legal/workflow_judgments.py tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/workflow_judgment_helpers.py
+  Result: pass.
+- git diff --check
+  Result: pass.
+- uv run --with ruff ruff check trustgraph_legal/workflow_judgments.py tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/workflow_judgment_helpers.py
+  Result: pass.
+- JSON parse/shape check for .omo/evidence/debt-brain-structural-depth-v1/task-2-workflow-judgments.json
+  Result: pass; required keys present; manual QA cases include asset_discovery, enforcement_ready, evidence_completion, low_yield_monitoring, title_acquisition.
+
+Manual QA confirmations:
+- Evidence completion: review_required evidence routes to evidence_completion, collect_missing_evidence, evidence_completion_loop, and source refs remain structured.
+- Title acquisition: title_acquisition_loop checkpoint routes to title_acquisition with acquire_or_confirm_title and missing enforcement_title.
+- Asset discovery: missing bank_account_hint routes to asset_discovery before execution route selection.
+- Enforcement-ready: possible route with title and asset facts returns prepare_advisory_packet, empty missing_inputs, empty premature_actions, advisory-only semantics, and no balance authority fields.
+- Low-yield monitoring: low_yield_collection_signal / asset_signal_missing_or_low_yield routes to monitoring and monitor_retry, not direct execution.
+
+Guardrails checked:
+- No raw excerpts/source_text/raw_text output keys or raw payload values in evaluator output.
+- No collectable_balance_authority or remaining_balance output keys.
+- Advisory-only/non-execution semantics preserved on top-level judgment and action packet.
+- No LLM/prompt/free-text legal clearance path found in the implementation; legal gates derive from structured checkpoint fields.
+- Enforcement-ready case has no false missing-input or premature-action noise.
+- Todo 6 integration remains downstream; this engine is standalone and no indexed file depends on it yet.
+
+Blocking finding:
+- uv run --with basedpyright --with typing_extensions basedpyright trustgraph_legal/workflow_judgments.py tests/unit/legal_ontology/test_workflow_judgments_v1.py tests/unit/legal_ontology/workflow_judgment_helpers.py
+  Result: fail.
+  Error: tests/unit/legal_ontology/workflow_judgment_helpers.py:131:12 reportReturnType. The returned nested dict literal in missing_title_checkpoints is not assignable to JsonObject because basedpyright infers inner dict/list types too narrowly for JsonValue.
+  Warning: trustgraph_legal/workflow_judgments.py:84:9 reportAny. json.load result is Any before assignment to JsonValue.
+
+Risk:
+- Runtime behavior and guardrails look correct under pytest/manual probes, but Todo 2 should not be approved while changed files have scoped basedpyright diagnostics.

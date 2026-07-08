@@ -53,6 +53,8 @@ def test_engine_returns_advisory_payload_for_possible_missing_and_blocked_routes
             "route_decisions",
             "review_items",
             "action_packet_candidates",
+            "workflow_judgment",
+            "operator_next_steps",
             "source_refs",
             "pii_profile",
             "non_execution_semantics",
@@ -72,6 +74,15 @@ def test_engine_returns_advisory_payload_for_possible_missing_and_blocked_routes
         assert '"raw_text":' not in encoded
         assert "debtor_phone" not in encoded
         assert "/" + "Users" + "/" not in encoded
+        assert '"remaining_balance":' not in encoded
+        assert '"collectable_balance_authority":' not in encoded
+        workflow_judgment = _json_object(payload["workflow_judgment"])
+        assert workflow_judgment["schema_version"] == "trustgraph-collection-workflow-judgment/v1"
+        assert workflow_judgment["non_execution_semantics"] == "advisory_only_human_review_required"
+        assert _object_list(workflow_judgment["next_best_actions"])
+        operator_next_steps = _object_list(payload["operator_next_steps"])
+        assert operator_next_steps
+        assert operator_next_steps[0]["non_execution_semantics"] == "advisory_only_human_review_required"
 
     # Then: possible routes remain advisory and prepare only human-review packet candidates.
     possible_decision = _only_object(possible["route_decisions"])
@@ -106,6 +117,7 @@ def test_engine_keeps_finance_review_codes_as_review_required_items() -> None:
         ("bank_account_attachment",),
         ("enforceable_title", "financial_account_hint"),
     )
+    _add_fact_provenance(payload)
 
     # When: the engine evaluates with a finance review code.
     decision = evaluate_claim_domain_decision(
@@ -132,6 +144,12 @@ def test_engine_keeps_finance_review_codes_as_review_required_items() -> None:
     assert action_packet["non_execution_semantics"] == "advisory_only_human_review_required"
     assert "filing_destination" not in action_packet
     assert "debtor_contact_payload" not in action_packet
+    workflow_judgment = _json_object(decision["workflow_judgment"])
+    assert workflow_judgment["current_stage"] == "evidence_completion"
+    assert workflow_judgment["remediation_loop"] == "finance_reconciliation_loop"
+    operator_step = _only_object(decision["operator_next_steps"])
+    assert operator_step["action_type"] == "reconcile_finance"
+    assert "remaining_balance" not in operator_step
 
 
 def test_engine_rejects_unknown_route_id() -> None:
@@ -234,3 +252,18 @@ def _only_object(value: JsonValue) -> JsonObject:
     objects = _object_list(value)
     assert len(objects) == 1
     return objects[0]
+
+
+def _json_object(value: JsonValue) -> JsonObject:
+    assert isinstance(value, dict)
+    return value
+
+
+def _add_fact_provenance(payload: JsonObject) -> None:
+    for fact in _object_list(payload["fact_handles"]):
+        fact["source_document_id"] = "fixture-doc"
+        fact["source_hash"] = "sha256:fixture"
+        fact["chunk_id"] = "fixture-chunk"
+        fact["line_start"] = 1
+        fact["line_end"] = 1
+        fact["confidence"] = 0.95

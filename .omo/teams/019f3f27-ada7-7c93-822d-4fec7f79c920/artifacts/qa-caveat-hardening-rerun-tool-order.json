@@ -1,0 +1,19 @@
+{
+  "surface": "MCP list_tools()",
+  "exact_invocation": "list_tools()",
+  "count": 25,
+  "tail": [
+    "list_claim_domain_routes",
+    "explain_collection_workflow_state",
+    "evaluate_claim_domain_decision",
+    "explain_claim_action_packet"
+  ],
+  "expected_count": 25,
+  "expected_tail": [
+    "list_claim_domain_routes",
+    "explain_collection_workflow_state",
+    "evaluate_claim_domain_decision",
+    "explain_claim_action_packet"
+  ],
+  "verdict": "PASS"
+}

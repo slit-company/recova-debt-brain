@@ -64,6 +64,7 @@ class Scenario:
     expected_status: str
     expected_packet_type: str
     expected_review_codes: tuple[str, ...]
+    workflow_support: JsonObject | None = None
 
 
 def load_bundle() -> JsonObject:
@@ -146,7 +147,7 @@ def finance_review_codes() -> tuple[str, ...]:
 
 def adapter_payload(scenario: Scenario) -> JsonObject:
     claim_ref = f"claim:{scenario.scenario_id}"
-    return {
+    payload: JsonObject = {
         "schema_version": "trustgraph-claim-domain-adapter/v1",
         "domain_ontology_version": "recova-debt-collection-v1@1.0.0",
         "claim_root": {"claim_id": claim_ref, "claim_ref": claim_ref, "source_refs": [f"fixture:{scenario.scenario_id}#claim"]},
@@ -157,6 +158,11 @@ def adapter_payload(scenario: Scenario) -> JsonObject:
         "non_execution_semantics": "adapter_projection_only_human_review_required",
         "pii_profile": {"raw_text_included": False, "source_text_included": False},
     }
+    if scenario.workflow_support is not None:
+        for key in ("evidence_checkpoint", "finance_bridge", "legal_checkpoints"):
+            if key in scenario.workflow_support:
+                payload[key] = scenario.workflow_support[key]
+    return payload
 
 
 def assert_fixture_safe(bundle: JsonObject, source_ids: frozenset[str]) -> None:
@@ -227,6 +233,7 @@ def _scenario(entry: JsonObject) -> Scenario:
         expected_status=_text(entry["expected_status"]),
         expected_packet_type=_text(entry["expected_packet_type"]),
         expected_review_codes=_strings(entry["expected_review_codes"]),
+        workflow_support=json_object(entry["workflow_support"]) if "workflow_support" in entry else None,
     )
 
 

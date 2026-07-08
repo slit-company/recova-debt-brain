@@ -1,0 +1,53 @@
+{
+  "verdict": "APPROVE",
+  "scenario_count": 8,
+  "direct_passes": 8,
+  "mcp_passes": 8,
+  "fallback_passes": 8,
+  "tool_order": {
+    "surface": "MCP list_tools()",
+    "exact_invocation": "list_tools()",
+    "count": 25,
+    "tail": [
+      "list_claim_domain_routes",
+      "explain_collection_workflow_state",
+      "evaluate_claim_domain_decision",
+      "explain_claim_action_packet"
+    ],
+    "expected_count": 25,
+    "expected_tail": [
+      "list_claim_domain_routes",
+      "explain_collection_workflow_state",
+      "evaluate_claim_domain_decision",
+      "explain_claim_action_packet"
+    ],
+    "verdict": "PASS"
+  },
+  "failures": [],
+  "artifactRefs": [
+    {
+      "id": "qa-rerun-direct-json",
+      "kind": "json",
+      "description": "Direct evaluate_claim_domain_decision evidence for all eight semireal scenarios with nested workflow_support only.",
+      "path": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-rerun-direct.json"
+    },
+    {
+      "id": "qa-rerun-mcp-json",
+      "kind": "json",
+      "description": "MCP invoke_tool(\"evaluate_claim_domain_decision\") evidence for all eight semireal scenarios with nested workflow_support only.",
+      "path": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-rerun-mcp.json"
+    },
+    {
+      "id": "qa-rerun-stripped-fallback-json",
+      "kind": "json",
+      "description": "Direct and MCP fallback evidence with all support fields stripped.",
+      "path": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-rerun-stripped-fallback.json"
+    },
+    {
+      "id": "qa-rerun-tool-order-json",
+      "kind": "json",
+      "description": "MCP list_tools order/count evidence.",
+      "path": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-rerun-tool-order.json"
+    }
+  ]
+}

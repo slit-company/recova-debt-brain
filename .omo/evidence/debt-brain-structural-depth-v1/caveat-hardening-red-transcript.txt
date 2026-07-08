@@ -1,0 +1,48 @@
+Caveat hardening RED transcript
+================================
+
+This file preserves the raw failing signals captured before the caveat-hardening fixes were applied.
+
+1. Nested workflow_support boundary RED
+
+Command shape:
+uv run --with pydantic --with typing-extensions python direct-domain-and-mcp-nested-support-probe
+
+Observed output:
+RED_NESTED_SUPPORT_FAILURES count=14
+- premature_litigation_review domain expected title_acquisition observed evidence_completion
+- premature_litigation_review mcp expected title_acquisition observed evidence_completion
+- title_acquisition_loop domain expected title_acquisition observed evidence_completion
+- title_acquisition_loop mcp expected title_acquisition observed evidence_completion
+- asset_discovery_loop domain expected asset_discovery observed evidence_completion
+- asset_discovery_loop mcp expected asset_discovery observed evidence_completion
+- enforcement_ready_review domain expected enforcement_ready observed evidence_completion
+- enforcement_ready_review mcp expected enforcement_ready observed evidence_completion
+- monitoring_low_yield domain expected monitoring observed evidence_completion
+- monitoring_low_yield mcp expected monitoring observed evidence_completion
+- finance_reconciliation_hold domain expected evidence_completion/reconcile_finance observed evidence_completion/collect_missing_evidence
+- finance_reconciliation_hold mcp expected evidence_completion/reconcile_finance observed evidence_completion/collect_missing_evidence
+- insolvency_protected_asset_hold domain expected insolvency_protected_asset_review observed evidence_completion
+- insolvency_protected_asset_hold mcp expected insolvency_protected_asset_review observed evidence_completion
+
+Pytest RED excerpt:
+tests/integration/legal_ontology/test_domain_ontology_v1_pipeline.py::test_claim_domain_workflow_support_survives_without_projection failed:
+assert 'evidence_completion' == 'title_acquisition'
+
+2. Nested unsafe review item RED
+
+Command:
+uv run --with pytest --with pydantic python -m pytest tests/unit/legal_ontology/test_workflow_judgments_v1.py::test_review_items_scrub_nested_unsafe_support_fields -q
+
+Observed output:
+FAILED tests/unit/legal_ontology/test_workflow_judgments_v1.py::test_review_items_scrub_nested_unsafe_support_fields
+assert 'nested raw text must not leave the workflow engine' not in encoded
+
+Failure excerpt:
+'nested raw text must not leave the workflow engine' is contained here:
+w_text": "nested raw text must not leave the workflow engine", "debtor_contact_payload": "<synthetic-contact-payload>", "children": [{"filing_destination": "court endpoint", "source_path": "<synthetic-local-path>", "remaining_balance": {"amount": 123}, "safe_code": "keep-me"}]}
+
+GREEN confirmations after fixes:
+- NESTED_SUPPORT_BOUNDARY_OK scenarios=8 surfaces=domain,mcp exact_stage_action_posture_loop=pass.
+- STRIPPED_SUPPORT_SAFE_FALLBACK_OK scenarios=8 unsafe=0 advisory_only_human_review_required.
+- test_review_items_scrub_nested_unsafe_support_fields passed.

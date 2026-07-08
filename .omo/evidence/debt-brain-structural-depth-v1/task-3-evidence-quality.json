@@ -1,0 +1,87 @@
+{
+  "task": "Todo 3 evidence quality/conflict checkpoint",
+  "status": "pass",
+  "changed_files": [
+    "trustgraph_legal/evidence_quality.py",
+    "tests/unit/legal_ontology/test_evidence_quality_v1.py",
+    ".omo/evidence/debt-brain-structural-depth-v1/task-3-evidence-quality.json"
+  ],
+  "commands": [
+    {
+      "command": "uv run --with pytest python -m pytest tests/unit/legal_ontology/test_evidence_quality_v1.py tests/unit/legal_ontology/test_domain_graph_adapter_v1.py",
+      "result": "pass",
+      "summary": "8 passed; pytest reported one pre-existing config warning for unknown asyncio_mode."
+    },
+    {
+      "command": "uv run python -m compileall trustgraph_legal/evidence_quality.py tests/unit/legal_ontology/test_evidence_quality_v1.py",
+      "result": "pass",
+      "summary": "Compile completed with exit code 0."
+    },
+    {
+      "command": "awk pure LOC checks for changed Python files",
+      "result": "pass",
+      "summary": "trustgraph_legal/evidence_quality.py has 195 pure LOC; tests/unit/legal_ontology/test_evidence_quality_v1.py has 132 pure LOC."
+    }
+  ],
+  "manual_qa": {
+    "surface": "trustgraph_legal.evidence_quality.evaluate_evidence_quality",
+    "scenario": "Conflicting source-backed enforceable_title fact values",
+    "observed_decision": "hold",
+    "observed_signal_codes": [
+      "conflicting_fact_values"
+    ],
+    "observed_checkpoint": {
+      "schema_version": "trustgraph-evidence-quality-check/v1",
+      "decision": "hold",
+      "summary": {
+        "facts_checked": 2,
+        "review_items": 0,
+        "hold_items": 1,
+        "lowest_confidence": 0.89
+      },
+      "hold_items": [
+        {
+          "code": "conflicting_fact_values",
+          "category": "evidence_conflict",
+          "fact_ids": [
+            "fact:title-yes",
+            "fact:title-no"
+          ],
+          "fact_handles": [
+            "enforceable_title"
+          ],
+          "review_status": "human_review_required",
+          "source_refs": [
+            "fixture:title-a#L1",
+            "fixture:title-b#L4"
+          ],
+          "value_fingerprints": [
+            "sha256:b5bea41b6c623f7c",
+            "sha256:fcbcf165908dd18a"
+          ]
+        }
+      ],
+      "pii_profile": {
+        "raw_text_included": false,
+        "source_text_included": false
+      },
+      "non_execution_semantics": "advisory_only_human_review_required"
+    }
+  },
+  "coverage_notes": [
+    "Source-backed direct proof passes without review items.",
+    "Placeholder source refs create review-required evidence items.",
+    "Stale, low-confidence, and derived facts create review-required workflow signals.",
+    "Conflicting fact values create hold signals with value fingerprints instead of raw values."
+  ],
+  "cleanup": {
+    "raw_text_included": false,
+    "source_text_included": false,
+    "local_absolute_paths_included": false,
+    "unrelated_concurrent_files_touched": false
+  },
+  "risks": [
+    "System python lacks pytest and is too old for runtime imports of the repo's slots dataclasses; verification used uv-managed Python.",
+    "The checkpoint detects value conflicts only when structured values are present on fact handles or fact assertions."
+  ]
+}
