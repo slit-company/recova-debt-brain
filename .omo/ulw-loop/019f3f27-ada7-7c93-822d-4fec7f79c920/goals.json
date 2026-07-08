@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-07-08T06:39:39.649Z",
-  "updatedAt": "2026-07-08T06:44:21.720Z",
+  "updatedAt": "2026-07-08T07:23:31.942Z",
   "briefPath": ".omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/brief.md",
   "goalsPath": ".omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/goals.json",
   "ledgerPath": ".omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/ledger.jsonl",
@@ -11,7 +11,7 @@
       "id": "G001-improve-the-recorded-structural-dept",
       "title": "Improve the recorded structural-depth caveats before push: reduce the...",
       "objective": "Improve the recorded structural-depth caveats before push: reduce the exact-workflow fragility around structured support fields, clean or scope noisy safety/type caveats where feasible, preserve advisory-only/no deploy/no admin/write/no PII/no authoritative balance guardrails, verify direct domain and MCP real surfaces, then commit and push the completed work to origin/master.",
-      "status": "in_progress",
+      "status": "complete",
       "successCriteria": [
         {
           "id": "C001",
@@ -39,16 +39,33 @@
           "userModel": "regression",
           "expectedEvidence": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-final.json plus pushed commit hash",
           "essential": false,
-          "capturedEvidence": null,
-          "status": "pending"
+          "capturedEvidence": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-final.json; pushed commit 57a118597d0ed8c64c86be193b326278cee2005f to origin/master; git status -sb clean against origin/master",
+          "status": "pass",
+          "capturedAt": "2026-07-08T07:19:38.266Z",
+          "notes": "Review reruns approved code/evidence; commit and push succeeded."
         }
       ],
       "attempt": 1,
       "createdAt": "2026-07-08T06:39:39.649Z",
-      "updatedAt": "2026-07-08T06:44:21.720Z",
-      "startedAt": "2026-07-08T06:40:46.091Z"
+      "updatedAt": "2026-07-08T07:23:31.942Z",
+      "startedAt": "2026-07-08T06:40:46.091Z",
+      "completedAt": "2026-07-08T07:23:31.942Z",
+      "evidence": "All criteria passed; pushed commit 57a118597d0ed8c64c86be193b326278cee2005f to origin/master; code review, QA, and gate reruns approved."
     }
   ],
   "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/ledger.jsonl as the audit trail.",
-  "activeGoalId": "G001-improve-the-recorded-structural-dept"
+  "aggregateCompletion": {
+    "status": "complete",
+    "completedAt": "2026-07-08T07:23:31.942Z",
+    "evidence": "All criteria passed; pushed commit 57a118597d0ed8c64c86be193b326278cee2005f to origin/master; code review, QA, and gate reruns approved.",
+    "codexGoal": {
+      "threadId": "019f3f27-ada7-7c93-822d-4fec7f79c920",
+      "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/019f3f27-ada7-7c93-822d-4fec7f79c920/ledger.jsonl as the audit trail.",
+      "status": "complete",
+      "tokensUsed": 451459,
+      "timeUsedSeconds": 2366,
+      "createdAt": 1783492852,
+      "updatedAt": 1783495216
+    }
+  }
 }

@@ -1,0 +1,121 @@
+{
+    "codeReview": {
+      "by": "lazycodex-code-reviewer",
+      "recommendation": "APPROVE",
+      "codeQualityStatus": "CLEAR",
+      "reportPath": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/code-review-caveat-hardening-rerun.md",
+      "evidence": "Code review rerun approved recursive unsafe-field scrubbing, pure-LOC split, remove-ai-slops coverage, RED transcript evidence, and no scenario-id or expected-label branching.",
+      "blockers": []
+    },
+    "manualQa": {
+      "by": "lazycodex-qa-executor",
+      "status": "passed",
+      "evidence": "Manual QA rerun passed direct domain and MCP surfaces for all eight semireal workflow scenarios, stripped-support safe fallback, unsafe-field absence, and MCP tool order count 25.",
+      "surfaceEvidence": [
+        {
+          "id": "direct-mcp-boundary",
+          "criterionRef": "C001",
+          "surface": "cli",
+          "invocation": "uv run python direct evaluate_claim_domain_decision and MCP invoke_tool boundary probe",
+          "verdict": "passed",
+          "artifactRefs": ["qa-rerun-md"]
+        },
+        {
+          "id": "stripped-support-fallback",
+          "criterionRef": "C002",
+          "surface": "data",
+          "invocation": "compare stripped-support fallback JSON across eight scenarios",
+          "verdict": "passed",
+          "artifactRefs": ["qa-stripped-json"]
+        },
+        {
+          "id": "git-push-surface",
+          "criterionRef": "C003",
+          "surface": "cli",
+          "invocation": "git commit and git push origin master",
+          "verdict": "passed",
+          "artifactRefs": ["final-evidence-json"]
+        }
+      ],
+      "adversarialCases": [
+        {
+          "id": "nested-unsafe-review-items",
+          "criterionRef": "C003",
+          "scenario": "Nested support signals contain raw/contact/filing/path/balance keys below workflow_signals, signals, review_items, and hold_items.",
+          "expectedBehavior": "Workflow judgment review_items recursively remove unsafe keys while preserving safe structured markers.",
+          "verdict": "passed",
+          "artifactRefs": ["code-review-md", "final-evidence-json"]
+        },
+        {
+          "id": "stripped-structured-support",
+          "criterionRef": "C002",
+          "scenario": "All top-level structured support fields and nested workflow_support are removed from eight semireal payloads.",
+          "expectedBehavior": "Decision remains advisory-only, human-review gated, and unsafe fields absent.",
+          "verdict": "passed",
+          "artifactRefs": ["qa-stripped-json"]
+        }
+      ],
+      "artifactRefs": [
+        {
+          "id": "qa-rerun-md",
+          "kind": "cli-transcript",
+          "description": "Manual QA rerun report for direct domain, MCP, stripped support, and tool order surfaces.",
+          "path": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-rerun.md"
+        },
+        {
+          "id": "qa-stripped-json",
+          "kind": "data-diff",
+          "description": "Structured fallback QA result for stripped support scenarios.",
+          "path": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/qa-caveat-hardening-rerun-stripped-fallback.json"
+        },
+        {
+          "id": "code-review-md",
+          "kind": "log",
+          "description": "Code review rerun report covering slop, overfit, LOC, and unsafe-field blockers.",
+          "path": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/code-review-caveat-hardening-rerun.md"
+        },
+        {
+          "id": "final-evidence-json",
+          "kind": "cli-transcript",
+          "description": "Final caveat-hardening evidence including pushed commit and verification summary.",
+          "path": ".omo/evidence/debt-brain-structural-depth-v1/caveat-hardening-final.json"
+        }
+      ]
+    },
+    "gateReview": {
+      "by": "lazycodex-gate-reviewer",
+      "recommendation": "APPROVE",
+      "reportPath": ".omo/teams/019f3f27-ada7-7c93-822d-4fec7f79c920/artifacts/gate-caveat-hardening-rerun.md",
+      "evidence": "Gate rerun approved code and evidence side; only commit and push remained, which subsequently succeeded.",
+      "blockers": []
+    },
+    "iteration": {
+      "fullRerun": true,
+      "status": "passed",
+      "rerunCommands": [
+        "focused pytest 30 passed",
+        "regression pytest 18 passed",
+        "reopened boundary pytest 11 passed",
+        "domain and MCP boundary pytest 8 passed",
+        "scoped basedpyright 0 errors 0 warnings",
+        "scoped ruff passed",
+        "direct QA approved scenarios 8 surfaces domain and MCP",
+        "git push origin master"
+      ],
+      "evidence": "All structural-depth caveat-hardening gates passed and origin/master was updated."
+    },
+    "criteriaCoverage": {
+      "totalCriteria": 3,
+      "passCount": 3,
+      "originalIntent": "Improve the recorded structural-depth caveats before push while preserving advisory-only, no deploy, no admin/write, no PII, and no authoritative-balance guardrails.",
+      "desiredOutcome": "Nested workflow_support preserves exact direct and MCP workflow semantics, stripped support fails safe, reviewer blockers are fixed, and the result is pushed to origin/master.",
+      "userOutcomeReview": "C001 nested support boundary passed, C002 stripped-support fallback passed, and C003 regression/review/commit/push passed with origin/master updated.",
+      "adversarialClassesCovered": [
+        "nested support projection loss",
+        "stripped support fallback",
+        "nested unsafe review item leakage",
+        "oversized touched module",
+        "scenario-id overfit branching"
+      ]
+    }
+}

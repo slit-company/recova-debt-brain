@@ -15,6 +15,13 @@
     "direct_qa_refresh": "DIRECT_QA_APPROVED scenarios=8 surfaces=domain,mcp exact_stage_action_posture_loop=pass nested_workflow_support=yes unsafe_fields=absent MCP_ORDER_OK count=25",
     "safe_fallback_refresh": "STRIPPED_SUPPORT_SAFE_FALLBACK_OK scenarios=8 unsafe=0 advisory_only_human_review_required"
   },
+  "push": {
+    "remote": "origin",
+    "branch": "master",
+    "pushed_commit": "57a118597d0ed8c64c86be193b326278cee2005f",
+    "push_result": "origin/master updated to 57a118597d0ed8c64c86be193b326278cee2005f",
+    "ulw_c003": "pass"
+  },
   "verification": [
     {
       "name": "focused pytest",

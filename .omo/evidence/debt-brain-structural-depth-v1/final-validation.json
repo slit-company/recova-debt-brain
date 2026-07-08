@@ -4,6 +4,7 @@
   "status": "refreshed_passed_after_caveat_hardening_review",
   "refresh_reason": "Todo 6/7 real domain and MCP workflow boundary was fixed after global review, then hardened for nested support payloads, recursive unsafe-field scrubbing, and pure-LOC compliance before push.",
   "local_deploy_readiness": "approved_local_only",
+  "pushed_commit": "57a118597d0ed8c64c86be193b326278cee2005f",
   "remote_deployment": "not_performed",
   "remote_smoke": "not_performed",
   "client_setup_docs": "not_changed",
