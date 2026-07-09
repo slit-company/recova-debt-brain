@@ -1,0 +1,7 @@
+{
+  "status": "auth_rejected",
+  "auth_failure": true,
+  "error_type": "ExceptionGroup",
+  "error_summary": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception) | HTTPStatusError: Client error '401 Unauthorized' for url 'https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp' For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401 | CancelledError: Cancelled via cancel scope 1087867b0 | WouldBlock: ",
+  "auth_error_detected": true
+}

@@ -2,7 +2,7 @@
 
 This is the current lab handoff for the Recova debt-brain MCP endpoint.
 
-Status: lab-ready, not production-ready.
+Status: lab-ready, Cloud Run staging live, not production-ready.
 
 ## Live Surface
 
@@ -20,6 +20,19 @@ Status: lab-ready, not production-ready.
   before origin fallback.
 - Database: Supabase project `recova-mcp-lab`
 - Trace storage: Supabase `evaluation_runs`, `judgment_runs`, and `tool_traces`
+- Cloud Run staging target in use: Google Cloud project `slit-497603` under
+  the `slit.amazing` Google account.
+- Cloud Run staging service: `recova-brain-mcp-staging` in
+  `asia-northeast3`.
+- Cloud Run staging URL:
+  `https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp`.
+- Cloud Run staging status: live. Revision
+  `recova-brain-mcp-staging-00003-qbb` serves 100% of traffic and live MCP
+  smoke passed with 25 tools.
+- Deferred Google Cloud project: `Recova Brain MCP` (`recova-brain-mcp`) exists
+  under the same account, but billing is not linked because the available
+  billing account returned a billing quota exceeded error. Do not deploy there
+  until billing is fixed.
 
 The earlier candidate hostname `mcp-lab.recova.slit.company` is intentionally not the live endpoint. Cloudflare Universal SSL covers `*.slit.company`, not the deeper `*.recova.slit.company` hostname without an advanced certificate.
 
@@ -46,7 +59,7 @@ For Hermes, Claude Code or Desktop-style runtimes, OpenAI/ChatGPT-compatible MCP
 - transport: streamable HTTP
 - endpoint: `https://recova-mcp-lab.slit.company/mcp`
 - auth: `Authorization: Bearer <lab token>`
-- exposed tools: exactly 16 Recova debt-brain tools
+- exposed tools: exactly 25 Recova debt-brain tools
 - blocked surface: generic TrustGraph tools and real-world execution actions
 
 Claude web custom connectors do not currently fit this Bearer-header quickstart because the Claude web UI asks for OAuth client credentials rather than arbitrary HTTP headers. Use an OAuth bridge before connecting Claude web.
@@ -74,6 +87,15 @@ list_unknown_document_types
 review_extracted_fact
 promote_ontology_candidate
 reprocess_case
+assemble_debtor_documents
+build_debtor_context_graph
+get_debtor_graph_snapshot
+list_debtor_route_candidates
+explain_debtor_route_candidate
+list_claim_domain_routes
+explain_collection_workflow_state
+evaluate_claim_domain_decision
+explain_claim_action_packet
 ```
 
 Generic TrustGraph tools such as `embeddings`, `put_config`, `load_document`, and `delete_kg_core` must not be exposed from the lab endpoint.
@@ -179,7 +201,7 @@ set +a
 Expected:
 
 - `status=ok`
-- `tool_count=16`
+- `tool_count=25`
 - `generic_tools=[]`
 - `decision` is one of `가능`, `보류`, `불가능`
 - `trace_status=not_recorded` when Supabase env is not loaded with
@@ -193,6 +215,33 @@ env -u MCP_LAB_BEARER_TOKEN /opt/homebrew/bin/python3 scripts/recova_mcp/mcp_lab
   --out .omo/evidence/recova-mcp-deployment/cloudflare-worker-mcp-no-auth.json \
   --expect-auth-failure
 ```
+
+Cloud Run staging smoke uses the same script against the staging URL:
+
+```sh
+MCP_LAB_BEARER_TOKEN=<from Secret Manager> \
+  python scripts/recova_mcp/mcp_lab_smoke.py \
+  --url https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp \
+  --out .omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-smoke.json \
+  --allow-missing-trace
+
+env -u MCP_LAB_BEARER_TOKEN \
+  python scripts/recova_mcp/mcp_lab_smoke.py \
+  --url https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp \
+  --out .omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-no-auth.json \
+  --expect-auth-failure
+```
+
+Latest Cloud Run evidence:
+
+- `.omo/evidence/recova-brain-supabase-mcp-deploy-v1/gcp-readiness.json`
+- `.omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-smoke.json`
+- `.omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-no-auth.json`
+
+Secret note: Cloud Run uses Secret Manager secret
+`recova-mcp-lab-bearer-token`. The latest working version stores the bearer
+token without a trailing newline; a trailing newline causes authenticated smoke
+to fail with `401 Unauthorized`.
 
 ## Supabase Evidence
 

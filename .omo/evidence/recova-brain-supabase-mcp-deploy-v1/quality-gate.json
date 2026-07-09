@@ -1,0 +1,110 @@
+{
+  "codeReview": {
+    "by": "lazycodex-code-reviewer",
+    "recommendation": "APPROVE",
+    "codeQualityStatus": "CLEAR",
+    "reportPath": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/code-review.md",
+    "evidence": "Scoped code and deploy review passed with no blockers.",
+    "blockers": []
+  },
+  "manualQa": {
+    "by": "lazycodex-qa-executor",
+    "status": "passed",
+    "evidence": "Live Cloud Run MCP authenticated smoke and no-auth rejection both passed.",
+    "surfaceEvidence": [
+      {
+        "id": "surface-cloud-run-auth",
+        "criterionRef": "C001",
+        "surface": "http",
+        "invocation": "scripts/recova_mcp/mcp_lab_smoke.py --url https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp --allow-missing-trace",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-cloud-run-smoke"
+        ]
+      },
+      {
+        "id": "surface-cloud-run-no-auth",
+        "criterionRef": "C002",
+        "surface": "http",
+        "invocation": "scripts/recova_mcp/mcp_lab_smoke.py --url https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp --expect-auth-failure",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-cloud-run-no-auth"
+        ]
+      }
+    ],
+    "adversarialCases": [
+      {
+        "id": "adv-missing-bearer-token",
+        "criterionRef": "C002",
+        "scenario": "Connect to the live MCP endpoint without MCP_LAB_BEARER_TOKEN.",
+        "expectedBehavior": "The endpoint rejects the MCP request with auth failure.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-cloud-run-no-auth"
+        ]
+      },
+      {
+        "id": "adv-secret-leak-scan",
+        "criterionRef": "C003",
+        "scenario": "Scan deployment docs and evidence for secret-like literal values and local paths.",
+        "expectedBehavior": "No secret value, private key, JWT, literal bearer value, or local user path is present.",
+        "verdict": "passed",
+        "artifactRefs": [
+          "artifact-gcp-readiness"
+        ]
+      }
+    ],
+    "artifactRefs": [
+      {
+        "id": "artifact-cloud-run-smoke",
+        "kind": "http-dump",
+        "description": "Authenticated live MCP smoke evidence.",
+        "path": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-smoke.json"
+      },
+      {
+        "id": "artifact-cloud-run-no-auth",
+        "kind": "http-dump",
+        "description": "Unauthenticated live MCP rejection evidence.",
+        "path": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-no-auth.json"
+      },
+      {
+        "id": "artifact-gcp-readiness",
+        "kind": "log",
+        "description": "Cloud Build, Cloud Run, Secret Manager, and project readiness evidence.",
+        "path": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/gcp-readiness.json"
+      }
+    ]
+  },
+  "gateReview": {
+    "by": "lazycodex-gate-reviewer",
+    "recommendation": "APPROVE",
+    "reportPath": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/gate-review.md",
+    "evidence": "Final gate review passed with no blockers.",
+    "blockers": []
+  },
+  "iteration": {
+    "fullRerun": true,
+    "status": "passed",
+    "rerunCommands": [
+      "uv run --with pytest --with anyio --with httpx --with typing-extensions --with pydantic --with websockets python -m pytest tests/unit/legal_ontology/test_mcp_lab_smoke.py tests/integration/legal_ontology/test_mcp_debt_only_server.py -q",
+      "python3 -m compileall scripts/recova_mcp/mcp_lab_smoke.py tests/unit/legal_ontology/test_mcp_lab_smoke.py tests/integration/legal_ontology/test_mcp_debt_only_server.py trustgraph-mcp/trustgraph/mcp_server/legal_only.py",
+      "uv run --with ruff ruff check scripts/recova_mcp/mcp_lab_smoke.py tests/unit/legal_ontology/test_mcp_lab_smoke.py tests/integration/legal_ontology/test_mcp_debt_only_server.py trustgraph-mcp/trustgraph/mcp_server/legal_only.py",
+      "uv run --with basedpyright --with pytest --with anyio --with httpx --with typing-extensions --with pydantic --with websockets basedpyright --level error scripts/recova_mcp/mcp_lab_smoke.py tests/unit/legal_ontology/test_mcp_lab_smoke.py tests/integration/legal_ontology/test_mcp_debt_only_server.py trustgraph-mcp/trustgraph/mcp_server/legal_only.py"
+    ],
+    "evidence": "Focused reruns passed; live MCP smokes passed."
+  },
+  "criteriaCoverage": {
+    "totalCriteria": 3,
+    "passCount": 3,
+    "originalIntent": "Deploy Recova Brain MCP staging on a billing-enabled Google Cloud project and verify live MCP behavior.",
+    "desiredOutcome": "Cloud Run staging is live, authenticated MCP works, unauthenticated access is rejected, docs/evidence are accurate, and no secrets leak.",
+    "userOutcomeReview": "The fallback project slit-497603 now hosts the live staging service; recova-brain-mcp remains documented as billing-blocked.",
+    "adversarialClassesCovered": [
+      "missing_auth",
+      "secret_leak",
+      "stale_project_state",
+      "tool_surface_regression"
+    ]
+  }
+}

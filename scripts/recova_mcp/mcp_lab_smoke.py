@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import anyio
 import importlib
 import json
 import os
@@ -8,7 +9,10 @@ import sys
 import time
 from hashlib import sha256
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List
+
+if TYPE_CHECKING:
+    from trustgraph_legal.lab_trace import TraceInvocation
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 for package_path in (
@@ -20,23 +24,12 @@ for package_path in (
     if path not in sys.path:
         sys.path.insert(0, path)
 
-import anyio
-import httpx
-from trustgraph_legal.lab_trace import (
-    TraceInvocation,
-    supabase_config_from_env,
-)
-from trustgraph_legal.lab_trace_supabase import (
-    JudgmentTraceRequest,
-    write_judgment_trace_to_supabase,
-)
-
 try:
     from .mcp_smoke_auth import auth_error_details
 except ImportError:
-    from mcp_smoke_auth import auth_error_details
+    from scripts.recova_mcp.mcp_smoke_auth import auth_error_details
 
-EXPECTED_TOOL_COUNT = 16
+EXPECTED_TOOL_COUNT = 25
 GENERIC_TOOL_NAMES = {
     "embeddings",
     "put_config",
@@ -57,6 +50,8 @@ async def run_smoke(
     expect_auth_failure: bool,
     allow_missing_trace: bool,
 ) -> Dict[str, Any]:
+    import httpx
+
     headers = {"Authorization": "Bearer {}".format(token)} if token else {}
     try:
         client_session = importlib.import_module("mcp").ClientSession
@@ -82,9 +77,9 @@ async def run_smoke(
                     }
                     stopgate = await session.call_tool(
                         "check_case_stop_gates",
-                        stopgate_arguments,
+                        {"arguments": stopgate_arguments},
                     )
-    except Exception as exc:  # noqa: BROAD_EXCEPT_OK - MCP client wraps 401s.
+    except Exception as exc:  # noqa: BLE001 - MCP client wraps auth failures.
         if expect_auth_failure:
             details = auth_error_details(exc)
             if not details.auth_rejected:
@@ -185,6 +180,12 @@ def _record_trace_if_configured(
             "judgment_status": "not_recorded",
             "trace_error": "missing_supabase_env",
         }
+    from trustgraph_legal.lab_trace import TraceInvocation, supabase_config_from_env
+    from trustgraph_legal.lab_trace_supabase import (
+        JudgmentTraceRequest,
+        write_judgment_trace_to_supabase,
+    )
+
     invocation = TraceInvocation(
         tool_name="check_case_stop_gates",
         arguments=arguments,

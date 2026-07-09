@@ -20,7 +20,7 @@ def test_auth_failure_detection_accepts_only_auth_marked_errors() -> None:
 def test_success_validation_requires_recorded_trace_judgment_and_evaluation() -> None:
     result = {
         "status": "ok",
-        "tool_count": 16,
+        "tool_count": 25,
         "generic_tools": [],
         "execution_tools": [],
         "decision": "보류",
@@ -37,7 +37,7 @@ def test_success_validation_requires_recorded_trace_judgment_and_evaluation() ->
 def test_success_validation_allows_missing_trace_only_when_explicit() -> None:
     result = {
         "status": "ok",
-        "tool_count": 16,
+        "tool_count": 25,
         "generic_tools": [],
         "execution_tools": [],
         "decision": "보류",

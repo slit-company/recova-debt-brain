@@ -227,12 +227,19 @@ def _token_verifier(
 
 def _allowed_hosts(config: DebtCollectionServerConfig) -> list[str]:
     hosts = {"127.0.0.1", "localhost", config.host}
+    hosts.update(_host_with_port(host, config.port) for host in tuple(hosts))
     hosts.update(config.allowed_hosts)
     for value in (config.auth_issuer, config.auth_resource_url):
         parsed = urlparse(value)
         if parsed.hostname:
             hosts.add(parsed.hostname)
+        if parsed.netloc:
+            hosts.add(parsed.netloc)
     return sorted(host for host in hosts if host)
+
+
+def _host_with_port(host: str, port: int) -> str:
+    return f"{host}:{port}" if host else ""
 
 
 if __name__ == "__main__":

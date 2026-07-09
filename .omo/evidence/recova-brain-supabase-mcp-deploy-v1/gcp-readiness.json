@@ -1,0 +1,53 @@
+{
+  "status": "cloud_run_staging_live",
+  "google_account": "slit.amazing@gmail.com",
+  "active_staging_project": {
+    "project_id": "slit-497603",
+    "project_number": "90389312652",
+    "billing_enabled": true
+  },
+  "deferred_project": {
+    "name": "Recova Brain MCP",
+    "project_id": "recova-brain-mcp",
+    "project_number": "378184254395",
+    "billing_enabled": false,
+    "billing_blocker": "cloud_billing_quota_exceeded"
+  },
+  "enabled_services": [
+    "run.googleapis.com",
+    "artifactregistry.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "secretmanager.googleapis.com"
+  ],
+  "artifact_registry": {
+    "repository": "recova-brain",
+    "location": "asia-northeast3",
+    "image": "asia-northeast3-docker.pkg.dev/slit-497603/recova-brain/recova-mcp:staging",
+    "digest": "sha256:5c3f11cf34effdb1cdbd829579ba724969b62e70c5ab9964ded116e86afb4b3e"
+  },
+  "cloud_build": {
+    "build_id": "7279c920-18a7-42ba-acd6-f363ce89252d",
+    "status": "SUCCESS"
+  },
+  "secret_manager": {
+    "secret": "recova-mcp-lab-bearer-token",
+    "latest_version": "2",
+    "secret_value_recorded": false,
+    "note": "version 2 stores the bearer token without a trailing newline"
+  },
+  "cloud_run": {
+    "service": "recova-brain-mcp-staging",
+    "region": "asia-northeast3",
+    "latest_ready_revision": "recova-brain-mcp-staging-00003-qbb",
+    "traffic_percent": 100,
+    "url": "https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app",
+    "mcp_url": "https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp",
+    "public_ingress": true,
+    "app_bearer_auth_required": true
+  },
+  "smoke_evidence": {
+    "authenticated": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-smoke.json",
+    "unauthenticated": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-no-auth.json"
+  },
+  "next_safe_action": "keep staging in slit-497603 or fix billing on recova-brain-mcp before any production cutover"
+}

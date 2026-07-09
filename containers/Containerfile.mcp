@@ -30,5 +30,6 @@ COPY resources/legal_rules/ /app/resources/legal_rules/
 COPY resources/ontologies/ /app/resources/ontologies/
 COPY tests/fixtures/legal-ocr/ /app/tests/fixtures/legal-ocr/
 COPY scripts/recova_mcp/ /app/scripts/recova_mcp/
+COPY scripts/legal_ontology/ /app/scripts/legal_ontology/
 
-CMD ["python", "-m", "trustgraph.mcp_server.legal_only", "--host", "0.0.0.0", "--port", "8000", "--repo-root", "/app"]
+CMD ["sh", "-c", "exec python -m trustgraph.mcp_server.legal_only --host 0.0.0.0 --port \"${PORT:-8000}\" --repo-root /app"]

@@ -1,0 +1,1 @@
+Deploy Recova Brain MCP staging to Google Cloud Run using the billing-enabled fallback project slit-497603, preserve bearer-token auth and MCP tool order, verify live MCP smoke against the Cloud Run URL plus no-auth rejection, update local docs/evidence for the fallback project and deployment status, and leave no leaked secrets or debug artifacts.

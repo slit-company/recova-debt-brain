@@ -6,7 +6,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from types import ModuleType
-from typing import Callable, Final, Optional, Union
+from typing import Callable, Final
 
 import pytest
 
@@ -30,6 +30,15 @@ EXPECTED_TOOL_NAMES: Final = [
     "review_extracted_fact",
     "promote_ontology_candidate",
     "reprocess_case",
+    "assemble_debtor_documents",
+    "build_debtor_context_graph",
+    "get_debtor_graph_snapshot",
+    "list_debtor_route_candidates",
+    "explain_debtor_route_candidate",
+    "list_claim_domain_routes",
+    "explain_collection_workflow_state",
+    "evaluate_claim_domain_decision",
+    "explain_claim_action_packet",
 ]
 GENERIC_TOOL_NAMES: Final = {
     "embeddings",
@@ -38,8 +47,8 @@ GENERIC_TOOL_NAMES: Final = {
     "delete_kg_core",
 }
 
-JsonScalar = Union[str, int, float, bool, None]
-JsonValue = Union[JsonScalar, list["JsonValue"], dict[str, "JsonValue"]]
+JsonScalar = str | int | float | bool | None
+JsonValue = JsonScalar | list["JsonValue"] | dict[str, "JsonValue"]
 JsonObject = dict[str, JsonValue]
 ToolCallable = Callable[..., JsonObject]
 
@@ -112,12 +121,13 @@ def test_debt_only_server_registers_only_recova_tools(monkeypatch: pytest.Monkey
         scope_authorizer=lambda identity: ["read:tools"],
     )
 
-    # Then: only the 16 Recova debt-brain tools are externally registered.
+    # Then: only the 25 Recova debt-brain tools are externally registered.
     assert list(server.mcp.registered) == EXPECTED_TOOL_NAMES
     assert GENERIC_TOOL_NAMES.isdisjoint(server.mcp.registered)
     assert server.mcp.name == "Recova Debt Collection Brain"
     assert server.registered_tools[0]["tool_name"] == "list_debt_collection_tools"
     assert server.mcp.transport_security is not None
+    assert "127.0.0.1:8800" in server.mcp.transport_security.allowed_hosts
     assert "recova-mcp-lab.slit.company" in server.mcp.transport_security.allowed_hosts
 
     server.run()

@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "createdAt": "2026-07-09T12:11:34.944Z",
+  "updatedAt": "2026-07-09T12:25:09.920Z",
+  "briefPath": ".omo/ulw-loop/recova-brain-mcp-staging-20260709/brief.md",
+  "goalsPath": ".omo/ulw-loop/recova-brain-mcp-staging-20260709/goals.json",
+  "ledgerPath": ".omo/ulw-loop/recova-brain-mcp-staging-20260709/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-deploy-recova-brain-mcp-staging-to-g",
+      "title": "Deploy Recova Brain MCP staging to Google Cloud Run using the billing...",
+      "objective": "Deploy Recova Brain MCP staging to Google Cloud Run using the billing-enabled fallback project slit-497603, preserve bearer-token auth and MCP tool order, verify live MCP smoke against the Cloud Run URL plus no-auth rejection, update local docs/evidence for the fallback project and deployment status, and leave no leaked secrets or debug artifacts.",
+      "status": "complete",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "HTTP/MCP live surface: Cloud Run service recova-brain-mcp-staging in slit-497603 reaches Ready and authenticated MCP smoke passes against /mcp with tool_count=25.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-smoke.json with status=ok, tool_count=25, service URL, build/deploy revision evidence.",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-smoke.json: PASS mcp_lab_smoke ok; tool_count=25; Cloud Build 7279c920-18a7-42ba-acd6-f363ce89252d SUCCESS; Cloud Run revision recova-brain-mcp-staging-00003-qbb Ready with 100% traffic at https://recova-brain-mcp-staging-i3pqv2n2rq-du.a.run.app/mcp.",
+          "status": "pass",
+          "capturedAt": "2026-07-09T12:21:38.307Z",
+          "notes": "Initial 401 was caused by trailing newline in Secret Manager token; fixed by adding trimmed version 2 and redeploying."
+        },
+        {
+          "id": "C002",
+          "scenario": "Security edge: the same Cloud Run /mcp endpoint rejects unauthenticated requests and no secret/token value is printed or written to evidence.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-no-auth.json with auth_rejected plus safety scan showing no token/raw PII/local path leak in deliverables.",
+          "essential": true,
+          "capturedEvidence": ".omo/evidence/recova-brain-supabase-mcp-deploy-v1/cloud-run-mcp-no-auth.json: PASS mcp_lab_smoke auth_rejected; refined deliverable safety scan SAFETY_SCAN_OK files=6 patterns=5; no token value printed or stored.",
+          "status": "pass",
+          "capturedAt": "2026-07-09T12:21:38.350Z"
+        },
+        {
+          "id": "C003",
+          "scenario": "Regression/documentation: local MCP smoke/tests still pass, MCP tool order remains 25, and runbook/final evidence document slit-497603 fallback without claiming recova-brain-mcp billing is fixed.",
+          "userModel": "regression",
+          "expectedEvidence": "Focused pytest/compile/type/lint outputs, MCP_ORDER_OK count=25 if run, updated runbook/evidence JSON, git diff check, and debug artifact cleanup receipt.",
+          "essential": false,
+          "capturedEvidence": "Focused pytest 7 passed; compileall passed; ruff passed; basedpyright --level error returned 0 errors/0 warnings/0 notes; JSON_VALIDATION_OK files=3; EVIDENCE_SHAPE_OK; git diff --check passed; runbook/draft/plan/gcp-readiness document slit-497603 fallback and recova-brain-mcp billing blocker.",
+          "status": "pass",
+          "capturedAt": "2026-07-09T12:21:38.401Z",
+          "notes": "scripts/recova_mcp/mcp_lab_smoke.py is in warning band at 232 pure LOC; do not expand further without splitting."
+        }
+      ],
+      "attempt": 0,
+      "createdAt": "2026-07-09T12:11:34.944Z",
+      "updatedAt": "2026-07-09T12:25:09.920Z",
+      "completedAt": "2026-07-09T12:25:09.920Z",
+      "evidence": "Cloud Run staging live in slit-497603; authenticated and unauthenticated MCP smokes passed; docs/evidence updated; validation gates passed; cleanup receipt recorded."
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/recova-brain-mcp-staging-20260709/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/recova-brain-mcp-staging-20260709/ledger.jsonl as the audit trail.",
+  "aggregateCompletion": {
+    "status": "complete",
+    "completedAt": "2026-07-09T12:25:09.920Z",
+    "evidence": "Cloud Run staging live in slit-497603; authenticated and unauthenticated MCP smokes passed; docs/evidence updated; validation gates passed; cleanup receipt recorded.",
+    "codexGoal": {
+      "status": "complete",
+      "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/recova-brain-mcp-staging-20260709/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/recova-brain-mcp-staging-20260709/ledger.jsonl as the audit trail."
+    }
+  }
+}
